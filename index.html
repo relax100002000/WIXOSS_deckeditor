@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<script src="js/function.js"></script>
+		<script src="js/card_info.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<title>WIXOSS Deck Editor</title>
+	</head>
+	<style>
+		img {
+			border-style: solid;
+			border-width: 1px;
+			border-radius: 5px;
+		}
+		* {
+			font-size: 14px;
+		}
+	</style>
+	<body>
+		<script>
+			var page = 0;
+			var rdeckArr = [];
+			var pdeckArr = [];
+			var ldeckArr = [];
+			var sdeckArr = [];
+
+			var sdeck_l1 = 0;
+			var sdeck_l2 = 0;
+			var sdeck_l3 = 0;
+			var sdeck_spell = 0;
+
+			var sdeck_red = 0;
+			var sdeck_blue = 0;
+			var sdeck_green = 0;
+			var sdeck_black = 0;
+			var sdeck_white = 0;
+			var sdeck_nocolor = 0;
+
+			var sdeck_burst = 0;
+
+			$( document ).ready(function() {
+				onLoading();
+				showrdeck();
+			});
+		</script>
+		<table width="1750px" height="1800px">
+			<tr>
+				<td width="300px" height="425px">
+					<img width="300px" height="420px" id="big_pic">
+				</td>
+				<td style="vertical-align:text-top;">
+					<table style="margin-top: 50px;">
+						<tr style="vertical-align:text-top;">
+							<td>
+							</td>
+						</tr>
+						<tr style="vertical-align:bottom;">
+							<td style="vertical-align:text-top;" id="counter">
+							</td>
+						</tr>
+						<tr>
+							<td>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img id="ldeck_0" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,0 , ldeckArr)">
+								<img id="ldeck_1" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,1 , ldeckArr)">
+								<img id="ldeck_2" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,2 , ldeckArr)">
+								<img id="ldeck_3" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,3 , ldeckArr)">
+								<img id="ldeck_4" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,4 , ldeckArr)">
+								<img id="ldeck_5" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,5 , ldeckArr)">
+								<img id="ldeck_6" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,6 , ldeckArr)">
+								<img id="ldeck_7" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,7 , ldeckArr)">
+								<img id="ldeck_8" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,8 , ldeckArr)">
+								<img id="ldeck_9" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,9 , ldeckArr)">
+							</td>
+						</tr>
+						<tr>
+							<td style="vertical-align:bottom">
+								Piece
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img id="pdeck_0" width="82px" height="60px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,0 , pdeckArr)">
+								<img id="pdeck_1" width="82px" height="60px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,1 , pdeckArr)">
+							</td>
+						</tr>
+					</table>
+				</td>		
+				<td>
+					<!-- 123123123 -->
+				</td>
+			</tr>
+			<tr>
+				<td style="vertical-align:text-top" height="500px">
+					<table id="infoTable" width="300px" border="1" style="border: solid; border-width: 1px" hidden>
+					</table>
+				</td>
+				<td style="vertical-align:text-top">
+					<table>
+						<tr>
+							<td>
+								SIGNI
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img id="sdeck_0" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,0 , sdeckArr)">
+								<img id="sdeck_1" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,1 , sdeckArr)">
+								<img id="sdeck_2" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,2 , sdeckArr)">
+								<img id="sdeck_3" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,3 , sdeckArr)">
+								<img id="sdeck_4" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,4 , sdeckArr)">
+								<img id="sdeck_5" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,5 , sdeckArr)">
+								<img id="sdeck_6" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,6 , sdeckArr)">
+								<img id="sdeck_7" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,7 , sdeckArr)">
+								<img id="sdeck_8" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,8 , sdeckArr)">
+								<img id="sdeck_9" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,9 , sdeckArr)">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img id="sdeck_10" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,10 , sdeckArr)">
+								<img id="sdeck_11" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,11 , sdeckArr)">
+								<img id="sdeck_12" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,12 , sdeckArr)">
+								<img id="sdeck_13" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,13 , sdeckArr)">
+								<img id="sdeck_14" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,14 , sdeckArr)">
+								<img id="sdeck_15" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,15 , sdeckArr)">
+								<img id="sdeck_16" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,16 , sdeckArr)">
+								<img id="sdeck_17" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,17 , sdeckArr)">
+								<img id="sdeck_18" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,18 , sdeckArr)">
+								<img id="sdeck_19" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,19 , sdeckArr)">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img id="sdeck_20" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,20 , sdeckArr)">
+								<img id="sdeck_21" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,21 , sdeckArr)">
+								<img id="sdeck_22" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,22 , sdeckArr)">
+								<img id="sdeck_23" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,23 , sdeckArr)">
+								<img id="sdeck_24" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,24 , sdeckArr)">
+								<img id="sdeck_25" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,25 , sdeckArr)">
+								<img id="sdeck_26" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,26 , sdeckArr)">
+								<img id="sdeck_27" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,27 , sdeckArr)">
+								<img id="sdeck_28" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,28 , sdeckArr)">
+								<img id="sdeck_29" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,29 , sdeckArr)">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img id="sdeck_30" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,30 , sdeckArr)">
+								<img id="sdeck_31" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,31 , sdeckArr)">
+								<img id="sdeck_32" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,32 , sdeckArr)">
+								<img id="sdeck_33" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,33 , sdeckArr)">
+								<img id="sdeck_34" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,34 , sdeckArr)">
+								<img id="sdeck_35" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,35 , sdeckArr)">
+								<img id="sdeck_36" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,36 , sdeckArr)">
+								<img id="sdeck_37" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,37 , sdeckArr)">
+								<img id="sdeck_38" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,38 , sdeckArr)">
+								<img id="sdeck_39" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,39 , sdeckArr)">
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td style="vertical-align:text-top">
+					<table>
+						<tr>
+							<td >
+								Card list
+							</td>
+						</tr>
+						<tr>
+							<table>
+								<tr>
+									<td rowspan="2">
+										<img id="larrow" height="172px" src="img/larrow.png" onclick="if(page != 0)page--;showrdeck();">
+									</td>
+									<td>
+										<img id="rdeck_0" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_1" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_2" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_3" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_4" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
+									</td>
+									<td rowspan="2">
+										<img id="rarrow" height="172px" src="img/rarrow.png" onclick="if((page + 1) * 10 < rdeckArr.length)page++;showrdeck();">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<img id="rdeck_5" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_6" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_7" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_8" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_9" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
+									</td>
+								</tr>
+							</table>
+						</tr>
+						<tr>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
