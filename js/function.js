@@ -1070,12 +1070,25 @@ function loadcounter()
 
 function search()
 {
-	var i = 0;
+	var i = 0, j = 0;
 
 	rdeckArr = [];
 
 	for(i = 0; i < cardData.length; i++)
 	{
+		if($('#textsearch').val().length != 0)
+		{
+			for(j = 0; j < 15; j++)
+			{
+				if(cardData[i][j].indexOf($('#textsearch').val()) != -1)
+				{
+					rdeckArr.push(cardData[i]);
+					break;
+				}
+			}
+		}
+
+
 		if($('#lrig').is(":checked"))
 		{
 			if(cardData[i][TYPE] == "ルリグ")
