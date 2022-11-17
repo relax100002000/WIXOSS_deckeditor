@@ -556,7 +556,6 @@ function sortLdeck(x)
 	{
 		if(x[ID] == ldeckArr[i][ID])
 		{
-			console.log("return");
 			return;
 		}
 	}
@@ -587,7 +586,6 @@ function sortLdeck(x)
 
 	if(!updated)
 	{
-		console.log("add");
 		ldeckArr.push(x);
 	}
 
@@ -607,8 +605,6 @@ function sortSdeck(x)
 	var same_level = 0;
 	var same_color = 0;
 	var same_lb = 0;
-
-	var sdeck_burst = 0;
 
 	var updated = 0;
 	var length = sdeckArr.length;
@@ -684,14 +680,24 @@ function sortSdeck(x)
 		sdeckArr.push(x);
 	}
 
+	addcounter(x);
 	showSdeck();
 }
 
 function delDeck(x, idx, array)
 {
-	console.log(x.id);
+	var i = 0;
+	var tmpArr = "";
+	for(i = 0; i < cardData.length; i++)
+	{
+		if(x.alt == cardData[i][ID])
+		{
+			delcounter(cardData[i]);
+			break;
+		}
+	}
 	array.splice(idx, 1);
-
+	
 	showAlldeck();
 }
 
@@ -719,27 +725,27 @@ function addcounter(x)
 		sdeck_red++;
 	}
 
-	if(x[COLOR].indexOf("赤") != -1)
+	if(x[COLOR].indexOf("青") != -1)
 	{
 		sdeck_blue++;
 	}
 
-	if(x[COLOR].indexOf("赤") != -1)
+	if(x[COLOR].indexOf("緑") != -1)
 	{
 		sdeck_green++;
 	}
 
-	if(x[COLOR].indexOf("赤") != -1)
+	if(x[COLOR].indexOf("黒") != -1)
 	{
 		sdeck_black++;
 	}
 
-	if(x[COLOR].indexOf("赤") != -1)
+	if(x[COLOR].indexOf("白") != -1)
 	{
 		sdeck_white++;
 	}
 
-	if(x[COLOR].indexOf("赤") != -1)
+	if(x[COLOR].indexOf("無") != -1)
 	{
 		sdeck_nocolor++;
 	}
@@ -748,6 +754,140 @@ function addcounter(x)
 	{
 		sdeck_burst++;
 	}
+	else
+	{
+		sdeck_no_burst++;
+	}
+
+	showcounter();
+}
+
+function delcounter(x)
+{
+	if(x[LEVEL] == 1)
+	{
+		sdeck_l1--;
+	}
+	if(x[LEVEL] == 2)
+	{
+		sdeck_l2--;
+	}
+	if(x[LEVEL] == 3)
+	{
+		sdeck_l3--;
+	}
+	if(x[LEVEL] == "")
+	{
+		sdeck_spell--;
+	}
+
+	if(x[COLOR].indexOf("赤") != -1)
+	{
+		sdeck_red--;
+	}
+
+	if(x[COLOR].indexOf("青") != -1)
+	{
+		sdeck_blue--;
+	}
+
+	if(x[COLOR].indexOf("緑") != -1)
+	{
+		sdeck_green--;
+	}
+
+	if(x[COLOR].indexOf("黒") != -1)
+	{
+		sdeck_black--;
+	}
+
+	if(x[COLOR].indexOf("白") != -1)
+	{
+		sdeck_white--;
+	}
+
+	if(x[COLOR].indexOf("無") != -1)
+	{
+		sdeck_nocolor--;
+	}
+
+	if(x[LB] == 1)
+	{
+		sdeck_burst--;
+	}
+	else
+	{
+		sdeck_no_burst--;
+	}
+
+	showcounter();
+}
+
+function showcounter()
+{
+	var str = "";
+	if(sdeck_l1)
+	{
+		str+= "&emsp;&emsp;L1シグニ: " + sdeck_l1;
+	}
+	if(sdeck_l2)
+	{
+		str+= "&emsp;&emsp;L2シグニ: " + sdeck_l2;
+	}
+	if(sdeck_l3)
+	{
+		str+= "&emsp;&emsp;L3シグニ: " + sdeck_l3;
+	}
+	if(sdeck_spell)
+	{
+		str+= "&emsp;&emsp;スペル: " + sdeck_spell;
+	}
+
+	str+= "<br><br>"
+
+	if(sdeck_red)
+	{
+		str+= "&emsp;&emsp;赤: " + sdeck_red;
+	}
+	if(sdeck_blue)
+	{
+		str+= "&emsp;&emsp;青: " + sdeck_blue;
+	}
+	if(sdeck_green)
+	{
+		str+= "&emsp;&emsp;緑: " + sdeck_green;
+	}
+	if(sdeck_black)
+	{
+		str+= "&emsp;&emsp;黒: " + sdeck_black;
+	}
+	if(sdeck_white)
+	{
+		str+= "&emsp;&emsp;白: " + sdeck_white;
+	}
+	if(sdeck_nocolor)
+	{
+		str+= "&emsp;&emsp;無: " + sdeck_nocolor;
+	}
+
+	if(sdeck_white)
+	{
+		str+= "&emsp;&emsp;白: " + sdeck_white;
+	}
+
+	str+= "<br><br>"
+
+	if(sdeck_burst)
+	{
+		str+= "&emsp;&emsp;LB有り: " + sdeck_burst;
+	}
+
+	if(sdeck_no_burst)
+	{
+		str+= "&emsp;&emsp;LB無し: " + sdeck_no_burst;
+	}
+
+	$("#counter").html(str);
 }
 
 function addDeck(x)
