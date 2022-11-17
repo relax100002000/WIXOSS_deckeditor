@@ -481,6 +481,10 @@ function showTeam(x)
 	{
 		return "アンシエント・サプライズ";
 	}
+	else if(x == "アンジュ" || x == "リゼ" || x == "とこ")
+	{
+		return "さんばか";
+	}
 	else
 	{
 		return "";
@@ -1094,6 +1098,14 @@ function search()
 		if(!$('#assistlrig').is(":checked"))
 		{
 			if(cardData[i][TYPE] == "アシストルリグ")
+			{
+				continue;
+			}
+		}
+
+		if(!$('#piece').is(":checked"))
+		{
+			if(cardData[i][TYPE] == "ピース")
 			{
 				continue;
 			}
