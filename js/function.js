@@ -48,6 +48,9 @@ function showrdeck()
 		}
 		else
 		{
+			$("#rdeck_" + i).attr("height", "172px");
+			$("#rdeck_" + i).attr("width", "124px");
+			$("#rdeck_" + i).attr("style", "margin-bottom: 0px");
 			$("#rdeck_" + i).attr("src", "img/empty.jpg");
 			$("#rdeck_" + i).attr("alt", "");
 		}
@@ -1076,6 +1079,127 @@ function search()
 
 	for(i = 0; i < cardData.length; i++)
 	{
+
+		if(!$('#lrig').is(":checked"))
+		{
+			if(cardData[i][TYPE] == "ルリグ")
+			{
+				continue;
+			}
+		}
+
+		if(!$('#assistlrig').is(":checked"))
+		{
+			if(cardData[i][TYPE] == "アシストルリグ")
+			{
+				continue;
+			}
+		}
+
+		if(!$('#signi').is(":checked"))
+		{
+			if(cardData[i][TYPE] == "シグニ")
+			{
+				continue;
+			}
+		}
+
+		if(!$('#spell').is(":checked"))
+		{
+			if(cardData[i][TYPE] == "スペル")
+			{
+				continue;
+			}
+		}
+
+		if(!$('#level1').is(":checked"))
+		{
+			if(cardData[i][LEVEL] == "1")
+			{
+				continue;
+			}
+		}
+
+		if(!$('#level2').is(":checked"))
+		{
+			if(cardData[i][LEVEL] == "2")
+			{
+				continue;
+			}
+		}
+
+		if(!$('#level3').is(":checked"))
+		{
+			if(cardData[i][LEVEL] == "3")
+			{
+				continue;
+			}
+		}
+
+		if(!$('#red').is(":checked"))
+		{
+			if(cardData[i][COLOR].indexOf("赤") != -1)
+			{
+				continue;
+			}
+		}
+
+		if(!$('#blue').is(":checked"))
+		{
+			if(cardData[i][COLOR].indexOf("青") != -1)
+			{
+				continue;
+			}
+		}
+
+		if(!$('#green').is(":checked"))
+		{
+			if(cardData[i][COLOR].indexOf("緑") != -1)
+			{
+				continue;
+			}
+		}
+
+		if(!$('#black').is(":checked"))
+		{
+			if(cardData[i][COLOR].indexOf("黒") != -1)
+			{
+				continue;
+			}
+		}
+
+		if(!$('#white').is(":checked"))
+		{
+			if(cardData[i][COLOR].indexOf("白") != -1)
+			{
+				continue;
+			}
+		}
+
+		if(!$('#nocolor').is(":checked"))
+		{
+			if(cardData[i][COLOR].indexOf("無") != -1)
+			{
+				continue;
+			}
+		}
+
+		if(!$('#islb').is(":checked"))
+		{
+			if(cardData[i][LB] == "1")
+			{
+				continue;
+			}
+		}
+
+		if(!$('#notlb').is(":checked"))
+		{
+			if(cardData[i][LB] == "0")
+			{
+				continue;
+			}
+		}
+
 		if($('#textsearch').val().length != 0)
 		{
 			for(j = 0; j < 15; j++)
@@ -1087,142 +1211,12 @@ function search()
 				}
 			}
 		}
-
-		if($('#lrig').is(":checked"))
+		else
 		{
-			if(cardData[i][TYPE] == "ルリグ")
-			{
-				rdeckArr.push(cardData[i]);
-				continue;
-			}
+			rdeckArr.push(cardData[i]);
 		}
-
-		if($('#assistlrig').is(":checked"))
-		{
-			if(cardData[i][TYPE] == "アシストルリグ")
-			{
-				rdeckArr.push(cardData[i]);
-				continue;
-			}
-		}
-
-		if($('#signi').is(":checked"))
-		{
-			if(cardData[i][TYPE] == "シグニ")
-			{
-				rdeckArr.push(cardData[i]);
-				continue;
-			}
-		}
-
-		if($('#spell').is(":checked"))
-		{
-			if(cardData[i][TYPE] == "スペル")
-			{
-				rdeckArr.push(cardData[i]);
-				continue;
-			}
-		}
-
-		if($('#level1').is(":checked"))
-		{
-			if(cardData[i][LEVEL] == "1")
-			{
-				rdeckArr.push(cardData[i]);
-				continue;
-			}
-		}
-
-		if($('#level2').is(":checked"))
-		{
-			if(cardData[i][LEVEL] == "2")
-			{
-				rdeckArr.push(cardData[i]);
-				continue;
-			}
-		}
-
-		if($('#level3').is(":checked"))
-		{
-			if(cardData[i][LEVEL] == "3")
-			{
-				rdeckArr.push(cardData[i]);
-				continue;
-			}
-		}
-
-		if($('#red').is(":checked"))
-		{
-			if(cardData[i][COLOR].indexOf("赤") != -1)
-			{
-				rdeckArr.push(cardData[i]);
-				continue;
-			}
-		}
-
-		if($('#blue').is(":checked"))
-		{
-			if(cardData[i][COLOR].indexOf("青") != -1)
-			{
-				rdeckArr.push(cardData[i]);
-				continue;
-			}
-		}
-
-		if($('#green').is(":checked"))
-		{
-			if(cardData[i][COLOR].indexOf("緑") != -1)
-			{
-				rdeckArr.push(cardData[i]);
-				continue;
-			}
-		}
-
-		if($('#black').is(":checked"))
-		{
-			if(cardData[i][COLOR].indexOf("黒") != -1)
-			{
-				rdeckArr.push(cardData[i]);
-				continue;
-			}
-		}
-
-		if($('#white').is(":checked"))
-		{
-			if(cardData[i][COLOR].indexOf("白") != -1)
-			{
-				rdeckArr.push(cardData[i]);
-				continue;
-			}
-		}
-
-		if($('#nocolor').is(":checked"))
-		{
-			if(cardData[i][COLOR].indexOf("無") != -1)
-			{
-				rdeckArr.push(cardData[i]);
-				continue;
-			}
-		}
-
-		if($('#islb').is(":checked"))
-		{
-			if(cardData[i][LB] == "1")
-			{
-				rdeckArr.push(cardData[i]);
-				continue;
-			}
-		}
-
-		if($('#notlb').is(":checked"))
-		{
-			if(cardData[i][LB] == "0")
-			{
-				rdeckArr.push(cardData[i]);
-				continue;
-			}
-		}	
 	}
+	
 	page = 0;
 	showrdeck();
 }
