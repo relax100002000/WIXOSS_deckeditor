@@ -8,6 +8,8 @@ function onLoading()
 	{
 		rdeckArr.push(cardData[i]);
 	}
+
+	document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
 }
 
 function showrdeck()
@@ -690,7 +692,7 @@ function delDeck(x, idx, array)
 	var tmpArr = "";
 	for(i = 0; i < cardData.length; i++)
 	{
-		if(x.alt == cardData[i][ID])
+		if(x.alt == cardData[i][ID] && (cardData[i][TYPE] == "シグニ" || cardData[i][TYPE] == "スペル"))
 		{
 			delcounter(cardData[i]);
 			break;
@@ -925,5 +927,143 @@ function addDeck(x)
 				break;
 			}
 		}
+	}
+}
+
+function downloadBlob(filename, contentType) {
+    var larray = [];
+    var parray = [];
+    var sarray = [];
+    var array = [];
+    var i = 0;
+
+    for(i = 0; i < ldeckArr.length; i++)
+    {
+    	larray.push(ldeckArr[i][ID]);
+    }
+
+    for(i = 0; i < pdeckArr.length; i++)
+    {
+    	parray.push(pdeckArr[i][ID]);
+    }
+
+    for(i = 0; i < sdeckArr.length; i++)
+    {
+    	sarray.push(sdeckArr[i][ID]);
+    }
+    larray.unshift("ldeck");
+    parray.unshift("pdeck");
+    sarray.unshift("sdeck");
+
+    array.push(larray);
+    array.push(parray);
+    array.push(sarray);
+
+    var csv = array.map((item) => {
+        var row = item;
+          
+        return row.join(",");
+      })
+      .join("\n");
+
+    content = csv;
+  var blob = new Blob([content], { type: contentType });
+  var url = URL.createObjectURL(blob);
+
+  var pom = document.createElement('a');
+  pom.href = url;
+  pom.setAttribute('download', filename);
+  pom.click();
+}
+
+function readSingleFile(evt) {
+
+    var f = evt.target.files[0]; 
+    var larray = [];
+    var parray = [];
+    var sarray = [];
+    var array = [];
+    var i = 0, j = 0;
+    const textArea = document.querySelector("#csvResult");
+
+    if (f) {
+      var r = new FileReader();
+      r.onload = function(e) { 
+          var contents = e.target.result;
+          array = contents.split("\n");
+
+          ldeckArr = [];
+
+          larray = array[0].split(",");
+          for(i = 1; i < larray.length; i++)
+          {
+          	for(j = 0; j < cardData.length; j++)
+          	{
+          		if(larray[i] == cardData[j][ID])
+          		{
+          			ldeckArr.push(cardData[j]);
+          		}
+          	}
+          }
+
+          pdeckArr = [];
+          
+          parray = array[1].split(",");
+          for(i = 1; i < parray.length; i++)
+          {
+          	for(j = 0; j < cardData.length; j++)
+          	{
+          		if(parray[i] == cardData[j][ID])
+          		{
+          			pdeckArr.push(cardData[j]);
+          		}
+          	}
+          }
+
+          sdeckArr = [];
+          
+          sarray = array[2].split(",");
+          for(i = 1; i < sarray.length; i++)
+          {
+          	for(j = 0; j < cardData.length; j++)
+          	{
+          		if(sarray[i] == cardData[j][ID])
+          		{
+          			sdeckArr.push(cardData[j]);
+          		}
+          	}
+          }
+
+          showAlldeck();
+          loadcounter();
+      }
+      r.readAsText(f);
+    } else { 
+      alert("Failed to load file");
+    }
+}
+
+function loadcounter()
+{
+	var i = 0;
+
+	sdeck_l1 = 0;
+	sdeck_l2 = 0;
+	sdeck_l3 = 0;
+	sdeck_spell = 0;
+
+	sdeck_red = 0;
+	sdeck_blue = 0;
+	sdeck_green = 0;
+	sdeck_black = 0;
+	sdeck_white = 0;
+	sdeck_nocolor = 0;
+
+	sdeck_burst = 0;
+	sdeck_no_burst = 0;
+
+	for(i = 0; i < sdeckArr.length; i++)
+	{
+		addcounter(sdeckArr[i])
 	}
 }

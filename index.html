@@ -11,10 +11,25 @@
 		img {
 			border-style: solid;
 			border-width: 1px;
-			border-radius: 5px;
+			border-radius: 10px;
 		}
 		* {
 			font-size: 14px;
+		}
+		button {
+			height: 50px;
+			background-color: white; /* Green */
+			border: none;
+			color: black;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			border-style: solid;
+			border-width: 1px;
+			border-radius: 10px;
+			cursor: pointer;
 		}
 	</style>
 	<body>
@@ -45,7 +60,7 @@
 				showrdeck();
 			});
 		</script>
-		<table width="1750px" height="1800px">
+		<table width="1750px" height="600px">
 			<tr>
 				<td width="300px" height="425px">
 					<img width="300px" height="420px" id="big_pic">
@@ -86,7 +101,8 @@
 					</table>
 				</td>		
 				<td>
-					<!-- 123123123 -->
+					<button onclick="downloadBlob('export.csv', 'text/csv;charset=utf-8;')">Download File</button>
+					<input type="file" id="fileinput"></input>
 				</td>
 			</tr>
 			<tr>
