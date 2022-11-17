@@ -1088,7 +1088,6 @@ function search()
 			}
 		}
 
-
 		if($('#lrig').is(":checked"))
 		{
 			if(cardData[i][TYPE] == "ルリグ")
