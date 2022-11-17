@@ -1223,3 +1223,13 @@ function search()
 	page = 0;
 	showrdeck();
 }
+
+function checkall()
+{
+	$('input:checkbox').prop('checked', true);
+}
+
+function uncheckall()
+{
+	$('input:checkbox').prop('checked', false);
+}
