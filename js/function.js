@@ -1194,7 +1194,7 @@ function search()
 
 		if(!$('#notlb').is(":checked"))
 		{
-			if(cardData[i][LB] == "0")
+			if(cardData[i][LB] != "1")
 			{
 				continue;
 			}
@@ -1216,7 +1216,7 @@ function search()
 			rdeckArr.push(cardData[i]);
 		}
 	}
-	
+
 	page = 0;
 	showrdeck();
 }
