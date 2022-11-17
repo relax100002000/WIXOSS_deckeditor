@@ -830,15 +830,15 @@ function showcounter()
 	var str = "";
 	if(sdeck_l1)
 	{
-		str+= "&emsp;&emsp;L1シグニ: " + sdeck_l1;
+		str+= "&emsp;&emsp;Level 1 シグニ: " + sdeck_l1;
 	}
 	if(sdeck_l2)
 	{
-		str+= "&emsp;&emsp;L2シグニ: " + sdeck_l2;
+		str+= "&emsp;&emsp;Level 2 シグニ: " + sdeck_l2;
 	}
 	if(sdeck_l3)
 	{
-		str+= "&emsp;&emsp;L3シグニ: " + sdeck_l3;
+		str+= "&emsp;&emsp;Level 3 シグニ: " + sdeck_l3;
 	}
 	if(sdeck_spell)
 	{
@@ -1065,5 +1065,153 @@ function loadcounter()
 	for(i = 0; i < sdeckArr.length; i++)
 	{
 		addcounter(sdeckArr[i])
+	}
+}
+
+function search()
+{
+	var i = 0;
+
+	rdeckArr = [];
+
+	for(i = 0; i < cardData.length; i++)
+	{
+		if($('#lrig').is(":checked"))
+		{
+			if(cardData[i][TYPE] == "ルリグ")
+			{
+				rdeckArr.push(cardData[i]);
+				continue;
+			}
+		}
+
+		if($('#assistlrig').is(":checked"))
+		{
+			if(cardData[i][TYPE] == "アシストルリグ")
+			{
+				rdeckArr.push(cardData[i]);
+				continue;
+			}
+		}
+
+		if($('#signi').is(":checked"))
+		{
+			if(cardData[i][TYPE] == "シグニ")
+			{
+				rdeckArr.push(cardData[i]);
+				continue;
+			}
+		}
+
+		if($('#spell').is(":checked"))
+		{
+			if(cardData[i][TYPE] == "スペル")
+			{
+				rdeckArr.push(cardData[i]);
+				continue;
+			}
+		}
+
+		if($('#level1').is(":checked"))
+		{
+			if(cardData[i][LEVEL] == "1")
+			{
+				rdeckArr.push(cardData[i]);
+				continue;
+			}
+		}
+
+		if($('#level2').is(":checked"))
+		{
+			if(cardData[i][LEVEL] == "2")
+			{
+				rdeckArr.push(cardData[i]);
+				continue;
+			}
+		}
+
+		if($('#level3').is(":checked"))
+		{
+			if(cardData[i][LEVEL] == "3")
+			{
+				rdeckArr.push(cardData[i]);
+				continue;
+			}
+		}
+
+		if($('#red').is(":checked"))
+		{
+			if(cardData[i][COLOR].indexOf("赤") != -1)
+			{
+				rdeckArr.push(cardData[i]);
+				continue;
+			}
+		}
+
+		if($('#blue').is(":checked"))
+		{
+			if(cardData[i][COLOR].indexOf("青") != -1)
+			{
+				rdeckArr.push(cardData[i]);
+				continue;
+			}
+		}
+
+		if($('#green').is(":checked"))
+		{
+			if(cardData[i][COLOR].indexOf("緑") != -1)
+			{
+				rdeckArr.push(cardData[i]);
+				continue;
+			}
+		}
+
+		if($('#black').is(":checked"))
+		{
+			if(cardData[i][COLOR].indexOf("黒") != -1)
+			{
+				rdeckArr.push(cardData[i]);
+				continue;
+			}
+		}
+
+		if($('#white').is(":checked"))
+		{
+			if(cardData[i][COLOR].indexOf("白") != -1)
+			{
+				rdeckArr.push(cardData[i]);
+				continue;
+			}
+		}
+
+		if($('#nocolor').is(":checked"))
+		{
+			if(cardData[i][COLOR].indexOf("無") != -1)
+			{
+				rdeckArr.push(cardData[i]);
+				continue;
+			}
+		}
+
+		if($('#islb').is(":checked"))
+		{
+			if(cardData[i][LB] == "1")
+			{
+				rdeckArr.push(cardData[i]);
+				continue;
+			}
+		}
+
+		if($('#notlb').is(":checked"))
+		{
+			if(cardData[i][LB] == "0")
+			{
+				rdeckArr.push(cardData[i]);
+				continue;
+			}
+		}
+
+		page = 0;
+		showrdeck();
 	}
 }

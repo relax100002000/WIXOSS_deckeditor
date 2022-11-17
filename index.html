@@ -100,9 +100,19 @@
 						</tr>
 					</table>
 				</td>		
-				<td>
+				<td style="vertical-align:text-top">
 					<button onclick="downloadBlob('export.csv', 'text/csv;charset=utf-8;')">Download File</button>
 					<input type="file" id="fileinput"></input>
+					<br><br><br>
+					ルリグ <input type="checkbox" id="lrig" checked>&emsp;&emsp;アシストルリグ <input type="checkbox" id="assistlrig" checked>&emsp;&emsp;シグニ <input type="checkbox" id="signi" checked>&emsp;&emsp;スペル <input type="checkbox" id="spell" checked>
+					<br><br>
+					Level 1 <input type="checkbox" id="level1" checked>&emsp;&emsp;Level 2 <input type="checkbox" id="level2" checked>&emsp;&emsp;Level 3 <input type="checkbox" id="level3" checked>
+					<br><br>
+					赤 <input type="checkbox" id="red" checked>&emsp;&emsp;青 <input type="checkbox" id="blue" checked>&emsp;&emsp;緑 <input type="checkbox" id="green" checked>&emsp;&emsp;黒 <input type="checkbox" id="black" checked>&emsp;&emsp;白 <input type="checkbox" id="white" checked>&emsp;&emsp;無 <input type="checkbox" id="nocolor" checked>
+					<br><br>
+					LB有り <input type="checkbox" id="islb" checked>&emsp;&emsp;LB無し <input type="checkbox" id="notlb" checked>
+					<br><br>
+					<button onclick="search();">検索</button>
 				</td>
 			</tr>
 			<tr>
@@ -209,8 +219,6 @@
 									</td>
 								</tr>
 							</table>
-						</tr>
-						<tr>
 						</tr>
 					</table>
 				</td>
