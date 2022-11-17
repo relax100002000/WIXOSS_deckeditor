@@ -1209,7 +1209,7 @@ function search()
 
 		if(!$('#notlb').is(":checked"))
 		{
-			if(cardData[i][LB] != "1")
+			if(cardData[i][LB] == "0")
 			{
 				continue;
 			}
