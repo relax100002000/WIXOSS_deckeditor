@@ -323,7 +323,7 @@ function showInfotable(data)
 		str += "		使用タイミング";
 		str += "	</td>";
 		str += "	<td>";
-		str += data[TIMING];
+		str += showTiming(data[TIMING]);
 		str += "	</td>";
 		str += "</tr>";
 
@@ -456,19 +456,22 @@ function showInfotable(data)
 
 function showTiming(x)
 {
+	var tmpArr = [];
 	var str = "";
+	var i = 0;
 
-	if(x.indexOf(","))
+	tmpArr = x.split(",");
+
+	for(i = 0; i < tmpArr.length; i++)
 	{
-		//Wait for parsing
-		return x;
+		if( i !=0 )
+		{
+			str += "<br>";
+		}
+
+		str += tmpArr[i];
 	}
-	else
-	{
-		str += x;
-		str += "<br>";
-		str += "123";
-	}
+	
 	return str;
 }
 
