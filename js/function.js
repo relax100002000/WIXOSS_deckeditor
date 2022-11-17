@@ -1221,9 +1221,8 @@ function search()
 				rdeckArr.push(cardData[i]);
 				continue;
 			}
-		}
-
-		page = 0;
-		showrdeck();
+		}	
 	}
+	page = 0;
+	showrdeck();
 }
