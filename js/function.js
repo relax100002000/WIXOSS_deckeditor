@@ -10,6 +10,7 @@ function onLoading()
 	}
 
 	document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
+	showInfotable("init");
 }
 
 function showrdeck()
@@ -61,7 +62,7 @@ function onmouseShow(x)
 {
 	var i = 0;
 
-	$("#infoTable").show();
+	$("#infoTable").css("visibility", "visible");
 
 	if(x.alt)
 	{
@@ -89,19 +90,82 @@ function onmouseShow(x)
 			$("#big_pic").attr("width", "300px");
 			$("#big_pic").attr("style", "margin-bottom: 0px");
 		}
+
+		showInfotable(cardData[i]);
 	}
 	else
 	{
-		$("#infoTable").hide();
+		$("#big_pic").attr("src", "img/card_back.jpg");
+		$("#infoTable").css("visibility", "hidden");
 	}
-
-	showInfotable(cardData[i]);
 }
 
 function showInfotable(data)
 {
 	var str = "";
-	if(data[TYPE] == "ピース")
+	if(data == "init")
+	{
+		str += "<tr>";
+		str += "	<td width=\"115px\">";
+		str += "		略号";
+		str += "	</td>";
+		str += "	<td>";
+		str += data;
+		str += "	</td>";
+		str += "</tr>";
+
+		str += "<tr>";
+		str += "	<td>";
+		str += "		カード名";
+		str += "	</td>";
+		str += "	<td>";
+		str += data;
+		str += "	</td>";
+		str += "</tr>";
+
+		str += "<tr>";
+		str += "	<td>";
+		str += "		カード種類";
+		str += "	</td>";
+		str += "	<td>";
+		str += data;
+		str += "	</td>";
+		str += "</tr>";
+
+		str += "<tr>";
+		str += "	<td>";
+		str += "		色";
+		str += "	</td>";
+		str += "	<td>";
+		str += data;
+		str += "	</td>";
+		str += "</tr>";
+
+		str += "<tr>";
+		str += "	<td>";
+		str += "		コスト";
+		str += "	</td>";
+		str += "	<td>";
+		str += data;
+		str += "	</td>";
+		str += "</tr>";
+
+		str += "<tr>";
+		str += "	<td>";
+		str += "		使用タイミング";
+		str += "	</td>";
+		str += "	<td>";
+		str += data;
+		str += "	</td>";
+		str += "</tr>";
+
+		str += "<tr>";
+		str += "	<td colspan=\"2\">";
+		str += data;
+		str += "	</td>";
+		str += "</tr>";
+	}
+	else if(data[TYPE] == "ピース")
 	{
 		str += "<tr>";
 		str += "	<td width=\"115px\">";
@@ -452,6 +516,7 @@ function showInfotable(data)
 	}
 
 	$("#infoTable").html(str);
+	$("#infoTable").css("visibility", "visible");
 }
 
 function showTiming(x)
