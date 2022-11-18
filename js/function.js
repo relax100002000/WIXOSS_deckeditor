@@ -307,7 +307,6 @@ function showInfotable(data)
 		str += "	</td>";
 		str += "</tr>";
 	}
-
 	else if(data[TYPE] == "アシストルリグ")
 	{
 		str += "<tr>";
@@ -516,7 +515,14 @@ function showInfotable(data)
 	}
 
 	$("#infoTable").html(str);
-	$("#infoTable").css("visibility", "visible");
+	if(data == "init")
+	{
+		$("#infoTable").css("visibility", "hidden");
+	}
+	else
+	{
+		$("#infoTable").css("visibility", "visible");
+	}
 }
 
 function showTiming(x)
@@ -1308,6 +1314,7 @@ function checkall()
 
 function uncheckall()
 {
+	$('#textsearch').val("");
 	$('input:checkbox').prop('checked', false);
 }
 
@@ -1317,8 +1324,11 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "v0.1\n";
-	str += "初版.\n";
+	str += "20221118 v0.2\n";
+	str += "1.修正layout亂動問題\n";
+	str += "2.增加預設卡背 \n";
+	str += "3.將UI日文改成英文\n";
+	str += "4.Clear時清空文字搜索\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "-WXDi-D01\n";
