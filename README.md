@@ -1,6 +1,10 @@
 # WIXOSS_deckeditor  
    
-Author: ZZZ  
+Author: ZZZ 
+
+20221118 v0.4  
+1.新增WXDi-P00  
+2.修正5張Piece在同一行時高度問題   
   
 20221118 v0.3  
 1.新增WXDi-P00  
@@ -20,7 +24,8 @@ Author: ZZZ
   
 目前收錄:  
 WXDi-D01  
-WXDi-D02  
+WXDi-D02 
+WXDi-P00   
   
 預計更新:  
 -改善Spell排序邏輯

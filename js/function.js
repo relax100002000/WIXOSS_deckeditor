@@ -1332,16 +1332,12 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221118 v0.3\n";
-	str += "1.新增WXDi-P00\n";
-	str += "2.修正5張Piece在同一行時高度問題 \n";
-	str += "3.修正雙色含白計數錯誤問題\n";
-	str += "4.修正Piece不顯示費用問題\n";
-	str += "5.修正用TEAM名搜尋不到的問題\n";
+	str += "v0.4\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "-WXDi-D01\n";
 	str += "-WXDi-D02\n";
+	str += "-WXDi-P00\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-增加產包Filter\n";
