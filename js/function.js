@@ -1245,3 +1245,29 @@ function uncheckall()
 {
 	$('input:checkbox').prop('checked', false);
 }
+
+function showVersion()
+{
+	var str = "";
+
+	str += "Author: ZZZ\n";
+	str += "\n";
+	str += "v0.1\n";
+	str += "初版.\n";
+	str += "\n";
+	str += "目前收錄:\n";
+	str += "-WXDi-D01\n";
+	str += "-WXDi-D02\n";
+	str += "\n";
+	str += "預計更新:\n";
+	str += "-增加產包Filter\n";
+	str += "-用圓餅圖取代計數器\n";
+	str += "-增加備牌區\n";
+	str += "-增加中文效果\n";
+	str += "-增加自訂義排序\n";
+	str += "-解決onmouse layout會移動問題\n";
+	str += "-補充關於說明\n";
+	str += "-增加SP\n";
+	
+	alert(str);
+}
