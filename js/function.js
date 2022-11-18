@@ -1296,7 +1296,7 @@ function search()
 
 		if($('#textsearch').val().length != 0)
 		{
-			for(j = 0; j < 15; j++)
+			for(j = 0; j < 17; j++)
 			{
 				if(cardData[i][j].indexOf($('#textsearch').val()) != -1)
 				{
