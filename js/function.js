@@ -18,6 +18,11 @@ function showrdeck()
 	var i = 0;
 	var max = 0;
 
+	for(i = 0; i < 10; i++)
+	{
+		$("#rdeck_" + i).attr("src", "img/empty.jpg");
+	}
+
 	if(rdeckArr.length < (page + 1) * 10)
 	{
 		max = rdeckArr.length % 10;
