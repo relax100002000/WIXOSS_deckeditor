@@ -292,14 +292,17 @@ function showInfotable(data)
 		str += "	</td>";
 		str += "</tr>";
 
-		str += "<tr>";
-		str += "	<td>";
-		str += "		チーム";
-		str += "	</td>";
-		str += "	<td>";
-		str += showTeam(data[CLASS]);
-		str += "	</td>";
-		str += "</tr>";
+		if(data[TEAM] != "")
+		{
+			str += "<tr>";
+			str += "	<td>";
+			str += "		チーム";
+			str += "	</td>";
+			str += "	<td>";
+			str += data[TEAM];
+			str += "	</td>";
+			str += "</tr>";
+		}
 
 		str += "<tr>";
 		str += "	<td colspan=\"2\">";
@@ -365,6 +368,15 @@ function showInfotable(data)
 
 		str += "<tr>";
 		str += "	<td>";
+		str += "		リミット";
+		str += "	</td>";
+		str += "	<td>";
+		str += data[LIMIT];
+		str += "	</td>";
+		str += "</tr>";
+
+		str += "<tr>";
+		str += "	<td>";
 		str += "		グロウコスト";
 		str += "	</td>";
 		str += "	<td>";
@@ -372,14 +384,17 @@ function showInfotable(data)
 		str += "	</td>";
 		str += "</tr>";
 
-		str += "<tr>";
-		str += "	<td>";
-		str += "		チーム";
-		str += "	</td>";
-		str += "	<td>";
-		str += showTeam(data[CLASS]);
-		str += "	</td>";
-		str += "</tr>";
+		if(data[TEAM] != "")
+		{
+			str += "<tr>";
+			str += "	<td>";
+			str += "		チーム";
+			str += "	</td>";
+			str += "	<td>";
+			str += data[TEAM];
+			str += "	</td>";
+			str += "</tr>";
+		}
 
 		str += "<tr>";
 		str += "	<td>";
@@ -508,6 +523,15 @@ function showInfotable(data)
 		str += "</tr>";
 
 		str += "<tr>";
+		str += "	<td>";
+		str += "		コスト";
+		str += "	</td>";
+		str += "	<td>";
+		str += data[COST];
+		str += "	</td>";
+		str += "</tr>";
+
+		str += "<tr>";
 		str += "	<td colspan=\"2\">";
 		str += data[JP_TEXT];
 		str += "	</td>";
@@ -544,22 +568,6 @@ function showTiming(x)
 	}
 	
 	return str;
-}
-
-function showTeam(x)
-{
-	if(x == "アト" || x == "タウィル" || x == "ウムル")
-	{
-		return "アンシエント・サプライズ";
-	}
-	else if(x == "アンジュ" || x == "リゼ" || x == "とこ")
-	{
-		return "さんばか";
-	}
-	else
-	{
-		return "";
-	}
 }
 
 function showLdeck()
@@ -953,11 +961,6 @@ function showcounter()
 		str+= "&emsp;&emsp;無: " + sdeck_nocolor;
 	}
 
-	if(sdeck_white)
-	{
-		str+= "&emsp;&emsp;白: " + sdeck_white;
-	}
-
 	str+= "<br><br>"
 
 	if(sdeck_burst)
@@ -1324,11 +1327,12 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221118 v0.2\n";
-	str += "1.修正layout亂動問題\n";
-	str += "2.增加預設卡背 \n";
-	str += "3.將UI日文改成英文\n";
-	str += "4.Clear時清空文字搜索\n";
+	str += "20221118 v0.3\n";
+	str += "1.新增WXDi-P00\n";
+	str += "2.修正5張Piece在同一行時高度問題 \n";
+	str += "3.修正雙色含白計數錯誤問題\n";
+	str += "4.修正Piece不顯示費用問題\n";
+	str += "5.修正用TEAM名搜尋不到的問題\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "-WXDi-D01\n";
