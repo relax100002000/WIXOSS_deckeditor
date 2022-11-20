@@ -1,7 +1,11 @@
 # WIXOSS_deckeditor  
    
-Author: ZZZ 
-
+Author: ZZZ  
+  
+20221121 v0.5  
+1.新增WXDi-D03  
+2.新增WXDi-D04   
+  
 20221118 v0.4  
 1.新增WXDi-P00  
 2.修正5張Piece在同一行時高度問題   

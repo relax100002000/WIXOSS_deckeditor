@@ -1332,12 +1332,14 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "v0.4\n";
+	str += "v0.5\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "-WXDi-D01\n";
 	str += "-WXDi-D02\n";
 	str += "-WXDi-P00\n";
+	str += "-WXDi-D03\n";
+	str += "-WXDi-D04\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-增加產包Filter\n";
