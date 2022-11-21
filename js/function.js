@@ -87,19 +87,19 @@ function onmouseShow(x)
 		{
 			$("#big_pic").attr("height", "214x");
 			$("#big_pic").attr("width", "300px");
-			$("#big_pic").attr("style", "margin-bottom: 0px");
 		}
 		else
 		{
 			$("#big_pic").attr("height", "420px");
 			$("#big_pic").attr("width", "300px");
-			$("#big_pic").attr("style", "margin-bottom: 0px");
 		}
 
 		showInfotable(cardData[i]);
 	}
 	else
 	{
+		$("#big_pic").attr("height", "420px");
+		$("#big_pic").attr("width", "300px");
 		$("#big_pic").attr("src", "img/card_back.jpg");
 		$("#infoTable").css("visibility", "hidden");
 	}
