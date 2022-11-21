@@ -38,8 +38,12 @@ Author: ZZZ
   
 目前收錄:  
 WXDi-D01  
-WXDi-D02 
-WXDi-P00   
+WXDi-D02  
+WXDi-P00  
+WXDi-D03  
+WXDi-D04  
+WXDi-D05  
+WXDi-D06  
   
 預計更新:  
 -改善Spell排序邏輯
