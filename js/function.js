@@ -1152,8 +1152,8 @@ function readSingleFile(evt) {
           	}
           }
 
-          showAlldeck();
           loadcounter();
+          showAlldeck();
       }
       r.readAsText(f);
     } else { 
