@@ -1,7 +1,7 @@
 function onLoading()
 {
 	var i = 0;
-
+	
 	rdeckArr = [];
 
 	for(i = 0; i < cardData.length; i++)
@@ -1361,8 +1361,9 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "v0.7\n";
-	str += "1.增加商品檢索\n";
+	str += "v0.8\n";
+	str += "1.新增WXDi-D05\n";
+	str += "1.新增WXDi-D06\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "-WXDi-D01\n";
@@ -1370,6 +1371,8 @@ function showVersion()
 	str += "-WXDi-P00\n";
 	str += "-WXDi-D03\n";
 	str += "-WXDi-D04\n";
+	str += "-WXDi-D05\n";
+	str += "-WXDi-D06\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-改善Spell排序邏輯\n";
@@ -1388,7 +1391,7 @@ function selectProduct(x)
 	var i = 0;
 	rdeckArr = [];
 
-	if(x.value !=0)
+	if(x.value != 0)
 	{
 		for(i = 0; i < cardData.length; i++)
 		{
