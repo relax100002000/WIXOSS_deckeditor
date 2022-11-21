@@ -5,6 +5,7 @@
 		<script src="js/function.js"></script>
 		<script src="js/card_info.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<title>WIXOSS Deck Editor</title>
 	</head>
 	<style>
@@ -30,6 +31,10 @@
 			border-width: 1px;
 			border-radius: 10px;
 			cursor: pointer;
+		}
+		canvas {
+			width: 200px !important;
+			height: 200px !important;
 		}
 	</style>
 	<body>
@@ -66,7 +71,128 @@
 					<img width="300px" height="420px" id="big_pic" src="img/card_back.jpg">
 				</td>
 				<td style="vertical-align:bottom;">
-					<div style="margin-bottom: 100px;vertical-align:top;" id="counter"></div>
+					<table>
+						<tr>
+							<td>
+								<div id="leveldiv" hidden><canvas id="levelChart"></canvas></div>
+								<script>
+			  						const levelctx = document.getElementById('levelChart');
+
+										levelobj = new Chart(levelctx, {
+										type: 'doughnut',
+										data: {
+									  		labels: [
+												'L1',
+												'L2',
+												'L3',
+												'spell'
+											],
+											datasets: [{
+												label: 'SIGNI Type',
+												data: [sdeck_l1, sdeck_l2, sdeck_l3, sdeck_spell],
+												backgroundColor: [
+												  'rgb(192, 192, 192)',
+												  'rgb(169, 169, 169)',
+												  'rgb(128, 128, 128)',
+												  'rgb(FF, 79, 79)'
+												],
+												hoverOffset: 4
+											}]
+										},
+										options: {
+									        plugins: {
+									            legend: {
+									                display: true,
+									                labels: {
+									                    color: 'rgb(0, 0, 0)'
+									                }
+									            }
+									        }
+			    						}
+									});
+								</script>
+							</td>
+							<td>
+								<div id="colordiv" hidden><canvas id="colorChart"></canvas></div>
+								<script>
+			  						const colorctx = document.getElementById('colorChart');
+
+										colorobj = new Chart(colorctx, {
+										type: 'doughnut',
+										data: {
+									  		labels: [
+												'赤',
+												'青',
+												'緑',
+												'黒',
+												'白',
+												'無'
+											],
+											datasets: [{
+												label: 'Color Type',
+												data: [sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_white, sdeck_nocolor],
+												backgroundColor: [
+												  'rgb(255, 99, 132)',
+												  'rgb(54, 162, 235)',
+												  'rgb(50, 205, 50)',
+												  'rgb(138, 43, 226)',
+												  'rgb(255, 205, 86)',
+												  'rgb(192, 192, 192)'
+												],
+												hoverOffset: 4
+											}]
+										},
+										options: {
+									        plugins: {
+									            legend: {
+									                display: true,
+									                labels: {
+									                    color: 'rgb(0, 0, 0)',
+									                    aspectRatio: 1.4,
+									                }
+									            }
+									        }
+			    						}
+									});
+								</script>
+							</td>
+							<td>
+								<div id="lbdiv" hidden><canvas id="lbChart"></canvas></div>
+								<script>
+			  						const lbctx = document.getElementById('lbChart');
+
+										lbobj = new Chart(lbctx, {
+										type: 'doughnut',
+										data: {
+									  		labels: [
+												'LB有り',
+												'LB無し'
+											],
+											datasets: [{
+												label: 'SIGNI Type',
+												data: [sdeck_burst, sdeck_no_burst],
+												backgroundColor: [
+												  'rgb(192, 192, 192)',
+												  'rgb(128, 128, 128)'
+												],
+												hoverOffset: 4
+											}]
+										},
+										options: {
+									        plugins: {
+									            legend: {
+									                display: true,
+									                labels: {
+									                    color: 'rgb(0, 0, 0)'
+									                }
+									            }
+									        }
+			    						}
+									});
+								</script>
+							</td>
+						</tr>
+					</table>
 					<table>
 						<tr>
 							<td>

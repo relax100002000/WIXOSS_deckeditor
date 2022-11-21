@@ -624,6 +624,8 @@ function showSdeck()
 			$("#sdeck_" + i).attr("alt", "");
 		}
 	}
+
+	updatechart();
 }
 
 function sortPdeck(x)
@@ -778,6 +780,33 @@ function sortSdeck(x)
 
 	addcounter(x);
 	showSdeck();
+}
+
+function updatechart()
+{
+	if(sdeckArr.length != 0)
+	{
+		$("#leveldiv").show();
+		levelobj.data.labels = ['L1: ' + sdeck_l1, 'L2: ' + sdeck_l2, 'L3: ' + sdeck_l3, 'spell: ' + sdeck_spell];
+		levelobj.data.datasets[0].data = [sdeck_l1, sdeck_l2, sdeck_l3, sdeck_spell];
+		levelobj.update();
+
+		$("#colordiv").show();
+		colorobj.data.labels = ['赤: ' + sdeck_red, '青: ' + sdeck_blue, '緑: ' + sdeck_green, '黒: ' + sdeck_black, '白: ' + sdeck_white, '無: ' + sdeck_nocolor];
+		colorobj.data.datasets[0].data = [sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_white, sdeck_nocolor];
+		colorobj.update();
+
+		$("#lbdiv").show();
+		lbobj.data.labels = ['LB有り: ' + sdeck_burst, 'LB無し: ' + sdeck_no_burst];
+		lbobj.data.datasets[0].data = [sdeck_burst, sdeck_no_burst];
+		lbobj.update();
+	}
+	else
+	{
+		$("#leveldiv").hide();
+		$("#colordiv").hide();
+		$("#lbdiv").hide();
+	}
 }
 
 function delDeck(x, idx, array)
@@ -1332,7 +1361,8 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "v0.5\n";
+	str += "v0.6\n";
+	str += "1.增加環圈圖特效\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "-WXDi-D01\n";
@@ -1343,7 +1373,7 @@ function showVersion()
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-增加產包Filter\n";
-	str += "-用圓餅圖取代計數器\n";
+	str += "-讓環圈圖大小一致\n";
 	str += "-增加備牌區\n";
 	str += "-增加中文效果\n";
 	str += "-增加自訂義排序\n";
