@@ -1372,12 +1372,11 @@ function showVersion()
 	str += "-WXDi-D04\n";
 	str += "\n";
 	str += "預計更新:\n";
-	str += "-增加產包Filter\n";
+	str += "-改善Spell排序邏輯\n";
 	str += "-讓環圈圖大小一致\n";
 	str += "-增加備牌區\n";
 	str += "-增加中文效果\n";
 	str += "-增加自訂義排序\n";
-	str += "-解決onmouse layout會移動問題\n";
 	str += "-補充關於說明\n";
 	str += "-增加SP\n";
 	
