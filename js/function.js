@@ -1361,8 +1361,8 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "v0.6\n";
-	str += "1.增加環圈圖特效\n";
+	str += "v0.7\n";
+	str += "1.增加商品檢索\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "-WXDi-D01\n";
@@ -1382,4 +1382,24 @@ function showVersion()
 	str += "-增加SP\n";
 	
 	alert(str);
+}
+
+function selectProduct(x)
+{
+	var i = 0;
+	rdeckArr = [];
+
+	if(x.value !=0)
+	{
+		for(i = 0; i < cardData.length; i++)
+		{
+			if(cardData[i][ID].indexOf(x.value) != -1)
+			{
+				rdeckArr.push(cardData[i]);
+			}
+		}
+
+		page = 0;
+		showrdeck();
+	}
 }
