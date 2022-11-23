@@ -376,7 +376,7 @@ function showInfotable(data)
 		str += "		リミット";
 		str += "	</td>";
 		str += "	<td>";
-		str += data[LIMIT];
+		str += showLimit(data);
 		str += "	</td>";
 		str += "</tr>";
 
@@ -1513,4 +1513,18 @@ function showVersion()
 	str += "-增加SP\n";
 	
 	alert(str);
+}
+
+function showLimit(x)
+{
+	var str = "";
+	str = "";
+	if(x[LEVEL] == "2")
+	{
+		str += "+";
+	}
+
+	str += x[LIMIT];
+
+	return str;
 }
