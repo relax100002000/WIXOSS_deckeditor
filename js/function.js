@@ -85,21 +85,21 @@ function onmouseShow(x)
 
 		if(cardData[i][TYPE] == "ピース")
 		{
-			$("#big_pic").attr("height", "214x");
-			$("#big_pic").attr("width", "300px");
+			$("#big_pic").attr("height", "252px");
+			$("#big_pic").attr("width", "360px");
 		}
 		else
 		{
-			$("#big_pic").attr("height", "420px");
-			$("#big_pic").attr("width", "300px");
+			$("#big_pic").attr("height", "504px");
+			$("#big_pic").attr("width", "360px");
 		}
 
 		showInfotable(cardData[i]);
 	}
 	else
 	{
-		$("#big_pic").attr("height", "420px");
-		$("#big_pic").attr("width", "300px");
+		$("#big_pic").attr("height", "504px");
+		$("#big_pic").attr("width", "360px");
 		$("#big_pic").attr("src", "img/card_back.jpg");
 		$("#infoTable").css("visibility", "hidden");
 	}
@@ -228,7 +228,7 @@ function showInfotable(data)
 
 		str += "<tr>";
 		str += "	<td colspan=\"2\">";
-		str += data[JP_TEXT];
+		str += str_to_img(data[JP_TEXT]);
 		str += "	</td>";
 		str += "</tr>";
 	}
@@ -311,7 +311,7 @@ function showInfotable(data)
 
 		str += "<tr>";
 		str += "	<td colspan=\"2\">";
-		str += data[JP_TEXT];
+		str += str_to_img(data[JP_TEXT]);
 		str += "	</td>";
 		str += "</tr>";
 	}
@@ -412,7 +412,7 @@ function showInfotable(data)
 
 		str += "<tr>";
 		str += "	<td colspan=\"2\">";
-		str += data[JP_TEXT];
+		str += str_to_img(data[JP_TEXT]);
 		str += "	</td>";
 		str += "</tr>";
 	}
@@ -484,7 +484,7 @@ function showInfotable(data)
 
 		str += "<tr>";
 		str += "	<td colspan=\"2\">";
-		str += data[JP_TEXT];
+		str += str_to_img(data[JP_TEXT]);
 		str += "	</td>";
 		str += "</tr>";
 	}
@@ -538,7 +538,7 @@ function showInfotable(data)
 
 		str += "<tr>";
 		str += "	<td colspan=\"2\">";
-		str += data[JP_TEXT];
+		str += str_to_img(data[JP_TEXT]);
 		str += "	</td>";
 		str += "</tr>";
 	}
@@ -1235,91 +1235,120 @@ function search()
 			}
 		}
 
-		if(!$('#level1').is(":checked"))
+		if(!$('#level0').is(":checked") && !$('#level1').is(":checked") && !$('#level2').is(":checked") && !$('#level3').is(":checked"))
 		{
-			if(cardData[i][LEVEL] == "1")
+
+		}
+		else
+		{
+			if(!$('#level0').is(":checked"))
 			{
-				continue;
+				if(cardData[i][LEVEL] == "0")
+				{
+					continue;
+				}
+			}
+
+			if(!$('#level1').is(":checked"))
+			{
+				if(cardData[i][LEVEL] == "1")
+				{
+					continue;
+				}
+			}
+
+			if(!$('#level2').is(":checked"))
+			{
+				if(cardData[i][LEVEL] == "2")
+				{
+					continue;
+				}
+			}
+
+			if(!$('#level3').is(":checked"))
+			{
+				if(cardData[i][LEVEL] == "3")
+				{
+					continue;
+				}
 			}
 		}
 
-		if(!$('#level2').is(":checked"))
+		if(!$('#red').is(":checked") && !$('#blue').is(":checked") && !$('#green').is(":checked") && !$('#black').is(":checked") && !$('#white').is(":checked") && !$('#nocolor').is(":checked"))
 		{
-			if(cardData[i][LEVEL] == "2")
+
+		}
+		else
+		{
+			if(!$('#red').is(":checked"))
 			{
-				continue;
+				if(cardData[i][COLOR].indexOf("赤") != -1)
+				{
+					continue;
+				}
+			}
+
+			if(!$('#blue').is(":checked"))
+			{
+				if(cardData[i][COLOR].indexOf("青") != -1)
+				{
+					continue;
+				}
+			}
+
+			if(!$('#green').is(":checked"))
+			{
+				if(cardData[i][COLOR].indexOf("緑") != -1)
+				{
+					continue;
+				}
+			}
+
+			if(!$('#black').is(":checked"))
+			{
+				if(cardData[i][COLOR].indexOf("黒") != -1)
+				{
+					continue;
+				}
+			}
+
+			if(!$('#white').is(":checked"))
+			{
+				if(cardData[i][COLOR].indexOf("白") != -1)
+				{
+					continue;
+				}
+			}
+
+			if(!$('#nocolor').is(":checked"))
+			{
+				if(cardData[i][COLOR].indexOf("無") != -1)
+				{
+					continue;
+				}
 			}
 		}
 
-		if(!$('#level3').is(":checked"))
+		if(!$('#islb').is(":checked") && !$('#notlb').is(":checked"))
 		{
-			if(cardData[i][LEVEL] == "3")
-			{
-				continue;
-			}
-		}
 
-		if(!$('#red').is(":checked"))
-		{
-			if(cardData[i][COLOR].indexOf("赤") != -1)
-			{
-				continue;
-			}
 		}
-
-		if(!$('#blue').is(":checked"))
+		else
 		{
-			if(cardData[i][COLOR].indexOf("青") != -1)
+			if(!$('#islb').is(":checked"))
 			{
-				continue;
+				if(cardData[i][LB] == "1")
+				{
+					continue;
+				}
 			}
-		}
 
-		if(!$('#green').is(":checked"))
-		{
-			if(cardData[i][COLOR].indexOf("緑") != -1)
+			if(!$('#notlb').is(":checked"))
 			{
-				continue;
-			}
-		}
-
-		if(!$('#black').is(":checked"))
-		{
-			if(cardData[i][COLOR].indexOf("黒") != -1)
-			{
-				continue;
-			}
-		}
-
-		if(!$('#white').is(":checked"))
-		{
-			if(cardData[i][COLOR].indexOf("白") != -1)
-			{
-				continue;
-			}
-		}
-
-		if(!$('#nocolor').is(":checked"))
-		{
-			if(cardData[i][COLOR].indexOf("無") != -1)
-			{
-				continue;
-			}
-		}
-
-		if(!$('#islb').is(":checked"))
-		{
-			if(cardData[i][LB] == "1")
-			{
-				continue;
-			}
-		}
-
-		if(!$('#notlb').is(":checked"))
-		{
-			if(cardData[i][LB] == "0")
-			{
-				continue;
+				if(cardData[i][LB] == "0")
+				{
+					continue;
+				}
 			}
 		}
 
@@ -1355,37 +1384,6 @@ function uncheckall()
 	$('input:checkbox').prop('checked', false);
 }
 
-function showVersion()
-{
-	var str = "";
-
-	str += "Author: ZZZ\n";
-	str += "\n";
-	str += "v0.8\n";
-	str += "1.新增WXDi-D05\n";
-	str += "1.新增WXDi-D06\n";
-	str += "\n";
-	str += "目前收錄:\n";
-	str += "-WXDi-D01\n";
-	str += "-WXDi-D02\n";
-	str += "-WXDi-P00\n";
-	str += "-WXDi-D03\n";
-	str += "-WXDi-D04\n";
-	str += "-WXDi-D05\n";
-	str += "-WXDi-D06\n";
-	str += "\n";
-	str += "預計更新:\n";
-	str += "-改善Spell排序邏輯\n";
-	str += "-讓環圈圖大小一致\n";
-	str += "-增加備牌區\n";
-	str += "-增加中文效果\n";
-	str += "-增加自訂義排序\n";
-	str += "-補充關於說明\n";
-	str += "-增加SP\n";
-	
-	alert(str);
-}
-
 function selectProduct(x)
 {
 	var i = 0;
@@ -1404,4 +1402,115 @@ function selectProduct(x)
 		page = 0;
 		showrdeck();
 	}
+}
+// 【使用条件】【チーム】
+function str_to_img(x)
+{
+	x = x.replace(/【使用条件】/g, "<img class='icon_img' src='img/icon_txt_terms_use.png'></img>");
+	x = x.replace(/【チーム】/g, "<img class='icon_img' src='img/icon_txt_team.png'></img>");
+	x = x.replace(/【チーム起】/g, "<img class='icon_img' src='img/icon_txt_starting_team.png'></img>");
+	x = x.replace(/【ライフバースト】/g, "<img class='icon_img' src='img/icon_txt_burst.png'></img>");
+	x = x.replace(/【ライズ】/g, "<img class='icon_img' src='img/icon_txt_rise_01.png'></img>");
+	x = x.replace(/\[ダウン\]/g, "<img class='icon_img' src='img/icon_txt_down.png'></img>");
+	x = x.replace(/\[ガード\]/g, "<img class='icon_img' src='img/icon_guard_mini.png'></img>");
+
+	x = x.replace(/（ターン１）/g, "<img class='icon_img' src='img/icon_txt_turn_01.png'></img>");
+	x = x.replace(/（ターン２）/g, "<img class='icon_img' src='img/icon_txt_turn_02.png'></img>");
+
+	x = x.replace(/【出】/g, "<img class='icon_img' src='img/icon_txt_arrival.png'></img>");
+	x = x.replace(/【自】/g, "<img class='icon_img' src='img/icon_txt_auto.png'></img>");
+	x = x.replace(/【常】/g, "<img class='icon_img' src='img/icon_txt_regular.png'></img>");
+	x = x.replace(/【起】/g, "<img class='icon_img' src='img/icon_txt_starting.png'></img>");
+
+	x = x.replace(/【赤】/g, "<img class='icon_img' src='img/icon_txt_red.png'></img>");
+	x = x.replace(/\[赤\]/g, "<img class='icon_img' src='img/icon_txt_red.png'></img>");
+	x = x.replace(/\[赤\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_red_00.png'></img>");
+	x = x.replace(/\[赤\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_red_01.png'></img>");
+	x = x.replace(/\[赤\(2\)\]/g, "<img class='icon_img' src='img/icon_txt_red_02.png'></img>");
+	x = x.replace(/\[赤\(3\)\]/g, "<img class='icon_img' src='img/icon_txt_red_03.png'></img>");
+	x = x.replace(/\[赤\(4\)\]/g, "<img class='icon_img' src='img/icon_txt_red_04.png'></img>");
+	x = x.replace(/\[赤\(5\)\]/g, "<img class='icon_img' src='img/icon_txt_red_05.png'></img>");
+
+	x = x.replace(/【青】/g, "<img class='icon_img' src='img/icon_txt_blue.png'></img>");
+	x = x.replace(/\[青\]/g, "<img class='icon_img' src='img/icon_txt_blue.png'></img>");
+	x = x.replace(/\[青\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_blue_00.png'></img>");
+	x = x.replace(/\[青\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_blue_01.png'></img>");
+	x = x.replace(/\[青\(2\)\]/g, "<img class='icon_img' src='img/icon_txt_blue_02.png'></img>");
+	x = x.replace(/\[青\(3\)\]/g, "<img class='icon_img' src='img/icon_txt_blue_03.png'></img>");
+	x = x.replace(/\[青\(4\)\]/g, "<img class='icon_img' src='img/icon_txt_blue_04.png'></img>");
+	x = x.replace(/\[青\(5\)\]/g, "<img class='icon_img' src='img/icon_txt_blue_05.png'></img>");
+	
+	x = x.replace(/【緑】/g, "<img class='icon_img' src='img/icon_txt_green.png'></img>");
+	x = x.replace(/\[緑\]/g, "<img class='icon_img' src='img/icon_txt_green.png'></img>");
+	x = x.replace(/\[緑\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_green_00.png'></img>");
+	x = x.replace(/\[緑\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_green_01.png'></img>");
+	x = x.replace(/\[緑\(2\)\]/g, "<img class='icon_img' src='img/icon_txt_green_02.png'></img>");
+	x = x.replace(/\[緑\(3\)\]/g, "<img class='icon_img' src='img/icon_txt_green_03.png'></img>");
+	x = x.replace(/\[緑\(4\)\]/g, "<img class='icon_img' src='img/icon_txt_green_04.png'></img>");
+	x = x.replace(/\[緑\(5\)\]/g, "<img class='icon_img' src='img/icon_txt_green_05.png'></img>");
+
+	x = x.replace(/【黒】/g, "<img class='icon_img' src='img/icon_txt_black.png'></img>");
+	x = x.replace(/\[黒\]/g, "<img class='icon_img' src='img/icon_txt_black.png'></img>");
+	x = x.replace(/\[黒\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_black_00.png'></img>");
+	x = x.replace(/\[黒\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_black_01.png'></img>");
+	x = x.replace(/\[黒\(2\)\]/g, "<img class='icon_img' src='img/icon_txt_black_02.png'></img>");
+	x = x.replace(/\[黒\(3\)\]/g, "<img class='icon_img' src='img/icon_txt_black_03.png'></img>");
+	x = x.replace(/\[黒\(4\)\]/g, "<img class='icon_img' src='img/icon_txt_black_04.png'></img>");
+	x = x.replace(/\[黒\(5\)\]/g, "<img class='icon_img' src='img/icon_txt_black_05.png'></img>");
+
+	x = x.replace(/【白】/g, "<img class='icon_img' src='img/icon_txt_white.png'></img>");
+	x = x.replace(/\[白\]/g, "<img class='icon_img' src='img/icon_txt_white.png'></img>");
+	x = x.replace(/\[白\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_white_00.png'></img>");
+	x = x.replace(/\[白\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_white_01.png'></img>");
+	x = x.replace(/\[白\(2\)\]/g, "<img class='icon_img' src='img/icon_txt_white_02.png'></img>");
+	x = x.replace(/\[白\(3\)\]/g, "<img class='icon_img' src='img/icon_txt_white_03.png'></img>");
+	x = x.replace(/\[白\(4\)\]/g, "<img class='icon_img' src='img/icon_txt_white_04.png'></img>");
+	x = x.replace(/\[白\(5\)\]/g, "<img class='icon_img' src='img/icon_txt_white_05.png'></img>");
+
+	x = x.replace(/【無】/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
+	x = x.replace(/\[無\]/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
+	x = x.replace(/\[無\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_null_00.png'></img>");
+	x = x.replace(/\[無\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_null_01.png'></img>");
+	x = x.replace(/\[無\(2\)\]/g, "<img class='icon_img' src='img/icon_txt_null_02.png'></img>");
+	x = x.replace(/\[無\(3\)\]/g, "<img class='icon_img' src='img/icon_txt_null_03.png'></img>");
+	x = x.replace(/\[無\(4\)\]/g, "<img class='icon_img' src='img/icon_txt_null_04.png'></img>");
+	x = x.replace(/\[無\(5\)\]/g, "<img class='icon_img' src='img/icon_txt_null_05.png'></img>");
+
+	
+	console.log(x);
+	return x;
+}
+
+function showVersion()
+{
+	var str = "";
+
+	str += "Author: ZZZ\n";
+	str += "\n";
+	str += "v0.9\n";
+	str += "1.新增WXDi-P01\n";
+	str += "2.在效果加入icon\n";
+	str += "3.改善搜尋邏輯\n";
+	str += "4.修正一些資料錯誤\n";
+	str += "\n";
+	str += "目前收錄:\n";
+	str += "-WXDi-D01\n";
+	str += "-WXDi-D06\n";
+	str += "-WXDi-D05\n";
+	str += "-WXDi-D04\n";
+	str += "-WXDi-D03\n";
+	str += "-WXDi-P00\n";
+	str += "-WXDi-D02\n";
+	str += "-WXDi-D01\n";
+	str += "\n";
+	str += "預計更新:\n";
+	str += "-改善Spell排序邏輯\n";
+	str += "-讓環圈圖大小一致\n";
+	str += "-增加備牌區\n";
+	str += "-增加中文效果\n";
+	str += "-增加自訂義排序\n";
+	str += "-補充關於說明\n";
+	str += "-增加SP\n";
+	
+	alert(str);
 }

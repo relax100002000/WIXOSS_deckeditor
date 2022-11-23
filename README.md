@@ -2,6 +2,12 @@
    
 Author: ZZZ  
   
+20221123 v0.9  
+1.新增WXDi-P01  
+2.在效果加入icon  
+3.改善搜尋邏輯  
+4.修正一些資料錯誤  
+  
 20221121 v0.8  
 1.新增WXDi-D05  
 2.新增WXDi-D06  
@@ -37,13 +43,14 @@ Author: ZZZ
 1.初版  
   
 目前收錄:  
-WXDi-D01  
-WXDi-D02  
-WXDi-P00  
-WXDi-D03  
-WXDi-D04  
-WXDi-D05  
+WXDi-P01  
 WXDi-D06  
+WXDi-D05  
+WXDi-D04  
+WXDi-D03  
+WXDi-P00  
+WXDi-D02  
+WXDi-D01  
   
 預計更新:  
 -改善Spell排序邏輯
