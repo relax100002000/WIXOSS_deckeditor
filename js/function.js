@@ -1408,14 +1408,21 @@ function str_to_img(x)
 {
 	x = x.replace(/【使用条件】/g, "<img class='icon_img' src='img/icon_txt_terms_use.png'></img>");
 	x = x.replace(/【チーム】/g, "<img class='icon_img' src='img/icon_txt_team.png'></img>");
-	x = x.replace(/【チーム起】/g, "<img class='icon_img' src='img/icon_txt_starting_team.png'></img>");
 	x = x.replace(/【ライフバースト】/g, "<img class='icon_img' src='img/icon_txt_burst.png'></img>");
 	x = x.replace(/【ライズ】/g, "<img class='icon_img' src='img/icon_txt_rise_01.png'></img>");
+	x = x.replace(/【ハーモニー】/g, "<img class='icon_img' src='img/icon_txt_harmony.png'></img>");
 	x = x.replace(/\[ダウン\]/g, "<img class='icon_img' src='img/icon_txt_down.png'></img>");
 	x = x.replace(/\[ガード\]/g, "<img class='icon_img' src='img/icon_guard_mini.png'></img>");
 
 	x = x.replace(/（ターン１）/g, "<img class='icon_img' src='img/icon_txt_turn_01.png'></img>");
 	x = x.replace(/（ターン２）/g, "<img class='icon_img' src='img/icon_txt_turn_02.png'></img>");
+	x = x.replace(/（ゲーム１）/g, "<img class='icon_img' src='img/icon_txt_game_01.png'></img>");
+	x = x.replace(/（ゲーム２）/g, "<img class='icon_img' src='img/icon_txt_game_02.png'></img>");
+
+	x = x.replace(/【チーム起】/g, "<img class='icon_img' src='img/icon_txt_starting_team.png'></img>");
+	x = x.replace(/【チーム常】/g, "<img class='icon_img' src='img/icon_txt_regular_team.png'></img>");
+	x = x.replace(/【チーム出】/g, "<img class='icon_img' src='img/icon_txt_arrival_team.png'></img>");
+	x = x.replace(/【チーム自】/g, "<img class='icon_img' src='img/icon_txt_auto_team.png'></img>");
 
 	x = x.replace(/【出】/g, "<img class='icon_img' src='img/icon_txt_arrival.png'></img>");
 	x = x.replace(/【自】/g, "<img class='icon_img' src='img/icon_txt_auto.png'></img>");
@@ -1487,6 +1494,9 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
+	str += "v0.10\n";
+	str += "1.新增WXDi-P02\n";
+	str += "\n";
 	str += "v0.9\n";
 	str += "1.新增WXDi-P01\n";
 	str += "2.在效果加入icon\n";
@@ -1494,6 +1504,8 @@ function showVersion()
 	str += "4.修正一些資料錯誤\n";
 	str += "\n";
 	str += "目前收錄:\n";
+	str += "-WXDi-D02\n";
+	str += "-WXDi-D01\n";
 	str += "-WXDi-D01\n";
 	str += "-WXDi-D06\n";
 	str += "-WXDi-D05\n";

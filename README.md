@@ -2,6 +2,9 @@
    
 Author: ZZZ  
   
+20221124 v0.10  
+1.新增WXDi-P02  
+  
 20221123 v0.9  
 1.新增WXDi-P01  
 2.在效果加入icon  
@@ -43,6 +46,7 @@ Author: ZZZ
 1.初版  
   
 目前收錄:  
+WXDi-P02  
 WXDi-P01  
 WXDi-D06  
 WXDi-D05  
