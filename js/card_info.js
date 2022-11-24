@@ -6963,7 +6963,7 @@ var cardData = [
 		"SR", //RARE
 		"シグニ", //TYPE
 		"奏羅：宝石", //CLASS
-		"奏羅：宝石", //COLOR
+		"青", //COLOR
 		"3", //LEVEL
 		"", //COST
 		"", //LIMIT
