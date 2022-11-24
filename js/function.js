@@ -1494,14 +1494,8 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "v0.10\n";
-	str += "1.新增WXDi-P02\n";
-	str += "\n";
-	str += "v0.9\n";
-	str += "1.新增WXDi-P01\n";
-	str += "2.在效果加入icon\n";
-	str += "3.改善搜尋邏輯\n";
-	str += "4.修正一些資料錯誤\n";
+	str += "v0.11\n";
+	str += "1.增加checkbox點擊範圍\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "-WXDi-D02\n";
@@ -1539,4 +1533,16 @@ function showLimit(x)
 	str += x[LIMIT];
 
 	return str;
+}
+
+function clickSpan(x)
+{
+	if($(x).next().is(':checked'))
+	{
+		$(x).next().prop('checked', false);
+	}
+	else
+	{
+		$(x).next().prop('checked', true);
+	}
 }
