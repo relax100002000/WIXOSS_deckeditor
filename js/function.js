@@ -1503,11 +1503,11 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221128 v0.12\n";
-	str += "1.新增WXDi-P03\n";
-	str += "2.補上LRIG grow cost欄位\n";
+	str += "20221129 v0.13\n";
+	str += "1.新增WXDi-D07\n";
 	str += "\n";
 	str += "目前收錄:\n";
+	str += "-WXDi-D07\n";
 	str += "-WXDi-P03\n";
 	str += "-WXDi-P02\n";
 	str += "-WXDi-P01\n";

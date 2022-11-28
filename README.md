@@ -2,6 +2,9 @@
    
 Author: ZZZ  
   
+20221129 v0.13  
+1.新增WXDi-D07  
+
 20221128 v0.12  
 1.新增WXDi-P03  
 2.補上LRIG grow cost欄位  
@@ -53,6 +56,7 @@ Author: ZZZ
 1.初版  
   
 目前收錄:  
+WXDi-D07
 WXDi-P03  
 WXDi-P02  
 WXDi-P01  

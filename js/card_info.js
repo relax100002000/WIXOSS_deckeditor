@@ -9843,5 +9843,423 @@ var cardData = [
 		"", //TEAM
 		"【ガード】（このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ）<br><br>【常】：【マルチエナ】（エナコストを支払う際、このカードは好きな色１つとして支払える）<br><br>【ライフバースト】：あなたのトラッシュからシグニ１枚を対象とし、それを手札に加える。", //JP_TEXT
 		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-001", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-001.jpg", //SRC
+		"エクス・ゼロ", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"エクス", //CLASS
+		"赤", //COLOR
+		"0", //LEVEL
+		"《赤》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"デウス・エクス・マキナ", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-002", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-002.jpg", //SRC
+		"エクス・ワン", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"エクス", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"《赤》×０", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"デウス・エクス・マキナ", //TEAM
+		"【常】：このカードが【ソウル】として付いているシグニは「【自】（ターン１）：このシグニがアタックしたとき、カードを１枚引くか【エナチャージ１】をする。」を得る。<br>（【ソウル】はシグニに１枚まで付き、そのシグニが場から離れるとルリグトラッシュに置かれる）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-003", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-003.jpg", //SRC
+		"エクス・ツー", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"エクス", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"《赤》×１", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"デウス・エクス・マキナ", //TEAM
+		"【常】：このカードが【ソウル】として付いているシグニは「【自】（ターン１）：このシグニがアタックしたとき、対戦相手のパワー12000以下のシグニ１体を対象とし、それをバニッシュする。」を得る。<br>（【ソウル】はシグニに１枚まで付き、そのシグニが場から離れるとルリグトラッシュに置かれる）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-004", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-004.jpg", //SRC
+		"エクス・スリー", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"エクス", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"《赤》×２", //COST
+		"6", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"デウス・エクス・マキナ", //TEAM
+		"【自】：あなたのシグニ１体に【ソウル】が付いたとき、手札を１枚捨ててもよい。そうした場合、カードを１枚引く。<br><br>【起】[赤(0)]：あなたのシグニ１体を対象とし、このルリグの下からカード１枚をそれの【ソウル】にする。<br><br>【起】（ゲーム１）エクシード３：あなたの赤のシグニを２体まで対象とし、あなたのルリグデッキにあるピース１枚をゲームから除外する。そうした場合、ターン終了時まで、それらは【アサシン】を得る。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-005", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-005.jpg", //SRC
+		"デウス・ゼロ", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"デウス", //CLASS
+		"黒", //COLOR
+		"0", //LEVEL
+		"《黒》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"デウス・エクス・マキナ", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-006", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-006.jpg", //SRC
+		"デウスドライブ", //NAME
+		"ST", //RARE
+		"アシストルリグ", //TYPE
+		"デウス", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"《無》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"デウス・エクス・マキナ", //TEAM
+		"【出】：対戦相手のレベル２以下のシグニ１体を対象とし、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-007", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-007.jpg", //SRC
+		"デウスシールド", //NAME
+		"ST", //RARE
+		"アシストルリグ", //TYPE
+		"デウス", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"《無》×３", //COST
+		"1", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ,アタックフェイズ", //TIMING
+		"", //LB
+		"デウス・エクス・マキナ", //TEAM
+		"【出】：このターン、次とその次にあなたがダメージを受ける場合、代わりにダメージを受けず、ターン終了時まで、このルリグは「【自】：ターン終了時、あなたのデッキの上からカードを５枚トラッシュに置く。」を得る。（ダメージを２回防いだら【自】能力を２つ得る）<br><br>【出】[黒][無][無]：このターン、次にあなたがダメージを受ける場合、代わりにダメージを受けず、ターン終了時まで、このルリグは「【自】：ターン終了時、あなたのデッキの上からカードを５枚トラッシュに置く。」を得る。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-008", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-008.jpg", //SRC
+		"マキナ・ゼロ", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"マキナ", //CLASS
+		"黒", //COLOR
+		"0", //LEVEL
+		"《黒》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"デウス・エクス・マキナ", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-009", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-009.jpg", //SRC
+		"マキナウィングスラッシュ", //NAME
+		"ST", //RARE
+		"アシストルリグ", //TYPE
+		"マキナ", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"《無》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"デウス・エクス・マキナ", //TEAM
+		"【出】：対戦相手のレベル１のシグニ１体を対象とし、それをバニッシュする。<br><br>【出】：あなたのトラッシュから[ガード]を持たないレベル１のシグニ１枚を対象とし、それを手札に加える。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-010", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-010.jpg", //SRC
+		"マキナスマッシュ", //NAME
+		"ST", //RARE
+		"アシストルリグ", //TYPE
+		"マキナ", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"《無》×１", //COST
+		"1", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ,アタックフェイズ", //TIMING
+		"", //LB
+		"デウス・エクス・マキナ", //TEAM
+		"【出】：対戦相手のシグニ１体を対象とし、ターン終了時まで、それのパワーを－12000する。<br><br>【出】[黒]：あなたのトラッシュから[ガード]を持たないシグニ１枚を対象とし、それを手札に加える。<br>（【出】能力の：の左側はコストである。コストを支払わず発動しないことを選んでもよい）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-011", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-011.jpg", //SRC
+		"ＴＲＩＧＧＥＲ　ＯＦ　ＶＩＣＴＯＲＹ", //NAME
+		"ST", //RARE
+		"ピース", //TYPE
+		"", //CLASS
+		"赤黒", //COLOR
+		"", //LEVEL
+		"《無》×１", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【使用条件】【チーム】＜デウス・エクス・マキナ＞＆全員レベル１以上<br><br>対戦相手のライフクロス１枚をクラッシュする。その後、あなたのトラッシュから[ガード]を持たないシグニ１枚を対象とし、それを手札に加える。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-012", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-012.jpg", //SRC
+		"祝福の鍵の音", //NAME
+		"ST", //RARE
+		"ピース", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×０", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"（ピースはあなたの場にルリグが３体いると使用できる）<br><br>カードを３枚引き、手札を２枚捨てる。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-013", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-013.jpg", //SRC
+		"コードライド　カモツ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏械：乗機", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【出】：対戦相手のエナゾーンからカード１枚を対象とし、それをトラッシュに置いてもよい。そうした場合、対戦相手は【エナチャージ１】をしてもよい。<br><br>【ライフバースト】：対戦相手のパワー8000以下のシグニ１体を対象とし、[赤]を支払ってもよい。そうした場合、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-014", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-014.jpg", //SRC
+		"凶魔　バフォメット", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：悪魔", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【常】：あなたのトラッシュにカードが５枚以上あるかぎり、このシグニのパワーは＋4000される。<br><br>【出】：あなたのデッキの上からカードを３枚トラッシュに置く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-015", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-015.jpg", //SRC
+		"紅将　ランスロット", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【出】[無]：対戦相手のパワー5000以下のシグニ１体を対象とし、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-016", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-016.jpg", //SRC
+		"羅星　マースカ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏羅：宇宙", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【出】手札からレベル１のシグニを２枚捨てる：あなたのトラッシュから[ガード]を持たないシグニ１枚を対象とし、それを手札に加える。<br><br>【ライフバースト】：対戦相手のシグニ１体を対象とし、[黒][無]を支払ってもよい。そうした場合、ターン終了時まで、それのパワーを－12000する。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-017", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-017.jpg", //SRC
+		"コードアクセル　ガルウィング", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏械：乗機", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【チーム】＜デウス・エクス・マキナ＞<br>【チーム自】：あなたのアタックフェイズ開始時、対戦相手のエナゾーンにカードが２枚以上ありこのターンにあなたがカードを１枚以上捨てていた場合、対戦相手は自分のエナゾーンからカード１枚を選びトラッシュに置く。<br><br>【起】[赤][赤][無]：ターン終了時まで、このシグニは【ダブルクラッシュ】を得る。（アタックによるダメージでライフクロスを２枚クラッシュする）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-018", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-018.jpg", //SRC
+		"幻水　オニオコゼ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏生：水獣", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【出】手札を３枚まで捨てる：この方法で捨てたカードの枚数に等しい枚数のカードを引く。<br><br>【ライフバースト】：どちらか１つを選ぶ。①対戦相手のアップ状態のシグニ１体を対象とし、それをバニッシュする。②カードを１枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-019", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-019.jpg", //SRC
+		"コードアンチ　オベリスク", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏械：古代兵器", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【自】：このシグニに【ソウル】が付いたとき、あなたか対戦相手のデッキの上からカードを２枚トラッシュに置く。<br><br>【出】[黒][赤][無][無]：あなたのトラッシュからシグニ１枚を対象とし、それを場に出す。その後、場に出たそれよりパワーの低い対戦相手のシグニ１体を対象とし、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-020", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-020.jpg", //SRC
+		"小装　エケザクス", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏武：アーム", //CLASS
+		"赤黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"（エナコストを支払う際、このカードは赤か黒１つとして支払える）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-021", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-021.jpg", //SRC
+		"サーバント　＃", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏元", //CLASS
+		"無", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"1000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【ガード】（このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ）<br><br>【常】：【マルチエナ】（エナコストを支払う際、このカードは好きな色１つとして支払える）<br><br>【ライフバースト】：あなたのトラッシュからシグニ１枚を対象とし、それを手札に加える。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D07-022", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D07-022.jpg", //SRC
+		"荘厳の絶火", //NAME
+		"ST", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×１《黒》×１", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"対戦相手のパワー12000以下のシグニ１体を対象とし、それをバニッシュする。あなたか対戦相手のデッキの上からカードを２枚トラッシュに置く。<br><br>【ライフバースト】：どちらか１つを選ぶ。①対戦相手のアップ状態のシグニ１体を対象とし、それをバニッシュする。②あなたか対戦相手のデッキの上からカードを４枚トラッシュに置く。", //JP_TEXT
+		""	//TW_TEXT
 		]
 	];
