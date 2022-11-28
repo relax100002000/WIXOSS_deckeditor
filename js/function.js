@@ -1508,9 +1508,9 @@ function showVersion()
 	str += "2.補上LRIG grow cost欄位\n";
 	str += "\n";
 	str += "目前收錄:\n";
-	str += "-WXDi-D03\n";
-	str += "-WXDi-D02\n";
-	str += "-WXDi-D01\n";
+	str += "-WXDi-P03\n";
+	str += "-WXDi-P02\n";
+	str += "-WXDi-P01\n";
 	str += "-WXDi-D01\n";
 	str += "-WXDi-D06\n";
 	str += "-WXDi-D05\n";
