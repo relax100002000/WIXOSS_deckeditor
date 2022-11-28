@@ -2,6 +2,10 @@
    
 Author: ZZZ  
   
+20221128 v0.12  
+1.新增WXDi-P03  
+2.補上LRIG grow cost欄位  
+  
 20221124 v0.11  
 1.增加checkbox點擊範圍  
   
@@ -49,6 +53,7 @@ Author: ZZZ
 1.初版  
   
 目前收錄:  
+WXDi-P03  
 WXDi-P02  
 WXDi-P01  
 WXDi-D06  

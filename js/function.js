@@ -297,6 +297,15 @@ function showInfotable(data)
 		str += "	</td>";
 		str += "</tr>";
 
+		str += "<tr>";
+		str += "	<td>";
+		str += "		グロウコスト";
+		str += "	</td>";
+		str += "	<td>";
+		str += data[COST];
+		str += "	</td>";
+		str += "</tr>";
+
 		if(data[TEAM] != "")
 		{
 			str += "<tr>";
@@ -1494,10 +1503,12 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "v0.11\n";
-	str += "1.增加checkbox點擊範圍\n";
+	str += "20221128 v0.12\n";
+	str += "1.新增WXDi-P03\n";
+	str += "2.補上LRIG grow cost欄位\n";
 	str += "\n";
 	str += "目前收錄:\n";
+	str += "-WXDi-D03\n";
 	str += "-WXDi-D02\n";
 	str += "-WXDi-D01\n";
 	str += "-WXDi-D01\n";
