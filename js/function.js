@@ -1510,7 +1510,6 @@ function showVersion()
 	str += "-WXDi-P03\n";
 	str += "-WXDi-P02\n";
 	str += "-WXDi-P01\n";
-	str += "-WXDi-D01\n";
 	str += "-WXDi-D06\n";
 	str += "-WXDi-D05\n";
 	str += "-WXDi-D04\n";
