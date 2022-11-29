@@ -1492,8 +1492,6 @@ function str_to_img(x)
 	x = x.replace(/\[無\(4\)\]/g, "<img class='icon_img' src='img/icon_txt_null_04.png'></img>");
 	x = x.replace(/\[無\(5\)\]/g, "<img class='icon_img' src='img/icon_txt_null_05.png'></img>");
 
-	
-	console.log(x);
 	return x;
 }
 
@@ -1503,10 +1501,11 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221129 v0.13\n";
-	str += "1.新增WXDi-D07\n";
+	str += "20221130 v0.14\n";
+	str += "1.新增WXDi-P04\n";
 	str += "\n";
 	str += "目前收錄:\n";
+	str += "-WXDi-P04\n";
 	str += "-WXDi-D07\n";
 	str += "-WXDi-P03\n";
 	str += "-WXDi-P02\n";
