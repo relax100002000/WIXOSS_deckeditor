@@ -2,6 +2,9 @@
    
 Author: ZZZ  
   
+20221202 v0.15  
+1.新增WXDi-P05  
+  
 20221130 v0.14  
 1.新增WXDi-P04  
   
@@ -59,6 +62,7 @@ Author: ZZZ
 1.初版  
   
 目前收錄:  
+WXDi-P05  
 WXDi-P04  
 WXDi-D07  
 WXDi-P03  
