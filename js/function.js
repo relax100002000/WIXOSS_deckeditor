@@ -1203,6 +1203,21 @@ function search()
 
 	for(i = 0; i < cardData.length; i++)
 	{
+		if($('#selectProduct').val() != 0)
+		{
+			if(cardData[i][ID].indexOf($('#selectProduct').val()) == -1)
+			{
+				continue;
+			}
+		}
+
+		if($('#selectType').val() != 0)
+		{
+			if(cardData[i][CLASS].indexOf($('#selectType').val()) == -1)
+			{
+				continue;
+			}
+		}
 
 		if(!$('#lrig').is(":checked"))
 		{
@@ -1363,7 +1378,7 @@ function search()
 
 		if($('#textsearch').val().length != 0)
 		{
-			for(j = 0; j < 17; j++)
+			for(j = 0; j < TW_TEXT + 1 ; j++)
 			{
 				if(cardData[i][j].indexOf($('#textsearch').val()) != -1)
 				{
@@ -1393,26 +1408,25 @@ function uncheckall()
 	$('input:checkbox').prop('checked', false);
 }
 
-function selectProduct(x)
-{
-	var i = 0;
-	rdeckArr = [];
+// function selectProduct(x)
+// {
+// 	var i = 0;
+// 	rdeckArr = [];
 
-	if(x.value != 0)
-	{
-		for(i = 0; i < cardData.length; i++)
-		{
-			if(cardData[i][ID].indexOf(x.value) != -1)
-			{
-				rdeckArr.push(cardData[i]);
-			}
-		}
+// 	if(x.value != 0)
+// 	{
+// 		for(i = 0; i < cardData.length; i++)
+// 		{
+// 			if(cardData[i][ID].indexOf(x.value) != -1)
+// 			{
+// 				rdeckArr.push(cardData[i]);
+// 			}
+// 		}
 
-		page = 0;
-		showrdeck();
-	}
-}
-// 【使用条件】【チーム】
+// 		page = 0;
+// 		showrdeck();
+// 	}
+// }
 function str_to_img(x)
 {
 	x = x.replace(/【使用条件】/g, "<img class='icon_img' src='img/icon_txt_terms_use.png'></img>");
@@ -1501,8 +1515,9 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221202 v0.15\n";
-	str += "1.新增WXDi-P05\n";
+	str += "20221202 v0.16\n";
+	str += "1.將產品別放入檢索條件\n";
+	str += "1.新增種族檢索\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "-WXDi-P05\n";

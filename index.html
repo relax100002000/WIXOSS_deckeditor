@@ -253,13 +253,44 @@
 					<br><br>
 					<span onclick="clickSpan(this)">LB有り </span><input type="checkbox" id="islb" checked>&emsp;&emsp;<span onclick="clickSpan(this)">LB無し </span><input type="checkbox" id="notlb" checked>
 					<br><br>
+					Type
+					<select id="selectType">
+						<option value="0">--All Type--</option>
+						<option value="精元">精元</option>
+						<option value="天使">天使</option>
+						<option value="武勇">武勇</option>
+						<option value="美巧">美巧</option>
+						<option value="悪魔">悪魔</option>
+						<option value="アーム">アーム</option>
+						<option value="ウェポン">ウェポン</option>
+						<option value="トリック">トリック</option>
+						<option value="遊具">遊具</option>
+						<option value="毒牙">毒牙</option>
+						<option value="宇宙">宇宙</option>
+						<option value="鉱石">鉱石</option>
+						<option value="宝石">宝石</option>
+						<option value="天使">天使</option>
+						<option value="原子">原子</option>
+						<option value="植物">植物</option>
+						<option value="微菌">微菌</option>
+						<option value="迷宮">迷宮</option>
+						<option value="乗機">乗機</option>
+						<option value="電機">電機</option>
+						<option value="調理">調理</option>
+						<option value="古代兵器">古代兵器</option>
+						<option value="怪異">怪異</option>
+						<option value="龍獣">龍獣</option>
+						<option value="水獣">水獣</option>
+						<option value="凶蟲">凶蟲</option>
+						<option value="空獣">空獣</option>
+						<option value="地獣">地獣</option>
+				   </select>
+					<br><br>
 					キーワード検索 <input type="text" id="textsearch" size="51">
 					<br><br>
-					<button onclick="search();">Search</button>&emsp;&emsp;<button onclick="checkall();">Select All</button>&emsp;&emsp;<button onclick="uncheckall();">Clear All</button>
-					<br><br>
 					商品檢索
-					<select id="selectMode" onclick="selectProduct(this)">
-						<option value="0">--Select Product Name--</option>
+					<select id="selectProduct">
+						<option value="0">--All Product--</option>
 						<option value="WXDi-P05">[WXDi-P05] 拡張パック「CURIOSITY DIVA」</option>
 						<option value="WXDi-P04">[WXDi-P04] 拡張パック「VERTEX DIVA」</option>
 						<option value="WXDi-D07">[WXDi-D07] 構築済みデッキ「TOP DIVA DECK D・X・M」</option>
@@ -274,6 +305,8 @@
 						<option value="WXDi-D02">[WXDi-D02] 構築済みデッキ「DIVA DEBUT DECK にじさんじ ver.さんばか」</option>
 					    <option value="WXDi-D01">[WXDi-D01] 構築済みデッキ「ANCIENT SURPRISE」</option>
 				   </select>
+				   <br><br>
+				   <button onclick="search();">Search</button>&emsp;&emsp;<button onclick="checkall();">Select All</button>&emsp;&emsp;<button onclick="uncheckall();">Clear All</button>
 				</td>
 			</tr>
 			<tr>
