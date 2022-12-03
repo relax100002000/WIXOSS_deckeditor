@@ -1515,9 +1515,8 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221202 v0.16\n";
-	str += "1.將產品別放入檢索條件\n";
-	str += "1.新增種族檢索\n";
+	str += "20221204 v0.18\n";
+	str += "1.重寫種族檢索條件\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "-WXDi-P05\n";
