@@ -13795,5 +13795,423 @@ var cardData = [
 		"", //TEAM
 		"【ガード】（このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ）<br><br>【常】：【マルチエナ】（エナコストを支払う際、このカードは好きな色１つとして支払える）<br><br>【ライフバースト】：あなたのトラッシュからシグニ１枚を対象とし、それを手札に加える。", //JP_TEXT
 		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-001", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-001.jpg", //SRC
+		"新月の巫女　タマヨリヒメ", //NAME
+		"ルリグ", //RARE
+		"タマ", //TYPE
+		"ST", //CLASS
+		"白", //COLOR
+		"0", //LEVEL
+		"《白》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-002", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-002.jpg", //SRC
+		"三日月の巫女　タマヨリヒメ", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"タマ", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"《白》×０", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-003", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-003.jpg", //SRC
+		"半月の巫女　タマヨリヒメ", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"タマ", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"《白》×１", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-004", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-004.jpg", //SRC
+		"奏月の巫女　タマヨリヒメ", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"タマ", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"《白》×２", //COST
+		"6", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-005", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-005.jpg", //SRC
+		"花代・零", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"花代", //CLASS
+		"赤", //COLOR
+		"0", //LEVEL
+		"《赤》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-006", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-006.jpg", //SRC
+		"花代・椿", //NAME
+		"ST", //RARE
+		"アシストルリグ", //TYPE
+		"花代", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"《無》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-007", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-007.jpg", //SRC
+		"花代・蘭", //NAME
+		"ST", //RARE
+		"アシストルリグ", //TYPE
+		"花代", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"《無》×２", //COST
+		"1", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ,アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-008", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-008.jpg", //SRC
+		"闘娘　緑姫", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"緑子", //CLASS
+		"緑", //COLOR
+		"0", //LEVEL
+		"《緑》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-009", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-009.jpg", //SRC
+		"緑姫・芽生", //NAME
+		"ST", //RARE
+		"アシストルリグ", //TYPE
+		"緑子", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"《無》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-010", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-010.jpg", //SRC
+		"緑姫・増強", //NAME
+		"ST", //RARE
+		"アシストルリグ", //TYPE
+		"緑子", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"《無》×１", //COST
+		"1", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ,アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-011", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-011.jpg", //SRC
+		"GO TO the TOP!", //NAME
+		"ST", //RARE
+		"ピース", //TYPE
+		"", //CLASS
+		"赤白", //COLOR
+		"", //LEVEL
+		"《無》×３", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-012", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-012.jpg", //SRC
+		"burning curiosity", //NAME
+		"ST", //RARE
+		"ピース", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×１", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-013", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-013.jpg", //SRC
+		"聖天　アグライア", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：天使", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"1000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-014", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-014.jpg", //SRC
+		"聖天　ハニエル", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：天使", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-015", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-015.jpg", //SRC
+		"小装　ローメイル", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏武：アーム", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-016", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-016.jpg", //SRC
+		"聖天　ミカエル", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：天使", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-017", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-017.jpg", //SRC
+		"中装　ボウ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏武：アーム", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-018", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-018.jpg", //SRC
+		"聖天　アテナ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：天使", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-019", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-019.jpg", //SRC
+		"聖天　アークアテナ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：天使", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-020", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-020.jpg", //SRC
+		"大得装　トレット", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏武：アーム", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-021", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-021.jpg", //SRC
+		"サーバント　＃", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏元", //CLASS
+		"無", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"1000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-D08-022", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D08-022.jpg", //SRC
+		"ゲット・ビッグバイブル", //NAME
+		"ST", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"白", //COLOR
+		"", //LEVEL
+		"《白》×１《無》×１", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
 		]
 	];
