@@ -1219,6 +1219,14 @@ function search()
 			}
 		}
 
+		if($('#selectLRIG').val() != 0)
+		{
+			if(cardData[i][CLASS].indexOf($('#selectLRIG').val()) == -1)
+			{
+				continue;
+			}
+		}
+
 		if(!$('#lrig').is(":checked"))
 		{
 			if(cardData[i][TYPE] == "ルリグ")
@@ -1515,8 +1523,8 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221204 v0.19\n";
-	str += "1.新增WXDi-P06\n";
+	str += "20221206 v0.20\n";
+	str += "1.新增LRIG檢索\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "-WXDi-P06\n";
