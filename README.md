@@ -1,6 +1,9 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
+  
+20221205 v0.19  
+1.新增WXDi-P06  
 
 20221204 v0.18  
 1.新增WXDi-D08  
@@ -70,6 +73,8 @@ Author: ZZZ
 1.初版  
   
 目前收錄:  
+WXDi-P06  
+WXDi-D08  
 WXDi-P05  
 WXDi-P04  
 WXDi-D07  
