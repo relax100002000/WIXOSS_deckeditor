@@ -1444,6 +1444,8 @@ function str_to_img(x)
 	x = x.replace(/【ハーモニー】/g, "<img class='icon_img' src='img/icon_txt_harmony.png'></img>");
 	x = x.replace(/\[ダウン\]/g, "<img class='icon_img' src='img/icon_txt_down.png'></img>");
 	x = x.replace(/\[ガード\]/g, "<img class='icon_img' src='img/icon_guard_mini.png'></img>");
+	x = x.replace(/◎/g, "<img class='icon_img' src='img/icon_txt_coin.png'></img>");
+	x = x.replace(/【　　】/g, "<img class='icon_img' src='img/icon_txt_frame_null.png'></img>");
 
 	x = x.replace(/（ターン１）/g, "<img class='icon_img' src='img/icon_txt_turn_01.png'></img>");
 	x = x.replace(/（ターン２）/g, "<img class='icon_img' src='img/icon_txt_turn_02.png'></img>");
@@ -1523,10 +1525,11 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221206 v0.20\n";
-	str += "1.新增LRIG檢索\n";
+	str += "20221206 v0.21\n";
+	str += "1.新增WXDi-P07\n";
 	str += "\n";
 	str += "目前收錄:\n";
+	str += "-WXDi-P07\n";
 	str += "-WXDi-P06\n";
 	str += "-WXDi-D08\n";
 	str += "-WXDi-P05\n";

@@ -2,6 +2,9 @@
    
 Author: ZZZ  
   
+20221206 v0.21  
+1.新增WXDi-P07  
+  
 20221206 v0.20  
 1.新增LRIG檢索  
   
@@ -75,7 +78,8 @@ Author: ZZZ
 20221117 v0.1  
 1.初版  
   
-目前收錄:  
+目前收錄: 
+WXDi-P07  
 WXDi-P06  
 WXDi-D08  
 WXDi-P05  
