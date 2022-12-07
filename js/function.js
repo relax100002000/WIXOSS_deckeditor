@@ -1416,25 +1416,6 @@ function uncheckall()
 	$('input:checkbox').prop('checked', false);
 }
 
-// function selectProduct(x)
-// {
-// 	var i = 0;
-// 	rdeckArr = [];
-
-// 	if(x.value != 0)
-// 	{
-// 		for(i = 0; i < cardData.length; i++)
-// 		{
-// 			if(cardData[i][ID].indexOf(x.value) != -1)
-// 			{
-// 				rdeckArr.push(cardData[i]);
-// 			}
-// 		}
-
-// 		page = 0;
-// 		showrdeck();
-// 	}
-// }
 function str_to_img(x)
 {
 	x = x.replace(/【使用条件】/g, "<img class='icon_img' src='img/icon_txt_terms_use.png'></img>");
@@ -1525,10 +1506,11 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221206 v0.21\n";
-	str += "1.新增WXDi-P07\n";
+	str += "20221207 v0.22\n";
+	str += "1.新增WXDi-P08\n";
 	str += "\n";
 	str += "目前收錄:\n";
+	str += "-WXDi-P08\n";
 	str += "-WXDi-P07\n";
 	str += "-WXDi-P06\n";
 	str += "-WXDi-D08\n";
@@ -1581,5 +1563,97 @@ function clickSpan(x)
 	else
 	{
 		$(x).next().prop('checked', true);
+	}
+}
+
+function checkDeck()
+{
+	var i = 0, j = 0, error = 0, ret = 0;
+	var listId = $('#selectProduct').get(0);
+	var listLrig = $('#selectLRIG').get(0);
+	var listType = $('#selectType').get(0);
+
+	for(i = 0; i < cardData.length; i++)
+	{
+		error = 0;
+
+		//ID
+		error = 1;
+		for(j = 1; j < listId.options.length; j++)
+		{
+			if(cardData[i][ID].indexOf(listId.options[j].value) != -1)
+			{
+				error = 0;
+				break;
+			}
+		}
+
+		//SRC
+		if(cardData[i][SRC].indexOf("https://") == -1 || cardData[i][SRC].indexOf(cardData[i][ID]) == -1)
+		{
+			error = 1;
+		}
+
+		//NAME
+		if(cardData[i][NAME] == "")
+		{
+			error = 1;
+		}
+
+		//RARE
+		if(cardData[i][RARE] != "ST" &&
+			cardData[i][RARE] != "LR" &&
+			cardData[i][RARE] != "LC" &&
+			cardData[i][RARE] != "SR" &&
+			cardData[i][RARE] != "R" &&
+			cardData[i][RARE] != "C" &&
+			cardData[i][RARE] != "PI" &&
+			cardData[i][RARE] != "L"
+			)
+		{
+			error = 1;
+		}
+
+		//TYPE
+		if(cardData[i][TYPE] != "ルリグ" &&
+			cardData[i][TYPE] != "アシストルリグ" &&
+			cardData[i][TYPE] != "ピース" &&
+			cardData[i][TYPE] != "シグニ" &&
+			cardData[i][TYPE] != "スペル"
+			)
+		{
+			error = 1;
+		}
+		else
+		{
+			if(cardData[i][TYPE] == "ルリグ")
+			{
+				error = 1;
+				for(j = 1; j < listLrig.options.length; j++)
+				{
+					if(cardData[i][CLASS].indexOf(listLrig.options[j].value) != -1)
+					{
+						error = 0;
+						break;
+					}
+				}
+			}
+		}
+
+		if(error == 1)
+		{
+			ret = 1;
+			console.log(cardData[i][ID]);
+		}
+
+	}
+
+	if(ret == 0)
+	{
+		console.log("OK");
+	}
+	else
+	{
+		console.log("error");
 	}
 }
