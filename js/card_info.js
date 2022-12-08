@@ -976,7 +976,7 @@ var cardData = [
 		"ワンダー・ランド", //NAME
 		"ST", //RARE
 		"スペル", //TYPE
-		"黒", //CLASS
+		"", //CLASS
 		"黒", //COLOR
 		"", //LEVEL
 		"《黒》×１《無》×１", //COST
@@ -3108,10 +3108,10 @@ var cardData = [
 		"", //CLASS
 		"赤", //COLOR
 		"", //LEVEL
-		"", //COST
+		"《赤》×１", //COST
 		"", //LIMIT
 		"", //POWER
-		"《赤》×１", //COIN
+		"", //COIN
 		"", //TIMING
 		"1", //LB
 		"", //TEAM
@@ -15173,10 +15173,10 @@ var cardData = [
 		"", //CLASS
 		"白", //COLOR
 		"", //LEVEL
-		"", //COST
+		"《白》×１", //COST
 		"", //LIMIT
 		"", //POWER
-		"《白》×１", //COIN
+		"", //COIN
 		"", //TIMING
 		"0", //LB
 		"", //TEAM
@@ -19056,7 +19056,7 @@ var cardData = [
 		"", //TIMING
 		"1", //LB
 		"", //TEAM
-		"【出】：あなたのデッキの一番上を見る。そのカードをデッキの一番下に置いてもよい。<br><br>【起】このシグニを場からデッキの一番下に置く：あなたのデッキの一番上を公開する。そのカードが《コードメイズ ウムル//メモリア》以外のシグニの場合、そのシグニを場に出してもよい。<br><br>【ライフバースト】；あなたのデッキの一番上からカードを３枚見る。その中からシグニ１枚を公開し手札に加えるか場に出し、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		"【出】：あなたのデッキの一番上を見る。そのカードをデッキの一番下に置いてもよい。<br><br>【起】このシグニを場からデッキの一番下に置く：あなたのデッキの一番上を公開する。そのカードが《コードメイズ ウムル//メモリア》以外のシグニの場合、そのシグニを場に出してもよい。<br><br>【ライフバースト】：あなたのデッキの一番上からカードを３枚見る。その中からシグニ１枚を公開し手札に加えるか場に出し、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
 		""	//TW_TEXT
 		],
 	[
@@ -19423,6 +19423,1602 @@ var cardData = [
 	[
 		"WXDi-P08-082", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P08-082.jpg", //SRC
+		"サーバント　#", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏元", //CLASS
+		"無", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"1000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【ガード】（このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ）<br><br>【常】：【マルチエナ】（エナコストを支払う際、このカードは好きな色１つとして支払える）<br><br>【ライフバースト】：あなたのトラッシュからシグニ１枚を対象とし、それを手札に加える。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-001", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-001.jpg", //SRC
+		"ブレイブリー・ヒロインズ", //NAME
+		"LR", //RARE
+		"ピース", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《無》×０", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ,アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【使用条件】【ドリームチーム】合計３種類以上の色を持つ（あなたの場にいるルリグ３体がこの条件を満たす）<br><br>このターン、あなたが次にルリグをグロウする場合、グロウするためのコストは[無(4)]減る。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-002", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-002.jpg", //SRC
+		"宇宙級母性", //NAME
+		"LR", //RARE
+		"ピース", //TYPE
+		"", //CLASS
+		"青", //COLOR
+		"", //LEVEL
+		"《無》×６", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【使用条件】【ドリームチーム】合計３種類以上の色を持つ（あなたの場にいるルリグ３体がこの条件を満たす）<br><br>対戦相手のすべてのシグニをデッキの一番上に置く。（置く順番は対戦相手が決める）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-003", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-003.jpg", //SRC
+		"禍キ目ノ疼キ", //NAME
+		"LR", //RARE
+		"ピース", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×５", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【使用条件】【ドリームチーム】合計３種類以上の色を持つ（あなたの場にいるルリグ３体がこの条件を満たす）<br><br>次の対戦相手のターン終了時まで、対戦相手のシグニゾーン１つを消す。（そこにあるすべてをトラッシュに置く。プレイヤーはそこにシグニを配置できない）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-004", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-004.jpg", //SRC
+		"カウントダウン・ヒールズ", //NAME
+		"LR", //RARE
+		"ピース", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×１", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"クラス１つを宣言する。その後、あなたのトラッシュから宣言したクラスを持ち[ガード]を持たない、レベル１、レベル２、レベル３のシグニをそれぞれ１枚まで対象とし、それらを手札に加える。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-005", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-005.jpg", //SRC
+		"カーニバル　―TI―", //NAME
+		"LR", //RARE
+		"ルリグ", //TYPE
+		"カーニバル", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"《赤》×２", //COST
+		"6", //LIMIT
+		"", //POWER
+		"2", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"【起】（ターン１）手札を１枚捨てる：ターン終了時まで、このルリグは「【自】（ターン１）：このルリグがアタックしたとき、以下の３つから１つを選ぶ。①カードを１枚引く。②【エナチャージ１】③対戦相手のシグニ１体を対象とし、それをトラッシュに置く。」を得る。<br><br>【起】（ゲーム１）[赤(0)]：対戦相手のシグニを２体まで対象とし、ターン終了時まで、それらを《サーバント ＺＥＲＯ》にする。<br>（《サーバント ＺＥＲＯ》はレベル１、＜精元＞、パワー1000、無色で能力を持たないシグニである）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-006", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-006.jpg", //SRC
+		"レイラ＝オーバーテイク", //NAME
+		"LR", //RARE
+		"ルリグ", //TYPE
+		"レイラ", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"《赤》×２", //COST
+		"6", //LIMIT
+		"", //POWER
+		"2", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"【起】[ダウン]：あなたの赤のシグニ１体を対象とし、ターン終了時まで、それは「【自】（ターン１）：このシグニがアタックしたとき、対戦相手のパワー8000以下のシグニ１体を対象とし、それをバニッシュする。」を得る。<br><br>【起】（ゲーム１）手札をすべて捨てる：このターン、次にこのルリグがアタックしたとき、そのアタックの間、対戦相手は【ガード】ができない。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-007", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-007.jpg", //SRC
+		"メル＝チアーズ", //NAME
+		"LR", //RARE
+		"ルリグ", //TYPE
+		"メル", //CLASS
+		"緑", //COLOR
+		"3", //LEVEL
+		"《緑》×２", //COST
+		"6", //LIMIT
+		"", //POWER
+		"2", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"【出】：あなたのルリグデッキに《コードイート ケチャチャ》１枚と《コードイート セアブラマシマシ》１枚と《コードイート オンタマ》１枚を加える。<br><br>【起】[無]：あなたのシグニ１体を対象とし、あなたのルリグデッキからクラフトであるシグニ１枚をそれの【アクセ】にする。<br><br>【起】（ゲーム１）[緑(0)]：次の対戦相手のターンの間、対戦相手はスペルと【起】能力を使用できない。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-008", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-008.jpg", //SRC
+		"ママ　３　ＭＯＤＥ慈愛", //NAME
+		"LR", //RARE
+		"ルリグ", //TYPE
+		"ママ", //CLASS
+		"緑", //COLOR
+		"3", //LEVEL
+		"《緑》×２", //COST
+		"6", //LIMIT
+		"", //POWER
+		"1", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"【起】（ターン１）エナゾーンからそれぞれレベルの異なるシグニ３枚をトラッシュに置く：対戦相手のレベル３以上のシグニ１体を対象とし、それをバニッシュする。<br><br>【起】（ゲーム１）[緑(0)]：次の対戦相手のターンの間、あなたが最初にダメージを受ける場合、代わりにダメージを受けない。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-009", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-009.jpg", //SRC
+		"ナナシ　其ノ参ノ踊LR", //NAME
+		"LR", //RARE
+		"ルリグ", //TYPE
+		"ナナシ", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"《黒》×２", //COST
+		"6", //LIMIT
+		"", //POWER
+		"3", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"【常】：あなたのアタックフェイズの間、対戦相手の感染状態のシグニのパワーを－3000する。<br><br>【出】：対戦相手のシグニゾーン１つに【ウィルス】１つを置く。<br><br>【起】（ゲーム１）[黒(0)]：このターン終了時、あなたのすべてのシグニを裏向きにする。次の対戦相手のアタックフェイズ開始時、この方法で裏向きにしたシグニを、同じ場所にシグニがない場合、表向きにする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-010", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-010.jpg", //SRC
+		"絶歌の駄姫　グズ子", //NAME
+		"LR", //RARE
+		"ルリグ", //TYPE
+		"グズ子", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"《黒》×２", //COST
+		"6", //LIMIT
+		"", //POWER
+		"2", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"【出】：あなたのデッキの上からカードを５枚見る。その中からカード１枚をトラッシュに置き、残りを好きな順番でデッキの一番下に置く。<br><br>【起】（ターン１）[黒][無]：あなたのトラッシュからシグニ１枚を対象とし、それを場に出す。<br><br>【起】（ゲーム１）[黒(0)]：このターン、あなたのシグニ１体が効果によって場に出たとき、対戦相手のシグニ１体を対象とし、ターン終了時まで、それのパワーを－8000する。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-011", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-011.jpg", //SRC
+		"カーニバル　―０―", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"カーニバル", //CLASS
+		"赤", //COLOR
+		"0", //LEVEL
+		"《赤》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"3", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-012", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-012.jpg", //SRC
+		"ーニバル　―ＰＮ―", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"カーニバル", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"《赤》×０", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-013", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-013.jpg", //SRC
+		"カーニバル　―Ｓ―", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"カーニバル", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"《赤》×１", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-014", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-014.jpg", //SRC
+		"レイラ＝ニュートラル", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"レイラ", //CLASS
+		"赤", //COLOR
+		"0", //LEVEL
+		"《赤》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"3", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-015", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-015.jpg", //SRC
+		"レイラ＝ターボ", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"レイラ", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"《赤》×０", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-016", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-016.jpg", //SRC
+		"レイラ＝ドラッグ", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"レイラ", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"《赤》×１", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-017", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-017.jpg", //SRC
+		"メル＝バラライカ", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"メル", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"《緑》×０", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-018", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-018.jpg", //SRC
+		"メル＝カンパリ", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"メル", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"《緑》×１", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-019", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-019.jpg", //SRC
+		"ママ♥０", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ママ", //CLASS
+		"緑", //COLOR
+		"0", //LEVEL
+		"《緑》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"4", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-020", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-020.jpg", //SRC
+		"ママ♥１　ＭＯＤＥ３", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ママ", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"《緑》×０", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-021", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-021.jpg", //SRC
+		"ママ♥２", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ママ", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"《緑》×１", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-022", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-022.jpg", //SRC
+		"ナナシ　其ノ壱ノ別", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ナナシ", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"《黒》×０", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-023", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-023.jpg", //SRC
+		"ナナシ　其ノ爾", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ナナシ", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"《黒》×１", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-024", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-024.jpg", //SRC
+		"駄姫　グズ子", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"グズ子", //CLASS
+		"黒", //COLOR
+		"0", //LEVEL
+		"《黒》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"3", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-025", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-025.jpg", //SRC
+		"未明の駄姫　グズ子", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"グズ子", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"《黒》×０", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-026", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-026.jpg", //SRC
+		"逢魔の駄姫　グズ子", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"グズ子", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"《黒》×１", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-027", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-027.jpg", //SRC
+		"ドーナ『がんばれ！』", //NAME
+		"LC", //RARE
+		"アシストルリグ", //TYPE
+		"ドーナ", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"《無》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【出】：あなたのデッキの上からカードを４枚見る。その中からセンタールリグと共通のする色を持つシグニを２枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-028", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-028.jpg", //SRC
+		"ドーナ『応援してね！』", //NAME
+		"LC", //RARE
+		"アシストルリグ", //TYPE
+		"ドーナ", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"《無》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【出】：対戦相手のレベル１のシグニ１体を対象とし、それを手札に戻す。<br><br>【出】：◎◎を得る。<br>（プレイヤーが保持できる◎の上限は５枚である）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-029", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-029.jpg", //SRC
+		"ドーナ『いけいけ！』", //NAME
+		"LC", //RARE
+		"アシストルリグ", //TYPE
+		"ドーナ", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"《無》×０", //COST
+		"1", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【出】：対戦相手のパワー8000以下のシグニ１体を対象とし、それを手札に戻す。<br><br>【出】：あなたのトラッシュから[ガード]を持つシグニ１枚を対象とし、それを手札に加える。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-030", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-030.jpg", //SRC
+		"ドーナ『輝いてる！』", //NAME
+		"LC", //RARE
+		"アシストルリグ", //TYPE
+		"ドーナ", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"《無》×０", //COST
+		"1", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ,アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【出】：あなたの手札からシグニ１枚を場に出す。そのシグニの【出】能力は発動しない。<br><br>【出】[白][無]：あなたの手札からシグニ１枚を場に出す。そのシグニの【出】能力は発動しない。<br><br>【出】[無][無][無]：あなたのデッキの上からカード５枚を見る。その中からシグニを２枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。<br>（【出】能力は発動する順番を選べる）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-031", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-031.jpg", //SRC
+		"ドーナ『エスケープ！』", //NAME
+		"LC", //RARE
+		"アシストルリグ", //TYPE
+		"ドーナ", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"《無》×５", //COST
+		"1", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ,アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【出】手札を２枚捨てる：このターン、シグニアタックステップをスキップする。<br>（【出】能力の：の左側はコストである。コストを支払わず発動しないことを選んでもよい）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-032", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-032.jpg", //SRC
+		"あーやの出番！", //NAME
+		"LC", //RARE
+		"アシストルリグ", //TYPE
+		"あや", //CLASS
+		"青", //COLOR
+		"1", //LEVEL
+		"《無》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【出】：対戦相手のパワー5000以下のシグニ１体を対象とし、それをデッキの一番下に置く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-033", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-033.jpg", //SRC
+		"あーやの踊りについてきてね！", //NAME
+		"LC", //RARE
+		"アシストルリグ", //TYPE
+		"あや", //CLASS
+		"青", //COLOR
+		"1", //LEVEL
+		"《無》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【出】：カードを１枚引く。<br><br>【出】：◎◎を得る。<br>（プレイヤーが保持できる◎の上限は５枚である）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-034", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-034.jpg", //SRC
+		"あーやの畳返し！", //NAME
+		"LC", //RARE
+		"アシストルリグ", //TYPE
+		"あや", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"《無》×０", //COST
+		"1", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ,アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【出】：対戦相手のシグニ１体を対象とし、それを裏向きにする。このターン終了時、この方法で裏向きにしたシグニを、同じ場所にシグニがない場合、表向きにする。同じ場所にシグニがある場合、トラッシュに置く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-035", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-035.jpg", //SRC
+		"あーやの魅力にメロメロ！", //NAME
+		"LC", //RARE
+		"アシストルリグ", //TYPE
+		"あや", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"《無》×３", //COST
+		"1", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ,アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【出】：対戦相手のシグニを２体まで対象とし、それらをダウンする。<br><br>【出】[無][無][無][無]：対戦相手のダウン状態のシグニ１体を対象とし、それをデッキの一番下に置く。<br>（【出】能力の：の左側はコストである。コストを支払わず発動しないことを選んでもよい）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-036", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-036.jpg", //SRC
+		"あーやのホログラフ！", //NAME
+		"LC", //RARE
+		"アシストルリグ", //TYPE
+		"あや", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"《無》×２", //COST
+		"1", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ,アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【出】：ターン終了時まで、このルリグは「【自】：対戦相手のシグニかルリグ１体がアタックしたとき、あなたと対戦相手は自分のデッキの一番上を公開し、そのカードをデッキの一番下に置く。この方法で公開されたカードがどちらも【ライフバースト】を持っているか、どちらも【ライフバースト】を持っていない場合、そのアタックを無効にする。」を得る。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-037", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-037.jpg", //SRC
+		"聖魔姫　オロチマル", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：悪魔", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【自】：あなたのアタックフェイズ開始時、対戦相手のパワー12000以下のシグニ１体を対象とし、以下の２つから１つを選ぶ。<br>①手札を３枚捨ててもよい。そうした場合、それを手札に戻す。<br>②手札からカード２枚と[ガード]を持つシグニ１枚を捨ててもよい。そうした場合、それをゲームから除外する。<br><br>【出】[白][無]：あなたのトラッシュから[ガード]を持つシグニ１枚を対象とし、それを手札に加える。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-038", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-038.jpg", //SRC
+		"コードハート　LION//メモリア", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏械：電機", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【自】：あなたのアタックフェイズ開始時、このシグニが覚醒状態の場合、[白][白]を支払ってもよい。そうした場合、ターン終了時まで、このシグニは「【自】（ターン１）：このシグニがアタックしたとき、このシグニをアップし、ターン終了時まで、このシグニは能力を失う。」を得る。<br><br>【自】：あなたがスペルを使用したとき、それがこのターンにあなたが使用した３枚目のスペルだった場合、このシグニは覚醒する。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-039", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-039.jpg", //SRC
+		"紅将姫　リル//メモリア", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【自】：あなたのアタックフェイズ開始時、このターンにあなたが◎を合計１枚以上支払っていた場合、対戦相手のパワー8000以下のシグニ１体を対象とし、それをバニッシュする。<br><br>【出】[赤][無]：あなたのトラッシュから[ライズ]を持つシグニ１枚を対象とし、それを場に出す。<br><br>【起】◎：対戦相手は自分のルリグデッキからカードを１枚公開する。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-040", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-040.jpg", //SRC
+		"轟炎　フレイスロ団長", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏武：ウェポン", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【自】：あなたのアタックフェイズ開始時、手札をすべて捨ててもよい。この方法でカードを６枚以上捨てた場合、対戦相手のライフクロス１枚をクラッシュする。<br><br>【自】：このシグニがアタックしたとき、あなたの手札が０枚の場合、[赤][赤]を支払ってもよい。そうした場合、ターン終了時まで、このシグニは【アサシン】を得る。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-041", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-041.jpg", //SRC
+		"羅輝石　インディゴライト", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏羅：宝石", //CLASS
+		"青", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【常】：あなたのトラッシュに＜宝石＞のシグニが５枚以上あるかぎり、このシグニのパワーは＋3000される。<br><br>【自】（ターン１）：あなたの＜宝石＞のシグニ１体がバニッシュされたとき、対戦相手は手札を１捨てる。<br><br>【起】（ターン１）手札を１捨てる：あなたのデッキの上からカードを２枚見る。その中からカード１枚を手札に加え、残りをトラッシュに置く。<br><br>【ライフバースト】：カードを２枚引く。あなたの手札から＜宝石＞のシグニを１枚まで場に出す。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-042", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-042.jpg", //SRC
+		"羅菌姫　みこみこ//メモリア", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏羅：微菌", //CLASS
+		"青", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【常】：このシグニが覚醒状態であるかぎり、このシグニのパワーは＋3000され、このシグニは「【自】：このシグニがバニッシュされたとき、対戦相手が手札を１枚捨てないかぎり、このシグニをエナゾーンからダウン状態で場に出す。」を得る。<br><br>【自】：あなたのアタックフェイズ開始時、対戦相手は手札を１枚捨てる。その後、対戦相手の手札が０枚の場合、このシグニは覚醒する。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-043", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-043.jpg", //SRC
+		"翠美姫　コンテンポラ", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：美巧", //CLASS
+		"緑", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【常】：対戦相手のターンの間、あなたのシグニは【シャドウ（レベル１）】と【シャドウ（レベル２）】を得る。<br><br>【自】：このカードが対戦相手の効果によっていずれかの領域からトラッシュに置かれたとき、[無]を支払ってもよい。そうした場合、このシグニをトラッシュから手札に加える。<br><br>【ライフバースト】：どちらか１つを選ぶ。①対戦相手のアップ状態のシグニ１体を対象とし、それをバニッシュする。②【エナチャージ１】", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-044", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-044.jpg", //SRC
+		"コードオーダー　メル//メモリア", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏械：調理", //CLASS
+		"緑", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【出】：あなたのデッキの上からカードを２枚このシグニの下に置く。（表向きで置く）<br><br>【起】[緑]：あなたのデッキの上からカードを２枚見る。その中から１枚をこのシグニの下に置き、残りを好きな順番でデッキの一番下に置く。<br><br>【起】このシグニの下から同名のカード２枚をトラッシュに置く：ターン終了時まで、このシグニは【ランサー】を得る。<br><br>【起】◎：ターン終了時まで、このシグニのパワーを＋5000する。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-045", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-045.jpg", //SRC
+		"惨之遊姫　ジンロウ", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏武：遊具", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【自】：このシグニがアタックしたとき、このターンにあなたのシグニが１体以上トラッシュから場に出ていた場合、対戦相手のシグニ１体を対象とし、[黒]を支払ってもよい。そうした場合、ターン終了時まで、それのパワーを－10000する。<br><br>【起】手札を３枚捨てる：あなたのトラッシュからこのカードを場に出す。（この能力はこのカードがトラッシュにある場合にしか使用できない）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-046", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-046.jpg", //SRC
+		"羅菌姫　ナナシ//メモリア", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏羅：微菌", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【自】：あなたのアタックフェイズ開始時、あなたのデッキの一番上のカードをこのシグニの下に置く。（表向きで置く）<br><br>【自】：このシグニがアタックしたとき、対戦相手のシグニを２体まで対象とし、ターン終了時まで、それらのパワーをそれぞれこのシグニの下にあるカード１枚につき－3000する。<br><br>【起】（ターン１）◎◎：対戦相手のシグニ１体を対象とし、ターン終了時まで、それのパワーを－5000する。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-047", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-047.jpg", //SRC
+		"幻竜姫　真・遊月//メモリア", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏生：龍獣", //CLASS
+		"赤緑", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【自】：あなたのアタックフェイズ開始時、あなたのライフクロスが１枚以下で対戦相手相手のエナゾーンにカードが２枚以上ある場合、対戦相手は自分のエナゾーンからカード１枚を選びトラッシュに置く。<br><br>【自】：このシグニがアタックしたとき、このターンにあなたの効果によって対戦相手のエナゾーンからカードが１枚以上トラッシュに置かれていた場合、[赤][緑][無]を支払ってもよい。そうした場合、ターン終了時まで、このシグニは【アサシン】を得る。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-048", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-048.jpg", //SRC
+		"コードハート　ピルルクＡＰＥＸ//メモリア", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏械：電機", //CLASS
+		"青黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【常】：【シャドウ（スペル）】<br><br>【自】（ターン１）：あなたがスペルを使用したとき、対戦相手のシグニ１体を対象とし、[青]か[黒]を支払ってもよい。そうした場合、ターン終了時まで、それのパワーを－8000する。<br><br>【出】：あなたのデッキの上からカードを３枚見る。その中からスペル１枚を公開し手札に加え、残りをトラッシュに置く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-049", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-049.jpg", //SRC
+		"コードメイズ　キョウシュウ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏械：迷宮", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【常】：対戦相手のターンの間、このシグニは【シャドウ（レベル１）】を得る。（このシグニは対戦相手のレベル１のルリグとレベル１のシグニによって対象にされない）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-050", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-050.jpg", //SRC
+		"コードアート　Gラボ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏械：電機", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【出】：あなたのデッキの上からカードを２枚見る。その中からカード１枚をデッキの一番上に戻し、残りを好きな順番でデッキの一番下に置く。<br><br>【自】：あなたのターン終了時、このシグニがアップ状態の場合、あなたのデッキの一番上を公開してもよい。そのカードがスペルの場合、カードを１枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-051", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-051.jpg", //SRC
+		"幻怪　ドーナ//メモリア", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏生：怪異", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【出】[白]：シグニ１体を対象とし、次の対戦相手のターン終了時まで、このシグニの基本パワーはそれと同じ値になる。<br><br>【起】（ターン１）◎◎◎：あなたのデッキの上からカードを３枚見る。その中からシグニ１枚を公開し手札に加え、残りを好きな順番でデッキの一番下に置く。<br><br>【ライフバースト】：あなたのデッキの上からカードを３枚見る。その中からシグニ１枚を公開し手札に加えるか場に出し、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-052", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-052.jpg", //SRC
+		"中罠　ゆかゆか//メモリア", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏武：トリック", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【自】：あなたのアタックフェイズ開始時、対戦相手が[無]を支払わないかぎり、ターン終了時まで、対戦相手のすベてのシグニは能力を失う。<br><br>【ライフバースト】：ターン終了時まで、対戦相手のすべてのシグニは能力を失う。カードを１枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-053", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-053.jpg", //SRC
+		"羅星　タテーザ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏羅：宇宙", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【出】：あなたのレベル１のシグニを２体まで対象とし、次の対戦相手のターン終了時まで、それらは「【常】：対戦相手のターンの間、【シャドウ（レベル２以下のシグニ）】を得る。」を得る。<br><br>【ライフバースト】：対戦相手のシグニ１体を対象とし、ターン終了時まで、それは「【常】：アタックできない。」を得る。カードを１枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-054", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-054.jpg", //SRC
+		"聖将　フィン・マックール", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【自】：あなたのターン終了時、アップ状態のこのシグニをダウンしてもよい。そうした場合、以下の２つから１つを選ぶ。<br>①対戦相手のシグニ１体を対象とし、それをトラッシュに置く。<br>②カードを１枚引く。<br><br>【ライフバースト】：どちらか１つを選ぶ。①対戦相手のアップ状態のシグニ１体を対象とし、それを手札に戻す。②カードを１枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-055", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-055.jpg", //SRC
+		"ハウリング・シャウト", //NAME
+		"C", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"白", //COLOR
+		"", //LEVEL
+		"《白》×０", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"あなたのシグニ１体を対象とし、次の対戦相手のターン終了時まで、それのパワーを＋5000する。それが《コードハート ＬＩＯＮ》か《幻獣 ＬＯＶＩＴ//メモリア》か《爆砲 ＷＯＬＦ//メモリア》の場合、それは覚醒する。<br><br>【ライフバースト】：対戦相手のアップ状態のシグニ１体を対象とし、それを手札に戻す。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-056", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-056.jpg", //SRC
+		"紅将　マタ・ハリ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【出】◎◎：対戦相手のパワー3000以下のシグニ１体を対象とし、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-057", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-057.jpg", //SRC
+		"小装　サミダレ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏武：アーム", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【出】[赤] 手札を１枚捨てる：あなたのトラッシュから＜ウェポン＞のシグニ１枚を対象とし、それを手札に加える。<br><br>【ライフバースト】：対戦相手のパワー12000以下のシグニ１体を対象とし、手札を１枚捨ててもよい。そうした場合、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-058", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-058.jpg", //SRC
+		"幻獣　LOVIT//メモリア", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏生：地獣", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【常】：このシグニは覚醒状態であるかぎり、「【自】：あなたのターン終了時、対戦相手のエナゾーンから対戦相手のセンタールリグと共通する色を持たないカード１枚を対象とし、それをトラッシュに置く。」を得る。<br><br>【自】：このシグニがバトルによって対戦相手のシグニ１体をバニッシュしたとき、このシグニは覚醒する。（シグニは覚醒すると場にあるかぎり覚醒状態になる）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-059", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-059.jpg", //SRC
+		"羅星　キクノジョー", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏羅：宇宙", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【起】（ターン１）手札からレベル１のシグニを１枚捨てる：対戦相手のパワー5000以下のシグニ１体を対象とし、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-060", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-060.jpg", //SRC
+		"幻獣　ミーアキャット", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏生：地獣", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【自】（ターン１）：あなたのパワー10000以上の＜地獣＞のシグニ１体がバニッシュされたとき、対戦相手は自分のエナゾーンからカード１枚を選びトラッシュに置く。<br><br>【自】：あなたのアタックフェイズ開始時、あなたのシグニ１体を対象とし、ターン終了後まで、それのパワーをあなたの場にある＜地獣＞のシグニ１体につき＋2000する。<br><br>【ライフバースト】：対戦相手のパワー8000以下のシグニ１体を対象とし、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-061", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-061.jpg", //SRC
+		"紅魔　ディアボロス", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：悪魔", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【自】：このシグニがアタックしたとき、対戦相手のパワー10000以下のシグニ１体を対象とし、[赤]を支払ってもよい。そうした場合、それをバニッシュする。<br><br>【出】：あなたは手札をすべて捨てる。<br>（コストのない【出】能力は発動しないことを選べない）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-062", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-062.jpg", //SRC
+		"神流の炎舞", //NAME
+		"R", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×０", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"以下の２つから１つを選ぶ。<br>①あなたのトラッシュから＜武勇＞のシグニ１枚を対象とし、[赤]を支払ってもよい。そうした場合、それを手札に加える。<br>②対戦相手のパワー10000以下のシグニ１体を対象とし、手札から＜武勇＞のシグニ１枚を捨てる。そうした場合、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-063", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-063.jpg", //SRC
+		"蒼魔　キマリス", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：悪魔", //CLASS
+		"青", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【自】：あなたのターン終了時、このシグニがアップ状態の場合、あなたのデッキの一番上を公開する。そのカードが＜悪魔＞のシグニの場合、カードを１枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-064", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-064.jpg", //SRC
+		"羅星　ヴォランス", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏羅：宇宙", //CLASS
+		"青", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"7000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【出】：対戦相手は手札を２枚まで捨ててよい。対戦相手はこの方法で捨てたカード１枚につきカードを１枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-065", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-065.jpg", //SRC
+		"コードイート　クリームソーダ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏械：調理", //CLASS
+		"青", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【出】：対戦相手の場に凍結状態のシグニがある場合、対戦相手の手札を見る。あなたはその中から[ガード]を持たないカード１枚を選びデッキの一番下に置いてよい。そうした場合、対戦相手はカードを１枚引く。<br><br>【ライフバースト】：対戦相手のルリグかシグニ１体を対象とする。このターン、それがアタックしたとき、対戦相手が手札を３枚捨てないかぎり、そのアタックを無効にする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-066", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-066.jpg", //SRC
+		"中罠　あや//メモリア", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏武：トリック", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【起】（ターン１）[青(0)]：あなたの手札を１枚ルリグゾーンに裏向きで置く。次の対戦相手のターン終了時まで、あなたは「【起】【メインフェイズ】【アタックフェイズ】[青(0)]：この方法で置いたカードをルリグゾーンから手札に加える。」を得る。次の対戦相手のターン終了時、そのカードを手札に加える。<br><br>【起】（ターン１）◎◎：カードを１枚引く。<br><br>【ライフバースト】：対戦相手のシグニ１体を対象とし、それをダウンし凍結する。カードを１枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-067", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-067.jpg", //SRC
+		"コードライド　サザナミ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏械：乗機", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【自】：このシグニがライズされたとき、対戦相手の手札を見る。<br><br>【起】[ダウン]： カードを２枚引き、手札を２枚捨てる。<br><br>【ライフバースト】：あなたのデッキの上からカードを３枚見る。その中からシグニ１枚を公開し手札に加えるか場に出し、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-068", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-068.jpg", //SRC
+		"羅星　富士葵", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏羅：宇宙", //CLASS
+		"青", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【出】：あなたのデッキの一番上を公開する。それがレベル１のシグニの場合、カードを１枚引く。そうでない場合、そのカードをデッキの一番下に置く。<br><br>【ライフバースト】：どちらか１つを選ぶ。①対戦相手のシグニを２体まで対象とし、それらをダウンする。②カードを１枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-069", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-069.jpg", //SRC
+		"ＬＩＶＥＬＹ　ＬＩＶＥ", //NAME
+		"C", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"青", //COLOR
+		"", //LEVEL
+		"《青》×０", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"あなたの《羅菌姫 みこみこ//メモリア》か《中罠 ゆかゆか//メモリア》か《羅原 まほまほ//メモリア》か青のシグニ１体を対象とし、次の対戦相手のターン終了時まで、それは「【自】（ターン１）：このシグニが対戦相手の、能力か効果の対象になったとき、対戦相手の手札を１枚見ないで選び、捨てさせる」を得る。<br><br>【ライフバースト】：対戦相手のシグニ１体を対象とし、それをダウンし凍結する。対戦相手は手札を１枚捨てる。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-070", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-070.jpg", //SRC
+		"翠天　カスガノカミ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：天使", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【常】：あなたのエナゾーンにあるカードが持つ色が２種類以上あるかぎり、このシグニのパワーは＋4000される。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-071", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-071.jpg", //SRC
+		"翠美　マーブリング", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：美巧", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【自】：あなたのメインフェイズ以外でこのシグニがバニッシュされたとき、あなたのシグニ１体を対象とし、ターン終了時まで、「【常】：バニッシュされない。」を得る。<br><br>【ライフバースト】：対戦相手のパワー7000以上のシグニ１体を対象とし、[無]を支払ってもよい。そうした場合、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-072", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-072.jpg", //SRC
+		"翠英　フレミング", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：英知", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【自】：あなたのアタックフェイズ開始時、あなたのライフクロスが５枚の場合、【エナチャージ１】をする。４枚の場合、カードを１枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-073", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-073.jpg", //SRC
+		"爆砲　WOLF//メモリア", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏武：ウェポン", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【常】：このシグニは覚醒状態であるかぎり、「【自】：あなたのターン終了時、【エナチャージ１】をする。」を得る。<br><br>【自】：このシグニがバトルによって対戦相手のシグニ１体をバニッシュしたとき、このシグニは覚醒する。（シグニは覚醒すると場にあるかぎり覚醒状態になる）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-074", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-074.jpg", //SRC
+		"幻水　ウツボ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏生：水獣", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【出】：あなたのシグニ１体を対象とし、ターン終了時まで、それのパワーを＋3000する。あなたの手札が５枚以上ある場合、代わりにターン終了時まで、それのパワーを＋5000する。<br><br>【出】◎◎：あなたのエナゾーンからシグニ１枚を対象とし、それを手札に加える。<br><br>【ライフバースト】：【エナチャージ１】をする。このターン、次にあなたがシグニよってダメージを受ける場合、代わりにダメージを受けない。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-075", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-075.jpg", //SRC
+		"ドライ＝スカンク", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏武：毒牙", //CLASS
+		"緑", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【自】：各ターン終了時、対戦相手のパワー10000以上のシグニ１体を対象とし、[緑]を支払ってもよい。そうした場合、それをバニッシュする。<br><br>【自】：アタックフェイズの間、このシグニがバニッシュされたとき、対戦相手のパワー10000以上のシグニ１体を対象とし、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-076", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-076.jpg", //SRC
+		"激食", //NAME
+		"R", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"緑", //COLOR
+		"", //LEVEL
+		"《緑》×１", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"ベット―◎◎（このスペルを使用する際、使用コストとして追加で◎◎を支払ってもよい）<br><br>【エナチャージ２】をする。あなたがベットしていた場合、代わりに【エナチャージ３】をする。<br><br>【ライフバースト】：対戦相手のパワー7000以上のシグニ１体を対象とし、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-077", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-077.jpg", //SRC
+		"凶天　ゲフィオン", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：天使", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【起】[ダウン]：あなたのデッキの上からカードを３枚トラッシュに置く。<br><br>【ライフバースト】：対戦相手のシグニ１体を対象とし、ターン終了時まで、それのパワーを－8000する。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-078", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-078.jpg", //SRC
+		"羅菌　オイゴナ", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏羅：微菌", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【自】：あなたの《羅菌姫 ナナシ//メモリア》１体が場に出たとき、[無]を支払ってもよい。そうした場合、場にあるこのシグニをそのシグニの下に置く。<br><br>【出】手札から黒のカード１枚を捨てる：対戦相手のシグニ１体を対象とし、ターン終了時まで、それのパワーを－3000する。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-079", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-079.jpg", //SRC
+		"コードオールド　ヴォイニ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏械：古代兵器", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【自】（ターン１）：あなたのメインフェイズの間、あなたのデッキからレベル１のシグニ１枚がトラッシュに置かれたとき、そのシグニを場に出す。ターン終了時、そのシグニを場からトラッシュに置く。<br><br>【出】◎：あなたのデッキの上からカードを３枚トラッシュに置く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-080", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-080.jpg", //SRC
+		"凶将　ジャック・ド・モレー", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【自】（ターン１）：あなたのシグニ１体がトラッシュから場に出たとき、次の対戦相手のターン終了時まで、このシグニのパワーを＋4000する。<br><br>【起】（ターン１）◎◎◎：あなたのトラッシュから黒のシグニ１枚を対象とし、それを場に出す。<br><br>【ライフバースト】：あなたのトラッシュから[ガード]を持たないレベル２以下のシグニ１枚を対象とし、それを手札に加えるか場に出す。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-081", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-081.jpg", //SRC
+		"羅原　まほまほ//メモリア", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏羅：原子", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【自】：このシグニがアタックしたとき、対戦相手が手札を１枚捨てないかぎり、対戦相手のデッキの上からカードを４枚トラッシュに置く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-082", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-082.jpg", //SRC
+		"羅原　Fe", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏羅：原子", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"【出】[無][無]：あなたのトラッシュに＜原子＞のシグニが７枚以上ある場合、対戦相手のシグニ１体を対象とし、ターン終了時まで、それのパワーを－12000する。<br>（パワー０以下のシグニはルールによってバニッシュされる）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-083", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-083.jpg", //SRC
+		"プリズン・プリーズ", //NAME
+		"R", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"黒", //COLOR
+		"", //LEVEL
+		"《黒》×１", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"ベット―◎◎（このスペルを使用する際、使用コストとして追加で◎◎を支払ってもよい）<br><br>対戦相手のシグニ１体を対象とし、ターン終了時まで、それのパワーを－7000する。あなたがベットしていた場合、代わりにターン終了時まで、それのパワーを－12000する。<br><br>【ライフバースト】：対戦相手のアップ状態のシグニ１体を対象とし、ターン終了時まで、それのパワーを－15000する。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"WXDi-P09-084", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-084.jpg", //SRC
 		"サーバント　#", //NAME
 		"C", //RARE
 		"シグニ", //TYPE

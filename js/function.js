@@ -1506,10 +1506,12 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221207 v0.22\n";
-	str += "1.新增WXDi-P08\n";
+	str += "20221208 v0.23\n";
+	str += "1.新增WXDi-P09\n";
+	str += "2.修正21張卡\n";
 	str += "\n";
 	str += "目前收錄:\n";
+	str += "-WXDi-P09\n";
 	str += "-WXDi-P08\n";
 	str += "-WXDi-P07\n";
 	str += "-WXDi-P06\n";
@@ -1568,7 +1570,7 @@ function clickSpan(x)
 
 function checkDeck()
 {
-	var i = 0, j = 0, error = 0, ret = 0;
+	var i = 0, j = 0, error = 0, error_tmp = 0, ret = 0;
 	var listId = $('#selectProduct').get(0);
 	var listLrig = $('#selectLRIG').get(0);
 	var listType = $('#selectType').get(0);
@@ -1578,14 +1580,19 @@ function checkDeck()
 		error = 0;
 
 		//ID
-		error = 1;
+		error_tmp = 1;
 		for(j = 1; j < listId.options.length; j++)
 		{
 			if(cardData[i][ID].indexOf(listId.options[j].value) != -1)
 			{
-				error = 0;
+				error_tmp = 0;
 				break;
 			}
+		}
+
+		if(error_tmp)
+		{
+			error = 1;
 		}
 
 		//SRC
@@ -1628,16 +1635,622 @@ function checkDeck()
 		{
 			if(cardData[i][TYPE] == "ルリグ")
 			{
-				error = 1;
+				//CLASS
+				error_tmp = 1;
 				for(j = 1; j < listLrig.options.length; j++)
 				{
 					if(cardData[i][CLASS].indexOf(listLrig.options[j].value) != -1)
 					{
-						error = 0;
+						error_tmp = 0;
 						break;
 					}
 				}
+
+				if(error_tmp)
+				{
+					error = 1;
+				}
+
+				//LEVEL
+				if(cardData[i][LEVEL] != "0" &&
+					cardData[i][LEVEL] != "1" &&
+					cardData[i][LEVEL] != "2" &&
+					cardData[i][LEVEL] != "3")
+				{
+					error = 1;
+				}
+
+				//COST
+				if(cardData[i][COST].indexOf("×") == -1)
+				{
+					error = 1;
+				}
+
+				//LIMIT
+				if(cardData[i][LEVEL] == 0)
+				{
+					if(cardData[i][LIMIT] != 0)
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][LEVEL] == 1)
+				{
+					if(cardData[i][LIMIT] != 2)
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][LEVEL] == 2)
+				{
+					if(cardData[i][LIMIT] != 5)
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][LEVEL] == 3)
+				{
+					if(cardData[i][LIMIT] != 6)
+					{
+						error = 1;
+					}
+				}
+
+				//POWER
+				if(cardData[i][POWER] != "")
+				{
+					error = 1;
+				}
+
+				//COIN
+				if(cardData[i][CLASS] == "リル" ||
+					cardData[i][CLASS] == "ドーナ" ||
+					cardData[i][CLASS] == "あや" ||
+					cardData[i][CLASS] == "カーニバル" ||
+					cardData[i][CLASS] == "レイラ" ||
+					cardData[i][CLASS] == "メル" ||
+					cardData[i][CLASS] == "ママ" ||
+					cardData[i][CLASS] == "ナナシ" ||
+					cardData[i][CLASS] == "グズ子"
+					)
+				{
+					if(cardData[i][LEVEL] == 0 || cardData[i][LEVEL] == 3)
+					{
+						if(cardData[i][COIN] == "")
+						{
+							error = 1;
+						}
+					}
+				}
+				else
+				{
+					if(cardData[i][COIN] != "")
+					{
+						error = 1;
+					}
+				}
+
+				//TIMING
+				if(cardData[i][TIMING] != "")
+				{
+					error = 1;
+				}
+
+				//LB
+				if(cardData[i][LB] != "")
+				{
+					error = 1;
+				}
+
+				//TEAM
+				if(cardData[i][CLASS] == "アト" ||
+					cardData[i][CLASS] == "タウィル" ||
+					cardData[i][CLASS] == "ウムル"
+					)
+				{
+					if(cardData[i][TEAM] != "アンシエント・サプライズ")
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][CLASS] == "リゼ" ||
+					cardData[i][CLASS] == "アンジュ" ||
+					cardData[i][CLASS] == "とこ"
+					)
+				{
+					if(cardData[i][TEAM] != "さんばか")
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][CLASS] == "ヒラナ" ||
+					cardData[i][CLASS] == "アキノ" ||
+					cardData[i][CLASS] == "レイ"
+					)
+				{
+					if(cardData[i][TEAM] != "No Limit")
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][CLASS] == "LION" ||
+					cardData[i][CLASS] == "LOVIT" ||
+					cardData[i][CLASS] == "WOLF"
+					)
+				{
+					if(cardData[i][TEAM] != "Card Jockey")
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][CLASS] == "タマゴ" ||
+					cardData[i][CLASS] == "ノヴァ" ||
+					cardData[i][CLASS] == "バン"
+					)
+				{
+					if(cardData[i][TEAM] != "うちゅうのはじまり")
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][CLASS] == "ムジカ" ||
+					cardData[i][CLASS] == "マドカ" ||
+					cardData[i][CLASS] == "サンガ"
+					)
+				{
+					if(cardData[i][TEAM] != "DIAGRAM")
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][CLASS] == "エクス" ||
+					cardData[i][CLASS] == "デウス" ||
+					cardData[i][CLASS] == "マキナ"
+					)
+				{
+					if(cardData[i][TEAM] != "デウス・エクス・マキナ")
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][CLASS] == "みこみこ" ||
+					cardData[i][CLASS] == "まほまほ" ||
+					cardData[i][CLASS] == "ゆかゆか"
+					)
+				{
+					if(cardData[i][TEAM] != "きゅるきゅるーん☆")
+					{
+						error = 1;
+					}
+				}
+				else
+				{
+					if(cardData[i][TEAM] != "")
+					{
+						error = 1;
+					}
+				}
 			}
+			else if(cardData[i][TYPE] == "アシストルリグ")
+			{
+				//CLASS
+				error_tmp = 1;
+				for(j = 1; j < listLrig.options.length; j++)
+				{
+					if(cardData[i][CLASS].indexOf(listLrig.options[j].value) != -1)
+					{
+						error_tmp = 0;
+						break;
+					}
+				}
+
+				if(error_tmp)
+				{
+					error = 1;
+				}
+
+				//LEVEL
+				if(cardData[i][LEVEL] != "1" &&
+					cardData[i][LEVEL] != "2")
+				{
+					error = 1;
+				}
+
+				//COST
+				if(cardData[i][COST].indexOf("×") == -1)
+				{
+					error = 1;
+				}
+
+				//LIMIT
+				if(cardData[i][LEVEL] == 1)
+				{
+					if(cardData[i][LIMIT] != 0)
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][LEVEL] == 2)
+				{
+					if(cardData[i][LIMIT] != 1)
+					{
+						error = 1;
+					}
+				}
+
+				//POWER
+				if(cardData[i][POWER] != "")
+				{
+					error = 1;
+				}
+
+				//TIMING
+				if(cardData[i][TIMING].indexOf("アタックフェイズ") == -1 &&
+					cardData[i][TIMING].indexOf("メインフェイズ") == -1
+					)
+				{
+					error = 1;
+				}
+
+				//LB
+				if(cardData[i][LB] != "")
+				{
+					error = 1;
+				}
+
+				//TEAM
+				if(cardData[i][CLASS] == "アト" ||
+					cardData[i][CLASS] == "タウィル" ||
+					cardData[i][CLASS] == "ウムル"
+					)
+				{
+					if(cardData[i][TEAM] != "アンシエント・サプライズ")
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][CLASS] == "リゼ" ||
+					cardData[i][CLASS] == "アンジュ" ||
+					cardData[i][CLASS] == "とこ"
+					)
+				{
+					if(cardData[i][TEAM] != "さんばか")
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][CLASS] == "ヒラナ" ||
+					cardData[i][CLASS] == "アキノ" ||
+					cardData[i][CLASS] == "レイ"
+					)
+				{
+					if(cardData[i][TEAM] != "No Limit")
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][CLASS] == "LION" ||
+					cardData[i][CLASS] == "LOVIT" ||
+					cardData[i][CLASS] == "WOLF"
+					)
+				{
+					if(cardData[i][TEAM] != "Card Jockey")
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][CLASS] == "タマゴ" ||
+					cardData[i][CLASS] == "ノヴァ" ||
+					cardData[i][CLASS] == "バン"
+					)
+				{
+					if(cardData[i][TEAM] != "うちゅうのはじまり")
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][CLASS] == "ムジカ" ||
+					cardData[i][CLASS] == "マドカ" ||
+					cardData[i][CLASS] == "サンガ"
+					)
+				{
+					if(cardData[i][TEAM] != "DIAGRAM")
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][CLASS] == "エクス" ||
+					cardData[i][CLASS] == "デウス" ||
+					cardData[i][CLASS] == "マキナ"
+					)
+				{
+					if(cardData[i][TEAM] != "デウス・エクス・マキナ")
+					{
+						error = 1;
+					}
+				}
+				else if(cardData[i][CLASS] == "みこみこ" ||
+					cardData[i][CLASS] == "まほまほ" ||
+					cardData[i][CLASS] == "ゆかゆか"
+					)
+				{
+					if(cardData[i][TEAM] != "きゅるきゅるーん☆")
+					{
+						error = 1;
+					}
+				}
+				else
+				{
+					if(cardData[i][TEAM] != "")
+					{
+						error = 1;
+					}
+				}
+
+				//JP_TEXT
+				if(cardData[i][JP_TEXT] == "")
+				{
+					error = 1;
+				}
+			}
+			else if(cardData[i][TYPE] == "ピース")
+			{
+				//CLASS
+				if(cardData[i][CLASS] != "")
+				{
+					error = 1;
+				}
+
+				//LEVEL
+				if(cardData[i][LEVEL] != "")
+				{
+					error = 1;
+				}
+
+				//COST
+				if(cardData[i][COST].indexOf("×") == -1)
+				{
+					error = 1;
+				}
+
+				//LIMIT
+				if(cardData[i][LIMIT] != "")
+				{
+					error = 1;
+				}
+
+				//POWER
+				if(cardData[i][POWER] != "")
+				{
+					error = 1;
+				}
+
+				//COIN
+				if(cardData[i][COIN] != "")
+				{
+					error = 1;
+				}
+
+				//TIMING
+				if(cardData[i][TIMING].indexOf("アタックフェイズ") == -1 &&
+					cardData[i][TIMING].indexOf("メインフェイズ") == -1
+					)
+				{
+					error = 1;
+				}
+
+				//LB
+				if(cardData[i][LB] != "")
+				{
+					error = 1;
+				}
+
+				//TEAM
+				if(cardData[i][TEAM] != "")
+				{
+					error = 1;
+				}
+
+				//JP_TEXT
+				if(cardData[i][JP_TEXT] == "")
+				{
+					error = 1;
+				}
+			}
+			else if(cardData[i][TYPE] == "シグニ")
+			{
+				//CLASS
+				error_tmp = 1;
+				for(j = 1; j < listType.options.length; j++)
+				{
+					if(cardData[i][CLASS].indexOf(listType.options[j].value) != -1)
+					{
+						error_tmp = 0;
+						break;
+					}
+				}
+
+				if(error_tmp)
+				{
+					error = 1;
+				}
+
+				//LEVEL
+				if(cardData[i][LEVEL] != "1" &&
+					cardData[i][LEVEL] != "2" &&
+					cardData[i][LEVEL] != "3")
+				{
+					error = 1;
+				}
+
+				//COST
+				if(cardData[i][COST] != "")
+				{
+					error = 1;
+				}
+
+				//LIMIT
+				if(cardData[i][LIMIT] != "" && cardData[i][ID] != "WXDi-P07-050")
+				{
+					error = 1;
+				}
+
+				//POWER
+				if(cardData[i][POWER] == "")
+				{
+					error = 1;
+				}
+
+				//COIN
+				if(cardData[i][COIN] != "")
+				{
+					error = 1;
+				}
+
+				//TIMING
+				if(cardData[i][TIMING] != "")
+				{
+					error = 1;
+				}
+
+				//LB
+				if(cardData[i][LB] != "0" &&
+					cardData[i][LB] != "1")
+				{
+					error = 1;
+				}
+
+				if(cardData[i][LB] == "1")
+				{
+					if(cardData[i][JP_TEXT].indexOf("【ライフバースト】：") == -1)
+					{
+						error = 1;
+					}
+				}
+
+				//TEAM
+				if(cardData[i][TEAM] != "")
+				{
+					error = 1;
+				}
+
+				//JP_TEXT
+				if(cardData[i][JP_TEXT] == "")
+				{
+					error = 1;
+				}
+			}
+			else if(cardData[i][TYPE] == "スペル")
+			{
+				
+				//CLASS
+				if(cardData[i][CLASS] != "")
+				{
+					error = 1;
+				}
+
+				//LEVEL
+				if(cardData[i][LEVEL] != "")
+				{
+					error = 1;
+				}
+
+				//COST
+				if(cardData[i][COST].indexOf("×") == -1)
+				{
+					error = 1;
+				}
+
+				//LIMIT
+				if(cardData[i][LIMIT] != "")
+				{
+					error = 1;
+				}
+
+				//POWER
+				if(cardData[i][POWER] != "")
+				{
+					error = 1;
+				}
+
+				//COIN
+				if(cardData[i][COIN] != "")
+				{
+					error = 1;
+				}
+
+				//TIMING
+				if(cardData[i][TIMING] != "")
+				{
+					error = 1;
+				}
+
+				//LB
+				if(cardData[i][LB] != "0" &&
+					cardData[i][LB] != "1")
+				{
+					error = 1;
+				}
+
+				if(cardData[i][LB] == "1")
+				{
+					if(cardData[i][JP_TEXT].indexOf("【ライフバースト】：") == -1)
+					{
+						error = 1;
+					}
+				}
+
+				//TEAM
+				if(cardData[i][TEAM] != "")
+				{
+					error = 1;
+				}
+
+				//JP_TEXT
+				if(cardData[i][JP_TEXT] == "")
+				{
+					error = 1;
+				}
+			}
+		}
+
+		//COLOR
+		error_tmp = 1;
+		for(j = 0; j < cardData[i][COLOR].length; j++)
+		{
+			if(cardData[i][COLOR].indexOf("赤", j) != -1)
+			{
+				error_tmp = 0;
+			}
+			else if(cardData[i][COLOR].indexOf("青", j) != -1)
+			{
+				error_tmp = 0;
+			}
+			else if(cardData[i][COLOR].indexOf("緑", j) != -1)
+			{
+				error_tmp = 0;
+			}
+			else if(cardData[i][COLOR].indexOf("黒", j) != -1)
+			{
+				error_tmp = 0;
+			}
+			else if(cardData[i][COLOR].indexOf("白", j) != -1)
+			{
+				error_tmp = 0;
+			}
+			else if(cardData[i][COLOR].indexOf("無", j) != -1)
+			{
+				error_tmp = 0;
+			}
+			else
+			{
+				error_tmp = 1;
+				break;
+			}
+		}
+		if(error_tmp)
+		{
+			error = 1;
 		}
 
 		if(error == 1)
