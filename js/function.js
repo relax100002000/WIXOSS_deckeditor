@@ -482,6 +482,18 @@ function showInfotable(data)
 		str += "	</td>";
 		str += "</tr>";
 
+		if(data[ID] == "WXDi-P07-050")
+		{
+			str += "<tr>";
+			str += "	<td>";
+			str += "		リミット";
+			str += "	</td>";
+			str += "	<td>";
+			str += data[LIMIT];
+			str += "	</td>";
+			str += "</tr>";
+		}
+
 		str += "<tr>";
 		str += "	<td>";
 		str += "		パワー";
