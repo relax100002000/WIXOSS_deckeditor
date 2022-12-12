@@ -1,7 +1,10 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
-
+  
+20221212 v0.24  
+1.新增WXDi-P10  
+  
 20221208 v0.23  
 1.新增WXDi-P09  
 2.修正21張卡  

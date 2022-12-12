@@ -1518,11 +1518,11 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221208 v0.23\n";
-	str += "1.新增WXDi-P09\n";
-	str += "2.修正21張卡\n";
+	str += "20221212 v0.24\n";
+	str += "1.新增WXDi-P10\n";
 	str += "\n";
 	str += "目前收錄:\n";
+	str += "-WXDi-P10\n";
 	str += "-WXDi-P09\n";
 	str += "-WXDi-P08\n";
 	str += "-WXDi-P07\n";
