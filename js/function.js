@@ -1075,7 +1075,7 @@ function downloadBlob(filename, contentType) {
     var sarray = [];
     var array = [];
     var i = 0;
-
+    dataInit();
     for(i = 0; i < ldeckArr.length; i++)
     {
     	larray.push(ldeckArr[i][ID]);
@@ -1180,6 +1180,8 @@ function readSingleFile(evt) {
     } else { 
       alert("Failed to load file");
     }
+
+    $("#fileinput").val("");
 }
 
 function loadcounter()
@@ -1233,7 +1235,7 @@ function search()
 
 		if($('#selectLRIG').val() != 0)
 		{
-			if(cardData[i][CLASS].indexOf($('#selectLRIG').val()) == -1)
+			if(cardData[i][CLASS] != $('#selectLRIG').val())
 			{
 				continue;
 			}
@@ -1521,10 +1523,10 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221213 v0.25\n";
-	str += "1.新增WXDi-P11\n";
-	str += "2.增加Craft\n";
-	str += "3.調整Craft搜索邏輯\n";
+	str += "20221213 v0.26\n";
+	str += "1.新增Clear Deck功能\n";
+	str += "2.修正複數次讀取牌組導致失效問題\n";
+	str += "3.修正只要LRIG搜尋關鍵字僅部分符合也會顯示問題\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "-WXDi-P11\n";
@@ -2317,4 +2319,29 @@ function checkDeck()
 	{
 		console.log("error");
 	}
+}
+
+function dataInit()
+{
+	sdeckArr = [];
+	pdeckArr = [];
+	ldeckArr = [];
+
+	sdeck_l1 = 0;
+	sdeck_l2 = 0;
+	sdeck_l3 = 0;
+	sdeck_spell = 0;
+
+	sdeck_red = 0;
+	sdeck_blue = 0;
+	sdeck_green = 0;
+	sdeck_black = 0;
+	sdeck_white = 0;
+	sdeck_nocolor = 0;
+
+	sdeck_burst = 0;
+	sdeck_no_burst = 0;
+	// sdeckArr
+
+	showAlldeck();
 }
