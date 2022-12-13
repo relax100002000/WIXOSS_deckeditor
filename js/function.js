@@ -1075,7 +1075,7 @@ function downloadBlob(filename, contentType) {
     var sarray = [];
     var array = [];
     var i = 0;
-    dataInit();
+
     for(i = 0; i < ldeckArr.length; i++)
     {
     	larray.push(ldeckArr[i][ID]);
@@ -1212,6 +1212,7 @@ function loadcounter()
 function search()
 {
 	var i = 0, j = 0;
+	var dataStr = "", searchStr = "", tmpStr = "";
 
 	rdeckArr = [];
 
@@ -1402,10 +1403,21 @@ function search()
 		{
 			for(j = 0; j < TW_TEXT + 1 ; j++)
 			{
-				if(cardData[i][j].indexOf($('#textsearch').val()) != -1)
+				dataStr = cardData[i][j].toUpperCase();
+				searchStr = $('#textsearch').val().toUpperCase();
+				if(dataStr.indexOf(searchStr) != -1)
 				{
 					rdeckArr.push(cardData[i]);
 					break;
+				}
+
+				if(searchStr.indexOf("コイン") != -1 || searchStr.indexOf("COIN") != -1)
+				{
+					if(dataStr.indexOf("◎") != -1)
+					{
+						rdeckArr.push(cardData[i]);
+						break;
+					}
 				}
 			}
 		}
@@ -1523,10 +1535,10 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221213 v0.26\n";
-	str += "1.新增Clear Deck功能\n";
-	str += "2.修正複數次讀取牌組導致失效問題\n";
-	str += "3.修正只要LRIG搜尋關鍵字僅部分符合也會顯示問題\n";
+	str += "20221214 v0.27\n";
+	str += "1.修正Download File會清空牌組問題\n";
+	str += "2.修正大小寫不同無法辨識問題\n";
+	str += "3.目前搜尋輸入COIN或コイン可以正確找到硬幣關鍵字\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "-WXDi-P11\n";

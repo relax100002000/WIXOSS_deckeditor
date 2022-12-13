@@ -1,6 +1,11 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
+
+20221214 v0.27  
+1.修正Download File會清空牌組問題 
+2.修正大小寫不同無法辨識問題  
+3.目前搜尋輸入COIN或コイン可以正確找到硬幣關鍵字  
   
 20221213 v0.26  
 1.新增Clear Deck功能  
