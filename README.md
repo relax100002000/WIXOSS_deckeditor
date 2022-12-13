@@ -2,6 +2,11 @@
    
 Author: ZZZ  
   
+20221212 v0.25  
+1.新增WXDi-P11  
+2.增加Craft  
+3.調整Craft搜索邏輯  
+  
 20221212 v0.24  
 1.新增WXDi-P10  
   
@@ -89,6 +94,9 @@ Author: ZZZ
 1.初版  
   
 目前收錄: 
+WXDi-P11  
+WXDi-P10  
+WXDi-P09  
 WXDi-P08  
 WXDi-P07  
 WXDi-P06  

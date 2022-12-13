@@ -426,7 +426,7 @@ function showInfotable(data)
 		str += "</tr>";
 	}
 
-	else if(data[TYPE] == "シグニ")
+	else if(data[TYPE] == "シグニ" || data[TYPE] == "シグニ クラフト" || data[TYPE] == "シグニ レゾナ/クラフト")
 	{
 		str += "<tr>";
 		str += "	<td width=\"115px\">";
@@ -1265,7 +1265,7 @@ function search()
 
 		if(!$('#signi').is(":checked"))
 		{
-			if(cardData[i][TYPE] == "シグニ")
+			if(cardData[i][TYPE] == "シグニ" || cardData[i][TYPE] == "シグニ クラフト" || cardData[i][TYPE] == "シグニ レゾナ/クラフト")
 			{
 				continue;
 			}
@@ -1426,6 +1426,9 @@ function uncheckall()
 {
 	$('#textsearch').val("");
 	$('input:checkbox').prop('checked', false);
+	$('#selectType').val(0);
+	$('#selectLRIG').val(0);
+	$('#selectProduct').val(0);
 }
 
 function str_to_img(x)
@@ -1518,10 +1521,13 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221212 v0.24\n";
-	str += "1.新增WXDi-P10\n";
+	str += "20221213 v0.25\n";
+	str += "1.新增WXDi-P11\n";
+	str += "2.增加Craft\n";
+	str += "3.調整Craft搜索邏輯\n";
 	str += "\n";
 	str += "目前收錄:\n";
+	str += "-WXDi-P11\n";
 	str += "-WXDi-P10\n";
 	str += "-WXDi-P09\n";
 	str += "-WXDi-P08\n";
@@ -1627,6 +1633,7 @@ function checkDeck()
 			cardData[i][RARE] != "R" &&
 			cardData[i][RARE] != "C" &&
 			cardData[i][RARE] != "PI" &&
+			cardData[i][RARE] != "TK" &&
 			cardData[i][RARE] != "L"
 			)
 		{
@@ -1638,6 +1645,8 @@ function checkDeck()
 			cardData[i][TYPE] != "アシストルリグ" &&
 			cardData[i][TYPE] != "ピース" &&
 			cardData[i][TYPE] != "シグニ" &&
+			cardData[i][TYPE] != "シグニ クラフト" &&
+			cardData[i][TYPE] != "シグニ レゾナ/クラフト" &&
 			cardData[i][TYPE] != "スペル"
 			)
 		{
@@ -1673,9 +1682,19 @@ function checkDeck()
 				}
 
 				//COST
-				if(cardData[i][COST].indexOf("×") == -1)
+				if(cardData[i][ID] == "WXDi-P11-010B")
 				{
-					error = 1;
+					if(cardData[i][COST] != "")
+					{
+						error = 1;
+					}
+				}
+				else
+				{
+					if(cardData[i][COST].indexOf("×") == -1)
+					{
+						error = 1;
+					}
 				}
 
 				//LIMIT
@@ -1702,9 +1721,26 @@ function checkDeck()
 				}
 				else if(cardData[i][LEVEL] == 3)
 				{
-					if(cardData[i][LIMIT] != 6)
+					if(cardData[i][ID] == "WXDi-P11-010B")
 					{
-						error = 1;
+						if(cardData[i][LIMIT] != 9)
+						{
+							error = 1;
+						}
+					}
+					else if(cardData[i][ID] == "WXDi-P11-010A")
+					{
+						if(cardData[i][LIMIT] != 5)
+						{
+							error = 1;
+						}
+					}
+					else
+					{
+						if(cardData[i][LIMIT] != 6)
+						{
+							error = 1;
+						}
 					}
 				}
 
@@ -2069,7 +2105,7 @@ function checkDeck()
 					error = 1;
 				}
 			}
-			else if(cardData[i][TYPE] == "シグニ")
+			else if(cardData[i][TYPE] == "シグニ" || cardData[i][TYPE] == "シグニ クラフト" || cardData[i][TYPE] == "シグニ レゾナ/クラフト")
 			{
 				//CLASS
 				error_tmp = 1;
