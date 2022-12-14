@@ -1,7 +1,10 @@
 # WIXOSS_deckeditor  
    
-Author: ZZZ  
-
+Author: ZZZ  PRカード
+  
+20221214 v0.28  
+1.新增PRカード  
+  
 20221214 v0.27  
 1.修正Download File會清空牌組問題 
 2.修正大小寫不同無法辨識問題  

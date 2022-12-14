@@ -40,6 +40,348 @@ const TW_TEXT = 16;
 
 var cardData = [
 	[
+		"PR-Di001", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di001.jpg", //SRC
+		"サーバント　#（GLOWING DIVA 10パック購入特典）", //NAME
+		"PR", //RARE
+		"シグニ", //TYPE
+		"奏元", //CLASS
+		"無", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"1000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【ガード】（このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ）<br><br>【常】：【マルチエナ】（エナコストを支払う際、このカードは好きな色１つとして支払える）<br><br>【ライフバースト】：あなたのトラッシュからシグニ１枚を対象とし、それを手札に加える。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di002", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di002.jpg", //SRC
+		"アト（WIXOSS LAND 事前登録キャンペーン）", //NAME
+		"PR", //RARE
+		"ルリグ", //TYPE
+		"アト", //CLASS
+		"緑", //COLOR
+		"0", //LEVEL
+		"《緑》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"アンシエント・サプライズ", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di003", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di003.jpg", //SRC
+		"奏救の鍵主　ウムル＝ノル（WIXOSS LAND フォロー＆RTキャンペーン）", //NAME
+		"PR", //RARE
+		"ルリグ", //TYPE
+		"ウムル", //CLASS
+		"青", //COLOR
+		"0", //LEVEL
+		"《青》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"アンシエント・サプライズ", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di004", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di004.jpg", //SRC
+		"欠片へ一歩　ヒラナ（コロコロアニキ2020年冬号 付録）", //NAME
+		"PR", //RARE
+		"ルリグ", //TYPE
+		"ヒラナ", //CLASS
+		"赤", //COLOR
+		"0", //LEVEL
+		"《赤》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"No Limit", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di005", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di005.jpg", //SRC
+		"ＥＮＤＬＥＳＳ－ＰＵＮＣＨＬＩＮＥ（カードゲーマーvol.56 付録）", //NAME
+		"PR", //RARE
+		"ピース", //TYPE
+		"", //CLASS
+		"白赤緑", //COLOR
+		"", //LEVEL
+		"《白》×０", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【使用条件】【チーム】＜Card Jockey＞＆全員レベル１以上<br><br>あなたのレベル３のルリグ１体を対象とし、ターン終了時まで、それは以下の能力を得る。<br>『【常】：このルリグはダウン状態でもアタックでき、１ターンにこのルリグがアタックできる上限は３になる。【自】（ターン１）：このルリグがアタックしたとき、あなたのデッキをシャッフルし一番上を公開する。そのカードがレベル１のシグニの場合、このターン、このルリグがアタックできる上限を２減らす。そのカードがレベル２のシグニの場合、このターン、このルリグがアタックできる上限を１減らす。』", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di006", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di006.jpg", //SRC
+		"Ｇｌｏｒｙ　Ｇｒｏｗ（カードゲーマーvol.57 付録）", //NAME
+		"PR", //RARE
+		"ピース", //TYPE
+		"", //CLASS
+		"赤白青", //COLOR
+		"", //LEVEL
+		"《赤》×０", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【使用条件】【チーム】＜No Limit＞＆全員レベル１以上<br><br>あなたのレベル３のルリグ１体を対象とし、ターン終了時まで、それは以下の能力を得る。<br>『【常】：【ダブルクラッシュ】（アタックによるダメージでライフクロスを２枚クラッシュする）【常】：対戦相手は【ガード】ができない。』", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di007", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di007.jpg", //SRC
+		"ウィーアー　ＷＩＸＯＳＳ！（コロコロアニキ2021年夏号 付録）", //NAME
+		"PR", //RARE
+		"ピース", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×０", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"対戦相手はあなたと握手をしてもよい。握手をした場合、各プレイヤーはカードを３枚引く。握手をしなかった場合、あなたはカードを１枚引き【エナチャージ１】をする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di008", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di008.jpg", //SRC
+		"リゼ　レベル０（「にじさんじ ANNIVERSARY FESTIVAL 2021」購入特典）", //NAME
+		"PR", //RARE
+		"ルリグ", //TYPE
+		"リゼ", //CLASS
+		"白", //COLOR
+		"0", //LEVEL
+		"《白》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"さんばか", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di009", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di009.jpg", //SRC
+		"サーバント　#（CHANGING DIVA 1BOX購入特典）", //NAME
+		"PR", //RARE
+		"シグニ", //TYPE
+		"奏元", //CLASS
+		"無", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"1000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【ガード】（このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ）<br><br>【常】：【マルチエナ】（エナコストを支払う際、このカードは好きな色１つとして支払える）<br><br>【ライフバースト】：あなたのトラッシュからシグニ１枚を対象とし、それを手札に加える。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di010", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di010.jpg", //SRC
+		"サーバント　#（ウィクロス ぶくぶタマ劇場 第２巻 付録）", //NAME
+		"PR", //RARE
+		"シグニ", //TYPE
+		"奏元", //CLASS
+		"無", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"1000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【ガード】（このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ）<br><br>【常】：【マルチエナ】（エナコストを支払う際、このカードは好きな色１つとして支払える）<br><br>【ライフバースト】：あなたのトラッシュからシグニ１枚を対象とし、それを手札に加える。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di011", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di011.jpg", //SRC
+		"ｓａｌｖａｇｅ　ｔｈｅ　ｆｕｔｕｒｅ（カードゲーマーvol.58 付録）", //NAME
+		"PR", //RARE
+		"ピース", //TYPE
+		"", //CLASS
+		"黒青緑", //COLOR
+		"", //LEVEL
+		"《黒》×０", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"【使用条件】【チーム】＜DIAGRAM＞＆全員レベル１以上<br><br>あなたのレベル３のルリグ１体を対象とし、ターン終了時まで、それは以下の能力を得る。<br>『【自】：このルリグがアタックしたとき、以下の２つから１つを選ぶ。<br>①対戦相手のデッキの上からカードを１５枚トラッシュに置く。<br>②あなたのトラッシュから[ガード]を持たないシグニを３枚まで対象とし、それらを手札に加える。』", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di012", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di012.jpg", //SRC
+		"ゼノ・クラスタ（「ディーヴァグランプリ 2021」上位入賞者景品）", //NAME
+		"PR", //RARE
+		"ピース", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×０", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"（ピースはあなたの場にルリグが３体いると使用できる）<br><br>以下の２つから１つを選ぶ。<br>①カードを１枚引く。このターンに対戦相手の効果によってあなたの手札からカードが１枚以上トラッシュに移動していた場合、代わりにカードを３枚引く。<br>②【エナチャージ１】をする。このターンに対戦相手の効果によってあなたのエナゾーンからカードが１枚以上トラッシュに移動していた場合、代わりに【エナチャージ３】をする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di013", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di013.jpg", //SRC
+		"飛躍する蓄積（「WIXOSS DIVA(A)LIVE TRY!!!」 付録）", //NAME
+		"PR", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×０", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"このスペルを使用する際、使用コストとして追加でエクシード４を支払ってもよい。<br><br>以下の３つから１つを選ぶ。ターン終了時まで、あなたのセンタールリグは選んだ能力を得る。追加でエクシード４を支払っていた場合、代わりに２つ選ぶ。<br>①「【自】（ターン１）：このルリグがアタックしたとき、カードを１枚引く。」<br>②「【自】（ターン１）：このルリグがアタックしたとき、【エナチャージ１】をする。」<br>③「【自】（ターン１）：このルリグがアタックしたとき、対戦相手のシグニ１体を対象とし、それをトラッシュに置く。」", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di014", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di014.jpg", //SRC
+		"新月の巫女　タマヨリヒメ（カードゲーマーvol.60 付録）", //NAME
+		"PR", //RARE
+		"ルリグ", //TYPE
+		"タマ", //CLASS
+		"白", //COLOR
+		"0", //LEVEL
+		"《白》×０", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di016", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di016.jpg", //SRC
+		"サーバント　#（リルデザイン）", //NAME
+		"PR", //RARE
+		"シグニ", //TYPE
+		"奏元", //CLASS
+		"無", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"1000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【ガード】（このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ）<br><br>【常】：【マルチエナ】（エナコストを支払う際、このカードは好きな色１つとして支払える）<br><br>【ライフバースト】：あなたのトラッシュからシグニ１枚を対象とし、それを手札に加える。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di017A", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di017A.jpg", //SRC
+		"白熱する黒白", //NAME
+		"PR", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×2", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"カードを２枚引く。その後、あなたのライフクロスが１枚以下の場合、チェックゾーンにあるこのカードを裏返して《ＲＥＶ：アンコーリング》を場に出す。（場に出せなかった場合はトラッシュに置く）", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di017B", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di017B.jpg", //SRC
+		"REV:アンコーリング", //NAME
+		"PR", //RARE
+		"シグニ", //TYPE
+		"奏元", //CLASS
+		"無", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"（場以外の領域にあるかぎり、このカードは《白熱する黒白》である。このカードが場を離れると《白熱する黒白》に戻る）<br><br>【自】：あなたのアタックフェイズ開始時、対戦相手のシグニ１体を対象とし、手札を３枚捨ててもよい。そうした場合、それをトラッシュに置く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di018", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di018.jpg", //SRC
+		"サーバント　#（夢川ゆいver.）", //NAME
+		"PR", //RARE
+		"シグニ", //TYPE
+		"奏元", //CLASS
+		"無", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"1000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"【ガード】（このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ）<br><br>【常】：【マルチエナ】（エナコストを支払う際、このカードは好きな色１つとして支払える）<br><br>【ライフバースト】：あなたのトラッシュからシグニ１枚を対象とし、それを手札に加える。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
 		"WXDi-D01-001", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D01-001.jpg", //SRC
 		"紡ぎし扉　アト＝ノル", //NAME

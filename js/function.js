@@ -1535,10 +1535,8 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221214 v0.27\n";
-	str += "1.修正Download File會清空牌組問題\n";
-	str += "2.修正大小寫不同無法辨識問題\n";
-	str += "3.目前搜尋輸入COIN或コイン可以正確找到硬幣關鍵字\n";
+	str += "20221214 v0.28\n";
+	str += "1.新增PRカード\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "-WXDi-P11\n";
@@ -1561,6 +1559,7 @@ function showVersion()
 	str += "-WXDi-P00\n";
 	str += "-WXDi-D02\n";
 	str += "-WXDi-D01\n";
+	str += "-PRカード\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-改善Spell排序邏輯\n";
@@ -1625,18 +1624,21 @@ function checkDeck()
 		if(error_tmp)
 		{
 			error = 1;
+			console.log("ID");
 		}
 
 		//SRC
 		if(cardData[i][SRC].indexOf("https://") == -1 || cardData[i][SRC].indexOf(cardData[i][ID]) == -1)
 		{
 			error = 1;
+			console.log("SRC");
 		}
 
 		//NAME
 		if(cardData[i][NAME] == "")
 		{
 			error = 1;
+			console.log("NAME");
 		}
 
 		//RARE
@@ -1648,10 +1650,12 @@ function checkDeck()
 			cardData[i][RARE] != "C" &&
 			cardData[i][RARE] != "PI" &&
 			cardData[i][RARE] != "TK" &&
+			cardData[i][RARE] != "PR" &&
 			cardData[i][RARE] != "L"
 			)
 		{
 			error = 1;
+			console.log("RARE");
 		}
 
 		//TYPE
@@ -1665,6 +1669,7 @@ function checkDeck()
 			)
 		{
 			error = 1;
+			console.log("TYPE");
 		}
 		else
 		{
@@ -1684,6 +1689,7 @@ function checkDeck()
 				if(error_tmp)
 				{
 					error = 1;
+					console.log("CLASS");
 				}
 
 				//LEVEL
@@ -1693,6 +1699,7 @@ function checkDeck()
 					cardData[i][LEVEL] != "3")
 				{
 					error = 1;
+					console.log("LEVEL");
 				}
 
 				//COST
@@ -1701,6 +1708,7 @@ function checkDeck()
 					if(cardData[i][COST] != "")
 					{
 						error = 1;
+						console.log("COST");
 					}
 				}
 				else
@@ -1708,6 +1716,7 @@ function checkDeck()
 					if(cardData[i][COST].indexOf("×") == -1)
 					{
 						error = 1;
+						console.log("COST");
 					}
 				}
 
@@ -1717,6 +1726,7 @@ function checkDeck()
 					if(cardData[i][LIMIT] != 0)
 					{
 						error = 1;
+						console.log("LIMIT");
 					}
 				}
 				else if(cardData[i][LEVEL] == 1)
@@ -1724,6 +1734,7 @@ function checkDeck()
 					if(cardData[i][LIMIT] != 2)
 					{
 						error = 1;
+						console.log("LIMIT");
 					}
 				}
 				else if(cardData[i][LEVEL] == 2)
@@ -1731,6 +1742,7 @@ function checkDeck()
 					if(cardData[i][LIMIT] != 5)
 					{
 						error = 1;
+						console.log("LIMIT");
 					}
 				}
 				else if(cardData[i][LEVEL] == 3)
@@ -1740,6 +1752,7 @@ function checkDeck()
 						if(cardData[i][LIMIT] != 9)
 						{
 							error = 1;
+							console.log("LIMIT");
 						}
 					}
 					else if(cardData[i][ID] == "WXDi-P11-010A")
@@ -1747,6 +1760,7 @@ function checkDeck()
 						if(cardData[i][LIMIT] != 5)
 						{
 							error = 1;
+							console.log("LIMIT");
 						}
 					}
 					else
@@ -1754,6 +1768,7 @@ function checkDeck()
 						if(cardData[i][LIMIT] != 6)
 						{
 							error = 1;
+							console.log("LIMIT");
 						}
 					}
 				}
@@ -1762,6 +1777,7 @@ function checkDeck()
 				if(cardData[i][POWER] != "")
 				{
 					error = 1;
+					console.log("POWER");
 				}
 
 				//COIN
@@ -1781,6 +1797,7 @@ function checkDeck()
 						if(cardData[i][COIN] == "")
 						{
 							error = 1;
+							console.log("COIN");
 						}
 					}
 				}
@@ -1789,6 +1806,7 @@ function checkDeck()
 					if(cardData[i][COIN] != "")
 					{
 						error = 1;
+						console.log("COIN");
 					}
 				}
 
@@ -1796,12 +1814,14 @@ function checkDeck()
 				if(cardData[i][TIMING] != "")
 				{
 					error = 1;
+					console.log("TIMING");
 				}
 
 				//LB
 				if(cardData[i][LB] != "")
 				{
 					error = 1;
+					console.log("LB");
 				}
 
 				//TEAM
@@ -1813,6 +1833,7 @@ function checkDeck()
 					if(cardData[i][TEAM] != "アンシエント・サプライズ")
 					{
 						error = 1;
+						console.log("TEAM");
 					}
 				}
 				else if(cardData[i][CLASS] == "リゼ" ||
@@ -1823,6 +1844,7 @@ function checkDeck()
 					if(cardData[i][TEAM] != "さんばか")
 					{
 						error = 1;
+						console.log("TEAM");
 					}
 				}
 				else if(cardData[i][CLASS] == "ヒラナ" ||
@@ -1833,6 +1855,7 @@ function checkDeck()
 					if(cardData[i][TEAM] != "No Limit")
 					{
 						error = 1;
+						console.log("TEAM");
 					}
 				}
 				else if(cardData[i][CLASS] == "LION" ||
@@ -1843,6 +1866,7 @@ function checkDeck()
 					if(cardData[i][TEAM] != "Card Jockey")
 					{
 						error = 1;
+						console.log("TEAM");
 					}
 				}
 				else if(cardData[i][CLASS] == "タマゴ" ||
@@ -1853,6 +1877,7 @@ function checkDeck()
 					if(cardData[i][TEAM] != "うちゅうのはじまり")
 					{
 						error = 1;
+						console.log("TEAM");
 					}
 				}
 				else if(cardData[i][CLASS] == "ムジカ" ||
@@ -1863,6 +1888,7 @@ function checkDeck()
 					if(cardData[i][TEAM] != "DIAGRAM")
 					{
 						error = 1;
+						console.log("TEAM");
 					}
 				}
 				else if(cardData[i][CLASS] == "エクス" ||
@@ -1873,6 +1899,7 @@ function checkDeck()
 					if(cardData[i][TEAM] != "デウス・エクス・マキナ")
 					{
 						error = 1;
+						console.log("TEAM");
 					}
 				}
 				else if(cardData[i][CLASS] == "みこみこ" ||
@@ -1883,6 +1910,7 @@ function checkDeck()
 					if(cardData[i][TEAM] != "きゅるきゅるーん☆")
 					{
 						error = 1;
+						console.log("TEAM");
 					}
 				}
 				else
@@ -1890,6 +1918,7 @@ function checkDeck()
 					if(cardData[i][TEAM] != "")
 					{
 						error = 1;
+						console.log("TEAM");
 					}
 				}
 			}
@@ -1909,6 +1938,7 @@ function checkDeck()
 				if(error_tmp)
 				{
 					error = 1;
+					console.log("CLASS");
 				}
 
 				//LEVEL
