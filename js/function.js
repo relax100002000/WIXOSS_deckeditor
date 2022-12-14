@@ -69,7 +69,14 @@ function showrdeck()
 	}
 	else
 	{
-		$("#page").html("(" + parseInt(page + 1) + " / " + parseInt((rdeckArr.length / 10) + 1) + ")");
+		if(rdeckArr.length % 10 != 0)
+		{
+			$("#page").html("(" + parseInt(page + 1) + " / " + parseInt((rdeckArr.length / 10) + 1) + ")");
+		}
+		else
+		{
+			$("#page").html("(" + parseInt(page + 1) + " / " + parseInt(rdeckArr.length / 10) + ")");
+		}
 	}
 }
 
@@ -2411,7 +2418,14 @@ function changePage(x)
 		}
 		else
 		{
-			page = parseInt(rdeckArr.length / 10);
+			if(rdeckArr.length % 10 != 0)
+			{
+				page = parseInt(rdeckArr.length / 10);
+			}
+			else
+			{
+				page = parseInt(rdeckArr.length / 10 - 1);
+			}
 		}
 	}
 	else
