@@ -1,6 +1,6 @@
 # WIXOSS_deckeditor  
    
-Author: ZZZ  PRカード
+Author: ZZZ  
   
 20221214 v0.28  
 1.新增PRカード  
