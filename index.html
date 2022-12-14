@@ -375,6 +375,8 @@
 				   </select>
 				   <br><br>
 				   <button onclick="search();">Search</button>&emsp;&emsp;<button onclick="checkall();">Select All</button>&emsp;&emsp;<button onclick="uncheckall();">Clear All</button>
+				   <br><br>
+				   Total: <span id="totalCard" style="cursor: default;">1111</span>
 				</td>
 			</tr>
 			<tr>
@@ -451,14 +453,14 @@
 					<table>
 						<tr>
 							<td >
-								Card list
+								Card list     <span style="cursor: default;" id="page"></span>
 							</td>
 						</tr>
 						<tr>
 							<table>
 								<tr>
 									<td rowspan="2">
-										<img id="larrow" height="172px" src="img/larrow.png" onclick="if(page != 0)page--;showrdeck();">
+										<img id="larrow" height="172px" src="img/larrow.png" onclick="changePage('back')">
 									</td>
 									<td style="height: 180px;vertical-align: bottom;">
 										<img id="rdeck_0" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
@@ -468,7 +470,7 @@
 										<img id="rdeck_4" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
 									</td>
 									<td rowspan="2">
-										<img id="rarrow" height="172px" src="img/rarrow.png" onclick="if((page + 1) * 10 < rdeckArr.length)page++;showrdeck();">
+										<img id="rarrow" height="172px" src="img/rarrow.png" onclick="changePage('next')">
 									</td>
 								</tr>
 								<tr>

@@ -61,6 +61,16 @@ function showrdeck()
 			$("#rdeck_" + i).attr("alt", "");
 		}
 	}
+
+	$("#totalCard").html(rdeckArr.length);
+	if(rdeckArr.length == 0)
+	{
+		$("#page").html("");
+	}
+	else
+	{
+		$("#page").html("(" + parseInt(page + 1) + " / " + parseInt((rdeckArr.length / 10) + 1) + ")");
+	}
 }
 
 function onmouseShow(x)
@@ -1535,8 +1545,10 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221214 v0.29\n";
-	str += "1.新增WXDi-D09\n";
+	str += "20221214 v1.00\n";
+	str += "1.顯示搜尋總卡數\n";
+	str += "2.顯示當前頁數與總頁數  \n";
+	str += "3.新循環翻頁功能 \n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "-WXDi-D09\n";
@@ -2387,4 +2399,32 @@ function dataInit()
 	// sdeckArr
 
 	showAlldeck();
+}
+
+function changePage(x)
+{
+	if(x == "back")
+	{
+		if(page != 0)
+		{
+			page--;
+		}
+		else
+		{
+			page = parseInt(rdeckArr.length / 10);
+		}
+	}
+	else
+	{
+		if((page + 1) * 10 < rdeckArr.length)
+		{
+			page++;
+		}
+		else
+		{
+			page = 0;
+		}
+	}
+
+	showrdeck();
 }
