@@ -11,6 +11,12 @@ function onLoading()
 
 	document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
 	showInfotable("init");
+
+	$("#textsearch").keydown(function(event) {
+    if(event.keyCode == 13){
+        search();
+    };
+});
 }
 
 function showrdeck()
@@ -2410,6 +2416,10 @@ function dataInit()
 
 function changePage(x)
 {
+	if(rdeckArr.length <= 10)
+	{
+		return;
+	}
 	if(x == "back")
 	{
 		if(page != 0)
