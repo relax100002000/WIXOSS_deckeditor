@@ -251,7 +251,16 @@ function showInfotable(data)
 
 		str += "<tr>";
 		str += "	<td colspan=\"2\">";
-		str += str_to_img(data[JP_TEXT]);
+
+		if($('#selectLang').val() == "TW" && data[TW_TEXT] != "")
+		{
+			str += str_to_img(data[TW_TEXT]);
+		}
+		else
+		{
+			str += str_to_img(data[JP_TEXT]);
+		}
+
 		str += "	</td>";
 		str += "</tr>";
 	}
@@ -343,7 +352,16 @@ function showInfotable(data)
 
 		str += "<tr>";
 		str += "	<td colspan=\"2\">";
-		str += str_to_img(data[JP_TEXT]);
+
+		if($('#selectLang').val() == "TW" && data[TW_TEXT] != "")
+		{
+			str += str_to_img(data[TW_TEXT]);
+		}
+		else
+		{
+			str += str_to_img(data[JP_TEXT]);
+		}
+
 		str += "	</td>";
 		str += "</tr>";
 	}
@@ -444,7 +462,16 @@ function showInfotable(data)
 
 		str += "<tr>";
 		str += "	<td colspan=\"2\">";
-		str += str_to_img(data[JP_TEXT]);
+		
+		if($('#selectLang').val() == "TW" && data[TW_TEXT] != "")
+		{
+			str += str_to_img(data[TW_TEXT]);
+		}
+		else
+		{
+			str += str_to_img(data[JP_TEXT]);
+		}
+
 		str += "	</td>";
 		str += "</tr>";
 	}
@@ -528,7 +555,16 @@ function showInfotable(data)
 
 		str += "<tr>";
 		str += "	<td colspan=\"2\">";
-		str += str_to_img(data[JP_TEXT]);
+		
+		if($('#selectLang').val() == "TW" && data[TW_TEXT] != "")
+		{
+			str += str_to_img(data[TW_TEXT]);
+		}
+		else
+		{
+			str += str_to_img(data[JP_TEXT]);
+		}
+
 		str += "	</td>";
 		str += "</tr>";
 	}
@@ -582,7 +618,16 @@ function showInfotable(data)
 
 		str += "<tr>";
 		str += "	<td colspan=\"2\">";
-		str += str_to_img(data[JP_TEXT]);
+		
+		if($('#selectLang').val() == "TW" && data[TW_TEXT] != "")
+		{
+			str += str_to_img(data[TW_TEXT]);
+		}
+		else
+		{
+			str += str_to_img(data[JP_TEXT]);
+		}
+
 		str += "	</td>";
 		str += "</tr>";
 	}
@@ -1558,10 +1603,9 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221214 v1.00\n";
-	str += "1.顯示搜尋總卡數\n";
-	str += "2.顯示當前頁數與總頁數  \n";
-	str += "3.新循環翻頁功能 \n";
+	str += "20221215 v1.01\n";
+	str += "1.新增WXDi-D01中文效果\n";
+	str += "2.新增WXDi-D02中文效果\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "-WXDi-D09\n";
@@ -1583,8 +1627,8 @@ function showVersion()
 	str += "-WXDi-D04\n";
 	str += "-WXDi-D03\n";
 	str += "-WXDi-P00\n";
-	str += "-WXDi-D02\n";
-	str += "-WXDi-D01\n";
+	str += "-WXDi-D02(中)\n";
+	str += "-WXDi-D01(中)\n";
 	str += "-PRカード\n";
 	str += "\n";
 	str += "預計更新:\n";
