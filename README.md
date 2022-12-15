@@ -2,6 +2,10 @@
    
 Author: ZZZ  
   
+20221215 v1.02  
+1.新增WXDi-D03 ~ WXDi-D06中文效果  
+2.新增WXDi-P00中文效果  
+
 20221215 v1.01  
 1.新增WXDi-D01中文效果  
 2.新增WXDi-D02中文效果  
@@ -114,32 +118,17 @@ Author: ZZZ
 1.初版  
   
 目前收錄: 
-WXDi-P11  
-WXDi-P10  
-WXDi-P09  
-WXDi-P08  
-WXDi-P07  
-WXDi-P06  
-WXDi-D08  
-WXDi-P05  
-WXDi-P04  
-WXDi-D07  
-WXDi-P03  
-WXDi-P02  
-WXDi-P01  
-WXDi-D06  
-WXDi-D05  
-WXDi-D04  
-WXDi-D03  
+WXDi-P00 ~ WXDi-P11  
+WXDi-D01 ~ WXDi-D09  
+PRカード  
+  
+中文效果:
 WXDi-P00  
-WXDi-D02  
-WXDi-D01  
+WXDi-D01 ~ WXDi-D06  
   
 預計更新:  
--改善Spell排序邏輯
--讓環圈圖大小一致  
--增加備牌區  
+-改善Spell排序邏輯  
 -增加中文效果  
 -增加自訂義排序  
 -補充關於說明  
--增加SP  
+-全半形統一  

@@ -657,8 +657,21 @@ function showTiming(x)
 		{
 			str += "<br>";
 		}
-
-		str += tmpArr[i];
+		if($("#selectLang").val() == "TW")
+		{
+			if(tmpArr[i] == "メインフェイズ")
+			{
+				str += "主要階段";
+			}
+			else if(tmpArr[i] == "アタックフェイズ")
+			{
+				str += "攻擊階段";
+			}
+		}
+		else
+		{
+			str += tmpArr[i];
+		}
 	}
 	
 	return str;
@@ -1603,42 +1616,25 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221215 v1.01\n";
+	str += "20221215 v1.02\n";
 	str += "1.新增WXDi-D01中文效果\n";
 	str += "2.新增WXDi-D02中文效果\n";
 	str += "\n";
 	str += "目前收錄:\n";
-	str += "-WXDi-D09\n";
-	str += "-WXDi-P11\n";
-	str += "-WXDi-P10\n";
-	str += "-WXDi-P09\n";
-	str += "-WXDi-P08\n";
-	str += "-WXDi-P07\n";
-	str += "-WXDi-P06\n";
-	str += "-WXDi-D08\n";
-	str += "-WXDi-P05\n";
-	str += "-WXDi-P04\n";
-	str += "-WXDi-D07\n";
-	str += "-WXDi-P03\n";
-	str += "-WXDi-P02\n";
-	str += "-WXDi-P01\n";
-	str += "-WXDi-D06\n";
-	str += "-WXDi-D05\n";
-	str += "-WXDi-D04\n";
-	str += "-WXDi-D03\n";
-	str += "-WXDi-P00\n";
-	str += "-WXDi-D02(中)\n";
-	str += "-WXDi-D01(中)\n";
-	str += "-PRカード\n";
+	str += "WXDi-P00 ~ WXDi-P11\n";
+	str += "WXDi-D01 ~ WXDi-D09\n";
+	str += "PRカード\n";
+	str += "\n";
+	str += "中文效果:\n";
+	str += "WXDi-P00\n";
+	str += "WXDi-D01 ~ WXDi-D06\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-改善Spell排序邏輯\n";
-	str += "-讓環圈圖大小一致\n";
-	str += "-增加備牌區\n";
 	str += "-增加中文效果\n";
 	str += "-增加自訂義排序\n";
 	str += "-補充關於說明\n";
-	str += "-增加SP\n";
+	str += "-全半形統一\n";
 	
 	alert(str);
 }
