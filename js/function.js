@@ -1617,8 +1617,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "\n";
 	str += "20221215 v1.02\n";
-	str += "1.新增WXDi-D01中文效果\n";
-	str += "2.新增WXDi-D02中文效果\n";
+	str += "1.新增WXDi-D03 ~ WXDi-D06中文效果\n";
+	str += "2.新增WXDi-P00中文效果\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-P00 ~ WXDi-P11\n";
