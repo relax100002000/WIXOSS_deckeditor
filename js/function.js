@@ -667,6 +667,10 @@ function showTiming(x)
 			{
 				str += "攻擊階段";
 			}
+			else if(tmpArr[i] == "スペルカットイン")
+			{
+				str += "魔法切入";
+			}
 		}
 		else
 		{
@@ -1616,9 +1620,9 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221215 v1.02\n";
-	str += "1.新增WXDi-D03 ~ WXDi-D06中文效果\n";
-	str += "2.新增WXDi-P00中文效果\n";
+	str += "20221216 v1.03\n";
+	str += "1.新增WXDi-P01中文效果\n";
+	str += "2.新增WXDi-P02中文效果\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-P00 ~ WXDi-P11\n";
@@ -1626,11 +1630,11 @@ function showVersion()
 	str += "PRカード\n";
 	str += "\n";
 	str += "中文效果:\n";
-	str += "WXDi-P00\n";
+	str += "WXDi-P01 ~ WXDi-P02\n";
 	str += "WXDi-D01 ~ WXDi-D06\n";
 	str += "\n";
 	str += "預計更新:\n";
-	str += "-改善Spell排序邏輯\n";
+	str += "-改善排序邏輯\n";
 	str += "-增加中文效果\n";
 	str += "-增加自訂義排序\n";
 	str += "-補充關於說明\n";
