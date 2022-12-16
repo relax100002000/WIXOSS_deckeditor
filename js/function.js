@@ -45,7 +45,7 @@ function showrdeck()
 			$("#rdeck_" + i).attr("src", rdeckArr[page * 10 + i][SRC]);
 			$("#rdeck_" + i).attr("alt", rdeckArr[page * 10 + i][ID]);
 
-			if(rdeckArr[page * 10 + i][TYPE] == "ピース")
+			if(rdeckArr[page * 10 + i][TYPE] == "ピース" || rdeckArr[page * 10 + i][TYPE] == "ピース リレー")
 			{
 				$("#rdeck_" + i).attr("height", "90px");
 				$("#rdeck_" + i).attr("width", "124px");
@@ -106,7 +106,7 @@ function onmouseShow(x)
 
 		$("#big_pic").attr("src", cardData[i][SRC]);
 
-		if(cardData[i][TYPE] == "ピース")
+		if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー")
 		{
 			$("#big_pic").attr("height", "252px");
 			$("#big_pic").attr("width", "360px");
@@ -193,7 +193,7 @@ function showInfotable(data)
 		str += "	</td>";
 		str += "</tr>";
 	}
-	else if(data[TYPE] == "ピース")
+	else if(data[TYPE] == "ピース" || data[TYPE] == "ピース リレー")
 	{
 		str += "<tr>";
 		str += "	<td width=\"115px\">";
@@ -1133,7 +1133,7 @@ function addDeck(x)
 						sortLdeck(cardData[i]);
 					}
 				}
-				else if(cardData[i][TYPE] == "ピース")
+				else if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー")
 				{
 					if(pdeckArr.length < 2)
 					{
@@ -1345,7 +1345,7 @@ function search()
 
 		if(!$('#piece').is(":checked"))
 		{
-			if(cardData[i][TYPE] == "ピース")
+			if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー")
 			{
 				continue;
 			}
@@ -1534,6 +1534,7 @@ function str_to_img(x)
 {
 	x = x.replace(/【使用条件】/g, "<img class='icon_img' src='img/icon_txt_terms_use.png'></img>");
 	x = x.replace(/【チーム】/g, "<img class='icon_img' src='img/icon_txt_team.png'></img>");
+	x = x.replace(/【ドリームチーム】/g, "<img class='icon_img' src='img/icon_txt_dreamteam.png'></img>");
 	x = x.replace(/【ライフバースト】/g, "<img class='icon_img' src='img/icon_txt_burst.png'></img>");
 	x = x.replace(/【ライズ】/g, "<img class='icon_img' src='img/icon_txt_rise_01.png'></img>");
 	x = x.replace(/【ハーモニー】/g, "<img class='icon_img' src='img/icon_txt_harmony.png'></img>");
@@ -1620,11 +1621,12 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221216 v1.03\n";
-	str += "1.新增WXDi-P01中文效果\n";
-	str += "2.新增WXDi-P02中文效果\n";
+	str += "20221216 v1.04\n";
+	str += "1.新增WXDi-CP01\n";
+	str += "2.補上Dream Team icon\n";
 	str += "\n";
 	str += "目前收錄:\n";
+	str += "WXDi-CP01\n";
 	str += "WXDi-P00 ~ WXDi-P11\n";
 	str += "WXDi-D01 ~ WXDi-D09\n";
 	str += "PRカード\n";
@@ -1721,6 +1723,7 @@ function checkDeck()
 			cardData[i][RARE] != "PI" &&
 			cardData[i][RARE] != "TK" &&
 			cardData[i][RARE] != "PR" &&
+			cardData[i][RARE] != "Re" &&
 			cardData[i][RARE] != "L"
 			)
 		{
@@ -1732,6 +1735,7 @@ function checkDeck()
 		if(cardData[i][TYPE] != "ルリグ" &&
 			cardData[i][TYPE] != "アシストルリグ" &&
 			cardData[i][TYPE] != "ピース" &&
+			cardData[i][TYPE] != "ピース リレー" &&
 			cardData[i][TYPE] != "シグニ" &&
 			cardData[i][TYPE] != "シグニ クラフト" &&
 			cardData[i][TYPE] != "シグニ レゾナ/クラフト" &&
@@ -2016,12 +2020,14 @@ function checkDeck()
 					cardData[i][LEVEL] != "2")
 				{
 					error = 1;
+					console.log("LEVEL");
 				}
 
 				//COST
 				if(cardData[i][COST].indexOf("×") == -1)
 				{
 					error = 1;
+					console.log("COST");
 				}
 
 				//LIMIT
@@ -2030,6 +2036,7 @@ function checkDeck()
 					if(cardData[i][LIMIT] != 0)
 					{
 						error = 1;
+						console.log("LIMIT");
 					}
 				}
 				else if(cardData[i][LEVEL] == 2)
@@ -2037,6 +2044,7 @@ function checkDeck()
 					if(cardData[i][LIMIT] != 1)
 					{
 						error = 1;
+						console.log("LIMIT");
 					}
 				}
 
@@ -2044,6 +2052,7 @@ function checkDeck()
 				if(cardData[i][POWER] != "")
 				{
 					error = 1;
+					console.log("POWER");
 				}
 
 				//TIMING
@@ -2052,12 +2061,14 @@ function checkDeck()
 					)
 				{
 					error = 1;
+					console.log("TIMING");
 				}
 
 				//LB
 				if(cardData[i][LB] != "")
 				{
 					error = 1;
+					console.log("LB");
 				}
 
 				//TEAM
@@ -2069,6 +2080,7 @@ function checkDeck()
 					if(cardData[i][TEAM] != "アンシエント・サプライズ")
 					{
 						error = 1;
+						console.log("TEAM");
 					}
 				}
 				else if(cardData[i][CLASS] == "リゼ" ||
@@ -2079,6 +2091,7 @@ function checkDeck()
 					if(cardData[i][TEAM] != "さんばか")
 					{
 						error = 1;
+						console.log("TEAM");
 					}
 				}
 				else if(cardData[i][CLASS] == "ヒラナ" ||
@@ -2089,6 +2102,7 @@ function checkDeck()
 					if(cardData[i][TEAM] != "No Limit")
 					{
 						error = 1;
+						console.log("TEAM");
 					}
 				}
 				else if(cardData[i][CLASS] == "LION" ||
@@ -2099,6 +2113,7 @@ function checkDeck()
 					if(cardData[i][TEAM] != "Card Jockey")
 					{
 						error = 1;
+						console.log("TEAM");
 					}
 				}
 				else if(cardData[i][CLASS] == "タマゴ" ||
@@ -2155,7 +2170,7 @@ function checkDeck()
 					error = 1;
 				}
 			}
-			else if(cardData[i][TYPE] == "ピース")
+			else if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー")
 			{
 				//CLASS
 				if(cardData[i][CLASS] != "")

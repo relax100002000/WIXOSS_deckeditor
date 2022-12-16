@@ -2,6 +2,10 @@
    
 Author: ZZZ  
   
+20221216 v1.04  
+1.新增WXDi-CP01  
+2.補上Dream Team icon
+  
 20221216 v1.03  
 1.新增WXDi-P01中文效果  
 2.新增WXDi-P02中文效果  
@@ -122,6 +126,7 @@ Author: ZZZ
 1.初版  
   
 目前收錄: 
+WXDi-CP01  
 WXDi-P00 ~ WXDi-P11  
 WXDi-D01 ~ WXDi-D09  
 PRカード  
