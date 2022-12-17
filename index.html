@@ -27,8 +27,21 @@
 		}
 		* {
 			font-size: 16px;
+			font-family:sans-serif;;
 		}
-		button {
+
+		input[type="file"] {
+		    position: absolute;
+		    width: 1px;
+		    height: 1px;
+		    padding: 0;
+		    margin: -1px;
+		    overflow: hidden;
+		    clip: rect(0,0,0,0);
+		    border: 0;
+		}
+
+		button ,.custom-file-upload{
 			height: 50px;
 			background-color: white; /* Green */
 			border: none;
@@ -47,10 +60,58 @@
 			width: 200px !important;
 			height: 200px !important;
 		}
+		#show_leveldiv {
+			width: 230px;
+			height: 230px;
+		}
+		#show_colordiv {
+			width: 230px;
+			height: 230px;
+		}
+		#show_lbdiv {
+			width: 230px;
+			height: 230px;
+		}
 		span, input[type='checkbox'] {
 			user-select: none;
 			cursor: pointer;
 		}
+
+		#window-container, #window-container-list{
+	    display: none;
+	    position: fixed;
+	    left: 0;
+	    top: 0;
+	    width: 100%;
+	    height: 100%;
+	    background-color: rgba(0,0,0,0.5);
+	}
+	       
+	#window-pop{
+	    background: white;
+	    z-index: 1;
+        margin: 3% 4% 4% 4%;
+	    overflow: auto;
+	    border-radius: 20px;
+	}
+
+	#window-pop-list{
+	    background: white;
+	    z-index: 1;
+        margin: 50px 20%;
+	    overflow: auto;
+	    border-radius: 20px;
+	}
+	        
+	.window-content {
+	    margin: 30px;
+	}
+
+	span {
+	    display: inline-block;
+	    vertical-align: middle;
+	    line-height: normal;
+	}
 	</style>
 	<body>
 		<script>
@@ -79,6 +140,35 @@
 				onLoading();
 				showrdeck();
 			});
+
+			function customizeWindowEvent(x) {
+				if(x == "view")
+				{
+	            	var popup_window = document.getElementById("window-container");
+
+	            	popup_window.style.display = "block";
+
+		            window.onclick = function close(e) {
+		                if (e.target == popup_window) {
+		                    popup_window.style.display = "none";
+		                }
+		            }
+	            }
+	            else
+	            {
+	            	var popup_window_list = document.getElementById("window-container-list");
+
+	            	popup_window_list.style.display = "block";
+
+	            	showList();
+
+		            window.onclick = function close(e) {
+		                if (e.target == popup_window_list) {
+		                    popup_window_list.style.display = "none";
+		                }
+		            }
+	            }
+	        }
 		</script>
 		<span style="position: absolute; margin-left: 375px; cursor: default;">Language
 			<select id="selectLang">
@@ -248,9 +338,14 @@
 				</td>		
 				<td style="vertical-align:text-top">
 					<button onclick="dataInit()">Clear Deck</button>
-					<button onclick="downloadBlob('export.csv', 'text/csv;charset=utf-8;')">Download File</button>
-					<input type="file" id="fileinput"></input>
+					<button onclick="downloadBlob('export.csv', 'text/csv;charset=utf-8;')">Download Deck</button>
+					<label for="fileinput" class="custom-file-upload" style="padding: 15px 5px; height: 18px;">
+					    Upload Deck
+					</label>
+					<input style="display: none;" id="fileinput" type="file"/>
 					<button style="float: right; display: none" onclick="checkDeck();">Check</button>
+					<button onclick="customizeWindowEvent('view')">Deck View</button>
+					<button onclick="customizeWindowEvent('list')">Deck list</button>
 					<button style="float: right" onclick="showVersion();">About</button>
 					<br><br><br>
 					<span onclick="clickSpan(this)">ルリグ </span><input type="checkbox" id="lrig" checked>&emsp;&emsp;<span onclick="clickSpan(this)">アシストルリグ </span><input type="checkbox" id="assistlrig" checked>&emsp;&emsp;<span onclick="clickSpan(this)">ピース </span><input type="checkbox" id="piece" checked>&emsp;&emsp;<span onclick="clickSpan(this)">シグニ </span><input type="checkbox" id="signi" checked>&emsp;&emsp;<span onclick="clickSpan(this)">スペル </span><input type="checkbox" id="spell" checked>
@@ -502,5 +597,240 @@
 				</td>
 			</tr>
 		</table>
+		<div id="window-container-list">
+			<div id="window-pop-list">
+				<div id="decklist" style="height: 750px" class="window-content">
+				</div>
+			</div>
+		</div>
+		<div id="window-container">
+            <div id="window-pop">
+                <div class="window-content">
+					<table style="margin-left: 305px;">
+						<tr>
+							<td>
+								<table>
+									<tr>
+										<td>
+											LRIG
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<img id="show_ldeck_0" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,0 , ldeckArr)">
+											<img id="show_ldeck_1" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,1 , ldeckArr)">
+											<img id="show_ldeck_2" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,2 , ldeckArr)">
+											<img id="show_ldeck_3" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,3 , ldeckArr)">
+											<img id="show_ldeck_4" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,4 , ldeckArr)">
+											<img id="show_ldeck_5" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,5 , ldeckArr)">
+											<img id="show_ldeck_6" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,6 , ldeckArr)">
+											<img id="show_ldeck_7" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,7 , ldeckArr)">
+											<img id="show_ldeck_8" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,8 , ldeckArr)">
+											<img id="show_ldeck_9" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,9 , ldeckArr)">
+										</td>
+									</tr>
+									<tr>
+										<td style="vertical-align:bottom">
+											Piece
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<img id="show_pdeck_0" width="110px" height="80px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,0 , pdeckArr)">
+											<img id="show_pdeck_1" width="110px" height="80px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,1 , pdeckArr)">
+										</td>
+									</tr>
+								</table>
+								<table>
+									<tr>
+										<td>
+											SIGNI
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<img id="show_sdeck_0" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,0 , sdeckArr)">
+											<img id="show_sdeck_1" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,1 , sdeckArr)">
+											<img id="show_sdeck_2" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,2 , sdeckArr)">
+											<img id="show_sdeck_3" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,3 , sdeckArr)">
+											<img id="show_sdeck_4" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,4 , sdeckArr)">
+											<img id="show_sdeck_5" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,5 , sdeckArr)">
+											<img id="show_sdeck_6" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,6 , sdeckArr)">
+											<img id="show_sdeck_7" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,7 , sdeckArr)">
+											<img id="show_sdeck_8" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,8 , sdeckArr)">
+											<img id="show_sdeck_9" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,9 , sdeckArr)">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<img id="show_sdeck_10" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,10 , sdeckArr)">
+											<img id="show_sdeck_11" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,11 , sdeckArr)">
+											<img id="show_sdeck_12" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,12 , sdeckArr)">
+											<img id="show_sdeck_13" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,13 , sdeckArr)">
+											<img id="show_sdeck_14" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,14 , sdeckArr)">
+											<img id="show_sdeck_15" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,15 , sdeckArr)">
+											<img id="show_sdeck_16" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,16 , sdeckArr)">
+											<img id="show_sdeck_17" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,17 , sdeckArr)">
+											<img id="show_sdeck_18" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,18 , sdeckArr)">
+											<img id="show_sdeck_19" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,19 , sdeckArr)">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<img id="show_sdeck_20" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,20 , sdeckArr)">
+											<img id="show_sdeck_21" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,21 , sdeckArr)">
+											<img id="show_sdeck_22" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,22 , sdeckArr)">
+											<img id="show_sdeck_23" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,23 , sdeckArr)">
+											<img id="show_sdeck_24" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,24 , sdeckArr)">
+											<img id="show_sdeck_25" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,25 , sdeckArr)">
+											<img id="show_sdeck_26" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,26 , sdeckArr)">
+											<img id="show_sdeck_27" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,27 , sdeckArr)">
+											<img id="show_sdeck_28" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,28 , sdeckArr)">
+											<img id="show_sdeck_29" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,29 , sdeckArr)">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<img id="show_sdeck_30" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,30 , sdeckArr)">
+											<img id="show_sdeck_31" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,31 , sdeckArr)">
+											<img id="show_sdeck_32" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,32 , sdeckArr)">
+											<img id="show_sdeck_33" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,33 , sdeckArr)">
+											<img id="show_sdeck_34" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,34 , sdeckArr)">
+											<img id="show_sdeck_35" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,35 , sdeckArr)">
+											<img id="show_sdeck_36" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,36 , sdeckArr)">
+											<img id="show_sdeck_37" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,37 , sdeckArr)">
+											<img id="show_sdeck_38" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,38 , sdeckArr)">
+											<img id="show_sdeck_39" width="80px" height="110px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,39 , sdeckArr)">
+										</td>
+									</tr>
+								</table>
+							</td>
+							<td>
+								<div id="show_leveldiv" hidden><canvas id="show_levelChart"></canvas></div>
+								<script>
+			  						const show_levelctx = document.getElementById('show_levelChart');
+
+									show_levelobj = new Chart(show_levelctx, {
+										type: 'doughnut',
+										data: {
+									  		labels: [
+												'L1',
+												'L2',
+												'L3',
+												'spell'
+											],
+											datasets: [{
+												label: 'Type counter',
+												data: [sdeck_l1, sdeck_l2, sdeck_l3, sdeck_spell],
+												backgroundColor: [
+												  'rgb(192, 192, 192)',
+												  'rgb(169, 169, 169)',
+												  'rgb(128, 128, 128)',
+												  'rgb(FF, 79, 79)'
+												],
+												hoverOffset: 4
+											}]
+										},
+										options: {
+									        plugins: {
+									            legend: {
+									                display: true,
+									                labels: {
+									                    color: 'rgb(0, 0, 0)',
+									                    font: {
+									                        size: 16
+									                    }
+									                }
+									            }
+									        }
+			    						}
+									});
+								</script>
+								<div id="show_colordiv" style="margin-top: 20px;" hidden><canvas id="show_colorChart"></canvas></div>
+								<script>
+			  						const show_colorctx = document.getElementById('show_colorChart');
+
+										show_colorobj = new Chart(show_colorctx, {
+										type: 'doughnut',
+										data: {
+									  		labels: [
+												'赤',
+												'青',
+												'緑',
+												'黒',
+												'白',
+												'無'
+											],
+											datasets: [{
+												label: 'Color Counter',
+												data: [sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_white, sdeck_nocolor],
+												backgroundColor: [
+												  'rgb(255, 99, 132)',
+												  'rgb(54, 162, 235)',
+												  'rgb(50, 205, 50)',
+												  'rgb(138, 43, 226)',
+												  'rgb(255, 205, 86)',
+												  'rgb(192, 192, 192)'
+												],
+												hoverOffset: 4
+											}]
+										},
+										options: {
+									        plugins: {
+									            legend: {
+									                display: true,
+									                labels: {
+									                    color: 'rgb(0, 0, 0)',
+									                    font: {
+									                        size: 16
+									                    }
+									                }
+									            }
+									        }
+			    						}
+									});
+								</script>
+								<div id="show_lbdiv" style="margin-top: 20px;" hidden><canvas id="show_lbChart"></canvas></div>
+								<script>
+			  						const show_lbctx = document.getElementById('show_lbChart');
+
+										show_lbobj = new Chart(show_lbctx, {
+										type: 'doughnut',
+										data: {
+									  		labels: [
+												'LB有り',
+												'LB無し'
+											],
+											datasets: [{
+												label: 'LB counter',
+												data: [sdeck_burst, sdeck_no_burst],
+												backgroundColor: [
+												  'rgb(192, 192, 192)',
+												  'rgb(128, 128, 128)'
+												],
+												hoverOffset: 4
+											}]
+										},
+										options: {
+									        plugins: {
+									            legend: {
+									                display: true,
+									                labels: {
+									                    color: 'rgb(0, 0, 0)',
+									                    font: {
+									                        size: 16
+									                    }
+									                }
+									            }
+									        }
+			    						}
+									});
+								</script>
+							</td>
+						</tr>
+					</table>
+                </div>
+            </div>
+        </div>
 	</body>
 </html>

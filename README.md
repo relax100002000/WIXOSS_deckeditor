@@ -2,6 +2,11 @@
    
 Author: ZZZ  
   
+20221217 v1.05  
+1.新增較大的瀏覽牌組模式  
+2.新增牌組轉文字卡表  
+3.改變Upload Deck樣式  
+  
 20221216 v1.04  
 1.新增WXDi-CP01  
 2.補上Dream Team icon

@@ -689,11 +689,17 @@ function showLdeck()
 		{
 			$("#ldeck_" + i).attr("src", ldeckArr[i][SRC]);
 			$("#ldeck_" + i).attr("alt", ldeckArr[i][ID]);
+
+			$("#show_ldeck_" + i).attr("src", ldeckArr[i][SRC]);
+			$("#show_ldeck_" + i).attr("alt", ldeckArr[i][ID]);
 		}
 		else
 		{
 			$("#ldeck_" + i).attr("src", "img/empty.jpg");
 			$("#ldeck_" + i).attr("alt", "");
+
+			$("#show_ldeck_" + i).attr("src", "img/empty.jpg");
+			$("#show_ldeck_" + i).attr("alt", "");
 		}
 	}
 }
@@ -706,11 +712,17 @@ function showPdeck()
 		{
 			$("#pdeck_" + i).attr("src", pdeckArr[i][SRC]);
 			$("#pdeck_" + i).attr("alt", pdeckArr[i][ID]);
+
+			$("#show_pdeck_" + i).attr("src", pdeckArr[i][SRC]);
+			$("#show_pdeck_" + i).attr("alt", pdeckArr[i][ID]);
 		}
 		else
 		{
 			$("#pdeck_" + i).attr("src", "img/empty.jpg");
 			$("#pdeck_" + i).attr("alt", "");
+
+			$("#show_pdeck_" + i).attr("src", "img/empty.jpg");
+			$("#show_pdeck_" + i).attr("alt", "");
 		}
 	}
 }
@@ -723,11 +735,17 @@ function showSdeck()
 		{
 			$("#sdeck_" + i).attr("src", sdeckArr[i][SRC]);
 			$("#sdeck_" + i).attr("alt", sdeckArr[i][ID]);
+
+			$("#show_sdeck_" + i).attr("src", sdeckArr[i][SRC]);
+			$("#show_sdeck_" + i).attr("alt", sdeckArr[i][ID]);
 		}
 		else
 		{
 			$("#sdeck_" + i).attr("src", "img/empty.jpg");
 			$("#sdeck_" + i).attr("alt", "");
+
+			$("#show_sdeck_" + i).attr("src", "img/empty.jpg");
+			$("#show_sdeck_" + i).attr("alt", "");
 		}
 	}
 
@@ -897,21 +915,39 @@ function updatechart()
 		levelobj.data.datasets[0].data = [sdeck_l1, sdeck_l2, sdeck_l3, sdeck_spell];
 		levelobj.update();
 
+		$("#show_leveldiv").show();
+		show_levelobj.data.labels = ['L1: ' + sdeck_l1, 'L2: ' + sdeck_l2, 'L3: ' + sdeck_l3, 'spell: ' + sdeck_spell];
+		show_levelobj.data.datasets[0].data = [sdeck_l1, sdeck_l2, sdeck_l3, sdeck_spell];
+		show_levelobj.update();
+
 		$("#colordiv").show();
 		colorobj.data.labels = ['赤: ' + sdeck_red, '青: ' + sdeck_blue, '緑: ' + sdeck_green, '黒: ' + sdeck_black, '白: ' + sdeck_white, '無: ' + sdeck_nocolor];
 		colorobj.data.datasets[0].data = [sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_white, sdeck_nocolor];
 		colorobj.update();
 
+		$("#show_colordiv").show();
+		show_colorobj.data.labels = ['赤: ' + sdeck_red, '青: ' + sdeck_blue, '緑: ' + sdeck_green, '黒: ' + sdeck_black, '白: ' + sdeck_white, '無: ' + sdeck_nocolor];
+		show_colorobj.data.datasets[0].data = [sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_white, sdeck_nocolor];
+		show_colorobj.update();
+
 		$("#lbdiv").show();
 		lbobj.data.labels = ['LB有り: ' + sdeck_burst, 'LB無し: ' + sdeck_no_burst];
 		lbobj.data.datasets[0].data = [sdeck_burst, sdeck_no_burst];
 		lbobj.update();
+
+		$("#show_lbdiv").show();
+		show_lbobj.data.labels = ['LB有り: ' + sdeck_burst, 'LB無し: ' + sdeck_no_burst];
+		show_lbobj.data.datasets[0].data = [sdeck_burst, sdeck_no_burst];
+		show_lbobj.update();
 	}
 	else
 	{
 		$("#leveldiv").hide();
+		$("#show_leveldiv").hide();
 		$("#colordiv").hide();
+		$("#show_colordiv").hide();
 		$("#lbdiv").hide();
+		$("#show_lbdiv").hide();
 	}
 }
 
@@ -1621,9 +1657,9 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221216 v1.04\n";
-	str += "1.新增WXDi-CP01\n";
-	str += "2.補上Dream Team icon\n";
+	str += "20221217 v1.05\n";
+	str += "1.新增較大的瀏覽牌組模式\n";
+	str += "2.新增牌組轉文字卡表\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";
@@ -2510,4 +2546,87 @@ function changePage(x)
 	}
 
 	showrdeck();
+}
+
+function showList()
+{
+	var str = "", i = 0, j = 0, flag = 0, sdecklistArr = [], sdecklist = [];
+	str += "<br>ルリグ<br><br>";
+	str += "<table>";
+	str += "<tr>";
+	for(i = 0; i < ldeckArr.length; i++)
+	{
+		if(ldeckArr[i][ID] == "")
+		{
+			break;
+		}
+
+		str += "<td style='width: 30px;'>1</td><td style='width: 130px;'>" + ldeckArr[i][ID] + "<td/><td>" + ldeckArr[i][NAME] + "</td>";
+		str += "</tr>"
+		str += "<tr>"
+	}
+	str += "</tr>";
+	str += "</table>";
+	str += "<br>ピース<br><br>";
+	str += "<table>";
+	str += "<tr>";
+	for(i = 0; i < pdeckArr.length; i++)
+	{
+		if(pdeckArr[i][ID] == "")
+		{
+			break;
+		}
+
+		str += "<td style='width: 30px;'>1</td><td style='width: 130px;'>" + pdeckArr[i][ID] + "<td/><td>" + pdeckArr[i][NAME] + "</td>";
+		str += "</tr>"
+		str += "<tr>"
+	}
+	str += "</tr>";
+	str += "</table>";
+	str += "<br>シグニ<br><br>";
+	str += "<table>";
+	str += "<tr>";
+	for(i = 0; i < sdeckArr.length; i++)
+	{
+		flag = 0;
+		for(j = 0; j < sdecklist.length; j++)
+		{
+			if(sdeckArr[i][ID] == sdecklist[j][0])
+			{
+				sdecklist[j][2]++;
+
+				flag = 1;
+				break;
+			}
+		}
+
+		if(flag == 0)
+		{
+			sdecklistArr = [];
+			sdecklistArr[0] = sdeckArr[i][ID];
+			sdecklistArr[1] = sdeckArr[i][NAME];
+			sdecklistArr[2] = 1;
+			sdecklist.push(sdecklistArr);
+			
+		}
+		
+	}
+
+	for(i = 0; i < sdecklist.length; i++)
+	{
+		if(sdecklist[i][ID] == "")
+		{
+			break;
+		}
+
+		str += "<td style='width: 30px;'>" + sdecklist[i][2] + "</td><td style='width: 130px;'>" + sdecklist[i][0] + "<td/><td>" + sdecklist[i][1] + "</td>";
+		str += "</tr>"
+		str += "<tr>"
+	}
+	str += "</tr>";
+	str += "</table>";
+	str += "<br><br>";
+
+
+	$("#decklist").html(str);
 }
