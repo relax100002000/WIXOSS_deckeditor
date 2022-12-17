@@ -1227,24 +1227,91 @@ function downloadBlob(filename, contentType) {
       .join("\n");
 
     content = csv;
-  var blob = new Blob([content], { type: contentType });
-  var url = URL.createObjectURL(blob);
 
-  var pom = document.createElement('a');
-  pom.href = url;
-  pom.setAttribute('download', filename);
-  pom.click();
+    if(contentType == "text/csv;charset=utf-8;")
+    {
+		var blob = new Blob([content], { type: contentType });
+		var url = URL.createObjectURL(blob);
+
+		var pom = document.createElement('a');
+		pom.href = url;
+		pom.setAttribute('download', filename);
+		pom.click();
+	}
+	else
+	{
+		$("#textCode").html(content);
+		customizeWindowEvent('code');
+		$("#deckStr").html("　");
+	}
 }
 
-function readSingleFile(evt) {
+function readSingleCode()
+{
+	var larray = [];
+    var parray = [];
+    var sarray = [];
+    var array = [];
+    var i = 0, j = 0;
 
+    var contents = $("#textCode").val();
+
+    array = contents.split("\n");
+
+	ldeckArr = [];
+
+	larray = array[0].split(",");
+	for(i = 1; i < larray.length; i++)
+	{
+		for(j = 0; j < cardData.length; j++)
+	  	{
+	  		if(larray[i] == cardData[j][ID])
+	  		{
+	  			ldeckArr.push(cardData[j]);
+	  		}
+	  	}
+	}
+
+    pdeckArr = [];
+      
+    parray = array[1].split(",");
+    for(i = 1; i < parray.length; i++)
+    {
+      	for(j = 0; j < cardData.length; j++)
+      	{
+      		if(parray[i] == cardData[j][ID])
+      		{
+      			pdeckArr.push(cardData[j]);
+      		}
+      	}
+    }
+
+    sdeckArr = [];
+      
+    sarray = array[2].split(",");
+    for(i = 1; i < sarray.length; i++)
+    {
+      	for(j = 0; j < cardData.length; j++)
+      	{
+      		if(sarray[i] == cardData[j][ID])
+      		{
+      			sdeckArr.push(cardData[j]);
+      		}
+      	}
+    }
+
+    loadcounter();
+    showAlldeck();
+}
+
+function readSingleFile(evt)
+{
     var f = evt.target.files[0]; 
     var larray = [];
     var parray = [];
     var sarray = [];
     var array = [];
     var i = 0, j = 0;
-    const textArea = document.querySelector("#csvResult");
 
     if (f) {
       var r = new FileReader();
@@ -1649,36 +1716,6 @@ function str_to_img(x)
 	x = x.replace(/\[無\(5\)\]/g, "<img class='icon_img' src='img/icon_txt_null_05.png'></img>");
 
 	return x;
-}
-
-function showVersion()
-{
-	var str = "";
-
-	str += "Author: ZZZ\n";
-	str += "\n";
-	str += "20221217 v1.05\n";
-	str += "1.新增較大的瀏覽牌組模式\n";
-	str += "2.新增牌組轉文字卡表\n";
-	str += "\n";
-	str += "目前收錄:\n";
-	str += "WXDi-CP01\n";
-	str += "WXDi-P00 ~ WXDi-P11\n";
-	str += "WXDi-D01 ~ WXDi-D09\n";
-	str += "PRカード\n";
-	str += "\n";
-	str += "中文效果:\n";
-	str += "WXDi-P01 ~ WXDi-P02\n";
-	str += "WXDi-D01 ~ WXDi-D06\n";
-	str += "\n";
-	str += "預計更新:\n";
-	str += "-改善排序邏輯\n";
-	str += "-增加中文效果\n";
-	str += "-增加自訂義排序\n";
-	str += "-補充關於說明\n";
-	str += "-全半形統一\n";
-	
-	alert(str);
 }
 
 function showLimit(x)
@@ -2629,4 +2666,47 @@ function showList()
 
 
 	$("#decklist").html(str);
+}
+
+function copyClipboard()
+{
+	const inputText = document.querySelector('#textCode');
+  	inputText.select();
+  	document.execCommand('copy');
+  	$("#deckStr").html("Deck code copied!");
+}
+
+function importDeck()
+{
+	readSingleCode();
+  	$("#deckStr").html("Deck code has been imported.");
+}
+
+function showVersion()
+{
+	var str = "";
+
+	str += "Author: ZZZ\n";
+	str += "\n";
+	str += "20221218 v1.06\n";
+	str += "1.新增文字讀寫牌組功能\n";
+	str += "\n";
+	str += "目前收錄:\n";
+	str += "WXDi-CP01\n";
+	str += "WXDi-P00 ~ WXDi-P11\n";
+	str += "WXDi-D01 ~ WXDi-D09\n";
+	str += "PRカード\n";
+	str += "\n";
+	str += "中文效果:\n";
+	str += "WXDi-P01 ~ WXDi-P02\n";
+	str += "WXDi-D01 ~ WXDi-D06\n";
+	str += "\n";
+	str += "預計更新:\n";
+	str += "-改善排序邏輯\n";
+	str += "-增加中文效果\n";
+	str += "-增加自訂義排序\n";
+	str += "-補充關於說明\n";
+	str += "-全半形統一\n";
+	
+	alert(str);
 }

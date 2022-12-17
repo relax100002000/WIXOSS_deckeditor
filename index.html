@@ -77,7 +77,7 @@
 			cursor: pointer;
 		}
 
-		#window-container, #window-container-list{
+		#window-container, #window-container-list, #window-container-code{
 	    display: none;
 	    position: fixed;
 	    left: 0;
@@ -102,6 +102,14 @@
 	    overflow: auto;
 	    border-radius: 20px;
 	}
+
+	#window-pop-code{
+	    background: white;
+	    z-index: 1;
+        margin: 50px 30%;
+	    overflow: auto;
+	    border-radius: 20px;
+	}
 	        
 	.window-content {
 	    margin: 30px;
@@ -111,6 +119,11 @@
 	    display: inline-block;
 	    vertical-align: middle;
 	    line-height: normal;
+	}
+
+	textarea {
+	    width: 80%;
+	    height: 70%;
 	}
 	</style>
 	<body>
@@ -151,6 +164,18 @@
 		            window.onclick = function close(e) {
 		                if (e.target == popup_window) {
 		                    popup_window.style.display = "none";
+		                }
+		            }
+	            }
+	            else if(x == "code")
+				{
+	            	var popup_window_code = document.getElementById("window-container-code");
+
+	            	popup_window_code.style.display = "block";
+
+		            window.onclick = function close(e) {
+		                if (e.target == popup_window_code) {
+		                    popup_window_code.style.display = "none";
 		                }
 		            }
 	            }
@@ -338,14 +363,15 @@
 				</td>		
 				<td style="vertical-align:text-top">
 					<button onclick="dataInit()">Clear Deck</button>
-					<button onclick="downloadBlob('export.csv', 'text/csv;charset=utf-8;')">Download Deck</button>
+					<button onclick="downloadBlob('deck.csv', 'text/csv;charset=utf-8;')">Download Deck</button>
 					<label for="fileinput" class="custom-file-upload" style="padding: 15px 5px; height: 18px;">
 					    Upload Deck
 					</label>
 					<input style="display: none;" id="fileinput" type="file"/>
+					<button onclick="downloadBlob('output', '')">Deck Code</button>
 					<button style="float: right; display: none" onclick="checkDeck();">Check</button>
-					<button onclick="customizeWindowEvent('view')">Deck View</button>
-					<button onclick="customizeWindowEvent('list')">Deck list</button>
+					<button onclick="customizeWindowEvent('view');">Deck View</button>
+					<button onclick="customizeWindowEvent('list');">Deck list</button>
 					<button style="float: right" onclick="showVersion();">About</button>
 					<br><br><br>
 					<span onclick="clickSpan(this)">ルリグ </span><input type="checkbox" id="lrig" checked>&emsp;&emsp;<span onclick="clickSpan(this)">アシストルリグ </span><input type="checkbox" id="assistlrig" checked>&emsp;&emsp;<span onclick="clickSpan(this)">ピース </span><input type="checkbox" id="piece" checked>&emsp;&emsp;<span onclick="clickSpan(this)">シグニ </span><input type="checkbox" id="signi" checked>&emsp;&emsp;<span onclick="clickSpan(this)">スペル </span><input type="checkbox" id="spell" checked>
@@ -600,6 +626,18 @@
 		<div id="window-container-list">
 			<div id="window-pop-list">
 				<div id="decklist" style="height: 750px" class="window-content">
+				</div>
+			</div>
+		</div>
+		<div id="window-container-code">
+			<div id="window-pop-code">
+				<div id="deckcode" style="height: 550px; text-align: center;" class="window-content">
+					<textarea id="textCode" rows="4" cols="50"></textarea>
+					<div id="deckStr">&emsp;</div>
+					<div style="margin-top: 20px;">
+						<button onclick="copyClipboard();">Copy to clipboard</button>
+						<button style="margin-left: 50px;" onclick="importDeck();">Import deck</button>
+					</div>
 				</div>
 			</div>
 		</div>
