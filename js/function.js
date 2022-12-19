@@ -690,16 +690,18 @@ function showLdeck()
 			$("#ldeck_" + i).attr("src", ldeckArr[i][SRC]);
 			$("#ldeck_" + i).attr("alt", ldeckArr[i][ID]);
 
-			$("#show_ldeck_" + i).attr("src", ldeckArr[i][SRC]);
-			$("#show_ldeck_" + i).attr("alt", ldeckArr[i][ID]);
+			// $("#show_ldeck_" + i).attr("src", ldeckArr[i][SRC]);
+			// $("#show_ldeck_" + i).attr("alt", ldeckArr[i][ID]);
+			// $("#show_ldeck_" + i).show();
 		}
 		else
 		{
 			$("#ldeck_" + i).attr("src", "img/empty.jpg");
 			$("#ldeck_" + i).attr("alt", "");
 
-			$("#show_ldeck_" + i).attr("src", "img/empty.jpg");
-			$("#show_ldeck_" + i).attr("alt", "");
+			// $("#show_ldeck_" + i).attr("src", "img/empty.jpg");
+			// $("#show_ldeck_" + i).attr("alt", "");
+			// $("#show_ldeck_" + i).hide();
 		}
 	}
 }
@@ -715,6 +717,8 @@ function showPdeck()
 
 			$("#show_pdeck_" + i).attr("src", pdeckArr[i][SRC]);
 			$("#show_pdeck_" + i).attr("alt", pdeckArr[i][ID]);
+
+			$("#show_pdeck_" + i).show();
 		}
 		else
 		{
@@ -723,6 +727,8 @@ function showPdeck()
 
 			$("#show_pdeck_" + i).attr("src", "img/empty.jpg");
 			$("#show_pdeck_" + i).attr("alt", "");
+
+			$("#show_pdeck_" + i).hide();
 		}
 	}
 }
@@ -738,6 +744,8 @@ function showSdeck()
 
 			$("#show_sdeck_" + i).attr("src", sdeckArr[i][SRC]);
 			$("#show_sdeck_" + i).attr("alt", sdeckArr[i][ID]);
+
+			$("#show_sdeck_" + i).show();
 		}
 		else
 		{
@@ -746,6 +754,8 @@ function showSdeck()
 
 			$("#show_sdeck_" + i).attr("src", "img/empty.jpg");
 			$("#show_sdeck_" + i).attr("alt", "");
+
+			$("#show_sdeck_" + i).hide();
 		}
 	}
 
@@ -954,7 +964,6 @@ function updatechart()
 function delDeck(x, idx, array)
 {
 	var i = 0;
-	var tmpArr = "";
 	for(i = 0; i < cardData.length; i++)
 	{
 		if(x.alt == cardData[i][ID] && (cardData[i][TYPE] == "シグニ" || cardData[i][TYPE] == "スペル"))
@@ -2682,14 +2691,74 @@ function importDeck()
   	$("#deckStr").html("Deck code has been imported.");
 }
 
+function rearrange_ldeck()
+{
+	var i, recounter;
+	
+	if(ldeckArr.length != 10)
+	{
+		return false;
+	}
+	recounter = 0;
+	for(i = 0; i < ldeckArr.length; i++)
+	{
+		if(ldeckArr[i][LEVEL] == 3)
+		{
+			if(i < 3)
+			{
+				return false;
+			}
+
+			$("#show_ldeck_3").attr("src", ldeckArr[i][SRC]);
+			$("#show_ldeck_2").attr("src", ldeckArr[i-1][SRC]);
+			$("#show_ldeck_1").attr("src", ldeckArr[i-2][SRC]);
+			$("#show_ldeck_0").attr("src", ldeckArr[i-3][SRC]);
+			continue;
+		}
+
+		if(ldeckArr[i][LEVEL] == 2 && ldeckArr[i][TYPE] == "アシストルリグ")
+		{
+			if(recounter == 0)
+			{
+				if(i < 2)
+				{
+					return false;
+				}
+
+				$("#show_ldeck_6").attr("src", ldeckArr[i][SRC]);
+				$("#show_ldeck_5").attr("src", ldeckArr[i-1][SRC]);
+				$("#show_ldeck_4").attr("src", ldeckArr[i-2][SRC]);
+
+				recounter++;
+
+				continue;
+			}
+			else
+			{
+				if(i < 2)
+				{
+					return false;
+				}
+
+				$("#show_ldeck_9").attr("src", ldeckArr[i][SRC]);
+				$("#show_ldeck_8").attr("src", ldeckArr[i-1][SRC]);
+				$("#show_ldeck_7").attr("src", ldeckArr[i-2][SRC]);
+
+				continue;
+			}
+		}
+	}
+	return true;
+}
+
 function showVersion()
 {
 	var str = "";
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221218 v1.06\n";
-	str += "1.新增文字讀寫牌組功能\n";
+	str += "20221219 v1.07\n";
+	str += "1.重做Deck View功能\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";
