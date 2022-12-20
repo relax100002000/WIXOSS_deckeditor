@@ -178,7 +178,7 @@
 
 	            	popup_window.style.display = "block";
 
-		            window.onclick = function close(e) {
+		            window.onmousedown = function close(e) {
 		                if (e.target == popup_window) {
 		                    popup_window.style.display = "none";
 		                }
@@ -190,7 +190,7 @@
 
 	            	popup_window_code.style.display = "block";
 
-		            window.onclick = function close(e) {
+		            window.onmousedown = function close(e) {
 		                if (e.target == popup_window_code) {
 		                    popup_window_code.style.display = "none";
 		                }
@@ -204,7 +204,7 @@
 
 	            	showList();
 
-		            window.onclick = function close(e) {
+		            window.onmousedown = function close(e) {
 		                if (e.target == popup_window_list) {
 		                    popup_window_list.style.display = "none";
 		                }
@@ -217,12 +217,13 @@
 				<option value="JP">日本語</option>
 				<option value="TW">繁體中文</option>
 		    </select>
-		    &emsp;&emsp;Deck List
+		    <br><br>Deck List
 		    <select id="selectDeck" onchange="selectDeck();">
 		    	<option value="">--Select Deck--</option>
 		    </select>
 		    <button style="height: 20px;" onclick="downloadBlob('output', '')">Add</button>
 		    <button style="height: 20px;" onclick="deletedecklist();">Delete</button>
+		    <button style="height: 20px;" onclick="resetDefault();">Reset</button>
 		</span>
 		<table width="1850px" height="600px">
 			<tr>
@@ -652,7 +653,7 @@
 				<div id="deckcode" style="height: 750px; text-align: center;" class="window-content">
 					Deck Title
 					<br><br>
-					<input align="left" style="width: 80%;" type="text" id="deckTitle" value="Simple Deck" maxlength="16">
+					<input align="left" style="width: 80%;" type="text" id="deckTitle" value="Simple Deck" maxlength="20">
 					<br><br>
 					Deck Code
 					<br><br>
