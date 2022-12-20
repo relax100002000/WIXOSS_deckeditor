@@ -13,10 +13,22 @@ function onLoading()
 	showInfotable("init");
 
 	$("#textsearch").keydown(function(event) {
-    if(event.keyCode == 13){
-        search();
-    };
-});
+	    if(event.keyCode == 13){
+	        search();
+	    };
+	});
+
+	deckNamelist = JSON.parse(localStorage.getItem("DeckNameList"));
+	if(deckNamelist == null)
+	{
+		deckNamelist = [];
+	}
+
+	for(i = 0; i < deckNamelist.length; i ++)
+	{
+
+		updateDecklist(localStorage.getItem(deckNamelist[i]));
+	}
 }
 
 function showrdeck()
@@ -77,11 +89,11 @@ function showrdeck()
 	{
 		if(rdeckArr.length % 10 != 0)
 		{
-			$("#page").html("(" + parseInt(page + 1) + " / " + parseInt((rdeckArr.length / 10) + 1) + ")");
+			$("#page").html(parseInt(page + 1) + " / " + parseInt((rdeckArr.length / 10) + 1));
 		}
 		else
 		{
-			$("#page").html("(" + parseInt(page + 1) + " / " + parseInt(rdeckArr.length / 10) + ")");
+			$("#page").html(parseInt(page + 1) + " / " + parseInt(rdeckArr.length / 10));
 		}
 	}
 }
@@ -1206,6 +1218,8 @@ function downloadBlob(filename, contentType) {
     var array = [];
     var i = 0;
 
+    filename = $("#deckTitle").val() + ".csv";
+
     for(i = 0; i < ldeckArr.length; i++)
     {
     	larray.push(ldeckArr[i][ID]);
@@ -1246,13 +1260,51 @@ function downloadBlob(filename, contentType) {
 		pom.href = url;
 		pom.setAttribute('download', filename);
 		pom.click();
+
+		$("#textCode").val(content);
 	}
 	else
 	{
-		$("#textCode").html(content);
+		$("#textCode").val(content);
 		customizeWindowEvent('code');
-		$("#deckStr").html("　");
+		$("#deckStr").html("　　");
 	}
+}
+
+function selectDeck()
+{
+	var deck = $("#selectDeck").val();
+	if(deck == 0)
+	{
+		return;
+	}
+	if(deck == "")
+	{
+		dataInit();
+	}
+	$("#textCode").val(localStorage.getItem(deck));
+	
+	readSingleCode();
+}
+
+function deletedecklist()
+{
+	var deck = $("#selectDeck").val();
+	var i = 0;
+
+	localStorage.removeItem(deck);
+
+	for(i = 0; i < deckNamelist.length; i++)
+	{
+		if(deck == deckNamelist[i])
+		{
+			deckNamelist.splice(i, 1);
+			break;
+		}
+	}
+	localStorage.setItem("DeckNameList", deckNamelist);
+	updateDecklist("");
+	dataInit();
 }
 
 function readSingleCode()
@@ -1321,11 +1373,16 @@ function readSingleFile(evt)
     var sarray = [];
     var array = [];
     var i = 0, j = 0;
+    var titleName = "";
+
+	titleName = f.name.replace(".csv","");
+	$("#deckTitle").val(titleName);
 
     if (f) {
       var r = new FileReader();
       r.onload = function(e) { 
           var contents = e.target.result;
+          $("#textCode").val(contents);
           array = contents.split("\n");
 
           ldeckArr = [];
@@ -2685,11 +2742,65 @@ function copyClipboard()
   	$("#deckStr").html("Deck code copied!");
 }
 
-function importDeck()
+function addDecklist()
 {
-	readSingleCode();
-  	$("#deckStr").html("Deck code has been imported.");
+	var i = 0, ret = 0;
+
+	if($("#deckTitle").val() == 0)
+	{
+		alert("Do not set 0 as title.");
+		return;
+	}
+
+  	for(i = 0; i < deckNamelist.length; i++)
+  	{
+  		if(deckNamelist[i] == $("#deckTitle").val())
+  		{
+  			ret = confirm("Deck exist. Do you want to overwrite it?");
+
+  			if(!ret)
+  			{
+  				return;
+  			}
+  		}
+  	}
+
+  	readSingleCode();
+  	$("#deckStr").html("Deck has been added.");
+
+  	localStorage.setItem($("#deckTitle").val(), $("#textCode").val());
+
+  	if(!ret)
+  	{
+  		deckNamelist.push($("#deckTitle").val());
+  	}
+
+  	updateDecklist($("#deckTitle").val());
 }
+
+function updateDecklist(select)
+{
+	var str = "", i = 0;
+
+	str += "<option value=''>--Select Deck--</option>";
+
+	for(i = 0; i < deckNamelist.length; i++)
+	{
+		if(select == deckNamelist[i])
+		{
+			str += "<option value='" + deckNamelist[i] + "' selected>" + deckNamelist[i] +"</option>";
+		}
+		else
+		{
+			str += "<option value='" + deckNamelist[i] + "'>" + deckNamelist[i] +"</option>";
+		}
+	}
+
+	localStorage.setItem("DeckNameList", JSON.stringify(deckNamelist));
+
+	$("#selectDeck").html(str);
+}
+
 
 function rearrange_ldeck()
 {
@@ -2757,8 +2868,8 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221219 v1.07\n";
-	str += "1.重做Deck View功能\n";
+	str += "20221220 v1.08\n";
+	str += "1.新增牌組儲存功能\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";

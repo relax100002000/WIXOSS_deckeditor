@@ -125,12 +125,22 @@
 
 	textarea {
 	    width: 80%;
-	    height: 70%;
+	    height: 60%;
+	}
+
+	#deckName {
+	    font-size: 20px;
+    	font-weight: bold;
+    	margin-top: -12px;
+    	margin-left: 0px;
+    	visibility: hidden;
 	}
 	</style>
 	<body>
 		<script>
 			var page = 0;
+			var deckNamelist = [];
+
 			var rdeckArr = [];
 			var pdeckArr = [];
 			var ldeckArr = [];
@@ -207,6 +217,12 @@
 				<option value="JP">日本語</option>
 				<option value="TW">繁體中文</option>
 		    </select>
+		    &emsp;&emsp;Deck List
+		    <select id="selectDeck" onchange="selectDeck();">
+		    	<option value="">--Select Deck--</option>
+		    </select>
+		    <button style="height: 20px;" onclick="downloadBlob('output', '')">Add</button>
+		    <button style="height: 20px;" onclick="deletedecklist();">Delete</button>
 		</span>
 		<table width="1850px" height="600px">
 			<tr>
@@ -370,18 +386,13 @@
 				</td>		
 				<td style="vertical-align:text-top">
 					<button onclick="dataInit()">Clear Deck</button>
-					<button onclick="downloadBlob('deck.csv', 'text/csv;charset=utf-8;')">Download Deck</button>
-					<label for="fileinput" class="custom-file-upload" style="padding: 15px 5px; height: 18px;">
-					    Upload Deck
-					</label>
-					<input style="display: none;" id="fileinput" type="file"/>
-					<button onclick="downloadBlob('output', '')">Deck Code</button>
+					<!-- <button onclick="downloadBlob('output', '')">Deck Code</button> -->
 					<button style="float: right; display: none" onclick="checkDeck();">Check</button>
 					<button onclick="customizeWindowEvent('view');">Deck View</button>
-					<button onclick="customizeWindowEvent('list');">Deck list</button>
+					<button onclick="customizeWindowEvent('list');">Card List</button>
 					<button style="float: right" onclick="showVersion();">About</button>
 					<br><br><br>
-					<span onclick="clickSpan(this)">ルリグ </span><input type="checkbox" id="lrig" checked>&emsp;&emsp;<span onclick="clickSpan(this)">アシストルリグ </span><input type="checkbox" id="assistlrig" checked>&emsp;&emsp;<span onclick="clickSpan(this)">ピース </span><input type="checkbox" id="piece" checked>&emsp;&emsp;<span onclick="clickSpan(this)">シグニ </span><input type="checkbox" id="signi" checked>&emsp;&emsp;<span onclick="clickSpan(this)">スペル </span><input type="checkbox" id="spell" checked>
+					<span onclick="clickSpan(this)">ルリグ </span><input type="checkbox" id="lrig" checked>&esmp;&emsp;<span onclick="clickSpan(this)">アシストルリグ </span><input type="checkbox" id="assistlrig" checked>&emsp;&emsp;<span onclick="clickSpan(this)">ピース </span><input type="checkbox" id="piece" checked>&emsp;&emsp;<span onclick="clickSpan(this)">シグニ </span><input type="checkbox" id="signi" checked>&emsp;&emsp;<span onclick="clickSpan(this)">スペル </span><input type="checkbox" id="spell" checked>
 					<br><br>
 					<span onclick="clickSpan(this)">Level 0 </span><input type="checkbox" id="level0" checked>&emsp;&emsp;<span onclick="clickSpan(this)">Level 1 </span><input type="checkbox" id="level1" checked>&emsp;&emsp;<span onclick="clickSpan(this)">Level 2 </span><input type="checkbox" id="level2" checked>&emsp;&emsp;<span onclick="clickSpan(this)">Level 3 </span><input type="checkbox" id="level3" checked>
 					<br><br>
@@ -595,7 +606,7 @@
 					<table>
 						<tr>
 							<td >
-								Card list     <span style="cursor: default;" id="page"></span>
+								Page: <span style="cursor: default;" id="page"></span>
 							</td>
 						</tr>
 						<tr>
@@ -638,12 +649,24 @@
 		</div>
 		<div id="window-container-code">
 			<div id="window-pop-code">
-				<div id="deckcode" style="height: 550px; text-align: center;" class="window-content">
+				<div id="deckcode" style="height: 750px; text-align: center;" class="window-content">
+					Deck Title
+					<br><br>
+					<input align="left" style="width: 80%;" type="text" id="deckTitle" value="Simple Deck" maxlength="16">
+					<br><br>
+					Deck Code
+					<br><br>
 					<textarea id="textCode" rows="4" cols="50"></textarea>
 					<div id="deckStr">&emsp;</div>
+					<br>
+					<button style="width: 200px; margin-right: -45px;" onclick="downloadBlob('', 'text/csv;charset=utf-8;')">Download Deck</button>
+					<label for="fileinput" class="custom-file-upload" style="padding: 15px 5px; height: 18px; width: 191px; margin-left: 105px">
+					    Upload Deck
+					</label>
+					<input style="display: none;" id="fileinput" type="file"/>
 					<div style="margin-top: 20px;">
-						<button onclick="copyClipboard();">Copy to clipboard</button>
-						<button style="margin-left: 50px;" onclick="importDeck();">Import deck</button>
+						<button style="width: 200px;" onclick="copyClipboard();">Copy to clipboard</button>
+						<button style="width: 200px; margin-left: 60px;" onclick="addDecklist();">Add to deck list</button>
 					</div>
 				</div>
 			</div>
@@ -651,6 +674,7 @@
 		<div id="window-container">
             <div id="window-pop">
                 <div class="window-content">
+                	<!-- <div id="deckName">123123123</div> -->
 					<table style="margin-left: 525px;">
 						<tr>
 							<td>
@@ -859,12 +883,12 @@
 					<img id="show_ldeck_1" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: -170px; margin-left: 30px;" src="img/empty.jpg">
 					<img id="show_ldeck_2" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: -170px; margin-left: 60px;" src="img/empty.jpg">
 					<img id="show_ldeck_3" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: -170px; margin-left: 90px;" src="img/empty.jpg">
-					<img id="show_ldeck_4" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 125px;" src="img/empty.jpg">
-					<img id="show_ldeck_5" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 155px;" src="img/empty.jpg">
-					<img id="show_ldeck_6" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 185px;" src="img/empty.jpg">
-					<img id="show_ldeck_7" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 125px; margin-left: 308px;" src="img/empty.jpg">
-					<img id="show_ldeck_8" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 155px; margin-left: 308px;" src="img/empty.jpg">
-					<img id="show_ldeck_9" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 185px; margin-left: 308px;" src="img/empty.jpg">
+					<img id="show_ldeck_4" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 121px;" src="img/empty.jpg">
+					<img id="show_ldeck_5" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 151px;" src="img/empty.jpg">
+					<img id="show_ldeck_6" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 181px;" src="img/empty.jpg">
+					<img id="show_ldeck_7" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 121px; margin-left: 308px;" src="img/empty.jpg">
+					<img id="show_ldeck_8" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 151px; margin-left: 308px;" src="img/empty.jpg">
+					<img id="show_ldeck_9" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 181px; margin-left: 308px;" src="img/empty.jpg">
 					<img id="show_pdeck_0" width="220px" height="160px" style="position: absolute; border-width: 3px; margin-top: -170px; margin-left: 308px; z-index: 10;" src="img/empty.jpg">
 					<img id="show_pdeck_1" width="220px" height="160px" style="position: absolute; border-width: 3px; margin-top: -57px; margin-left: 308px;" src="img/empty.jpg">
                 </div>
