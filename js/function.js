@@ -1268,6 +1268,7 @@ function downloadBlob(filename, contentType) {
 		$("#textCode").val(content);
 		customizeWindowEvent('code');
 		$("#deckStr").html("　　");
+		$("#deckTitle").val($("#selectDeck").val());
 	}
 }
 
