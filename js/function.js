@@ -1276,6 +1276,7 @@ function selectDeck()
 	var deck = $("#selectDeck").val();
 	if(deck == 0)
 	{
+		dataInit();
 		return;
 	}
 	if(deck == "")
