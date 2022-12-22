@@ -2925,11 +2925,10 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20221221 v1.09\n";
-	str += "1.新增清空本機資料按紐\n";
-	str += "2.預設匯入預組牌組\n";
-	str += "3.當滑鼠拖曳出彈出視窗後不會直接關閉\n";
-	str += "4.調整Deck List位置\n";
+	str += "20221222 v1.10\n";
+	str += "1.新增WXDi-P03中文效果\n";
+	str += "2.新增WXDi-P04中文效果\n";
+	str += "3.新增WXDi-D07中文效果\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";
