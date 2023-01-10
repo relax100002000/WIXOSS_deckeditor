@@ -2925,8 +2925,8 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20230109 v1.12\n";
-	str += "1.新增WXDi-P06中文效果\n";
+	str += "20230109 v1.13\n";
+	str += "1.新增WXDi-P07中文效果\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";
@@ -2935,7 +2935,7 @@ function showVersion()
 	str += "PRカード\n";
 	str += "\n";
 	str += "中文效果:\n";
-	str += "WXDi-P01 ~ WXDi-P06\n";
+	str += "WXDi-P01 ~ WXDi-P07\n";
 	str += "WXDi-D01 ~ WXDi-D06\n";
 	str += "\n";
 	str += "預計更新:\n";

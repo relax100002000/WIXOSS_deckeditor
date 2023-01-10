@@ -2,6 +2,10 @@
    
 Author: ZZZ  
   
+  
+20230109 v1.13  
+1.新增WXDi-P07中文效果  
+  
 20230109 v1.12  
 1.新增WXDi-P06中文效果  
   
@@ -163,7 +167,7 @@ WXDi-D01 ~ WXDi-D09
 PRカード  
   
 中文效果:
-WXDi-P00 ~ WXDi-P05  
+WXDi-P00 ~ WXDi-P07  
 WXDi-D01 ~ WXDi-D06  
   
 預計更新:  
