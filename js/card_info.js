@@ -11258,7 +11258,7 @@ var cardData = [
 		"シグニ", //TYPE
 		"奏羅：宝石", //CLASS
 		"赤", //COLOR
-		"1", //LEVEL
+		"3", //LEVEL
 		"", //COST
 		"", //LIMIT
 		"10000", //POWER
