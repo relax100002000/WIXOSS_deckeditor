@@ -2925,9 +2925,8 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20230116 v1.14\n";
-	str += "1.新增WXDi-P08中文效果\n";
-	str += "2.新增WXDi-P09中文效果\n";
+	str += "20230117 v1.15\n";
+	str += "1.新增WXDi-P10中文效果\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";
