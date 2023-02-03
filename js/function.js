@@ -1849,6 +1849,7 @@ function str_to_img(x)
 	x = x.replace(/【常】/g, "<img class='icon_img' src='img/icon_txt_regular.png'></img>");
 	x = x.replace(/【起】/g, "<img class='icon_img' src='img/icon_txt_starting.png'></img>");
 
+	x = x.replace(/《赤2》/g, "<img class='icon_img' src='img/icon_txt_red2.png'></img>");
 	x = x.replace(/《赤》/g, "<img class='icon_img' src='img/icon_txt_red.png'></img>");
 	x = x.replace(/【赤】/g, "<img class='icon_img' src='img/icon_txt_red.png'></img>");
 	x = x.replace(/\[赤\]/g, "<img class='icon_img' src='img/icon_txt_red.png'></img>");
@@ -1859,6 +1860,7 @@ function str_to_img(x)
 	x = x.replace(/\[赤\(4\)\]/g, "<img class='icon_img' src='img/icon_txt_red_04.png'></img>");
 	x = x.replace(/\[赤\(5\)\]/g, "<img class='icon_img' src='img/icon_txt_red_05.png'></img>");
 
+	x = x.replace(/《青2》/g, "<img class='icon_img' src='img/icon_txt_blue2.png'></img>");
 	x = x.replace(/《青》/g, "<img class='icon_img' src='img/icon_txt_blue.png'></img>");
 	x = x.replace(/【青】/g, "<img class='icon_img' src='img/icon_txt_blue.png'></img>");
 	x = x.replace(/\[青\]/g, "<img class='icon_img' src='img/icon_txt_blue.png'></img>");
@@ -1869,6 +1871,7 @@ function str_to_img(x)
 	x = x.replace(/\[青\(4\)\]/g, "<img class='icon_img' src='img/icon_txt_blue_04.png'></img>");
 	x = x.replace(/\[青\(5\)\]/g, "<img class='icon_img' src='img/icon_txt_blue_05.png'></img>");
 	
+	x = x.replace(/《緑2》/g, "<img class='icon_img' src='img/icon_txt_green2.png'></img>");
 	x = x.replace(/《緑》/g, "<img class='icon_img' src='img/icon_txt_green.png'></img>");
 	x = x.replace(/【緑】/g, "<img class='icon_img' src='img/icon_txt_green.png'></img>");
 	x = x.replace(/\[緑\]/g, "<img class='icon_img' src='img/icon_txt_green.png'></img>");
@@ -1879,6 +1882,7 @@ function str_to_img(x)
 	x = x.replace(/\[緑\(4\)\]/g, "<img class='icon_img' src='img/icon_txt_green_04.png'></img>");
 	x = x.replace(/\[緑\(5\)\]/g, "<img class='icon_img' src='img/icon_txt_green_05.png'></img>");
 
+	x = x.replace(/《黒2》/g, "<img class='icon_img' src='img/icon_txt_black2.png'></img>");
 	x = x.replace(/《黒》/g, "<img class='icon_img' src='img/icon_txt_black.png'></img>");
 	x = x.replace(/【黒】/g, "<img class='icon_img' src='img/icon_txt_black.png'></img>");
 	x = x.replace(/\[黒\]/g, "<img class='icon_img' src='img/icon_txt_black.png'></img>");
@@ -1889,6 +1893,7 @@ function str_to_img(x)
 	x = x.replace(/\[黒\(4\)\]/g, "<img class='icon_img' src='img/icon_txt_black_04.png'></img>");
 	x = x.replace(/\[黒\(5\)\]/g, "<img class='icon_img' src='img/icon_txt_black_05.png'></img>");
 
+	x = x.replace(/《白2》/g, "<img class='icon_img' src='img/icon_txt_white2.png'></img>");
 	x = x.replace(/《白》/g, "<img class='icon_img' src='img/icon_txt_white.png'></img>");
 	x = x.replace(/【白】/g, "<img class='icon_img' src='img/icon_txt_white.png'></img>");
 	x = x.replace(/\[白\]/g, "<img class='icon_img' src='img/icon_txt_white.png'></img>");
@@ -1899,6 +1904,7 @@ function str_to_img(x)
 	x = x.replace(/\[白\(4\)\]/g, "<img class='icon_img' src='img/icon_txt_white_04.png'></img>");
 	x = x.replace(/\[白\(5\)\]/g, "<img class='icon_img' src='img/icon_txt_white_05.png'></img>");
 
+	x = x.replace(/《無2》/g, "<img class='icon_img' src='img/icon_txt_null2.png'></img>");
 	x = x.replace(/《無》/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
 	x = x.replace(/【無】/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
 	x = x.replace(/\[無\]/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
