@@ -1826,6 +1826,7 @@ function str_to_img(x)
 	x = x.replace(/《ディソナアイコン》/g, "<img class='icon_img' src='img/icon_txt_dissona.png'></img>");
 	x = x.replace(/\[ダウン\]/g, "<img class='icon_img' src='img/icon_txt_down.png'></img>");
 	x = x.replace(/\[ガード\]/g, "<img class='icon_img' src='img/icon_guard_mini.png'></img>");
+	x = x.replace(/《ガードアイコン》/g, "<img class='icon_img' src='img/icon_guard_mini.png'></img>");
 	x = x.replace(/◎/g, "<img class='icon_img' src='img/icon_txt_coin.png'></img>");
 	x = x.replace(/【　　】/g, "<img class='icon_img' src='img/icon_txt_frame_null.png'></img>");
 
