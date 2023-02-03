@@ -387,8 +387,7 @@
 				</td>		
 				<td style="vertical-align:text-top">
 					<button onclick="dataInit()">Clear Deck</button>
-					<!-- <button onclick="downloadBlob('output', '')">Deck Code</button> -->
-					<button style="float: right; display: none" onclick="checkDeck();">Check</button>
+					<!-- <button style="float: right;" onclick="checkDeck();">Exam</button> -->
 					<button onclick="customizeWindowEvent('view');">Deck View</button>
 					<button onclick="customizeWindowEvent('list');">Card List</button>
 					<button style="float: right" onclick="showVersion();">About</button>
@@ -398,6 +397,8 @@
 					<span onclick="clickSpan(this)">Level 0 </span><input type="checkbox" id="level0" checked>&emsp;&emsp;<span onclick="clickSpan(this)">Level 1 </span><input type="checkbox" id="level1" checked>&emsp;&emsp;<span onclick="clickSpan(this)">Level 2 </span><input type="checkbox" id="level2" checked>&emsp;&emsp;<span onclick="clickSpan(this)">Level 3 </span><input type="checkbox" id="level3" checked>
 					<br><br>
 					<span onclick="clickSpan(this)">赤 </span><input type="checkbox" id="red" checked>&emsp;&emsp;<span onclick="clickSpan(this)">青 </span><input type="checkbox" id="blue" checked>&emsp;&emsp;<span onclick="clickSpan(this)">緑 </span><input type="checkbox" id="green" checked>&emsp;&emsp;<span onclick="clickSpan(this)">黒 </span><input type="checkbox" id="black" checked>&emsp;&emsp;<span onclick="clickSpan(this)">白 </span><input type="checkbox" id="white" checked>&emsp;&emsp;<span onclick="clickSpan(this)">無 </span><input type="checkbox" id="nocolor" checked>
+					<br><br>
+					<span onclick="clickSpan(this)">無印 </span><input type="checkbox" id="no_tag" checked>&emsp;&emsp;<span onclick="clickSpan(this)">ディソナ </span><input type="checkbox" id="dissona" checked>
 					<br><br>
 					<span onclick="clickSpan(this)">LB有り </span><input type="checkbox" id="islb" checked>&emsp;&emsp;<span onclick="clickSpan(this)">LB無し </span><input type="checkbox" id="notlb" checked>
 					<br><br>
@@ -497,6 +498,7 @@
 					商品檢索
 					<select id="selectProduct">
 						<option value="0">--All Product--</option>
+						<option value="WXDi-P12">[WXDi-P12] 拡張パック「DISSONANCE DIVA」</option>
 						<option value="WXDi-CP01">[WXDi-CP01] 拡張パック「にじさんじ DIVA」</option>
 						<option value="WXDi-D09">[WXDi-D09] 構築済みデッキ「SUPER DIVA DECK DOUBLE HEROINES -ピルルク＆ヒラナ-」</option>
 						<option value="WXDi-P11">[WXDi-P11] 拡張パック「REUNION DIVA」</option>
@@ -675,7 +677,6 @@
 		<div id="window-container">
             <div id="window-pop">
                 <div class="window-content">
-                	<!-- <div id="deckName">123123123</div> -->
 					<table style="margin-left: 525px;">
 						<tr>
 							<td>
