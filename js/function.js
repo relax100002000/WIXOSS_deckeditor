@@ -273,14 +273,14 @@ function showInfotable(data)
 		str += "	</td>";
 		str += "</tr>";
 
-		if(data[LABEL] != "")
+		if(data[STORY] != "")
 		{
 			str += "<tr>";
 			str += "	<td>";
-			str += "		ラベル";
+			str += "		ストーリー";
 			str += "	</td>";
 			str += "	<td>";
-			str += data[LABEL];
+			str += data[STORY];
 			str += "	</td>";
 			str += "</tr>";
 		}
@@ -365,14 +365,14 @@ function showInfotable(data)
 		str += "	</td>";
 		str += "</tr>";
 
-		if(data[LABEL] != "")
+		if(data[STORY] != "")
 		{
 			str += "<tr>";
 			str += "	<td>";
-			str += "		ラベル";
+			str += "		ストーリー";
 			str += "	</td>";
 			str += "	<td>";
-			str += data[LABEL];
+			str += data[STORY];
 			str += "	</td>";
 			str += "</tr>";
 		}
@@ -478,14 +478,14 @@ function showInfotable(data)
 		str += "	</td>";
 		str += "</tr>";
 
-		if(data[LABEL] != "")
+		if(data[STORY] != "")
 		{
 			str += "<tr>";
 			str += "	<td>";
-			str += "		ラベル";
+			str += "		ストーリー";
 			str += "	</td>";
 			str += "	<td>";
-			str += data[LABEL];
+			str += data[STORY];
 			str += "	</td>";
 			str += "</tr>";
 		}
@@ -601,14 +601,14 @@ function showInfotable(data)
 		str += "	</td>";
 		str += "</tr>";
 
-		if(data[LABEL] != "")
+		if(data[STORY] != "")
 		{
 			str += "<tr>";
 			str += "	<td>";
-			str += "		ラベル";
+			str += "		ストーリー";
 			str += "	</td>";
 			str += "	<td>";
-			str += data[LABEL];
+			str += data[STORY];
 			str += "	</td>";
 			str += "</tr>";
 		}
@@ -697,14 +697,14 @@ function showInfotable(data)
 		str += "	</td>";
 		str += "</tr>";
 
-		if(data[LABEL] != "")
+		if(data[STORY] != "")
 		{
 			str += "<tr>";
 			str += "	<td>";
-			str += "		ラベル";
+			str += "		ストーリー";
 			str += "	</td>";
 			str += "	<td>";
-			str += data[LABEL];
+			str += data[STORY];
 			str += "	</td>";
 			str += "</tr>";
 		}
@@ -1723,15 +1723,15 @@ function search()
 			}
 		}
 
-		if(!$('#no_tag').is(":checked") && !$('#dissona').is(":checked"))
+		if(!$('#no_story').is(":checked") && !$('#dissona').is(":checked"))
 		{
 
 		}
 		else
 		{
-			if(!$('#no_tag').is(":checked"))
+			if(!$('#no_story').is(":checked"))
 			{
-				if(cardData[i][LABEL] == "")
+				if(cardData[i][STORY] == "")
 				{
 					continue;
 				}
@@ -1739,7 +1739,7 @@ function search()
 
 			if(!$('#dissona').is(":checked"))
 			{
-				if(cardData[i][LABEL] == "ディソナ")
+				if(cardData[i][STORY] == "ディソナ")
 				{
 					continue;
 				}
@@ -3019,8 +3019,8 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20230203 v1.18\n";
-	str += "1.新增WXDi-P12\n";
+	str += "20230214 v1.19\n";
+	str += "1.正名ラベル為ストーリー\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";

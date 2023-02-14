@@ -1,6 +1,9 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
+　　
+20230214 v1.19  
+1.正名ラベル為ストーリー  
   
 20230203 v1.18  
 1.新增WXDi-P12  
