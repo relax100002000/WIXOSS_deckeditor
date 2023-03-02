@@ -1668,57 +1668,117 @@ function search()
 			}
 		}
 
-		if(!$('#red').is(":checked") && !$('#blue').is(":checked") && !$('#green').is(":checked") && !$('#black').is(":checked") && !$('#white').is(":checked") && !$('#nocolor').is(":checked"))
+		if(!$('#multicolor').is(":checked"))
 		{
+			if(!$('#red').is(":checked") && !$('#blue').is(":checked") && !$('#green').is(":checked") && !$('#black').is(":checked") && !$('#white').is(":checked") && !$('#nocolor').is(":checked"))
+			{
 
+			}
+			else
+			{
+				if(!$('#red').is(":checked"))
+				{
+					if(cardData[i][COLOR].indexOf("赤") != -1)
+					{
+						continue;
+					}
+				}
+
+				if(!$('#blue').is(":checked"))
+				{
+					if(cardData[i][COLOR].indexOf("青") != -1)
+					{
+						continue;
+					}
+				}
+
+				if(!$('#green').is(":checked"))
+				{
+					if(cardData[i][COLOR].indexOf("緑") != -1)
+					{
+						continue;
+					}
+				}
+
+				if(!$('#black').is(":checked"))
+				{
+					if(cardData[i][COLOR].indexOf("黒") != -1)
+					{
+						continue;
+					}
+				}
+
+				if(!$('#white').is(":checked"))
+				{
+					if(cardData[i][COLOR].indexOf("白") != -1)
+					{
+						continue;
+					}
+				}
+
+				if(!$('#nocolor').is(":checked"))
+				{
+					if(cardData[i][COLOR].indexOf("無") != -1)
+					{
+						continue;
+					}
+				}
+			}
 		}
 		else
 		{
-			if(!$('#red').is(":checked"))
+			if(cardData[i][COLOR].length == 1)
 			{
-				if(cardData[i][COLOR].indexOf("赤") != -1)
-				{
-					continue;
-				}
+				continue;
 			}
-
-			if(!$('#blue').is(":checked"))
+			else
 			{
-				if(cardData[i][COLOR].indexOf("青") != -1)
+				if($('#red').is(":checked"))
 				{
-					continue;
+					if(cardData[i][COLOR].indexOf("赤") == -1)
+					{
+						continue;
+					}
 				}
-			}
 
-			if(!$('#green').is(":checked"))
-			{
-				if(cardData[i][COLOR].indexOf("緑") != -1)
+				if($('#blue').is(":checked"))
 				{
-					continue;
+					if(cardData[i][COLOR].indexOf("青") == -1)
+					{
+						continue;
+					}
 				}
-			}
 
-			if(!$('#black').is(":checked"))
-			{
-				if(cardData[i][COLOR].indexOf("黒") != -1)
+				if($('#green').is(":checked"))
 				{
-					continue;
+					if(cardData[i][COLOR].indexOf("緑") == -1)
+					{
+						continue;
+					}
 				}
-			}
 
-			if(!$('#white').is(":checked"))
-			{
-				if(cardData[i][COLOR].indexOf("白") != -1)
+				if($('#black').is(":checked"))
 				{
-					continue;
+					if(cardData[i][COLOR].indexOf("黒") == -1)
+					{
+						continue;
+					}
 				}
-			}
 
-			if(!$('#nocolor').is(":checked"))
-			{
-				if(cardData[i][COLOR].indexOf("無") != -1)
+				if($('#white').is(":checked"))
 				{
-					continue;
+					if(cardData[i][COLOR].indexOf("白") == -1)
+					{
+						continue;
+					}
+				}
+
+				if($('#nocolor').is(":checked"))
+				{
+					if(cardData[i][COLOR].indexOf("無") == -1)
+					{
+						continue;
+					}
 				}
 			}
 		}
@@ -1804,6 +1864,7 @@ function search()
 function checkall()
 {
 	$('input:checkbox').prop('checked', true);
+	$('#multicolor').prop('checked', false);
 }
 
 function uncheckall()
@@ -3020,8 +3081,8 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20230214 v1.19\n";
-	str += "1.正名ラベル為ストーリー\n";
+	str += "20230302 v1.20\n";
+	str += "1.新增多色欄位，勾選後只會顯示包含所選色的多色牌\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";
