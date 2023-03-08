@@ -3081,8 +3081,8 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20230302 v1.20\n";
-	str += "1.新增多色欄位，勾選後只會顯示包含所選色的多色牌\n";
+	str += "20230308 v1.21\n";
+	str += "1.將數字、英文、空格和#字號統一為半形以利搜尋\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";
