@@ -1890,17 +1890,17 @@ function str_to_img(x)
 	x = x.replace(/《ガードアイコン》/g, "<img class='icon_img' src='img/icon_guard_mini.png'></img>");
 	x = x.replace(/◎/g, "<img class='icon_img' src='img/icon_txt_coin.png'></img>");
 	x = x.replace(/《コインアイコン》/g, "<img class='icon_img' src='img/icon_txt_coin.png'></img>");
-	x = x.replace(/【　　】/g, "<img class='icon_img' src='img/icon_txt_frame_null.png'></img>");
+	x = x.replace(/【  】/g, "<img class='icon_img' src='img/icon_txt_frame_null.png'></img>");
 
-	x = x.replace(/（ターン１）/g, "<img class='icon_img' src='img/icon_txt_turn_01.png'></img>");
-	x = x.replace(/（ターン２）/g, "<img class='icon_img' src='img/icon_txt_turn_02.png'></img>");
-	x = x.replace(/（ゲーム１）/g, "<img class='icon_img' src='img/icon_txt_game_01.png'></img>");
-	x = x.replace(/（ゲーム２）/g, "<img class='icon_img' src='img/icon_txt_game_02.png'></img>");
+	x = x.replace(/（ターン1）/g, "<img class='icon_img' src='img/icon_txt_turn_01.png'></img>");
+	x = x.replace(/（ターン2）/g, "<img class='icon_img' src='img/icon_txt_turn_02.png'></img>");
+	x = x.replace(/（ゲーム1）/g, "<img class='icon_img' src='img/icon_txt_game_01.png'></img>");
+	x = x.replace(/（ゲーム2）/g, "<img class='icon_img' src='img/icon_txt_game_02.png'></img>");
 
-	x = x.replace(/《ターン１回》/g, "<img class='icon_img' src='img/icon_txt_turn_01.png'></img>");
-	x = x.replace(/《ターン２回》）/g, "<img class='icon_img' src='img/icon_txt_turn_02.png'></img>");
-	x = x.replace(/《ゲーム１回》/g, "<img class='icon_img' src='img/icon_txt_game_01.png'></img>");
-	x = x.replace(/《ゲーム２回》/g, "<img class='icon_img' src='img/icon_txt_game_02.png'></img>");
+	x = x.replace(/《ターン1回》/g, "<img class='icon_img' src='img/icon_txt_turn_01.png'></img>");
+	x = x.replace(/《ターン2回》）/g, "<img class='icon_img' src='img/icon_txt_turn_02.png'></img>");
+	x = x.replace(/《ゲーム1回》/g, "<img class='icon_img' src='img/icon_txt_game_01.png'></img>");
+	x = x.replace(/《ゲーム2回》/g, "<img class='icon_img' src='img/icon_txt_game_02.png'></img>");
 
 	x = x.replace(/【チーム起】/g, "<img class='icon_img' src='img/icon_txt_starting_team.png'></img>");
 	x = x.replace(/【チーム常】/g, "<img class='icon_img' src='img/icon_txt_regular_team.png'></img>");
