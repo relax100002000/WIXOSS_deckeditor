@@ -137,14 +137,24 @@ function showrdeck()
 	}
 }
 
-function onmouseShow(x)
+function onmouseShow(x, source)
 {
 	var i = 0;
+	if(source == 'search')
+	{
+		$('#cardinformation').css('margin', '150px 0px 0px 40px');
+	}
+	else if(source == 'deck')
+	{
+		$('#cardinformation').css('margin', '150px 0px 0px 960px');
+	}
 
-	$("#infoTable").css("visibility", "visible");
+	// $("#infoTable").css("visibility", "visible");
 
 	if(x.alt)
 	{
+		$("#cardinformation").css("visibility", "visible");
+		
 		for(i = 0; i < cardData.length; i++)
 		{
 			if(x.alt == cardData[i][ID])
@@ -175,7 +185,7 @@ function onmouseShow(x)
 		$("#big_pic").attr("height", "504px");
 		$("#big_pic").attr("width", "360px");
 		$("#big_pic").attr("src", "img/card_back.jpg");
-		$("#infoTable").css("visibility", "hidden");
+		// $("#infoTable").css("visibility", "hidden");
 	}
 }
 
@@ -746,11 +756,11 @@ function showInfotable(data)
 	$("#infoTable").html(str);
 	if(data == "init")
 	{
-		$("#infoTable").css("visibility", "hidden");
+		// $("#infoTable").css("visibility", "hidden");
 	}
 	else
 	{
-		$("#infoTable").css("visibility", "visible");
+		// $("#infoTable").css("visibility", "visible");
 	}
 }
 
@@ -1052,6 +1062,16 @@ function updatechart()
 		show_lbobj.data.labels = ['LB有り: ' + sdeck_burst, 'LB無し: ' + sdeck_no_burst];
 		show_lbobj.data.datasets[0].data = [sdeck_burst, sdeck_no_burst];
 		show_lbobj.update();
+
+		$("#storydiv").show();
+		storyobj.data.labels = ['無印: ' + sdeck_nostory, 'ディソナ: ' + sdeck_dissona];
+		storyobj.data.datasets[0].data = [sdeck_nostory, sdeck_dissona];
+		storyobj.update();
+
+		// $("#show_storydiv").show();
+		// show_storyobj.data.labels = ['無印: ' + sdeck_nostory, 'ディソナ: ' + sdeck_dissona];
+		// show_storyobj.data.datasets[0].data = [sdeck_nostory, sdeck_dissona];
+		// show_storyobj.update();
 	}
 	else
 	{
@@ -1061,6 +1081,8 @@ function updatechart()
 		$("#show_colordiv").hide();
 		$("#lbdiv").hide();
 		$("#show_lbdiv").hide();
+		$("#storydiv").hide();
+		// $("#show_storydiv").hide();
 	}
 }
 
@@ -1137,7 +1159,14 @@ function addcounter(x)
 	{
 		sdeck_no_burst++;
 	}
-
+  if(x[STORY] == "ディソナ")
+	{
+		sdeck_dissona++;
+	}
+	else
+	{
+		sdeck_nostory++;
+	}
 	showcounter();
 }
 
@@ -1198,7 +1227,15 @@ function delcounter(x)
 	{
 		sdeck_no_burst--;
 	}
-
+  
+  if(x[STORY] == "ディソナ")
+	{
+		sdeck_dissona--;
+	}
+	else
+	{
+		sdeck_nostory--;
+  }
 	showcounter();
 }
 
@@ -1549,6 +1586,9 @@ function loadcounter()
 
 	sdeck_burst = 0;
 	sdeck_no_burst = 0;
+
+	sdeck_nostory = 0;
+	sdeck_dissona = 0;
 
 	for(i = 0; i < sdeckArr.length; i++)
 	{
@@ -2804,7 +2844,9 @@ function dataInit()
 
 	sdeck_burst = 0;
 	sdeck_no_burst = 0;
-	// sdeckArr
+	
+	sdeck_nostory = 0;
+	sdeck_dissona = 0;
 
 	showAlldeck();
 }
@@ -3081,8 +3123,9 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20230308 v1.21\n";
-	str += "1.將數字、英文、空格和#字號統一為半形以利搜尋\n";
+	str += "20230413 v1.22\n";
+	str += "1.將卡片資訊改為懸浮\n";
+	str += "2.在主畫面中加story圓餅圖"
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";

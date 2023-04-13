@@ -72,6 +72,12 @@
 		    position: absolute;
        		margin-left: -175px;
 		}
+
+		#show_storydiv {
+		    position: absolute;
+       		margin-left: -175px;
+		}
+
 		span, input[type='checkbox'] {
 			user-select: none;
 			cursor: pointer;
@@ -161,6 +167,9 @@
 			var sdeck_burst = 0;
 			var sdeck_no_burst = 0;
 
+			var sdeck_nostory = 0;
+			var sdeck_dissona = 0;
+
 			$( document ).ready(function() {
 				onLoading();
 				showrdeck();
@@ -212,7 +221,20 @@
 	            }
 	        }
 		</script>
-		<span style="position: absolute; margin-left: 375px; cursor: default;">Language
+		<div id='cardinformation' style='border: solid; border-width: 2px;position: absolute;z-index: 999; background-color:white; visibility: hidden;margin: 150px 0px 0px 40px;'>
+			<table>
+				<tr>
+					<td>
+						<img width="360px" height="504px" id="big_pic" src="img/card_back.jpg">
+					</td>
+					<td style="vertical-align:text-top;">
+						<table id="infoTable" width="360px" border="1" style="border: solid; border-width: 1px">
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<span style="position: absolute; cursor: default;">Language
 			<select id="selectLang">
 				<option value="JP">日本語</option>
 				<option value="TW">繁體中文</option>
@@ -227,9 +249,9 @@
 		</span>
 		<table width="1850px" height="600px">
 			<tr>
-				<td width="370px" height="510px">
+				<!-- <td width="370px" height="510px">
 					<img width="360px" height="504px" id="big_pic" src="img/card_back.jpg">
-				</td>
+				</td> -->
 				<td style="vertical-align:bottom;">
 					<table>
 						<tr>
@@ -261,6 +283,7 @@
 										},
 										options: {
 									        plugins: {
+									        	maintainAspectRatio: false,
 									            legend: {
 									                display: true,
 									                labels: {
@@ -304,6 +327,7 @@
 										},
 										options: {
 									        plugins: {
+									        	maintainAspectRatio: false,
 									            legend: {
 									                display: true,
 									                labels: {
@@ -339,6 +363,42 @@
 										},
 										options: {
 									        plugins: {
+									        	maintainAspectRatio: false,
+									            legend: {
+									                display: true,
+									                labels: {
+									                    color: 'rgb(0, 0, 0)'
+									                }
+									            }
+									        }
+			    						}
+									});
+								</script>
+							</td>
+							<td>
+								<div id="storydiv" hidden><canvas id="storyChart"></canvas></div>
+								<script>
+			  						const storyctx = document.getElementById('storyChart');
+
+										storyobj = new Chart(storyctx, {
+										type: 'doughnut',
+										data: {
+									  		labels: [
+												'',
+												'LB無し'
+											],
+											datasets: [{
+												label: 'Story counter',
+												data: [sdeck_nostory, sdeck_dissona],
+												backgroundColor: [
+												  'rgb(192, 192, 192)',
+												  'rgb(138, 43, 226)'
+												],
+												hoverOffset: 4
+											}]
+										},
+										options: {
+									        plugins: {
 									            legend: {
 									                display: true,
 									                labels: {
@@ -360,16 +420,16 @@
 						</tr>
 						<tr>
 							<td>
-								<img id="ldeck_0" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,0 , ldeckArr)">
-								<img id="ldeck_1" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,1 , ldeckArr)">
-								<img id="ldeck_2" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,2 , ldeckArr)">
-								<img id="ldeck_3" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,3 , ldeckArr)">
-								<img id="ldeck_4" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,4 , ldeckArr)">
-								<img id="ldeck_5" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,5 , ldeckArr)">
-								<img id="ldeck_6" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,6 , ldeckArr)">
-								<img id="ldeck_7" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,7 , ldeckArr)">
-								<img id="ldeck_8" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,8 , ldeckArr)">
-								<img id="ldeck_9" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,9 , ldeckArr)">
+								<img id="ldeck_0" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,0 , ldeckArr)">
+								<img id="ldeck_1" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,1 , ldeckArr)">
+								<img id="ldeck_2" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,2 , ldeckArr)">
+								<img id="ldeck_3" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,3 , ldeckArr)">
+								<img id="ldeck_4" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,4 , ldeckArr)">
+								<img id="ldeck_5" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,5 , ldeckArr)">
+								<img id="ldeck_6" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,6 , ldeckArr)">
+								<img id="ldeck_7" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,7 , ldeckArr)">
+								<img id="ldeck_8" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,8 , ldeckArr)">
+								<img id="ldeck_9" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,9 , ldeckArr)">
 							</td>
 						</tr>
 						<tr>
@@ -379,8 +439,8 @@
 						</tr>
 						<tr>
 							<td>
-								<img id="pdeck_0" width="82px" height="60px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,0 , pdeckArr)">
-								<img id="pdeck_1" width="82px" height="60px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,1 , pdeckArr)">
+								<img id="pdeck_0" width="105px" height="75px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,0 , pdeckArr)">
+								<img id="pdeck_1" width="105px" height="75px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,1 , pdeckArr)">
 							</td>
 						</tr>
 					</table>
@@ -530,10 +590,10 @@
 				</td>
 			</tr>
 			<tr>
-				<td style="vertical-align:text-top" height="500px">
+			<!-- 	<td style="vertical-align:text-top" height="500px">
 					<table id="infoTable" width="360px" border="1" style="border: solid; border-width: 1px">
 					</table>
-				</td>
+				</td> -->
 				<td style="vertical-align:text-top">
 					<table>
 						<tr>
@@ -543,58 +603,58 @@
 						</tr>
 						<tr>
 							<td>
-								<img id="sdeck_0" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,0 , sdeckArr)">
-								<img id="sdeck_1" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,1 , sdeckArr)">
-								<img id="sdeck_2" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,2 , sdeckArr)">
-								<img id="sdeck_3" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,3 , sdeckArr)">
-								<img id="sdeck_4" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,4 , sdeckArr)">
-								<img id="sdeck_5" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,5 , sdeckArr)">
-								<img id="sdeck_6" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,6 , sdeckArr)">
-								<img id="sdeck_7" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,7 , sdeckArr)">
-								<img id="sdeck_8" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,8 , sdeckArr)">
-								<img id="sdeck_9" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,9 , sdeckArr)">
+								<img id="sdeck_0" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,0 , sdeckArr)">
+								<img id="sdeck_1" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,1 , sdeckArr)">
+								<img id="sdeck_2" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,2 , sdeckArr)">
+								<img id="sdeck_3" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,3 , sdeckArr)">
+								<img id="sdeck_4" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,4 , sdeckArr)">
+								<img id="sdeck_5" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,5 , sdeckArr)">
+								<img id="sdeck_6" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,6 , sdeckArr)">
+								<img id="sdeck_7" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,7 , sdeckArr)">
+								<img id="sdeck_8" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,8 , sdeckArr)">
+								<img id="sdeck_9" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,9 , sdeckArr)">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<img id="sdeck_10" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,10 , sdeckArr)">
-								<img id="sdeck_11" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,11 , sdeckArr)">
-								<img id="sdeck_12" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,12 , sdeckArr)">
-								<img id="sdeck_13" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,13 , sdeckArr)">
-								<img id="sdeck_14" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,14 , sdeckArr)">
-								<img id="sdeck_15" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,15 , sdeckArr)">
-								<img id="sdeck_16" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,16 , sdeckArr)">
-								<img id="sdeck_17" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,17 , sdeckArr)">
-								<img id="sdeck_18" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,18 , sdeckArr)">
-								<img id="sdeck_19" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,19 , sdeckArr)">
+								<img id="sdeck_10" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,10 , sdeckArr)">
+								<img id="sdeck_11" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,11 , sdeckArr)">
+								<img id="sdeck_12" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,12 , sdeckArr)">
+								<img id="sdeck_13" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,13 , sdeckArr)">
+								<img id="sdeck_14" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,14 , sdeckArr)">
+								<img id="sdeck_15" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,15 , sdeckArr)">
+								<img id="sdeck_16" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,16 , sdeckArr)">
+								<img id="sdeck_17" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,17 , sdeckArr)">
+								<img id="sdeck_18" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,18 , sdeckArr)">
+								<img id="sdeck_19" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,19 , sdeckArr)">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<img id="sdeck_20" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,20 , sdeckArr)">
-								<img id="sdeck_21" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,21 , sdeckArr)">
-								<img id="sdeck_22" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,22 , sdeckArr)">
-								<img id="sdeck_23" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,23 , sdeckArr)">
-								<img id="sdeck_24" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,24 , sdeckArr)">
-								<img id="sdeck_25" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,25 , sdeckArr)">
-								<img id="sdeck_26" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,26 , sdeckArr)">
-								<img id="sdeck_27" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,27 , sdeckArr)">
-								<img id="sdeck_28" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,28 , sdeckArr)">
-								<img id="sdeck_29" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,29 , sdeckArr)">
+								<img id="sdeck_20" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,20 , sdeckArr)">
+								<img id="sdeck_21" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,21 , sdeckArr)">
+								<img id="sdeck_22" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,22 , sdeckArr)">
+								<img id="sdeck_23" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,23 , sdeckArr)">
+								<img id="sdeck_24" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,24 , sdeckArr)">
+								<img id="sdeck_25" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,25 , sdeckArr)">
+								<img id="sdeck_26" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,26 , sdeckArr)">
+								<img id="sdeck_27" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,27 , sdeckArr)">
+								<img id="sdeck_28" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,28 , sdeckArr)">
+								<img id="sdeck_29" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,29 , sdeckArr)">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<img id="sdeck_30" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,30 , sdeckArr)">
-								<img id="sdeck_31" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,31 , sdeckArr)">
-								<img id="sdeck_32" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,32 , sdeckArr)">
-								<img id="sdeck_33" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,33 , sdeckArr)">
-								<img id="sdeck_34" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,34 , sdeckArr)">
-								<img id="sdeck_35" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,35 , sdeckArr)">
-								<img id="sdeck_36" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,36 , sdeckArr)">
-								<img id="sdeck_37" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,37 , sdeckArr)">
-								<img id="sdeck_38" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,38 , sdeckArr)">
-								<img id="sdeck_39" width="60px" height="82px" src="img/empty.jpg" onmouseover="onmouseShow(this)" onclick="delDeck(this,39 , sdeckArr)">
+								<img id="sdeck_30" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,30 , sdeckArr)">
+								<img id="sdeck_31" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,31 , sdeckArr)">
+								<img id="sdeck_32" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,32 , sdeckArr)">
+								<img id="sdeck_33" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,33 , sdeckArr)">
+								<img id="sdeck_34" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,34 , sdeckArr)">
+								<img id="sdeck_35" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,35 , sdeckArr)">
+								<img id="sdeck_36" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,36 , sdeckArr)">
+								<img id="sdeck_37" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,37 , sdeckArr)">
+								<img id="sdeck_38" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,38 , sdeckArr)">
+								<img id="sdeck_39" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="delDeck(this,39 , sdeckArr)">
 								<br>
 								<span>官方網站: </span><a target="_blank" href="https://www.takaratomy.co.jp/products/wixoss/">WIXOSS-ウィクロス-｜タカラトミー</a>
 								<br>
@@ -619,11 +679,11 @@
 										<img id="larrow" style="cursor: pointer;" height="172px" src="img/larrow.png" onclick="changePage('back')">
 									</td>
 									<td style="height: 180px;vertical-align: bottom;">
-										<img id="rdeck_0" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
-										<img id="rdeck_1" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
-										<img id="rdeck_2" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
-										<img id="rdeck_3" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
-										<img id="rdeck_4" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_0" onmouseover="onmouseShow(this, 'search');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_1" onmouseover="onmouseShow(this, 'search');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_2" onmouseover="onmouseShow(this, 'search');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_3" onmouseover="onmouseShow(this, 'search');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_4" onmouseover="onmouseShow(this, 'search');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="addDeck(this)" alt="" height="172px" width="124px">
 									</td>
 									<td rowspan="2">
 										<img id="rarrow" style="cursor: pointer;" height="172px" src="img/rarrow.png" onclick="changePage('next')">
@@ -631,11 +691,11 @@
 								</tr>
 								<tr>
 									<td style="height: 180px;vertical-align: bottom;">
-										<img id="rdeck_5" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
-										<img id="rdeck_6" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
-										<img id="rdeck_7" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
-										<img id="rdeck_8" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
-										<img id="rdeck_9" onmouseover="onmouseShow(this)" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_5" onmouseover="onmouseShow(this, 'search');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_6" onmouseover="onmouseShow(this, 'search');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_7" onmouseover="onmouseShow(this, 'search');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_8" onmouseover="onmouseShow(this, 'search');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="addDeck(this)" alt="" height="172px" width="124px">
+										<img id="rdeck_9" onmouseover="onmouseShow(this, 'search');" onmouseout ="$('#cardinformation').css('visibility', 'hidden');" onclick="addDeck(this)" alt="" height="172px" width="124px">
 									</td>
 								</tr>
 							</table>
@@ -800,6 +860,42 @@
 			    						}
 									});
 								</script>
+								<!-- <div id="show_storydiv"><canvas id="show_storyChart"></canvas></div>
+								<script>
+			  						const show_storyctx = document.getElementById('show_storyChart');
+
+										show_storyobj = new Chart(show_storyctx, {
+										type: 'doughnut',
+										data: {
+									  		labels: [
+												'無印',
+												'ディソナ'
+											],
+											datasets: [{
+												label: 'Story counter',
+												data: [sdeck_nostory, sdeck_dissona],
+												backgroundColor: [
+												  'rgb(192, 192, 192)',
+												  'rgb(138, 43, 226)'
+												],
+												hoverOffset: 4
+											}]
+										},
+										options: {
+									        plugins: {
+									            legend: {
+									                display: true,
+									                labels: {
+									                    color: 'rgb(0, 0, 0)',
+									                    font: {
+									                        size: 12
+									                    }
+									                }
+									            }
+									        }
+			    						}
+									});
+								</script> -->
 							</td>
 						</tr>
 						<tr>
