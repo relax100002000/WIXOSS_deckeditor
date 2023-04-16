@@ -1,6 +1,9 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
+  
+20230416 v1.23  
+1.新增WXDi-P12中文效果  
 　 
 20230413 v1.22  
 1.將卡片資訊改為懸浮  

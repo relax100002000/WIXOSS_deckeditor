@@ -3123,9 +3123,8 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20230413 v1.22\n";
-	str += "1.將卡片資訊改為懸浮\n";
-	str += "2.在主畫面中加story圓餅圖"
+	str += "20230416 v1.23\n";
+	str += "1.新增WXDi-P12中文效果  \n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";
