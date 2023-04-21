@@ -198,13 +198,13 @@ Author: ZZZ
   
 目前收錄: 
 WXDi-CP01  
-WXDi-P00 ~ WXDi-P12  
+WXDi-P00 ~ WXDi-P13  
 WXDi-D01 ~ WXDi-D09  
 PRカード  
   
 中文效果:
-WXDi-P00 ~ WXDi-P11  
-WXDi-D01 ~ WXDi-D07  
+WXDi-P00 ~ WXDi-P12  
+WXDi-D01 ~ WXDi-D09  
   
 預計更新:  
 -改善排序邏輯  
