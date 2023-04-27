@@ -2014,6 +2014,7 @@ function str_to_img(x)
 	x = x.replace(/《無2》/g, "<img class='icon_img' src='img/icon_txt_null2.png'></img>");
 	x = x.replace(/《無》/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
 	x = x.replace(/【無】/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
+	x = x.replace(/《無×1》/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
 	x = x.replace(/\[無\]/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
 	x = x.replace(/\[無\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_null_00.png'></img>");
 	x = x.replace(/\[無\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_null_01.png'></img>");
