@@ -1928,6 +1928,7 @@ function str_to_img(x)
 	x = x.replace(/【ハーモニー】/g, "<img class='icon_img' src='img/icon_txt_harmony.png'></img>");
 	x = x.replace(/《ディソナアイコン》/g, "<img class='icon_img' src='img/icon_txt_dissona.png'></img>");
 	x = x.replace(/\[ダウン\]/g, "<img class='icon_img' src='img/icon_txt_down.png'></img>");
+	x = x.replace(/《ダウン》/g, "<img class='icon_img' src='img/icon_txt_down.png'></img>");
 	x = x.replace(/\[ガード\]/g, "<img class='icon_img' src='img/icon_guard_mini.png'></img>");
 	x = x.replace(/《ガードアイコン》/g, "<img class='icon_img' src='img/icon_guard_mini.png'></img>");
 	x = x.replace(/◎/g, "<img class='icon_img' src='img/icon_txt_coin.png'></img>");
@@ -1940,7 +1941,7 @@ function str_to_img(x)
 	x = x.replace(/（ゲーム2）/g, "<img class='icon_img' src='img/icon_txt_game_02.png'></img>");
 
 	x = x.replace(/《ターン1回》/g, "<img class='icon_img' src='img/icon_txt_turn_01.png'></img>");
-	x = x.replace(/《ターン2回》）/g, "<img class='icon_img' src='img/icon_txt_turn_02.png'></img>");
+	x = x.replace(/《ターン2回》/g, "<img class='icon_img' src='img/icon_txt_turn_02.png'></img>");
 	x = x.replace(/《ゲーム1回》/g, "<img class='icon_img' src='img/icon_txt_game_01.png'></img>");
 	x = x.replace(/《ゲーム2回》/g, "<img class='icon_img' src='img/icon_txt_game_02.png'></img>");
 
@@ -1981,6 +1982,7 @@ function str_to_img(x)
 	x = x.replace(/【緑】/g, "<img class='icon_img' src='img/icon_txt_green.png'></img>");
 	x = x.replace(/\[緑\]/g, "<img class='icon_img' src='img/icon_txt_green.png'></img>");
 	x = x.replace(/\[緑\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_green_00.png'></img>");
+	x = x.replace(/《緑×0》/g, "<img class='icon_img' src='img/icon_txt_green_00.png'></img>");
 	x = x.replace(/\[緑\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_green_01.png'></img>");
 	x = x.replace(/\[緑\(2\)\]/g, "<img class='icon_img' src='img/icon_txt_green_02.png'></img>");
 	x = x.replace(/\[緑\(3\)\]/g, "<img class='icon_img' src='img/icon_txt_green_03.png'></img>");
@@ -3151,8 +3153,9 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20230421 v1.24\n";
-	str += "1.新增WXDi-P13  \n";
+	str += "20230427 v1.25\n";
+	str += "1.修正P13一些icon顯示問題\n";
+	str += "2.將一些全形英文更改成半形\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";
