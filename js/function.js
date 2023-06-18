@@ -140,6 +140,25 @@ function showrdeck()
 function onmouseShow(x, source)
 {
 	var i = 0;
+
+	if($('#cardinformation').css('visibility') == 'visible')
+	{
+		if(source == 'search')
+		{
+			if($('#cardinformation').css('margin') == '150px 0px 0px 960px')
+			{
+				return;
+			}
+		}
+		else if(source == 'deck')
+		{
+			if($('#cardinformation').css('margin') == '150px 0px 0px 40px')
+			{
+				return;
+			}
+		}
+	}
+
 	if(source == 'search')
 	{
 		$('#cardinformation').css('margin', '150px 0px 0px 40px');
@@ -148,8 +167,6 @@ function onmouseShow(x, source)
 	{
 		$('#cardinformation').css('margin', '150px 0px 0px 960px');
 	}
-
-	// $("#infoTable").css("visibility", "visible");
 
 	if(x.alt)
 	{
@@ -3154,9 +3171,8 @@ function showVersion()
 
 	str += "Author: ZZZ\n";
 	str += "\n";
-	str += "20230427 v1.25\n";
-	str += "1.修正P13一些icon顯示問題\n";
-	str += "2.將一些全形英文更改成半形\n";
+	str += "20230618 v1.26\n";
+	str += "1.新增唯有透過點擊或碰觸關閉圖示才能關閉資訊視窗功能\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";
