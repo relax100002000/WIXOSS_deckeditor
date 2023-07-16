@@ -244,9 +244,9 @@
 		    <select id="selectDeck" onchange="selectDeck();">
 		    	<option value="">--Select Deck--</option>
 		    </select>
-		    <button style="height: 20px;" onclick="downloadBlob('output', '')">Add</button>
-		    <button style="height: 20px;" onclick="deletedecklist();">Delete</button>
-		    <button style="height: 20px;" onclick="resetDefault();">Reset</button>
+		    <button style="height: 20px;" onclick="$('#cardinformation').css('visibility', 'hidden');downloadBlob('output', '')">Add</button>
+		    <button style="height: 20px;" onclick="$('#cardinformation').css('visibility', 'hidden');deletedecklist();">Delete</button>
+		    <button style="height: 20px;" onclick="$('#cardinformation').css('visibility', 'hidden');resetDefault();">Reset</button>
 		</span>
 		<table width="1850px" height="600px">
 			<tr>
@@ -447,10 +447,10 @@
 					</table>
 				</td>		
 				<td style="vertical-align:text-top">
-					<button onclick="dataInit()">Clear Deck</button>
+					<button onclick="$('#cardinformation').css('visibility', 'hidden');dataInit()">Clear Deck</button>
 					<!-- <button style="float: right;" onclick="checkDeck();">Exam</button> -->
-					<button onclick="customizeWindowEvent('view');">Deck View</button>
-					<button onclick="customizeWindowEvent('list');">Card List</button>
+					<button onclick="$('#cardinformation').css('visibility', 'hidden');customizeWindowEvent('view');">Deck View</button>
+					<button onclick="$('#cardinformation').css('visibility', 'hidden');customizeWindowEvent('list');">Card List</button>
 					<button style="float: right" onclick="showVersion();">About</button>
 					<br><br><br>
 					<span onclick="clickSpan(this)">ルリグ </span><input type="checkbox" id="lrig" checked>&emsp;&emsp;<span onclick="clickSpan(this)">アシストルリグ </span><input type="checkbox" id="assistlrig" checked>&emsp;&emsp;<span onclick="clickSpan(this)">ピース </span><input type="checkbox" id="piece" checked>&emsp;&emsp;<span onclick="clickSpan(this)">シグニ </span><input type="checkbox" id="signi" checked>&emsp;&emsp;<span onclick="clickSpan(this)">スペル </span><input type="checkbox" id="spell" checked>

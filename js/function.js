@@ -3170,9 +3170,12 @@ function showVersion()
 	var str = "";
 
 	str += "Author: ZZZ\n";
+	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20230618 v1.26\n";
-	str += "1.新增唯有透過點擊或碰觸關閉圖示才能關閉資訊視窗功能\n";
+	str += "20230717 v1.27\n";
+	str += "1.新增WXDi-P13中文效果\n";
+	str += "2.新增聯絡信箱\n";
+	str += "3.按按鈕時會關閉懸浮卡片資料視窗\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";
