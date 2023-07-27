@@ -1,6 +1,10 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
+
+20230728 v1.28  
+1.新增WXDi-P14  
+2.硬幣角新增硬幣欄位  
   
 20230717 v1.27  
 1.新增WXDi-P13中文效果  

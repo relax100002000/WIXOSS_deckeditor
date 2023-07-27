@@ -430,6 +430,19 @@ function showInfotable(data)
 		str += data[LIMIT];
 		str += "	</td>";
 		str += "</tr>";
+
+		if(data[COIN] != "")
+		{
+			str += "<tr>";
+			str += "	<td>";
+			str += "		コイン";
+			str += "	</td>";
+			str += "	<td>";
+			str += data[COIN];
+			str += "	</td>";
+			str += "</tr>";
+		}
+
 		if(data[NAME] != "未知の巫女 マユ")
 		{
 			str += "<tr>";
@@ -3172,23 +3185,20 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20230717 v1.27\n";
-	str += "1.新增WXDi-P13中文效果\n";
-	str += "2.新增聯絡信箱\n";
-	str += "3.按按鈕時會關閉懸浮卡片資料視窗\n";
+	str += "20230728 v1.28\n";
+	str += "1.新增WXDi-P14\n";
+	str += "2.硬幣角新增硬幣欄位\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";
-	str += "WXDi-P00 ~ WXDi-P13\n";
+	str += "WXDi-P00 ~ WXDi-P14\n";
 	str += "WXDi-D01 ~ WXDi-D09\n";
 	str += "PRカード\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-改善排序邏輯\n";
-	str += "-增加中文效果\n";
 	str += "-增加自訂義排序\n";
 	str += "-補充關於說明\n";
-	str += "-全半形統一\n";
 	
 	alert(str);
 }
