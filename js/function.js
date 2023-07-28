@@ -1695,7 +1695,7 @@ function search()
 
 		if(!$('#spell').is(":checked"))
 		{
-			if(cardData[i][TYPE] == "スペル")
+			if(cardData[i][TYPE] == "スペル" || cardData[i][TYPE] == "スペル クラフト")
 			{
 				continue;
 			}
@@ -2150,7 +2150,8 @@ function checkDeck()
 			cardData[i][TYPE] != "シグニ" &&
 			cardData[i][TYPE] != "シグニ クラフト" &&
 			cardData[i][TYPE] != "シグニ レゾナ/クラフト" &&
-			cardData[i][TYPE] != "スペル"
+			cardData[i][TYPE] != "スペル" &&
+			cardData[i][TYPE] != "スペル クラフト"
 			)
 		{
 			error = 1;
@@ -2754,7 +2755,7 @@ function checkDeck()
 					error = 1;
 				}
 			}
-			else if(cardData[i][TYPE] == "スペル")
+			else if(cardData[i][TYPE] == "スペル" || cardData[i][TYPE] == "スペル クラフト")
 			{
 				
 				//CLASS
@@ -3185,9 +3186,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20230728 v1.28\n";
-	str += "1.新增WXDi-P14\n";
-	str += "2.硬幣角新增硬幣欄位\n";
+	str += "20230728 v1.29\n";
+	str += "1.修正スペル クラフト不正常顯示的問題\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";
