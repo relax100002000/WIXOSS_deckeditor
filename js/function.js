@@ -3186,8 +3186,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20230728 v1.29\n";
-	str += "1.修正スペル クラフト不正常顯示的問題\n";
+	str += "20230728 v1.30\n";
+	str += "1.新增WXDi-P14中文效果\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01\n";
