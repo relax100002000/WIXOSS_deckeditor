@@ -202,7 +202,7 @@ function onmouseShow(x, source)
 		$("#big_pic").attr("height", "504px");
 		$("#big_pic").attr("width", "360px");
 		$("#big_pic").attr("src", "img/card_back.jpg");
-		// $("#infoTable").css("visibility", "hidden");
+		$("#cardinformation").css("visibility", "hidden");
 	}
 }
 
@@ -2072,13 +2072,13 @@ function showLimit(x)
 
 function clickSpan(x)
 {
-	if($(x).next().is(':checked'))
+	if($(x).prev().is(':checked'))
 	{
-		$(x).next().prop('checked', false);
+		$(x).prev().prop('checked', false);
 	}
 	else
 	{
-		$(x).next().prop('checked', true);
+		$(x).prev().prop('checked', true);
 	}
 }
 

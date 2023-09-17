@@ -2,6 +2,10 @@
    
 Author: ZZZ  
   
+20230917 v1.31  
+1.改變checkbox layout 
+2.改變mouseon empty 行為  
+  
 20230817 v1.30  
 1.新增WXDi-P14中文效果  
   
