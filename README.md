@@ -1,6 +1,9 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
+
+20231027 v1.32  
+1.修正WXDi-P08-065文本誤植  
   
 20230917 v1.31  
 1.改變checkbox layout 
