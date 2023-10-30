@@ -1963,6 +1963,11 @@ function str_to_img(x)
 	x = x.replace(/《ガードアイコン》/g, "<img class='icon_img' src='img/icon_guard_mini.png'></img>");
 	x = x.replace(/◎/g, "<img class='icon_img' src='img/icon_txt_coin.png'></img>");
 	x = x.replace(/《コインアイコン》/g, "<img class='icon_img' src='img/icon_txt_coin.png'></img>");
+	x = x.replace(/【絆】/g, "<img class='icon_img' src='img/icon_txt_kizuna.png'></img>");
+	x = x.replace(/【絆起】/g, "<img class='icon_img' src='img/icon_txt_starting_kizuna.png'></img>");
+	x = x.replace(/【絆出】/g, "<img class='icon_img' src='img/icon_txt_arrival_kizuna.png'></img>");
+	x = x.replace(/【絆自】/g, "<img class='icon_img' src='img/icon_txt_auto_kizuna.png'></img>");
+	x = x.replace(/【絆常】/g, "<img class='icon_img' src='img/icon_txt_regular_kizuna.png'></img>");
 	x = x.replace(/【  】/g, "<img class='icon_img' src='img/icon_txt_frame_null.png'></img>");
 
 	x = x.replace(/（ターン1）/g, "<img class='icon_img' src='img/icon_txt_turn_01.png'></img>");
@@ -1988,6 +1993,7 @@ function str_to_img(x)
 	x = x.replace(/《赤2》/g, "<img class='icon_img' src='img/icon_txt_red2.png'></img>");
 	x = x.replace(/《赤》/g, "<img class='icon_img' src='img/icon_txt_red.png'></img>");
 	x = x.replace(/【赤】/g, "<img class='icon_img' src='img/icon_txt_red.png'></img>");
+	x = x.replace(/《赤×0》/g, "<img class='icon_img' src='img/icon_txt_red_00.png'></img>");
 	x = x.replace(/\[赤\]/g, "<img class='icon_img' src='img/icon_txt_red.png'></img>");
 	x = x.replace(/\[赤\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_red_00.png'></img>");
 	x = x.replace(/\[赤\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_red_01.png'></img>");
@@ -1999,6 +2005,7 @@ function str_to_img(x)
 	x = x.replace(/《青2》/g, "<img class='icon_img' src='img/icon_txt_blue2.png'></img>");
 	x = x.replace(/《青》/g, "<img class='icon_img' src='img/icon_txt_blue.png'></img>");
 	x = x.replace(/【青】/g, "<img class='icon_img' src='img/icon_txt_blue.png'></img>");
+	x = x.replace(/《青×0》/g, "<img class='icon_img' src='img/icon_txt_blue_00.png'></img>");
 	x = x.replace(/\[青\]/g, "<img class='icon_img' src='img/icon_txt_blue.png'></img>");
 	x = x.replace(/\[青\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_blue_00.png'></img>");
 	x = x.replace(/\[青\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_blue_01.png'></img>");
@@ -2010,9 +2017,9 @@ function str_to_img(x)
 	x = x.replace(/《緑2》/g, "<img class='icon_img' src='img/icon_txt_green2.png'></img>");
 	x = x.replace(/《緑》/g, "<img class='icon_img' src='img/icon_txt_green.png'></img>");
 	x = x.replace(/【緑】/g, "<img class='icon_img' src='img/icon_txt_green.png'></img>");
+	x = x.replace(/《緑×0》/g, "<img class='icon_img' src='img/icon_txt_green_00.png'></img>");
 	x = x.replace(/\[緑\]/g, "<img class='icon_img' src='img/icon_txt_green.png'></img>");
 	x = x.replace(/\[緑\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_green_00.png'></img>");
-	x = x.replace(/《緑×0》/g, "<img class='icon_img' src='img/icon_txt_green_00.png'></img>");
 	x = x.replace(/\[緑\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_green_01.png'></img>");
 	x = x.replace(/\[緑\(2\)\]/g, "<img class='icon_img' src='img/icon_txt_green_02.png'></img>");
 	x = x.replace(/\[緑\(3\)\]/g, "<img class='icon_img' src='img/icon_txt_green_03.png'></img>");
@@ -2022,6 +2029,7 @@ function str_to_img(x)
 	x = x.replace(/《黒2》/g, "<img class='icon_img' src='img/icon_txt_black2.png'></img>");
 	x = x.replace(/《黒》/g, "<img class='icon_img' src='img/icon_txt_black.png'></img>");
 	x = x.replace(/【黒】/g, "<img class='icon_img' src='img/icon_txt_black.png'></img>");
+	x = x.replace(/《黒×0》/g, "<img class='icon_img' src='img/icon_txt_black_00.png'></img>");
 	x = x.replace(/\[黒\]/g, "<img class='icon_img' src='img/icon_txt_black.png'></img>");
 	x = x.replace(/\[黒\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_black_00.png'></img>");
 	x = x.replace(/\[黒\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_black_01.png'></img>");
@@ -2033,6 +2041,7 @@ function str_to_img(x)
 	x = x.replace(/《白2》/g, "<img class='icon_img' src='img/icon_txt_white2.png'></img>");
 	x = x.replace(/《白》/g, "<img class='icon_img' src='img/icon_txt_white.png'></img>");
 	x = x.replace(/【白】/g, "<img class='icon_img' src='img/icon_txt_white.png'></img>");
+	x = x.replace(/《白×0》/g, "<img class='icon_img' src='img/icon_txt_white_00.png'></img>");
 	x = x.replace(/\[白\]/g, "<img class='icon_img' src='img/icon_txt_white.png'></img>");
 	x = x.replace(/\[白\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_white_00.png'></img>");
 	x = x.replace(/\[白\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_white_01.png'></img>");
@@ -2044,6 +2053,7 @@ function str_to_img(x)
 	x = x.replace(/《無2》/g, "<img class='icon_img' src='img/icon_txt_null2.png'></img>");
 	x = x.replace(/《無》/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
 	x = x.replace(/【無】/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
+	x = x.replace(/《無×0》/g, "<img class='icon_img' src='img/icon_txt_null_00.png'></img>");
 	x = x.replace(/《無×1》/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
 	x = x.replace(/\[無\]/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
 	x = x.replace(/\[無\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_null_00.png'></img>");
@@ -3186,11 +3196,11 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20230728 v1.32\n";
-	str += "1.修正WXDi-P08-065文本誤植\n";
+	str += "20231030 v1.33\n";
+	str += "1.新增WXDi-CP02\n";
 	str += "\n";
 	str += "目前收錄:\n";
-	str += "WXDi-CP01\n";
+	str += "WXDi-CP01 ~ WXDi-CP02\n";
 	str += "WXDi-P00 ~ WXDi-P14\n";
 	str += "WXDi-D01 ~ WXDi-D09\n";
 	str += "PRカード\n";
