@@ -230,7 +230,7 @@ Author: ZZZ
 1.初版  
   
 目前收錄: 
-WXDi-CP01  
+WXDi-CP01 ~ WXDi-CP02  
 WXDi-P00 ~ WXDi-P13  
 WXDi-D01 ~ WXDi-D09  
 PRカード  
