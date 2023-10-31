@@ -1,7 +1,9 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
-
+  
+20231031 v1.34  
+1.新增WXDi-CP02中文效果  
   
 20231030 v1.33  
 1.新增WXDi-CP02  
