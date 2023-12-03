@@ -1683,7 +1683,23 @@ function search()
 			{
 				continue;
 			}
+
+
 		}
+		else
+			{
+				console.log("123123");
+				if($('#dreamteam').is(":checked"))
+				{
+					if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー")
+					{
+						if(cardData[i][JP_TEXT].indexOf("\【使用条件\】\【チーム\】") == -1 && cardData[i][JP_TEXT].indexOf("\【使用条件\】\【ドリームチーム\】") == -1)
+						{
+							continue;
+						}
+					}
+				}
+			}
 
 		if(!$('#signi').is(":checked"))
 		{
@@ -1937,6 +1953,7 @@ function checkall()
 {
 	$('input:checkbox').prop('checked', true);
 	$('#multicolor').prop('checked', false);
+	$('#dreamteam').prop('checked', false);
 }
 
 function uncheckall()
@@ -3196,8 +3213,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20231031 v1.34\n";
-	str += "1.新增WXDi-CP02中文效果\n";
+	str += "20231203 v1.35\n";
+	str += "1.新增dream team filter\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";

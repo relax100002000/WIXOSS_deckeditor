@@ -2,6 +2,9 @@
    
 Author: ZZZ  
   
+20231203 v1.35  
+1.新增dream team filter  
+  
 20231031 v1.34  
 1.新增WXDi-CP02中文效果  
   
