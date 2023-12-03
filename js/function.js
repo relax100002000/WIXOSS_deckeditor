@@ -1688,7 +1688,6 @@ function search()
 		}
 		else
 			{
-				console.log("123123");
 				if($('#dreamteam').is(":checked"))
 				{
 					if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー")
