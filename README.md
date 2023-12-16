@@ -2,6 +2,9 @@
    
 Author: ZZZ  
   
+20231216 v1.36  
+1.新增WXDi-P15  
+  
 20231203 v1.35  
 1.新增dream team filter  
   

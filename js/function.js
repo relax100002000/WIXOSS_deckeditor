@@ -1653,6 +1653,14 @@ function search()
 			}
 		}
 
+		if($('#selectFaction').val() != 0)
+		{
+			if(cardData[i][CLASS].indexOf($('#selectFaction').val()) == -1)
+			{
+				continue;
+			}
+		}
+
 		if($('#selectLRIG').val() != 0)
 		{
 			if(cardData[i][CLASS] != $('#selectLRIG').val())
@@ -1960,6 +1968,7 @@ function uncheckall()
 	$('#textsearch').val("");
 	$('input:checkbox').prop('checked', false);
 	$('#selectType').val(0);
+	$('#selectFaction').val(0);
 	$('#selectLRIG').val(0);
 	$('#selectProduct').val(0);
 }
@@ -1971,6 +1980,7 @@ function str_to_img(x)
 	x = x.replace(/【ドリームチーム】/g, "<img class='icon_img' src='img/icon_txt_dreamteam.png'></img>");
 	x = x.replace(/【ライフバースト】/g, "<img class='icon_img' src='img/icon_txt_burst.png'></img>");
 	x = x.replace(/【ライズ】/g, "<img class='icon_img' src='img/icon_txt_rise_01.png'></img>");
+	x = x.replace(/《ライズアイコン》/g, "<img class='icon_img' src='img/icon_txt_rise_02.png'></img>");
 	x = x.replace(/【ハーモニー】/g, "<img class='icon_img' src='img/icon_txt_harmony.png'></img>");
 	x = x.replace(/《ディソナアイコン》/g, "<img class='icon_img' src='img/icon_txt_dissona.png'></img>");
 	x = x.replace(/\[ダウン\]/g, "<img class='icon_img' src='img/icon_txt_down.png'></img>");
@@ -2114,6 +2124,7 @@ function checkDeck()
 	var listId = $('#selectProduct').get(0);
 	var listLrig = $('#selectLRIG').get(0);
 	var listType = $('#selectType').get(0);
+	var listFaction = $('#selectFaction').get(0);
 
 	for(i = 0; i < cardData.length; i++)
 	{
@@ -2704,7 +2715,7 @@ function checkDeck()
 				if(error_tmp)
 				{
 					error = 1;
-					console.log("TYPE");
+					console.log("CLASS");
 				}
 
 				//LEVEL
@@ -3212,12 +3223,12 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20231203 v1.35\n";
-	str += "1.新增dream team filter\n";
+	str += "20231216 v1.36\n";
+	str += "1.新增WXDi-P15\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";
-	str += "WXDi-P00 ~ WXDi-P14\n";
+	str += "WXDi-P00 ~ WXDi-P15\n";
 	str += "WXDi-D01 ~ WXDi-D09\n";
 	str += "PRカード\n";
 	str += "\n";
