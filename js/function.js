@@ -3239,3 +3239,12 @@ function showVersion()
 	
 	alert(str);
 }
+
+function onClearDeckEvent()
+{
+	if (confirm('Confirm?'))
+	{
+		$('#cardinformation').css('visibility', 'hidden');
+		dataInit();
+	}
+}
