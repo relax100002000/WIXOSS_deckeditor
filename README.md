@@ -2,6 +2,9 @@
    
 Author: ZZZ  
   
+20240215 v1.37  
+1.新增WXDi-P15中文效果  
+  
 20231216 v1.36  
 1.新增WXDi-P15  
   
@@ -239,16 +242,11 @@ Author: ZZZ
   
 目前收錄: 
 WXDi-CP01 ~ WXDi-CP02  
-WXDi-P00 ~ WXDi-P13  
+WXDi-P00 ~ WXDi-P15  
 WXDi-D01 ~ WXDi-D09  
-PRカード  
-  
-中文效果:
-WXDi-P00 ~ WXDi-P12  
-WXDi-D01 ~ WXDi-D09  
+PRカード
   
 預計更新:  
 -改善排序邏輯  
--增加中文效果  
 -增加自訂義排序  
 -補充關於說明  
