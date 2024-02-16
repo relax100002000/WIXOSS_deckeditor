@@ -1663,7 +1663,35 @@ function search()
 
 		if($('#selectLRIG').val() != 0)
 		{
-			if(cardData[i][CLASS] != $('#selectLRIG').val())
+			if($('#selectLRIG').val() == "タマ")
+			{
+				if(cardData[i][CLASS] != "タマ" && cardData[i][CLASS] != "タマ/イオナ")
+				{
+					continue;
+				}
+			}
+			else if($('#selectLRIG').val() == "イオナ")
+			{
+				if(cardData[i][CLASS] != "イオナ" && cardData[i][CLASS] != "タマ/イオナ")
+				{
+					continue;
+				}
+			}
+			else if($('#selectLRIG').val() == "タウィル")
+			{
+				if(cardData[i][CLASS] != "タウィル" && cardData[i][CLASS] != "タウィル/ウムル")
+				{
+					continue;
+				}
+			}
+			else if($('#selectLRIG').val() == "ウムル")
+			{
+				if(cardData[i][CLASS] != "ウムル" && cardData[i][CLASS] != "タウィル/ウムル")
+				{
+					continue;
+				}
+			}
+			else if(cardData[i][CLASS] != $('#selectLRIG').val())
 			{
 				continue;
 			}
@@ -3251,8 +3279,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240216 v1.38\n";
-	str += "1.新增WXDi-P16\n";
+	str += "20240216 v1.39\n";
+	str += "1.可以以LRIG為條件搜尋複合LRIG\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";
