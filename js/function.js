@@ -96,7 +96,7 @@ function showrdeck()
 			$("#rdeck_" + i).attr("src", rdeckArr[page * 10 + i][SRC]);
 			$("#rdeck_" + i).attr("alt", rdeckArr[page * 10 + i][ID]);
 
-			if(rdeckArr[page * 10 + i][TYPE] == "ピース" || rdeckArr[page * 10 + i][TYPE] == "ピース リレー")
+			if(rdeckArr[page * 10 + i][TYPE] == "ピース" || rdeckArr[page * 10 + i][TYPE] == "ピース リレー" || rdeckArr[page * 10 + i][TYPE] == "ピース クラフト")
 			{
 				$("#rdeck_" + i).attr("height", "90px");
 				$("#rdeck_" + i).attr("width", "124px");
@@ -184,7 +184,7 @@ function onmouseShow(x, source)
 
 		$("#big_pic").attr("src", cardData[i][SRC]);
 
-		if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー")
+		if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト")
 		{
 			$("#big_pic").attr("height", "252px");
 			$("#big_pic").attr("width", "360px");
@@ -271,7 +271,7 @@ function showInfotable(data)
 		str += "	</td>";
 		str += "</tr>";
 	}
-	else if(data[TYPE] == "ピース" || data[TYPE] == "ピース リレー")
+	else if(data[TYPE] == "ピース" || data[TYPE] == "ピース リレー" || data[TYPE] == "ピース クラフト")
 	{
 		str += "<tr>";
 		str += "	<td width=\"115px\">";
@@ -443,7 +443,7 @@ function showInfotable(data)
 			str += "</tr>";
 		}
 
-		if(data[NAME] != "未知の巫女 マユ")
+		if(data[NAME] != "未知の巫女 マユ" && data[NAME] != "扉の俯瞰者 ウトゥルス")
 		{
 			str += "<tr>";
 			str += "	<td>";
@@ -1350,7 +1350,7 @@ function addDeck(x)
 						sortLdeck(cardData[i]);
 					}
 				}
-				else if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー")
+				else if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト")
 				{
 					if(pdeckArr.length < 2)
 					{
@@ -1687,7 +1687,7 @@ function search()
 
 		if(!$('#piece').is(":checked"))
 		{
-			if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー")
+			if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト")
 			{
 				continue;
 			}
@@ -1698,7 +1698,7 @@ function search()
 			{
 				if($('#dreamteam').is(":checked"))
 				{
-					if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー")
+					if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト")
 					{
 						if(cardData[i][JP_TEXT].indexOf("\【使用条件\】\【チーム\】") == -1 && cardData[i][JP_TEXT].indexOf("\【使用条件\】\【ドリームチーム\】") == -1)
 						{
@@ -2020,6 +2020,7 @@ function str_to_img(x)
 	x = x.replace(/《赤》/g, "<img class='icon_img' src='img/icon_txt_red.png'></img>");
 	x = x.replace(/【赤】/g, "<img class='icon_img' src='img/icon_txt_red.png'></img>");
 	x = x.replace(/《赤×0》/g, "<img class='icon_img' src='img/icon_txt_red_00.png'></img>");
+	x = x.replace(/《赤×1》/g, "<img class='icon_img' src='img/icon_txt_red_01.png'></img>");
 	x = x.replace(/\[赤\]/g, "<img class='icon_img' src='img/icon_txt_red.png'></img>");
 	x = x.replace(/\[赤\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_red_00.png'></img>");
 	x = x.replace(/\[赤\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_red_01.png'></img>");
@@ -2032,6 +2033,7 @@ function str_to_img(x)
 	x = x.replace(/《青》/g, "<img class='icon_img' src='img/icon_txt_blue.png'></img>");
 	x = x.replace(/【青】/g, "<img class='icon_img' src='img/icon_txt_blue.png'></img>");
 	x = x.replace(/《青×0》/g, "<img class='icon_img' src='img/icon_txt_blue_00.png'></img>");
+	x = x.replace(/《青×1》/g, "<img class='icon_img' src='img/icon_txt_blue_01.png'></img>");
 	x = x.replace(/\[青\]/g, "<img class='icon_img' src='img/icon_txt_blue.png'></img>");
 	x = x.replace(/\[青\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_blue_00.png'></img>");
 	x = x.replace(/\[青\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_blue_01.png'></img>");
@@ -2044,6 +2046,7 @@ function str_to_img(x)
 	x = x.replace(/《緑》/g, "<img class='icon_img' src='img/icon_txt_green.png'></img>");
 	x = x.replace(/【緑】/g, "<img class='icon_img' src='img/icon_txt_green.png'></img>");
 	x = x.replace(/《緑×0》/g, "<img class='icon_img' src='img/icon_txt_green_00.png'></img>");
+	x = x.replace(/《緑×1》/g, "<img class='icon_img' src='img/icon_txt_green_01.png'></img>");
 	x = x.replace(/\[緑\]/g, "<img class='icon_img' src='img/icon_txt_green.png'></img>");
 	x = x.replace(/\[緑\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_green_00.png'></img>");
 	x = x.replace(/\[緑\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_green_01.png'></img>");
@@ -2056,6 +2059,7 @@ function str_to_img(x)
 	x = x.replace(/《黒》/g, "<img class='icon_img' src='img/icon_txt_black.png'></img>");
 	x = x.replace(/【黒】/g, "<img class='icon_img' src='img/icon_txt_black.png'></img>");
 	x = x.replace(/《黒×0》/g, "<img class='icon_img' src='img/icon_txt_black_00.png'></img>");
+	x = x.replace(/《黒×1》/g, "<img class='icon_img' src='img/icon_txt_black_01.png'></img>");
 	x = x.replace(/\[黒\]/g, "<img class='icon_img' src='img/icon_txt_black.png'></img>");
 	x = x.replace(/\[黒\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_black_00.png'></img>");
 	x = x.replace(/\[黒\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_black_01.png'></img>");
@@ -2068,6 +2072,7 @@ function str_to_img(x)
 	x = x.replace(/《白》/g, "<img class='icon_img' src='img/icon_txt_white.png'></img>");
 	x = x.replace(/【白】/g, "<img class='icon_img' src='img/icon_txt_white.png'></img>");
 	x = x.replace(/《白×0》/g, "<img class='icon_img' src='img/icon_txt_white_00.png'></img>");
+	x = x.replace(/《白×1》/g, "<img class='icon_img' src='img/icon_txt_white_01.png'></img>");
 	x = x.replace(/\[白\]/g, "<img class='icon_img' src='img/icon_txt_white.png'></img>");
 	x = x.replace(/\[白\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_white_00.png'></img>");
 	x = x.replace(/\[白\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_white_01.png'></img>");
@@ -2080,7 +2085,7 @@ function str_to_img(x)
 	x = x.replace(/《無》/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
 	x = x.replace(/【無】/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
 	x = x.replace(/《無×0》/g, "<img class='icon_img' src='img/icon_txt_null_00.png'></img>");
-	x = x.replace(/《無×1》/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
+	x = x.replace(/《無×1》/g, "<img class='icon_img' src='img/icon_txt_null_01.png'></img>");
 	x = x.replace(/\[無\]/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
 	x = x.replace(/\[無\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_null_00.png'></img>");
 	x = x.replace(/\[無\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_null_01.png'></img>");
@@ -2184,6 +2189,7 @@ function checkDeck()
 			cardData[i][TYPE] != "アシストルリグ" &&
 			cardData[i][TYPE] != "ピース" &&
 			cardData[i][TYPE] != "ピース リレー" &&
+			cardData[i][TYPE] != "ピース クラフト" &&
 			cardData[i][TYPE] != "シグニ" &&
 			cardData[i][TYPE] != "シグニ クラフト" &&
 			cardData[i][TYPE] != "シグニ レゾナ/クラフト" &&
@@ -2436,6 +2442,17 @@ function checkDeck()
 						console.log("TEAM");
 					}
 				}
+				else if(cardData[i][CLASS] == "アザエラ" ||
+					cardData[i][CLASS] == "ガブリエラ" ||
+					cardData[i][CLASS] == "ミカエラ"
+					)
+				{
+					if(cardData[i][TEAM] != "夢限少女")
+					{
+						error = 1;
+						console.log("TEAM");
+					}
+				}
 				else
 				{
 					if(cardData[i][TEAM] != "")
@@ -2609,6 +2626,17 @@ function checkDeck()
 						console.log("TEAM");
 					}
 				}
+				else if(cardData[i][CLASS] == "アザエラ" ||
+					cardData[i][CLASS] == "ガブリエラ" ||
+					cardData[i][CLASS] == "ミカエラ"
+					)
+				{
+					if(cardData[i][TEAM] != "夢限少女")
+					{
+						error = 1;
+						console.log("TEAM");
+					}
+				}
 				else
 				{
 					if(cardData[i][TEAM] != "")
@@ -2625,7 +2653,7 @@ function checkDeck()
 					console.log("JP_TEXT");
 				}
 			}
-			else if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー")
+			else if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト")
 			{
 				//CLASS
 				if(cardData[i][CLASS] != "")
@@ -3223,12 +3251,12 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240215 v1.37\n";
-	str += "1.新增WXDi-P15中文效果\n";
+	str += "20240216 v1.38\n";
+	str += "1.新增WXDi-P16\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";
-	str += "WXDi-P00 ~ WXDi-P15\n";
+	str += "WXDi-P00 ~ WXDi-P16\n";
 	str += "WXDi-D01 ~ WXDi-D09\n";
 	str += "PRカード\n";
 	str += "\n";
