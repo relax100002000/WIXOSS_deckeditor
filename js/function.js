@@ -1350,7 +1350,7 @@ function addDeck(x)
 						sortLdeck(cardData[i]);
 					}
 				}
-				else if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト")
+				else if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー")
 				{
 					if(pdeckArr.length < 2)
 					{
@@ -1724,13 +1724,27 @@ function search()
 		}
 		else
 			{
-				if($('#dreamteam').is(":checked"))
+				if(!$('#dreamteam').is(":checked") || !$('#no_dreamteam').is(":checked"))
 				{
-					if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト")
+					if($('#no_dreamteam').is(":checked"))
 					{
-						if(cardData[i][JP_TEXT].indexOf("\【使用条件\】\【チーム\】") == -1 && cardData[i][JP_TEXT].indexOf("\【使用条件\】\【ドリームチーム\】") == -1)
+						if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト")
 						{
-							continue;
+							if(cardData[i][JP_TEXT].indexOf("\【使用条件\】\【チーム\】") != -1 || cardData[i][JP_TEXT].indexOf("\【使用条件\】\【ドリームチーム\】") != -1)
+							{
+								continue;
+							}
+						}
+					}
+
+					if($('#dreamteam').is(":checked"))
+					{
+						if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト")
+						{
+							if(cardData[i][JP_TEXT].indexOf("\【使用条件\】\【チーム\】") == -1 && cardData[i][JP_TEXT].indexOf("\【使用条件\】\【ドリームチーム\】") == -1)
+							{
+								continue;
+							}
 						}
 					}
 				}
@@ -1989,6 +2003,7 @@ function checkall()
 	$('input:checkbox').prop('checked', true);
 	$('#multicolor').prop('checked', false);
 	$('#dreamteam').prop('checked', false);
+	$('#no_dreamteam').prop('checked', false);
 }
 
 function uncheckall()
@@ -3279,8 +3294,9 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240216 v1.39\n";
-	str += "1.可以以LRIG為條件搜尋複合LRIG\n";
+	str += "20240219 v1.40\n";
+	str += "1.修正ピース クラフト可以加入牌組的bug\n";
+	str += "2.新增非dream team piece filter\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";
