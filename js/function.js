@@ -3292,9 +3292,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240219 v1.40\n";
-	str += "1.修正ピース クラフト可以加入牌組的bug\n";
-	str += "2.新增非dream team piece filter\n";
+	str += "20240219 v1.41\n";
+	str += "1.右鍵可新增牌組既有卡片\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";
