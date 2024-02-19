@@ -2002,8 +2002,6 @@ function checkall()
 {
 	$('input:checkbox').prop('checked', true);
 	$('#multicolor').prop('checked', false);
-	$('#dreamteam').prop('checked', false);
-	$('#no_dreamteam').prop('checked', false);
 }
 
 function uncheckall()
