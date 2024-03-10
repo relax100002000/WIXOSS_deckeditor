@@ -1719,42 +1719,61 @@ function search()
 			{
 				continue;
 			}
-
-
 		}
 		else
+		{
+			if(!$('#dreamteam').is(":checked") || !$('#no_dreamteam').is(":checked"))
 			{
-				if(!$('#dreamteam').is(":checked") || !$('#no_dreamteam').is(":checked"))
+				if($('#no_dreamteam').is(":checked"))
 				{
-					if($('#no_dreamteam').is(":checked"))
+					if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト")
 					{
-						if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト")
+						if(cardData[i][JP_TEXT].indexOf("\【使用条件\】\【チーム\】") != -1 || cardData[i][JP_TEXT].indexOf("\【使用条件\】\【ドリームチーム\】") != -1)
 						{
-							if(cardData[i][JP_TEXT].indexOf("\【使用条件\】\【チーム\】") != -1 || cardData[i][JP_TEXT].indexOf("\【使用条件\】\【ドリームチーム\】") != -1)
-							{
-								continue;
-							}
+							continue;
 						}
 					}
+				}
 
-					if($('#dreamteam').is(":checked"))
+				if($('#dreamteam').is(":checked"))
+				{
+					if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト")
 					{
-						if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト")
+						if(cardData[i][JP_TEXT].indexOf("\【使用条件\】\【チーム\】") == -1 && cardData[i][JP_TEXT].indexOf("\【使用条件\】\【ドリームチーム\】") == -1)
 						{
-							if(cardData[i][JP_TEXT].indexOf("\【使用条件\】\【チーム\】") == -1 && cardData[i][JP_TEXT].indexOf("\【使用条件\】\【ドリームチーム\】") == -1)
-							{
-								continue;
-							}
+							continue;
 						}
 					}
 				}
 			}
+		}
 
 		if(!$('#signi').is(":checked"))
 		{
 			if(cardData[i][TYPE] == "シグニ" || cardData[i][TYPE] == "シグニ クラフト" || cardData[i][TYPE] == "シグニ レゾナ/クラフト")
 			{
 				continue;
+			}
+		}
+
+		if(!$('#dreamteam').is(":checked") || !$('#no_dreamteam').is(":checked"))
+		{
+			if($('#no_dreamteam').is(":checked"))
+			{
+
+				if(cardData[i][JP_TEXT].indexOf("\【チーム\】") != -1 || cardData[i][JP_TEXT].indexOf("\【ドリームチーム\】") != -1)
+				{
+					continue;
+				}
+			}
+
+			if($('#dreamteam').is(":checked"))
+			{
+
+				if(cardData[i][JP_TEXT].indexOf("\【チーム\】") == -1 && cardData[i][JP_TEXT].indexOf("\【ドリームチーム\】") == -1)
+				{
+					continue;
+				}
 			}
 		}
 
@@ -3288,12 +3307,17 @@ function resetDefault()
 function showVersion()
 {
 	var str = "";
-
+  
+  
+  
+  
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240221 v1.42\n";
-	str += "1.新增WXDi-P16中文效果\n";
+	str += "20240310 v1.43\n";
+	str += "1.修正WXDi-P16-037中文敘述\n";
+	str += "2.dream team標籤會顯示signi\n";
+	str += "1.3.新增SPDi01-113\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";
