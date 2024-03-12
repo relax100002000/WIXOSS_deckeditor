@@ -1832,49 +1832,49 @@ function search()
 			}
 			else
 			{
-				if(!$('#red').is(":checked"))
+				if($('#red').is(":checked"))
 				{
-					if(cardData[i][COLOR].indexOf("赤") != -1)
+					if(cardData[i][COLOR].indexOf("赤") == -1)
 					{
 						continue;
 					}
 				}
 
-				if(!$('#blue').is(":checked"))
+				if($('#blue').is(":checked"))
 				{
-					if(cardData[i][COLOR].indexOf("青") != -1)
+					if(cardData[i][COLOR].indexOf("青") == -1)
 					{
 						continue;
 					}
 				}
 
-				if(!$('#green').is(":checked"))
+				if($('#green').is(":checked"))
 				{
-					if(cardData[i][COLOR].indexOf("緑") != -1)
+					if(cardData[i][COLOR].indexOf("緑") == -1)
 					{
 						continue;
 					}
 				}
 
-				if(!$('#black').is(":checked"))
+				if($('#black').is(":checked"))
 				{
-					if(cardData[i][COLOR].indexOf("黒") != -1)
+					if(cardData[i][COLOR].indexOf("黒") == -1)
 					{
 						continue;
 					}
 				}
 
-				if(!$('#white').is(":checked"))
+				if($('#white').is(":checked"))
 				{
-					if(cardData[i][COLOR].indexOf("白") != -1)
+					if(cardData[i][COLOR].indexOf("白") == -1)
 					{
 						continue;
 					}
 				}
 
-				if(!$('#nocolor').is(":checked"))
+				if($('#nocolor').is(":checked"))
 				{
-					if(cardData[i][COLOR].indexOf("無") != -1)
+					if(cardData[i][COLOR].indexOf("無") == -1)
 					{
 						continue;
 					}
@@ -3314,10 +3314,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240310 v1.43\n";
-	str += "1.修正WXDi-P16-037中文敘述\n";
-	str += "2.dream team標籤會顯示signi\n";
-	str += "1.3.新增SPDi01-113\n";
+	str += "20240312 v1.44\n";
+	str += "1.修正勾選單色無法尋找到多色卡的bug\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";
