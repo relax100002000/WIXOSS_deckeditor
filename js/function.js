@@ -1829,57 +1829,65 @@ function search()
 		{
 			color_flag = 0;
 
-			if($('#red').is(":checked"))
+			if(!$('#red').is(":checked") && !$('#blue').is(":checked") && !$('#green').is(":checked") && !$('#black').is(":checked") && !$('#white').is(":checked") && !$('#nocolor').is(":checked"))
 			{
-				if(cardData[i][COLOR].indexOf("赤") != -1)
-				{
-					color_flag = 1;
-				}
-			}
 
-			if($('#blue').is(":checked"))
-			{
-				if(cardData[i][COLOR].indexOf("青") != -1)
-				{
-					color_flag = 1;
-				}
 			}
-
-			if($('#green').is(":checked"))
+			else
 			{
-				if(cardData[i][COLOR].indexOf("緑") != -1)
+
+				if($('#red').is(":checked"))
 				{
-					color_flag = 1;
+					if(cardData[i][COLOR].indexOf("赤") != -1)
+					{
+						color_flag = 1;
+					}
 				}
-			}
 
-			if($('#black').is(":checked"))
-			{
-				if(cardData[i][COLOR].indexOf("黒") != -1)
+				if($('#blue').is(":checked"))
 				{
-					color_flag = 1;
+					if(cardData[i][COLOR].indexOf("青") != -1)
+					{
+						color_flag = 1;
+					}
 				}
-			}
 
-			if($('#white').is(":checked"))
-			{
-				if(cardData[i][COLOR].indexOf("白") != -1)
+				if($('#green').is(":checked"))
 				{
-					color_flag = 1;
+					if(cardData[i][COLOR].indexOf("緑") != -1)
+					{
+						color_flag = 1;
+					}
 				}
-			}
 
-			if($('#nocolor').is(":checked"))
-			{
-				if(cardData[i][COLOR].indexOf("無") != -1)
+				if($('#black').is(":checked"))
 				{
-					color_flag = 1;
+					if(cardData[i][COLOR].indexOf("黒") != -1)
+					{
+						color_flag = 1;
+					}
 				}
-			}
 
-			if(color_flag == 0)
-			{
-				continue;
+				if($('#white').is(":checked"))
+				{
+					if(cardData[i][COLOR].indexOf("白") != -1)
+					{
+						color_flag = 1;
+					}
+				}
+
+				if($('#nocolor').is(":checked"))
+				{
+					if(cardData[i][COLOR].indexOf("無") != -1)
+					{
+						color_flag = 1;
+					}
+				}
+
+				if(color_flag == 0)
+				{
+					continue;
+				}
 			}
 		}
 		else
@@ -3312,8 +3320,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240312 v1.44\n";
-	str += "1.修正勾選單色無法尋找到多色卡的bug\n";
+	str += "20240314 v1.45\n";
+	str += "1.修正顏色全沒勾不會顯示搜尋結果的bug\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";
