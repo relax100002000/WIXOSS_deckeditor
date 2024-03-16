@@ -1389,19 +1389,21 @@ function delDeck(x, idx, array)
 	{
 		if(x.alt == cardData[i][ID] && (cardData[i][TYPE] == "シグニ" || cardData[i][TYPE] == "スペル"))
 		{
+			for(j = 0; j < sdeckArr.length; j++)
+			{
+				if(cardData[i][ID] == sdeckArr[j][ID])
+				{
+					array.splice(j, 1);
+					showAlldeck();
+					return;
+				}
+			}
 			delcounter(cardData[i]);
 			break;
 		}
 	}
 
-	for(j = 0; j < sdeckArr.length; j++)
-	{
-		if(cardData[i][ID] == sdeckArr[j][ID])
-		{
-			array.splice(j, 1);
-			break;
-		}
-	}
+	array.splice(idx, 1);
 	
 	
 	showAlldeck();
@@ -3654,10 +3656,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240316 v1.46\n";
-	str += "1.改善排序邏輯\n";
-	str += "2.新增排序方法\n";
-	str += "3.刪除牌組和清空牌組彈出確認視窗\n";
+	str += "20240316 v1.47\n";
+	str += "1.修正無法刪除LRIG deck bug\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";

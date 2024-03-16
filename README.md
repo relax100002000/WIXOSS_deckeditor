@@ -1,6 +1,9 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
+  
+20240316 v1.47  
+1.修正無法刪除LRIG deck bug  
 
 20240316 v1.46  
 1.改善排序邏輯  
