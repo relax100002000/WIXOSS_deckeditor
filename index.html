@@ -83,6 +83,15 @@
 			cursor: pointer;
 		}
 
+		#lbBackground {
+		    position: absolute;
+       		z-index: -999;
+       		width: 411px;
+       		height: 462px;
+       		margin-top: 553px;
+       		background: rgba(120, 120, 120, 1.0);
+		}
+
 		#window-container, #window-container-list, #window-container-code{
 	    display: none;
 	    position: fixed;
@@ -147,11 +156,15 @@
 		<script>
 			var page = 0;
 			var deckNamelist = [];
+			var sort_method = 0;
 
 			var rdeckArr = [];
 			var pdeckArr = [];
 			var ldeckArr = [];
 			var sdeckArr = [];
+			var sdeckLBArr = [];
+			var sdecknoLBArr = [];
+			var sdeckLBsortArr = [];
 
 			var sdeck_l1 = 0;
 			var sdeck_l2 = 0;
@@ -184,6 +197,42 @@
 						alert("Illegal LRIG deck.");
 						return;
 					}
+					else if(sdeckArr.length != 40)
+					{
+						alert("Illegal SIGNI deck.");
+						return;
+					}
+
+					if(sort_method == 1)
+					{
+						for(i = 0; i < 40; i++)
+						{
+							$("#show_sdeck_" + i).attr("src", "img/empty.jpg");
+							$("#show_sdeck_" + i).attr("alt", "");
+						}
+
+						for(i = 0, j = 0; i < sdeckArr.length; i++)
+						{
+							if(sdeckArr[i][LB] == "1")
+							{
+								$("#show_sdeck_" + j).attr("src", sdeckArr[i][SRC]);
+								$("#show_sdeck_" + j).attr("alt", sdeckArr[i][ID]);
+								j++;
+							}
+						}
+
+						for(i = 0; i < sdeckArr.length; i++)
+						{
+							if(sdeckArr[i][LB] == "0")
+							{
+								$("#show_sdeck_" + j).attr("src", sdeckArr[i][SRC]);
+								$("#show_sdeck_" + j).attr("alt", sdeckArr[i][ID]);
+								j++;
+							}
+						}
+						
+					}
+
 	            	var popup_window = document.getElementById("window-container");
 
 	            	popup_window.style.display = "block";
@@ -249,7 +298,14 @@
 		    <button style="height: 20px;" onclick="$('#cardinformation').css('visibility', 'hidden');downloadBlob('output', '')">Add</button>
 		    <button style="height: 20px;" onclick="$('#cardinformation').css('visibility', 'hidden');deletedecklist();">Delete</button>
 		    <button style="height: 20px;" onclick="$('#cardinformation').css('visibility', 'hidden');resetDefault();">Reset</button>
+		    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sort:
+		    <select id="selectSort" onchange="selectSort();">
+		    	<option value=0>Level Order</option>
+		    	<option value=1>LB Order</option>
+		    </select>
 		</span>
+		<div id="lbBackground" hidden>
+		</div>
 		<table width="1850px" height="600px">
 			<tr>
 				<td style="vertical-align:bottom;">
@@ -304,22 +360,22 @@
 										type: 'doughnut',
 										data: {
 									  		labels: [
+									  			'白',
 												'赤',
 												'青',
 												'緑',
 												'黒',
-												'白',
 												'無'
 											],
 											datasets: [{
 												label: 'Color Counter',
-												data: [sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_white, sdeck_nocolor],
+												data: [sdeck_white, sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_nocolor],
 												backgroundColor: [
+												  'rgb(255, 205, 86)',
 												  'rgb(255, 99, 132)',
 												  'rgb(54, 162, 235)',
 												  'rgb(50, 205, 50)',
 												  'rgb(138, 43, 226)',
-												  'rgb(255, 205, 86)',
 												  'rgb(192, 192, 192)'
 												],
 												hoverOffset: 4
@@ -446,7 +502,7 @@
 					</table>
 				</td>		
 				<td style="vertical-align:text-top">
-					<button onclick="$('#cardinformation').css('visibility', 'hidden');dataInit()">Clear Deck</button>
+					<button onclick="$('#cardinformation').css('visibility', 'hidden');cleardeck()">Clear Deck</button>
 					<!-- <button style="float: right;" onclick="checkDeck();">Exam</button> -->
 					<button onclick="$('#cardinformation').css('visibility', 'hidden');customizeWindowEvent('view');">Deck View</button>
 					<button onclick="$('#cardinformation').css('visibility', 'hidden');customizeWindowEvent('list');">Card List</button>
@@ -456,7 +512,7 @@
 					<br><br>
 					<input type="checkbox" id="level0" checked><span onclick="clickSpan(this)">Level 0 </span>&emsp;&emsp;<input type="checkbox" id="level1" checked><span onclick="clickSpan(this)">Level 1 </span>&emsp;&emsp;<input type="checkbox" id="level2" checked><span onclick="clickSpan(this)">Level 2 </span>&emsp;&emsp;<input type="checkbox" id="level3" checked><span onclick="clickSpan(this)">Level 3 </span>
 					<br><br>
-					<input type="checkbox" id="red" checked><span onclick="clickSpan(this)">赤 </span>&emsp;&emsp;<input type="checkbox" id="blue" checked><span onclick="clickSpan(this)">青 </span>&emsp;&emsp;<input type="checkbox" id="green" checked><span onclick="clickSpan(this)">緑 </span>&emsp;&emsp;<input type="checkbox" id="black" checked><span onclick="clickSpan(this)">黒 </span>&emsp;&emsp;<input type="checkbox" id="white" checked><span onclick="clickSpan(this)">白 </span>&emsp;&emsp;<input type="checkbox" id="nocolor" checked><span onclick="clickSpan(this)">無 </span>&emsp;&emsp;<input type="checkbox" id="multicolor"><span onclick="clickSpan(this)">多色のみ </span>
+					<input type="checkbox" id="white" checked><span onclick="clickSpan(this)">白 </span>&emsp;&emsp;<input type="checkbox" id="blue" checked><span onclick="clickSpan(this)">青 </span>&emsp;&emsp;<input type="checkbox" id="green" checked><span onclick="clickSpan(this)">緑 </span>&emsp;&emsp;<input type="checkbox" id="black" checked><span onclick="clickSpan(this)">黒 </span>&emsp;&emsp;<input type="checkbox" id="red" checked><span onclick="clickSpan(this)">赤 </span>&emsp;&emsp;<input type="checkbox" id="nocolor" checked><span onclick="clickSpan(this)">無 </span>&emsp;&emsp;<input type="checkbox" id="multicolor"><span onclick="clickSpan(this)">多色のみ </span>
 					<br><br>
 					<input type="checkbox" id="no_story" checked><span onclick="clickSpan(this)">無印 </span>&emsp;&emsp;<input type="checkbox" id="dissona" checked><span onclick="clickSpan(this)">ディソナ </span>
 					<br><br>
@@ -614,10 +670,6 @@
 				</td>
 			</tr>
 			<tr>
-			<!-- 	<td style="vertical-align:text-top" height="500px">
-					<table id="infoTable" width="360px" border="1" style="border: solid; border-width: 1px">
-					</table>
-				</td> -->
 				<td style="vertical-align:text-top">
 					<table oncontextmenu="return false;">
 						<tr>
@@ -680,11 +732,13 @@
 								<img id="sdeck_38" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,38 , sdeckArr)" oncontextmenu="addDeck(this)">
 								<img id="sdeck_39" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,39 , sdeckArr)" oncontextmenu="addDeck(this)">
 								<br>
-								<span>官方網站: </span><a target="_blank" href="https://www.takaratomy.co.jp/products/wixoss/">WIXOSS-ウィクロス-｜タカラトミー</a>
-								<br>
-								<span>日文資料庫來源:</span><a target="_blank" href="http://wixoss.81.la/">WIXOSS TCG Wiki - トップページ</a>
-								<br>
-								<span>中文資料庫來源:</span><a target="_blank" href="https://wixossmacau.com/">WIXOSS MACAU – 你好。選擇者。</a>
+								<div style="margin-top: 10px;">
+									<span>官方網站: </span><a target="_blank" href="https://www.takaratomy.co.jp/products/wixoss/">WIXOSS-ウィクロス-｜タカラトミー</a>
+									<br>
+									<span>日文資料庫來源:</span><a target="_blank" href="http://wixoss.81.la/">WIXOSS TCG Wiki - トップページ</a>
+									<br>
+									<span>中文資料庫來源:</span><a target="_blank" href="https://wixossmacau.com/">WIXOSS MACAU – 你好。選擇者。</a>
+								</div>
 							</td>
 						</tr>
 					</table>
@@ -812,22 +866,22 @@
 										type: 'doughnut',
 										data: {
 									  		labels: [
+									  			'白',
 												'赤',
 												'青',
 												'緑',
 												'黒',
-												'白',
 												'無'
 											],
 											datasets: [{
 												label: 'Color Counter',
-												data: [sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_white, sdeck_nocolor],
+												data: [sdeck_white, sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_nocolor],
 												backgroundColor: [
+												  'rgb(255, 205, 86)',
 												  'rgb(255, 99, 132)',
 												  'rgb(54, 162, 235)',
 												  'rgb(50, 205, 50)',
 												  'rgb(138, 43, 226)',
-												  'rgb(255, 205, 86)',
 												  'rgb(192, 192, 192)'
 												],
 												hoverOffset: 4

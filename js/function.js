@@ -786,14 +786,6 @@ function showInfotable(data)
 	}
 
 	$("#infoTable").html(str);
-	if(data == "init")
-	{
-		// $("#infoTable").css("visibility", "hidden");
-	}
-	else
-	{
-		// $("#infoTable").css("visibility", "visible");
-	}
 }
 
 function showTiming(x)
@@ -880,19 +872,42 @@ function showPdeck()
 
 function showSdeck()
 {
-	for(i = 0; i < 40; i++)
+	var over = 0, lbcount = 0, nolbcount = 0, lbindex = 0, nolbindex = 0;
+
+	if(sort_method == 0)
 	{
-		if(i < sdeckArr.length)
+		for(i = 0; i < 40; i++)
 		{
-			$("#sdeck_" + i).attr("src", sdeckArr[i][SRC]);
-			$("#sdeck_" + i).attr("alt", sdeckArr[i][ID]);
+			if(i < sdeckArr.length)
+			{
+				$("#sdeck_" + i).attr("src", sdeckArr[i][SRC]);
+				$("#sdeck_" + i).attr("alt", sdeckArr[i][ID]);
 
-			$("#show_sdeck_" + i).attr("src", sdeckArr[i][SRC]);
-			$("#show_sdeck_" + i).attr("alt", sdeckArr[i][ID]);
+				$("#show_sdeck_" + i).attr("src", sdeckArr[i][SRC]);
+				$("#show_sdeck_" + i).attr("alt", sdeckArr[i][ID]);
 
-			$("#show_sdeck_" + i).show();
+				$("#show_sdeck_" + i).show();
+			}
+			else
+			{
+				$("#sdeck_" + i).attr("src", "img/empty.jpg");
+				$("#sdeck_" + i).attr("alt", "");
+
+				$("#show_sdeck_" + i).attr("src", "img/empty.jpg");
+				$("#show_sdeck_" + i).attr("alt", "");
+
+				$("#show_sdeck_" + i).hide();
+			}
 		}
-		else
+	}
+	else
+	{
+		updateLBarray();
+
+		lbcount = sdeckLBArr.length;
+		nolbcount = sdecknoLBArr.length
+
+		for(i = 0; i < 40; i++)
 		{
 			$("#sdeck_" + i).attr("src", "img/empty.jpg");
 			$("#sdeck_" + i).attr("alt", "");
@@ -901,6 +916,125 @@ function showSdeck()
 			$("#show_sdeck_" + i).attr("alt", "");
 
 			$("#show_sdeck_" + i).hide();
+		}
+
+		for(i = 0; i < 40; i++)
+		{
+			if(lbcount > 0 && lbindex < 40 && i < sdeckArr.length)
+			{
+				if(sdeckArr[i][LB] == "1")
+				{
+					$("#sdeck_" + lbindex).attr("src", sdeckArr[i][SRC]);
+					$("#sdeck_" + lbindex).attr("alt", sdeckArr[i][ID]);
+
+					$("#show_sdeck_" + lbindex).attr("src", sdeckArr[i][SRC]);
+					$("#show_sdeck_" + lbindex).attr("alt", sdeckArr[i][ID]);
+
+					$("#show_sdeck_" + lbindex).show();
+
+					lbindex++;
+					lbcount--;
+
+					if(lbindex % 5 == 0)
+					{
+						lbindex += 5;
+					}
+				}
+			}
+			// else
+			// {
+			// 	$("#sdeck_" + i).attr("src", "img/empty.jpg");
+			// 	$("#sdeck_" + i).attr("alt", "");
+
+			// 	$("#show_sdeck_" + i).attr("src", "img/empty.jpg");
+			// 	$("#show_sdeck_" + i).attr("alt", "");
+
+			// 	$("#show_sdeck_" + i).hide();
+			// }
+		}
+
+		nolbindex = 5;
+
+		for(i = 0; i < sdeckArr.length; i++)
+		{
+			if(nolbcount > 0 && nolbindex < 40 && i < sdeckArr.length)
+			{
+				if(sdeckArr[i][LB] == "0")
+				{
+					$("#sdeck_" + nolbindex).attr("src", sdeckArr[i][SRC]);
+					$("#sdeck_" + nolbindex).attr("alt", sdeckArr[i][ID]);
+
+					$("#show_sdeck_" + nolbindex).attr("src", sdeckArr[i][SRC]);
+					$("#show_sdeck_" + nolbindex).attr("alt", sdeckArr[i][ID]);
+
+					$("#show_sdeck_" + nolbindex).show();
+
+					nolbindex++;
+					nolbcount--;
+
+					if(nolbindex % 10 == 0)
+					{
+						nolbindex += 5;
+					}
+				}
+			}
+		}
+
+		if(sdeckLBArr.length > 20)
+		{
+			for(i = 0; i < sdeckArr.length; i++)
+			{
+				if(sdeckArr[i][LB] == "1")
+				{
+					over++;
+
+					if(over > 20)
+					{
+						$("#sdeck_" + nolbindex).attr("src", sdeckArr[i][SRC]);
+						$("#sdeck_" + nolbindex).attr("alt", sdeckArr[i][ID]);
+
+						$("#show_sdeck_" + nolbindex).attr("src", sdeckArr[i][SRC]);
+						$("#show_sdeck_" + nolbindex).attr("alt", sdeckArr[i][ID]);
+
+						$("#show_sdeck_" + nolbindex).show();
+
+						nolbindex++;
+
+						if(nolbindex % 10 == 0)
+						{
+							nolbindex += 5;
+						}
+					}
+				}
+			}
+		}
+		else if(sdecknoLBArr.length > 20)
+		{
+			for(i = 0; i < sdeckArr.length; i++)
+			{
+				if(sdeckArr[i][LB] == "0")
+				{
+					over++;
+
+					if(over > 20)
+					{
+						$("#sdeck_" + lbindex).attr("src", sdeckArr[i][SRC]);
+						$("#sdeck_" + lbindex).attr("alt", sdeckArr[i][ID]);
+
+						$("#show_sdeck_" + lbindex).attr("src", sdeckArr[i][SRC]);
+						$("#show_sdeck_" + lbindex).attr("alt", sdeckArr[i][ID]);
+
+						$("#show_sdeck_" + lbindex).show();
+
+						lbindex++;
+
+						if(lbindex % 5 == 0)
+						{
+							lbindex += 5;
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -976,6 +1110,131 @@ function showAlldeck()
 	showSdeck();
 }
 
+function color2num(color)
+{
+	if(color == "白赤緑")
+	{
+		return 1;
+	}
+	else if(color == "赤白青")
+	{
+		return 2;
+	}
+	else if(color == "青白緑")
+	{
+		return 3;
+	}
+	else if(color == "青白黒")
+	{
+		return 4;
+	}
+	else if(color == "緑赤青")
+	{
+		return 5;
+	}
+	else if(color == "黒青緑")
+	{
+		return 6;
+	}
+	else if(color == "白赤緑")
+	{
+		return 7;
+	}
+	else if(color == "白赤")
+	{
+		return 8;
+	}
+	else if(color == "白青")
+	{
+		return 9;
+	}
+	else if(color == "白緑")
+	{
+		return 10;
+	}
+	else if(color == "白黒")
+	{
+		return 11;
+	}
+	else if(color == "赤青")
+	{
+		return 12;
+	}
+	else if(color == "青赤")
+	{
+		return 13;
+	}
+	else if(color == "赤緑")
+	{
+		return 14;
+	}
+	else if(color == "赤黒")
+	{
+		return 15;
+	}
+	else if(color == "青緑")
+	{
+		return 16;
+	}
+	else if(color == "緑黒")
+	{
+		return 17;
+	}
+	else if(color == "黒緑")
+	{
+		return 18;
+	}
+	else if(color == "白")
+	{
+		return 19;
+	}
+	else if(color == "赤")
+	{
+		return 20;
+	}
+	else if(color == "青")
+	{
+		return 21;
+	}
+	else if(color == "緑")
+	{
+		return 22;
+	}
+	else if(color == "黒")
+	{
+		return 23;
+	}
+	else //無
+	{
+		return 0;
+	}
+}
+
+function type2num(type)
+{
+	if(type == "スペル")
+	{
+		return 1;
+	}
+	else //シグニ
+	{
+		return 0;
+	}
+}
+
+function LB2num(LB)
+{
+	if(LB == "0")
+	{
+		return 1;
+	}
+	else //LB == "1"
+	{
+		return 0;
+	}
+}
+
+
 function sortSdeck(x)
 {
 	var same_card = 0;
@@ -1013,40 +1272,47 @@ function sortSdeck(x)
 
 		for(i = 0; i < length && !updated; i++)
 		{
-			if(x[LEVEL] == "")
+			if(type2num(x[TYPE]) < type2num(sdeckArr[i][TYPE]))
 			{
-				if(sdeckArr[i][LEVEL] == "")
-				{
-					updated = 1;
-					sdeckArr.splice(i, 0, x);
-					break;
-				}
+				updated = 1;
+				sdeckArr.splice(i, 0, x);
+				break;
 			}
-			else
+			else if(type2num(x[TYPE]) == type2num(sdeckArr[i][TYPE]))
 			{
-				if(sdeckArr[i][LEVEL] == "")
+				if(x[LEVEL] < sdeckArr[i][LEVEL])
 				{
 					updated = 1;
 					sdeckArr.splice(i, 0, x);
 					break;
 				}
-
-				if(x[LEVEL] <= sdeckArr[i][LEVEL])
+				else if(x[LEVEL] == sdeckArr[i][LEVEL])
 				{
-					same_level = 1;
-					if(x[COLOR] == sdeckArr[i][COLOR])
+					if(color2num(x[COLOR]) < color2num(sdeckArr[i][COLOR]))
 					{
 						updated = 1;
 						sdeckArr.splice(i, 0, x);
 						break;
 					}
-				}
+					else if(color2num(x[COLOR]) == color2num(sdeckArr[i][COLOR]))
+					{
+						if(LB2num(x[LB]) < LB2num(sdeckArr[i][LB]))
+						{
+							updated = 1;
+							sdeckArr.splice(i, 0, x);
+							break;
+						}
+						else if(LB2num(x[LB]) == LB2num(sdeckArr[i][LB]))
+						{
+							if(x[ID] < sdeckArr[i][LB])
+							{
+								updated = 1;
+								sdeckArr.splice(i, 0, x);
+								break;
+							}
+						}
+					}
 
-				if(same_level == 1 && x[COLOR] != sdeckArr[i][COLOR])
-				{
-					sdeckArr.splice(i, 0, x);
-					updated = 1;
-					break;
 				}
 			}
 		}
@@ -1076,13 +1342,13 @@ function updatechart()
 		show_levelobj.update();
 
 		$("#colordiv").show();
-		colorobj.data.labels = ['赤: ' + sdeck_red, '青: ' + sdeck_blue, '緑: ' + sdeck_green, '黒: ' + sdeck_black, '白: ' + sdeck_white, '無: ' + sdeck_nocolor];
-		colorobj.data.datasets[0].data = [sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_white, sdeck_nocolor];
+		colorobj.data.labels = ['白: ' + sdeck_white, '赤: ' + sdeck_red, '青: ' + sdeck_blue, '緑: ' + sdeck_green, '黒: ' + sdeck_black, '無: ' + sdeck_nocolor];
+		colorobj.data.datasets[0].data = [sdeck_white, sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_nocolor];
 		colorobj.update();
 
 		$("#show_colordiv").show();
-		show_colorobj.data.labels = ['赤: ' + sdeck_red, '青: ' + sdeck_blue, '緑: ' + sdeck_green, '黒: ' + sdeck_black, '白: ' + sdeck_white, '無: ' + sdeck_nocolor];
-		show_colorobj.data.datasets[0].data = [sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_white, sdeck_nocolor];
+		show_colorobj.data.labels = ['白: ' + sdeck_white, '赤: ' + sdeck_red, '青: ' + sdeck_blue, '緑: ' + sdeck_green, '黒: ' + sdeck_black, '無: ' + sdeck_nocolor];
+		show_colorobj.data.datasets[0].data = [sdeck_white, sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_nocolor];
 		show_colorobj.update();
 
 		$("#lbdiv").show();
@@ -1114,13 +1380,11 @@ function updatechart()
 		$("#lbdiv").hide();
 		$("#show_lbdiv").hide();
 		$("#storydiv").hide();
-		// $("#show_storydiv").hide();
 	}
 }
 
 function delDeck(x, idx, array)
 {
-	var i = 0;
 	for(i = 0; i < cardData.length; i++)
 	{
 		if(x.alt == cardData[i][ID] && (cardData[i][TYPE] == "シグニ" || cardData[i][TYPE] == "スペル"))
@@ -1129,7 +1393,16 @@ function delDeck(x, idx, array)
 			break;
 		}
 	}
-	array.splice(idx, 1);
+
+	for(j = 0; j < sdeckArr.length; j++)
+	{
+		if(cardData[i][ID] == sdeckArr[j][ID])
+		{
+			array.splice(j, 1);
+			break;
+		}
+	}
+	
 	
 	showAlldeck();
 }
@@ -1449,24 +1722,85 @@ function selectDeck()
 	readSingleCode();
 }
 
+function selectSort()
+{
+	sort_method = $("#selectSort").val();
+	if(sort_method == 1)
+	{
+		$("#lbBackground").show();
+		updateLBarray();
+	}
+	else
+	{
+		$("#lbBackground").hide();
+	}
+	showSdeck();
+}
+
+function updateLBarray()
+{
+	var i = 0;
+
+	sdeckLBArr = [];
+	sdecknoLBArr = [];
+
+	for(i = 0; i < sdeckArr.length; i++)
+	{
+		if(sdeckArr[i][LB] == "1")
+		{
+			sdeckLBArr.push(sdeckArr[i]);
+		}
+		else
+		{
+			sdecknoLBArr.push(sdeckArr[i]);
+		}
+	}
+}
+
+function cleardeck()
+{
+	ret = confirm("It will clear current deck. Are you sure?");
+	if(!ret)
+	{
+		return;
+	}
+	else
+	{
+		dataInit();
+	}
+}
+
 function deletedecklist()
 {
 	var deck = $("#selectDeck").val();
 	var i = 0;
 
-	localStorage.removeItem(deck);
-
-	for(i = 0; i < deckNamelist.length; i++)
+	if(deck == 0)
 	{
-		if(deck == deckNamelist[i])
-		{
-			deckNamelist.splice(i, 1);
-			break;
-		}
+		return;
 	}
-	localStorage.setItem("DeckNameList", deckNamelist);
-	updateDecklist("");
-	dataInit();
+
+	ret = confirm("It will delete this deck. Are you sure?");
+	if(!ret)
+	{
+		return;
+	}
+	else
+	{
+		localStorage.removeItem(deck);
+
+		for(i = 0; i < deckNamelist.length; i++)
+		{
+			if(deck == deckNamelist[i])
+			{
+				deckNamelist.splice(i, 1);
+				break;
+			}
+		}
+		localStorage.setItem("DeckNameList", deckNamelist);
+		updateDecklist("");
+		dataInit();
+	}
 }
 
 function readSingleCode()
@@ -3320,8 +3654,10 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240314 v1.45\n";
-	str += "1.修正顏色全沒勾不會顯示搜尋結果的bug\n";
+	str += "20240316 v1.46\n";
+	str += "1.改善排序邏輯\n";
+	str += "2.新增排序方法\n";
+	str += "3.刪除牌組和清空牌組彈出確認視窗\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";
@@ -3330,8 +3666,6 @@ function showVersion()
 	str += "PRカード\n";
 	str += "\n";
 	str += "預計更新:\n";
-	str += "-改善排序邏輯\n";
-	str += "-增加自訂義排序\n";
 	str += "-補充關於說明\n";
 	
 	alert(str);
