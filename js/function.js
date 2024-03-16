@@ -1394,11 +1394,12 @@ function delDeck(x, idx, array)
 				if(cardData[i][ID] == sdeckArr[j][ID])
 				{
 					array.splice(j, 1);
+					delcounter(cardData[i]);
 					showAlldeck();
 					return;
 				}
 			}
-			delcounter(cardData[i]);
+			
 			break;
 		}
 	}
@@ -3656,8 +3657,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240316 v1.47\n";
-	str += "1.修正無法刪除LRIG deck bug\n";
+	str += "20240316 v1.48\n";
+	str += "1.修正刪除時計數器異常bug\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";
