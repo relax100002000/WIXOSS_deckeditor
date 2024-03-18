@@ -1362,8 +1362,8 @@ function updatechart()
 		show_lbobj.update();
 
 		$("#storydiv").show();
-		storyobj.data.labels = ['無印: ' + sdeck_nostory, 'ディソナ: ' + sdeck_dissona];
-		storyobj.data.datasets[0].data = [sdeck_nostory, sdeck_dissona];
+		storyobj.data.labels = ['無印: ' + sdeck_nostory, 'ディソナ: ' + sdeck_dissona, '解放派: ' + sdeck_liberation, '闘争派: ' + sdeck_struggle, '防衛派: ' + sdeck_defense];
+		storyobj.data.datasets[0].data = [sdeck_nostory, sdeck_dissona, sdeck_liberation, sdeck_struggle, sdeck_defense];
 		storyobj.update();
 
 		// $("#show_storydiv").show();
@@ -1467,9 +1467,22 @@ function addcounter(x)
 	{
 		sdeck_no_burst++;
 	}
-  if(x[STORY] == "ディソナ")
+
+  	if(x[STORY] == "ディソナ")
 	{
 		sdeck_dissona++;
+	}
+	else if(x[CLASS].indexOf("解放派") != -1)
+	{
+		sdeck_liberation++;
+	}
+	else if(x[CLASS].indexOf("闘争派") != -1)
+	{
+		sdeck_struggle++;
+	}
+	else if(x[CLASS].indexOf("防衛派") != -1)
+	{
+		sdeck_defense++;
 	}
 	else
 	{
@@ -1536,14 +1549,27 @@ function delcounter(x)
 		sdeck_no_burst--;
 	}
   
-  if(x[STORY] == "ディソナ")
+  	if(x[STORY] == "ディソナ")
 	{
 		sdeck_dissona--;
+	}
+	else if(x[CLASS].indexOf("解放派") != -1)
+	{
+		sdeck_liberation--;
+	}
+	else if(x[CLASS].indexOf("闘争派") != -1)
+	{
+		sdeck_struggle--;
+	}
+	else if(x[CLASS].indexOf("防衛派") != -1)
+	{
+		sdeck_defense--;
 	}
 	else
 	{
 		sdeck_nostory--;
-  }
+	}
+
 	showcounter();
 }
 
@@ -3657,8 +3683,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240316 v1.48\n";
-	str += "1.修正刪除時計數器異常bug\n";
+	str += "20240318 v1.49\n";
+	str += "1.新增派系圓餅圖\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";

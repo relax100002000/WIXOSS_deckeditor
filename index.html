@@ -57,8 +57,8 @@
 			cursor: pointer;
 		}
 		canvas {
-			width: 195px !important;
-			height: 195px !important;
+			width: 205px !important;
+			height: 205px !important;
 		}
 		#show_leveldiv {
 		    position: absolute;
@@ -183,6 +183,10 @@
 
 			var sdeck_nostory = 0;
 			var sdeck_dissona = 0;
+			var sdeck_liberation = 0;
+			var sdeck_struggle = 0;
+			var sdeck_defense = 0;
+			
 
 			$( document ).ready(function() {
 				onLoading();
@@ -312,7 +316,7 @@
 					<table>
 						<tr>
 							<td>
-								<div id="leveldiv" style="margin-left: 20px;" hidden><canvas id="levelChart"></canvas></div>
+								<div id="leveldiv" style="margin-left: 0px;" hidden><canvas id="levelChart"></canvas></div>
 								<script>
 			  						const levelctx = document.getElementById('levelChart');
 
@@ -432,7 +436,7 @@
 								</script>
 							</td>
 							<td>
-								<div id="storydiv" hidden><canvas id="storyChart"></canvas></div>
+								<div id="storydiv" hidden><canvas height="200px" width="200px" id="storyChart"></canvas></div>
 								<script>
 			  						const storyctx = document.getElementById('storyChart');
 
@@ -440,15 +444,21 @@
 										type: 'doughnut',
 										data: {
 									  		labels: [
-												'',
-												'LB無し'
+												'無印',
+												'ディソナ',
+												'解放派',
+												'闘争派',
+												'防衛派'
 											],
 											datasets: [{
 												label: 'Story counter',
-												data: [sdeck_nostory, sdeck_dissona],
+												data: [sdeck_nostory, sdeck_dissona, sdeck_liberation, sdeck_struggle, sdeck_defense],
 												backgroundColor: [
 												  'rgb(192, 192, 192)',
-												  'rgb(138, 43, 226)'
+												  'rgb(138, 43, 226)',
+												  'rgb(255, 99, 132)',
+												  'rgb(50, 205, 50)',
+												  'rgb(255, 205, 86)'												  
 												],
 												hoverOffset: 4
 											}]
@@ -458,7 +468,10 @@
 									            legend: {
 									                display: true,
 									                labels: {
-									                    color: 'rgb(0, 0, 0)'
+									                    color: 'rgb(0, 0, 0)',
+									                    font: {
+									                        size: 10
+									                    }
 									                }
 									            }
 									        }
@@ -489,7 +502,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td style="vertical-align:bottom">
+							<td style="vertical-align:bottom; width: 870px;">
 								Piece
 							</td>
 						</tr>
