@@ -1984,6 +1984,9 @@ function loadcounter()
 
 	sdeck_nostory = 0;
 	sdeck_dissona = 0;
+	sdeck_liberation = 0;
+	sdeck_struggle = 0;
+	sdeck_defense = 0;
 
 	for(i = 0; i < sdeckArr.length; i++)
 	{
