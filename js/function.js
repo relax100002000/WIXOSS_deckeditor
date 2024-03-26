@@ -3836,14 +3836,14 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240327 v1.50\n";
-	str += "1.新增Arts類別\n";
-	str += "2.新增WX24-D1\n";
+	str += "20240327 v1.51\n";
+	str += "2.新增WX24-D2\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";
 	str += "WXDi-P00 ~ WXDi-P16\n";
 	str += "WXDi-D01 ~ WXDi-D09\n";
+	str += "WX24-D1 ~ WX24-D2\n";
 	str += "PRカード\n";
 	str += "\n";
 	str += "預計更新:\n";

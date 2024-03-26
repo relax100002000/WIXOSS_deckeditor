@@ -27,9 +27,9 @@
 a~z
 A~Z
 +-
-" "
+" "(space)
 ()
-ライフバースト：->【ライフバースト】：
+【ライフバースト】：->【ライフバースト】：
 */
 
 const ID = 0;
@@ -40425,6 +40425,500 @@ var cardData = [
 		],[
 		"WX24-D1-26", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-26.jpg", //SRC
+		"サーバント #", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏元", //CLASS
+		"無", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"1000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【ガード】(このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ)<br><br>【常】：【マルチエナ】(エナコストを支払う際、このカードは好きな色1つとして支払える)<br><br>【ライフバースト】：あなたのトラッシュからシグニ1枚を対象とし、それを手札に加える。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-01", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-01.jpg", //SRC
+		"花代・零", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"花代", //CLASS
+		"赤", //COLOR
+		"0", //LEVEL
+		"《赤》×0", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-02", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-02.jpg", //SRC
+		"花代・壱", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"花代", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"《赤》×0", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-03", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-03.jpg", //SRC
+		"花代・爾", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"花代", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"《赤》×1", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-04", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-04.jpg", //SRC
+		"百火繚乱 花代・参", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"花代", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"《赤》×2", //COST
+		"6", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ターン1回》《赤》：対戦相手のパワー10000以下のシグニ1体を対象とし、それをバニッシュする。<br><br>【起】《ゲーム1回》《赤×0》：あなたのシグニ1体を対象とし、ターン終了時まで、それは【アサシン】を得る。<br>(【アサシン】を持つシグニがアタックすると正面のシグニとバトルをせず対戦相手にダメージを与える)", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-05", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-05.jpg", //SRC
+		"断炎轢断", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のライフクロス1枚をクラッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-06", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-06.jpg", //SRC
+		"焼石火炎", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。あなたのデッキの上からカードを4枚見る。その中から赤のカードを2枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-07", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-07.jpg", //SRC
+		"烈覇二絡", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。<br>《リコレクトアイコン》［4枚以上］代わりに対戦相手のシグニ1体を対象とし、それをバニッシュする。<br>(あなたのルリグトラッシュに4枚以上のアーツがあるかぎり《リコレクトアイコン》［4枚以上］に続く文章が有効になる)", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-08", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-08.jpg", //SRC
+		"炎盾両面", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×1《無》×2", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のパワー20000以下のシグニを2体まで対象とし、ターン終了時まで、それらは「【常】：アタックできない。」を得る。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-09", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-09.jpg", //SRC
+		"ドロー・エンハンス", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"カードを2枚引く。あなたのルリグゾーンに【リミットアッパー】1つを置く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-10", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-10.jpg", //SRC
+		"ミラクル・チャージング", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"カードを3枚引くか【エナチャージ3】をする。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-11", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-11.jpg", //SRC
+		"羅闘石 アイロン", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏羅：宝石", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、このターンにあなたが赤のアーツを使用していた場合、対戦相手のパワー2000以下のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-12", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-12.jpg", //SRC
+		"羅寂石 ルリル", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏羅：宝石", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"7000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】：あなたの場に他の＜宝石＞のシグニがない場合、あなたは手札を1枚捨てる。<br>(コストのない【出】能力は発動しないことを選べない)<br><br>【ライフバースト】：対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-13", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-13.jpg", //SRC
+		"羅石 ヘソナイト", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏羅：宝石", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】《相手ターン》《ターン1回》：このシグニが対戦相手の、能力か効果の対象になったとき、対戦相手は自分のエナゾーンからカード1枚を選びトラッシュに置く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-14", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-14.jpg", //SRC
+		"コードアート ララ・ルー//フェゾーネ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏械：電機", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場にあるすべてのシグニが赤の場合、対戦相手のパワー5000以下のシグニ1体を対象とし、手札から赤のカードを1枚捨ててもよい。そうした場合、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-15", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-15.jpg", //SRC
+		"羅闘石 ブロンダ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏羅：宝石", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】《ターン1回》：このシグニが対戦相手のライフクロス1枚をクラッシュしたとき、【エナチャージ1】をする。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-16", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-16.jpg", //SRC
+		"紅魔 デカラビア", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：悪魔", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【ライフバースト】：対戦相手のシグニ1体を対象とし、《無》を支払ってもよい。そうした場合、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-17", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-17.jpg", //SRC
+		"中装 バルディッシュ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏武：アーム", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場にレベル3のシグニが2体以上ある場合、《赤》《赤》を支払ってもよい。そうした場合、ターン終了時まで、このシグニは「【自】：このシグニがアタックしたとき、対戦相手のパワー12000以下のシグニ1体を対象とし、それをバニッシュする。」を得る。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-18", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-18.jpg", //SRC
+		"羅踊石 ガーネット", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏羅：宝石", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：このシグニがダウン状態であるかぎり、このシグニのパワーは+4000される。<br><br>【起】《ダウン》：対戦相手のエナゾーンからカード1枚を対象とし、それをトラッシュに置く。そうした場合、対戦相手は【エナチャージ1】をしてもよい。<br><br>【ライフバースト】：対戦相手のパワー12000以下のシグニ1体を対象とし、手札を1枚捨ててもよい。そうした場合、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-19", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-19.jpg", //SRC
+		"羅闘石 シルバン", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏羅：宝石", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】《ターン1回》：対戦相手のシグニ1体がバニッシュされたとき、【エナチャージ1】をする。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-20", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-20.jpg", //SRC
+		"羅輝石 ヴォルカノ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏羅：宝石", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】《赤》《赤》：対戦相手のパワー12000以下のシグニ1体を対象とし、それをバニッシュする。《リコレクトアイコン》［5枚以上］代わりに対戦相手のシグニ1体を対象とし、それをバニッシュする。<br>(あなたのルリグトラッシュに5枚以上のアーツがあるかぎり《リコレクトアイコン》［5枚以上］に続く文章が有効になる)<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。?カードを1枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-21", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-21.jpg", //SRC
+		"羅輝石 花代//メモリア", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏羅：宝石", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたのエナゾーンにカードが無い場合、次の対戦相手のターン終了時まで、このシグニの基本レベルは3になり、基本パワーは12000になる。<br><br>【自】：あなたのアタックフェイズ開始時、このシグニのレベル以下の対戦相手のシグニ1体を対象とし、手札から赤のカードか＜宝石＞のシグニを合計2枚捨ててもよい。そうした場合、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-22", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-22.jpg", //SRC
+		"羅輝石 アレキサンドライト", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏羅：宝石", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたの他のシグニ1体が【アサシン】1つか【ランサー】1つか【ダブルクラッシュ】1つを得たとき、《赤》《無》を支払ってもよい。そうした場合、ターン終了時まで、このシグニはその能力を得る。<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。?カードを1枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-23", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-23.jpg", //SRC
+		"羅婚石 ダイヤブライド", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏羅：宝石", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】《ターン1回》：あなたの赤のシグニ1体が対戦相手の、能力か効果の対象になったとき、対戦相手は自分のエナゾーンからカード1枚を選びトラッシュに置く。<br><br>【出】手札を1枚捨てる：あなたのデッキの上からカードを2枚見る。その中からカード1枚を手札に加え、残りをトラッシュに置く。<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。?カードを1枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-24", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-24.jpg", //SRC
+		"幻竜歌姫 オロチ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏生：龍獣", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、対戦相手のエナゾーンにカードが4枚以上ある場合、対戦相手は自分のエナゾーンからカード1枚を選びトラッシュに置く。<br><br>【自】：このシグニがアタックしたとき、対戦相手のエナゾーンにカードが2枚以上ある場合、対戦相手は自分のエナゾーンからカード1枚を選びトラッシュに置く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-25", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-25.jpg", //SRC
+		"轟音の炎柱", //NAME
+		"ST", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。《リコレクトアイコン》［5枚以上］代わりに対戦相手のパワー10000以下のシグニ1体を対象とし、それをバニッシュする。<br><br>【ライフバースト】：対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D2-26", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D2-26.jpg", //SRC
 		"サーバント #", //NAME
 		"ST", //RARE
 		"シグニ", //TYPE
