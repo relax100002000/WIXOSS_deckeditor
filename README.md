@@ -2,6 +2,10 @@
    
 Author: ZZZ  
   
+20240327 v1.50  
+1.新增Arts類別  
+2.新增WX24-D1  
+
 20240318 v1.49  
 1.新增派系圓餅圖  
 
@@ -278,6 +282,7 @@ Author: ZZZ
 WXDi-CP01 ~ WXDi-CP02  
 WXDi-P00 ~ WXDi-P15  
 WXDi-D01 ~ WXDi-D09  
+WX24-D1  
 PRカード
   
 預計更新:  

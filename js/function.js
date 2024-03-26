@@ -870,6 +870,33 @@ function showPdeck()
 	}
 }
 
+function showAdeck()
+{
+	for(i = 0; i < 6; i++)
+	{
+		if(i < adeckArr.length)
+		{
+			$("#adeck_" + i).attr("src", adeckArr[i][SRC]);
+			$("#adeck_" + i).attr("alt", adeckArr[i][ID]);
+
+			// $("#show_pdeck_" + i).attr("src", pdeckArr[i][SRC]);
+			// $("#show_pdeck_" + i).attr("alt", pdeckArr[i][ID]);
+
+			// $("#show_pdeck_" + i).show();
+		}
+		else
+		{
+			$("#adeck_" + i).attr("src", "img/empty.jpg");
+			$("#adeck_" + i).attr("alt", "");
+
+			// $("#show_pdeck_" + i).attr("src", "img/empty.jpg");
+			// $("#show_pdeck_" + i).attr("alt", "");
+
+			// $("#show_pdeck_" + i).hide();
+		}
+	}
+}
+
 function showSdeck()
 {
 	var over = 0, lbcount = 0, nolbcount = 0, lbindex = 0, nolbindex = 0;
@@ -1057,6 +1084,22 @@ function sortPdeck(x)
 	showPdeck();
 }
 
+function sortAdeck(x)
+{
+	var length = adeckArr.length;
+
+	for(i = 0; i < length; i++)
+	{
+		if(x[ID] == adeckArr[i][ID])
+		{
+			return;
+		}
+	}
+	adeckArr.push(x);
+
+	showAdeck();
+}
+
 function sortLdeck(x)
 {
 	var i = 0;
@@ -1107,6 +1150,7 @@ function showAlldeck()
 {
 	showLdeck();
 	showPdeck();
+	showAdeck();
 	showSdeck();
 }
 
@@ -1659,6 +1703,13 @@ function addDeck(x)
 						sortPdeck(cardData[i]);
 					}
 				}
+				else if(cardData[i][TYPE] == "アーツ")
+				{
+					if(adeckArr.length < 6)
+					{
+						sortAdeck(cardData[i]);
+					}
+				}
 				else if(cardData[i][TYPE] == "シグニ" || cardData[i][TYPE] == "スペル")
 				{
 					if(sdeckArr.length < 40)
@@ -1676,6 +1727,7 @@ function addDeck(x)
 function downloadBlob(filename, contentType) {
     var larray = [];
     var parray = [];
+    var aarray = [];
     var sarray = [];
     var array = [];
     var i = 0;
@@ -1692,16 +1744,23 @@ function downloadBlob(filename, contentType) {
     	parray.push(pdeckArr[i][ID]);
     }
 
+    for(i = 0; i < adeckArr.length; i++)
+    {
+    	aarray.push(adeckArr[i][ID]);
+    }
+
     for(i = 0; i < sdeckArr.length; i++)
     {
     	sarray.push(sdeckArr[i][ID]);
     }
     larray.unshift("ldeck");
     parray.unshift("pdeck");
+    aarray.unshift("adeck");
     sarray.unshift("sdeck");
 
     array.push(larray);
     array.push(parray);
+    array.push(aarray);
     array.push(sarray);
 
     var csv = array.map((item) => {
@@ -1836,6 +1895,7 @@ function readSingleCode()
 {
 	var larray = [];
     var parray = [];
+    var aarray = [];
     var sarray = [];
     var array = [];
     var i = 0, j = 0;
@@ -1858,33 +1918,84 @@ function readSingleCode()
 	  	}
 	}
 
-    pdeckArr = [];
-      
-    parray = array[1].split(",");
-    for(i = 1; i < parray.length; i++)
-    {
-      	for(j = 0; j < cardData.length; j++)
-      	{
-      		if(parray[i] == cardData[j][ID])
-      		{
-      			pdeckArr.push(cardData[j]);
-      		}
-      	}
-    }
+    
+   
+   	if(array.length == 3) //no Arts deck
+   	{
+   		pdeckArr = [];
 
-    sdeckArr = [];
-      
-    sarray = array[2].split(",");
-    for(i = 1; i < sarray.length; i++)
-    {
-      	for(j = 0; j < cardData.length; j++)
-      	{
-      		if(sarray[i] == cardData[j][ID])
-      		{
-      			sdeckArr.push(cardData[j]);
-      		}
-      	}
-    }
+   		parray = array[1].split(",");
+	    for(i = 1; i < parray.length; i++)
+	    {
+	      	for(j = 0; j < cardData.length; j++)
+	      	{
+	      		if(parray[i] == cardData[j][ID])
+	      		{
+	      			pdeckArr.push(cardData[j]);
+	      		}
+	      	}
+	    }
+
+	    adeckArr = [];
+
+	    sdeckArr = [];
+	      
+	    sarray = array[2].split(",");
+	    for(i = 1; i < sarray.length; i++)
+	    {
+	      	for(j = 0; j < cardData.length; j++)
+	      	{
+	      		if(sarray[i] == cardData[j][ID])
+	      		{
+	      			sdeckArr.push(cardData[j]);
+	      		}
+	      	}
+	    }
+   	}
+   	else //Arts
+   	{
+   		pdeckArr = [];
+
+	    parray = array[1].split(",");
+	    for(i = 1; i < parray.length; i++)
+	    {
+	      	for(j = 0; j < cardData.length; j++)
+	      	{
+	      		if(parray[i] == cardData[j][ID])
+	      		{
+	      			pdeckArr.push(cardData[j]);
+	      		}
+	      	}
+	    }
+
+	    adeckArr = [];
+	      
+	    aarray = array[2].split(",");
+	    for(i = 1; i < aarray.length; i++)
+	    {
+	      	for(j = 0; j < cardData.length; j++)
+	      	{
+	      		if(aarray[i] == cardData[j][ID])
+	      		{
+	      			adeckArr.push(cardData[j]);
+	      		}
+	      	}
+	    }
+
+	    sdeckArr = [];
+	      
+	    sarray = array[3].split(",");
+	    for(i = 1; i < sarray.length; i++)
+	    {
+	      	for(j = 0; j < cardData.length; j++)
+	      	{
+	      		if(sarray[i] == cardData[j][ID])
+	      		{
+	      			sdeckArr.push(cardData[j]);
+	      		}
+	      	}
+	    }
+	}
 
     loadcounter();
     showAlldeck();
@@ -1938,9 +2049,23 @@ function readSingleFile(evt)
           	}
           }
 
+          adeckArr = [];
+          
+          aarray = array[2].split(",");
+          for(i = 1; i < aarray.length; i++)
+          {
+          	for(j = 0; j < cardData.length; j++)
+          	{
+          		if(aarray[i] == cardData[j][ID])
+          		{
+          			adeckArr.push(cardData[j]);
+          		}
+          	}
+          }
+
           sdeckArr = [];
           
-          sarray = array[2].split(",");
+          sarray = array[3].split(",");
           for(i = 1; i < sarray.length; i++)
           {
           	for(j = 0; j < cardData.length; j++)
@@ -2112,6 +2237,14 @@ function search()
 						}
 					}
 				}
+			}
+		}
+
+		if(!$('#arts').is(":checked"))
+		{
+			if(cardData[i][TYPE] == "アーツ")
+			{
+				continue;
 			}
 		}
 
@@ -3390,6 +3523,7 @@ function dataInit()
 {
 	sdeckArr = [];
 	pdeckArr = [];
+	adeckArr = [];
 	ldeckArr = [];
 
 	sdeck_l1 = 0;
@@ -3482,6 +3616,22 @@ function showList()
 		}
 
 		str += "<td style='width: 30px;'>1</td><td style='width: 130px;'>" + pdeckArr[i][ID] + "<td/><td>" + pdeckArr[i][NAME] + "</td>";
+		str += "</tr>"
+		str += "<tr>"
+	}
+	str += "</tr>";
+	str += "</table>";
+	str += "<br>アーツ<br><br>";
+	str += "<table>";
+	str += "<tr>";
+	for(i = 0; i < adeckArr.length; i++)
+	{
+		if(adeckArr[i][ID] == "")
+		{
+			break;
+		}
+
+		str += "<td style='width: 30px;'>1</td><td style='width: 130px;'>" + adeckArr[i][ID] + "<td/><td>" + adeckArr[i][NAME] + "</td>";
 		str += "</tr>"
 		str += "<tr>"
 	}
@@ -3686,8 +3836,9 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240318 v1.49\n";
-	str += "1.新增派系圓餅圖\n";
+	str += "20240327 v1.50\n";
+	str += "1.新增Arts類別\n";
+	str += "2.新增WX24-D1\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";

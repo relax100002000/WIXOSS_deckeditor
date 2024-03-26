@@ -38122,7 +38122,7 @@ var cardData = [
 		"", //TEAM
 		"", //STORY
 		"【使用条件】【ドリームチーム】白か黒のルリグを1体以上含む<br><br>このターンにあなたのセンタールリグがグロウしていない場合、チェックゾーンにあるこのカードを裏返し、あなたのセンタールリグはこの《扉の俯瞰者 ウトゥルス》にグロウコストを支払わずにグロウする。", //JP_TEXT
-		"「使用條件」「夢幻隊伍」白色或黑色的分身有1隻以上<br><br>本回合我方的中央分身沒有成長的話，將檢查區的此卡牌反轉，我方的中央分身不需要支付成長費用成長為《扉の俯瞰者　ウトゥルス》。"	//TW_TEXT
+		"「使用條件」「夢幻隊伍」白色或黑色的分身有1隻以上<br><br>本回合我方的中央分身沒有成長的話，將檢查區的此卡牌反轉，我方的中央分身不需要支付成長費用成長為《扉の俯瞰者 ウトゥルス》。"	//TW_TEXT
 		],[
 		"WXDi-P16-001B", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-001B.jpg", //SRC
@@ -38179,7 +38179,7 @@ var cardData = [
 		"", //TEAM
 		"", //STORY
 		"【使用条件】あなたの場に白のルリグがいる<br><br>あなたの場に白のルリグが2体以上いるかぎり、このピースの使用コストはあなたの場にいる白のルリグ1体につき《白×1》減る。<br><br>【ルリグバリア】2つを得る。(あなたが次にルリグからダメージを受ける場合、代わりに【ルリグバリア】1つを消費し、そのダメージを受けない)", //JP_TEXT
-		"「使用條件」我方場上有白色分身<br><br>我方場上白色分身有2隻以上時，此Piece的使用費用為我方場上每有1隻白色分身則減白1。<br><br>獲得2個【分身屏障】。（我方下一次因分身受到傷害的話，作為代替消耗1個【分身屏障】，不會受到該傷害。）"	//TW_TEXT
+		"「使用條件」我方場上有白色分身<br><br>我方場上白色分身有2隻以上時，此Piece的使用費用為我方場上每有1隻白色分身則減白1。<br><br>獲得2個【分身屏障】。(我方下一次因分身受到傷害的話，作為代替消耗1個【分身屏障】，不會受到該傷害。)"	//TW_TEXT
 		],[
 		"WXDi-P16-004", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-004.jpg", //SRC
@@ -39091,7 +39091,7 @@ var cardData = [
 		"", //TEAM
 		"", //STORY
 		"【起】《ターン1回》手札を2枚捨てる：このターン終了時、カードを2枚引くか【エナチャージ2】をする。<br><br>【起】《緑》《無》：あなたの場に《収斂せし扉 アト＝トレ》がいる場合、ターン終了時まで、このシグニは【ランサー】を得る。あなたのエナゾーンにカードが無い場合、代わりにターン終了時まで、このシグニは【Sランサー】を得る。<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。②【エナチャージ1】", //JP_TEXT
-		"「起」(回合1)捨棄2張手牌：本回合結束時，抽2張牌或【能量填充2】。<br><br>「起」綠1無1：我方場上有《収斂せし扉　アト＝トレ》的話，直到回合結束時為止，此精靈獲得【槍兵】。我方能量區沒有卡牌的話，作為代替直到回合結束時為止，此精靈獲得【S槍兵】。<br><br>「LB」：選擇1項。①對方1隻豎直狀態的精靈作對象，將其破壞。②【能量填充1】"	//TW_TEXT
+		"「起」(回合1)捨棄2張手牌：本回合結束時，抽2張牌或【能量填充2】。<br><br>「起」綠1無1：我方場上有《収斂せし扉 アト＝トレ》的話，直到回合結束時為止，此精靈獲得【槍兵】。我方能量區沒有卡牌的話，作為代替直到回合結束時為止，此精靈獲得【S槍兵】。<br><br>「LB」：選擇1項。①對方1隻豎直狀態的精靈作對象，將其破壞。②【能量填充1】"	//TW_TEXT
 		],[
 		"WXDi-P16-052", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-052.jpg", //SRC
@@ -39680,7 +39680,7 @@ var cardData = [
 		"", //TEAM
 		"", //STORY
 		"【自】：このシグニが対戦相手のライフクロス1枚をクラッシュしたとき、対戦相手のシグニ1体を対象とし、このシグニを場からトラッシュに置いてもよい。そうした場合、ターン終了時まで、それのパワーを-5000する。<br>(パワーが0以下のシグニはルールによってバニッシュされる)<br><br>【起】《コインアイコン》《コインアイコン》：このカードをトラッシュから場に出す。(この能力はこのカードがトラッシュにある場合にしか使用できない)", //JP_TEXT
-		"「自」：此精靈擊潰對方1張生命護甲時，對方1隻精靈作對象，可以將此精靈從場上放置到廢棄區。若如此做，直到回合結束時為止，將其力量-5000。<br><br>「起」Coin*2：此卡牌從廢棄區出場。（此能力只有此卡牌在廢棄區時才可使用）"	//TW_TEXT
+		"「自」：此精靈擊潰對方1張生命護甲時，對方1隻精靈作對象，可以將此精靈從場上放置到廢棄區。若如此做，直到回合結束時為止，將其力量-5000。<br><br>「起」Coin*2：此卡牌從廢棄區出場。(此能力只有此卡牌在廢棄區時才可使用)"	//TW_TEXT
 		],[
 		"WXDi-P16-083", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-083.jpg", //SRC
@@ -39927,7 +39927,7 @@ var cardData = [
 		"", //TEAM
 		"", //STORY
 		"【ガード】(このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ)<br><br>【常】：【マルチエナ】(エナコストを支払う際、このカードは好きな色1つとして支払える)<br><br>【ライフバースト】：あなたのトラッシュからシグニ1枚を対象とし、それを手札に加える。", //JP_TEXT
-		"【防禦】（可以從手牌捨棄此卡牌，防禦分身的攻擊傷害一次）<br><br>「常」：【萬花色】（支付能量費用時，此卡牌可以支付1個任意顏色）<br><br>「生命爆發」：我方廢棄區的1張精靈作對象，將其加入手牌。"	//TW_TEXT
+		"【防禦】(可以從手牌捨棄此卡牌，防禦分身的攻擊傷害一次)<br><br>「常」：【萬花色】(支付能量費用時，此卡牌可以支付1個任意顏色)<br><br>「生命爆發」：我方廢棄區的1張精靈作對象，將其加入手牌。"	//TW_TEXT
 		],[
 		"WXDi-P16-TK01", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-TK01.jpg", //SRC
@@ -39947,5 +39947,499 @@ var cardData = [
 		"", //STORY
 		"このピースはあなたの場にルリグが3体いなくても使用できる。<br><br>以下の3つから2つまで選ぶ。同じ選択肢を2回選んでもよい。<br>①《白》を支払ってもよい。そうした場合、【ルリグバリア】1つを得る。<br>②対戦相手のシグニ1体を対象とし、《赤》を支払ってもよい。そうした場合、それをバニッシュする。<br>③《青》を支払ってもよい。そうした場合、カードを3枚引く。", //JP_TEXT
 		"此Piece在我方場上分身沒有3隻時也可使用。<br><br>以下3項中選擇2項。相同選項可以選擇2次。<br>①可以支付白1。若如此做，獲得1個【分身屏障】。<br>②對方1隻精靈作對象，可以支付紅1。若如此做，將其破壞。<br>③可以支付藍1。若如此做，抽3張牌。"	//TW_TEXT
+		],[
+		"WX24-D1-01", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-01.jpg", //SRC
+		"新月の巫女 タマヨリヒメ", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"タマ", //CLASS
+		"白", //COLOR
+		"0", //LEVEL
+		"《白》×0", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-02", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-02.jpg", //SRC
+		"三日月の巫女 タマヨリヒメ", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"タマ", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"《白》×0", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-03", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-03.jpg", //SRC
+		"半月の巫女 タマヨリヒメ", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"タマ", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"《白》×1", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-04", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-04.jpg", //SRC
+		"真太陽の巫女 タマヨリヒメ", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"タマ", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"《白》×2", //COST
+		"6", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ターン1回》《白》手札から白のシグニを1枚捨てる：対戦相手のシグニ1体を対象とし、それを手札に戻す。<br><br>【起】《ゲーム1回》《白×0》：あなたのデッキの上からカードを5枚見る。その中からカードを2枚まで手札に加え、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-05", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-05.jpg", //SRC
+		"アーク・ライト・オーラ", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"白", //COLOR
+		"", //LEVEL
+		"《白》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたのルリグ1体を対象とし、ターン終了時まで、それは「【自】：このルリグがアタックしたとき、このルリグをアップし、ターン終了時まで、このルリグは能力を失う。」を得る。<br><br>このターン、対戦相手は追加で《無》を支払わないかぎり【ガード】ができない。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-06", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-06.jpg", //SRC
+		"ロココアド・バウンダリー", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"白", //COLOR
+		"", //LEVEL
+		"《白》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のパワー8000以下のシグニ1体を対象とし、それを手札に戻す。あなたのデッキの上からカードを4枚見る。その中から白のカードを2枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-07", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-07.jpg", //SRC
+		"ゴシックリヴ・バウンダリー", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"白", //COLOR
+		"", //LEVEL
+		"《白》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のパワー8000以下のシグニ1体を対象とし、それを手札に戻す。<br>《リコレクトアイコン》［4枚以上］代わりに対戦相手のシグニ1体を対象とし、それを手札に戻す。<br>(あなたのルリグトラッシュに4枚以上のアーツがあるかぎり《リコレクトアイコン》［4枚以上］に続く文章が有効になる)", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-08", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-08.jpg", //SRC
+		"ネオバロック・ディフェンス", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"白", //COLOR
+		"", //LEVEL
+		"《白》×1《無》×3", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のルリグとシグニを合計2体まで対象とし、ターン終了時まで、それらは「【常】：アタックできない。」を得る。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-09", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-09.jpg", //SRC
+		"ドロー・エンハンス", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"カードを2枚引く。あなたのルリグゾーンに【リミットアッパー】1つを置く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-10", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-10.jpg", //SRC
+		"ミラクル・チャージング", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"カードを3枚引くか【エナチャージ3】をする。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-11", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-11.jpg", //SRC
+		"小闘装 ククリ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏武：アーム", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのターン終了時、このターンにあなたが白のアーツを使用していた場合、あなたの白のシグニ1体を対象とし、次の対戦相手のターン終了時まで、それのパワーを+4000する。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-12", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-12.jpg", //SRC
+		"聖天 ハニエル", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：天使", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】《無》：あなたのデッキの上からカードを3枚見る。その中からレベル2以下のシグニ1枚を公開し手札に加え、残りを好きな順番でデッキの一番下に置く。<br><br>【ライフバースト】：あなたのデッキの上からカードを3枚見る。その中からシグニ1枚を公開し手札に加えるか場に出し、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-13", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-13.jpg", //SRC
+		"聖将 チョウウン", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】《相手ターン》：このシグニは【シャドウ(レベル2以下のシグニ)】を得る。(このシグニは対戦相手のレベル2以下のシグニによって対象にされない)", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-14", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-14.jpg", //SRC
+		"聖将 トキユキ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】《相手ターン》：あなたのセンタールリグが白であるかぎり、このシグニのパワーは+5000される。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-15", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-15.jpg", //SRC
+		"中装 フランベル", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏武：アーム", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：あなたの白のシグニのパワーを+2000する。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-16", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-16.jpg", //SRC
+		"中装 イシキリマル", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏武：アーム", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】《相手ターン》：このシグニのパワーは+4000される。<br><br>【自】《ターン1回》：あなたの他のシグニ1体が場に出たとき、あなたのデッキの一番上を見て、それをデッキの一番下に置いてもよい。<br><br>【ライフバースト】：あなたのデッキの上からカードを3枚見る。その中からシグニ1枚を公開し手札に加えるか場に出し、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-17", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-17.jpg", //SRC
+		"羅星 リンクス", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏羅：宇宙", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【ライフバースト】：対戦相手のシグニ1体を対象とし、《無》を支払ってもよい。そうした場合、それを手札に戻す。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-18", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-18.jpg", //SRC
+		"聖英 タンゴカード", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：英知", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場に白のシグニが3体以上ある場合、対戦相手のパワー3000以下のシグニ1体を対象とし、《白》を支払ってもよい。そうした場合、それを手札に戻す。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-19", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-19.jpg", //SRC
+		"大装 カリバン", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏武：アーム", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《白》《ダウン》：対戦相手のパワー8000以下のシグニ1体を対象とし、それを手札に戻す。あなたのライフクロスが2枚以下の場合、代わりに対戦相手のパワー10000以下のシグニ1体を対象とし、それを手札に戻す。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-20", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-20.jpg", //SRC
+		"大装 ローメイル", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏武：アーム", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】《相手ターン》：あなたのシグニのパワーを+3000する。《リコレクトアイコン》［5枚以上］代わりにあなたのシグニのパワーを+5000する。<br>(あなたのルリグトラッシュに5枚以上のアーツがあるかぎり《リコレクトアイコン》［5枚以上］に続く文章が有効になる)<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のアップ状態のシグニ1体を対象とし、それを手札に戻す。?カードを1枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-21", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-21.jpg", //SRC
+		"コードハート Pンライト", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏械：電機", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：対戦相手のアタックフェイズ開始時、対戦相手のルリグ1体を対象とし、ターン終了時まで、それは「【常】：《無》《無》を支払わないかぎりアタックできない。」を得る。<br><br>【自】：あなたのターン終了時、このターンにあなたがスペルを使用していた場合、次の対戦相手のターン終了時まで、このシグニは【シャドウ(シグニ)】を得る。【ライフバースト】：どちらか1つを選ぶ。?カードを1枚引く。?対戦相手のアップ状態のシグニ1体を対象とし、それを手札に戻す。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-22", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-22.jpg", //SRC
+		"大装 ゲイヴォルグ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏武：アーム", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：あなたのセンタールリグは「【自】《ターン1回》：このルリグがアタックしたとき、対戦相手のシグニ1体を対象とし、それをトラッシュに置く。」を得る。<br><br>【自】：あなたのアタックフェイズ開始時、あなたのアップ状態の白のシグニ1体をダウンしてもよい。そうした場合、カードを1枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-23", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-23.jpg", //SRC
+		"コードハート リメンバ//メモリア", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏械：電機", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】《相手ターン》：対戦相手の、センタールリグとシグニの【起】能力の使用コストは《無》増える。<br><br>【常】：このシグニがダウン状態であるかぎり、このシグニのパワーは+3000され、対戦相手は追加で《無》を支払わないかぎり【ガード】ができない。<br><br>【起】《ダウン》：あなたのライフクロスの一番上を見る。<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のアップ状態のシグニ1体を対象とし、それを手札に戻す。?カードを1枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-24", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-24.jpg", //SRC
+		"幻水姫 シィラ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏生：水獣", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたと対戦相手のライフクロスの枚数が同じ場合、カードを1枚引く。<br><br>【自】《相手ターン》《ターン1回》：シグニ1体がアタックしたとき、対戦相手のシグニ1体を対象とし、ターン終了時まで、それは能力を失う。<br><br>【出】《白》：あなたのデッキの上からカードを3枚見る。その中からカードを1枚まで手札に加え、残りを好きな順番でデッキの一番下に置く。<br><br>【ライフバースト】：対戦相手のアップ状態のシグニ1体を対象とし、それをトラッシュに置く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-25", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-25.jpg", //SRC
+		"リゲット・バイブル", //NAME
+		"ST", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"白", //COLOR
+		"", //LEVEL
+		"《白》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたのデッキの上からカードを5枚見る。その中からレベル2以下のシグニを2枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。《リコレクトアイコン》［5枚以上］代わりにその中からシグニを2枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。<br><br>【ライフバースト】：対戦相手のアップ状態のシグニ1体を対象とし、それを手札に戻す。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D1-26", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D1-26.jpg", //SRC
+		"サーバント #", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏元", //CLASS
+		"無", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"1000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【ガード】(このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ)<br><br>【常】：【マルチエナ】(エナコストを支払う際、このカードは好きな色1つとして支払える)<br><br>【ライフバースト】：あなたのトラッシュからシグニ1枚を対象とし、それを手札に加える。", //JP_TEXT
+		""	//TW_TEXT
 		]
 	];

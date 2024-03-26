@@ -160,6 +160,7 @@
 
 			var rdeckArr = [];
 			var pdeckArr = [];
+			var adeckArr = [];
 			var ldeckArr = [];
 			var sdeckArr = [];
 			var sdeckLBArr = [];
@@ -196,6 +197,13 @@
 			function customizeWindowEvent(x) {
 				if(x == "view")
 				{
+					//Temp
+					if(adeckArr.length != 0)
+					{
+						alert("Not support Arts yet.");
+						return;
+					}
+
 					if(rearrange_ldeck() == false)
 					{
 						alert("Illegal LRIG deck.");
@@ -295,7 +303,7 @@
 				<option value="TW">繁體中文</option>
 		    </select>
 		    ※Right-click in the deck can add existing card. 
-		    <br><br>Deck List
+		    <br>Deck List
 		    <select id="selectDeck" onchange="selectDeck();">
 		    	<option value="">--Select Deck--</option>
 		    </select>
@@ -312,7 +320,7 @@
 		</div>
 		<table width="1850px" height="600px">
 			<tr>
-				<td style="vertical-align:bottom;">
+				<td style="vertical-align:bottom;width: 950px;">
 					<table>
 						<tr>
 							<td>
@@ -502,14 +510,20 @@
 							</td>
 						</tr>
 						<tr>
-							<td style="vertical-align:bottom; width: 870px;">
-								Piece
+							<td style="vertical-align:bottom;vertical-align:text-top;">
+								Piece&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Arts
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<img id="pdeck_0" width="105px" height="75px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,0 , pdeckArr)">
-								<img id="pdeck_1" width="105px" height="75px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,1 , pdeckArr)">
+								<img id="pdeck_0" width="105px" height="75px" style="margin-bottom: 15px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,0 , pdeckArr)">
+								<img id="pdeck_1" width="105px" height="75px" style="margin-bottom: 15px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,1 , pdeckArr)">
+								<img id="adeck_0" width="75px" height="105px" style="margin-left: 104px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,0 , adeckArr)">
+								<img id="adeck_1" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,1 , adeckArr)">
+								<img id="adeck_2" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,2 , adeckArr)">
+								<img id="adeck_3" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,3 , adeckArr)">
+								<img id="adeck_4" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,4 , adeckArr)">
+								<img id="adeck_5" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,5 , adeckArr)">
 							</td>
 						</tr>
 					</table>
@@ -521,7 +535,7 @@
 					<button onclick="$('#cardinformation').css('visibility', 'hidden');customizeWindowEvent('list');">Card List</button>
 					<button style="float: right" onclick="showVersion();">About</button>
 					<br><br><br>
-					<input type="checkbox" id="lrig" checked><span  onclick="clickSpan(this)">ルリグ </span>&emsp;&emsp;<input type="checkbox" id="assistlrig" checked><span onclick="clickSpan(this)">アシストルリグ </span>&emsp;&emsp;<input type="checkbox" id="piece" checked><span onclick="clickSpan(this)">ピース </span>&emsp;&emsp;<input type="checkbox" id="signi" checked><span onclick="clickSpan(this)">シグニ </span>&emsp;&emsp;<input type="checkbox" id="spell" checked><span onclick="clickSpan(this)">スペル </span>
+					<input type="checkbox" id="lrig" checked><span  onclick="clickSpan(this)">ルリグ </span>&emsp;&emsp;<input type="checkbox" id="assistlrig" checked><span onclick="clickSpan(this)">アシストルリグ </span>&emsp;&emsp;<input type="checkbox" id="piece" checked><span onclick="clickSpan(this)">ピース </span>&emsp;&emsp;<input type="checkbox" id="arts" checked><span onclick="clickSpan(this)">アーツ </span>&emsp;&emsp;<input type="checkbox" id="signi" checked><span onclick="clickSpan(this)">シグニ </span>&emsp;&emsp;<input type="checkbox" id="spell" checked><span onclick="clickSpan(this)">スペル </span>
 					<br><br>
 					<input type="checkbox" id="level0" checked><span onclick="clickSpan(this)">Level 0 </span>&emsp;&emsp;<input type="checkbox" id="level1" checked><span onclick="clickSpan(this)">Level 1 </span>&emsp;&emsp;<input type="checkbox" id="level2" checked><span onclick="clickSpan(this)">Level 2 </span>&emsp;&emsp;<input type="checkbox" id="level3" checked><span onclick="clickSpan(this)">Level 3 </span>
 					<br><br>
@@ -646,6 +660,7 @@
 					商品檢索
 					<select id="selectProduct">
 						<option value="0">--All Product--</option>
+						<option value="WX24-D1">[WX24-D1] 構築済みデッキ「WHITE ALT HOPE」</option>
 						<option value="WXDi-P16">[WXDi-P16] 拡張パック「LEGENDARY DIVA」</option>
 						<option value="WXDi-P15">[WXDi-P15] 拡張パック「DIVISIONS DIVA」</option>
 						<option value="WXDi-CP02">[WXDi-CP02] 拡張パック「ブルーアーカイブ DIVA」</option>
