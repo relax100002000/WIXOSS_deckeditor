@@ -3824,7 +3824,7 @@ function resetDefault()
 	}
 	else
 	{
-		localStorage.clear();
+		localStorage.clear()
 		location.reload();
 	}
 }
