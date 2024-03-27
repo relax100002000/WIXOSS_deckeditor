@@ -354,6 +354,77 @@ function showInfotable(data)
 		str += "	</td>";
 		str += "</tr>";
 	}
+	else if(data[TYPE] == "アーツ")
+	{
+		str += "<tr>";
+		str += "	<td width=\"115px\">";
+		str += "		略号";
+		str += "	</td>";
+		str += "	<td>";
+		str += data[ID];
+		str += "	</td>";
+		str += "</tr>";
+
+		str += "<tr>";
+		str += "	<td>";
+		str += "		カード名";
+		str += "	</td>";
+		str += "	<td>";
+		str += data[NAME];
+		str += "	</td>";
+		str += "</tr>";
+
+		str += "<tr>";
+		str += "	<td>";
+		str += "		カード種類";
+		str += "	</td>";
+		str += "	<td>";
+		str += data[TYPE];
+		str += "	</td>";
+		str += "</tr>";
+
+		str += "<tr>";
+		str += "	<td>";
+		str += "		色";
+		str += "	</td>";
+		str += "	<td>";
+		str += data[COLOR];
+		str += "	</td>";
+		str += "</tr>";
+
+		str += "<tr>";
+		str += "	<td>";
+		str += "		コスト";
+		str += "	</td>";
+		str += "	<td>";
+		str += data[COST];
+		str += "	</td>";
+		str += "</tr>";
+
+		str += "<tr>";
+		str += "	<td>";
+		str += "		使用タイミング";
+		str += "	</td>";
+		str += "	<td>";
+		str += showTiming(data[TIMING]);
+		str += "	</td>";
+		str += "</tr>";
+
+		str += "<tr>";
+		str += "	<td colspan=\"2\">";
+
+		if($('#selectLang').val() == "TW" && data[TW_TEXT] != "")
+		{
+			str += str_to_img(data[TW_TEXT]);
+		}
+		else
+		{
+			str += str_to_img(data[JP_TEXT]);
+		}
+
+		str += "	</td>";
+		str += "</tr>";
+	}
 	else if(data[TYPE] == "ルリグ")
 	{
 		str += "<tr>";
@@ -3836,8 +3907,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240327 v1.51\n";
-	str += "2.新增WX24-D2\n";
+	str += "20240327 v1.52\n";
+	str += "1.修正Arts不顯示使用時機的bug\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";
@@ -3848,6 +3919,7 @@ function showVersion()
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";
+	str += "-Arts Deck view\n";
 	
 	alert(str);
 }
