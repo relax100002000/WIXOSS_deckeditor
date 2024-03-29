@@ -292,7 +292,7 @@ Author: ZZZ
 WXDi-CP01 ~ WXDi-CP02  
 WXDi-P00 ~ WXDi-P15  
 WXDi-D01 ~ WXDi-D09  
-WX24-D1  
+WX24-D1 ~ WX24-D4  
 PRカード
   
 預計更新:  

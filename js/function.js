@@ -3915,7 +3915,7 @@ function showVersion()
 	str += "WXDi-CP01 ~ WXDi-CP02\n";
 	str += "WXDi-P00 ~ WXDi-P16\n";
 	str += "WXDi-D01 ~ WXDi-D09\n";
-	str += "WX24-D1 ~ WX24-D2\n";
+	str += "WX24-D1 ~ WX24-D4\n";
 	str += "PRカード\n";
 	str += "\n";
 	str += "預計更新:\n";
