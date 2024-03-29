@@ -1,6 +1,10 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
+　　
+20240330 v1.53  
+1.新增WX24-D3  
+2.新增WX24-D4  
   
 20240327 v1.52  
 1.修正Arts不顯示使用時機的bug  

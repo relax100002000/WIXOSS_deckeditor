@@ -3907,8 +3907,9 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240327 v1.52\n";
-	str += "1.修正Arts不顯示使用時機的bug\n";
+	str += "20240330 v1.53\n";
+	str += "1.新增WX24-D3\n";
+	str += "2.新增WX24-D4\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";
