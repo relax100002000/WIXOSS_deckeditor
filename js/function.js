@@ -1889,6 +1889,10 @@ function selectSort()
 		$("#lbBackground").show();
 		updateLBarray();
 	}
+	else if(sort_method == 2)
+	{
+		document.getElementById("background41id").style.backgroundImage = "none";
+	}
 	else
 	{
 		$("#lbBackground").hide();
