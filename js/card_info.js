@@ -26,10 +26,10 @@
 0~9
 a~z
 A~Z
-+-
++-=
 " "(space)
 ()
-【ライフバースト】：->【ライフバースト】：
+ライフバースト：->【ライフバースト】：
 */
 
 const ID = 0;
@@ -95,7 +95,7 @@ var cardData = [
 	[
 		"PR-Di003", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di003.jpg", //SRC
-		"奏救の鍵主 ウムル＝ノル(WIXOSS LAND フォロー&RTキャンペーン)", //NAME
+		"奏救の鍵主 ウムル=ノル(WIXOSS LAND フォロー&RTキャンペーン)", //NAME
 		"PR", //RARE
 		"ルリグ", //TYPE
 		"ウムル", //CLASS
@@ -434,7 +434,7 @@ var cardData = [
 	[
 		"WXDi-D01-001", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D01-001.jpg", //SRC
-		"紡ぎし扉 アト＝ノル", //NAME
+		"紡ぎし扉 アト=ノル", //NAME
 		"ST", //RARE
 		"ルリグ", //TYPE
 		"アト", //CLASS
@@ -454,7 +454,7 @@ var cardData = [
 	[
 		"WXDi-D01-002", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D01-002.jpg", //SRC
-		"紡ぎし扉 アト＝エット", //NAME
+		"紡ぎし扉 アト=エット", //NAME
 		"ST", //RARE
 		"ルリグ", //TYPE
 		"アト", //CLASS
@@ -474,7 +474,7 @@ var cardData = [
 	[
 		"WXDi-D01-003", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D01-003.jpg", //SRC
-		"紡ぎし扉 アト＝トヴォ", //NAME
+		"紡ぎし扉 アト=トヴォ", //NAME
 		"ST", //RARE
 		"ルリグ", //TYPE
 		"アト", //CLASS
@@ -494,7 +494,7 @@ var cardData = [
 	[
 		"WXDi-D01-004", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D01-004.jpg", //SRC
-		"紡ぎし扉 アト＝トレ", //NAME
+		"紡ぎし扉 アト=トレ", //NAME
 		"ST", //RARE
 		"ルリグ", //TYPE
 		"アト", //CLASS
@@ -514,7 +514,7 @@ var cardData = [
 	[
 		"WXDi-D01-005", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D01-005.jpg", //SRC
-		"目醒めし者 タウィル＝ノル", //NAME
+		"目醒めし者 タウィル=ノル", //NAME
 		"ST", //RARE
 		"ルリグ", //TYPE
 		"タウィル", //CLASS
@@ -534,7 +534,7 @@ var cardData = [
 	[
 		"WXDi-D01-006", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D01-006.jpg", //SRC
-		"タウィル＝ハウリング", //NAME
+		"タウィル=ハウリング", //NAME
 		"ST", //RARE
 		"アシストルリグ", //TYPE
 		"タウィル", //CLASS
@@ -554,7 +554,7 @@ var cardData = [
 	[
 		"WXDi-D01-007", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D01-007.jpg", //SRC
-		"タウィル＝カラーズ", //NAME
+		"タウィル=カラーズ", //NAME
 		"ST", //RARE
 		"アシストルリグ", //TYPE
 		"タウィル", //CLASS
@@ -574,7 +574,7 @@ var cardData = [
 	[
 		"WXDi-D01-008", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D01-008.jpg", //SRC
-		"奏救の鍵主 ウムル＝ノル", //NAME
+		"奏救の鍵主 ウムル=ノル", //NAME
 		"ST", //RARE
 		"ルリグ", //TYPE
 		"ウムル", //CLASS
@@ -594,7 +594,7 @@ var cardData = [
 	[
 		"WXDi-D01-009", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D01-009.jpg", //SRC
-		"ウムル＝ドロー", //NAME
+		"ウムル=ドロー", //NAME
 		"ST", //RARE
 		"アシストルリグ", //TYPE
 		"ウムル", //CLASS
@@ -614,7 +614,7 @@ var cardData = [
 	[
 		"WXDi-D01-010", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D01-010.jpg", //SRC
-		"ウムル＝ダウン", //NAME
+		"ウムル=ダウン", //NAME
 		"ST", //RARE
 		"アシストルリグ", //TYPE
 		"ウムル", //CLASS
@@ -694,7 +694,7 @@ var cardData = [
 	[
 		"WXDi-D01-014", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D01-014.jpg", //SRC
-		"ツヴァイ＝スローロリス", //NAME
+		"ツヴァイ=スローロリス", //NAME
 		"ST", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -1554,7 +1554,7 @@ var cardData = [
 	[
 		"WXDi-P00-007", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-007.jpg", //SRC
-		"目醒めし者 タウィル＝エット", //NAME
+		"目醒めし者 タウィル=エット", //NAME
 		"L", //RARE
 		"ルリグ", //TYPE
 		"タウィル", //CLASS
@@ -1574,7 +1574,7 @@ var cardData = [
 	[
 		"WXDi-P00-008", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-008.jpg", //SRC
-		"目醒めし者 タウィル＝トヴォ", //NAME
+		"目醒めし者 タウィル=トヴォ", //NAME
 		"L", //RARE
 		"ルリグ", //TYPE
 		"タウィル", //CLASS
@@ -1594,7 +1594,7 @@ var cardData = [
 	[
 		"WXDi-P00-009", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-009.jpg", //SRC
-		"目醒めし者 タウィル＝トレ", //NAME
+		"目醒めし者 タウィル=トレ", //NAME
 		"L", //RARE
 		"ルリグ", //TYPE
 		"タウィル", //CLASS
@@ -1614,7 +1614,7 @@ var cardData = [
 	[
 		"WXDi-P00-010", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-010.jpg", //SRC
-		"タウィル＝エイボン", //NAME
+		"タウィル=エイボン", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"タウィル", //CLASS
@@ -1634,7 +1634,7 @@ var cardData = [
 	[
 		"WXDi-P00-011", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-011.jpg", //SRC
-		"タウィル＝シャボネス", //NAME
+		"タウィル=シャボネス", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"タウィル", //CLASS
@@ -1654,7 +1654,7 @@ var cardData = [
 	[
 		"WXDi-P00-012", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-012.jpg", //SRC
-		"タウィル＝バースト", //NAME
+		"タウィル=バースト", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"タウィル", //CLASS
@@ -1674,7 +1674,7 @@ var cardData = [
 	[
 		"WXDi-P00-013", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-013.jpg", //SRC
-		"奏救の鍵主 ウムル＝エット", //NAME
+		"奏救の鍵主 ウムル=エット", //NAME
 		"L", //RARE
 		"ルリグ", //TYPE
 		"ウムル", //CLASS
@@ -1694,7 +1694,7 @@ var cardData = [
 	[
 		"WXDi-P00-014", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-014.jpg", //SRC
-		"奏救の鍵主 ウムル＝トヴォ", //NAME
+		"奏救の鍵主 ウムル=トヴォ", //NAME
 		"L", //RARE
 		"ルリグ", //TYPE
 		"ウムル", //CLASS
@@ -1714,7 +1714,7 @@ var cardData = [
 	[
 		"WXDi-P00-015", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-015.jpg", //SRC
-		"奏救の鍵主 ウムル＝トレ", //NAME
+		"奏救の鍵主 ウムル=トレ", //NAME
 		"L", //RARE
 		"ルリグ", //TYPE
 		"ウムル", //CLASS
@@ -1734,7 +1734,7 @@ var cardData = [
 	[
 		"WXDi-P00-016", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-016.jpg", //SRC
-		"ウムル＝フリーズ", //NAME
+		"ウムル=フリーズ", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"ウムル", //CLASS
@@ -1754,7 +1754,7 @@ var cardData = [
 	[
 		"WXDi-P00-017", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-017.jpg", //SRC
-		"ウムル＝ブレイク", //NAME
+		"ウムル=ブレイク", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"ウムル", //CLASS
@@ -1774,7 +1774,7 @@ var cardData = [
 	[
 		"WXDi-P00-018", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-018.jpg", //SRC
-		"ウムル＝クリアー", //NAME
+		"ウムル=クリアー", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"ウムル", //CLASS
@@ -1794,7 +1794,7 @@ var cardData = [
 	[
 		"WXDi-P00-019", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-019.jpg", //SRC
-		"アト＝チャージ", //NAME
+		"アト=チャージ", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"アト", //CLASS
@@ -1814,7 +1814,7 @@ var cardData = [
 	[
 		"WXDi-P00-020", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-020.jpg", //SRC
-		"アト＝キラー", //NAME
+		"アト=キラー", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"アト", //CLASS
@@ -1834,7 +1834,7 @@ var cardData = [
 	[
 		"WXDi-P00-021", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-021.jpg", //SRC
-		"アト＝リマインド", //NAME
+		"アト=リマインド", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"アト", //CLASS
@@ -1854,7 +1854,7 @@ var cardData = [
 	[
 		"WXDi-P00-022", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-022.jpg", //SRC
-		"アト＝ファインダー", //NAME
+		"アト=ファインダー", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"アト", //CLASS
@@ -1874,7 +1874,7 @@ var cardData = [
 	[
 		"WXDi-P00-023", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P00-023.jpg", //SRC
-		"アト＝リペアー", //NAME
+		"アト=リペアー", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"アト", //CLASS
@@ -4195,7 +4195,7 @@ var cardData = [
 	[
 		"WXDi-D05-006", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D05-006.jpg", //SRC
-		"ノヴァ＝ダーティ", //NAME
+		"ノヴァ=ダーティ", //NAME
 		"ST", //RARE
 		"アシストルリグ", //TYPE
 		"ノヴァ", //CLASS
@@ -4215,7 +4215,7 @@ var cardData = [
 	[
 		"WXDi-D05-007", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D05-007.jpg", //SRC
-		"ノヴァ＝チョッパー", //NAME
+		"ノヴァ=チョッパー", //NAME
 		"ST", //RARE
 		"アシストルリグ", //TYPE
 		"ノヴァ", //CLASS
@@ -4255,7 +4255,7 @@ var cardData = [
 	[
 		"WXDi-D05-009", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D05-009.jpg", //SRC
-		"バン＝クレッシェンド", //NAME
+		"バン=クレッシェンド", //NAME
 		"ST", //RARE
 		"アシストルリグ", //TYPE
 		"バン", //CLASS
@@ -4275,7 +4275,7 @@ var cardData = [
 	[
 		"WXDi-D05-010", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D05-010.jpg", //SRC
-		"バン＝リピート", //NAME
+		"バン=リピート", //NAME
 		"ST", //RARE
 		"アシストルリグ", //TYPE
 		"バン", //CLASS
@@ -4815,7 +4815,7 @@ var cardData = [
 	[
 		"WXDi-D06-016", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D06-016.jpg", //SRC
-		"ドライ＝リカブト", //NAME
+		"ドライ=リカブト", //NAME
 		"ST", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -4855,7 +4855,7 @@ var cardData = [
 	[
 		"WXDi-D06-018", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D06-018.jpg", //SRC
-		"アイン＝グリーンガス", //NAME
+		"アイン=グリーンガス", //NAME
 		"ST", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -5335,7 +5335,7 @@ var cardData = [
 	[
 		"WXDi-P01-021", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P01-021.jpg", //SRC
-		"ノヴァ＝ミュート", //NAME
+		"ノヴァ=ミュート", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"ノヴァ", //CLASS
@@ -5355,7 +5355,7 @@ var cardData = [
 	[
 		"WXDi-P01-022", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P01-022.jpg", //SRC
-		"ノヴァ＝スラッシュ", //NAME
+		"ノヴァ=スラッシュ", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"ノヴァ", //CLASS
@@ -5375,7 +5375,7 @@ var cardData = [
 	[
 		"WXDi-P01-023", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P01-023.jpg", //SRC
-		"ノヴァ＝スーパーノヴァ", //NAME
+		"ノヴァ=スーパーノヴァ", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"ノヴァ", //CLASS
@@ -5395,7 +5395,7 @@ var cardData = [
 	[
 		"WXDi-P01-024", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P01-024.jpg", //SRC
-		"バン＝ピアニッシモ", //NAME
+		"バン=ピアニッシモ", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"バン", //CLASS
@@ -5415,7 +5415,7 @@ var cardData = [
 	[
 		"WXDi-P01-025", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P01-025.jpg", //SRC
-		"バン＝ダカーポ", //NAME
+		"バン=ダカーポ", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"バン", //CLASS
@@ -5435,7 +5435,7 @@ var cardData = [
 	[
 		"WXDi-P01-026", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P01-026.jpg", //SRC
-		"バン＝ビッグバン", //NAME
+		"バン=ビッグバン", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"バン", //CLASS
@@ -5795,7 +5795,7 @@ var cardData = [
 	[
 		"WXDi-P01-044", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P01-044.jpg", //SRC
-		"ドライ＝ランリョウオー", //NAME
+		"ドライ=ランリョウオー", //NAME
 		"SR", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -6615,7 +6615,7 @@ var cardData = [
 	[
 		"WXDi-P01-085", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P01-085.jpg", //SRC
-		"ツヴァイ＝ダガ", //NAME
+		"ツヴァイ=ダガ", //NAME
 		"R", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -6855,7 +6855,7 @@ var cardData = [
 	[
 		"WXDi-P01-097", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P01-097.jpg", //SRC
-		"アイン＝グリーンガス", //NAME
+		"アイン=グリーンガス", //NAME
 		"C", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -6875,7 +6875,7 @@ var cardData = [
 	[
 		"WXDi-P01-098", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P01-098.jpg", //SRC
-		"ツヴァイ＝コブラス", //NAME
+		"ツヴァイ=コブラス", //NAME
 		"C", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -7375,7 +7375,7 @@ var cardData = [
 	[
 		"WXDi-P02-024", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P02-024.jpg", //SRC
-		"タマゴ＝ダブルストローク", //NAME
+		"タマゴ=ダブルストローク", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"タマゴ", //CLASS
@@ -7395,7 +7395,7 @@ var cardData = [
 	[
 		"WXDi-P02-025", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P02-025.jpg", //SRC
-		"タマゴ＝ビーティング", //NAME
+		"タマゴ=ビーティング", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"タマゴ", //CLASS
@@ -7415,7 +7415,7 @@ var cardData = [
 	[
 		"WXDi-P02-026", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P02-026.jpg", //SRC
-		"タマゴ＝ジェットスティック", //NAME
+		"タマゴ=ジェットスティック", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"タマゴ", //CLASS
@@ -7435,7 +7435,7 @@ var cardData = [
 	[
 		"WXDi-P02-027", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P02-027.jpg", //SRC
-		"タマゴ＝ドラムロール", //NAME
+		"タマゴ=ドラムロール", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"タマゴ", //CLASS
@@ -7755,7 +7755,7 @@ var cardData = [
 	[
 		"WXDi-P02-043", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P02-043.jpg", //SRC
-		"ドライ＝インフルD型", //NAME
+		"ドライ=インフルD型", //NAME
 		"SR", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -8415,7 +8415,7 @@ var cardData = [
 	[
 		"WXDi-P02-076", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P02-076.jpg", //SRC
-		"ツヴァイ＝ドクゼリ", //NAME
+		"ツヴァイ=ドクゼリ", //NAME
 		"C", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -9295,7 +9295,7 @@ var cardData = [
 	[
 		"WXDi-P03-024", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P03-024.jpg", //SRC
-		"ノヴァ＝アウト", //NAME
+		"ノヴァ=アウト", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"ノヴァ", //CLASS
@@ -9315,7 +9315,7 @@ var cardData = [
 	[
 		"WXDi-P03-025", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P03-025.jpg", //SRC
-		"タマゴ＝シンバルロール", //NAME
+		"タマゴ=シンバルロール", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"タマゴ", //CLASS
@@ -9335,7 +9335,7 @@ var cardData = [
 	[
 		"WXDi-P03-026", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P03-026.jpg", //SRC
-		"タマゴ＝アクセント", //NAME
+		"タマゴ=アクセント", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"タマゴ", //CLASS
@@ -9355,7 +9355,7 @@ var cardData = [
 	[
 		"WXDi-P03-027", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P03-027.jpg", //SRC
-		"バン＝ソロ", //NAME
+		"バン=ソロ", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"バン", //CLASS
@@ -10695,7 +10695,7 @@ var cardData = [
 	[
 		"WXDi-P03-094", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P03-094.jpg", //SRC
-		"アイン＝グリーンガス", //NAME
+		"アイン=グリーンガス", //NAME
 		"C", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -10715,7 +10715,7 @@ var cardData = [
 	[
 		"WXDi-P03-095", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P03-095.jpg", //SRC
-		"ツヴァイ＝コブラス", //NAME
+		"ツヴァイ=コブラス", //NAME
 		"C", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -11735,7 +11735,7 @@ var cardData = [
 	[
 		"WXDi-P04-028", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P04-028.jpg", //SRC
-		"開けし扉 アト＝トレ", //NAME
+		"開けし扉 アト=トレ", //NAME
 		"L", //RARE
 		"ルリグ", //TYPE
 		"アト", //CLASS
@@ -11755,7 +11755,7 @@ var cardData = [
 	[
 		"WXDi-P04-029", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P04-029.jpg", //SRC
-		"タウィル＝ハングアウト", //NAME
+		"タウィル=ハングアウト", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"タウィル", //CLASS
@@ -11775,7 +11775,7 @@ var cardData = [
 	[
 		"WXDi-P04-030", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P04-030.jpg", //SRC
-		"ウムル＝アウトサイダー", //NAME
+		"ウムル=アウトサイダー", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"ウムル", //CLASS
@@ -11795,7 +11795,7 @@ var cardData = [
 	[
 		"WXDi-P04-031", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P04-031.jpg", //SRC
-		"アト＝イジェクト", //NAME
+		"アト=イジェクト", //NAME
 		"L", //RARE
 		"アシストルリグ", //TYPE
 		"アト", //CLASS
@@ -12835,7 +12835,7 @@ var cardData = [
 	[
 		"WXDi-P04-083", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P04-083.jpg", //SRC
-		"ツヴァイ＝ヒアリ", //NAME
+		"ツヴァイ=ヒアリ", //NAME
 		"C", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -13335,7 +13335,7 @@ var cardData = [
 	[
 		"WXDi-P05-015", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P05-015.jpg", //SRC
-		"掲げし者 タウィル＝トレ", //NAME
+		"掲げし者 タウィル=トレ", //NAME
 		"L", //RARE
 		"ルリグ", //TYPE
 		"タウィル", //CLASS
@@ -13355,7 +13355,7 @@ var cardData = [
 	[
 		"WXDi-P05-016", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P05-016.jpg", //SRC
-		"奏叫の鍵主 ウムル＝トレ", //NAME
+		"奏叫の鍵主 ウムル=トレ", //NAME
 		"L", //RARE
 		"ルリグ", //TYPE
 		"ウムル", //CLASS
@@ -14495,7 +14495,7 @@ var cardData = [
 	[
 		"WXDi-P05-073", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P05-073.jpg", //SRC
-		"ツヴァイ＝イラクサ", //NAME
+		"ツヴァイ=イラクサ", //NAME
 		"C", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -16935,7 +16935,7 @@ var cardData = [
 	[
 		"WXDi-P06-079", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P06-079.jpg", //SRC
-		"アイン＝ハナレ//メモリア", //NAME
+		"アイン=ハナレ//メモリア", //NAME
 		"R", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -16975,7 +16975,7 @@ var cardData = [
 	[
 		"WXDi-P06-081", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P06-081.jpg", //SRC
-		"ツヴァイ＝ヴァイアル", //NAME
+		"ツヴァイ=ヴァイアル", //NAME
 		"C", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -17735,7 +17735,7 @@ var cardData = [
 	[
 		"WXDi-P07-027", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P07-027.jpg", //SRC
-		"メル＝レディ", //NAME
+		"メル=レディ", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"メル", //CLASS
@@ -18115,7 +18115,7 @@ var cardData = [
 	[
 		"WXDi-P07-046", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P07-046.jpg", //SRC
-		"ドライ＝パトラ", //NAME
+		"ドライ=パトラ", //NAME
 		"SR", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -18775,7 +18775,7 @@ var cardData = [
 	[
 		"WXDi-P07-079", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P07-079.jpg", //SRC
-		"アイン＝グリーンルクボル", //NAME
+		"アイン=グリーンルクボル", //NAME
 		"R", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -19375,7 +19375,7 @@ var cardData = [
 	[
 		"WXDi-P08-009", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P08-009.jpg", //SRC
-		"結団の決断 アン＝サード", //NAME
+		"結団の決断 アン=サード", //NAME
 		"LR", //RARE
 		"ルリグ", //TYPE
 		"アン", //CLASS
@@ -19535,7 +19535,7 @@ var cardData = [
 	[
 		"WXDi-P08-017", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P08-017.jpg", //SRC
-		"想像の創造 アン＝ファースト", //NAME
+		"想像の創造 アン=ファースト", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"アン", //CLASS
@@ -19555,7 +19555,7 @@ var cardData = [
 	[
 		"WXDi-P08-018", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P08-018.jpg", //SRC
-		"過知の価値 アン＝セカンド", //NAME
+		"過知の価値 アン=セカンド", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"アン", //CLASS
@@ -20775,7 +20775,7 @@ var cardData = [
 	[
 		"WXDi-P08-079", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P08-079.jpg", //SRC
-		"ツヴァイ＝マムシ", //NAME
+		"ツヴァイ=マムシ", //NAME
 		"R", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -20955,7 +20955,7 @@ var cardData = [
 	[
 		"WXDi-P09-006", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-006.jpg", //SRC
-		"レイラ＝オーバーテイク", //NAME
+		"レイラ=オーバーテイク", //NAME
 		"LR", //RARE
 		"ルリグ", //TYPE
 		"レイラ", //CLASS
@@ -20975,7 +20975,7 @@ var cardData = [
 	[
 		"WXDi-P09-007", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-007.jpg", //SRC
-		"メル＝チアーズ", //NAME
+		"メル=チアーズ", //NAME
 		"LR", //RARE
 		"ルリグ", //TYPE
 		"メル", //CLASS
@@ -21115,7 +21115,7 @@ var cardData = [
 	[
 		"WXDi-P09-014", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-014.jpg", //SRC
-		"レイラ＝ニュートラル", //NAME
+		"レイラ=ニュートラル", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"レイラ", //CLASS
@@ -21135,7 +21135,7 @@ var cardData = [
 	[
 		"WXDi-P09-015", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-015.jpg", //SRC
-		"レイラ＝ターボ", //NAME
+		"レイラ=ターボ", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"レイラ", //CLASS
@@ -21155,7 +21155,7 @@ var cardData = [
 	[
 		"WXDi-P09-016", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-016.jpg", //SRC
-		"レイラ＝ドラッグ", //NAME
+		"レイラ=ドラッグ", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"レイラ", //CLASS
@@ -21175,7 +21175,7 @@ var cardData = [
 	[
 		"WXDi-P09-017", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-017.jpg", //SRC
-		"メル＝バラライカ", //NAME
+		"メル=バラライカ", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"メル", //CLASS
@@ -21195,7 +21195,7 @@ var cardData = [
 	[
 		"WXDi-P09-018", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-018.jpg", //SRC
-		"メル＝カンパリ", //NAME
+		"メル=カンパリ", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"メル", //CLASS
@@ -22335,7 +22335,7 @@ var cardData = [
 	[
 		"WXDi-P09-075", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-075.jpg", //SRC
-		"ドライ＝スカンク", //NAME
+		"ドライ=スカンク", //NAME
 		"C", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -23935,7 +23935,7 @@ var cardData = [
 	[
 		"WXDi-P10-068", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P10-068.jpg", //SRC
-		"ツヴァイ＝サンガ//メモリア", //NAME
+		"ツヴァイ=サンガ//メモリア", //NAME
 		"R", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -24129,8 +24129,8 @@ var cardData = [
 		"1", //LB
 		"", //TEAM
 		"", //STORY
-		"あなたのデッキの上からカードを2枚トラッシュに置く。その後、あなたのトラッシュから《コードラビリンス ムジカ//メモリア》か《コードアンチ マドカ//メモリア》か《ツヴァイ＝サンガ//メモリア》か黒のシグニ1枚を対象とし、それを手札に加える。<br><br>【ライフバースト】：あなたのトラッシュからシグニ1枚を対象とし、それを手札に加える。", //JP_TEXT
-		"我方牌組上方2張卡牌放置到廢棄區。之後，我方廢棄區1張《コードラビリンス ムジカ//メモリア》或《コードアンチ マドカ//メモリア》或《ツヴァイ＝サンガ//メモリア》或黑色精靈作對象，將其加入手牌。<br><br>「生命爆發」：我方廢棄區1張精靈作對象，將其加入手牌。"	//TW_TEXT
+		"あなたのデッキの上からカードを2枚トラッシュに置く。その後、あなたのトラッシュから《コードラビリンス ムジカ//メモリア》か《コードアンチ マドカ//メモリア》か《ツヴァイ=サンガ//メモリア》か黒のシグニ1枚を対象とし、それを手札に加える。<br><br>【ライフバースト】：あなたのトラッシュからシグニ1枚を対象とし、それを手札に加える。", //JP_TEXT
+		"我方牌組上方2張卡牌放置到廢棄區。之後，我方廢棄區1張《コードラビリンス ムジカ//メモリア》或《コードアンチ マドカ//メモリア》或《ツヴァイ=サンガ//メモリア》或黑色精靈作對象，將其加入手牌。<br><br>「生命爆發」：我方廢棄區1張精靈作對象，將其加入手牌。"	//TW_TEXT
 		],
 	[
 		"WXDi-P10-078", //ID
@@ -24315,7 +24315,7 @@ var cardData = [
 	[
 		"WXDi-P11-009", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P11-009.jpg", //SRC
-		"ミュウ＝ブロッサム", //NAME
+		"ミュウ=ブロッサム", //NAME
 		"LR", //RARE
 		"ルリグ", //TYPE
 		"ミュウ", //CLASS
@@ -24615,7 +24615,7 @@ var cardData = [
 	[
 		"WXDi-P11-023", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P11-023.jpg", //SRC
-		"ミュウ＝ハッチ", //NAME
+		"ミュウ=ハッチ", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"ミュウ", //CLASS
@@ -24635,7 +24635,7 @@ var cardData = [
 	[
 		"WXDi-P11-024", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P11-024.jpg", //SRC
-		"ミュウ＝ラーバ", //NAME
+		"ミュウ=ラーバ", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"ミュウ", //CLASS
@@ -24655,7 +24655,7 @@ var cardData = [
 	[
 		"WXDi-P11-025", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P11-025.jpg", //SRC
-		"ミュウ＝クラフト", //NAME
+		"ミュウ=クラフト", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"ミュウ", //CLASS
@@ -25135,7 +25135,7 @@ var cardData = [
 	[
 		"WXDi-P11-049", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P11-049.jpg", //SRC
-		"ドライ＝厄姫パンドラ", //NAME
+		"ドライ=厄姫パンドラ", //NAME
 		"SR", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -28775,7 +28775,7 @@ var cardData = [
 	[
 		"WXDi-P12-009", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P12-009.jpg", //SRC
-		"メル＝椿姫", //NAME
+		"メル=椿姫", //NAME
 		"LR", //RARE
 		"ルリグ", //TYPE
 		"メル", //CLASS
@@ -28995,7 +28995,7 @@ var cardData = [
 	[
 		"WXDi-P12-020", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P12-020.jpg", //SRC
-		"メル＝桜花", //NAME
+		"メル=桜花", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"メル", //CLASS
@@ -29015,7 +29015,7 @@ var cardData = [
 	[
 		"WXDi-P12-021", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P12-021.jpg", //SRC
-		"メル＝照葉", //NAME
+		"メル=照葉", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"メル", //CLASS
@@ -29035,7 +29035,7 @@ var cardData = [
 	[
 		"WXDi-P12-022", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P12-022.jpg", //SRC
-		"メル＝雪国", //NAME
+		"メル=雪国", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"メル", //CLASS
@@ -29115,7 +29115,7 @@ var cardData = [
 	[
 		"WXDi-P12-026", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P12-026.jpg", //SRC
-		"レイラ＝ニュートラル", //NAME
+		"レイラ=ニュートラル", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"レイラ", //CLASS
@@ -29649,8 +29649,8 @@ var cardData = [
 		"1", //LB
 		"", //TEAM
 		"ディソナ", //STORY
-		"【常】：あなたの場に《メル＝椿姫》がいるかぎり、このシグニのパワーはこのシグニの下にあるカード1枚につき+5000される。<br><br>【自】：あなたのアタックフェイズ開始時、このシグニの下から《ディソナアイコン》のカードを1枚までエナゾーンに置く。<br><br>【出】：あなたのデッキの上からカードを2枚このシグニの下に置く。(表向きで置く)<br><br>【起】《コインアイコン》《コインアイコン》《コインアイコン》《コインアイコン》《コインアイコン》：ターン終了時まで、このシグニは【ランサー】を得る。<br><br>【ライフバースト】：対戦相手のパワー7000以上のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
-		"「常」：我方場上有《メル＝椿姫》的話，此精靈的力量為此精靈下方卡牌每有1張+5000。<br><br>「自」：我方攻擊階段開始時，此精靈下方最多1張Dissona精靈放置到能量區。<br><br>「出」：我方牌組上方2張卡牌放置到此精靈下方。(正面朝上)<br><br>「起」Coin*5：直到回合結束時為止，此精靈獲得【槍兵】。<br><br>「生命爆發」：對方1隻力量7000以上的精靈作對象，將其破壞。"	//TW_TEXT
+		"【常】：あなたの場に《メル=椿姫》がいるかぎり、このシグニのパワーはこのシグニの下にあるカード1枚につき+5000される。<br><br>【自】：あなたのアタックフェイズ開始時、このシグニの下から《ディソナアイコン》のカードを1枚までエナゾーンに置く。<br><br>【出】：あなたのデッキの上からカードを2枚このシグニの下に置く。(表向きで置く)<br><br>【起】《コインアイコン》《コインアイコン》《コインアイコン》《コインアイコン》《コインアイコン》：ターン終了時まで、このシグニは【ランサー】を得る。<br><br>【ライフバースト】：対戦相手のパワー7000以上のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		"「常」：我方場上有《メル=椿姫》的話，此精靈的力量為此精靈下方卡牌每有1張+5000。<br><br>「自」：我方攻擊階段開始時，此精靈下方最多1張Dissona精靈放置到能量區。<br><br>「出」：我方牌組上方2張卡牌放置到此精靈下方。(正面朝上)<br><br>「起」Coin*5：直到回合結束時為止，此精靈獲得【槍兵】。<br><br>「生命爆發」：對方1隻力量7000以上的精靈作對象，將其破壞。"	//TW_TEXT
 		],
 	[
 		"WXDi-P12-053", //ID
@@ -30115,7 +30115,7 @@ var cardData = [
 	[
 		"WXDi-P12-076", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P12-076.jpg", //SRC
-		"アイン＝サンガ//ディソナ", //NAME
+		"アイン=サンガ//ディソナ", //NAME
 		"R", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -30315,7 +30315,7 @@ var cardData = [
 	[
 		"WXDi-P12-086", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P12-086.jpg", //SRC
-		"ツヴァイ＝ハナレ//ディソナ", //NAME
+		"ツヴァイ=ハナレ//ディソナ", //NAME
 		"R", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -31195,7 +31195,7 @@ var cardData = [
 	[
 		"WXDi-P13-038", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P13-038.jpg", //SRC
-		"ミュウ＝ハッチ", //NAME
+		"ミュウ=ハッチ", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"ミュウ", //CLASS
@@ -31995,7 +31995,7 @@ var cardData = [
 	[
 		"WXDi-P13-078", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P13-078.jpg", //SRC
-		"アイン＝コノトキ//ディソナ", //NAME
+		"アイン=コノトキ//ディソナ", //NAME
 		"C", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -32415,7 +32415,7 @@ var cardData = [
 	[
 		"WXDi-P14-008", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P14-008.jpg", //SRC
-		"盛夏の成果 アン＝サード", //NAME
+		"盛夏の成果 アン=サード", //NAME
 		"LR", //RARE
 		"ルリグ", //TYPE
 		"アン", //CLASS
@@ -32595,7 +32595,7 @@ var cardData = [
 	[
 		"WXDi-P14-017", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P14-017.jpg", //SRC
-		"同系の憧憬 アン＝ファースト", //NAME
+		"同系の憧憬 アン=ファースト", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"アン", //CLASS
@@ -32615,7 +32615,7 @@ var cardData = [
 	[
 		"WXDi-P14-018", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P14-018.jpg", //SRC
-		"清廉の精錬 アン＝セカンド", //NAME
+		"清廉の精錬 アン=セカンド", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"アン", //CLASS
@@ -33215,7 +33215,7 @@ var cardData = [
 	[
 		"WXDi-P14-048", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P14-048.jpg", //SRC
-		"ドライ＝ハナレ//フェゾーネ", //NAME
+		"ドライ=ハナレ//フェゾーネ", //NAME
 		"SR", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -33495,7 +33495,7 @@ var cardData = [
 	[
 		"WXDi-P14-062", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P14-062.jpg", //SRC
-		"アイン＝サンガ//フェゾーネ", //NAME
+		"アイン=サンガ//フェゾーネ", //NAME
 		"C", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -38031,7 +38031,7 @@ var cardData = [
 		],[
 		"WXDi-P15-096", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P15-096.jpg", //SRC
-		"アイン＝ツキヨタケ", //NAME
+		"アイン=ツキヨタケ", //NAME
 		"C", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -38259,7 +38259,7 @@ var cardData = [
 		],[
 		"WXDi-P16-008", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-008.jpg", //SRC
-		"扉の俯瞰者 タウィル＝トレ", //NAME
+		"扉の俯瞰者 タウィル=トレ", //NAME
 		"LR", //RARE
 		"ルリグ", //TYPE
 		"タウィル", //CLASS
@@ -38335,7 +38335,7 @@ var cardData = [
 		],[
 		"WXDi-P16-012", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-012.jpg", //SRC
-		"収斂せし扉 アト＝トレ", //NAME
+		"収斂せし扉 アト=トレ", //NAME
 		"LR", //RARE
 		"ルリグ", //TYPE
 		"アト", //CLASS
@@ -38354,7 +38354,7 @@ var cardData = [
 		],[
 		"WXDi-P16-013", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-013.jpg", //SRC
-		"扉の俯瞰者 ウムル＝トレ", //NAME
+		"扉の俯瞰者 ウムル=トレ", //NAME
 		"LR", //RARE
 		"ルリグ", //TYPE
 		"ウムル", //CLASS
@@ -38373,7 +38373,7 @@ var cardData = [
 		],[
 		"WXDi-P16-014", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-014.jpg", //SRC
-		"永らえし者 タウィル＝ノル", //NAME
+		"永らえし者 タウィル=ノル", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"タウィル", //CLASS
@@ -38392,7 +38392,7 @@ var cardData = [
 		],[
 		"WXDi-P16-015", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-015.jpg", //SRC
-		"永らえし者 タウィル＝エット", //NAME
+		"永らえし者 タウィル=エット", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"タウィル", //CLASS
@@ -38411,7 +38411,7 @@ var cardData = [
 		],[
 		"WXDi-P16-016", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-016.jpg", //SRC
-		"永らえし者 タウィル＝トヴォ", //NAME
+		"永らえし者 タウィル=トヴォ", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"タウィル", //CLASS
@@ -38601,7 +38601,7 @@ var cardData = [
 		],[
 		"WXDi-P16-026", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-026.jpg", //SRC
-		"紡ぎし扉 アト＝ノル", //NAME
+		"紡ぎし扉 アト=ノル", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"アト", //CLASS
@@ -38620,7 +38620,7 @@ var cardData = [
 		],[
 		"WXDi-P16-027", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-027.jpg", //SRC
-		"紡ぎし扉 アト＝エット", //NAME
+		"紡ぎし扉 アト=エット", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"アト", //CLASS
@@ -38639,7 +38639,7 @@ var cardData = [
 		],[
 		"WXDi-P16-028", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-028.jpg", //SRC
-		"紡ぎし扉 アト＝トヴォ", //NAME
+		"紡ぎし扉 アト=トヴォ", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"アト", //CLASS
@@ -38658,7 +38658,7 @@ var cardData = [
 		],[
 		"WXDi-P16-029", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-029.jpg", //SRC
-		"創造の鍵主 ウムル＝ノル", //NAME
+		"創造の鍵主 ウムル=ノル", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"ウムル", //CLASS
@@ -38677,7 +38677,7 @@ var cardData = [
 		],[
 		"WXDi-P16-030", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-030.jpg", //SRC
-		"混沌の鍵主 ウムル＝エット", //NAME
+		"混沌の鍵主 ウムル=エット", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"ウムル", //CLASS
@@ -38696,7 +38696,7 @@ var cardData = [
 		],[
 		"WXDi-P16-031", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-031.jpg", //SRC
-		"混沌の鍵主 ウムル＝トヴォ", //NAME
+		"混沌の鍵主 ウムル=トヴォ", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"ウムル", //CLASS
@@ -39090,8 +39090,8 @@ var cardData = [
 		"1", //LB
 		"", //TEAM
 		"", //STORY
-		"【起】《ターン1回》手札を2枚捨てる：このターン終了時、カードを2枚引くか【エナチャージ2】をする。<br><br>【起】《緑》《無》：あなたの場に《収斂せし扉 アト＝トレ》がいる場合、ターン終了時まで、このシグニは【ランサー】を得る。あなたのエナゾーンにカードが無い場合、代わりにターン終了時まで、このシグニは【Sランサー】を得る。<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。②【エナチャージ1】", //JP_TEXT
-		"「起」(回合1)捨棄2張手牌：本回合結束時，抽2張牌或【能量填充2】。<br><br>「起」綠1無1：我方場上有《収斂せし扉 アト＝トレ》的話，直到回合結束時為止，此精靈獲得【槍兵】。我方能量區沒有卡牌的話，作為代替直到回合結束時為止，此精靈獲得【S槍兵】。<br><br>「LB」：選擇1項。①對方1隻豎直狀態的精靈作對象，將其破壞。②【能量填充1】"	//TW_TEXT
+		"【起】《ターン1回》手札を2枚捨てる：このターン終了時、カードを2枚引くか【エナチャージ2】をする。<br><br>【起】《緑》《無》：あなたの場に《収斂せし扉 アト=トレ》がいる場合、ターン終了時まで、このシグニは【ランサー】を得る。あなたのエナゾーンにカードが無い場合、代わりにターン終了時まで、このシグニは【Sランサー】を得る。<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。②【エナチャージ1】", //JP_TEXT
+		"「起」(回合1)捨棄2張手牌：本回合結束時，抽2張牌或【能量填充2】。<br><br>「起」綠1無1：我方場上有《収斂せし扉 アト=トレ》的話，直到回合結束時為止，此精靈獲得【槍兵】。我方能量區沒有卡牌的話，作為代替直到回合結束時為止，此精靈獲得【S槍兵】。<br><br>「LB」：選擇1項。①對方1隻豎直狀態的精靈作對象，將其破壞。②【能量填充1】"	//TW_TEXT
 		],[
 		"WXDi-P16-052", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-052.jpg", //SRC
@@ -39437,7 +39437,7 @@ var cardData = [
 		],[
 		"WXDi-P16-070", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-070.jpg", //SRC
-		"アイン＝サンガ//THE DOOR", //NAME
+		"アイン=サンガ//THE DOOR", //NAME
 		"C", //RARE
 		"シグニ", //TYPE
 		"防衛派/奏武：毒牙", //CLASS
@@ -39551,7 +39551,7 @@ var cardData = [
 		],[
 		"WXDi-P16-076", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-076.jpg", //SRC
-		"アイン＝ハナレ//THE DOOR", //NAME
+		"アイン=ハナレ//THE DOOR", //NAME
 		"C", //RARE
 		"シグニ", //TYPE
 		"闘争派/奏武：毒牙", //CLASS
@@ -39874,7 +39874,7 @@ var cardData = [
 		],[
 		"WXDi-P16-093", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-093.jpg", //SRC
-		"アイン＝M・ボール", //NAME
+		"アイン=M・ボール", //NAME
 		"R", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -40325,7 +40325,7 @@ var cardData = [
 		"1", //LB
 		"", //TEAM
 		"", //STORY
-		"【常】《相手ターン》：あなたのシグニのパワーを+3000する。《リコレクトアイコン》［5枚以上］代わりにあなたのシグニのパワーを+5000する。<br>(あなたのルリグトラッシュに5枚以上のアーツがあるかぎり《リコレクトアイコン》［5枚以上］に続く文章が有効になる)<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のアップ状態のシグニ1体を対象とし、それを手札に戻す。?カードを1枚引く。", //JP_TEXT
+		"【常】《相手ターン》：あなたのシグニのパワーを+3000する。《リコレクトアイコン》［5枚以上］代わりにあなたのシグニのパワーを+5000する。<br>(あなたのルリグトラッシュに5枚以上のアーツがあるかぎり《リコレクトアイコン》［5枚以上］に続く文章が有効になる)<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、それを手札に戻す。②カードを1枚引く。", //JP_TEXT
 		""	//TW_TEXT
 		],[
 		"WX24-D1-21", //ID
@@ -40344,7 +40344,7 @@ var cardData = [
 		"1", //LB
 		"", //TEAM
 		"", //STORY
-		"【自】：対戦相手のアタックフェイズ開始時、対戦相手のルリグ1体を対象とし、ターン終了時まで、それは「【常】：《無》《無》を支払わないかぎりアタックできない。」を得る。<br><br>【自】：あなたのターン終了時、このターンにあなたがスペルを使用していた場合、次の対戦相手のターン終了時まで、このシグニは【シャドウ(シグニ)】を得る。【ライフバースト】：どちらか1つを選ぶ。?カードを1枚引く。?対戦相手のアップ状態のシグニ1体を対象とし、それを手札に戻す。", //JP_TEXT
+		"【自】：対戦相手のアタックフェイズ開始時、対戦相手のルリグ1体を対象とし、ターン終了時まで、それは「【常】：《無》《無》を支払わないかぎりアタックできない。」を得る。<br><br>【自】：あなたのターン終了時、このターンにあなたがスペルを使用していた場合、次の対戦相手のターン終了時まで、このシグニは【シャドウ(シグニ)】を得る。【ライフバースト】：どちらか1つを選ぶ。①カードを1枚引く。②対戦相手のアップ状態のシグニ1体を対象とし、それを手札に戻す。", //JP_TEXT
 		""	//TW_TEXT
 		],[
 		"WX24-D1-22", //ID
@@ -40382,7 +40382,7 @@ var cardData = [
 		"1", //LB
 		"", //TEAM
 		"", //STORY
-		"【常】《相手ターン》：対戦相手の、センタールリグとシグニの【起】能力の使用コストは《無》増える。<br><br>【常】：このシグニがダウン状態であるかぎり、このシグニのパワーは+3000され、対戦相手は追加で《無》を支払わないかぎり【ガード】ができない。<br><br>【起】《ダウン》：あなたのライフクロスの一番上を見る。<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のアップ状態のシグニ1体を対象とし、それを手札に戻す。?カードを1枚引く。", //JP_TEXT
+		"【常】《相手ターン》：対戦相手の、センタールリグとシグニの【起】能力の使用コストは《無》増える。<br><br>【常】：このシグニがダウン状態であるかぎり、このシグニのパワーは+3000され、対戦相手は追加で《無》を支払わないかぎり【ガード】ができない。<br><br>【起】《ダウン》：あなたのライフクロスの一番上を見る。<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、それを手札に戻す。②カードを1枚引く。", //JP_TEXT
 		""	//TW_TEXT
 		],[
 		"WX24-D1-24", //ID
@@ -40819,7 +40819,7 @@ var cardData = [
 		"1", //LB
 		"", //TEAM
 		"", //STORY
-		"【出】《赤》《赤》：対戦相手のパワー12000以下のシグニ1体を対象とし、それをバニッシュする。《リコレクトアイコン》［5枚以上］代わりに対戦相手のシグニ1体を対象とし、それをバニッシュする。<br>(あなたのルリグトラッシュに5枚以上のアーツがあるかぎり《リコレクトアイコン》［5枚以上］に続く文章が有効になる)<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。?カードを1枚引く。", //JP_TEXT
+		"【出】《赤》《赤》：対戦相手のパワー12000以下のシグニ1体を対象とし、それをバニッシュする。《リコレクトアイコン》［5枚以上］代わりに対戦相手のシグニ1体を対象とし、それをバニッシュする。<br>(あなたのルリグトラッシュに5枚以上のアーツがあるかぎり《リコレクトアイコン》［5枚以上］に続く文章が有効になる)<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。②カードを1枚引く。", //JP_TEXT
 		""	//TW_TEXT
 		],[
 		"WX24-D2-21", //ID
@@ -40857,7 +40857,7 @@ var cardData = [
 		"1", //LB
 		"", //TEAM
 		"", //STORY
-		"【自】：あなたの他のシグニ1体が【アサシン】1つか【ランサー】1つか【ダブルクラッシュ】1つを得たとき、《赤》《無》を支払ってもよい。そうした場合、ターン終了時まで、このシグニはその能力を得る。<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。?カードを1枚引く。", //JP_TEXT
+		"【自】：あなたの他のシグニ1体が【アサシン】1つか【ランサー】1つか【ダブルクラッシュ】1つを得たとき、《赤》《無》を支払ってもよい。そうした場合、ターン終了時まで、このシグニはその能力を得る。<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。②カードを1枚引く。", //JP_TEXT
 		""	//TW_TEXT
 		],[
 		"WX24-D2-23", //ID
@@ -40876,7 +40876,7 @@ var cardData = [
 		"1", //LB
 		"", //TEAM
 		"", //STORY
-		"【自】《ターン1回》：あなたの赤のシグニ1体が対戦相手の、能力か効果の対象になったとき、対戦相手は自分のエナゾーンからカード1枚を選びトラッシュに置く。<br><br>【出】手札を1枚捨てる：あなたのデッキの上からカードを2枚見る。その中からカード1枚を手札に加え、残りをトラッシュに置く。<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。?カードを1枚引く。", //JP_TEXT
+		"【自】《ターン1回》：あなたの赤のシグニ1体が対戦相手の、能力か効果の対象になったとき、対戦相手は自分のエナゾーンからカード1枚を選びトラッシュに置く。<br><br>【出】手札を1枚捨てる：あなたのデッキの上からカードを2枚見る。その中からカード1枚を手札に加え、残りをトラッシュに置く。<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。②カードを1枚引く。", //JP_TEXT
 		""	//TW_TEXT
 		],[
 		"WX24-D2-24", //ID
@@ -41313,7 +41313,7 @@ var cardData = [
 		"1", //LB
 		"", //TEAM
 		"", //STORY
-		"【自】：あなたのアタックフェイズ開始時、対戦相手は手札を1枚捨てる。《リコレクトアイコン》［5枚以上］代わりに対戦相手の手札を1枚見ないで選び、捨てさせる。<br>(あなたのルリグトラッシュに5枚以上のアーツがあるかぎり《リコレクトアイコン》［5枚以上］に続く文章が有効になる)<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のシグニを2体まで対象とし、それらをダウンする。?カードを1枚引く。", //JP_TEXT
+		"【自】：あなたのアタックフェイズ開始時、対戦相手は手札を1枚捨てる。《リコレクトアイコン》［5枚以上］代わりに対戦相手の手札を1枚見ないで選び、捨てさせる。<br>(あなたのルリグトラッシュに5枚以上のアーツがあるかぎり《リコレクトアイコン》［5枚以上］に続く文章が有効になる)<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のシグニを2体まで対象とし、それらをダウンする。②カードを1枚引く。", //JP_TEXT
 		""	//TW_TEXT
 		],[
 		"WX24-D3-21", //ID
@@ -41807,7 +41807,7 @@ var cardData = [
 		"1", //LB
 		"", //TEAM
 		"", //STORY
-		"【出】《緑》《緑》：ターン終了時まで、このシグニは【ランサー】を得る。《リコレクトアイコン》［5枚以上］代わりにターン終了時まで、このシグニは【Sランサー】を得る。(【Sランサー】を持つシグニがバトルでシグニをバニッシュしたとき、対戦相手のライフクロスがある場合はそれを1枚クラッシュする。無い場合は対戦相手にダメージを与える)<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。?【エナチャージ1】", //JP_TEXT
+		"【出】《緑》《緑》：ターン終了時まで、このシグニは【ランサー】を得る。《リコレクトアイコン》［5枚以上］代わりにターン終了時まで、このシグニは【Sランサー】を得る。(【Sランサー】を持つシグニがバトルでシグニをバニッシュしたとき、対戦相手のライフクロスがある場合はそれを1枚クラッシュする。無い場合は対戦相手にダメージを与える)<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。②【エナチャージ1】", //JP_TEXT
 		""	//TW_TEXT
 		],[
 		"WX24-D4-21", //ID
@@ -41864,7 +41864,7 @@ var cardData = [
 		"1", //LB
 		"", //TEAM
 		"", //STORY
-		"【常】《相手ターン》：あなたのシグニは【シャドウ(レベル1)】と【シャドウ(レベル2)】を得る。<br><br>【自】：このカードが対戦相手の効果によっていずれかの領域からトラッシュに置かれたとき、《無》を支払ってもよい。そうした場合、このシグニをトラッシュから手札に加える。<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。?【エナチャージ1】", //JP_TEXT
+		"【常】《相手ターン》：あなたのシグニは【シャドウ(レベル1)】と【シャドウ(レベル2)】を得る。<br><br>【自】：このカードが対戦相手の効果によっていずれかの領域からトラッシュに置かれたとき、《無》を支払ってもよい。そうした場合、このシグニをトラッシュから手札に加える。<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。②【エナチャージ1】", //JP_TEXT
 		""	//TW_TEXT
 		],[
 		"WX24-D4-24", //ID
@@ -41922,6 +41922,500 @@ var cardData = [
 		"", //TEAM
 		"", //STORY
 		"【ガード】(このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ)<br><br>【常】：【マルチエナ】(エナコストを支払う際、このカードは好きな色1つとして支払える)<br><br>【ライフバースト】：あなたのトラッシュからシグニ1枚を対象とし、それを手札に加える。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-01", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-01.jpg", //SRC
+		"閻魔 ウリス", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"ウリス", //CLASS
+		"黒", //COLOR
+		"0", //LEVEL
+		"《黒》×0", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-02", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-02.jpg", //SRC
+		"灼熱の閻魔 ウリス", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"ウリス", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"《黒》×0", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-03", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-03.jpg", //SRC
+		"衆合の閻魔 ウリス", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"ウリス", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"《黒》×1", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-04", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-04.jpg", //SRC
+		"無間地獄の閻魔 ウリス", //NAME
+		"ST", //RARE
+		"ルリグ", //TYPE
+		"ウリス", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"《黒》×2", //COST
+		"6", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-05", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-05.jpg", //SRC
+		"ダーク・ウィップ", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"黒", //COLOR
+		"", //LEVEL
+		"《黒》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"このターン、あなたの効果によって対戦相手のシグニのパワーが-(マイナス)される場合、代わりに2倍-(マイナス)される。<br><br>このターン、対戦相手のシグニ1体のパワーが0以下になったとき、対戦相手のデッキの上からカードを2枚トラッシュに置く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-06", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-06.jpg", //SRC
+		"モーメンタリー・パニッシュ", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"黒", //COLOR
+		"", //LEVEL
+		"《黒》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-8000する。あなたのデッキの上からカードを4枚見る。その中から黒のカードを2枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-07", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-07.jpg", //SRC
+		"サウザンドアイ・パニッシュ", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"黒", //COLOR
+		"", //LEVEL
+		"《黒》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-8000する。<br>《リコレクトアイコン》［4枚以上］代わりにターン終了時まで、それのパワーを-20000する。<br>(あなたのルリグトラッシュに4枚以上のアーツがあるかぎり《リコレクトアイコン》［4枚以上］に続く文章が有効になる)", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-08", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-08.jpg", //SRC
+		"ダーク・ベアトラップ", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"黒", //COLOR
+		"", //LEVEL
+		"《黒》×1《無》×2", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のシグニを2体まで対象とし、ターン終了時まで、それらは「【自】：このシグニがアタックしたとき、ターン終了時まで、このシグニのパワーを-20000する。」を得る。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-09", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-09.jpg", //SRC
+		"ドロー・エンハンス", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"カードを2枚引く。あなたのルリグゾーンに【リミットアッパー】1つを置く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-10", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-10.jpg", //SRC
+		"ミラクル・チャージング", //NAME
+		"ST", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"カードを3枚引くか【エナチャージ3】をする。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-11", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-11.jpg", //SRC
+		"凶魔 コオニ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：悪魔", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】手札から黒のカードを1枚捨てる：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-3000する。このターンにあなたが黒のアーツを使用していた場合、代わりにターン終了時まで、それのパワーを-5000する。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-12", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-12.jpg", //SRC
+		"凶魔 バフォメット", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：悪魔", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：あなたのトラッシュにカードが5枚以上あるかぎり、このシグニのパワーは+4000される。<br><br>【出】：あなたのデッキの上からカードを3枚トラッシュに置く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-13", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-13.jpg", //SRC
+		"凶魔 マルファス", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：悪魔", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがバニッシュされたとき、手札から＜悪魔＞のシグニを2枚捨ててもよい。そうした場合、このシグニをエナゾーンからダウン状態で場に出す。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-14", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-14.jpg", //SRC
+		"羅星 ベレニケ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏羅：宇宙", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：あなたのトラッシュにカードが10枚以上あるかぎり、このシグニのパワーは+4000される。<br><br>【自】：このシグニがバニッシュされたとき、あなたか対戦相手のデッキの上からカードを2枚トラッシュに置く。<br><br>【ライフバースト】：あなたのトラッシュから《ガードアイコン》を持たないレベル2以下のシグニ1枚を対象とし、それを手札に加えるか場に出す。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-15", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-15.jpg", //SRC
+		"凶魔 コスモ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：悪魔", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、対戦相手のデッキの上からカードを2枚トラッシュに置く。あなたのトラッシュに黒のカードが10枚以上ある場合、代わりに対戦相手のデッキの上からカードを4枚トラッシュに置く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-16", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-16.jpg", //SRC
+		"ツヴァイ=ヒアリ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏武：毒牙", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】《自分ターン》：このシグニの正面のシグニのパワーをそのシグニのレベル1につき-1000する。<br>(パワーが0以下のシグニはルールによってバニッシュされる)", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-17", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-17.jpg", //SRC
+		"中装 バックラー", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏武：アーム", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【ライフバースト】：対戦相手のシグニ1体を対象とし、《無》を支払ってもよい。そうした場合、ターン終了時まで、それのパワーを-15000する。<br>(パワーが0以下のシグニはルールによってバニッシュされる)", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-18", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-18.jpg", //SRC
+		"凶魔 アガレス", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：悪魔", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ターン1回》デッキの上からカードを2枚トラッシュに置く：ターン終了時まで、このシグニのパワーを+2000する。<br><br>【ライフバースト】：あなたのトラッシュから黒のシグニ1枚を対象とし、それを手札に加える。対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-3000する。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-19", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-19.jpg", //SRC
+		"凶魔 ベルゼ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：悪魔", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたのトラッシュに黒のカードが15枚以上ある場合、対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-2000する。<br><br>【出】《黒》：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-8000する。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-20", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-20.jpg", //SRC
+		"凶魔姫 メツメ", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：悪魔", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、対戦相手のデッキの上からカードを3枚トラッシュに置く。《リコレクトアイコン》［5枚以上］代わりに対戦相手のデッキの上からカードを5枚トラッシュに置く。<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、ターン終了時まで、それのパワーを-15000する。②カードを1枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-21", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-21.jpg", //SRC
+		"幻竜姫 ドラゴンメイド", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏生：龍獣", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：いずれかのプレイヤーがリフレッシュしたとき、対戦相手のシグニ1体を対象とし、《黒》を支払ってもよい。そうした場合、ターン終了時まで、それのパワーを-10000する。<br><br>【自】：このシグニがアタックしたとき、あなたか対戦相手のデッキの上からカードを4枚トラッシュに置く。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-22", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-22.jpg", //SRC
+		"凶天姫 タマ//メモリア", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：天使", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：あなたのトラッシュにカードが10枚以上あるかぎり、このシグニのパワーは+3000され、このシグニは【シャドウ(レベル2以下のシグニ)】を得る。(このシグニは対戦相手のレベル2以下のシグニによって対象にされない)<br><br>【常】：あなたの、場とエナゾーンにあるシグニは追加で黒を得る。<br><br>【自】《ターン1回》：あなたのメインフェイズ以外であなたの黒のシグニ1体が場を離れたとき、対戦相手のデッキの上からカードを2枚トラッシュに置く。<br><br>【ライフバースト】：対戦相手のレベル2以下のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-23", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-23.jpg", //SRC
+		"凶魔姫 ウリス//メモリア", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏像：悪魔", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、対戦相手のシグニ1体を対象とし、手札から＜悪魔＞のシグニを2枚捨ててもよい。そうした場合、ターン終了時まで、それのパワーを-12000する。<br><br>【出】《無》：あなたのトラッシュから《凶魔姫 ウリス//メモリア》以外の＜悪魔＞のシグニ1枚を対象とし、それを手札に加える。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-24", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-24.jpg", //SRC
+		"コードラビリンス ムジカ//メモリア", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏械：迷宮", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：アタックフェイズの間、このシグニの正面のシグニのパワーを-2000する。<br><br>【常】：アタックフェイズの間、このシグニの正面のシグニがバニッシュされる場合、エナゾーンに置かれる代わりにトラッシュに置かれる。<br><br>【自】：このシグニがアタックしたとき、あなたのトラッシュから《ガードアイコン》を持たないシグニを2枚まで対象とし、それらをデッキに加えてもよい。そうした場合、デッキをシャッフルする。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-25", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-25.jpg", //SRC
+		"ホール・ダークネス", //NAME
+		"ST", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"黒", //COLOR
+		"", //LEVEL
+		"《黒》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-7000する。《リコレクトアイコン》［5枚以上］追加で対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-2000する。<br><br>【ライフバースト】：対戦相手のアップ状態のシグニ1体を対象とし、ターン終了時まで、それのパワーを-15000する。", //JP_TEXT
+		""	//TW_TEXT
+		],[
+		"WX24-D5-26", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-D5-26.jpg", //SRC
+		"サーバント #", //NAME
+		"ST", //RARE
+		"シグニ", //TYPE
+		"奏元", //CLASS
+		"無", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"1000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【ガード】(このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ)<br>【常】：【マルチエナ】(エナコストを支払う際、このカードは好きな色1つとして支払える)<br><br>【ライフバースト】：あなたのトラッシュからシグニ1枚を対象とし、それを手札に加える。", //JP_TEXT
 		""	//TW_TEXT
 		]
 	]

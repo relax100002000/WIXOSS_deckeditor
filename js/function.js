@@ -2829,6 +2829,7 @@ function checkDeck()
 			cardData[i][TYPE] != "ピース" &&
 			cardData[i][TYPE] != "ピース リレー" &&
 			cardData[i][TYPE] != "ピース クラフト" &&
+			cardData[i][TYPE] != "アーツ" &&
 			cardData[i][TYPE] != "シグニ" &&
 			cardData[i][TYPE] != "シグニ クラフト" &&
 			cardData[i][TYPE] != "シグニ レゾナ/クラフト" &&
@@ -2994,8 +2995,8 @@ function checkDeck()
 
 				//TEAM
 				if(cardData[i][CLASS] == "アト" ||
-					cardData[i][CLASS] == "タウィル" ||
-					cardData[i][CLASS] == "ウムル"
+					(cardData[i][CLASS] == "タウィル" && cardData[i][ID].indexOf("WXDi-P16"))||
+					(cardData[i][CLASS] == "ウムル" && cardData[i][ID].indexOf("WXDi-P16"))
 					)
 				{
 					if(cardData[i][TEAM] != "アンシエント・サプライズ")
@@ -3293,6 +3294,80 @@ function checkDeck()
 				}
 			}
 			else if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト")
+			{
+				//CLASS
+				if(cardData[i][CLASS] != "")
+				{
+					error = 1;
+					console.log("CLASS");
+				}
+
+				//LEVEL
+				if(cardData[i][LEVEL] != "")
+				{
+					error = 1;
+					console.log("LEVEL");
+				}
+
+				//COST
+				if(cardData[i][COST].indexOf("×") == -1)
+				{
+					error = 1;
+					console.log("COST");
+				}
+
+				//LIMIT
+				if(cardData[i][LIMIT] != "")
+				{
+					error = 1;
+					console.log("LIMIT");
+				}
+
+				//POWER
+				if(cardData[i][POWER] != "")
+				{
+					error = 1;
+					console.log("POWER");
+				}
+
+				//COIN
+				if(cardData[i][COIN] != "")
+				{
+					error = 1;
+					console.log("COIN");
+				}
+
+				//TIMING
+				if(cardData[i][TIMING].indexOf("アタックフェイズ") == -1 &&
+					cardData[i][TIMING].indexOf("メインフェイズ") == -1
+					)
+				{
+					error = 1;
+					console.log("TIMING");
+				}
+
+				//LB
+				if(cardData[i][LB] != "")
+				{
+					error = 1;
+					console.log("LB");
+				}
+
+				//TEAM
+				if(cardData[i][TEAM] != "")
+				{
+					error = 1;
+					console.log("TEAM");
+				}
+
+				//JP_TEXT
+				if(cardData[i][JP_TEXT] == "")
+				{
+					error = 1;
+					console.log("JP_TEXT");
+				}
+			}
+			else if(cardData[i][TYPE] == "アーツ")
 			{
 				//CLASS
 				if(cardData[i][CLASS] != "")
@@ -3907,15 +3982,14 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240330 v1.53\n";
-	str += "1.新增WX24-D3\n";
-	str += "2.新增WX24-D4\n";
+	str += "20240408 v1.54\n";
+	str += "1.新增WX24-D5\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";
 	str += "WXDi-P00 ~ WXDi-P16\n";
 	str += "WXDi-D01 ~ WXDi-D09\n";
-	str += "WX24-D1 ~ WX24-D4\n";
+	str += "WX24-D1 ~ WX24-D5\n";
 	str += "PRカード\n";
 	str += "\n";
 	str += "預計更新:\n";

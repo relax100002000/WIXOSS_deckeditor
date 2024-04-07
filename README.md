@@ -1,6 +1,9 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
+  
+20240408 v1.54  
+1.新增WX24-D5  
 　　
 20240330 v1.53  
 1.新增WX24-D3  
