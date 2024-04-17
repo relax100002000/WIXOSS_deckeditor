@@ -2634,7 +2634,10 @@ function str_to_img(x)
 	x = x.replace(/【絆自】/g, "<img class='icon_img' src='img/icon_txt_auto_kizuna.png'></img>");
 	x = x.replace(/【絆常】/g, "<img class='icon_img' src='img/icon_txt_regular_kizuna.png'></img>");
 	x = x.replace(/【  】/g, "<img class='icon_img' src='img/icon_txt_frame_null.png'></img>");
-
+	x = x.replace(/《リコレクトアイコン》/g, "<img class='icon_img' src='img/icon_txt_recollect.png'></img>");
+	x = x.replace(/《相手ターン》/g, "<img class='icon_img' src='img/icon_txt_opponent_turn.png'></img>");
+	x = x.replace(/《自分ターン》/g, "<img class='icon_img' src='img/icon_txt_my_turn.png'></img>");
+	
 	x = x.replace(/\(ターン1\)/g, "<img class='icon_img' src='img/icon_txt_turn_01.png'></img>");
 	x = x.replace(/\(ターン2\)/g, "<img class='icon_img' src='img/icon_txt_turn_02.png'></img>");
 	x = x.replace(/\(ゲーム1\)/g, "<img class='icon_img' src='img/icon_txt_game_01.png'></img>");
@@ -3982,8 +3985,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240408 v1.54\n";
-	str += "1.新增WX24-D5\n";
+	str += "20240417 v1.55\n";
+	str += "1.新增效果icon\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-CP01 ~ WXDi-CP02\n";
