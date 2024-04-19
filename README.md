@@ -2,6 +2,9 @@
    
 Author: ZZZ  
   
+20240419 v1.56  
+1.新增WX24-P1  
+  
 20240417 v1.55  
 1.新增效果icon  
 
@@ -294,9 +297,8 @@ Author: ZZZ
 20221117 v0.1  
 1.初版  
   
-目前收錄: 
-WXDi-CP01 ~ WXDi-CP02  
-WXDi-P00 ~ WXDi-P15  
+目前收錄:  
+WXDi-P00 ~ WX24-P1  
 WXDi-D01 ~ WXDi-D09  
 WX24-D1 ~ WX24-D4  
 PRカード
