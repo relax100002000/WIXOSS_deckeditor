@@ -2818,6 +2818,7 @@ function checkDeck()
 			cardData[i][RARE] != "PI" &&
 			cardData[i][RARE] != "TK" &&
 			cardData[i][RARE] != "PR" &&
+			cardData[i][RARE] != "SP" &&
 			cardData[i][RARE] != "Re" &&
 			cardData[i][RARE] != "L"
 			)
@@ -3985,14 +3986,17 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240419 v1.56\n";
-	str += "1.新增WX24-P1\n";
+	str += "20240420 v1.57\n";
+	str += "1.新增SPカード分類\n";
+	str += "2.新增SPDi01-114、SPDi01-115\n";
+	str += "3.修正WX24-P1-007、WX24-P1-008錯誤效果文\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-P00 ~ WX24-P1\n";
 	str += "WXDi-D01 ~ WXDi-D09\n";
 	str += "WX24-D1 ~ WX24-D5\n";
 	str += "PRカード\n";
+	str += "SPカード\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";
