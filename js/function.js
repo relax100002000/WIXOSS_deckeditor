@@ -183,6 +183,7 @@ function onmouseShow(x, source)
 		}
 
 		$("#big_pic").attr("src", cardData[i][SRC]);
+		$("#big_pic").attr("alt", cardData[i][ID]);
 
 		if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト")
 		{
@@ -3986,8 +3987,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240421 v1.58\n";
-	str += "1.修正WX24-D5-04錯誤效果文\n";
+	str += "20240430 v1.59\n";
+	str += "1.新增點擊大圖可加進牌庫功能\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-P00 ~ WX24-P1\n";
