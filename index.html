@@ -197,6 +197,12 @@
 			function customizeWindowEvent(x) {
 				if(x == "view")
 				{
+					//Temp
+					if(adeckArr.length != 0)
+					{
+						alert("Not support Arts yet.");
+						return;
+					}
 					if(rearrange_ldeck() == false)
 					{
 						alert("Illegal LRIG deck.");
