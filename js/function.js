@@ -3906,61 +3906,104 @@ function updateDecklist(select)
 
 function rearrange_ldeck()
 {
-	var i, recounter;
-	
-	if(ldeckArr.length != 10)
+	var i, tmp = 0;
+
+	var L1type, L2type = "", L3type = "", aL1count = 0, aL2count = 0;
+
+	if(ldeckArr.length < 4)
 	{
 		return false;
 	}
-	recounter = 0;
-	for(i = 0; i < ldeckArr.length; i++)
-	{
-		if(ldeckArr[i][LEVEL] == 3)
-		{
-			if(i < 3)
-			{
-				return false;
-			}
 
-			$("#show_ldeck_3").attr("src", ldeckArr[i][SRC]);
-			$("#show_ldeck_2").attr("src", ldeckArr[i-1][SRC]);
-			$("#show_ldeck_1").attr("src", ldeckArr[i-2][SRC]);
-			$("#show_ldeck_0").attr("src", ldeckArr[i-3][SRC]);
-			continue;
+	if(ldeckArr.length + adeckArr.length > 10)
+	{
+		return false;
+	}
+
+	L1type = ldeckArr[0][CLASS];
+
+	for(i = 0; i < 12; i++)
+	{
+		$("#show_ldeck_" + parseInt(i)).hide();
+	}
+
+	for(i = 0; i < 4; i++)
+	{
+		if(ldeckArr[i][CLASS] != L1type)
+		{
+			return false;
 		}
 
-		if(ldeckArr[i][LEVEL] == 2 && ldeckArr[i][TYPE] == "アシストルリグ")
+		if(ldeckArr[i][LEVEL] != i)
 		{
-			if(recounter == 0)
+			return false;
+		}
+
+		if(ldeckArr[i][TYPE] != "ルリグ")
+		{
+			return false;
+		}
+
+		$("#show_ldeck_" + i).attr("src", ldeckArr[i][SRC]);
+		$("#show_ldeck_" + i).show();
+	}
+
+	if(ldeckArr.length == 4)
+	{
+		for(i = 0; i < adeckArr.length; i++)		
+		{
+			$("#show_ldeck_" + parseInt(i + 4)).attr("src", adeckArr[i][SRC]);
+			$("#show_ldeck_" + parseInt(i + 4)).show();
+		}
+	}
+	else
+	{
+		for(i = 4; i < ldeckArr.length; i++)
+		{
+			if(ldeckArr[i][CLASS] != L1type)
 			{
-				if(i < 2)
+				if(L2type == "" || ldeckArr[i][CLASS] == L2type)
 				{
-					return false;
+					L2type = ldeckArr[i][CLASS];
+					aL1count++;
 				}
 
-				$("#show_ldeck_6").attr("src", ldeckArr[i][SRC]);
-				$("#show_ldeck_5").attr("src", ldeckArr[i-1][SRC]);
-				$("#show_ldeck_4").attr("src", ldeckArr[i-2][SRC]);
-
-				recounter++;
-
-				continue;
+				if(L3type == "" || ldeckArr[i][CLASS] == L3type)
+				{
+					L3type = ldeckArr[i][CLASS];
+					aL2count++;
+				}
 			}
 			else
 			{
-				if(i < 2)
-				{
-					return false;
-				}
-
-				$("#show_ldeck_9").attr("src", ldeckArr[i][SRC]);
-				$("#show_ldeck_8").attr("src", ldeckArr[i-1][SRC]);
-				$("#show_ldeck_7").attr("src", ldeckArr[i-2][SRC]);
-
-				continue;
+				return false;
 			}
 		}
+
+		if(aL1count == 0 || aL2count == 0)
+		{
+			return false;
+		}
+
+		for(i = 0; i < aL1count; i++)
+		{
+			$("#show_ldeck_" + parseInt(i + 4)).attr("src", ldeckArr[i + 4][SRC]);
+			$("#show_ldeck_" + parseInt(i + 4)).show();
+		}
+
+		for(i = 0; i < aL2count; i++)
+		{
+			$("#show_ldeck_" + parseInt(i + 5 + aL1count)).attr("src", ldeckArr[i + 4 + aL1count][SRC]);
+			$("#show_ldeck_" + parseInt(i + 5 + aL1count)).show();
+		}
+
+		for(i = 0; i < adeckArr.length; i++)
+		{
+			$("#show_ldeck_" + parseInt(i + 6 + aL1count + aL2count)).attr("src", adeckArr[i][SRC]);
+			$("#show_ldeck_" + parseInt(i + 6 + aL1count + aL2count)).show();
+		}
 	}
+
 	return true;
 }
 
@@ -3987,8 +4030,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240430 v1.59\n";
-	str += "1.新增點擊大圖可加進牌庫功能\n";
+	str += "20240513 v1.60\n";
+	str += "1.新增Arts Deck View\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-P00 ~ WX24-P1\n";
