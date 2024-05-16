@@ -1,3 +1,5 @@
+var ARTS_MAX_SIZE = 8;
+
 function onLoading()
 {
 	var i = 0;
@@ -944,7 +946,7 @@ function showPdeck()
 
 function showAdeck()
 {
-	for(i = 0; i < 6; i++)
+	for(i = 0; i < ARTS_MAX_SIZE; i++)
 	{
 		if(i < adeckArr.length)
 		{
@@ -1040,16 +1042,6 @@ function showSdeck()
 					}
 				}
 			}
-			// else
-			// {
-			// 	$("#sdeck_" + i).attr("src", "img/empty.jpg");
-			// 	$("#sdeck_" + i).attr("alt", "");
-
-			// 	$("#show_sdeck_" + i).attr("src", "img/empty.jpg");
-			// 	$("#show_sdeck_" + i).attr("alt", "");
-
-			// 	$("#show_sdeck_" + i).hide();
-			// }
 		}
 
 		nolbindex = 5;
@@ -1777,7 +1769,7 @@ function addDeck(x)
 				}
 				else if(cardData[i][TYPE] == "アーツ")
 				{
-					if(adeckArr.length < 6)
+					if(adeckArr.length < ARTS_MAX_SIZE)
 					{
 						sortAdeck(cardData[i]);
 					}
@@ -3908,47 +3900,88 @@ function rearrange_ldeck()
 {
 	var i, tmp = 0;
 
-	var L1type, L2type = "", L3type = "", aL1count = 0, aL2count = 0;
-
-	if(ldeckArr.length < 4)
-	{
-		return false;
-	}
-
-	if(ldeckArr.length + adeckArr.length > 10)
-	{
-		return false;
-	}
-
-	L1type = ldeckArr[0][CLASS];
+	var L1type = "", L2type = "", L3type = "", L1count = 0, L2count = 0, L3count = 0;
+	var lv0count = 0;
+	var lv1count = 0;
 
 	for(i = 0; i < 12; i++)
 	{
 		$("#show_ldeck_" + parseInt(i)).hide();
 	}
 
-	for(i = 0; i < 4; i++)
+	if(ldeckArr.length + adeckArr.length > 10 || ldeckArr.length == 0)
 	{
-		if(ldeckArr[i][CLASS] != L1type)
+		return false;
+	}
+
+	for(i = 0; i < ldeckArr.length; i++)
+	{
+		if(ldeckArr[i][LEVEL] == 0)
 		{
-			return false;
+			lv0count++;
 		}
 
-		if(ldeckArr[i][LEVEL] != i)
+		if(ldeckArr[i][LEVEL] == 1 && ldeckArr[i][TYPE] == "ルリグ")
 		{
-			return false;
+			lv1count++;
 		}
 
-		if(ldeckArr[i][TYPE] != "ルリグ")
+		if(ldeckArr[i][CLASS] != L1type && L1count == 0)
 		{
-			return false;
+			L1type = ldeckArr[i][CLASS];
+			L1count++;
+			continue;
+		}
+		else if(ldeckArr[i][CLASS] == L1type)
+		{
+			L1count++;
+			continue;
 		}
 
+		if(ldeckArr[i][CLASS] != L2type && L2count == 0)
+		{
+			L2type = ldeckArr[i][CLASS];
+			L2count++;
+			continue;
+		}
+		else if(ldeckArr[i][CLASS] == L2type)
+		{
+			L2count++;
+			continue;
+		}
+
+		if(ldeckArr[i][CLASS] != L3type && L3count == 0)
+		{
+			L3type = ldeckArr[i][CLASS];
+			L3count++;
+			continue;
+		}
+		else if(ldeckArr[i][CLASS] == L3type)
+		{
+			L3count++;
+			continue;
+		}
+
+		return false;
+	}
+
+	if((L2count != 0 && L3count == 0) || (L2count == 0 && L3count != 0))
+	{
+		return false;
+	}
+
+	if(lv1count != 1)
+	{
+		return false;
+	}
+
+	for(i = 0; i < L1count; i++)
+	{
 		$("#show_ldeck_" + i).attr("src", ldeckArr[i][SRC]);
 		$("#show_ldeck_" + i).show();
 	}
 
-	if(ldeckArr.length == 4)
+	if(L2count == 0 && L3count == 0)
 	{
 		for(i = 0; i < adeckArr.length; i++)		
 		{
@@ -3958,49 +3991,22 @@ function rearrange_ldeck()
 	}
 	else
 	{
-		for(i = 4; i < ldeckArr.length; i++)
+		for(i = 0; i < L2count; i++)
 		{
-			if(ldeckArr[i][CLASS] != L1type)
-			{
-				if(L2type == "" || ldeckArr[i][CLASS] == L2type)
-				{
-					L2type = ldeckArr[i][CLASS];
-					aL1count++;
-				}
-
-				if(L3type == "" || ldeckArr[i][CLASS] == L3type)
-				{
-					L3type = ldeckArr[i][CLASS];
-					aL2count++;
-				}
-			}
-			else
-			{
-				return false;
-			}
-		}
-
-		if(aL1count == 0 || aL2count == 0)
-		{
-			return false;
-		}
-
-		for(i = 0; i < aL1count; i++)
-		{
-			$("#show_ldeck_" + parseInt(i + 4)).attr("src", ldeckArr[i + 4][SRC]);
+			$("#show_ldeck_" + parseInt(i + 4)).attr("src", ldeckArr[i + L1count][SRC]);
 			$("#show_ldeck_" + parseInt(i + 4)).show();
 		}
 
-		for(i = 0; i < aL2count; i++)
+		for(i = 0; i < L3count; i++)
 		{
-			$("#show_ldeck_" + parseInt(i + 5 + aL1count)).attr("src", ldeckArr[i + 4 + aL1count][SRC]);
-			$("#show_ldeck_" + parseInt(i + 5 + aL1count)).show();
+			$("#show_ldeck_" + parseInt(i + 5 + L2count)).attr("src", ldeckArr[i + L1count + L2count][SRC]);
+			$("#show_ldeck_" + parseInt(i + 5 + L2count)).show();
 		}
 
 		for(i = 0; i < adeckArr.length; i++)
 		{
-			$("#show_ldeck_" + parseInt(i + 6 + aL1count + aL2count)).attr("src", adeckArr[i][SRC]);
-			$("#show_ldeck_" + parseInt(i + 6 + aL1count + aL2count)).show();
+			$("#show_ldeck_" + parseInt(i + 6 + L2count + L3count)).attr("src", adeckArr[i][SRC]);
+			$("#show_ldeck_" + parseInt(i + 6 + L2count + L3count)).show();
 		}
 	}
 
@@ -4030,8 +4036,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240513 v1.60\n";
-	str += "1.新增Arts Deck View\n";
+	str += "20240517 v1.61\n";
+	str += "1.修復Arts Deck View\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-P00 ~ WX24-P1\n";

@@ -2,6 +2,9 @@
    
 Author: ZZZ  
   
+20240517 v1.61  
+1.修復Arts Deck View  
+  
 20240513 v1.60  
 1.新增Arts Deck View
 

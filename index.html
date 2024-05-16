@@ -197,12 +197,6 @@
 			function customizeWindowEvent(x) {
 				if(x == "view")
 				{
-					//Temp
-					if(adeckArr.length != 0)
-					{
-						alert("Not support Arts yet.");
-						return;
-					}
 					if(rearrange_ldeck() == false)
 					{
 						alert("Illegal LRIG deck.");
@@ -317,7 +311,7 @@
 		</span>
 		<div id="lbBackground" hidden>
 		</div>
-		<table width="1850px" height="600px">
+		<table width="1850px" height="1200px">
 			<tr>
 				<td style="vertical-align:bottom;width: 950px;">
 					<table>
@@ -510,19 +504,25 @@
 						</tr>
 						<tr>
 							<td style="vertical-align:bottom;vertical-align:text-top;">
-								<span style="user-select:text; cursor: text;">Piece</span><span style="user-select:text; cursor: text;margin-left: 287px;">Arts</span>
+								<span style="user-select:text; cursor: text;">Piece</span><span style="user-select:text; cursor: text;margin-left: 122px;">Arts</span>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<img id="pdeck_0" width="105px" height="75px" style="margin-bottom: 15px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,0 , pdeckArr)">
-								<img id="pdeck_1" width="105px" height="75px" style="margin-bottom: 15px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,1 , pdeckArr)">
-								<img id="adeck_0" width="75px" height="105px" style="margin-left: 104px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,0 , adeckArr)">
-								<img id="adeck_1" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,1 , adeckArr)">
-								<img id="adeck_2" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,2 , adeckArr)">
-								<img id="adeck_3" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,3 , adeckArr)">
-								<img id="adeck_4" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,4 , adeckArr)">
-								<img id="adeck_5" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,5 , adeckArr)">
+								<img id="pdeck_0" width="105px" height="75px" style="margin-bottom: 30px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,0 , pdeckArr)">
+								<img id="adeck_0" width="75px" height="105px" style="margin-bottom: -28px; margin-left: 52px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,0 , adeckArr)">
+								<img id="adeck_1" width="75px" height="105px" style="margin-bottom: -28px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,1 , adeckArr)">
+								<img id="adeck_2" width="75px" height="105px" style="margin-bottom: -28px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,2 , adeckArr)">
+								<img id="adeck_3" width="75px" height="105px" style="margin-bottom: -28px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,3 , adeckArr)">
+								<img id="adeck_4" width="75px" height="105px" style="margin-bottom: -28px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,4 , adeckArr)">
+								<img id="adeck_5" width="75px" height="105px" style="margin-bottom: -28px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,5 , adeckArr)">
+								<img id="adeck_6" width="75px" height="105px" style="margin-bottom: -28px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,6 , adeckArr)">
+								<img id="adeck_7" width="75px" height="105px" style="margin-bottom: -28px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,7 , adeckArr)">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img id="pdeck_1" width="105px" height="75px" style="margin-top: -33px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,1 , pdeckArr)">
 							</td>
 						</tr>
 					</table>
