@@ -4044,9 +4044,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240517 v1.61\n";
-	str += "1.修復Arts Deck View\n";
-	str += "2.新增level 4 filter\n";
+	str += "20240517 v1.62\n";
+	str += "1.新增WX24-D1~D5中文效果\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-P00 ~ WX24-P1\n";

@@ -1,7 +1,10 @@
 # WIXOSS_deckeditor  
    
-Author: ZZZ  
+Author: ZZZ
   
+20240517 v1.62  
+1.新增WX24-D1~D5中文效果  
+　　
 20240517 v1.61  
 1.修復Arts Deck View  
 2.新增level 4 filter  
