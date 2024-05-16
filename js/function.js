@@ -2349,7 +2349,7 @@ function search()
 			}
 		}
 
-		if(!$('#level0').is(":checked") && !$('#level1').is(":checked") && !$('#level2').is(":checked") && !$('#level3').is(":checked"))
+		if(!$('#level0').is(":checked") && !$('#level1').is(":checked") && !$('#level2').is(":checked") && !$('#level3').is(":checked") && !$('#level4').is(":checked"))
 		{
 
 		}
@@ -2382,6 +2382,14 @@ function search()
 			if(!$('#level3').is(":checked"))
 			{
 				if(cardData[i][LEVEL] == "3")
+				{
+					continue;
+				}
+			}
+
+			if(!$('#level4').is(":checked"))
+			{
+				if(cardData[i][LEVEL] == "4")
 				{
 					continue;
 				}
@@ -4038,6 +4046,7 @@ function showVersion()
 	str += "\n";
 	str += "20240517 v1.61\n";
 	str += "1.修復Arts Deck View\n";
+	str += "2.新增level 4 filter\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-P00 ~ WX24-P1\n";
