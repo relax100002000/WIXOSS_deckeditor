@@ -4007,14 +4007,14 @@ function rearrange_ldeck()
 
 		for(i = 0; i < L3count; i++)
 		{
-			$("#show_ldeck_" + parseInt(i + 5 + L2count)).attr("src", ldeckArr[i + L1count + L2count][SRC]);
-			$("#show_ldeck_" + parseInt(i + 5 + L2count)).show();
+			$("#show_ldeck_" + parseInt(i + 4 + L2count)).attr("src", ldeckArr[i + L1count + L2count][SRC]);
+			$("#show_ldeck_" + parseInt(i + 4 + L2count)).show();
 		}
 
 		for(i = 0; i < adeckArr.length; i++)
 		{
-			$("#show_ldeck_" + parseInt(i + 6 + L2count + L3count)).attr("src", adeckArr[i][SRC]);
-			$("#show_ldeck_" + parseInt(i + 6 + L2count + L3count)).show();
+			$("#show_ldeck_" + parseInt(i + 4 + L2count + L3count)).attr("src", adeckArr[i][SRC]);
+			$("#show_ldeck_" + parseInt(i + 4 + L2count + L3count)).show();
 		}
 	}
 
