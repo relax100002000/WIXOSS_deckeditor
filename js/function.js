@@ -2621,6 +2621,7 @@ function str_to_img(x)
 	x = x.replace(/【ライフバースト】/g, "<img class='icon_img' src='img/icon_txt_burst.png'></img>");
 	x = x.replace(/【ライズ】/g, "<img class='icon_img' src='img/icon_txt_rise_01.png'></img>");
 	x = x.replace(/《ライズアイコン》/g, "<img class='icon_img' src='img/icon_txt_rise_02.png'></img>");
+	x = x.replace(/\[ライズ\]/g, "<img class='icon_img' src='img/icon_txt_rise_02.png'></img>");
 	x = x.replace(/【ハーモニー】/g, "<img class='icon_img' src='img/icon_txt_harmony.png'></img>");
 	x = x.replace(/《ディソナアイコン》/g, "<img class='icon_img' src='img/icon_txt_dissona.png'></img>");
 	x = x.replace(/\[ダウン\]/g, "<img class='icon_img' src='img/icon_txt_down.png'></img>");
