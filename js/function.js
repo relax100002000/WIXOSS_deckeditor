@@ -2639,6 +2639,8 @@ function str_to_img(x)
 	x = x.replace(/《リコレクトアイコン》/g, "<img class='icon_img' src='img/icon_txt_recollect.png'></img>");
 	x = x.replace(/《相手ターン》/g, "<img class='icon_img' src='img/icon_txt_opponent_turn.png'></img>");
 	x = x.replace(/《自分ターン》/g, "<img class='icon_img' src='img/icon_txt_my_turn.png'></img>");
+
+	x = x.replace(/<img class=\'icon_img\' src=\'img\/icon_txt_burst\.png\'><\/img>/g, "<\/td><\/tr><tr\  style=\'background:#E0E0E0\'><td\ colspan=\'2\'><img class=\'icon_img\' src=\'img\/icon_txt_burst\.png\'><\/img>");
 	
 	x = x.replace(/\(ターン1\)/g, "<img class='icon_img' src='img/icon_txt_turn_01.png'></img>");
 	x = x.replace(/\(ターン2\)/g, "<img class='icon_img' src='img/icon_txt_turn_02.png'></img>");
@@ -4045,8 +4047,9 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240517 v1.63\n";
-	str += "1.新增WX24-P1中文效果\n";
+	str += "20240621 v1.64\n";
+	str += "1.新增LB效果背景色\n";
+	str += "2.修正Rise icon\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-P00 ~ WX24-P1\n";
