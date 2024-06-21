@@ -2641,6 +2641,7 @@ function str_to_img(x)
 	x = x.replace(/《自分ターン》/g, "<img class='icon_img' src='img/icon_txt_my_turn.png'></img>");
 
 	x = x.replace(/<img class=\'icon_img\' src=\'img\/icon_txt_burst\.png\'><\/img>/g, "<\/td><\/tr><tr\  style=\'background:#E0E0E0\'><td\ colspan=\'2\'><img class=\'icon_img\' src=\'img\/icon_txt_burst\.png\'><\/img>");
+	x = x.replace(/「生命爆發」：/g, "<\/td><\/tr><tr\  style=\'background:#E0E0E0\'><td\ colspan=\'2\'>「生命爆發」：");
 	
 	x = x.replace(/\(ターン1\)/g, "<img class='icon_img' src='img/icon_txt_turn_01.png'></img>");
 	x = x.replace(/\(ターン2\)/g, "<img class='icon_img' src='img/icon_txt_turn_02.png'></img>");
