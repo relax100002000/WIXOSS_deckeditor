@@ -2818,6 +2818,7 @@ function checkDeck()
 			cardData[i][RARE] != "LR" &&
 			cardData[i][RARE] != "LC" &&
 			cardData[i][RARE] != "SR" &&
+			cardData[i][RARE] != "SSR" &&
 			cardData[i][RARE] != "R" &&
 			cardData[i][RARE] != "C" &&
 			cardData[i][RARE] != "PI" &&
@@ -4044,13 +4045,13 @@ function resetDefault()
 function showVersion()
 {
 	var str = "";
-
+  
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240621 v1.64\n";
-	str += "1.新增LB效果背景色\n";
-	str += "2.修正Rise icon\n";
+	str += "20240628 v1.65\n";
+	str += "1.新增WX24-P2\n";
+	str += "2.移除重複的PR卡\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-P00 ~ WX24-P1\n";

@@ -1,6 +1,10 @@
 # WIXOSS_deckeditor  
    
-Author: ZZZ
+Author: ZZZ  
+  
+20240628 v1.65  
+1.新增WX24-P2  
+2.移除重複的PR卡  
   
 20240621 v1.64  
 1.新增LB效果背景色  
