@@ -476,6 +476,46 @@ var cardData = [
 		""	//TW_TEXT
 		],
 	[
+		"SPDi01-116", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-116.jpg", //SRC
+		"弐ノ遊 カミヨーヨー", //NAME
+		"SP", //RARE
+		"シグニ", //TYPE
+		"奏武：遊具", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニが対戦相手のライフクロス1枚をクラッシュしたとき、対戦相手のパワー7000以下のシグニ1体を対象とし、このシグニをバニッシュしてもよい。そうした場合、それをバニッシュする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"SPDi01-117", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-117.jpg", //SRC
+		"羅菌 ミカヅキモ", //NAME
+		"SP", //RARE
+		"シグニ", //TYPE
+		"奏羅：微菌", //CLASS
+		"青", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、対戦相手の手札を1枚見ないで選び、公開させる。あなたの場にそのカードと共通する色を持つルリグがいる場合、そのカードを捨てさせる。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
 		"WXDi-D01-001", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D01-001.jpg", //SRC
 		"紡ぎし扉 アト=ノル", //NAME
