@@ -29,8 +29,9 @@ a~z
 A~Z
 +-=
 " "(space)
+!?
 ()
-【ライフバースト】：->【ライフバースト】：
+ライフバースト：->【ライフバースト】：
 ①②③
 「LB」：->「生命爆發」：
 */
@@ -178,7 +179,7 @@ var cardData = [
 	[
 		"PR-Di007", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di007.jpg", //SRC
-		"ウィーアー WIXOSS！(コロコロアニキ2021年夏号 付録)", //NAME
+		"ウィーアー WIXOSS!(コロコロアニキ2021年夏号 付録)", //NAME
 		"PR", //RARE
 		"ピース", //TYPE
 		"", //CLASS
@@ -513,6 +514,46 @@ var cardData = [
 		"", //TEAM
 		"", //STORY
 		"【自】：このシグニがアタックしたとき、対戦相手の手札を1枚見ないで選び、公開させる。あなたの場にそのカードと共通する色を持つルリグがいる場合、そのカードを捨てさせる。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"SP38-007", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SP38/SP38-007.jpg", //SRC
+		"ヴィクティム・メモリーズ(「ウィクロス 10th Anniversary Book」付録)", //NAME
+		"PR", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたのデッキの上からカードを10枚見る。その中からカードを1枚まで手札に加え、残りをデッキに加えてシャッフルする。<br><br>【ライフバースト】：あなたのデッキの上からカードを10枚見る。その中からカードを1枚まで手札に加え、残りをデッキに加えてシャッフルする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"SP38-008", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SP38/SP38-008.jpg", //SRC
+		"轟炎 花代・爾転(「ウィクロス 10th Anniversary Book」付録)", //NAME
+		"PR", //RARE
+		"ルリグ", //TYPE
+		"花代", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"《赤》×2", //COST
+		"6", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：あなたのグロウフェイズをスキップする。<br><br>【常】《自分ターン》：あなたの中央のシグニゾーンにあるシグニのパワーを+5000する。<br><br>【起】《ゲーム1回》《赤》《赤》《赤》：このターン、次にこのルリグがアタックしたとき、そのアタックの間、対戦相手は【ガード】ができない。", //JP_TEXT
 		""	//TW_TEXT
 		],
 	[
@@ -5019,7 +5060,7 @@ var cardData = [
 	[
 		"WXDi-P01-001", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P01-001.jpg", //SRC
-		"GO TO the TOP！", //NAME
+		"GO TO the TOP!", //NAME
 		"PI", //RARE
 		"ピース", //TYPE
 		"", //CLASS
@@ -5059,7 +5100,7 @@ var cardData = [
 	[
 		"WXDi-P01-003", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P01-003.jpg", //SRC
-		"だい！ぎゃく！てん！", //NAME
+		"だい!ぎゃく!てん!", //NAME
 		"PI", //RARE
 		"ピース", //TYPE
 		"", //CLASS
@@ -13219,7 +13260,7 @@ var cardData = [
 	[
 		"WXDi-P05-005", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P05-005.jpg", //SRC
-		"Don’t STOP！", //NAME
+		"Don’t STOP!", //NAME
 		"PI", //RARE
 		"ピース", //TYPE
 		"", //CLASS
@@ -17399,7 +17440,7 @@ var cardData = [
 	[
 		"WXDi-P07-006", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P07-006.jpg", //SRC
-		"発進！WIXOSSロボ", //NAME
+		"発進!WIXOSSロボ", //NAME
 		"LR", //RARE
 		"ピース", //TYPE
 		"", //CLASS
@@ -17479,7 +17520,7 @@ var cardData = [
 	[
 		"WXDi-P07-010", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P07-010.jpg", //SRC
-		"でじたるあーや！Ⅲ", //NAME
+		"でじたるあーや!Ⅲ", //NAME
 		"LR", //RARE
 		"ルリグ", //TYPE
 		"あや", //CLASS
@@ -17659,7 +17700,7 @@ var cardData = [
 	[
 		"WXDi-P07-019", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P07-019.jpg", //SRC
-		"あーや！0", //NAME
+		"あーや!0", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"あや", //CLASS
@@ -17679,7 +17720,7 @@ var cardData = [
 	[
 		"WXDi-P07-020", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P07-020.jpg", //SRC
-		"ぴこぴこあーや！Ⅰ", //NAME
+		"ぴこぴこあーや!Ⅰ", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"あや", //CLASS
@@ -17699,7 +17740,7 @@ var cardData = [
 	[
 		"WXDi-P07-021", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P07-021.jpg", //SRC
-		"ぐれーとあーや！Ⅱ", //NAME
+		"ぐれーとあーや!Ⅱ", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"あや", //CLASS
@@ -21459,7 +21500,7 @@ var cardData = [
 	[
 		"WXDi-P09-027", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-027.jpg", //SRC
-		"ドーナ『がんばれ！』", //NAME
+		"ドーナ『がんばれ!』", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"ドーナ", //CLASS
@@ -21479,7 +21520,7 @@ var cardData = [
 	[
 		"WXDi-P09-028", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-028.jpg", //SRC
-		"ドーナ『応援してね！』", //NAME
+		"ドーナ『応援してね!』", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"ドーナ", //CLASS
@@ -21499,7 +21540,7 @@ var cardData = [
 	[
 		"WXDi-P09-029", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-029.jpg", //SRC
-		"ドーナ『いけいけ！』", //NAME
+		"ドーナ『いけいけ!』", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"ドーナ", //CLASS
@@ -21519,7 +21560,7 @@ var cardData = [
 	[
 		"WXDi-P09-030", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-030.jpg", //SRC
-		"ドーナ『輝いてる！』", //NAME
+		"ドーナ『輝いてる!』", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"ドーナ", //CLASS
@@ -21539,7 +21580,7 @@ var cardData = [
 	[
 		"WXDi-P09-031", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-031.jpg", //SRC
-		"ドーナ『エスケープ！』", //NAME
+		"ドーナ『エスケープ!』", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"ドーナ", //CLASS
@@ -21559,7 +21600,7 @@ var cardData = [
 	[
 		"WXDi-P09-032", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-032.jpg", //SRC
-		"あーやの出番！", //NAME
+		"あーやの出番!", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"あや", //CLASS
@@ -21579,7 +21620,7 @@ var cardData = [
 	[
 		"WXDi-P09-033", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-033.jpg", //SRC
-		"あーやの踊りについてきてね！", //NAME
+		"あーやの踊りについてきてね!", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"あや", //CLASS
@@ -21599,7 +21640,7 @@ var cardData = [
 	[
 		"WXDi-P09-034", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-034.jpg", //SRC
-		"あーやの畳返し！", //NAME
+		"あーやの畳返し!", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"あや", //CLASS
@@ -21619,7 +21660,7 @@ var cardData = [
 	[
 		"WXDi-P09-035", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-035.jpg", //SRC
-		"あーやの魅力にメロメロ！", //NAME
+		"あーやの魅力にメロメロ!", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"あや", //CLASS
@@ -21639,7 +21680,7 @@ var cardData = [
 	[
 		"WXDi-P09-036", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-036.jpg", //SRC
-		"あーやのホログラフ！", //NAME
+		"あーやのホログラフ!", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"あや", //CLASS
@@ -22739,7 +22780,7 @@ var cardData = [
 	[
 		"WXDi-P10-004", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P10-004.jpg", //SRC
-		"み~んなではじめるアイドルライフ！", //NAME
+		"み~んなではじめるアイドルライフ!", //NAME
 		"LR", //RARE
 		"ピース", //TYPE
 		"", //CLASS
@@ -24279,7 +24320,7 @@ var cardData = [
 	[
 		"WXDi-P11-003", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P11-003.jpg", //SRC
-		"トリックスター・スターダム！", //NAME
+		"トリックスター・スターダム!", //NAME
 		"LR", //RARE
 		"ピース", //TYPE
 		"", //CLASS
@@ -26739,7 +26780,7 @@ var cardData = [
 	[
 		"WXDi-D09-P06", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D09-P06.jpg", //SRC
-		"ドーナ『応援してね！』", //NAME
+		"ドーナ『応援してね!』", //NAME
 		"ST", //RARE
 		"アシストルリグ", //TYPE
 		"ドーナ", //CLASS
@@ -26759,7 +26800,7 @@ var cardData = [
 	[
 		"WXDi-D09-P07", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-D09-P07.jpg", //SRC
-		"ドーナ『いけいけ！』", //NAME
+		"ドーナ『いけいけ!』", //NAME
 		"ST", //RARE
 		"アシストルリグ", //TYPE
 		"ドーナ", //CLASS
@@ -29339,7 +29380,7 @@ var cardData = [
 	[
 		"WXDi-P12-033", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P12-033.jpg", //SRC
-		"エルドラ！エクスクラメーション！", //NAME
+		"エルドラ!エクスクラメーション!", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"エルドラ", //CLASS
@@ -29359,7 +29400,7 @@ var cardData = [
 	[
 		"WXDi-P12-034", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P12-034.jpg", //SRC
-		"エルドラ！サーチャー！", //NAME
+		"エルドラ!サーチャー!", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"エルドラ", //CLASS
@@ -29379,7 +29420,7 @@ var cardData = [
 	[
 		"WXDi-P12-035", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P12-035.jpg", //SRC
-		"エルドラ！バースト・ラッシュ！", //NAME
+		"エルドラ!バースト・ラッシュ!", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"エルドラ", //CLASS
@@ -29399,7 +29440,7 @@ var cardData = [
 	[
 		"WXDi-P12-036", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P12-036.jpg", //SRC
-		"エルドラ！オンステージ！", //NAME
+		"エルドラ!オンステージ!", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"エルドラ", //CLASS
@@ -29419,7 +29460,7 @@ var cardData = [
 	[
 		"WXDi-P12-037", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P12-037.jpg", //SRC
-		"エルドラ！ストーン！", //NAME
+		"エルドラ!ストーン!", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"エルドラ", //CLASS
@@ -30499,7 +30540,7 @@ var cardData = [
 	[
 		"WXDi-P13-001", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P13-001.jpg", //SRC
-		"不穏☆FU☆ON！", //NAME
+		"不穏☆FU☆ON!", //NAME
 		"LR", //RARE
 		"ピース", //TYPE
 		"", //CLASS
@@ -32439,7 +32480,7 @@ var cardData = [
 	[
 		"WXDi-P14-005", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P14-005.jpg", //SRC
-		"カオス！chaos！混沌！", //NAME
+		"カオス!chaos!混沌!", //NAME
 		"LR", //RARE
 		"ピース", //TYPE
 		"", //CLASS
@@ -33739,7 +33780,7 @@ var cardData = [
 	[
 		"WXDi-P14-070", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P14-070.jpg", //SRC
-		"ちゅーにんぐあっぷ！", //NAME
+		"ちゅーにんぐあっぷ!", //NAME
 		"LR", //RARE
 		"ピース", //TYPE
 		"", //CLASS
@@ -34373,8 +34414,8 @@ var cardData = [
 		"", //LB
 		"", //TEAM
 		"", //STORY
-		"カードを2枚引き、手札を2枚捨てる。その後、好きな生徒1人との絆を獲得する。<br>(生徒とは、ブルーアーカイブにおけるキャラクターのことです。生徒との絆を獲得すると、その生徒のカードが持つ【絆】能力が有効になります。場や手札にいない生徒との絆も獲得できます。ルリグである生徒との絆を獲得した場合は、その生徒のすべてのカードの【絆】能力が有効になります。生徒との絆の数に上限はなく、失われることはありません！)", //JP_TEXT
-		"抽2張牌，捨棄2張手牌。之後，獲得任意1名學生的絆。<br>(學生是蔚藍檔案中的角色。獲得學生的絆時，該學生的卡牌持有的絆能力會有效。也可以獲得不在場上或手牌的學生的絆。獲得分身學生的絆時，該學生所有卡牌的絆能力會有效。學生的絆數量沒有上限，且永遠不會失去！)"	//TW_TEXT
+		"カードを2枚引き、手札を2枚捨てる。その後、好きな生徒1人との絆を獲得する。<br>(生徒とは、ブルーアーカイブにおけるキャラクターのことです。生徒との絆を獲得すると、その生徒のカードが持つ【絆】能力が有効になります。場や手札にいない生徒との絆も獲得できます。ルリグである生徒との絆を獲得した場合は、その生徒のすべてのカードの【絆】能力が有効になります。生徒との絆の数に上限はなく、失われることはありません!)", //JP_TEXT
+		"抽2張牌，捨棄2張手牌。之後，獲得任意1名學生的絆。<br>(學生是蔚藍檔案中的角色。獲得學生的絆時，該學生的卡牌持有的絆能力會有效。也可以獲得不在場上或手牌的學生的絆。獲得分身學生的絆時，該學生所有卡牌的絆能力會有效。學生的絆數量沒有上限，且永遠不會失去!)"	//TW_TEXT
 		],
 	[
 		"WXDi-CP02-007", //ID
@@ -34399,7 +34440,7 @@ var cardData = [
 	[
 		"WXDi-CP02-008", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-CP02-008.jpg", //SRC
-		"美甘ネル[あぁ？ぶっ殺されてえか？]", //NAME
+		"美甘ネル[あぁ?ぶっ殺されてえか?]", //NAME
 		"LR", //RARE
 		"ルリグ", //TYPE
 		"ネル", //CLASS
@@ -34559,7 +34600,7 @@ var cardData = [
 	[
 		"WXDi-CP02-016", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-CP02-016.jpg", //SRC
-		"美甘ネル[あぁ？ふざけんな！]", //NAME
+		"美甘ネル[あぁ?ふざけんな!]", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"ネル", //CLASS
@@ -34799,7 +34840,7 @@ var cardData = [
 	[
 		"WXDi-CP02-028", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-CP02-028.jpg", //SRC
-		"阿慈谷ヒフミ[助けて、ペロロ様！]", //NAME
+		"阿慈谷ヒフミ[助けて、ペロロ様!]", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"補習授業部", //CLASS
@@ -34899,7 +34940,7 @@ var cardData = [
 	[
 		"WXDi-CP02-033", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-CP02-033.jpg", //SRC
-		"一之瀬アスナ[行っくよー！]", //NAME
+		"一之瀬アスナ[行っくよー!]", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"C&C", //CLASS
@@ -36459,7 +36500,7 @@ var cardData = [
 	[
 		"WXDi-P15-003", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P15-003.jpg", //SRC
-		"ひらけ！ゲート！", //NAME
+		"ひらけ!ゲート!", //NAME
 		"LR", //RARE
 		"ピース", //TYPE
 		"", //CLASS
@@ -39039,7 +39080,7 @@ var cardData = [
 	[
 		"WXDi-P16-032", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-032.jpg", //SRC
-		"凛々！！ガブリエラ", //NAME
+		"凛々!!ガブリエラ", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"ガブリエラ", //CLASS
@@ -39059,7 +39100,7 @@ var cardData = [
 	[
 		"WXDi-P16-033", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-033.jpg", //SRC
-		"閃々！！ガブリエラ", //NAME
+		"閃々!!ガブリエラ", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"ガブリエラ", //CLASS
@@ -39079,7 +39120,7 @@ var cardData = [
 	[
 		"WXDi-P16-034", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-034.jpg", //SRC
-		"煌々！！ガブリエラ", //NAME
+		"煌々!!ガブリエラ", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"ガブリエラ", //CLASS
@@ -39099,7 +39140,7 @@ var cardData = [
 	[
 		"WXDi-P16-035", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-035.jpg", //SRC
-		"堂々！！ガブリエラ", //NAME
+		"堂々!!ガブリエラ", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"ガブリエラ", //CLASS
@@ -39119,7 +39160,7 @@ var cardData = [
 	[
 		"WXDi-P16-036", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P16-036.jpg", //SRC
-		"バイバイ！！ガブリエラ", //NAME
+		"バイバイ!!ガブリエラ", //NAME
 		"LC", //RARE
 		"アシストルリグ", //TYPE
 		"ガブリエラ", //CLASS
@@ -45093,7 +45134,7 @@ var cardData = [
 		"", //LB
 		"", //TEAM
 		"", //STORY
-		"【自】：このルリグがアタックしたとき、あなたの＜遊具＞のシグニ1体を場からデッキの一番下に置いてもよい。そうした場合、カードを1枚引き、対戦相手が手札を3枚捨てないかぎり、対戦相手にダメージを与える。<br><br>【起】《ゲーム1回》ぶっとばす！《青×0》：あなたの手札が対戦相手より多い場合、対戦相手のシグニ1体を対象とし、それをバニッシュする。あなたの手札が対戦相手より少ない場合、対戦相手は手札を3枚捨てる。", //JP_TEXT
+		"【自】：このルリグがアタックしたとき、あなたの＜遊具＞のシグニ1体を場からデッキの一番下に置いてもよい。そうした場合、カードを1枚引き、対戦相手が手札を3枚捨てないかぎり、対戦相手にダメージを与える。<br><br>【起】《ゲーム1回》ぶっとばす!《青×0》：あなたの手札が対戦相手より多い場合、対戦相手のシグニ1体を対象とし、それをバニッシュする。あなたの手札が対戦相手より少ない場合、対戦相手は手札を3枚捨てる。", //JP_TEXT
 		""	//TW_TEXT
 		],
 	[
