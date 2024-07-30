@@ -98,7 +98,7 @@ function showrdeck()
 			$("#rdeck_" + i).attr("src", rdeckArr[page * 10 + i][SRC]);
 			$("#rdeck_" + i).attr("alt", rdeckArr[page * 10 + i][ID]);
 
-			if(rdeckArr[page * 10 + i][TYPE] == "ピース" || rdeckArr[page * 10 + i][TYPE] == "ピース リレー" || rdeckArr[page * 10 + i][TYPE] == "ピース クラフト")
+			if(rdeckArr[page * 10 + i][TYPE] == "ピース" || rdeckArr[page * 10 + i][TYPE] == "ピース リレー" || rdeckArr[page * 10 + i][TYPE] == "ピース クラフト" || rdeckArr[page * 10 + i][ID] == "PR-Di035")
 			{
 				$("#rdeck_" + i).attr("height", "90px");
 				$("#rdeck_" + i).attr("width", "124px");
@@ -187,7 +187,7 @@ function onmouseShow(x, source)
 		$("#big_pic").attr("src", cardData[i][SRC]);
 		$("#big_pic").attr("alt", cardData[i][ID]);
 
-		if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト")
+		if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト" || cardData[i][ID] == "PR-Di035")
 		{
 			$("#big_pic").attr("height", "252px");
 			$("#big_pic").attr("width", "360px");
@@ -950,7 +950,14 @@ function showAdeck()
 	{
 		if(i < adeckArr.length)
 		{
-			$("#adeck_" + i).attr("src", adeckArr[i][SRC]);
+			if(adeckArr[i][ID] == "PR-Di035")
+			{
+				$("#adeck_" + i).attr("src", "img/PR-Di035_rotate.jpg");
+			}
+			else
+			{
+				$("#adeck_" + i).attr("src", adeckArr[i][SRC]);
+			}
 			$("#adeck_" + i).attr("alt", adeckArr[i][ID]);
 
 			// $("#show_pdeck_" + i).attr("src", pdeckArr[i][SRC]);
@@ -3908,6 +3915,13 @@ function updateDecklist(select)
 	$("#selectDeck").html(str);
 }
 
+function show_src_rotate(x)
+{
+	if($(x).attr("src") == "https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di035.jpg")
+	{
+		$(x).attr("src", "img/PR-Di035_rotate.jpg");
+	}
+}
 
 function rearrange_ldeck()
 {
@@ -3991,6 +4005,7 @@ function rearrange_ldeck()
 	for(i = 0; i < L1count; i++)
 	{
 		$("#show_ldeck_" + i).attr("src", ldeckArr[i][SRC]);
+		show_src_rotate("#show_ldeck_" + i);
 		$("#show_ldeck_" + i).show();
 	}
 
@@ -3999,6 +4014,7 @@ function rearrange_ldeck()
 		for(i = 0; i < adeckArr.length; i++)		
 		{
 			$("#show_ldeck_" + parseInt(i + 4)).attr("src", adeckArr[i][SRC]);
+			show_src_rotate("#show_ldeck_" + parseInt(i + 4));
 			$("#show_ldeck_" + parseInt(i + 4)).show();
 		}
 	}
@@ -4019,6 +4035,7 @@ function rearrange_ldeck()
 		for(i = 0; i < adeckArr.length; i++)
 		{
 			$("#show_ldeck_" + parseInt(i + 4 + L2count + L3count)).attr("src", adeckArr[i][SRC]);
+			show_src_rotate("#show_ldeck_" + parseInt(i + 4 + L2count + L3count));
 			$("#show_ldeck_" + parseInt(i + 4 + L2count + L3count)).show();
 		}
 	}
@@ -4049,12 +4066,11 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240722 v1.67\n";
-	str += "1.新增SP38-007、 SP38-008\n";
-	str += "2.將\"!?\"轉為半形\n";
+	str += "20240730 v1.68\n";
+	str += "1.PR-Di035\n";
 	str += "\n";
 	str += "目前收錄:\n";
-	str += "WXDi-P00 ~ WX24-P1\n";
+	str += "WXDi-P00 ~ WX24-P2\n";
 	str += "WXDi-D01 ~ WXDi-D09\n";
 	str += "WX24-D1 ~ WX24-D5\n";
 	str += "PRカード\n";
@@ -4062,7 +4078,6 @@ function showVersion()
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";
-	str += "-Arts Deck view\n";
 	
 	alert(str);
 }
