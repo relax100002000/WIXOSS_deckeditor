@@ -4066,8 +4066,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240730 v1.68\n";
-	str += "1.PR-Di035\n";
+	str += "20240906 v1.69\n";
+	str += "1.新增WX24-P2中文效果\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-P00 ~ WX24-P2\n";
