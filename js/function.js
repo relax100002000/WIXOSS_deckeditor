@@ -3751,7 +3751,13 @@ function changePage(x)
 
 function showList()
 {
-	var str = "", i = 0, j = 0, flag = 0, sdecklistArr = [], sdecklist = [];
+	var str = "", i = 0, j = 0, flag = 0, sdecklistArr = [], sdecklist = [], racelistArr = [], racelist = [];
+
+
+	
+	str += "<table>";
+	str += "<tr>";
+	str += "<td>";
 	str += "<br>ルリグ<br><br>";
 	str += "<table>";
 	str += "<tr>";
@@ -3829,6 +3835,36 @@ function showList()
 		
 	}
 
+	for(i = 0; i < sdeckArr.length; i++)
+	{
+		flag = 0;
+		
+		if(sdeckArr[i][TYPE] != "シグニ")
+		{
+			continue;
+		}
+
+		for(j = 0; j < racelist.length; j++)
+		{
+			if(sdeckArr[i][CLASS] == racelist[j][0])
+			{
+				racelist[j][1]++;
+
+				flag = 1;
+				break;
+			}
+		}
+
+		if(flag == 0)
+		{
+			racelistArr = [];
+			racelistArr[0] = sdeckArr[i][CLASS];
+			racelistArr[1] = 1;
+			racelist.push(racelistArr);
+		}
+		
+	}
+
 	for(i = 0; i < sdecklist.length; i++)
 	{
 		if(sdecklist[i][ID] == "")
@@ -3843,8 +3879,21 @@ function showList()
 	str += "</tr>";
 	str += "</table>";
 	str += "<br><br>";
-
-
+	str += "</td>";
+	str += "<td style='vertical-align:text-top;padding-left: 75px;'>";
+	str += "<table style='margin-top: 60px'>";
+	str += "<tr>";
+	for(i = 0; i < racelist.length; i++)
+	{
+		str += "<td style='width: 30px; padding-left:20px'>" + racelist[i][1] + "</td><td style='width: 130px;'>" + racelist[i][0] + "<td/>";
+		str += "</tr>"
+		str += "<tr>"
+	}
+	str += "</tr>";
+	str += "</table>";
+	str += "</td>";
+	str += "</tr>";
+	str += "</table>";
 	$("#decklist").html(str);
 }
 
@@ -4066,8 +4115,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240906 v1.69\n";
-	str += "1.新增WX24-P2中文效果\n";
+	str += "20240906 v1.70\n";
+	str += "1.在card list中增加種族計數器\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-P00 ~ WX24-P2\n";
