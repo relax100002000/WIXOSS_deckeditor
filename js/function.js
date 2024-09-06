@@ -3837,16 +3837,25 @@ function showList()
 
 	for(i = 0; i < sdeckArr.length; i++)
 	{
-		flag = 0;
-		
+		var flag = 0, racestr = "";
+
 		if(sdeckArr[i][TYPE] != "シグニ")
 		{
 			continue;
 		}
+		console.log(sdeckArr[i][CLASS].indexOf("/"));
+		if(sdeckArr[i][CLASS].indexOf("/") != -1)
+		{
+			racestr = sdeckArr[i][CLASS].slice(sdeckArr[i][CLASS].indexOf("/") + 1);
+		}
+		else
+		{
+			racestr = sdeckArr[i][CLASS];
+		}
 
 		for(j = 0; j < racelist.length; j++)
 		{
-			if(sdeckArr[i][CLASS] == racelist[j][0])
+			if(racestr == racelist[j][0])
 			{
 				racelist[j][1]++;
 
@@ -3858,7 +3867,7 @@ function showList()
 		if(flag == 0)
 		{
 			racelistArr = [];
-			racelistArr[0] = sdeckArr[i][CLASS];
+			racelistArr[0] = racestr;
 			racelistArr[1] = 1;
 			racelist.push(racelistArr);
 		}
@@ -3885,7 +3894,7 @@ function showList()
 	str += "<tr>";
 	for(i = 0; i < racelist.length; i++)
 	{
-		str += "<td style='width: 30px; padding-left:20px'>" + racelist[i][1] + "</td><td style='width: 130px;'>" + racelist[i][0] + "<td/>";
+		str += "<td style='width: 30px; padding-left:20px'>" + racelist[i][1] + "</td><td>" + racelist[i][0] + "<td/>";
 		str += "</tr>"
 		str += "<tr>"
 	}
