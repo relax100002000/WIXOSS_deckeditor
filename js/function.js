@@ -3843,7 +3843,7 @@ function showList()
 		{
 			continue;
 		}
-		console.log(sdeckArr[i][CLASS].indexOf("/"));
+		
 		if(sdeckArr[i][CLASS].indexOf("/") != -1)
 		{
 			racestr = sdeckArr[i][CLASS].slice(sdeckArr[i][CLASS].indexOf("/") + 1);
