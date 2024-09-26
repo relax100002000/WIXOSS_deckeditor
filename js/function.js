@@ -20,6 +20,11 @@ function onLoading()
 	    };
 	});
 
+	onloaddeck();
+}
+
+function onloaddeck()
+{
 	deckNamelist = JSON.parse(localStorage.getItem("DeckNameList"));
 	if(deckNamelist == null)
 	{
@@ -4124,6 +4129,7 @@ function rearrange_ldeck()
 function resetDefault()
 {
 	var ret = 0;
+	var i = 0;
 
 	ret = confirm("It will clean all localStorage and delete all custom deck. Are you sure?");
 	if(!ret)
@@ -4132,8 +4138,12 @@ function resetDefault()
 	}
 	else
 	{
-		localStorage.clear()
-		location.reload();
+		for(i = 0; i < deckNamelist.length; i ++)
+		{
+			localStorage.removeItem(deckNamelist[i]);
+		}
+		localStorage.removeItem("DeckNameList");
+		onloaddeck();
 	}
 }
 
