@@ -517,6 +517,46 @@ var cardData = [
 		""	//TW_TEXT
 		],
 	[
+		"SPDi01-118", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-118.jpg", //SRC
+		"幻怪 フタクチ", //NAME
+		"SP", //RARE
+		"シグニ", //TYPE
+		"奏生：怪異", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】アップ状態のルリグ1体をダウンする：ターン終了時まで、この方法でダウンしたルリグと同じレベルの対戦相手のすべてのシグニは能力を失う。<br><br>【ライフバースト】：どちらか1つを選ぶ。①ターン終了時まで、対戦相手のすべてのシグニは能力を失う。②カードを2枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"SPDi01-119", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-119.jpg", //SRC
+		"凶美 スミエ", //NAME
+		"SP", //RARE
+		"シグニ", //TYPE
+		"奏像：美巧", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】：対戦相手のトラッシュからシグニ1枚を対象とし、それをデッキの一番下に置く。その後、以下の2つから1つを選ぶ。<br>①この効果でデッキに移動したシグニと共通する色を持つ対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-2000する。<br>②この効果でデッキに移動したシグニと同じカード名の対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-3000する。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
 		"PR-Di035", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di035.jpg", //SRC
 		"OPEN DREAM LAND!(プリパラ&WIXOSS10周年記念ばとる~交流会 景品)", //NAME
