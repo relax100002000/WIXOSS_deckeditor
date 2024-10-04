@@ -542,7 +542,7 @@ function showInfotable(data)
 			str += "</tr>";
 		}
 
-		if(data[NAME] != "未知の巫女 マユ" && data[NAME] != "扉の俯瞰者 ウトゥルス")
+		if(data[NAME] != "未知の巫女 マユ" && data[NAME] != "扉の俯瞰者 ウトゥルス" && data[NAME] != "夢限 -A-")
 		{
 			str += "<tr>";
 			str += "	<td>";
@@ -2700,6 +2700,7 @@ function str_to_img(x)
 	x = x.replace(/【赤】/g, "<img class='icon_img' src='img/icon_txt_red.png'></img>");
 	x = x.replace(/《赤×0》/g, "<img class='icon_img' src='img/icon_txt_red_00.png'></img>");
 	x = x.replace(/《赤×1》/g, "<img class='icon_img' src='img/icon_txt_red_01.png'></img>");
+	x = x.replace(/《赤×3》/g, "<img class='icon_img' src='img/icon_txt_red_03.png'></img>");
 	x = x.replace(/\[赤\]/g, "<img class='icon_img' src='img/icon_txt_red.png'></img>");
 	x = x.replace(/\[赤\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_red_00.png'></img>");
 	x = x.replace(/\[赤\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_red_01.png'></img>");
@@ -2752,6 +2753,7 @@ function str_to_img(x)
 	x = x.replace(/【白】/g, "<img class='icon_img' src='img/icon_txt_white.png'></img>");
 	x = x.replace(/《白×0》/g, "<img class='icon_img' src='img/icon_txt_white_00.png'></img>");
 	x = x.replace(/《白×1》/g, "<img class='icon_img' src='img/icon_txt_white_01.png'></img>");
+	x = x.replace(/《白×2》/g, "<img class='icon_img' src='img/icon_txt_white_02.png'></img>");
 	x = x.replace(/\[白\]/g, "<img class='icon_img' src='img/icon_txt_white.png'></img>");
 	x = x.replace(/\[白\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_white_00.png'></img>");
 	x = x.replace(/\[白\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_white_01.png'></img>");
@@ -2765,6 +2767,7 @@ function str_to_img(x)
 	x = x.replace(/【無】/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
 	x = x.replace(/《無×0》/g, "<img class='icon_img' src='img/icon_txt_null_00.png'></img>");
 	x = x.replace(/《無×1》/g, "<img class='icon_img' src='img/icon_txt_null_01.png'></img>");
+	x = x.replace(/《無×2》/g, "<img class='icon_img' src='img/icon_txt_null_02.png'></img>");
 	x = x.replace(/\[無\]/g, "<img class='icon_img' src='img/icon_txt_null.png'></img>");
 	x = x.replace(/\[無\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_null_00.png'></img>");
 	x = x.replace(/\[無\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_null_01.png'></img>");
@@ -2816,12 +2819,30 @@ function checkDeck()
 
 		//ID
 		error_tmp = 1;
-		for(j = 1; j < listId.options.length; j++)
+
+		if(cardData[i][RARE] == "SP")
 		{
-			if(cardData[i][ID].indexOf(listId.options[j].value) != -1)
+			if(cardData[i][ID].indexOf("SP") != -1)
 			{
 				error_tmp = 0;
-				break;
+			}
+		}
+		else if(cardData[i][RARE] == "PR")
+		{
+			if(cardData[i][ID].indexOf("PR") != -1)
+			{
+				error_tmp = 0;
+			}
+		}
+		else
+		{
+			for(j = 1; j < listId.options.length; j++)
+			{
+				if(cardData[i][ID].indexOf(listId.options[j].value) != -1)
+				{
+					error_tmp = 0;
+					break;
+				}
 			}
 		}
 
@@ -2912,9 +2933,20 @@ function checkDeck()
 					error = 1;
 					console.log("LEVEL");
 				}
+				else
+				{
+					if(cardData[i][ID] == "WXDi-P13-003B")
+					{
+						if(cardData[i][LEVEL] != "4")
+						{
+							error = 1;
+							console.log("LEVEL");
+						}
+					}
+				}
 
 				//COST
-				if(cardData[i][ID] == "WXDi-P11-010B")
+				if(cardData[i][ID] == "WXDi-P11-010B" || cardData[i][ID] == "WXDi-P13-003B")
 				{
 					if(cardData[i][COST] != "")
 					{
@@ -2950,10 +2982,21 @@ function checkDeck()
 				}
 				else if(cardData[i][LEVEL] == 2)
 				{
-					if(cardData[i][LIMIT] != 5)
+					if(cardData[i][ID] == "SP38-008")
 					{
-						error = 1;
-						console.log("LIMIT");
+						if(cardData[i][LIMIT] != 6)
+						{
+							error = 1;
+							console.log("LIMIT");
+						}
+					}
+					else
+					{
+						if(cardData[i][LIMIT] != 5)
+						{
+							error = 1;
+							console.log("LIMIT");
+						}
 					}
 				}
 				else if(cardData[i][LEVEL] == 3)
@@ -4154,11 +4197,11 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20240930 v1.72\n";
-	str += "1.新增SPDi01-118、 SPDi01-119\n";
+	str += "20241004 v1.73\n";
+	str += "1.新增WX24-P3\n";
 	str += "\n";
 	str += "目前收錄:\n";
-	str += "WXDi-P00 ~ WX24-P2\n";
+	str += "WXDi-P00 ~ WX24-P3\n";
 	str += "WXDi-D01 ~ WXDi-D09\n";
 	str += "WX24-D1 ~ WX24-D5\n";
 	str += "PRカード\n";
