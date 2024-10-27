@@ -577,6 +577,47 @@ var cardData = [
 		""	//TW_TEXT
 		],
 	[
+		"PR-Di038", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di038.jpg", //SRC
+		"コードアート コンボイ(トランスフォーマー&コトブキヤ「BISHOUJOシリーズ」コラボカード)", //NAME
+		"PR", //RARE
+		"シグニ", //TYPE
+		"奏械：電機", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、このシグニが覚醒状態の場合、次の対戦相手のターン終了時まで、あなたのすべてのシグニのパワーを+2000する。<br><br>【起】手札を1枚捨てる：このシグニは覚醒する。(シグニは覚醒すると場にあるかぎり覚醒状態になる)<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、それをダウンし凍結する。カードを1枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"PR-Di039", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di039.jpg", //SRC
+		"コードアート メガトロン(トランスフォーマー&コトブキヤ「BISHOUJOシリーズ」コラボカード)", //NAME
+		"PR", //RARE
+		"シグニ", //TYPE
+		"奏械：電機", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、このシグニが覚醒状態の場合、対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-3000する。<br><br>【起】《無》：このシグニは覚醒する。(シグニは覚醒すると場にあるかぎり覚醒状態になる)", //JP_TEXT
+		""	//TW_TEXT
+		],
+
+	[
 		"SP38-007", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SP38/SP38-007.jpg", //SRC
 		"ヴィクティム・メモリーズ(「ウィクロス 10th Anniversary Book」付録)", //NAME
