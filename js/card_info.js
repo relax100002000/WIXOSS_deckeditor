@@ -557,6 +557,46 @@ var cardData = [
 		""	//TW_TEXT
 		],
 	[
+		"SPDi01-120", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-120.jpg", //SRC
+		"羅植 シロツメクサ", //NAME
+		"SP", //RARE
+		"シグニ", //TYPE
+		"奏羅：植物", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】《相手ターン》：このシグニのパワーはあなたのエナゾーンにあるカードが持つ色の種類1つにつき+2000される。(無色は色に含まれない)<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、ターン終了時まで、それは「【常】：アタックできない。」を得る。カードを1枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"SPDi01-121", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-121.jpg", //SRC
+		"羅原 Dy", //NAME
+		"SP", //RARE
+		"シグニ", //TYPE
+		"奏羅：原子", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"0", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】：あなたのデッキの一番上を公開する。あなたの場にそのカードと共通する色を持つルリグがいる場合、【エナチャージ1】をする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
 		"PR-Di035", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di035.jpg", //SRC
 		"OPEN DREAM LAND!(プリパラ&WIXOSS10周年記念ばとる~交流会 景品)", //NAME
