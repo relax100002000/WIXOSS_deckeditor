@@ -1,6 +1,9 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
+
+20241224 v1.76  
+1.新增SPDi01-122、 SPDi01-123  
   
 20241207 v1.75  
 1.新增SPDi01-120、 SPDi01-121  

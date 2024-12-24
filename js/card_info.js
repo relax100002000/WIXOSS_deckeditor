@@ -597,6 +597,46 @@ var cardData = [
 		""	//TW_TEXT
 		],
 	[
+		"SPDi01-122", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-122.jpg", //SRC
+		"紅将 パロミデ", //NAME
+		"SP", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、対戦相手のエナゾーンにカードが2枚以上ある場合、あなたのアップ状態のルリグ1体をダウンしてもよい。その後、対戦相手のエナゾーンからこの方法でダウンしたルリグと共通する色を持つカード1枚を対象とし、それをトラッシュに置く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"SPDi01-123", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-123.jpg", //SRC
+		"幻獣 ステカイ", //NAME
+		"SP", //RARE
+		"シグニ", //TYPE
+		"奏生：地獣", //CLASS
+		"青", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：あなたの手札が5枚以上あるかぎり、このシグニのパワーは+5000される。<br><br>【自】：あなたのターン終了時、このシグニのパワーが10000以上の場合、カードを1枚引く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
 		"PR-Di035", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di035.jpg", //SRC
 		"OPEN DREAM LAND!(プリパラ&WIXOSS10周年記念ばとる~交流会 景品)", //NAME
