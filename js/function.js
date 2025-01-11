@@ -4053,7 +4053,7 @@ function rearrange_ldeck()
 {
 	var i, tmp = 0;
 
-	var L1type = "", L2type = "", L3type = "", L1count = 0, L2count = 0, L3count = 0;
+	var L1type = "", L2type = "", L3type = "", L4type = "", L1count = 0, L2count = 0, L3count = 0, L4count = 0;
 	var lv0count = 0;
 	var lv1count = 0;
 
@@ -4115,17 +4115,17 @@ function rearrange_ldeck()
 			continue;
 		}
 
-		return false;
-	}
-
-	if((L2count != 0 && L3count == 0) || (L2count == 0 && L3count != 0))
-	{
-		return false;
-	}
-
-	if(lv1count != 1)
-	{
-		return false;
+		if(ldeckArr[i][CLASS] != L4type && L4count == 0)
+		{
+			L4type = ldeckArr[i][CLASS];
+			L4count++;
+			continue;
+		}
+		else if(ldeckArr[i][CLASS] == L4type)
+		{
+			L4count++;
+			continue;
+		}
 	}
 
 	for(i = 0; i < L1count; i++)
@@ -4135,34 +4135,40 @@ function rearrange_ldeck()
 		$("#show_ldeck_" + i).show();
 	}
 
-	if(L2count == 0 && L3count == 0)
+	if(L2count == 0 && L3count == 0 && L4count == 0)
 	{
 		for(i = 0; i < adeckArr.length; i++)		
 		{
-			$("#show_ldeck_" + parseInt(i + 4)).attr("src", adeckArr[i][SRC]);
-			show_src_rotate("#show_ldeck_" + parseInt(i + 4));
-			$("#show_ldeck_" + parseInt(i + 4)).show();
+			$("#show_ldeck_" + parseInt(i + 5)).attr("src", adeckArr[i][SRC]);
+			show_src_rotate("#show_ldeck_" + parseInt(i + 5));
+			$("#show_ldeck_" + parseInt(i + 5)).show();
 		}
 	}
 	else
 	{
 		for(i = 0; i < L2count; i++)
 		{
-			$("#show_ldeck_" + parseInt(i + 4)).attr("src", ldeckArr[i + L1count][SRC]);
-			$("#show_ldeck_" + parseInt(i + 4)).show();
+			$("#show_ldeck_" + parseInt(i + 5)).attr("src", ldeckArr[i + L1count][SRC]);
+			$("#show_ldeck_" + parseInt(i + 5)).show();
 		}
 
 		for(i = 0; i < L3count; i++)
 		{
-			$("#show_ldeck_" + parseInt(i + 4 + L2count)).attr("src", ldeckArr[i + L1count + L2count][SRC]);
-			$("#show_ldeck_" + parseInt(i + 4 + L2count)).show();
+			$("#show_ldeck_" + parseInt(i + 5 + L2count)).attr("src", ldeckArr[i + L1count + L2count][SRC]);
+			$("#show_ldeck_" + parseInt(i + 5 + L2count)).show();
+		}
+
+		for(i = 0; i < L4count; i++)
+		{
+			$("#show_ldeck_" + parseInt(i + 5 + L2count + L3count)).attr("src", ldeckArr[i + L1count + L2count + L3count][SRC]);
+			$("#show_ldeck_" + parseInt(i + 5 + L2count + L3count)).show();
 		}
 
 		for(i = 0; i < adeckArr.length; i++)
 		{
-			$("#show_ldeck_" + parseInt(i + 4 + L2count + L3count)).attr("src", adeckArr[i][SRC]);
-			show_src_rotate("#show_ldeck_" + parseInt(i + 4 + L2count + L3count));
-			$("#show_ldeck_" + parseInt(i + 4 + L2count + L3count)).show();
+			$("#show_ldeck_" + parseInt(i + 5 + L2count + L3count + L4count)).attr("src", adeckArr[i][SRC]);
+			show_src_rotate("#show_ldeck_" + parseInt(i + 5 + L2count + L3count + L4count));
+			$("#show_ldeck_" + parseInt(i + 5 + L2count + L3count + L4count)).show();
 		}
 	}
 
