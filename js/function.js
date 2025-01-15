@@ -2219,7 +2219,7 @@ function search()
 {
 	var i = 0, j = 0;
 	var dataStr = "", searchStr = "", tmpStr = "";
-	var flag = 0;
+	var color_flag = 0;
 
 	rdeckArr = [];
 
@@ -2428,10 +2428,10 @@ function search()
 			}
 		}
 
-		flag = 0;
-
 		if(!$('#multicolor').is(":checked"))
 		{
+			color_flag = 0;
+
 			if(!$('#red').is(":checked") && !$('#blue').is(":checked") && !$('#green').is(":checked") && !$('#black').is(":checked") && !$('#white').is(":checked") && !$('#nocolor').is(":checked"))
 			{
 
@@ -2443,7 +2443,7 @@ function search()
 				{
 					if(cardData[i][COLOR].indexOf("赤") != -1)
 					{
-						flag = 1;
+						color_flag = 1;
 					}
 				}
 
@@ -2451,7 +2451,7 @@ function search()
 				{
 					if(cardData[i][COLOR].indexOf("青") != -1)
 					{
-						flag = 1;
+						color_flag = 1;
 					}
 				}
 
@@ -2459,7 +2459,7 @@ function search()
 				{
 					if(cardData[i][COLOR].indexOf("緑") != -1)
 					{
-						flag = 1;
+						color_flag = 1;
 					}
 				}
 
@@ -2467,7 +2467,7 @@ function search()
 				{
 					if(cardData[i][COLOR].indexOf("黒") != -1)
 					{
-						flag = 1;
+						color_flag = 1;
 					}
 				}
 
@@ -2475,7 +2475,7 @@ function search()
 				{
 					if(cardData[i][COLOR].indexOf("白") != -1)
 					{
-						flag = 1;
+						color_flag = 1;
 					}
 				}
 
@@ -2483,11 +2483,11 @@ function search()
 				{
 					if(cardData[i][COLOR].indexOf("無") != -1)
 					{
-						flag = 1;
+						color_flag = 1;
 					}
 				}
 
-				if(flag == 0)
+				if(color_flag == 0)
 				{
 					continue;
 				}
@@ -2548,46 +2548,6 @@ function search()
 						continue;
 					}
 				}
-			}
-		}
-
-		flag = 0;
-
-		if(!$('#mainphase').is(":checked") && !$('#attackphase').is(":checked") && !$('#spellcutin').is(":checked"))
-		{
-
-		}
-		else
-		{
-			
-
-			if($('#mainphase').is(":checked"))
-			{
-				if(cardData[i][TIMING].indexOf("メインフェイズ") != -1)
-				{
-					flag = 1;
-				}
-			}
-
-			if($('#attackphase').is(":checked"))
-			{
-				if(cardData[i][TIMING].indexOf("アタックフェイズ") != -1)
-				{
-					flag = 1;
-				}
-			}
-
-			if($('#spellcutin').is(":checked"))
-			{
-				if(cardData[i][TIMING].indexOf("スペルカットイン") != -1)
-				{
-					flag = 1;
-				}
-			}
-
-			if(flag == 0)
-			{
-				continue;
 			}
 		}
 
