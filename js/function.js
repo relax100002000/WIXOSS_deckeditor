@@ -2559,35 +2559,36 @@ function search()
 		}
 		else
 		{
-			
-
-			if($('#mainphase').is(":checked"))
+			if(cardData[i][TYPE] == "アシストルリグ" || cardData[i][TYPE].indexOf("ピース") != -1 || cardData[i][TYPE] == "アーツ")
 			{
-				if(cardData[i][TIMING].indexOf("メインフェイズ") != -1)
+				if($('#mainphase').is(":checked"))
 				{
-					flag = 1;
+					if(cardData[i][TIMING].indexOf("メインフェイズ") != -1)
+					{
+						flag = 1;
+					}
 				}
-			}
 
-			if($('#attackphase').is(":checked"))
-			{
-				if(cardData[i][TIMING].indexOf("アタックフェイズ") != -1)
+				if($('#attackphase').is(":checked"))
 				{
-					flag = 1;
+					if(cardData[i][TIMING].indexOf("アタックフェイズ") != -1)
+					{
+						flag = 1;
+					}
 				}
-			}
 
-			if($('#spellcutin').is(":checked"))
-			{
-				if(cardData[i][TIMING].indexOf("スペルカットイン") != -1)
+				if($('#spellcutin').is(":checked"))
 				{
-					flag = 1;
+					if(cardData[i][TIMING].indexOf("スペルカットイン") != -1)
+					{
+						flag = 1;
+					}
 				}
-			}
 
-			if(flag == 0)
-			{
-				continue;
+				if(flag == 0)
+				{
+					continue;
+				}
 			}
 		}
 
