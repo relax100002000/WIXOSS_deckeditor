@@ -1789,7 +1789,10 @@ function addDeck(x)
 				{
 					if(ldeckArr.length < 10)
 					{
-						sortLdeck(cardData[i]);
+						if(cardData[i][ID] != "WXDi-P13-003B" && cardData[i][ID] != "WXDi-P16-001B")
+						{
+							sortLdeck(cardData[i]);
+						}
 					}
 				}
 				else if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー")
@@ -2969,21 +2972,11 @@ function checkDeck()
 				if(cardData[i][LEVEL] != "0" &&
 					cardData[i][LEVEL] != "1" &&
 					cardData[i][LEVEL] != "2" &&
-					cardData[i][LEVEL] != "3")
+					cardData[i][LEVEL] != "3" &&
+					cardData[i][LEVEL] != "4")
 				{
 					error = 1;
 					console.log("LEVEL");
-				}
-				else
-				{
-					if(cardData[i][ID] == "WXDi-P13-003B")
-					{
-						if(cardData[i][LEVEL] != "4")
-						{
-							error = 1;
-							console.log("LEVEL");
-						}
-					}
 				}
 
 				//COST
