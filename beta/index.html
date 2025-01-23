@@ -57,8 +57,8 @@
 			cursor: pointer;
 		}
 		canvas {
-			width: 195px !important;
-			height: 195px !important;
+			width: 205px !important;
+			height: 205px !important;
 		}
 		#show_leveldiv {
 		    position: absolute;
@@ -81,6 +81,15 @@
 		span, input[type='checkbox'] {
 			user-select: none;
 			cursor: pointer;
+		}
+
+		#lbBackground {
+		    position: absolute;
+       		z-index: -999;
+       		width: 411px;
+       		height: 462px;
+       		margin-top: 609px;
+       		background: rgba(120, 120, 120, 1.0);
 		}
 
 		#window-container, #window-container-list, #window-container-code{
@@ -127,6 +136,7 @@
 	    display: inline-block;
 	    vertical-align: middle;
 	    line-height: normal;
+	    margin-top: -10px;
 	}
 
 	textarea {
@@ -146,11 +156,16 @@
 		<script>
 			var page = 0;
 			var deckNamelist = [];
+			var sort_method = 0;
 
 			var rdeckArr = [];
 			var pdeckArr = [];
+			var adeckArr = [];
 			var ldeckArr = [];
 			var sdeckArr = [];
+			var sdeckLBArr = [];
+			var sdecknoLBArr = [];
+			var sdeckLBsortArr = [];
 
 			var sdeck_l1 = 0;
 			var sdeck_l2 = 0;
@@ -169,6 +184,10 @@
 
 			var sdeck_nostory = 0;
 			var sdeck_dissona = 0;
+			var sdeck_liberation = 0;
+			var sdeck_struggle = 0;
+			var sdeck_defense = 0;
+			
 
 			$( document ).ready(function() {
 				onLoading();
@@ -183,6 +202,42 @@
 						alert("Illegal LRIG deck.");
 						return;
 					}
+					else if(sdeckArr.length != 40)
+					{
+						alert("Illegal SIGNI deck.");
+						return;
+					}
+
+					if(sort_method == 1)
+					{
+						for(i = 0; i < 40; i++)
+						{
+							$("#show_sdeck_" + i).attr("src", "img/empty.jpg");
+							$("#show_sdeck_" + i).attr("alt", "");
+						}
+
+						for(i = 0, j = 0; i < sdeckArr.length; i++)
+						{
+							if(sdeckArr[i][LB] == "1")
+							{
+								$("#show_sdeck_" + j).attr("src", sdeckArr[i][SRC]);
+								$("#show_sdeck_" + j).attr("alt", sdeckArr[i][ID]);
+								j++;
+							}
+						}
+
+						for(i = 0; i < sdeckArr.length; i++)
+						{
+							if(sdeckArr[i][LB] == "0")
+							{
+								$("#show_sdeck_" + j).attr("src", sdeckArr[i][SRC]);
+								$("#show_sdeck_" + j).attr("alt", sdeckArr[i][ID]);
+								j++;
+							}
+						}
+						
+					}
+
 	            	var popup_window = document.getElementById("window-container");
 
 	            	popup_window.style.display = "block";
@@ -205,7 +260,7 @@
 		                }
 		            }
 	            }
-	            else
+	            else//list
 	            {
 	            	var popup_window_list = document.getElementById("window-container-list");
 
@@ -226,7 +281,7 @@
 			<table>
 				<tr>
 					<td>
-						<img width="360px" height="504px" id="big_pic" src="img/card_back.jpg">
+						<img width="360px" height="504px" id="big_pic" style="border-radius: 20px;" alt="" src="img/card_back.jpg" onclick="addDeck(this)">
 					</td>
 					<td style="vertical-align:text-top;">
 						<table id="infoTable" width="360px" border="1" style="border: solid; border-width: 1px">
@@ -240,21 +295,29 @@
 				<option value="JP">日本語</option>
 				<option value="TW">繁體中文</option>
 		    </select>
-		    <br><br>Deck List
+		    ※Right-click in the deck can add existing card. 
+		    <br>Deck List
 		    <select id="selectDeck" onchange="selectDeck();">
 		    	<option value="">--Select Deck--</option>
 		    </select>
 		    <button style="height: 20px;" onclick="$('#cardinformation').css('visibility', 'hidden');downloadBlob('output', '')">Add</button>
 		    <button style="height: 20px;" onclick="$('#cardinformation').css('visibility', 'hidden');deletedecklist();">Delete</button>
 		    <button style="height: 20px;" onclick="$('#cardinformation').css('visibility', 'hidden');resetDefault();">Reset</button>
+		    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Sort:
+		    <select id="selectSort" onchange="selectSort();">
+		    	<option value=0>Level Order</option>
+		    	<option value=1>LB Order</option>
+		    </select>
 		</span>
-		<table width="1850px" height="600px">
+		<div id="lbBackground" hidden>
+		</div>
+		<table width="1850px" height="1200px">
 			<tr>
-				<td style="vertical-align:bottom;">
+				<td style="vertical-align:bottom;width: 950px;">
 					<table>
 						<tr>
 							<td>
-								<div id="leveldiv" style="margin-left: 20px;" hidden><canvas id="levelChart"></canvas></div>
+								<div id="leveldiv" style="margin-left: 0px;" hidden><canvas id="levelChart"></canvas></div>
 								<script>
 			  						const levelctx = document.getElementById('levelChart');
 
@@ -302,22 +365,22 @@
 										type: 'doughnut',
 										data: {
 									  		labels: [
+									  			'白',
 												'赤',
 												'青',
 												'緑',
 												'黒',
-												'白',
 												'無'
 											],
 											datasets: [{
 												label: 'Color Counter',
-												data: [sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_white, sdeck_nocolor],
+												data: [sdeck_white, sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_nocolor],
 												backgroundColor: [
+												  'rgb(255, 205, 86)',
 												  'rgb(255, 99, 132)',
 												  'rgb(54, 162, 235)',
 												  'rgb(50, 205, 50)',
 												  'rgb(138, 43, 226)',
-												  'rgb(255, 205, 86)',
 												  'rgb(192, 192, 192)'
 												],
 												hoverOffset: 4
@@ -374,7 +437,7 @@
 								</script>
 							</td>
 							<td>
-								<div id="storydiv" hidden><canvas id="storyChart"></canvas></div>
+								<div id="storydiv" hidden><canvas height="200px" width="200px" id="storyChart"></canvas></div>
 								<script>
 			  						const storyctx = document.getElementById('storyChart');
 
@@ -382,15 +445,21 @@
 										type: 'doughnut',
 										data: {
 									  		labels: [
-												'',
-												'LB無し'
+												'無印',
+												'ディソナ',
+												'解放派',
+												'闘争派',
+												'防衛派'
 											],
 											datasets: [{
 												label: 'Story counter',
-												data: [sdeck_nostory, sdeck_dissona],
+												data: [sdeck_nostory, sdeck_dissona, sdeck_liberation, sdeck_struggle, sdeck_defense],
 												backgroundColor: [
 												  'rgb(192, 192, 192)',
-												  'rgb(138, 43, 226)'
+												  'rgb(138, 43, 226)',
+												  'rgb(255, 99, 132)',
+												  'rgb(50, 205, 50)',
+												  'rgb(255, 205, 86)'												  
 												],
 												hoverOffset: 4
 											}]
@@ -400,7 +469,10 @@
 									            legend: {
 									                display: true,
 									                labels: {
-									                    color: 'rgb(0, 0, 0)'
+									                    color: 'rgb(0, 0, 0)',
+									                    font: {
+									                        size: 10
+									                    }
 									                }
 									            }
 									        }
@@ -431,36 +503,48 @@
 							</td>
 						</tr>
 						<tr>
-							<td style="vertical-align:bottom">
-								Piece
+							<td style="vertical-align:bottom;vertical-align:text-top;">
+								<span style="user-select:text; cursor: text;">Piece</span><span style="user-select:text; cursor: text;margin-left: 122px;">Arts</span>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<img id="pdeck_0" width="105px" height="75px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,0 , pdeckArr)">
-								<img id="pdeck_1" width="105px" height="75px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,1 , pdeckArr)">
+								<img id="pdeck_0" width="105px" height="75px" style="margin-bottom: 30px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,0 , pdeckArr)">
+								<img id="adeck_0" width="75px" height="105px" style="margin-bottom: -28px; margin-left: 52px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,0 , adeckArr)">
+								<img id="adeck_1" width="75px" height="105px" style="margin-bottom: -28px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,1 , adeckArr)">
+								<img id="adeck_2" width="75px" height="105px" style="margin-bottom: -28px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,2 , adeckArr)">
+								<img id="adeck_3" width="75px" height="105px" style="margin-bottom: -28px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,3 , adeckArr)">
+								<img id="adeck_4" width="75px" height="105px" style="margin-bottom: -28px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,4 , adeckArr)">
+								<img id="adeck_5" width="75px" height="105px" style="margin-bottom: -28px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,5 , adeckArr)">
+								<img id="adeck_6" width="75px" height="105px" style="margin-bottom: -28px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,6 , adeckArr)">
+								<img id="adeck_7" width="75px" height="105px" style="margin-bottom: -28px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,7 , adeckArr)">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<img id="pdeck_1" width="105px" height="75px" style="margin-top: -33px;" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,1 , pdeckArr)">
 							</td>
 						</tr>
 					</table>
 				</td>		
 				<td style="vertical-align:text-top">
-					<button onclick="$('#cardinformation').css('visibility', 'hidden');dataInit()">Clear Deck</button>
-					<!-- <button style="float: right;" onclick="checkDeck();">Exam</button> -->
-					<button style="float: right;" onclick="set_sheet();">set</button>
-					<button style="float: right;" onclick="get_sheet();">get</button>
+					<button onclick="$('#cardinformation').css('visibility', 'hidden');cleardeck()">Clear Deck</button>
 					<button onclick="$('#cardinformation').css('visibility', 'hidden');customizeWindowEvent('view');">Deck View</button>
 					<button onclick="$('#cardinformation').css('visibility', 'hidden');customizeWindowEvent('list');">Card List</button>
-					<button style="float: right" onclick="showVersion();">About</button>
+					<button style="margin-left: 400px;" onclick="showVersion();">About</button>
+					<!-- <button onclick="checkDeck();">Exam</button> -->
 					<br><br><br>
-					<input type="checkbox" id="lrig" checked><span onclick="clickSpan(this)">ルリグ </span>&emsp;&emsp;<input type="checkbox" id="assistlrig" checked><span onclick="clickSpan(this)">アシストルリグ </span>&emsp;&emsp;<input type="checkbox" id="piece" checked><span onclick="clickSpan(this)">ピース </span>&emsp;&emsp;<input type="checkbox" id="signi" checked><span onclick="clickSpan(this)">シグニ </span>&emsp;&emsp;<input type="checkbox" id="spell" checked><span onclick="clickSpan(this)">スペル </span>
+					<input type="checkbox" id="lrig" checked><span  onclick="clickSpan(this)">ルリグ </span>&emsp;&emsp;<input type="checkbox" id="assistlrig" checked><span onclick="clickSpan(this)">アシストルリグ </span>&emsp;&emsp;<input type="checkbox" id="piece" checked><span onclick="clickSpan(this)">ピース </span>&emsp;&emsp;<input type="checkbox" id="arts" checked><span onclick="clickSpan(this)">アーツ </span>&emsp;&emsp;<input type="checkbox" id="signi" checked><span onclick="clickSpan(this)">シグニ </span>&emsp;&emsp;<input type="checkbox" id="spell" checked><span onclick="clickSpan(this)">スペル </span>
 					<br><br>
-					<input type="checkbox" id="level0" checked><span onclick="clickSpan(this)">Level 0 </span>&emsp;&emsp;<input type="checkbox" id="level1" checked><span onclick="clickSpan(this)">Level 1 </span>&emsp;&emsp;<input type="checkbox" id="level2" checked><span onclick="clickSpan(this)">Level 2 </span>&emsp;&emsp;<input type="checkbox" id="level3" checked><span onclick="clickSpan(this)">Level 3 </span>
+					<input type="checkbox" id="level0" checked><span onclick="clickSpan(this)">Level 0 </span>&emsp;&emsp;<input type="checkbox" id="level1" checked><span onclick="clickSpan(this)">Level 1 </span>&emsp;&emsp;<input type="checkbox" id="level2" checked><span onclick="clickSpan(this)">Level 2 </span>&emsp;&emsp;<input type="checkbox" id="level3" checked><span onclick="clickSpan(this)">Level 3 </span>&emsp;&emsp;<input type="checkbox" id="level4" checked><span onclick="clickSpan(this)">Level 4 </span>
 					<br><br>
-					<input type="checkbox" id="red" checked><span onclick="clickSpan(this)">赤 </span>&emsp;&emsp;<input type="checkbox" id="blue" checked><span onclick="clickSpan(this)">青 </span>&emsp;&emsp;<input type="checkbox" id="green" checked><span onclick="clickSpan(this)">緑 </span>&emsp;&emsp;<input type="checkbox" id="black" checked><span onclick="clickSpan(this)">黒 </span>&emsp;&emsp;<input type="checkbox" id="white" checked><span onclick="clickSpan(this)">白 </span>&emsp;&emsp;<input type="checkbox" id="nocolor" checked><span onclick="clickSpan(this)">無 </span>&emsp;&emsp;<input type="checkbox" id="multicolor"><span onclick="clickSpan(this)">多色 </span>
+					<input type="checkbox" id="white" checked><span onclick="clickSpan(this)">白 </span>&emsp;&emsp;<input type="checkbox" id="red" checked><span onclick="clickSpan(this)">赤 </span>&emsp;&emsp;<input type="checkbox" id="blue" checked><span onclick="clickSpan(this)">青 </span>&emsp;&emsp;<input type="checkbox" id="green" checked><span onclick="clickSpan(this)">緑 </span>&emsp;&emsp;<input type="checkbox" id="black" checked><span onclick="clickSpan(this)">黒 </span>&emsp;&emsp;<input type="checkbox" id="nocolor" checked><span onclick="clickSpan(this)">無 </span>&emsp;&emsp;<input type="checkbox" id="multicolor"><span onclick="clickSpan(this)">多色のみ </span>
+					<br><br>
+					<input type="checkbox" id="mainphase" checked><span onclick="clickSpan(this)">メインフェイズ </span>&emsp;&emsp;<input type="checkbox" id="attackphase" checked><span onclick="clickSpan(this)">アタックフェイズ </span>&emsp;&emsp;<input type="checkbox" id="spellcutin" checked><span onclick="clickSpan(this)">スペルカットイン </span>
 					<br><br>
 					<input type="checkbox" id="no_story" checked><span onclick="clickSpan(this)">無印 </span>&emsp;&emsp;<input type="checkbox" id="dissona" checked><span onclick="clickSpan(this)">ディソナ </span>
 					<br><br>
-					<input type="checkbox" id="islb" checked><span onclick="clickSpan(this)">LB有り </span>&emsp;&emsp;<input type="checkbox" id="notlb" checked><span onclick="clickSpan(this)">LB無し </span>
+					<input type="checkbox" id="islb" checked><span onclick="clickSpan(this)">LB有り </span>&emsp;&emsp;<input type="checkbox" id="notlb" checked><span onclick="clickSpan(this)">LB無し </span><input type="checkbox" style="margin-left: 31px;" id="dreamteam" checked><img onclick="clickSpan(this)" style="height:18px; border-style:none; cursor: pointer" src="img/icon_txt_team.png"></img><input type="checkbox" style="margin-left: 31px;" id="no_dreamteam" checked><img onclick="clickSpan(this)" style="height:18px; border-style:none; cursor: pointer" src="img/no_icon_txt_team.png"></img>
 					<br><br>
 					Type
 					<select id="selectType">
@@ -497,6 +581,12 @@
 						<option value="奏生：凶蟲">奏生：凶蟲</option>
 						<option value="奏生：怪異">奏生：怪異</option>
 						<option value="奏元">奏元</option>
+				    </select>
+				    <select id="selectFaction">
+						<option value="0">--All Faction--</option>
+						<option value="解放派">解放派</option>
+						<option value="闘争派">闘争派</option>
+						<option value="防衛派">防衛派</option>
 				    </select>
 				    &emsp;&emsp;
 				    LRIG
@@ -561,6 +651,13 @@
 						<option value="C&C">C&C</option>
 						<option value="対策委員会">対策委員会</option>
 						<option value="風紀委員会">風紀委員会</option>
+						<option value="アザエラ">アザエラ</option>
+						<option value="ガブリエラ">ガブリエラ</option>
+						<option value="ミカエラ">ミカエラ</option>
+						<option value="るう子">るう子</option>
+						<option value="あきら">あきら</option>
+						<option value="ひとえ">ひとえ</option>
+						<option value="ちより">ちより</option>
 				    </select>
 					<br><br>
 					キーワード検索 <input type="text" id="textsearch" size="51">
@@ -568,6 +665,17 @@
 					商品檢索
 					<select id="selectProduct">
 						<option value="0">--All Product--</option>
+						<option value="WX24-P4">[WX24-P4] 拡張パック「FORTH SELECTOR」</option>
+						<option value="WX24-P3">[WX24-P3] 拡張パック「REVERSAL SELECTOR」</option>
+						<option value="WX24-P2">[WX24-P2] 拡張パック「loth SELECTOR」</option>
+						<option value="WX24-P1">[WX24-P1] 拡張パック「RECOLLECT SELECTOR」</option>
+						<option value="WX24-D5">[WX24-D5] 構築済みデッキ「BLACK ALT DESIRE」</option>
+						<option value="WX24-D4">[WX24-D4] 構築済みデッキ「GREEN ALT WANNA」</option>
+						<option value="WX24-D3">[WX24-D3] 構築済みデッキ「BLUE ALT APPLI」</option>
+						<option value="WX24-D2">[WX24-D2] 構築済みデッキ「RED ALT AMBITION」</option>
+						<option value="WX24-D1">[WX24-D1] 構築済みデッキ「WHITE ALT HOPE」</option>
+						<option value="WXDi-P16">[WXDi-P16] 拡張パック「LEGENDARY DIVA」</option>
+						<option value="WXDi-P15">[WXDi-P15] 拡張パック「DIVISIONS DIVA」</option>
 						<option value="WXDi-CP02">[WXDi-CP02] 拡張パック「ブルーアーカイブ DIVA」</option>
 						<option value="WXDi-P14">[WXDi-P14] 拡張パック「フェゾーネ DIVA with 電音部」</option>
 						<option value="WXDi-P13">[WXDi-P13] 拡張パック「CONCORD DIVA」</option>
@@ -595,20 +703,17 @@
 						<option value="WXDi-D02">[WXDi-D02] 構築済みデッキ「DIVA DEBUT DECK にじさんじ ver.さんばか」</option>
 					    <option value="WXDi-D01">[WXDi-D01] 構築済みデッキ「ANCIENT SURPRISE」</option>
 					    <option value="PR-Di">PRカード</option>
+					    <option value="SPDi">SPカード</option>
 				   </select>
 				   <br><br>
 				   <button onclick="search();">Search</button>&emsp;&emsp;<button onclick="checkall();">Select All</button>&emsp;&emsp;<button onclick="uncheckall();">Clear All</button>
 				   <br><br>
-				   Total: <span id="totalCard" style="cursor: default;">0</span>
+				   Total: <span id="totalCard" style="cursor: default;margin-top: 0px;">0</span>
 				</td>
 			</tr>
 			<tr>
-			<!-- 	<td style="vertical-align:text-top" height="500px">
-					<table id="infoTable" width="360px" border="1" style="border: solid; border-width: 1px">
-					</table>
-				</td> -->
 				<td style="vertical-align:text-top">
-					<table>
+					<table oncontextmenu="return false;">
 						<tr>
 							<td>
 								SIGNI
@@ -616,64 +721,66 @@
 						</tr>
 						<tr>
 							<td>
-								<img id="sdeck_0" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,0 , sdeckArr)">
-								<img id="sdeck_1" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,1 , sdeckArr)">
-								<img id="sdeck_2" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,2 , sdeckArr)">
-								<img id="sdeck_3" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,3 , sdeckArr)">
-								<img id="sdeck_4" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,4 , sdeckArr)">
-								<img id="sdeck_5" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,5 , sdeckArr)">
-								<img id="sdeck_6" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,6 , sdeckArr)">
-								<img id="sdeck_7" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,7 , sdeckArr)">
-								<img id="sdeck_8" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,8 , sdeckArr)">
-								<img id="sdeck_9" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,9 , sdeckArr)">
+								<img id="sdeck_0" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,0 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_1" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,1 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_2" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,2 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_3" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,3 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_4" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,4 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_5" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,5 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_6" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,6 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_7" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,7 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_8" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,8 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_9" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,9 , sdeckArr)" oncontextmenu="addDeck(this)">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<img id="sdeck_10" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,10 , sdeckArr)">
-								<img id="sdeck_11" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,11 , sdeckArr)">
-								<img id="sdeck_12" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,12 , sdeckArr)">
-								<img id="sdeck_13" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,13 , sdeckArr)">
-								<img id="sdeck_14" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,14 , sdeckArr)">
-								<img id="sdeck_15" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,15 , sdeckArr)">
-								<img id="sdeck_16" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,16 , sdeckArr)">
-								<img id="sdeck_17" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,17 , sdeckArr)">
-								<img id="sdeck_18" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,18 , sdeckArr)">
-								<img id="sdeck_19" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,19 , sdeckArr)">
+								<img id="sdeck_10" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,10 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_11" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,11 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_12" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,12 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_13" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,13 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_14" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,14 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_15" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,15 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_16" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,16 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_17" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,17 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_18" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,18 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_19" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,19 , sdeckArr)" oncontextmenu="addDeck(this)">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<img id="sdeck_20" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,20 , sdeckArr)">
-								<img id="sdeck_21" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,21 , sdeckArr)">
-								<img id="sdeck_22" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,22 , sdeckArr)">
-								<img id="sdeck_23" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,23 , sdeckArr)">
-								<img id="sdeck_24" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,24 , sdeckArr)">
-								<img id="sdeck_25" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,25 , sdeckArr)">
-								<img id="sdeck_26" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,26 , sdeckArr)">
-								<img id="sdeck_27" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,27 , sdeckArr)">
-								<img id="sdeck_28" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,28 , sdeckArr)">
-								<img id="sdeck_29" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,29 , sdeckArr)">
+								<img id="sdeck_20" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,20 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_21" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,21 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_22" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,22 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_23" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,23 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_24" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,24 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_25" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,25 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_26" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,26 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_27" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,27 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_28" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,28 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_29" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,29 , sdeckArr)" oncontextmenu="addDeck(this)">
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<img id="sdeck_30" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,30 , sdeckArr)">
-								<img id="sdeck_31" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,31 , sdeckArr)">
-								<img id="sdeck_32" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,32 , sdeckArr)">
-								<img id="sdeck_33" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,33 , sdeckArr)">
-								<img id="sdeck_34" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,34 , sdeckArr)">
-								<img id="sdeck_35" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,35 , sdeckArr)">
-								<img id="sdeck_36" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,36 , sdeckArr)">
-								<img id="sdeck_37" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,37 , sdeckArr)">
-								<img id="sdeck_38" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,38 , sdeckArr)">
-								<img id="sdeck_39" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,39 , sdeckArr)">
+								<img id="sdeck_30" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,30 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_31" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,31 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_32" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,32 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_33" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,33 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_34" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,34 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_35" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,35 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_36" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,36 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_37" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,37 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_38" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,38 , sdeckArr)" oncontextmenu="addDeck(this)">
+								<img id="sdeck_39" width="75px" height="105px" src="img/empty.jpg" onmouseover="onmouseShow(this, 'deck');" onclick="delDeck(this,39 , sdeckArr)" oncontextmenu="addDeck(this)">
 								<br>
-								<span>官方網站: </span><a target="_blank" href="https://www.takaratomy.co.jp/products/wixoss/">WIXOSS-ウィクロス-｜タカラトミー</a>
-								<br>
-								<span>日文資料庫來源:</span><a target="_blank" href="http://wixoss.81.la/">WIXOSS TCG Wiki - トップページ</a>
-								<br>
-								<span>中文資料庫來源:</span><a target="_blank" href="https://wixossmacau.com/">WIXOSS MACAU – 你好。選擇者。</a>
+								<div style="margin-top: 10px;">
+									<span>官方網站: </span><a target="_blank" href="https://www.takaratomy.co.jp/products/wixoss/">WIXOSS-ウィクロス-｜タカラトミー</a>
+									<br>
+									<span>日文資料庫來源:</span><a target="_blank" href="http://wixoss.81.la/">WIXOSS TCG Wiki - トップページ</a>
+									<br>
+									<span>中文資料庫來源:</span><a target="_blank" href="https://wixossmacau.com/">WIXOSS MACAU – 你好。選擇者。</a>
+								</div>
 							</td>
 						</tr>
 					</table>
@@ -682,7 +789,7 @@
 					<table>
 						<tr>
 							<td >
-								Page: <span style="cursor: default;" id="page"></span>
+								Page: <span style="cursor: default;margin-top: 0px;" id="page"></span>
 							</td>
 						</tr>
 						<tr>
@@ -801,22 +908,22 @@
 										type: 'doughnut',
 										data: {
 									  		labels: [
+									  			'白',
 												'赤',
 												'青',
 												'緑',
 												'黒',
-												'白',
 												'無'
 											],
 											datasets: [{
 												label: 'Color Counter',
-												data: [sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_white, sdeck_nocolor],
+												data: [sdeck_white, sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_nocolor],
 												backgroundColor: [
+												  'rgb(255, 205, 86)',
 												  'rgb(255, 99, 132)',
 												  'rgb(54, 162, 235)',
 												  'rgb(50, 205, 50)',
 												  'rgb(138, 43, 226)',
-												  'rgb(255, 205, 86)',
 												  'rgb(192, 192, 192)'
 												],
 												hoverOffset: 4
@@ -880,92 +987,94 @@
 								<table>
 									<tr>
 										<td>
-											<img id="show_sdeck_0" width="240px" height="328px" style="border-width: 3px; margin-left: 15px;" src="img/empty.jpg">
-											<img id="show_sdeck_1" width="240px" height="328px" style="border-width: 3px;" src="img/empty.jpg">
-											<img id="show_sdeck_2" width="240px" height="328px" style="border-width: 3px;" src="img/empty.jpg">
-											<img id="show_sdeck_3" width="240px" height="328px" style="border-width: 3px;" src="img/empty.jpg">
-											<img id="show_sdeck_4" width="240px" height="328px" style="border-width: 3px;" src="img/empty.jpg">
+											<img id="show_sdeck_0" width="240px" height="328px" style="border-radius: 16px; border-width: 3px; margin-left: 15px;" src="img/empty.jpg">
+											<img id="show_sdeck_1" width="240px" height="328px" style="border-radius: 16px; border-width: 3px;" src="img/empty.jpg">
+											<img id="show_sdeck_2" width="240px" height="328px" style="border-radius: 16px; border-width: 3px;" src="img/empty.jpg">
+											<img id="show_sdeck_3" width="240px" height="328px" style="border-radius: 16px; border-width: 3px;" src="img/empty.jpg">
+											<img id="show_sdeck_4" width="240px" height="328px" style="border-radius: 16px; border-width: 3px;" src="img/empty.jpg">
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<img id="show_sdeck_5" width="240px" height="328px" style="position: absolute; z-index: 10; margin-top: -271px; border-width: 3px; margin-left: 15px;" src="img/empty.jpg">
-											<img id="show_sdeck_6" width="240px" height="328px" style="position: absolute; z-index: 10; margin-top: -271px; border-width: 3px; margin-left: 265px;" src="img/empty.jpg">
-											<img id="show_sdeck_7" width="240px" height="328px" style="position: absolute; z-index: 10; margin-top: -271px; border-width: 3px; margin-left: 516px;" src="img/empty.jpg">
-											<img id="show_sdeck_8" width="240px" height="328px" style="position: absolute; z-index: 10; margin-top: -271px; border-width: 3px; margin-left: 766px;" src="img/empty.jpg">
-											<img id="show_sdeck_9" width="240px" height="328px" style="position: absolute; z-index: 10; margin-top: -271px; border-width: 3px; margin-left: 1017px;" src="img/empty.jpg">
+											<img id="show_sdeck_5" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 10; margin-top: -271px; border-width: 3px; margin-left: 15px;" src="img/empty.jpg">
+											<img id="show_sdeck_6" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 10; margin-top: -271px; border-width: 3px; margin-left: 265px;" src="img/empty.jpg">
+											<img id="show_sdeck_7" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 10; margin-top: -271px; border-width: 3px; margin-left: 516px;" src="img/empty.jpg">
+											<img id="show_sdeck_8" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 10; margin-top: -271px; border-width: 3px; margin-left: 766px;" src="img/empty.jpg">
+											<img id="show_sdeck_9" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 10; margin-top: -271px; border-width: 3px; margin-left: 1017px;" src="img/empty.jpg">
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<img id="show_sdeck_10" width="240px" height="328px" style="position: absolute; z-index: 20; margin-top: -204px; border-width: 3px; margin-left: 15px;" src="img/empty.jpg">
-											<img id="show_sdeck_11" width="240px" height="328px" style="position: absolute; z-index: 20; margin-top: -204px; border-width: 3px; margin-left: 265px;" src="img/empty.jpg">
-											<img id="show_sdeck_12" width="240px" height="328px" style="position: absolute; z-index: 20; margin-top: -204px; border-width: 3px; margin-left: 516px;" src="img/empty.jpg">
-											<img id="show_sdeck_13" width="240px" height="328px" style="position: absolute; z-index: 20; margin-top: -204px; border-width: 3px; margin-left: 766px;" src="img/empty.jpg">
-											<img id="show_sdeck_14" width="240px" height="328px" style="position: absolute; z-index: 20; margin-top: -204px; border-width: 3px; margin-left: 1017px;" src="img/empty.jpg">
+											<img id="show_sdeck_10" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 20; margin-top: -204px; border-width: 3px; margin-left: 15px;" src="img/empty.jpg">
+											<img id="show_sdeck_11" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 20; margin-top: -204px; border-width: 3px; margin-left: 265px;" src="img/empty.jpg">
+											<img id="show_sdeck_12" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 20; margin-top: -204px; border-width: 3px; margin-left: 516px;" src="img/empty.jpg">
+											<img id="show_sdeck_13" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 20; margin-top: -204px; border-width: 3px; margin-left: 766px;" src="img/empty.jpg">
+											<img id="show_sdeck_14" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 20; margin-top: -204px; border-width: 3px; margin-left: 1017px;" src="img/empty.jpg">
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<img id="show_sdeck_15" width="240px" height="328px" style="position: absolute; z-index: 30; margin-top: -137px; border-width: 3px; margin-left: 15px;" src="img/empty.jpg">
-											<img id="show_sdeck_16" width="240px" height="328px" style="position: absolute; z-index: 30; margin-top: -137px; border-width: 3px; margin-left: 265px;" src="img/empty.jpg">
-											<img id="show_sdeck_17" width="240px" height="328px" style="position: absolute; z-index: 30; margin-top: -137px; border-width: 3px; margin-left: 516px;" src="img/empty.jpg">
-											<img id="show_sdeck_18" width="240px" height="328px" style="position: absolute; z-index: 30; margin-top: -137px; border-width: 3px; margin-left: 766px;" src="img/empty.jpg">
-											<img id="show_sdeck_19" width="240px" height="328px" style="position: absolute; z-index: 30; margin-top: -137px; border-width: 3px; margin-left: 1017px;" src="img/empty.jpg">
+											<img id="show_sdeck_15" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 30; margin-top: -137px; border-width: 3px; margin-left: 15px;" src="img/empty.jpg">
+											<img id="show_sdeck_16" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 30; margin-top: -137px; border-width: 3px; margin-left: 265px;" src="img/empty.jpg">
+											<img id="show_sdeck_17" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 30; margin-top: -137px; border-width: 3px; margin-left: 516px;" src="img/empty.jpg">
+											<img id="show_sdeck_18" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 30; margin-top: -137px; border-width: 3px; margin-left: 766px;" src="img/empty.jpg">
+											<img id="show_sdeck_19" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 30; margin-top: -137px; border-width: 3px; margin-left: 1017px;" src="img/empty.jpg">
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<img id="show_sdeck_20" width="240px" height="328px" style="position: absolute; z-index: 40; margin-top: -70px; border-width: 3px; margin-left: 15px;" src="img/empty.jpg">
-											<img id="show_sdeck_21" width="240px" height="328px" style="position: absolute; z-index: 40; margin-top: -70px; border-width: 3px; margin-left: 265px;" src="img/empty.jpg">
-											<img id="show_sdeck_22" width="240px" height="328px" style="position: absolute; z-index: 40; margin-top: -70px; border-width: 3px; margin-left: 516px;" src="img/empty.jpg">
-											<img id="show_sdeck_23" width="240px" height="328px" style="position: absolute; z-index: 40; margin-top: -70px; border-width: 3px; margin-left: 766px;" src="img/empty.jpg">
-											<img id="show_sdeck_24" width="240px" height="328px" style="position: absolute; z-index: 40; margin-top: -70px; border-width: 3px; margin-left: 1017px;" src="img/empty.jpg">
+											<img id="show_sdeck_20" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 40; margin-top: -70px; border-width: 3px; margin-left: 15px;" src="img/empty.jpg">
+											<img id="show_sdeck_21" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 40; margin-top: -70px; border-width: 3px; margin-left: 265px;" src="img/empty.jpg">
+											<img id="show_sdeck_22" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 40; margin-top: -70px; border-width: 3px; margin-left: 516px;" src="img/empty.jpg">
+											<img id="show_sdeck_23" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 40; margin-top: -70px; border-width: 3px; margin-left: 766px;" src="img/empty.jpg">
+											<img id="show_sdeck_24" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 40; margin-top: -70px; border-width: 3px; margin-left: 1017px;" src="img/empty.jpg">
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<img id="show_sdeck_25" width="240px" height="328px" style="position: absolute; z-index: 50; margin-top: -3px; border-width: 3px; margin-left: 15px;" src="img/empty.jpg">
-											<img id="show_sdeck_26" width="240px" height="328px" style="position: absolute; z-index: 50; margin-top: -3px; border-width: 3px; margin-left: 265px;" src="img/empty.jpg">
-											<img id="show_sdeck_27" width="240px" height="328px" style="position: absolute; z-index: 50; margin-top: -3px; border-width: 3px; margin-left: 516px;" src="img/empty.jpg">
-											<img id="show_sdeck_28" width="240px" height="328px" style="position: absolute; z-index: 50; margin-top: -3px; border-width: 3px; margin-left: 766px;" src="img/empty.jpg">
-											<img id="show_sdeck_29" width="240px" height="328px" style="position: absolute; z-index: 50; margin-top: -3px; border-width: 3px; margin-left: 1017px;" src="img/empty.jpg">
+											<img id="show_sdeck_25" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 50; margin-top: -3px; border-width: 3px; margin-left: 15px;" src="img/empty.jpg">
+											<img id="show_sdeck_26" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 50; margin-top: -3px; border-width: 3px; margin-left: 265px;" src="img/empty.jpg">
+											<img id="show_sdeck_27" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 50; margin-top: -3px; border-width: 3px; margin-left: 516px;" src="img/empty.jpg">
+											<img id="show_sdeck_28" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 50; margin-top: -3px; border-width: 3px; margin-left: 766px;" src="img/empty.jpg">
+											<img id="show_sdeck_29" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 50; margin-top: -3px; border-width: 3px; margin-left: 1017px;" src="img/empty.jpg">
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<img id="show_sdeck_30" width="240px" height="328px" style="position: absolute; z-index: 60; margin-top: 64px; border-width: 3px; margin-left: 15px;" src="img/empty.jpg">
-											<img id="show_sdeck_31" width="240px" height="328px" style="position: absolute; z-index: 60; margin-top: 64px; border-width: 3px; margin-left: 265px;" src="img/empty.jpg">
-											<img id="show_sdeck_32" width="240px" height="328px" style="position: absolute; z-index: 60; margin-top: 64px; border-width: 3px; margin-left: 516px;" src="img/empty.jpg">
-											<img id="show_sdeck_33" width="240px" height="328px" style="position: absolute; z-index: 60; margin-top: 64px; border-width: 3px; margin-left: 766px;" src="img/empty.jpg">
-											<img id="show_sdeck_34" width="240px" height="328px" style="position: absolute; z-index: 60; margin-top: 64px; border-width: 3px; margin-left: 1017px;" src="img/empty.jpg">
+											<img id="show_sdeck_30" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 60; margin-top: 64px; border-width: 3px; margin-left: 15px;" src="img/empty.jpg">
+											<img id="show_sdeck_31" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 60; margin-top: 64px; border-width: 3px; margin-left: 265px;" src="img/empty.jpg">
+											<img id="show_sdeck_32" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 60; margin-top: 64px; border-width: 3px; margin-left: 516px;" src="img/empty.jpg">
+											<img id="show_sdeck_33" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 60; margin-top: 64px; border-width: 3px; margin-left: 766px;" src="img/empty.jpg">
+											<img id="show_sdeck_34" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 60; margin-top: 64px; border-width: 3px; margin-left: 1017px;" src="img/empty.jpg">
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<img id="show_sdeck_35" width="240px" height="328px" style="position: absolute; z-index: 70; margin-top: 131px; border-width: 3px; margin-left: 15px;" src="img/empty.jpg">
-											<img id="show_sdeck_36" width="240px" height="328px" style="position: absolute; z-index: 70; margin-top: 131px; border-width: 3px; margin-left: 265px;" src="img/empty.jpg">
-											<img id="show_sdeck_37" width="240px" height="328px" style="position: absolute; z-index: 70; margin-top: 131px; border-width: 3px; margin-left: 516px;" src="img/empty.jpg">
-											<img id="show_sdeck_38" width="240px" height="328px" style="position: absolute; z-index: 70; margin-top: 131px; border-width: 3px; margin-left: 766px;" src="img/empty.jpg">
-											<img id="show_sdeck_39" width="240px" height="328px" style="position: absolute; z-index: 70; margin-top: 131px; border-width: 3px; margin-left: 1017px;" src="img/empty.jpg">
+											<img id="show_sdeck_35" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 70; margin-top: 131px; border-width: 3px; margin-left: 15px;" src="img/empty.jpg">
+											<img id="show_sdeck_36" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 70; margin-top: 131px; border-width: 3px; margin-left: 265px;" src="img/empty.jpg">
+											<img id="show_sdeck_37" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 70; margin-top: 131px; border-width: 3px; margin-left: 516px;" src="img/empty.jpg">
+											<img id="show_sdeck_38" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 70; margin-top: 131px; border-width: 3px; margin-left: 766px;" src="img/empty.jpg">
+											<img id="show_sdeck_39" width="240px" height="328px" style="border-radius: 16px; position: absolute; z-index: 70; margin-top: 131px; border-width: 3px; margin-left: 1017px;" src="img/empty.jpg">
 										</td>
 									</tr>
 								</table>
 							</td>
 						</tr>
 					</table>
-					<img id="show_ldeck_0" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: -170px;" src="img/empty.jpg">
-					<img id="show_ldeck_1" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: -170px; margin-left: 30px;" src="img/empty.jpg">
-					<img id="show_ldeck_2" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: -170px; margin-left: 60px;" src="img/empty.jpg">
-					<img id="show_ldeck_3" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: -170px; margin-left: 90px;" src="img/empty.jpg">
-					<img id="show_ldeck_4" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 121px;" src="img/empty.jpg">
-					<img id="show_ldeck_5" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 151px;" src="img/empty.jpg">
-					<img id="show_ldeck_6" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 181px;" src="img/empty.jpg">
-					<img id="show_ldeck_7" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 121px; margin-left: 308px;" src="img/empty.jpg">
-					<img id="show_ldeck_8" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 151px; margin-left: 308px;" src="img/empty.jpg">
-					<img id="show_ldeck_9" width="200px" height="274px" style="position: absolute; border-width: 3px; margin-top: 181px; margin-left: 308px;" src="img/empty.jpg">
-					<img id="show_pdeck_0" width="220px" height="160px" style="position: absolute; border-width: 3px; margin-top: -170px; margin-left: 308px; z-index: 10;" src="img/empty.jpg">
-					<img id="show_pdeck_1" width="220px" height="160px" style="position: absolute; border-width: 3px; margin-top: -57px; margin-left: 308px;" src="img/empty.jpg">
+					<img id="show_ldeck_0" width="200px" height="274px" style="border-radius: 16px; position: absolute; border-width: 3px; margin-top: -170px; margin-left: 30px;" src="img/empty.jpg">
+					<img id="show_ldeck_1" width="200px" height="274px" style="border-radius: 16px; position: absolute; border-width: 3px; margin-top: -135px; margin-left: 30px;" src="img/empty.jpg">
+					<img id="show_ldeck_2" width="200px" height="274px" style="border-radius: 16px; position: absolute; border-width: 3px; margin-top: -100px; margin-left: 30px;" src="img/empty.jpg">
+					<img id="show_ldeck_3" width="200px" height="274px" style="border-radius: 16px; position: absolute; border-width: 3px; margin-top: -65px; margin-left: 30px;" src="img/empty.jpg">
+					<img id="show_ldeck_4" width="200px" height="274px" style="border-radius: 16px; position: absolute; border-width: 3px; margin-top: -30px; margin-left: 30px;" src="img/empty.jpg">
+					<img id="show_ldeck_5" width="200px" height="274px" style="border-radius: 16px; position: absolute; border-width: 3px; margin-top: -170px; margin-left: 290px;" src="img/empty.jpg">
+					<img id="show_ldeck_6" width="200px" height="274px" style="border-radius: 16px; position: absolute; border-width: 3px; margin-top: -120px; margin-left: 290px;" src="img/empty.jpg">
+					<img id="show_ldeck_7" width="200px" height="274px" style="border-radius: 16px; position: absolute; border-width: 3px; margin-top: -70px; margin-left: 290px;" src="img/empty.jpg">
+					<img id="show_ldeck_8" width="200px" height="274px" style="border-radius: 16px; position: absolute; border-width: 3px; margin-top: -20px; margin-left: 290px;" src="img/empty.jpg">
+					<img id="show_ldeck_9" width="200px" height="274px" style="border-radius: 16px; position: absolute; border-width: 3px; margin-top: 30px; margin-left: 290px;" src="img/empty.jpg">
+					<img id="show_ldeck_10" width="200px" height="274px" style="border-radius: 16px; position: absolute; border-width: 3px; margin-top: 80px; margin-left: 290px;" src="img/empty.jpg">
+					<img id="show_ldeck_11" width="200px" height="274px" style="border-radius: 16px; position: absolute; border-width: 3px; margin-top: 130px; margin-left: 290px;" src="img/empty.jpg">
+					<img id="show_pdeck_0" width="220px" height="160px" style="border-radius: 16px; position: absolute; border-width: 3px; margin-top: 240px; margin-left: 20px; z-index: 10;" src="img/empty.jpg">
+					<img id="show_pdeck_1" width="220px" height="160px" style="border-radius: 16px; position: absolute; border-width: 3px; margin-top: 295px; margin-left: 20px;" src="img/empty.jpg">
                 </div>
             </div>
         </div>
