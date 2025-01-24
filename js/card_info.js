@@ -48861,7 +48861,7 @@ var cardData = [
 	[
 		"WX24-P4-014", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX24/WX24-P4-014.jpg", //SRC
-		"ルリグ", //NAME
+		"閃華繚乱 花代・肆", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"花代", //CLASS
