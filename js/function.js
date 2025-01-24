@@ -4237,8 +4237,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20241224 v1.76\n";
-	str += "1.新增SPDi01-122、 SPDi01-123\n";
+	str += "20241224 v1.77\n";
+	str += "1.新增WX24-P4\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-P00 ~ WX24-P3\n";
