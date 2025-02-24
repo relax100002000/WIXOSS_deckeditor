@@ -1,6 +1,9 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
+
+20250224 v1.78  
+1.新增comment功能  
   
 20241224 v1.77  
 1.新增WX24-P4  

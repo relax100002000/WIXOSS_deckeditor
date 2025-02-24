@@ -1,4 +1,25 @@
 var ARTS_MAX_SIZE = 8;
+function autoResize() {
+	this.style.height = '12px';
+	this.style.height = this.scrollHeight + 'px';
+}
+
+function setComment(id) {
+	if($("#comment").val() != '')
+	{
+		localStorage.setItem(id + "_comment", $("#comment").val());
+	}
+	else
+	{
+		localStorage.removeItem(id + "_comment");
+	}
+}
+
+function commentEvent() {
+	const textarea = document.getElementById('comment');
+	textarea.addEventListener('input', autoResize);
+	autoResize.call(textarea);
+}
 
 function onLoading()
 {
@@ -884,7 +905,22 @@ function showInfotable(data)
 		str += "</tr>";
 	}
 
+	var commetStr = localStorage.getItem(data[ID] + "_comment");
+
+	if(commetStr == null)
+	{
+		commetStr = "";
+	}
+
+	str += "<tr>";
+	str += "	<td colspan=\"2\">";
+	str += "		<textarea id=\"comment\" style=\"vertical-align: middle; overflow:hidden; resize:none; width:285px\">" + commetStr + "</textarea>";
+	str += "		<button style=\"vertical-align: middle;border-radius: 0px;height: 30px\" onclick=\"setComment('" + data[ID] + "');\">更新</button>";
+	str += "	</td>";
+	str += "</tr>";
+
 	$("#infoTable").html(str);
+	commentEvent();
 }
 
 function showTiming(x)
@@ -4026,6 +4062,15 @@ function addDecklist()
 		return;
 	}
 
+	for(i = 0; i < cardData.length; i++)
+	{
+		if($("#deckTitle").val() == cardData[i][ID] + "_comment")
+		{
+			alert("Invalid deck title.");
+			return;
+		}
+	}
+
   	for(i = 0; i < deckNamelist.length; i++)
   	{
   		if(deckNamelist[i] == $("#deckTitle").val())
@@ -4213,20 +4258,48 @@ function resetDefault()
 {
 	var ret = 0;
 	var i = 0;
+	
+	deckNamelist = JSON.parse(localStorage.getItem("DeckNameList"));
+	
+	if(deckNamelist == null)
+	{
+		deckNamelist = [];
+	}
 
-	ret = confirm("It will clean all localStorage and delete all custom deck. Are you sure?");
+	ret = confirm("It will delete all custom deck. Are you sure?");
 	if(!ret)
 	{
 		return;
 	}
 	else
 	{
-		for(i = 0; i < deckNamelist.length; i ++)
+		for(i = 0; i < deckNamelist.length; i++)
 		{
 			localStorage.removeItem(deckNamelist[i]);
 		}
+
 		localStorage.removeItem("DeckNameList");
-		onloaddeck();
+		
+		location.reload();
+	}
+}
+
+function resetComment()
+{
+	var ret = 0;
+	var i = 0;
+	
+	ret = confirm("It will delete all custom comment. Are you sure?");
+	if(!ret)
+	{
+		return;
+	}
+	else
+	{
+		for(i = 0; i < cardData.length; i++)
+		{
+			localStorage.removeItem(cardData[i][ID] + "_comment");
+		}
 	}
 }
 
@@ -4237,8 +4310,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20241224 v1.77\n";
-	str += "1.新增WX24-P4\n";
+	str += "20250224 v1.78\n";
+	str += "1.新增comment功能\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-P00 ~ WX24-P3\n";
