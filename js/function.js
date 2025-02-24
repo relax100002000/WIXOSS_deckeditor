@@ -7,11 +7,11 @@ function autoResize() {
 function setComment(id) {
 	if($("#comment").val() != '')
 	{
-		localStorage.setItem(id + "_comment", $("#comment").val());
+		localStorage.setItem(id + "_WXcomment", $("#comment").val());
 	}
 	else
 	{
-		localStorage.removeItem(id + "_comment");
+		localStorage.removeItem(id + "_WXcomment");
 	}
 }
 
@@ -905,7 +905,7 @@ function showInfotable(data)
 		str += "</tr>";
 	}
 
-	var commetStr = localStorage.getItem(data[ID] + "_comment");
+	var commetStr = localStorage.getItem(data[ID] + "_WXcomment");
 
 	if(commetStr == null)
 	{
@@ -4064,7 +4064,7 @@ function addDecklist()
 
 	for(i = 0; i < cardData.length; i++)
 	{
-		if($("#deckTitle").val() == cardData[i][ID] + "_comment")
+		if($("#deckTitle").val() == cardData[i][ID] + "_WXcomment")
 		{
 			alert("Invalid deck title.");
 			return;
@@ -4298,7 +4298,7 @@ function resetComment()
 	{
 		for(i = 0; i < cardData.length; i++)
 		{
-			localStorage.removeItem(cardData[i][ID] + "_comment");
+			localStorage.removeItem(cardData[i][ID] + "_WXcomment");
 		}
 	}
 }
