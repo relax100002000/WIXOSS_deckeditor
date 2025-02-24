@@ -4055,20 +4055,20 @@ function copyClipboard()
 function addDecklist()
 {
 	var i = 0, ret = 0;
+	var title_val = $("#deckTitle").val();
 
-	if($("#deckTitle").val() == 0)
+	if(title_val == 0)
 	{
-		alert("Do not set 0 as title.");
+		alert("Do not set empty string as title.");
 		return;
 	}
 
-	for(i = 0; i < cardData.length; i++)
+	if( title_val.indexOf("_HOLOcomment") != -1 || 
+			title_val.indexOf("_WXcomment") != -1
+		)
 	{
-		if($("#deckTitle").val() == cardData[i][ID] + "_WXcomment")
-		{
-			alert("Invalid deck title.");
-			return;
-		}
+		alert("Invalid deck title.");
+		return;
 	}
 
   	for(i = 0; i < deckNamelist.length; i++)
