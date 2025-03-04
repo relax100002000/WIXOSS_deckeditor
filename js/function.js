@@ -1512,30 +1512,30 @@ function updatechart()
 		levelobj.data.datasets[0].data = [sdeck_l1, sdeck_l2, sdeck_l3, sdeck_spell];
 		levelobj.update();
 
-		$("#show_leveldiv").show();
-		show_levelobj.data.labels = ['L1: ' + sdeck_l1, 'L2: ' + sdeck_l2, 'L3: ' + sdeck_l3, 'spell: ' + sdeck_spell];
-		show_levelobj.data.datasets[0].data = [sdeck_l1, sdeck_l2, sdeck_l3, sdeck_spell];
-		show_levelobj.update();
+		// $("#show_leveldiv").show();
+		// show_levelobj.data.labels = ['L1: ' + sdeck_l1, 'L2: ' + sdeck_l2, 'L3: ' + sdeck_l3, 'spell: ' + sdeck_spell];
+		// show_levelobj.data.datasets[0].data = [sdeck_l1, sdeck_l2, sdeck_l3, sdeck_spell];
+		// show_levelobj.update();
 
 		$("#colordiv").show();
 		colorobj.data.labels = ['白: ' + sdeck_white, '赤: ' + sdeck_red, '青: ' + sdeck_blue, '緑: ' + sdeck_green, '黒: ' + sdeck_black, '無: ' + sdeck_nocolor];
 		colorobj.data.datasets[0].data = [sdeck_white, sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_nocolor];
 		colorobj.update();
 
-		$("#show_colordiv").show();
-		show_colorobj.data.labels = ['白: ' + sdeck_white, '赤: ' + sdeck_red, '青: ' + sdeck_blue, '緑: ' + sdeck_green, '黒: ' + sdeck_black, '無: ' + sdeck_nocolor];
-		show_colorobj.data.datasets[0].data = [sdeck_white, sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_nocolor];
-		show_colorobj.update();
+		// $("#show_colordiv").show();
+		// show_colorobj.data.labels = ['白: ' + sdeck_white, '赤: ' + sdeck_red, '青: ' + sdeck_blue, '緑: ' + sdeck_green, '黒: ' + sdeck_black, '無: ' + sdeck_nocolor];
+		// show_colorobj.data.datasets[0].data = [sdeck_white, sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_nocolor];
+		// show_colorobj.update();
 
 		$("#lbdiv").show();
 		lbobj.data.labels = ['LB有り: ' + sdeck_burst, 'LB無し: ' + sdeck_no_burst];
 		lbobj.data.datasets[0].data = [sdeck_burst, sdeck_no_burst];
 		lbobj.update();
 
-		$("#show_lbdiv").show();
-		show_lbobj.data.labels = ['LB有り: ' + sdeck_burst, 'LB無し: ' + sdeck_no_burst];
-		show_lbobj.data.datasets[0].data = [sdeck_burst, sdeck_no_burst];
-		show_lbobj.update();
+		// $("#show_lbdiv").show();
+		// show_lbobj.data.labels = ['LB有り: ' + sdeck_burst, 'LB無し: ' + sdeck_no_burst];
+		// show_lbobj.data.datasets[0].data = [sdeck_burst, sdeck_no_burst];
+		// show_lbobj.update();
 
 		$("#storydiv").show();
 		storyobj.data.labels = ['無印: ' + sdeck_nostory, 'ディソナ: ' + sdeck_dissona, '解放派: ' + sdeck_liberation, '闘争派: ' + sdeck_struggle, '防衛派: ' + sdeck_defense];
@@ -4136,7 +4136,7 @@ function rearrange_ldeck()
 	var lv0count = 0;
 	var lv1count = 0;
 
-	for(i = 0; i < 12; i++)
+	for(i = 0; i < 10; i++)
 	{
 		$("#show_ldeck_" + parseInt(i)).hide();
 	}
@@ -4207,49 +4207,65 @@ function rearrange_ldeck()
 		}
 	}
 
-	for(i = 0; i < L1count; i++)
+	for(i = 0; i < ldeckArr.length + adeckArr.length; i++)
 	{
-		$("#show_ldeck_" + i).attr("src", ldeckArr[i][SRC]);
+		if(ldeckArr.length > i)
+		{
+			$("#show_ldeck_" + parseInt(i)).attr("src", ldeckArr[i][SRC]);
+		}
+		else
+		{
+			$("#show_ldeck_" + parseInt(i)).attr("src", adeckArr[i - ldeckArr.length][SRC]);
+		}
+
 		show_src_rotate("#show_ldeck_" + i);
-		$("#show_ldeck_" + i).show();
+		$("#show_ldeck_" + parseInt(i)).show();
 	}
 
-	if(L2count == 0 && L3count == 0 && L4count == 0)
-	{
-		for(i = 0; i < adeckArr.length; i++)		
-		{
-			$("#show_ldeck_" + parseInt(i + 5)).attr("src", adeckArr[i][SRC]);
-			show_src_rotate("#show_ldeck_" + parseInt(i + 5));
-			$("#show_ldeck_" + parseInt(i + 5)).show();
-		}
-	}
-	else
-	{
-		for(i = 0; i < L2count; i++)
-		{
-			$("#show_ldeck_" + parseInt(i + 5)).attr("src", ldeckArr[i + L1count][SRC]);
-			$("#show_ldeck_" + parseInt(i + 5)).show();
-		}
 
-		for(i = 0; i < L3count; i++)
-		{
-			$("#show_ldeck_" + parseInt(i + 5 + L2count)).attr("src", ldeckArr[i + L1count + L2count][SRC]);
-			$("#show_ldeck_" + parseInt(i + 5 + L2count)).show();
-		}
+	// for(i = 0; i < L1count; i++)
+	// {
+	// 	$("#show_ldeck_" + i).attr("src", ldeckArr[i][SRC]);
+	// 	show_src_rotate("#show_ldeck_" + i);
+	// 	$("#show_ldeck_" + i).show();
+	// }
 
-		for(i = 0; i < L4count; i++)
-		{
-			$("#show_ldeck_" + parseInt(i + 5 + L2count + L3count)).attr("src", ldeckArr[i + L1count + L2count + L3count][SRC]);
-			$("#show_ldeck_" + parseInt(i + 5 + L2count + L3count)).show();
-		}
+	// if(L2count == 0 && L3count == 0 && L4count == 0)
+	// {
+	// 	for(i = 0; i < adeckArr.length; i++)		
+	// 	{
+	// 		$("#show_ldeck_" + parseInt(i + 5)).attr("src", adeckArr[i][SRC]);
+	// 		show_src_rotate("#show_ldeck_" + parseInt(i + 5));
+	// 		$("#show_ldeck_" + parseInt(i + 5)).show();
+	// 	}
+	// }
+	// else
+	// {
+	// 	for(i = 0; i < L2count; i++)
+	// 	{
+	// 		$("#show_ldeck_" + parseInt(i + 5)).attr("src", ldeckArr[i + L1count][SRC]);
+	// 		$("#show_ldeck_" + parseInt(i + 5)).show();
+	// 	}
 
-		for(i = 0; i < adeckArr.length; i++)
-		{
-			$("#show_ldeck_" + parseInt(i + 5 + L2count + L3count + L4count)).attr("src", adeckArr[i][SRC]);
-			show_src_rotate("#show_ldeck_" + parseInt(i + 5 + L2count + L3count + L4count));
-			$("#show_ldeck_" + parseInt(i + 5 + L2count + L3count + L4count)).show();
-		}
-	}
+	// 	for(i = 0; i < L3count; i++)
+	// 	{
+	// 		$("#show_ldeck_" + parseInt(i + 5 + L2count)).attr("src", ldeckArr[i + L1count + L2count][SRC]);
+	// 		$("#show_ldeck_" + parseInt(i + 5 + L2count)).show();
+	// 	}
+
+	// 	for(i = 0; i < L4count; i++)
+	// 	{
+	// 		$("#show_ldeck_" + parseInt(i + 5 + L2count + L3count)).attr("src", ldeckArr[i + L1count + L2count + L3count][SRC]);
+	// 		$("#show_ldeck_" + parseInt(i + 5 + L2count + L3count)).show();
+	// 	}
+
+	// 	for(i = 0; i < adeckArr.length; i++)
+	// 	{
+	// 		$("#show_ldeck_" + parseInt(i + 5 + L2count + L3count + L4count)).attr("src", adeckArr[i][SRC]);
+	// 		show_src_rotate("#show_ldeck_" + parseInt(i + 5 + L2count + L3count + L4count));
+	// 		$("#show_ldeck_" + parseInt(i + 5 + L2count + L3count + L4count)).show();
+	// 	}
+	// }
 
 	return true;
 }
@@ -4310,8 +4326,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20250224 v1.78\n";
-	str += "1.新增comment功能\n";
+	str += "20250304 v1.79\n";
+	str += "1.調整Deck View\n";
 	str += "\n";
 	str += "目前收錄:\n";
 	str += "WXDi-P00 ~ WX24-P3\n";
