@@ -2743,10 +2743,10 @@ function str_to_img(x)
 	x = x.replace(/◎/g, "<img class='icon_img' src='img/icon_txt_coin.png'></img>");
 	x = x.replace(/《コインアイコン》/g, "<img class='icon_img' src='img/icon_txt_coin.png'></img>");
 	x = x.replace(/【絆】/g, "<img class='icon_img' src='img/icon_txt_kizuna.png'></img>");
-	x = x.replace(/【絆起】/g, "<img class='icon_img' src='img/icon_txt_starting_kizuna.png'></img>");
-	x = x.replace(/【絆出】/g, "<img class='icon_img' src='img/icon_txt_arrival_kizuna.png'></img>");
-	x = x.replace(/【絆自】/g, "<img class='icon_img' src='img/icon_txt_auto_kizuna.png'></img>");
-	x = x.replace(/【絆常】/g, "<img class='icon_img' src='img/icon_txt_regular_kizuna.png'></img>");
+	x = x.replace(/【絆起】/g, "<\/td><\/tr><tr\  style=\'background:#FFD9E6\'><td\ colspan=\'2\'><img class='icon_img' src='img/icon_txt_starting_kizuna.png'></img>");
+	x = x.replace(/【絆出】/g, "<\/td><\/tr><tr\  style=\'background:#FFD9E6\'><td\ colspan=\'2\'><img class='icon_img' src='img/icon_txt_arrival_kizuna.png'></img>");
+	x = x.replace(/【絆自】/g, "<\/td><\/tr><tr\  style=\'background:#FFD9E6\'><td\ colspan=\'2\'><img class='icon_img' src='img/icon_txt_auto_kizuna.png'></img>");
+	x = x.replace(/【絆常】/g, "<\/td><\/tr><tr\  style=\'background:#FFD9E6\'><td\ colspan=\'2\'><img class='icon_img' src='img/icon_txt_regular_kizuna.png'></img>");
 	x = x.replace(/【  】/g, "<img class='icon_img' src='img/icon_txt_frame_null.png'></img>");
 	x = x.replace(/《リコレクトアイコン》/g, "<img class='icon_img' src='img/icon_txt_recollect.png'></img>");
 	x = x.replace(/《相手ターン》/g, "<img class='icon_img' src='img/icon_txt_opponent_turn.png'></img>");
