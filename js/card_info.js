@@ -51801,7 +51801,7 @@ var cardData = [
 	[
 		"WX25-CP1-034", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX25/WX25-CP1-034.jpg", //SRC
-		"ふたりの還る場所LC", //NAME
+		"ふたりの還る場所", //NAME
 		"LC", //RARE
 		"アーツ", //TYPE
 		"", //CLASS
