@@ -2,6 +2,9 @@
    
 Author: ZZZ  
 
+20250418 v1.80  
+1.新增WX25-CD1、 WX25-CP1  
+
 20250304 v1.79  
 1.調整Deck View  
   

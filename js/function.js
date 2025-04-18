@@ -50,6 +50,11 @@ function onloaddeck()
 	if(deckNamelist == null)
 	{
 		deckNamelist = [];
+
+		deckNamelist.push("ブルーアーカイブ");
+		localStorage.setItem("DeckNameList", deckNamelist);
+		localStorage.setItem("ブルーアーカイブ", "ldeck,WX25-CD1-01,WX25-CD1-02,WX25-CD1-03,WX25-CD1-04\npdeck\nadeck,WX25-CD1-05,WX25-CD1-06,WX25-CD1-07,WX25-CD1-08,WX25-CD1-09,WX25-CD1-10\nsdeck,WX25-CD1-22,WX25-CD1-22,WX25-CD1-22,WX25-CD1-22,WX25-CD1-11,WX25-CD1-11,WX25-CD1-11,WX25-CD1-12,WX25-CD1-12,WX25-CD1-12,WX25-CD1-12,WX25-CD1-13,WX25-CD1-13,WX25-CD1-13,WX25-CD1-13,WX25-CD1-16,WX25-CD1-16,WX25-CD1-16,WX25-CD1-14,WX25-CD1-14,WX25-CD1-14,WX25-CD1-14,WX25-CD1-15,WX25-CD1-15,WX25-CD1-15,WX25-CD1-15,WX25-CD1-17,WX25-CD1-17,WX25-CD1-17,WX25-CD1-17,WX25-CD1-20,WX25-CD1-20,WX25-CD1-20,WX25-CD1-20,WX25-CD1-18,WX25-CD1-18,WX25-CD1-19,WX25-CD1-19,WX25-CD1-21,WX25-CD1-21");
+
 		deckNamelist.push("BLACK ALT DESIRE");
 		localStorage.setItem("DeckNameList", deckNamelist);
 		localStorage.setItem("BLACK ALT DESIRE", "ldeck,WX24-D5-01,WX24-D5-02,WX24-D5-03,WX24-D5-04\npdeck\nadeck,WX24-D5-05,WX24-D5-06,WX24-D5-07,WX24-D5-08,WX24-D5-09,WX24-D5-10\nsdeck,WX24-D5-26,WX24-D5-26,WX24-D5-26,WX24-D5-26,WX24-D5-14,WX24-D5-14,WX24-D5-14,WX24-D5-11,WX24-D5-11,WX24-D5-11,WX24-D5-11,WX24-D5-12,WX24-D5-12,WX24-D5-13,WX24-D5-17,WX24-D5-17,WX24-D5-18,WX24-D5-18,WX24-D5-15,WX24-D5-15,WX24-D5-15,WX24-D5-15,WX24-D5-16,WX24-D5-16,WX24-D5-20,WX24-D5-20,WX24-D5-20,WX24-D5-20,WX24-D5-22,WX24-D5-19,WX24-D5-19,WX24-D5-19,WX24-D5-19,WX24-D5-21,WX24-D5-23,WX24-D5-24,WX24-D5-25,WX24-D5-25,WX24-D5-25,WX24-D5-25");
@@ -110,6 +115,7 @@ function onloaddeck()
 		deckNamelist.push("ANCIENT SURPRISE");
 		localStorage.setItem("DeckNameList", deckNamelist);
 		localStorage.setItem("ANCIENT SURPRISE", "ldeck,WXDi-D01-001,WXDi-D01-002,WXDi-D01-003,WXDi-D01-004,WXDi-D01-005,WXDi-D01-006,WXDi-D01-007,WXDi-D01-008,WXDi-D01-009,WXDi-D01-010\npdeck,WXDi-D01-011\nadeck\nsdeck,WXDi-D01-020,WXDi-D01-020,WXDi-D01-020,WXDi-D01-020,WXDi-D01-018,WXDi-D01-018,WXDi-D01-018,WXDi-D01-018,WXDi-D01-012,WXDi-D01-012,WXDi-D01-012,WXDi-D01-012,WXDi-D01-019,WXDi-D01-019,WXDi-D01-019,WXDi-D01-019,WXDi-D01-013,WXDi-D01-013,WXDi-D01-013,WXDi-D01-013,WXDi-D01-014,WXDi-D01-014,WXDi-D01-014,WXDi-D01-014,WXDi-D01-015,WXDi-D01-015,WXDi-D01-015,WXDi-D01-015,WXDi-D01-016,WXDi-D01-016,WXDi-D01-016,WXDi-D01-016,WXDi-D01-017,WXDi-D01-017,WXDi-D01-017,WXDi-D01-017,WXDi-D01-021,WXDi-D01-021,WXDi-D01-021,WXDi-D01-021");
+
 	}
 
 	for(i = 0; i < deckNamelist.length; i ++)
@@ -144,7 +150,38 @@ function showrdeck()
 			$("#rdeck_" + i).attr("src", rdeckArr[page * 10 + i][SRC]);
 			$("#rdeck_" + i).attr("alt", rdeckArr[page * 10 + i][ID]);
 
-			if(rdeckArr[page * 10 + i][TYPE] == "ピース" || rdeckArr[page * 10 + i][TYPE] == "ピース リレー" || rdeckArr[page * 10 + i][TYPE] == "ピース クラフト" || rdeckArr[page * 10 + i][ID] == "PR-Di035")
+			if(rdeckArr[page * 10 + i][TYPE] == "ピース" || 
+				rdeckArr[page * 10 + i][TYPE] == "ピース リレー" || 
+				rdeckArr[page * 10 + i][TYPE] == "ピース クラフト" || 
+				rdeckArr[page * 10 + i][ID] == "PR-Di035" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CD1-05" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CD1-06" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CD1-07" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CD1-08" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CD1-09" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CD1-10" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-001" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-002" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-003" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-004" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-005" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-006" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-007" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-008" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-025" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-026" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-027" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-028" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-029" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-030" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-031" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-032" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-033" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-034" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-035" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-036" ||
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-037"
+				)
 			{
 				$("#rdeck_" + i).attr("height", "90px");
 				$("#rdeck_" + i).attr("width", "124px");
@@ -233,7 +270,37 @@ function onmouseShow(x, source)
 		$("#big_pic").attr("src", cardData[i][SRC]);
 		$("#big_pic").attr("alt", cardData[i][ID]);
 
-		if(cardData[i][TYPE] == "ピース" || cardData[i][TYPE] == "ピース リレー" || cardData[i][TYPE] == "ピース クラフト" || cardData[i][ID] == "PR-Di035")
+		if(cardData[i][TYPE] == "ピース" ||
+			cardData[i][TYPE] == "ピース リレー" ||
+			cardData[i][TYPE] == "ピース クラフト" ||
+			cardData[i][ID] == "PR-Di035" ||
+			cardData[i][ID] == "WX25-CD1-05" ||
+			cardData[i][ID] == "WX25-CD1-06" ||
+			cardData[i][ID] == "WX25-CD1-07" ||
+			cardData[i][ID] == "WX25-CD1-08" ||
+			cardData[i][ID] == "WX25-CD1-09" ||
+			cardData[i][ID] == "WX25-CD1-10" ||
+			cardData[i][ID] == "WX25-CP1-001" ||
+			cardData[i][ID] == "WX25-CP1-002" ||
+			cardData[i][ID] == "WX25-CP1-003" ||
+			cardData[i][ID] == "WX25-CP1-004" ||
+			cardData[i][ID] == "WX25-CP1-005" ||
+			cardData[i][ID] == "WX25-CP1-006" ||
+			cardData[i][ID] == "WX25-CP1-007" ||
+			cardData[i][ID] == "WX25-CP1-008" ||
+			cardData[i][ID] == "WX25-CP1-025" ||
+			cardData[i][ID] == "WX25-CP1-026" ||
+			cardData[i][ID] == "WX25-CP1-027" ||
+			cardData[i][ID] == "WX25-CP1-028" ||
+			cardData[i][ID] == "WX25-CP1-029" ||
+			cardData[i][ID] == "WX25-CP1-030" ||
+			cardData[i][ID] == "WX25-CP1-031" ||
+			cardData[i][ID] == "WX25-CP1-032" ||
+			cardData[i][ID] == "WX25-CP1-033" ||
+			cardData[i][ID] == "WX25-CP1-034" ||
+			cardData[i][ID] == "WX25-CP1-035" ||
+			cardData[i][ID] == "WX25-CP1-036" ||
+			cardData[i][ID] == "WX25-CP1-037")
 		{
 			$("#big_pic").attr("height", "252px");
 			$("#big_pic").attr("width", "360px");
@@ -1011,9 +1078,37 @@ function showAdeck()
 	{
 		if(i < adeckArr.length)
 		{
-			if(adeckArr[i][ID] == "PR-Di035")
+			if(adeckArr[i][ID] == "PR-Di035" ||
+				adeckArr[i][ID] == "WX25-CD1-05" ||
+				adeckArr[i][ID] == "WX25-CD1-06" ||
+				adeckArr[i][ID] == "WX25-CD1-07" ||
+				adeckArr[i][ID] == "WX25-CD1-08" ||
+				adeckArr[i][ID] == "WX25-CD1-09" ||
+				adeckArr[i][ID] == "WX25-CD1-10" ||
+				adeckArr[i][ID] == "WX25-CP1-001" ||
+				adeckArr[i][ID] == "WX25-CP1-002" ||
+				adeckArr[i][ID] == "WX25-CP1-003" ||
+				adeckArr[i][ID] == "WX25-CP1-004" ||
+				adeckArr[i][ID] == "WX25-CP1-005" ||
+				adeckArr[i][ID] == "WX25-CP1-006" ||
+				adeckArr[i][ID] == "WX25-CP1-007" ||
+				adeckArr[i][ID] == "WX25-CP1-008" ||
+				adeckArr[i][ID] == "WX25-CP1-025" ||
+				adeckArr[i][ID] == "WX25-CP1-026" ||
+				adeckArr[i][ID] == "WX25-CP1-027" ||
+				adeckArr[i][ID] == "WX25-CP1-028" ||
+				adeckArr[i][ID] == "WX25-CP1-029" ||
+				adeckArr[i][ID] == "WX25-CP1-030" ||
+				adeckArr[i][ID] == "WX25-CP1-031" ||
+				adeckArr[i][ID] == "WX25-CP1-032" ||
+				adeckArr[i][ID] == "WX25-CP1-033" ||
+				adeckArr[i][ID] == "WX25-CP1-034" ||
+				adeckArr[i][ID] == "WX25-CP1-035" ||
+				adeckArr[i][ID] == "WX25-CP1-036" ||
+				adeckArr[i][ID] == "WX25-CP1-037"
+			)
 			{
-				$("#adeck_" + i).attr("src", "img/PR-Di035_rotate.jpg");
+				$("#adeck_" + i).attr("src", "img/" + adeckArr[i][ID] + "_rotate.jpg");
 			}
 			else
 			{
@@ -4120,11 +4215,15 @@ function updateDecklist(select)
 	$("#selectDeck").html(str);
 }
 
-function show_src_rotate(x)
+function show_src_rotate(x, id)
 {
 	if($(x).attr("src") == "https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di035.jpg")
 	{
 		$(x).attr("src", "img/PR-Di035_rotate.jpg");
+	}
+	else if($(x).attr("src") == "https://www.takaratomy.co.jp/products/wixoss/img/card/WX25/" + id + ".jpg")
+	{
+		$(x).attr("src", "img/" + id + "_rotate.jpg");
 	}
 }
 
@@ -4216,9 +4315,9 @@ function rearrange_ldeck()
 		else
 		{
 			$("#show_ldeck_" + parseInt(i)).attr("src", adeckArr[i - ldeckArr.length][SRC]);
+			show_src_rotate("#show_ldeck_" + parseInt(i), adeckArr[i - ldeckArr.length][ID]);
 		}
 
-		show_src_rotate("#show_ldeck_" + i);
 		$("#show_ldeck_" + parseInt(i)).show();
 	}
 
@@ -4322,19 +4421,12 @@ function resetComment()
 function showVersion()
 {
 	var str = "";
-  
+
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20250304 v1.79\n";
-	str += "1.調整Deck View\n";
-	str += "\n";
-	str += "目前收錄:\n";
-	str += "WXDi-P00 ~ WX24-P3\n";
-	str += "WXDi-D01 ~ WXDi-D09\n";
-	str += "WX24-D1 ~ WX24-D5\n";
-	str += "PRカード\n";
-	str += "SPカード\n";
+	str += "20250418 v1.80\n";
+	str += "1.新增WX25-CD1、 WX25-CP1\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";
