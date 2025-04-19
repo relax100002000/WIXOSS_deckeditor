@@ -537,6 +537,46 @@ var cardData = [
 		""	//TW_TEXT
 		],
 	[
+		"SPDi01-124", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-124.jpg", //SRC
+		"幻蟲 ユスリカ", //NAME
+		"SP", //RARE
+		"シグニ", //TYPE
+		"奏生：凶蟲", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、あなたのアップ状態のルリグを好きな数ダウンする。対戦相手のデッキの上からこの方法でダウンしたルリグのレベルの合計に1を加えた枚数のカードをトラッシュに置く。<br><br>【ライフバースト】：対戦相手のシグニ１体を対象とし、ターン終了時まで、それのパワーを-8000する。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"SPDi01-125", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-125.jpg", //SRC
+		"幻竜 ニッポノ", //NAME
+		"SP", //RARE
+		"シグニ", //TYPE
+		"奏生：龍獣", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、対戦相手が《無》を支払わないかぎり、【エナチャージ1】をする。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
 		"PR-Di035", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di035.jpg", //SRC
 		"OPEN DREAM LAND!(プリパラ&WIXOSS10周年記念ばとる~交流会 景品)", //NAME
@@ -52255,7 +52295,7 @@ var cardData = [
 		"1", //LB
 		"", //TEAM
 		"", //STORY
-		"【自】：あなたのターン終了時、あなたの場に他の＜ブルアカ＞のシグニがある場合、対戦相手のレベル3か白のシグニ1体を対象とし、それをトラッシュに置く。<br><br>【絆常】：このシグニのパワーは+4000される。<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、ターン終了時まで、それは「【常】：アタックできない。」を得る。カードを1枚引く。", //JP_TEXT
+		"【自】：あなたのターン終了時、あなたの場に他の＜ブルアカ＞のシグニがある場合、対戦相手のレベル3か白のシグニ1体を対象とし、それをトラッシュに置く。<br><br>【絆常】：：このシグニのパワーは+4000される。<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、ターン終了時まで、それは「【常】：アタックできない。」を得る。カードを1枚引く。", //JP_TEXT
 		""	//TW_TEXT
 		],
 	[

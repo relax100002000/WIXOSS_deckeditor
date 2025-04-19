@@ -1,7 +1,10 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
-
+  
+20250419 v1.81  
+1.新增SPDi01-124、 SPDi01-125  
+  
 20250418 v1.80  
 1.新增WX25-CD1、 WX25-CP1  
 
