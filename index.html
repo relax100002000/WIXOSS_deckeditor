@@ -840,14 +840,14 @@
 		</div>
 		<div id="window-container-code">
 			<div id="window-pop-code">
-				<div id="deckcode" style="height: 750px; text-align: center;" class="window-content">
+				<div id="deckcode" style="height: 760px; text-align: center;" class="window-content">
 					Deck Title
 					<br><br>
 					<input align="left" style="width: 80%;" type="text" id="deckTitle" value="Simple Deck" maxlength="64">
 					<br><br>
 					Deck Code
 					<br><br>
-					<textarea id="textCode" rows="4" cols="50"></textarea>
+					<textarea style="height: 400px;" id="textCode" rows="4" cols="50"></textarea>
 					<div id="deckStr">&emsp;</div>
 					<br>
 					<button style="width: 200px; margin-right: -45px;" onclick="downloadBlob('', 'text/csv;charset=utf-8;')">Download Deck</button>
@@ -855,10 +855,12 @@
 					    Upload Deck
 					</label>
 					<input style="display: none;" id="fileinput" type="file"/>
-					<div style="margin-top: 20px;">
+					<div style="margin-top: 10px;">
 						<button style="width: 200px;" onclick="copyClipboard();">Copy to clipboard</button>
-						<button style="width: 200px; margin-left: 60px;" onclick="addDecklist();">Add to deck list</button>
+						<button style="width: 200px; margin-left: 57px;" onclick="addDecklist();">Add to deck list</button>
 					</div>
+					<br>
+					<button style="width: 200px; margin-right: 265px; margin-top: -2px;" onclick="downloadBlobopenbatoru('')">Export for Open!batoru</button>
 				</div>
 			</div>
 		</div>

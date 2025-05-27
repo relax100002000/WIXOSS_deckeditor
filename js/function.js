@@ -1954,6 +1954,202 @@ function addDeck(x)
 	}
 }
 
+function downloadBlobopenbatoru(filename, contentType) {
+    var larray = [];
+    var parray = [];
+    var aarray = [];
+    var sarray = [];
+    var array = [];
+    var tmp;
+    var i = 0, j = 0, flag = 0;
+
+    if($("#deckTitle").val() == "")
+    {
+    	filename = "sample.deck";
+    }
+    else
+    {
+    	filename = $("#deckTitle").val() + ".deck";
+    }
+    
+
+    for(i = 0; i < ldeckArr.length; i++)
+    {
+    	flag = 0;
+    	if(ldeckArr[i][ID] != "")
+    	{
+    		for(j = 0; j < cardData.length; j++)
+    		{
+    			if(cardData[j][NAME] == ldeckArr[i][NAME])
+    			{
+    				if(cardData[j][ID].indexOf("-D") == -1 && cardData[j][ID].indexOf("-CD") == -1)
+    				{
+    					larray.push(cardData[j][ID]);
+    					flag = 1;
+    					break;
+    				}
+    			}
+    		}
+
+    		if(flag == 0)
+    		{
+    			for(j = 0; j < cardData.length; j++)
+	    		{
+	    			if(cardData[j][NAME] == ldeckArr[i][NAME])
+	    			{
+	    				larray.push(cardData[j][ID]);
+	    				break;
+	    			}
+	    		}
+    		}
+    	}
+    }
+
+    for(i = 0; i < pdeckArr.length; i++)
+    {
+    	flag = 0;
+    	if(pdeckArr[i][ID] != "")
+    	{
+    		for(j = 0; j < cardData.length; j++)
+    		{
+    			if(cardData[j][NAME] == pdeckArr[i][NAME])
+    			{
+    				if(cardData[j][ID].indexOf("-D") == -1 && cardData[j][ID].indexOf("-CD") == -1)
+    				{
+    					parray.push(cardData[j][ID]);
+    					flag = 1;
+    					break;
+    				}
+    			}
+    		}
+
+    		if(flag == 0)
+    		{
+    			for(j = 0; j < cardData.length; j++)
+	    		{
+	    			if(cardData[j][NAME] == pdeckArr[i][NAME])
+	    			{
+	    				parray.push(cardData[j][ID]);
+	    				break;
+	    			}
+	    		}
+    		}
+    	}
+    }
+
+    for(i = 0; i < adeckArr.length; i++)
+    {
+    	flag = 0;
+    	if(adeckArr[i][ID] != "")
+    	{
+    		for(j = 0; j < cardData.length; j++)
+    		{
+    			if(cardData[j][NAME] == adeckArr[i][NAME])
+    			{
+    				if(cardData[j][ID].indexOf("-D") == -1 && cardData[j][ID].indexOf("-CD") == -1)
+    				{
+    					aarray.push(cardData[j][ID]);
+    					flag = 1;
+    					break;
+    				}
+    			}
+    		}
+
+    		if(flag == 0)
+    		{
+    			for(j = 0; j < cardData.length; j++)
+	    		{
+	    			if(cardData[j][NAME] == adeckArr[i][NAME])
+	    			{
+	    				aarray.push(cardData[j][ID]);
+	    				break;
+	    			}
+	    		}
+    		}
+    	}
+    }
+
+    for(i = 0; i < sdeckArr.length; i++)
+    {
+    	flag = 0;
+    	if(sdeckArr[i][ID] != "")
+    	{
+    		if(sdeckArr[i][NAME] == "サーバント #")
+    		{
+    			sarray.push("WXDi-D01-020");
+    			continue;
+    		}
+
+    		for(j = 0; j < cardData.length; j++)
+    		{
+    			if(cardData[j][NAME] == sdeckArr[i][NAME])
+    			{
+    				if(cardData[j][ID].indexOf("-D") == -1 && cardData[j][ID].indexOf("-CD") == -1)
+    				{
+    					sarray.push(cardData[j][ID]);
+    					flag = 1;
+    					break;
+    				}
+    			}
+    		}
+
+    		if(flag == 0)
+    		{
+    			for(j = 0; j < cardData.length; j++)
+	    		{
+	    			if(cardData[j][NAME] == sdeckArr[i][NAME])
+	    			{
+	    				sarray.push(cardData[j][ID]);
+	    				break;
+	    			}
+	    		}
+    		}
+    	}
+    }
+
+    if(larray.length != 0)
+    	array.push(larray);
+    if(parray.length != 0)
+    	array.push(parray);
+    if(aarray.length != 0)
+    	array.push(aarray);
+    if(sarray.length != 0)
+    	array.push(sarray);
+
+    var csv = array.map((item) => {
+        var row = item;
+          
+        return row.join("\n");
+      })
+      .join("\n");
+
+    content = csv;
+
+    var blob = new Blob([content], { type: contentType });
+	var url = URL.createObjectURL(blob);
+
+	var pom = document.createElement('a');
+	pom.href = url;
+	pom.setAttribute('download', filename);
+	pom.click();
+
+	// $("#textCode").val(content);
+
+    // $("#textCode").val(content);
+	// customizeWindowEvent('code');
+	// $("#deckStr").html("　　");
+	// $("#deckTitle").val($("#selectDeck").val());
+
+    // if(contentType == "text/csv;charset=utf-8;")
+    // {
+		
+	// }
+	// else
+	// {
+		
+	// }
+}
+
 function downloadBlob(filename, contentType) {
     var larray = [];
     var parray = [];
