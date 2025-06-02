@@ -577,6 +577,46 @@ var cardData = [
 		""	//TW_TEXT
 		],
 	[
+		"SPDi01-126", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-126.jpg", //SRC
+		"小罠 ヴィジュネル", //NAME
+		"SP", //RARE
+		"シグニ", //TYPE
+		"奏武：トリック", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このカードが効果によっていずれかの領域からトラッシュに置かれたとき、あなたのデッキの上からカードを3枚見て、それらを好きな順番でデッキの一番上に戻す。<br><br>【ライフバースト】：あなたのデッキの上からカードを3枚見る。その中からシグニ1枚を公開し手札に加えるか場に出し、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
+		"SPDi01-127", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-127.jpg", //SRC
+		"コードイート ミズゼリー", //NAME
+		"SP", //RARE
+		"シグニ", //TYPE
+		"奏械：調理", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"0", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】：あなたのデッキの一番上を公開する。あなたの場にそのカードと共通する色を持つルリグがいる場合、そのカードをこのシグニの下に置く。(表向きで置く)<br><br>【起】《ダウン》：このシグニの下からカード1枚を手札に加える。", //JP_TEXT
+		""	//TW_TEXT
+		],
+	[
 		"PR-Di035", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di035.jpg", //SRC
 		"OPEN DREAM LAND!(プリパラ&WIXOSS10周年記念ばとる~交流会 景品)", //NAME
