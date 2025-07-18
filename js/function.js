@@ -3042,6 +3042,9 @@ function str_to_img(x)
 	x = x.replace(/《リコレクトアイコン》/g, "<img class='icon_img' src='img/icon_txt_recollect.png'></img>");
 	x = x.replace(/《相手ターン》/g, "<img class='icon_img' src='img/icon_txt_opponent_turn.png'></img>");
 	x = x.replace(/《自分ターン》/g, "<img class='icon_img' src='img/icon_txt_my_turn.png'></img>");
+	x = x.replace(/《ヘブン》/g, "<img class='icon_img' src='img/icon_txt_heaven.webp'></img>");
+	x = x.replace(/《クロスアイコン》/g, "<img class='icon_img' src='img/icon_txt_cross.webp'></img>");
+	x = x.replace(/【クロス自】/g, "<img class='icon_img' src='img/icon_txt_auto_cross.webp'></img>");
 
 	x = x.replace(/<img class=\'icon_img\' src=\'img\/icon_txt_burst\.png\'><\/img>：/g, "<\/td><\/tr><tr\  style=\'background:#E0E0E0\'><td\ colspan=\'2\'><img class=\'icon_img\' src=\'img\/icon_txt_burst\.png\'><\/img>：");
 	x = x.replace(/「生命爆發」：/g, "<\/td><\/tr><tr\  style=\'background:#E0E0E0\'><td\ colspan=\'2\'>「生命爆發」：");
@@ -3264,6 +3267,7 @@ function checkDeck()
 			cardData[i][TYPE] != "ピース リレー" &&
 			cardData[i][TYPE] != "ピース クラフト" &&
 			cardData[i][TYPE] != "アーツ" &&
+			cardData[i][TYPE] != "アーツ クラフト" &&
 			cardData[i][TYPE] != "シグニ" &&
 			cardData[i][TYPE] != "シグニ クラフト" &&
 			cardData[i][TYPE] != "シグニ レゾナ/クラフト" &&
@@ -3813,7 +3817,7 @@ function checkDeck()
 					console.log("JP_TEXT");
 				}
 			}
-			else if(cardData[i][TYPE] == "アーツ")
+			else if(cardData[i][TYPE] == "アーツ" || cardData[i][TYPE] == "アーツ クラフト")
 			{
 				//CLASS
 				if(cardData[i][CLASS] != "")
@@ -4621,8 +4625,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "2025062 v1.83\n";
-	str += "1.新增SPDi01-126、 SPDi01-127\n";
+	str += "2025 v1.84\n";
+	str += "1.新增WX25-P1、 SPDi43\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";

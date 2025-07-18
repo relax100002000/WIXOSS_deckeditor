@@ -1,13 +1,16 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
-
+  
+20250718 v1.84  
+1.新增WX25-P1、 SPDi43  
+  
 20250602 v1.83  
 1.新增SPDi01-126、 SPDi01-127  
-
+  
 20250527 v1.82  
 1.新增匯出deck至open!batoru功能
-
+  
 20250419 v1.81  
 1.新增SPDi01-124、 SPDi01-125  
   
