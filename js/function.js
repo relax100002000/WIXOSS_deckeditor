@@ -470,7 +470,7 @@ function showInfotable(data)
 		str += "	</td>";
 		str += "</tr>";
 	}
-	else if(data[TYPE] == "アーツ")
+	else if(data[TYPE] == "アーツ" || data[TYPE] == "アーツ クラフト")
 	{
 		str += "<tr>";
 		str += "	<td width=\"115px\">";
@@ -2668,7 +2668,7 @@ function search()
 
 		if(!$('#arts').is(":checked"))
 		{
-			if(cardData[i][TYPE] == "アーツ")
+			if(cardData[i][TYPE] == "アーツ" || cardData[i][TYPE] == "アーツ クラフト")
 			{
 				continue;
 			}
