@@ -4359,7 +4359,8 @@ function addDecklist()
 	}
 
 	if( title_val.indexOf("_HOLOcomment") != -1 || 
-			title_val.indexOf("_WXcomment") != -1
+			title_val.indexOf("_WXcomment") != -1 ||
+			title_val.indexOf("_NAcomment") != -1
 		)
 	{
 		alert("Invalid deck title.");
