@@ -1575,7 +1575,7 @@ function sortSdeck(x)
 						}
 						else if(LB2num(x[LB]) == LB2num(sdeckArr[i][LB]))
 						{
-							if(x[ID] < sdeckArr[i][LB])
+							if(x[ID] < sdeckArr[i][ID])
 							{
 								updated = 1;
 								sdeckArr.splice(i, 0, x);
