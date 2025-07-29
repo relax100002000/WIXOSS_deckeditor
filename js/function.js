@@ -4626,8 +4626,9 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "2025 v1.84\n";
-	str += "1.新增WX25-P1、 SPDi43\n";
+	str += "2025 v1.85\n";
+	str += "1.新增SPDi01-127 ~ SPDi01-130\n";
+	str += "2.更新中文\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";
