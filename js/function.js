@@ -4422,7 +4422,7 @@ function show_src_rotate(x, id)
 	{
 		$(x).attr("src", "img/PR-Di035_rotate.jpg");
 	}
-	else if($(x).attr("src") == "https://www.takaratomy.co.jp/products/wixoss/img/card/WX25/" + id + ".jpg")
+	else if($(x).attr("src") == "https://www.takaratomy.co.jp/products/wixoss/img/card/WX25/" + id + ".jpg" && id.indexOf("WX25-CP1") != -1)
 	{
 		$(x).attr("src", "img/" + id + "_rotate.jpg");
 	}
