@@ -2889,7 +2889,7 @@ function search()
 		}
 		else
 		{
-			if(cardData[i][TYPE] == "アシストルリグ" || cardData[i][TYPE].indexOf("ピース") != -1 || cardData[i][TYPE] == "アーツ")
+			if(cardData[i][TYPE] == "アシストルリグ" || cardData[i][TYPE].indexOf("ピース") != -1 || cardData[i][TYPE].indexOf("アーツ") != -1)
 			{
 				if($('#mainphase').is(":checked"))
 				{
