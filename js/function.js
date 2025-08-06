@@ -2080,6 +2080,12 @@ function downloadBlobopenbatoru(filename, contentType) {
     			continue;
     		}
 
+    		if(sdeckArr[i][NAME] == "小装 エケザクス")
+    		{
+    			sarray.push("WXDi-D07-020");
+    			continue;
+    		}
+
     		for(j = 0; j < cardData.length; j++)
     		{
     			if(cardData[j][NAME] == sdeckArr[i][NAME])
