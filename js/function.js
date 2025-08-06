@@ -2086,6 +2086,12 @@ function downloadBlobopenbatoru(filename, contentType) {
     			continue;
     		}
 
+    		if(sdeckArr[i][NAME] == "サンクトゥムタワー崩壊")
+    		{
+    			sarray.push("WX25-CP1-036");
+    			continue;
+    		}
+
     		for(j = 0; j < cardData.length; j++)
     		{
     			if(cardData[j][NAME] == sdeckArr[i][NAME])
