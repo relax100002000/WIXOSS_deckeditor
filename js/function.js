@@ -2086,6 +2086,24 @@ function downloadBlobopenbatoru(filename, contentType) {
     			continue;
     		}
 
+    		if(sdeckArr[i][NAME] == "227号温泉郷の運営記録!")
+    		{
+    			sarray.push("WX25-CP1-029");
+    			continue;
+    		}
+
+    		if(sdeckArr[i][NAME] == "いつか至る果てへ")
+    		{
+    			sarray.push("WX25-CP1-033");
+    			continue;
+    		}
+
+    		if(sdeckArr[i][NAME] == "物語の幕開け")
+    		{
+    			sarray.push("WX25-CP1-035");
+    			continue;
+    		}
+
     		if(sdeckArr[i][NAME] == "サンクトゥムタワー崩壊")
     		{
     			sarray.push("WX25-CP1-036");
