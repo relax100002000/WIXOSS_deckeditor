@@ -2110,6 +2110,60 @@ function downloadBlobopenbatoru(filename, contentType) {
     			continue;
     		}
 
+    		if(sdeckArr[i][NAME] == "みこみこ☆てへっ")
+    		{
+    			sarray.push("SPDi01-113");
+    			continue;
+    		}
+
+    		if(sdeckArr[i][NAME] == "羅石 グリンベリル")
+    		{
+    			sarray.push("SPDi01-114");
+    			continue;
+    		}
+
+    		if(sdeckArr[i][NAME] == "ツヴァイ=ベロド")
+    		{
+    			sarray.push("SPDi01-115");
+    			continue;
+    		}
+
+    		if(sdeckArr[i][NAME] == "弐ノ遊 カミヨーヨー")
+    		{
+    			sarray.push("SPDi01-116");
+    			continue;
+    		}
+
+    		if(sdeckArr[i][NAME] == "羅菌 ミカヅキモ")
+    		{
+    			sarray.push("SPDi01-117");
+    			continue;
+    		}
+
+    		if(sdeckArr[i][NAME] == "幻怪 フタクチ")
+    		{
+    			sarray.push("SPDi01-118");
+    			continue;
+    		}
+
+    		if(sdeckArr[i][NAME] == "凶美 スミエ")
+    		{
+    			sarray.push("SPDi01-119");
+    			continue;
+    		}
+
+    		if(sdeckArr[i][NAME] == "羅植 シロツメクサ")
+    		{
+    			sarray.push("SPDi01-120");
+    			continue;
+    		}
+
+    		if(sdeckArr[i][NAME] == "羅原 Dy")
+    		{
+    			sarray.push("SPDi01-121");
+    			continue;
+    		}
+
     		for(j = 0; j < cardData.length; j++)
     		{
     			if(cardData[j][NAME] == sdeckArr[i][NAME])
