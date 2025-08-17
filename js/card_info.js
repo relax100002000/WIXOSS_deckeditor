@@ -877,26 +877,6 @@ var cardData = [
 		"「常」：此精靈附有【靈魂】時，獲得【暗影(費用合計為1以下的必殺)】<br><br>「自」：我方攻擊階段開始時，我方場上有《マキナ・スリーNEO》的話，以下2項中選擇1項。①從對方牌組上方將6張卡牌放置到廢棄區。②可以支付黑1。若如此做，本回合中，下一次我方分身攻擊時，該攻擊中，對方生命護甲是0的話，對方不能【防禦】。"	//TW_TEXT
 		],
 	[
-		"SPDi01-127", //ID
-		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-127.jpg", //SRC
-		"コードイート ミズゼリー", //NAME
-		"SP", //RARE
-		"シグニ", //TYPE
-		"奏械：調理", //CLASS
-		"青", //COLOR
-		"2", //LEVEL
-		"", //COST
-		"", //LIMIT
-		"8000", //POWER
-		"", //COIN
-		"", //TIMING
-		"0", //LB
-		"", //TEAM
-		"", //STORY
-		"【出】：あなたのデッキの一番上を公開する。あなたの場にそのカードと共通する色を持つルリグがいる場合、そのカードをこのシグニの下に置く。(表向きで置く)<br><br>【起】《ダウン》：このシグニの下からカード1枚を手札に加える。", //JP_TEXT
-		""	//TW_TEXT
-		],
-	[
 		"PR-Di035", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di035.jpg", //SRC
 		"OPEN DREAM LAND!(プリパラ&WIXOSS10周年記念ばとる~交流会 景品)", //NAME
