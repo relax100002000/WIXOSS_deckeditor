@@ -1520,7 +1520,7 @@ function sortSdeck(x)
 	{
 		for(i = 0; i < length; i++)
 		{
-			if(x[ID] == sdeckArr[i][ID])
+			if(x[NAME] == sdeckArr[i][NAME])
 			{
 				same_card++;
 
