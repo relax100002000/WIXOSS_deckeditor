@@ -881,6 +881,18 @@ function showInfotable(data)
 		str += "	</td>";
 		str += "</tr>";
 
+		if(data[BAN] != "")
+		{
+			str += "<tr style='background: red;'>";
+			str += "	<td>";
+			str += "		制限カード";
+			str += "	</td>";
+			str += "	<td>";
+			str += parseInt(data[BAN]);
+			str += "	</td>";
+			str += "</tr>";
+		}
+
 		str += "<tr>";
 		str += "	<td colspan=\"2\">";
 		
@@ -1523,11 +1535,21 @@ function sortSdeck(x)
 			if(x[NAME] == sdeckArr[i][NAME])
 			{
 				same_card++;
-
-				if(same_card == 4)
+				if(x[BAN] != "")
 				{
-					return;
+					if(same_card == x[BAN])
+					{
+						return;
+					}
 				}
+				else
+				{
+					if(same_card == 4)
+					{
+						return;
+					}
+				}
+				
 			}
 		}
 
@@ -3054,7 +3076,7 @@ function search()
 
 		if($('#textsearch').val().length != 0)
 		{
-			for(j = 0; j < TW_TEXT + 1 ; j++)
+			for(j = 0; j < BAN ; j++)
 			{
 				dataStr = cardData[i][j].toUpperCase();
 				searchStr = $('#textsearch').val().toUpperCase();
@@ -4710,9 +4732,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "2025 v1.85\n";
-	str += "1.新增SPDi01-127 ~ SPDi01-130\n";
-	str += "2.更新中文\n";
+	str += "20250916 v1.86\n";
+	str += "1.更新限制卡表\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";
