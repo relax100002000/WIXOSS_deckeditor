@@ -38327,7 +38327,7 @@ var cardData = [
 	[
 		"WXDi-CP02-091", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-CP02-091.jpg", //SRC
-		"春日ツバキC", //NAME
+		"春日ツバキ", //NAME
 		"C", //RARE
 		"シグニ", //TYPE
 		"奏武：ブルアカ", //CLASS
