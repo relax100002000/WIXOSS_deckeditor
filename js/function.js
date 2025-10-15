@@ -2654,7 +2654,7 @@ function loadcounter()
 function search()
 {
 	var i = 0, j = 0;
-	var dataStr = "", searchStr = "", tmpStr = "";
+	var dataStr = "", commetStr = "", searchStr = "", tmpStr = "";
 	var flag = 0;
 
 	rdeckArr = [];
@@ -3093,6 +3093,19 @@ function search()
 						rdeckArr.push(cardData[i]);
 						break;
 					}
+				}
+
+				commetStr = localStorage.getItem(cardData[i][ID] + "_WXcomment");
+
+				if(commetStr == null)
+				{
+					commetStr = "";
+				}
+
+				if(commetStr.indexOf(searchStr) != -1)
+				{
+					rdeckArr.push(cardData[i]);
+					break;
 				}
 			}
 		}
@@ -4732,8 +4745,9 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20250916 v1.86\n";
-	str += "1.更新限制卡表\n";
+	str += "20251015 v1.87\n";
+	str += "1.新增SPDi01-131、SPDi01-132\n";
+	str += "2.搜尋關鍵字會搜尋註解欄位\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";

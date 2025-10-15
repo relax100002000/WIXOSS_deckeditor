@@ -692,6 +692,48 @@ var cardData = [
 		""//BAN
 		],
 	[
+		"SPDi01-131", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-131.jpg", //SRC
+		"幻水 アペニーパファー", //NAME
+		"SP", //RARE
+		"シグニ", //TYPE
+		"奏生：水獣", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】《無》：あなたのデッキの上からカードを3枚見る。その中からあなたの場にいるルリグと共通する色を持つカード1枚を公開し手札に加え、残りを好きな順番でデッキの一番下に置く。<br><br>【ライフバースト】：対戦相手のルリグ1体を対象とし、ターン終了時まで、それは「【常】：アタックできない。」を得る。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"SPDi01-132", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-132.jpg", //SRC
+		"小書 ナコ", //NAME
+		"SP", //RARE
+		"シグニ", //TYPE
+		"奏武：ウェポン", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】このシグニを場からトラッシュに置く：あなたのシグニ1体を対象とし、ターン終了時まで、それは「【自】：このシグニがアタックしたとき、対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーをこのシグニのレベル1につき-1000する。」を得る。<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-8000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
 		"SPDi43-01", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-01.jpg", //SRC
 		"ゆかゆか☆さんさんきらきら(DIVAルリグパック きゅるきゅる~ん☆&D・X・M)", //NAME
