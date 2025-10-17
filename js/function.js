@@ -3164,6 +3164,9 @@ function str_to_img(x)
 	x = x.replace(/《ヘブン》/g, "<img class='icon_img' src='img/icon_txt_heaven.webp'></img>");
 	x = x.replace(/《クロスアイコン》/g, "<img class='icon_img' src='img/icon_txt_cross.webp'></img>");
 	x = x.replace(/【クロス自】/g, "<img class='icon_img' src='img/icon_txt_auto_cross.webp'></img>");
+	x = x.replace(/【出現条件】/g, "<img class='icon_img' src='img/icon_txt_AppearanceCond.webp'></img>");
+	x = x.replace(/【メインフェイズ】/g, "<img class='icon_img' src='img/icon_txt_phase_main.webp'></img>");
+	x = x.replace(/《メインフェイズアイコン》/g, "<img class='icon_img' src='img/icon_txt_phase_main.webp'></img>");
 
 	x = x.replace(/<img class=\'icon_img\' src=\'img\/icon_txt_burst\.png\'><\/img>：/g, "<\/td><\/tr><tr\  style=\'background:#E0E0E0\'><td\ colspan=\'2\'><img class=\'icon_img\' src=\'img\/icon_txt_burst\.png\'><\/img>：");
 	x = x.replace(/「生命爆發」：/g, "<\/td><\/tr><tr\  style=\'background:#E0E0E0\'><td\ colspan=\'2\'>「生命爆發」：");
