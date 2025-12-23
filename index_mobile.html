@@ -621,7 +621,7 @@
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;">
                 <button onclick="copyClipboard()">Copy Code</button>
                 <button onclick="addDecklist()">Save to List</button>
-                <button onclick="downloadBlob('','text/csv')">Download CSV</button>
+                <button onclick="downloadBlob('', 'text/csv;charset=utf-8;')">Download CSV</button>
                 <label class="custom-file-upload" style="text-align:center; cursor:pointer; width:auto; margin:4px 0;">Import CSV <input id="fileinput" type="file" style="display:none;"></label>
                 <button onclick="downloadBlobopenbatoru('', '')" style="grid-column: span 2;">Export for Open!batoru</button>
                 <button class="danger" onclick="resetDefault()">Reset All Deck</button>
