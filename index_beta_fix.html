@@ -9,7 +9,7 @@
     <script src="js/function.js"></script>
     <script src="js/card_info.js"></script>
     
-    <title>WIXOSS Deck Builder (Right-Click Add)</title>
+    <title>WIXOSS Deck Builder (Fixed Layout)</title>
     
     <style>
         /* === 全局設定 === */
@@ -99,18 +99,29 @@
         }
         .deck-header.main, .deck-header.results { border-left-color: #007bff; background-color: #eef6ff; margin-top: 15px; }
 
-        /* 上方捲動容器 (LRIG/Arts) */
+        /* === [關鍵修正 1] 上方捲動容器 (LRIG/Arts) === */
+        /* 回復固定寬度模式，不受下方 Grid 影響 */
         .deck-scroll-container {
             display: flex; overflow-x: auto; gap: 4px; padding: 5px; margin: 0; 
             -webkit-overflow-scrolling: touch; align-items: flex-start; min-height: 100px;
         }
+        
         .deck-scroll-container img { 
-            flex-shrink: 0; width: 60px; height: auto; aspect-ratio: 2/3;
+            flex-shrink: 0; 
+            width: 60px; /* 手機預設寬度 */
+            height: auto; 
+            aspect-ratio: 2/3;
         }
 
-        /* 網格系統 (Main Deck & Search Results) */
+        /* === [關鍵修正 2] 網格系統 (Main Deck & Search Results) === */
+        /* 這裡定義 10x2 (電腦) / 5x4 (手機) 的網格 */
         .grid-layout {
-            display: grid; gap: 4px; width: 100%; padding-top: 5px; align-items: start;
+            display: grid; 
+            gap: 4px; 
+            width: 100%; 
+            padding-top: 5px;
+            align-items: start;
+            /* 手機版預設 5 欄 */
             grid-template-columns: repeat(5, 1fr); 
         }
 
@@ -145,12 +156,18 @@
             z-index: 2000; display: flex; flex-direction: column; padding: 15px; visibility: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.4);
         }
 
-        /* === RWD 斷點 === */
+        /* === RWD 斷點設定 === */
+        
+        /* 平板/電腦 (>= 700px) */
         @media (min-width: 700px) {
+            /* 主牌組與搜尋結果：切換為 10 欄 */
             .grid-layout { grid-template-columns: repeat(10, 1fr); }
+            
+            /* 上方捲動區：回復為固定像素寬度 (85px)，保持舒適的捲動感，不受 Grid 影響 */
             .deck-scroll-container img { width: 85px; }
             .deck-scroll-container { min-height: 130px; }
         }
+        
         @media (min-width: 1200px) {
             .container { display: grid; grid-template-columns: 300px 1fr; align-items: start; }
             .top-controls, .charts-wrapper { grid-column: 1 / -1; }
@@ -278,7 +295,7 @@
             <img id="big_pic" src="img/card_back.jpg" onclick="addDeck(this)" style="display:block; margin:0 auto 10px auto; max-height:280px;">
             <table id="infoTable"></table>
         </div>
-        <button class="primary" style="margin-top:10px; width:100%;" onclick="addDeck(document.getElementById('big_pic'));">Add to Deck</button>
+        <button class="primary" style="margin-top:10px; width:100%;" onclick="addDeck(document.getElementById('big_pic')); $('#cardinformation').css('visibility', 'hidden');">Add to Deck</button>
         <img id="cross" src="img/cancel_icon.png" style="display:none;">
     </div>
 
@@ -360,31 +377,14 @@
             <div class="deck-section">
                 <div class="deck-header">LRIG Deck</div>
                 <div class="deck-scroll-container">
-                    <img id="ldeck_0" src="img/empty.jpg" onclick="delDeck(this,0,ldeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="ldeck_1" src="img/empty.jpg" onclick="delDeck(this,1,ldeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="ldeck_2" src="img/empty.jpg" onclick="delDeck(this,2,ldeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="ldeck_3" src="img/empty.jpg" onclick="delDeck(this,3,ldeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="ldeck_4" src="img/empty.jpg" onclick="delDeck(this,4,ldeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="ldeck_5" src="img/empty.jpg" onclick="delDeck(this,5,ldeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="ldeck_6" src="img/empty.jpg" onclick="delDeck(this,6,ldeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="ldeck_7" src="img/empty.jpg" onclick="delDeck(this,7,ldeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="ldeck_8" src="img/empty.jpg" onclick="delDeck(this,8,ldeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="ldeck_9" src="img/empty.jpg" onclick="delDeck(this,9,ldeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="ldeck_0" src="img/empty.jpg" onclick="delDeck(this,0,ldeckArr)"><img id="ldeck_1" src="img/empty.jpg" onclick="delDeck(this,1,ldeckArr)"><img id="ldeck_2" src="img/empty.jpg" onclick="delDeck(this,2,ldeckArr)"><img id="ldeck_3" src="img/empty.jpg" onclick="delDeck(this,3,ldeckArr)"><img id="ldeck_4" src="img/empty.jpg" onclick="delDeck(this,4,ldeckArr)"><img id="ldeck_5" src="img/empty.jpg" onclick="delDeck(this,5,ldeckArr)"><img id="ldeck_6" src="img/empty.jpg" onclick="delDeck(this,6,ldeckArr)"><img id="ldeck_7" src="img/empty.jpg" onclick="delDeck(this,7,ldeckArr)"><img id="ldeck_8" src="img/empty.jpg" onclick="delDeck(this,8,ldeckArr)"><img id="ldeck_9" src="img/empty.jpg" onclick="delDeck(this,9,ldeckArr)">
                 </div>
 
                 <div class="deck-header">Piece & Arts</div>
                 <div class="deck-scroll-container">
-                    <img id="pdeck_0" src="img/empty.jpg" onclick="delDeck(this,0,pdeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="pdeck_1" src="img/empty.jpg" onclick="delDeck(this,1,pdeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="pdeck_0" src="img/empty.jpg" onclick="delDeck(this,0,pdeckArr)"><img id="pdeck_1" src="img/empty.jpg" onclick="delDeck(this,1,pdeckArr)">
                     <div style="border-right:1px solid #ddd; margin:0 5px; height: 100px;"></div>
-                    <img id="adeck_0" src="img/empty.jpg" onclick="delDeck(this,0,adeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="adeck_1" src="img/empty.jpg" onclick="delDeck(this,1,adeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="adeck_2" src="img/empty.jpg" onclick="delDeck(this,2,adeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="adeck_3" src="img/empty.jpg" onclick="delDeck(this,3,adeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="adeck_4" src="img/empty.jpg" onclick="delDeck(this,4,adeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="adeck_5" src="img/empty.jpg" onclick="delDeck(this,5,adeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="adeck_6" src="img/empty.jpg" onclick="delDeck(this,6,adeckArr)" oncontextmenu="addDeck(this); return false;">
-                    <img id="adeck_7" src="img/empty.jpg" onclick="delDeck(this,7,adeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="adeck_0" src="img/empty.jpg" onclick="delDeck(this,0,adeckArr)"><img id="adeck_1" src="img/empty.jpg" onclick="delDeck(this,1,adeckArr)"><img id="adeck_2" src="img/empty.jpg" onclick="delDeck(this,2,adeckArr)"><img id="adeck_3" src="img/empty.jpg" onclick="delDeck(this,3,adeckArr)"><img id="adeck_4" src="img/empty.jpg" onclick="delDeck(this,4,adeckArr)"><img id="adeck_5" src="img/empty.jpg" onclick="delDeck(this,5,adeckArr)"><img id="adeck_6" src="img/empty.jpg" onclick="delDeck(this,6,adeckArr)"><img id="adeck_7" src="img/empty.jpg" onclick="delDeck(this,7,adeckArr)">
                 </div>
 
                 <div class="deck-header main">
@@ -394,11 +394,7 @@
                     </select>
                 </div>
                 <div class="main-deck-grid grid-layout">
-                    <script>
-                    for(let i=0;i<40;i++) {
-                        document.write(`<img id="sdeck_${i}" src="img/empty.jpg" onclick="delDeck(this,${i},sdeckArr)" oncontextmenu="addDeck(this); return false;">`);
-                    }
-                    </script>
+                    <script>for(let i=0;i<40;i++)document.write(`<img id="sdeck_${i}" src="img/empty.jpg" onclick="delDeck(this,${i},sdeckArr)">`)</script>
                 </div>
             </div>
 
