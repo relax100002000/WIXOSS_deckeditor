@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/function.js"></script>
+    <script src="js/card_info.js"></script>
+    
+    <title>WIXOSS Deck Builder (Tablet Optimized)</title>
+    
+    <style>
+        /* === 全局設定 === */
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            padding: 10px;
+            background-color: #f4f4f4;
+            font-size: 16px;
+            overflow-x: hidden;
+            padding-bottom: 80px;
+        }
+
+        /* === 圖片樣式 === */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+            transition: transform 0.1s;
+        }
+        
+        img:active {
+            transform: scale(0.95);
+        }
+
+        .icon_img {
+            height: 16px;
+            width: auto;
+            border: none !important;
+            box-shadow: none;
+            vertical-align: middle;
+            margin: 0 2px;
+        }
+
+        /* === UI 元件優化 === */
+        button, .custom-file-upload, select, input[type="text"], input[type="file"] {
+            height: 44px;
+            padding: 0 10px;
+            margin: 4px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: white;
+            vertical-align: middle;
+        }
+        
+        button {
+            font-weight: 500;
+            color: #333;
+            cursor: pointer;
+        }
+        
+        button:active {
+            background-color: #e0e0e0;
+        }
+        
+        button.primary {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+        
+        button.danger {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+        }
+
+        label {
+            display: inline-flex;
+            align-items: center;
+            margin: 5px 10px 5px 0;
+            padding: 5px;
+            background: #fff;
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+        
+        input[type=checkbox] {
+            transform: scale(1.3);
+            margin-right: 8px;
+        }
+
+        /* === 佈局系統 === */
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .top-controls {
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* === 圖表 === */
+        .charts-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+        }
+        
+        .chart-box {
+            width: 160px;
+            height: 200px;
+            position: relative;
+            display: none;
+            text-align: center;
+        }
+        
+        canvas {
+            width: 100% !important;
+            height: auto !important;
+            max-height: 160px;
+        }
+
+        /* === 牌組編輯區 === */
+        .deck-section {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .deck-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .deck-scroll-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 5px;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            -webkit-overflow-scrolling: touch;
+            min-height: 120px;
+            align-items: flex-start;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .deck-scroll-container img {
+            width: 85px; 
+            flex-shrink: 0;
+        }
+
+        .main-deck-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+            gap: 4px;
+        }
+        .main-deck-grid img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* === 篩選器 === */
+        .filters-section {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        details summary {
+            padding: 15px;
+            background: #f8f9fa;
+            font-weight: bold;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        details summary::after {
+            content: '+';
+            font-size: 1.5em;
+            color: #666;
+        }
+        
+        details[open] summary::after {
+            content: '-';
+        }
+
+        .filter-content {
+            padding: 15px;
+        }
+
+        .filter-group {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 15px;
+        }
+
+        /* === 卡片列表 === */
+        .card-list-wrapper {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            min-height: 400px;
+        }
+
+        #rdeck_table_wrapper table {
+            width: 100%;
+        }
+        #rdeck_table_wrapper table tr {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+            gap: 8px;
+        }
+        #rdeck_table_wrapper table td {
+            display: block;
+            width: auto;
+            height: auto;
+        }
+        #rdeck_table_wrapper #larrow, #rdeck_table_wrapper #rarrow {
+            display: none !important;
+        }
+        #rdeck_table_wrapper img {
+            width: 100% !important;
+            height: auto !important;
+            margin: 0 !important;
+        }
+
+        /* === 分頁控制 === */
+        .pagination {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 20px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 900;
+            backdrop-filter: blur(5px);
+        }
+
+        /* === 彈出視窗 (共用樣式) === */
+        .modal-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 3000;
+            display: none;
+        }
+        
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 700px;
+            height: 85%;
+            margin: 5% auto;
+            border-radius: 12px;
+            padding: 20px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        /* 卡片詳情 */
+        #cardinformation {
+            position: fixed !important;
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+            margin: 0 !important;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            z-index: 2000;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            visibility: hidden;
+        }
+        
+        #cardinformation #big_pic {
+            width: auto !important;
+            max-width: 100%;
+            max-height: 350px;
+            margin: 0 auto 15px auto;
+            display: block;
+        }
+
+        #infoTable {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+        #infoTable td {
+            padding: 5px;
+            border: 1px solid #eee;
+        }
+
+        #lbBackground { display: none !important; }
+
+        @media (min-width: 768px) {
+            .container {
+                display: grid;
+                grid-template-columns: 320px 1fr;
+                align-items: start;
+            }
+            .top-controls { grid-column: 1 / -1; }
+            .charts-container { grid-column: 1 / -1; }
+            .filters-section { 
+                position: sticky;
+                top: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 初始化變數
+        var page = 0;
+        var deckNamelist = [];
+        var sort_method = 0;
+        var rdeckArr = [], pdeckArr = [], adeckArr = [], ldeckArr = [], sdeckArr = [], sdeckLBArr = [], sdecknoLBArr = [];
+        var sdeck_l1 = 0, sdeck_l2 = 0, sdeck_l3 = 0, sdeck_spell = 0;
+        var sdeck_red = 0, sdeck_blue = 0, sdeck_green = 0, sdeck_black = 0, sdeck_white = 0, sdeck_nocolor = 0;
+        var sdeck_burst = 0, sdeck_no_burst = 0;
+        var sdeck_nostory = 0, sdeck_dissona = 0, sdeck_liberation = 0, sdeck_struggle = 0, sdeck_defense = 0;
+        var levelobj, colorobj, lbobj, storyobj;
+
+        $(document).ready(function() {
+            onLoading();
+            showrdeck();
+
+            var fileInput = document.getElementById('fileinput');
+            if(fileInput) fileInput.addEventListener('change', readSingleFile, false);
+            
+            // 初始化圖表
+            const levelctx = document.getElementById('levelChart');
+            if(levelctx) {
+                levelobj = new Chart(levelctx, {
+                    type: 'doughnut',
+                    data: { labels: ['L1', 'L2', 'L3', 'spell'], datasets: [{ data: [sdeck_l1, sdeck_l2, sdeck_l3, sdeck_spell], backgroundColor: ['#C0C0C0', '#A9A9A9', '#808080', '#FF4F4F'] }] },
+                    options: { plugins: { legend: { display: true }, maintainAspectRatio: false } }
+                });
+            }
+            const colorctx = document.getElementById('colorChart');
+            if(colorctx) {
+                colorobj = new Chart(colorctx, {
+                    type: 'doughnut',
+                    data: { labels: ['白', '赤', '青', '緑', '黒', '無'], datasets: [{ data: [sdeck_white, sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_nocolor], backgroundColor: ['#FFCD56', '#FF6384', '#36A2EB', '#32CD32', '#8A2BE2', '#C0C0C0'] }] },
+                    options: { plugins: { legend: { display: true }, maintainAspectRatio: false } }
+                });
+            }
+            const lbctx = document.getElementById('lbChart');
+            if(lbctx) {
+                lbobj = new Chart(lbctx, {
+                    type: 'doughnut',
+                    data: { labels: ['LB有り', 'LB無し'], datasets: [{ data: [sdeck_burst, sdeck_no_burst], backgroundColor: ['#C0C0C0', '#808080'] }] },
+                    options: { plugins: { legend: { display: true }, maintainAspectRatio: false } }
+                });
+            }
+            const storyctx = document.getElementById('storyChart');
+            if(storyctx) {
+                storyobj = new Chart(storyctx, {
+                    type: 'doughnut',
+                    data: { labels: ['無印', 'ディソナ', '解放派', '闘争派', '防衛派'], datasets: [{ data: [sdeck_nostory, sdeck_dissona, sdeck_liberation, sdeck_struggle, sdeck_defense], backgroundColor: ['#C0C0C0', '#8A2BE2', '#FF6384', '#32CD32', '#FFCD56'] }] },
+                    options: { plugins: { legend: { display: true, labels: { font: { size: 10 } } } } }
+                });
+            }
+        });
+    </script>
+
+    <div id='cardinformation'>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+            <span style="font-weight: bold; font-size: 1.2em;">Card Info</span>
+            <button onclick="$('#cardinformation').css('visibility', 'hidden');" style="margin:0; padding: 0 10px;">✕</button>
+        </div>
+        <div style="flex: 1; overflow-y: auto;">
+            <img id="big_pic" src="img/card_back.jpg" onclick="addDeck(this)">
+            <table id="infoTable"></table>
+        </div>
+        <div style="margin-top: 15px; display: grid; grid-template-columns: 1fr;">
+            <button class="primary" onclick="addDeck(document.getElementById('big_pic')); $('#cardinformation').css('visibility', 'hidden');">Add to Deck</button>
+        </div>
+        <img id="cross" src="img/cancel_icon.png" style="display:none;">
+    </div>
+
+    <div class="top-controls">
+        <select id="selectLang" style="width: auto;">
+            <option value="JP">日本語</option>
+            <option value="TW">繁體中文</option>
+        </select>
+        
+        <select id="selectDeck" onchange="selectDeck();" style="flex: 1; min-width: 120px;">
+            <option value="">--Select Deck--</option>
+        </select>
+
+        <button onclick="customizeWindowEvent('code');">Menu / Tools</button>
+        
+        <button onclick="customizeWindowEvent('list');">Card List</button> <button onclick="customizeWindowEvent('view');">View Img</button> <button onclick="cleardeck()">Clear Deck</button>
+        <button onclick="deletedecklist()">Delete Deck</button> <button onclick="showVersion()">About</button>
+    </div>
+
+    <div class="charts-container">
+        <div id="leveldiv" class="chart-box"><canvas id="levelChart"></canvas></div>
+        <div id="colordiv" class="chart-box"><canvas id="colorChart"></canvas></div>
+        <div id="lbdiv" class="chart-box"><canvas id="lbChart"></canvas></div>
+        <div id="storydiv" class="chart-box"><canvas id="storyChart"></canvas></div>
+        <div id="counter" style="width: 100%; text-align: center; margin-top: 5px; font-size: 0.9em; color: #666;"></div>
+    </div>
+
+    <div class="container">
+        
+        <div class="filters-section">
+            <details open>
+                <summary>Search & Filter (搜尋/篩選)</summary>
+                <div class="filter-content">
+                    <div class="filter-group">
+                        <input type="text" id="textsearch" placeholder="Card Name/Text..." style="width: 100%;">
+                        <div style="display: flex; gap: 5px; margin-top: 5px;">
+                            <button class="primary" onclick="search();" style="flex: 1;">Search</button>
+                            <button onclick="uncheckall();" style="flex: 1;">Reset</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <div style="font-weight: bold; margin-bottom: 5px;">Type</div>
+                        <label><input type="checkbox" id="lrig" checked> LRIG</label>
+                        <label><input type="checkbox" id="assistlrig" checked> Assist</label>
+                        <label><input type="checkbox" id="piece" checked> Piece</label>
+                        <label><input type="checkbox" id="arts" checked> Arts</label>
+                        <label><input type="checkbox" id="signi" checked> Signi</label>
+                        <label><input type="checkbox" id="spell" checked> Spell</label>
+                    </div>
+                    <div class="filter-group">
+                        <div style="font-weight: bold; margin-bottom: 5px;">Level</div>
+                        <label><input type="checkbox" id="level0" checked> 0</label>
+                        <label><input type="checkbox" id="level1" checked> 1</label>
+                        <label><input type="checkbox" id="level2" checked> 2</label>
+                        <label><input type="checkbox" id="level3" checked> 3</label>
+                        <label><input type="checkbox" id="level4" checked> 4</label>
+                    </div>
+                    <div class="filter-group">
+                        <div style="font-weight: bold; margin-bottom: 5px;">Color</div>
+                        <label><input type="checkbox" id="white" checked> 白</label>
+                        <label><input type="checkbox" id="red" checked> 赤</label>
+                        <label><input type="checkbox" id="blue" checked> 青</label>
+                        <label><input type="checkbox" id="green" checked> 緑</label>
+                        <label><input type="checkbox" id="black" checked> 黒</label>
+                        <label><input type="checkbox" id="nocolor" checked> 無</label>
+                        <hr style="border:0; border-top:1px dashed #ddd;">
+                        <label><input type="checkbox" id="multicolor"> Multicolor Only</label>
+                    </div>
+                    <div class="filter-group">
+                        <div style="font-weight: bold; margin-bottom: 5px;">Phase / Burst</div>
+                        <label><input type="checkbox" id="islb" checked> LB有</label>
+                        <label><input type="checkbox" id="notlb" checked> LB無</label>
+                        <br>
+                        <label><input type="checkbox" id="mainphase" checked> Main</label>
+                        <label><input type="checkbox" id="attackphase" checked> Attack</label>
+                        <label><input type="checkbox" id="spellcutin" checked> Cut-in</label>
+                    </div>
+                    <div class="filter-group">
+                        <div style="font-weight: bold; margin-bottom: 5px;">Advanced</div>
+                        <select id="selectProduct" style="width: 100%;">
+                            <option value="0">--All Product--</option>
+                            <option value="WX25-P2">[WX25-P2] RESONANCE SELECTOR</option>
+                            <option value="WX25-P1">[WX25-P1] PRIMAL SELECTOR</option>
+                            </select>
+                        <select id="selectLRIG" style="width: 100%; margin-top: 5px;">
+                            <option value="0">--All LRIG--</option>
+                        </select>
+                        <select id="selectType" style="width: 100%; margin-top: 5px;">
+                            <option value="0">--All Type--</option>
+                        </select>
+                         <select id="selectFaction" style="width: 100%; margin-top: 5px;">
+                            <option value="0">--All Faction--</option>
+                            <option value="解放派">解放派</option>
+                            <option value="闘争派">闘争派</option>
+                            <option value="防衛派">防衛派</option>
+                        </select>
+                        <div style="display:none;">
+                             <input type="checkbox" id="no_story" checked>
+                             <input type="checkbox" id="dissona" checked>
+                             <input type="checkbox" id="dreamteam" checked>
+                             <input type="checkbox" id="no_dreamteam" checked>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <div class="deck-section">
+                <div class="deck-title">
+                    Current Deck
+                    <span style="font-size:0.8em; font-weight:normal; color:#888;">Tap to remove</span>
+                </div>
+                
+                <div style="font-size: 0.9em; color:#666;">LRIG Deck</div>
+                <div class="deck-scroll-container">
+                    <img id="ldeck_0" src="img/empty.jpg" onclick="delDeck(this,0 , ldeckArr)">
+                    <img id="ldeck_1" src="img/empty.jpg" onclick="delDeck(this,1 , ldeckArr)">
+                    <img id="ldeck_2" src="img/empty.jpg" onclick="delDeck(this,2 , ldeckArr)">
+                    <img id="ldeck_3" src="img/empty.jpg" onclick="delDeck(this,3 , ldeckArr)">
+                    <img id="ldeck_4" src="img/empty.jpg" onclick="delDeck(this,4 , ldeckArr)">
+                    <img id="ldeck_5" src="img/empty.jpg" onclick="delDeck(this,5 , ldeckArr)">
+                    <img id="ldeck_6" src="img/empty.jpg" onclick="delDeck(this,6 , ldeckArr)">
+                    <img id="ldeck_7" src="img/empty.jpg" onclick="delDeck(this,7 , ldeckArr)">
+                    <img id="ldeck_8" src="img/empty.jpg" onclick="delDeck(this,8 , ldeckArr)">
+                    <img id="ldeck_9" src="img/empty.jpg" onclick="delDeck(this,9 , ldeckArr)">
+                </div>
+
+                <div style="font-size: 0.9em; color:#666;">Piece & Arts</div>
+                <div class="deck-scroll-container">
+                    <img id="pdeck_0" src="img/empty.jpg" onclick="delDeck(this,0 , pdeckArr)">
+                    <img id="pdeck_1" src="img/empty.jpg" onclick="delDeck(this,1 , pdeckArr)">
+                    <div style="border-right: 2px solid #ddd; margin: 0 5px;"></div>
+                    <img id="adeck_0" src="img/empty.jpg" onclick="delDeck(this,0 , adeckArr)">
+                    <img id="adeck_1" src="img/empty.jpg" onclick="delDeck(this,1 , adeckArr)">
+                    <img id="adeck_2" src="img/empty.jpg" onclick="delDeck(this,2 , adeckArr)">
+                    <img id="adeck_3" src="img/empty.jpg" onclick="delDeck(this,3 , adeckArr)">
+                    <img id="adeck_4" src="img/empty.jpg" onclick="delDeck(this,4 , adeckArr)">
+                    <img id="adeck_5" src="img/empty.jpg" onclick="delDeck(this,5 , adeckArr)">
+                    <img id="adeck_6" src="img/empty.jpg" onclick="delDeck(this,6 , adeckArr)">
+                    <img id="adeck_7" src="img/empty.jpg" onclick="delDeck(this,7 , adeckArr)">
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.9em; color:#666;">SIGNI Deck (Main)</span>
+                    <select id="selectSort" onchange="selectSort();" style="height: 30px; font-size: 0.8em; width: auto;">
+                        <option value=0>Level Sort</option>
+                        <option value=1>LB Sort</option>
+                    </select>
+                </div>
+                <div class="main-deck-grid" id="main-deck-container">
+                    <script>
+                        for(let i=0; i<40; i++) {
+                            document.write(`<img id="sdeck_${i}" src="img/empty.jpg" onclick="delDeck(this,${i}, sdeckArr)">`);
+                        }
+                    </script>
+                </div>
+            </div>
+
+            <div class="card-list-wrapper">
+                <div style="text-align: center; font-weight: bold; margin-bottom: 10px;">
+                    Search Results: <span id="totalCard" style="color:#007bff">0</span>
+                </div>
+                <div id="rdeck_table_wrapper">
+                    <table>
+                        <tr>
+                            <td><img id="larrow" src="img/larrow.png" onclick="changePage('back')"></td>
+                            <td>
+                                <img id="rdeck_0" onclick="onTabletCardClick(this)" alt="">
+                                <img id="rdeck_1" onclick="onTabletCardClick(this)" alt="">
+                                <img id="rdeck_2" onclick="onTabletCardClick(this)" alt="">
+                                <img id="rdeck_3" onclick="onTabletCardClick(this)" alt="">
+                                <img id="rdeck_4" onclick="onTabletCardClick(this)" alt="">
+                                <img id="rdeck_5" onclick="onTabletCardClick(this)" alt="">
+                                <img id="rdeck_6" onclick="onTabletCardClick(this)" alt="">
+                                <img id="rdeck_7" onclick="onTabletCardClick(this)" alt="">
+                                <img id="rdeck_8" onclick="onTabletCardClick(this)" alt="">
+                                <img id="rdeck_9" onclick="onTabletCardClick(this)" alt="">
+                            </td>
+                            <td><img id="rarrow" src="img/rarrow.png" onclick="changePage('next')"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <button onclick="changePage('back')" style="flex: 1; margin-right: 15px;">&lt; Prev</button>
+        <span id="page" style="font-weight: bold; font-size: 1.1em; color: #333;"></span>
+        <button onclick="changePage('next')" style="flex: 1; margin-left: 15px;">Next &gt;</button>
+    </div>
+
+    <div id="window-container-code" class="modal-container">
+        <div id="window-pop-code" class="modal-content" style="text-align: center;">
+            <h3 style="margin-top:0;">Menu / Tools</h3>
+            
+            <div style="text-align: left; margin-bottom: 5px;">Deck Title:</div>
+            <input type="text" id="deckTitle" value="My Deck" style="width: 100%; box-sizing: border-box;">
+            
+            <textarea id="textCode" style="width: 100%; height: 200px; margin-top: 10px; border:1px solid #ccc; border-radius: 8px; padding: 5px;"></textarea>
+            <div id="deckStr" style="color: green; height: 20px; font-size: 0.9em;"></div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px;">
+                <button onclick="copyClipboard()">Copy Code</button>
+                <button onclick="addDecklist()">Save to List</button>
+                
+                <button onclick="downloadBlob('','text/csv')">Download CSV</button>
+                <label class="custom-file-upload" style="text-align: center; cursor: pointer;">
+                    Upload CSV <input id="fileinput" type="file" style="display: none;">
+                </label>
+                
+                <button onclick="downloadBlobopenbatoru('', '')" style="grid-column: span 2;">Export for Open!batoru</button>
+            </div>
+            
+            <hr style="margin: 15px 0; border: 0; border-top: 1px solid #eee;">
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <button class="danger" onclick="resetDefault()">Reset All Decks</button>
+                <button class="danger" onclick="resetComment()">Clear Comments</button>
+            </div>
+
+            <button onclick="$('#window-container-code').hide();" style="width: 100%; margin-top: 15px; background: #666; color: white;">Close</button>
+        </div>
+    </div>
+    
+    <div id="window-container-list" class="modal-container">
+        <div id="window-pop-list" class="modal-content">
+            <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                <h3>Card List</h3>
+                <button onclick="$('#window-container-list').hide()">Close</button>
+            </div>
+            <div id="decklist" style="overflow-y:auto; height: 90%;"></div>
+        </div>
+    </div>
+    
+    <div id="window-container" class="modal-container">
+        <div id="window-pop" class="modal-content" style="background: rgba(255,255,255,0.9); width:100%; height:100%; max-width:none; margin:0;">
+             <button onclick="$('#window-container').hide()" style="position:absolute; top:10px; right:10px; z-index:100;">Close View</button>
+             <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:5px; padding-top:50px;">
+                 <div id="view-content-placeholder">
+                    </div>
+                 </div>
+        </div>
+    </div>
+    
+    <div style="display:none;">
+        <img id="show_ldeck_0"><img id="show_ldeck_1"><img id="show_ldeck_2"><img id="show_ldeck_3"><img id="show_ldeck_4">
+        <img id="show_ldeck_5"><img id="show_ldeck_6"><img id="show_ldeck_7"><img id="show_ldeck_8"><img id="show_ldeck_9">
+        <img id="show_pdeck_0"><img id="show_pdeck_1">
+        </div>
+    <div id="hidden-view-layer" style="display:none;">
+        <script>
+            for(let i=0; i<40; i++) document.write(`<img id="show_sdeck_${i}">`);
+        </script>
+    </div>
+
+    <script>
+        // 平板點擊卡片
+        function onTabletCardClick(imgElement) {
+            if(!imgElement.alt) return;
+            if(typeof onmouseShow === 'function') {
+                var cardId = imgElement.alt;
+                var cardDataEntry = null;
+                for(var i = 0; i < cardData.length; i++) {
+                    if(cardData[i][ID] == cardId) { cardDataEntry = cardData[i]; break; }
+                }
+                if(cardDataEntry) {
+                    $("#big_pic").attr("src", cardDataEntry[SRC]);
+                    $("#big_pic").attr("alt", cardDataEntry[ID]);
+                    showInfotable(cardDataEntry);
+                }
+                $("#cardinformation").css("visibility", "visible");
+            }
+        }
+        
+        window.oldOnMouseShow = window.onmouseShow;
+        window.onmouseShow = function(x, source) {};
+
+        // 重新定義 customizeWindowEvent
+        function customizeWindowEvent(x) {
+            if(x === 'code') {
+                $('#window-container-code').show();
+            } else if (x === 'list') {
+                $('#window-container-list').show();
+                if(typeof showList === 'function') showList();
+            } else if (x === 'view') {
+                 // 原本的 view 功能相容性修正
+                 if(typeof rearrange_ldeck === 'function' && rearrange_ldeck() !== false) {
+                     // 讓原本 absolute 的圖片顯示出來
+                     $('#hidden-view-layer').show(); 
+                     $('#window-container').show();
+                     // 將原本散落在 body 的 show_sdeck 圖片搬到 modal 內顯示 (如果需要)
+                     // 但原代碼是絕對定位，這裡簡單處理：顯示遮罩層
+                 }
+            }
+        }
+        
+        // 修正 View Img 關閉時的行為
+        $(document).on('click', '#window-container button', function() {
+             $('#hidden-view-layer').hide();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/function.js"></script>
+    <script src="js/card_info.js"></script>
+    
+    <title>WIXOSS Deck Builder (Tablet Optimized)</title>
+    
+    <style>
+        /* === 全局設定 === */
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            font-size: 16px;
+            overflow-x: hidden;
+            padding-bottom: 90px;
+        }
+
+        /* === 圖片樣式 === */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+        }
+        img:active { transform: scale(0.96); }
+
+        .icon_img {
+            height: 16px; width: auto; border: none !important;
+            box-shadow: none; vertical-align: middle; margin: 0 2px;
+        }
+
+        /* === 按鈕與輸入框 === */
+        button, .custom-file-upload, select, input[type="text"] {
+            height: 44px;
+            padding: 0 12px;
+            margin: 4px;
+            font-size: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: white;
+            vertical-align: middle;
+            color: #333;
+        }
+        
+        button { font-weight: 600; cursor: pointer; transition: background 0.2s; }
+        button:active { background-color: #e9ecef; }
+        
+        button.primary { background-color: #007bff; color: white; border: none; }
+        button.danger { background-color: #dc3545; color: white; border: none; }
+
+        label {
+            display: inline-flex; align-items: center;
+            margin: 5px 10px 5px 0; padding: 6px 10px;
+            background: #fff; border-radius: 6px; border: 1px solid #eee;
+        }
+        input[type=checkbox] { transform: scale(1.3); margin-right: 8px; }
+
+        /* === 佈局 === */
+        .container {
+            display: flex; flex-direction: column; gap: 15px;
+        }
+
+        .top-controls {
+            background: white; padding: 12px; border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+            position: sticky; top: 0; z-index: 100;
+        }
+
+        /* === 新版圖表區域 (Grid) === */
+        .charts-wrapper {
+            background: white; padding: 15px; border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* 自動適應 */
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .chart-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 180px;
+        }
+
+        .chart-title {
+            font-size: 0.9em; font-weight: bold; color: #555;
+            margin-bottom: 8px; width: 100%; text-align: left;
+            border-bottom: 2px solid #f0f0f0; padding-bottom: 5px;
+        }
+        
+        .chart-box {
+            width: 100%; flex: 1; position: relative;
+        }
+
+        /* === 牌組編輯區 === */
+        .deck-section {
+            background: white; padding: 15px; border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .deck-header {
+            font-size: 1.1em; font-weight: bold; margin-bottom: 12px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-left: 4px solid #007bff; padding-left: 10px;
+        }
+        
+        .deck-scroll-container {
+            display: flex; overflow-x: auto; gap: 6px; padding-bottom: 10px;
+            margin-bottom: 15px; -webkit-overflow-scrolling: touch;
+            min-height: 120px; align-items: flex-start;
+        }
+        .deck-scroll-container img { width: 85px; flex-shrink: 0; }
+
+        .main-deck-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+            gap: 5px;
+        }
+
+        /* === 篩選器 === */
+        .filters-section {
+            background: white; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        details summary {
+            padding: 15px; background: #fff; font-weight: bold; cursor: pointer;
+            list-style: none; display: flex; justify-content: space-between; align-items: center;
+        }
+        details summary::after { content: '+'; font-size: 1.5em; color: #888; }
+        details[open] summary::after { content: '-'; }
+        .filter-content { padding: 15px; background: #fcfcfc; border-top: 1px solid #eee; }
+        .filter-group { margin-bottom: 15px; border-bottom: 1px dashed #eee; padding-bottom: 15px; }
+
+        /* === 搜尋結果 === */
+        .card-list-wrapper {
+            background: white; padding: 15px; border-radius: 12px; min-height: 400px;
+        }
+        #rdeck_table_wrapper table tr {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px;
+        }
+        #rdeck_table_wrapper table td { display: block; }
+        #rdeck_table_wrapper #larrow, #rdeck_table_wrapper #rarrow { display: none !important; }
+        #rdeck_table_wrapper img { width: 100% !important; margin: 0 !important; }
+
+        /* === 分頁與彈窗 === */
+        .pagination {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.95); padding: 12px 20px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            display: flex; justify-content: space-between; align-items: center; z-index: 900;
+        }
+
+        .modal-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6); z-index: 3000; display: none;
+            backdrop-filter: blur(2px);
+        }
+        .modal-content {
+            background: white; width: 90%; max-width: 600px; height: 85%;
+            margin: 5% auto; border-radius: 16px; padding: 25px;
+            overflow-y: auto; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        #cardinformation {
+            position: fixed !important; top: 50% !important; left: 50% !important;
+            transform: translate(-50%, -50%) !important; margin: 0 !important;
+            width: 90%; max-width: 500px; max-height: 85vh;
+            background: white; border-radius: 16px; z-index: 2000;
+            display: flex; flex-direction: column; padding: 20px;
+            visibility: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        /* 大螢幕設定 */
+        @media (min-width: 768px) {
+            .container { display: grid; grid-template-columns: 320px 1fr; align-items: start; }
+            .top-controls { grid-column: 1 / -1; }
+            .charts-wrapper { grid-column: 1 / -1; }
+            .filters-section { position: sticky; top: 90px; }
+            /* 平板上圖表變為 4 列 */
+            .charts-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media (max-width: 767px) {
+            /* 手機上圖表變為 2 列 */
+            .charts-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var page = 0, deckNamelist = [], sort_method = 0;
+        var rdeckArr=[], pdeckArr=[], adeckArr=[], ldeckArr=[], sdeckArr=[], sdeckLBArr=[], sdecknoLBArr=[];
+        var sdeck_l1=0, sdeck_l2=0, sdeck_l3=0, sdeck_spell=0;
+        var sdeck_red=0, sdeck_blue=0, sdeck_green=0, sdeck_black=0, sdeck_white=0, sdeck_nocolor=0;
+        var sdeck_burst=0, sdeck_no_burst=0;
+        var sdeck_nostory=0, sdeck_dissona=0, sdeck_liberation=0, sdeck_struggle=0, sdeck_defense=0;
+        var levelobj, colorobj, lbobj, storyobj;
+
+        $(document).ready(function() {
+            onLoading();
+            showrdeck();
+            var fileInput = document.getElementById('fileinput');
+            if(fileInput) fileInput.addEventListener('change', readSingleFile, false);
+            
+            // === 優化版圖表設定 ===
+            
+            // 1. Level Curve (法力曲線) - 長條圖
+            const levelctx = document.getElementById('levelChart');
+            if(levelctx) {
+                levelobj = new Chart(levelctx, {
+                    type: 'bar', // 改為長條圖
+                    data: {
+                        labels: ['L1', 'L2', 'L3', 'Spell'],
+                        datasets: [{
+                            label: 'Count',
+                            data: [sdeck_l1, sdeck_l2, sdeck_l3, sdeck_spell],
+                            backgroundColor: ['#bdc3c7', '#95a5a6', '#7f8c8d', '#e74c3c'],
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } }, // 隱藏圖例，因為X軸已經很清楚
+                        scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+                    }
+                });
+            }
+
+            // 2. Color Distribution (顏色) - 圓餅圖
+            const colorctx = document.getElementById('colorChart');
+            if(colorctx) {
+                colorobj = new Chart(colorctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['白', '赤', '青', '緑', '黒', '無'],
+                        datasets: [{
+                            data: [sdeck_white, sdeck_red, sdeck_blue, sdeck_green, sdeck_black, sdeck_nocolor],
+                            backgroundColor: ['#f1c40f', '#e74c3c', '#3498db', '#2ecc71', '#9b59b6', '#ecf0f1'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { 
+                            legend: { position: 'right', labels: { boxWidth: 10, font: { size: 10 } } } 
+                        }
+                    }
+                });
+            }
+
+            // 3. Burst Chance (LB) - 極座標圖或圓餅
+            const lbctx = document.getElementById('lbChart');
+            if(lbctx) {
+                lbobj = new Chart(lbctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Burst', 'No Burst'],
+                        datasets: [{
+                            data: [sdeck_burst, sdeck_no_burst],
+                            backgroundColor: ['#f39c12', '#bdc3c7']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '60%',
+                        plugins: { legend: { position: 'bottom', labels: { boxWidth: 10 } } }
+                    }
+                });
+            }
+
+            // 4. Story/Type (類別) - 橫向長條圖
+            const storyctx = document.getElementById('storyChart');
+            if(storyctx) {
+                storyobj = new Chart(storyctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['無印', 'ディソナ', '解放', '闘争', '防衛'],
+                        datasets: [{
+                            label: 'Count',
+                            data: [sdeck_nostory, sdeck_dissona, sdeck_liberation, sdeck_struggle, sdeck_defense],
+                            backgroundColor: ['#95a5a6', '#8e44ad', '#e74c3c', '#27ae60', '#f1c40f'],
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y', // 橫向顯示
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: { x: { beginAtZero: true } }
+                    }
+                });
+            }
+        });
+    </script>
+
+    <div id='cardinformation'>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h3 style="margin:0;">Card Details</h3>
+            <button onclick="$('#cardinformation').css('visibility', 'hidden');" style="padding: 5px 12px;">✕</button>
+        </div>
+        <div style="flex: 1; overflow-y: auto;">
+            <img id="big_pic" src="img/card_back.jpg" onclick="addDeck(this)" style="display:block; margin:0 auto 10px auto; max-height:300px;">
+            <table id="infoTable"></table>
+        </div>
+        <button class="primary" style="margin-top:15px; width:100%;" onclick="addDeck(document.getElementById('big_pic')); $('#cardinformation').css('visibility', 'hidden');">Add to Deck</button>
+        <img id="cross" src="img/cancel_icon.png" style="display:none;">
+    </div>
+
+    <div class="top-controls">
+        <select id="selectLang"><option value="JP">JP</option><option value="TW">TW</option></select>
+        <select id="selectDeck" onchange="selectDeck();" style="flex: 1; min-width: 140px;"><option value="">-- Deck --</option></select>
+        
+        <button class="primary" onclick="customizeWindowEvent('code');">Menu / Save</button>
+        
+        <button onclick="customizeWindowEvent('list');">List</button>
+        <button onclick="customizeWindowEvent('view');">View</button>
+        <button class="danger" onclick="cleardeck()">Clear</button>
+        <button onclick="showVersion()">About</button>
+    </div>
+
+    <div class="charts-wrapper">
+        <div class="charts-grid">
+            <div class="chart-card">
+                <div class="chart-title">Level Curve</div>
+                <div class="chart-box"><canvas id="levelChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Color Ratio</div>
+                <div class="chart-box"><canvas id="colorChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Burst Chance</div>
+                <div class="chart-box"><canvas id="lbChart"></canvas></div>
+            </div>
+            <div class="chart-card">
+                <div class="chart-title">Class / Story</div>
+                <div class="chart-box"><canvas id="storyChart"></canvas></div>
+            </div>
+        </div>
+        <div id="counter" style="text-align: center; color: #666; font-size: 0.9em; margin-top: 5px;"></div>
+    </div>
+
+    <div class="container">
+        <div class="filters-section">
+            <details open>
+                <summary>Filters & Search</summary>
+                <div class="filter-content">
+                    <div class="filter-group">
+                        <input type="text" id="textsearch" placeholder="Card Name..." style="width: 100%;">
+                        <div style="display:flex; gap:10px; margin-top:5px;">
+                            <button class="primary" onclick="search();" style="flex:1;">Search</button>
+                            <button onclick="uncheckall();" style="flex:1;">Reset</button>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <b>Type:</b><br>
+                        <label><input type="checkbox" id="lrig" checked> LRIG</label>
+                        <label><input type="checkbox" id="assistlrig" checked> Assist</label>
+                        <label><input type="checkbox" id="piece" checked> Piece</label>
+                        <label><input type="checkbox" id="arts" checked> Arts</label>
+                        <label><input type="checkbox" id="signi" checked> Signi</label>
+                        <label><input type="checkbox" id="spell" checked> Spell</label>
+                    </div>
+                    <div class="filter-group">
+                        <b>Level:</b><br>
+                        <label><input type="checkbox" id="level0" checked> 0</label>
+                        <label><input type="checkbox" id="level1" checked> 1</label>
+                        <label><input type="checkbox" id="level2" checked> 2</label>
+                        <label><input type="checkbox" id="level3" checked> 3</label>
+                        <label><input type="checkbox" id="level4" checked> 4</label>
+                    </div>
+                    <div class="filter-group">
+                        <b>Color:</b><br>
+                        <label><input type="checkbox" id="white" checked> 白</label>
+                        <label><input type="checkbox" id="red" checked> 赤</label>
+                        <label><input type="checkbox" id="blue" checked> 青</label>
+                        <label><input type="checkbox" id="green" checked> 緑</label>
+                        <label><input type="checkbox" id="black" checked> 黒</label>
+                        <label><input type="checkbox" id="nocolor" checked> 無</label>
+                        <label><input type="checkbox" id="multicolor"> 多色</label>
+                    </div>
+                    <div class="filter-group">
+                        <select id="selectProduct" style="width:100%;"><option value="0">-- Product --</option><option value="WX25-P2">WX25-P2</option><option value="WX25-P1">WX25-P1</option></select>
+                        <select id="selectLRIG" style="width:100%; margin-top:5px;"><option value="0">-- LRIG --</option></select>
+                        <select id="selectType" style="width:100%; margin-top:5px;"><option value="0">-- Type --</option></select>
+                        <select id="selectFaction" style="width:100%; margin-top:5px;"><option value="0">-- Faction --</option><option value="解放派">解放派</option><option value="闘争派">闘争派</option><option value="防衛派">防衛派</option></select>
+                        <div style="display:none;"><input type="checkbox" id="islb" checked><input type="checkbox" id="notlb" checked><input type="checkbox" id="mainphase" checked><input type="checkbox" id="attackphase" checked><input type="checkbox" id="spellcutin" checked><input type="checkbox" id="no_story" checked><input type="checkbox" id="dissona" checked><input type="checkbox" id="dreamteam" checked><input type="checkbox" id="no_dreamteam" checked></div>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:15px;">
+            <div class="deck-section">
+                <div class="deck-header">Current Deck</div>
+                
+                <div style="font-size:0.9em; color:#666; margin-bottom:5px;">LRIG / Piece / Arts</div>
+                <div class="deck-scroll-container">
+                    <img id="ldeck_0" src="img/empty.jpg" onclick="delDeck(this,0,ldeckArr)">
+                    <img id="ldeck_1" src="img/empty.jpg" onclick="delDeck(this,1,ldeckArr)">
+                    <img id="ldeck_2" src="img/empty.jpg" onclick="delDeck(this,2,ldeckArr)">
+                    <img id="ldeck_3" src="img/empty.jpg" onclick="delDeck(this,3,ldeckArr)">
+                    <img id="ldeck_4" src="img/empty.jpg" onclick="delDeck(this,4,ldeckArr)">
+                    <img id="ldeck_5" src="img/empty.jpg" onclick="delDeck(this,5,ldeckArr)">
+                    <img id="ldeck_6" src="img/empty.jpg" onclick="delDeck(this,6,ldeckArr)">
+                    <img id="ldeck_7" src="img/empty.jpg" onclick="delDeck(this,7,ldeckArr)">
+                    <img id="ldeck_8" src="img/empty.jpg" onclick="delDeck(this,8,ldeckArr)">
+                    <img id="ldeck_9" src="img/empty.jpg" onclick="delDeck(this,9,ldeckArr)">
+                    <div style="border-right:1px solid #ddd; margin:0 5px;"></div>
+                    <img id="pdeck_0" src="img/empty.jpg" onclick="delDeck(this,0,pdeckArr)">
+                    <img id="pdeck_1" src="img/empty.jpg" onclick="delDeck(this,1,pdeckArr)">
+                    <div style="border-right:1px solid #ddd; margin:0 5px;"></div>
+                    <img id="adeck_0" src="img/empty.jpg" onclick="delDeck(this,0,adeckArr)">
+                    <img id="adeck_1" src="img/empty.jpg" onclick="delDeck(this,1,adeckArr)">
+                    <img id="adeck_2" src="img/empty.jpg" onclick="delDeck(this,2,adeckArr)">
+                    <img id="adeck_3" src="img/empty.jpg" onclick="delDeck(this,3,adeckArr)">
+                    <img id="adeck_4" src="img/empty.jpg" onclick="delDeck(this,4,adeckArr)">
+                    <img id="adeck_5" src="img/empty.jpg" onclick="delDeck(this,5,adeckArr)">
+                    <img id="adeck_6" src="img/empty.jpg" onclick="delDeck(this,6,adeckArr)">
+                    <img id="adeck_7" src="img/empty.jpg" onclick="delDeck(this,7,adeckArr)">
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:5px;">
+                    <div style="font-size:0.9em; color:#666;">SIGNI Deck</div>
+                    <select id="selectSort" onchange="selectSort();" style="height:30px; font-size:0.8em; width:auto; margin:0;">
+                        <option value=0>Level Sort</option><option value=1>LB Sort</option>
+                    </select>
+                </div>
+                <div class="main-deck-grid">
+                    <script>for(let i=0;i<40;i++)document.write(`<img id="sdeck_${i}" src="img/empty.jpg" onclick="delDeck(this,${i},sdeckArr)">`)</script>
+                </div>
+            </div>
+
+            <div class="card-list-wrapper">
+                <div style="text-align:center; font-weight:bold; margin-bottom:10px;">
+                    Results: <span id="totalCard" style="color:#007bff">0</span>
+                </div>
+                <div id="rdeck_table_wrapper">
+                    <table>
+                        <tr>
+                            <td><img id="larrow" src="img/larrow.png" onclick="changePage('back')"></td>
+                            <td>
+                                <img id="rdeck_0" onclick="onTabletCardClick(this)" alt=""><img id="rdeck_1" onclick="onTabletCardClick(this)" alt=""><img id="rdeck_2" onclick="onTabletCardClick(this)" alt=""><img id="rdeck_3" onclick="onTabletCardClick(this)" alt=""><img id="rdeck_4" onclick="onTabletCardClick(this)" alt=""><img id="rdeck_5" onclick="onTabletCardClick(this)" alt=""><img id="rdeck_6" onclick="onTabletCardClick(this)" alt=""><img id="rdeck_7" onclick="onTabletCardClick(this)" alt=""><img id="rdeck_8" onclick="onTabletCardClick(this)" alt=""><img id="rdeck_9" onclick="onTabletCardClick(this)" alt="">
+                            </td>
+                            <td><img id="rarrow" src="img/rarrow.png" onclick="changePage('next')"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pagination">
+        <button onclick="changePage('back')" style="flex:1; margin-right:10px;">&lt; Prev</button>
+        <span id="page" style="font-weight:bold; color:#333;"></span>
+        <button onclick="changePage('next')" style="flex:1; margin-left:10px;">Next &gt;</button>
+    </div>
+
+    <div id="window-container-code" class="modal-container">
+        <div id="window-pop-code" class="modal-content" style="text-align:center;">
+            <h3>Menu / Tools</h3>
+            <div style="text-align:left;">Deck Title:</div>
+            <input type="text" id="deckTitle" value="My Deck" style="width:100%;">
+            <textarea id="textCode" style="width:100%; height:150px; margin-top:10px; border:1px solid #ccc; padding:5px; border-radius:6px;"></textarea>
+            <div id="deckStr" style="color:green; height:20px; font-size:0.9em;"></div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;">
+                <button onclick="copyClipboard()">Copy Code</button>
+                <button onclick="addDecklist()">Save to List</button>
+                <button onclick="downloadBlob('','text/csv')">Download CSV</button>
+                <label class="custom-file-upload" style="text-align:center; cursor:pointer;">Upload CSV <input id="fileinput" type="file" style="display:none;"></label>
+                <button onclick="downloadBlobopenbatoru('', '')" style="grid-column: span 2;">Export for Open!batoru</button>
+                <button class="danger" onclick="resetDefault()">Reset All Decks</button>
+                <button class="danger" onclick="resetComment()">Clear Comments</button>
+            </div>
+            <button onclick="$('#window-container-code').hide()" style="width:100%; margin-top:15px; background:#666; color:white;">Close</button>
+        </div>
+    </div>
+    
+    <div id="window-container-list" class="modal-container">
+        <div id="window-pop-list" class="modal-content">
+            <div style="display:flex; justify-content:space-between;"><h3>Card List</h3><button onclick="$('#window-container-list').hide()">Close</button></div>
+            <div id="decklist" style="overflow-y:auto; height:90%;"></div>
+        </div>
+    </div>
+
+    <div id="window-container" class="modal-container">
+        <div id="window-pop" class="modal-content" style="width:100%; height:100%; max-width:none; margin:0; background:rgba(255,255,255,0.95);">
+             <button onclick="$('#window-container').hide(); $('#hidden-view-layer').hide();" style="position:absolute; top:10px; right:10px; z-index:100;">Close</button>
+             <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:5px; padding-top:50px;"></div>
+        </div>
+    </div>
+    
+    <div style="display:none;">
+        <img id="show_ldeck_0"><img id="show_ldeck_1"><img id="show_ldeck_2"><img id="show_ldeck_3"><img id="show_ldeck_4">
+        <img id="show_ldeck_5"><img id="show_ldeck_6"><img id="show_ldeck_7"><img id="show_ldeck_8"><img id="show_ldeck_9">
+        <img id="show_pdeck_0"><img id="show_pdeck_1">
+    </div>
+    <div id="hidden-view-layer" style="display:none;">
+        <script>for(let i=0;i<40;i++)document.write(`<img id="show_sdeck_${i}">`)</script>
+    </div>
+
+    <script>
+        function onTabletCardClick(img) {
+            if(!img.alt) return;
+            if(typeof onmouseShow === 'function') {
+                var c = null;
+                for(var i=0; i<cardData.length; i++) if(cardData[i][ID]==img.alt) { c=cardData[i]; break; }
+                if(c) {
+                    $("#big_pic").attr("src", c[SRC]).attr("alt", c[ID]);
+                    showInfotable(c);
+                }
+                $("#cardinformation").css("visibility", "visible");
+            }
+        }
+        window.oldOnMouseShow = window.onmouseShow;
+        window.onmouseShow = function(x, source) {};
+        function customizeWindowEvent(x) {
+            if(x==='code') $('#window-container-code').show();
+            else if(x==='list') { $('#window-container-list').show(); if(typeof showList==='function') showList(); }
+            else if(x==='view') { if(typeof rearrange_ldeck==='function' && rearrange_ldeck()!==false) { $('#hidden-view-layer').show(); $('#window-container').show(); } }
+        }
+    </script>
+</body>
+</html>
