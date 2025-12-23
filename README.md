@@ -1,6 +1,9 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
+
+20251223 v2.00  
+1.新增行動裝置介面  
   
 20251029 v1.89  
 1.更新中文  
