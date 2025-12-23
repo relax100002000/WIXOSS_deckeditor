@@ -42,8 +42,6 @@ function onLoading()
 	});
 
 	onloaddeck();
-
-	checkAndRedirectToMobile("https://relax100002000.github.io/WIXOSS_deckeditor/index_mobile.html");
 }
 
 function onloaddeck()
