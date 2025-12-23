@@ -9,7 +9,7 @@
     <script src="js/function.js"></script>
     <script src="js/card_info.js"></script>
     
-    <title>WIXOSS Deck Builder (Fixed Layout)</title>
+    <title>WIXOSS Deck Builder</title>
     
     <style>
         /* === 全局設定 === */
@@ -45,10 +45,28 @@
             }
         }
 
-        /* === UI 元件 === */
+        /* === UI 元件 (按鈕與輸入框) === */
         button, .custom-file-upload, select, input[type="text"] {
-            height: 40px; padding: 0 10px; margin: 2px; font-size: 14px;
-            border: 1px solid #ddd; border-radius: 6px; background-color: white; color: #333;
+            height: 40px; 
+            padding: 0 10px; 
+            margin: 2px; 
+            font-size: 14px;
+            border: 1px solid #ddd; 
+            border-radius: 6px; 
+            background-color: white; 
+            color: #333;
+            vertical-align: middle;
+        }
+
+        /* [修正] 將 .custom-file-upload 加入此規則，確保字體粗細與對齊一致 */
+        button, .custom-file-upload { 
+            font-weight: 600; /* 加粗字體 */
+            cursor: pointer; 
+            transition: 0.2s; 
+            white-space: nowrap;
+            display: inline-flex; /* 確保內容垂直置中 */
+            align-items: center; 
+            justify-content: center;
         }
         button { font-weight: 600; cursor: pointer; transition: 0.2s; white-space: nowrap; }
         button:active { background-color: #e9ecef; }
@@ -99,30 +117,26 @@
         }
         .deck-header.main, .deck-header.results { border-left-color: #007bff; background-color: #eef6ff; margin-top: 15px; }
 
-        /* === [關鍵修正 1] 上方捲動容器 (LRIG/Arts) === */
-        /* 回復固定寬度模式，不受下方 Grid 影響 */
+        /* 上方捲動容器 (LRIG/Arts) - 固定寬度 */
         .deck-scroll-container {
             display: flex; overflow-x: auto; gap: 4px; padding: 5px; margin: 0; 
             -webkit-overflow-scrolling: touch; align-items: flex-start; min-height: 100px;
         }
-        
         .deck-scroll-container img { 
             flex-shrink: 0; 
-            width: 60px; /* 手機預設寬度 */
+            width: 60px; /* 手機預設 */
             height: auto; 
             aspect-ratio: 2/3;
         }
 
-        /* === [關鍵修正 2] 網格系統 (Main Deck & Search Results) === */
-        /* 這裡定義 10x2 (電腦) / 5x4 (手機) 的網格 */
+        /* 網格系統 (Main Deck & Search Results) - 自適應寬度 */
         .grid-layout {
             display: grid; 
             gap: 4px; 
             width: 100%; 
             padding-top: 5px;
             align-items: start;
-            /* 手機版預設 5 欄 */
-            grid-template-columns: repeat(5, 1fr); 
+            grid-template-columns: repeat(5, 1fr); /* 手機預設 5 欄 */
         }
 
         /* Search Result Table Fix */
@@ -147,7 +161,7 @@
             z-index: 3000; display: none; backdrop-filter: blur(2px);
         }
         .modal-content {
-            background: white; width: 90%; max-width: 600px; height: 85%; margin: 5% auto;
+            background: white; width: 90%; max-width: 800px; height: 85%; margin: 5% auto;
             border-radius: 12px; padding: 20px; overflow-y: auto; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         #cardinformation {
@@ -160,10 +174,10 @@
         
         /* 平板/電腦 (>= 700px) */
         @media (min-width: 700px) {
-            /* 主牌組與搜尋結果：切換為 10 欄 */
+            /* 主牌組與搜尋結果：10 欄 */
             .grid-layout { grid-template-columns: repeat(10, 1fr); }
             
-            /* 上方捲動區：回復為固定像素寬度 (85px)，保持舒適的捲動感，不受 Grid 影響 */
+            /* 上方捲動區：固定寬度 85px */
             .deck-scroll-container img { width: 85px; }
             .deck-scroll-container { min-height: 130px; }
         }
@@ -289,13 +303,13 @@
     <div id='cardinformation'>
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
             <h3 style="margin:0;">Card Details</h3>
-            <button onclick="$('#cardinformation').css('visibility', 'hidden');" style="padding: 5px 12px;">✕</button>
+            <button onclick="$('#cardinformation').css('visibility', 'hidden');" onmouseover="$('#cardinformation').css('visibility', 'hidden');" style="padding: 5px 12px;">✕</button>
         </div>
         <div style="flex: 1; overflow-y: auto;">
             <img id="big_pic" src="img/card_back.jpg" onclick="addDeck(this)" style="display:block; margin:0 auto 10px auto; max-height:280px;">
             <table id="infoTable"></table>
         </div>
-        <button class="primary" style="margin-top:10px; width:100%;" onclick="addDeck(document.getElementById('big_pic')); $('#cardinformation').css('visibility', 'hidden');">Add to Deck</button>
+        <button class="primary" style="margin-top:10px; width:100%;" onclick="addDeck(document.getElementById('big_pic'));">Add to Deck</button>
         <img id="cross" src="img/cancel_icon.png" style="display:none;">
     </div>
 
@@ -304,13 +318,12 @@
         <select id="selectDeck" onchange="selectDeck();" style="flex: 1; min-width: 130px;"><option value="">-- Deck --</option></select>
         <button class="primary" onclick="customizeWindowEvent('code');">Menu</button>
         <button onclick="customizeWindowEvent('list');">List</button>
-        <button onclick="customizeWindowEvent('view');">View</button>
         <button class="danger" onclick="cleardeck()">Clear</button>
     </div>
 
     <div class="charts-wrapper">
         <details open>
-            <summary>Deck Statistics (圖表統計)</summary>
+            <summary>Deck Statistics</summary>
             <div class="charts-content">
                 <div class="charts-grid">
                     <div class="chart-card"><div class="chart-title">Level Curve</div><div class="chart-box"><canvas id="levelChart"></canvas></div></div>
@@ -326,23 +339,24 @@
     <div class="container">
         <div class="filters-section">
             <details open>
-                <summary>Filters & Search (搜尋/篩選)</summary>
+                <summary>Filters & Search</summary>
                 <div class="filter-content">
                     <div class="filter-group">
                         <input type="text" id="textsearch" placeholder="Card Name..." style="width: 100%;">
                         <div style="display:flex; gap:10px; margin-top:5px;">
                             <button class="primary" onclick="search();" style="flex:1;">Search</button>
+                            <button onclick="checkall();" style="flex:1;">Select All</button>
                             <button onclick="uncheckall();" style="flex:1;">Reset</button>
                         </div>
                     </div>
                     <div class="filter-group">
                         <b>Type:</b><br>
-                        <label><input type="checkbox" id="lrig" checked> LRIG</label>
-                        <label><input type="checkbox" id="assistlrig" checked> Assist</label>
-                        <label><input type="checkbox" id="piece" checked> Piece</label>
-                        <label><input type="checkbox" id="arts" checked> Arts</label>
-                        <label><input type="checkbox" id="signi" checked> Signi</label>
-                        <label><input type="checkbox" id="spell" checked> Spell</label>
+                        <label><input type="checkbox" id="lrig" checked> ルリグ</label>
+                        <label><input type="checkbox" id="assistlrig" checked> アシストルリグ</label>
+                        <label><input type="checkbox" id="piece" checked> ピース</label>
+                        <label><input type="checkbox" id="arts" checked> アーツ</label>
+                        <label><input type="checkbox" id="signi" checked> シグニ</label>
+                        <label><input type="checkbox" id="spell" checked> スペル</label>
                     </div>
                     <div class="filter-group">
                         <b>Level:</b><br>
@@ -363,7 +377,52 @@
                         <label><input type="checkbox" id="multicolor"> 多色</label>
                     </div>
                     <div class="filter-group">
-                        <select id="selectProduct" style="width:100%;"><option value="0">-- Product --</option><option value="WX25-P2">WX25-P2</option><option value="WX25-P1">WX25-P1</option></select>
+                        <select id="selectProduct" style="width:100%;">
+                            <option value="0">--All Product--</option>
+                            <option value="WX25-P2">[WX25-P2] 拡張パック「RESONANCE SELECTOR」</option>
+                            <option value="WX25-P1">[WX25-P1] 拡張パック「PRIMAL SELECTOR」</option>
+                            <option value="WX25-CP1">[WX25-CP1] 拡張パック「ブルーアーカイブ SELECTOR」</option>
+                            <option value="WX25-CD1">[WX25-CD1] 構築済みデッキ ブルーアーカイブ</option>
+                            <option value="WX24-P4">[WX24-P4] 拡張パック「FORTH SELECTOR」</option>
+                            <option value="WX24-P3">[WX24-P3] 拡張パック「REVERSAL SELECTOR」</option>
+                            <option value="WX24-P2">[WX24-P2] 拡張パック「loth SELECTOR」</option>
+                            <option value="WX24-P1">[WX24-P1] 拡張パック「RECOLLECT SELECTOR」</option>
+                            <option value="WX24-D5">[WX24-D5] 構築済みデッキ「BLACK ALT DESIRE」</option>
+                            <option value="WX24-D4">[WX24-D4] 構築済みデッキ「GREEN ALT WANNA」</option>
+                            <option value="WX24-D3">[WX24-D3] 構築済みデッキ「BLUE ALT APPLI」</option>
+                            <option value="WX24-D2">[WX24-D2] 構築済みデッキ「RED ALT AMBITION」</option>
+                            <option value="WX24-D1">[WX24-D1] 構築済みデッキ「WHITE ALT HOPE」</option>
+                            <option value="WXDi-P16">[WXDi-P16] 拡張パック「LEGENDARY DIVA」</option>
+                            <option value="WXDi-P15">[WXDi-P15] 拡張パック「DIVISIONS DIVA」</option>
+                            <option value="WXDi-CP02">[WXDi-CP02] 拡張パック「ブルーアーカイブ DIVA」</option>
+                            <option value="WXDi-P14">[WXDi-P14] 拡張パック「フェゾーネ DIVA with 電音部」</option>
+                            <option value="WXDi-P13">[WXDi-P13] 拡張パック「CONCORD DIVA」</option>
+                            <option value="WXDi-P12">[WXDi-P12] 拡張パック「DISSONANCE DIVA」</option>
+                            <option value="WXDi-CP01">[WXDi-CP01] 拡張パック「にじさんじ DIVA」</option>
+                            <option value="WXDi-D09">[WXDi-D09] 構築済みデッキ「SUPER DIVA DECK DOUBLE HEROINES -ピルルク＆ヒラナ-」</option>
+                            <option value="WXDi-P11">[WXDi-P11] 拡張パック「REUNION DIVA」</option>
+                            <option value="WXDi-P10">[WXDi-P10] 拡張パック「PRISMATIC DIVA」</option>
+                            <option value="WXDi-P09">[WXDi-P09] 拡張パック「CONFLATED DIVA」</option>
+                            <option value="WXDi-P08">[WXDi-P08] 拡張パック「SPREAD DIVA」</option>
+                            <option value="WXDi-P07">[WXDi-P07] 拡張パック「WELCOME BACK DIVA ～Lostorage～」</option>
+                            <option value="WXDi-P06">[WXDi-P06] 拡張パック「WELCOME BACK DIVA ～selector～」</option>
+                            <option value="WXDi-D08">[WXDi-D08] 構築済みデッキ「DIVA DEBUT DECK WHITE HOPE」</option>
+                            <option value="WXDi-P05">[WXDi-P05] 拡張パック「CURIOSITY DIVA」</option>
+                            <option value="WXDi-P04">[WXDi-P04] 拡張パック「VERTEX DIVA」</option>
+                            <option value="WXDi-D07">[WXDi-D07] 構築済みデッキ「TOP DIVA DECK D・X・M」</option>
+                            <option value="WXDi-P03">[WXDi-P03] 拡張パック「STANDUP DIVA」</option>
+                            <option value="WXDi-P02">[WXDi-P02] 拡張パック「CHANGING DIVA」</option>
+                            <option value="WXDi-P01">[WXDi-P01] 拡張パック「GLOWING DIVA」</option>
+                            <option value="WXDi-D06">[WXDi-D06] 構築済みデッキ「DIVA DEBUT DECK DIAGRAM」</option>
+                            <option value="WXDi-D05">[WXDi-D05] 構築済みデッキ「DIVA DEBUT DECK うちゅうのはじまり」</option>
+                            <option value="WXDi-D04">[WXDi-D04] 構築済みデッキ「DIVA DEBUT DECK Card Jockey」</option>
+                            <option value="WXDi-D03">[WXDi-D03] 構築済みデッキ「DIVA DEBUT DECK No Limit」</option>
+                            <option value="WXDi-P00">[WXDi-P00] 拡張パック「INTERLUDE DIVA」</option>
+                            <option value="WXDi-D02">[WXDi-D02] 構築済みデッキ「DIVA DEBUT DECK にじさんじ ver.さんばか」</option>
+                            <option value="WXDi-D01">[WXDi-D01] 構築済みデッキ「ANCIENT SURPRISE」</option>
+                            <option value="PR-Di">PRカード</option>
+                            <option value="SPDi">SPカード</option>
+                        </select>
                         <select id="selectLRIG" style="width:100%; margin-top:5px;"><option value="0">-- LRIG --</option></select>
                         <select id="selectType" style="width:100%; margin-top:5px;"><option value="0">-- Type --</option></select>
                         <select id="selectFaction" style="width:100%; margin-top:5px;"><option value="0">-- Faction --</option><option value="解放派">解放派</option><option value="闘争派">闘争派</option><option value="防衛派">防衛派</option></select>
@@ -377,14 +436,31 @@
             <div class="deck-section">
                 <div class="deck-header">LRIG Deck</div>
                 <div class="deck-scroll-container">
-                    <img id="ldeck_0" src="img/empty.jpg" onclick="delDeck(this,0,ldeckArr)"><img id="ldeck_1" src="img/empty.jpg" onclick="delDeck(this,1,ldeckArr)"><img id="ldeck_2" src="img/empty.jpg" onclick="delDeck(this,2,ldeckArr)"><img id="ldeck_3" src="img/empty.jpg" onclick="delDeck(this,3,ldeckArr)"><img id="ldeck_4" src="img/empty.jpg" onclick="delDeck(this,4,ldeckArr)"><img id="ldeck_5" src="img/empty.jpg" onclick="delDeck(this,5,ldeckArr)"><img id="ldeck_6" src="img/empty.jpg" onclick="delDeck(this,6,ldeckArr)"><img id="ldeck_7" src="img/empty.jpg" onclick="delDeck(this,7,ldeckArr)"><img id="ldeck_8" src="img/empty.jpg" onclick="delDeck(this,8,ldeckArr)"><img id="ldeck_9" src="img/empty.jpg" onclick="delDeck(this,9,ldeckArr)">
+                    <img id="ldeck_0" src="img/empty.jpg" onclick="delDeck(this,0,ldeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="ldeck_1" src="img/empty.jpg" onclick="delDeck(this,1,ldeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="ldeck_2" src="img/empty.jpg" onclick="delDeck(this,2,ldeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="ldeck_3" src="img/empty.jpg" onclick="delDeck(this,3,ldeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="ldeck_4" src="img/empty.jpg" onclick="delDeck(this,4,ldeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="ldeck_5" src="img/empty.jpg" onclick="delDeck(this,5,ldeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="ldeck_6" src="img/empty.jpg" onclick="delDeck(this,6,ldeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="ldeck_7" src="img/empty.jpg" onclick="delDeck(this,7,ldeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="ldeck_8" src="img/empty.jpg" onclick="delDeck(this,8,ldeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="ldeck_9" src="img/empty.jpg" onclick="delDeck(this,9,ldeckArr)" oncontextmenu="addDeck(this); return false;">
                 </div>
 
                 <div class="deck-header">Piece & Arts</div>
                 <div class="deck-scroll-container">
-                    <img id="pdeck_0" src="img/empty.jpg" onclick="delDeck(this,0,pdeckArr)"><img id="pdeck_1" src="img/empty.jpg" onclick="delDeck(this,1,pdeckArr)">
+                    <img id="pdeck_0" src="img/empty.jpg" onclick="delDeck(this,0,pdeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="pdeck_1" src="img/empty.jpg" onclick="delDeck(this,1,pdeckArr)" oncontextmenu="addDeck(this); return false;">
                     <div style="border-right:1px solid #ddd; margin:0 5px; height: 100px;"></div>
-                    <img id="adeck_0" src="img/empty.jpg" onclick="delDeck(this,0,adeckArr)"><img id="adeck_1" src="img/empty.jpg" onclick="delDeck(this,1,adeckArr)"><img id="adeck_2" src="img/empty.jpg" onclick="delDeck(this,2,adeckArr)"><img id="adeck_3" src="img/empty.jpg" onclick="delDeck(this,3,adeckArr)"><img id="adeck_4" src="img/empty.jpg" onclick="delDeck(this,4,adeckArr)"><img id="adeck_5" src="img/empty.jpg" onclick="delDeck(this,5,adeckArr)"><img id="adeck_6" src="img/empty.jpg" onclick="delDeck(this,6,adeckArr)"><img id="adeck_7" src="img/empty.jpg" onclick="delDeck(this,7,adeckArr)">
+                    <img id="adeck_0" src="img/empty.jpg" onclick="delDeck(this,0,adeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="adeck_1" src="img/empty.jpg" onclick="delDeck(this,1,adeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="adeck_2" src="img/empty.jpg" onclick="delDeck(this,2,adeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="adeck_3" src="img/empty.jpg" onclick="delDeck(this,3,adeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="adeck_4" src="img/empty.jpg" onclick="delDeck(this,4,adeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="adeck_5" src="img/empty.jpg" onclick="delDeck(this,5,adeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="adeck_6" src="img/empty.jpg" onclick="delDeck(this,6,adeckArr)" oncontextmenu="addDeck(this); return false;">
+                    <img id="adeck_7" src="img/empty.jpg" onclick="delDeck(this,7,adeckArr)" oncontextmenu="addDeck(this); return false;">
                 </div>
 
                 <div class="deck-header main">
@@ -394,7 +470,11 @@
                     </select>
                 </div>
                 <div class="main-deck-grid grid-layout">
-                    <script>for(let i=0;i<40;i++)document.write(`<img id="sdeck_${i}" src="img/empty.jpg" onclick="delDeck(this,${i},sdeckArr)">`)</script>
+                    <script>
+                    for(let i=0;i<40;i++) {
+                        document.write(`<img id="sdeck_${i}" src="img/empty.jpg" onclick="delDeck(this,${i},sdeckArr)" oncontextmenu="addDeck(this); return false;">`);
+                    }
+                    </script>
                 </div>
             </div>
 
@@ -434,8 +514,8 @@
                 <button onclick="downloadBlob('','text/csv')">Download CSV</button>
                 <label class="custom-file-upload" style="text-align:center; cursor:pointer; width:auto; margin:4px 0;">Import CSV <input id="fileinput" type="file" style="display:none;"></label>
                 <button onclick="downloadBlobopenbatoru('', '')" style="grid-column: span 2;">Export for Open!batoru</button>
-                <button class="danger" onclick="resetDefault()">Reset All</button>
-                <button class="danger" onclick="resetComment()">Clear Note</button>
+                <button class="danger" onclick="resetDefault()">Reset All Deck</button>
+                <button class="danger" onclick="resetComment()">Clear Comment</button>
             </div>
             <button onclick="$('#window-container-code').hide()" style="width:100%; margin-top:15px; background:#666; color:white;">Close</button>
         </div>
