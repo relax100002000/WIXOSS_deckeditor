@@ -4741,6 +4741,39 @@ function resetComment()
 	}
 }
 
+function checkAndRedirectToMobile(targetUrl) {
+    // 定義常見的行動裝置關鍵字 (Regex)
+    const mobileKeywords = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i,
+        /Opera Mini/i,
+        /IEMobile/i
+    ];
+
+    // 檢查瀏覽器的 userAgent 是否包含上述任一關鍵字
+    const isMobile = mobileKeywords.some((keyword) => {
+        return navigator.userAgent.match(keyword);
+    });
+
+    // 如果偵測到是行動裝置
+    if (isMobile) {
+        // 跳出 confirm 視窗 (回傳值為 true 或 false)
+        const userAgreed = confirm("Mobile device detected. Would you like to go to the mobile site for a better experience?");
+
+        // 如果使用者按「確定」，執行跳轉
+        if (userAgreed) {
+            window.location.href = targetUrl;
+        }
+        // 如果按「取消」，什麼都不做，留在原頁面
+    }
+}
+
+
 function showVersion()
 {
 	var str = "";
@@ -4748,8 +4781,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20251029 v1.89\n";
-	str += "1.更新中文\n";
+	str += "20251223 v2.00\n";
+	str += "1.新增行動裝置介面.\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";
