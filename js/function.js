@@ -3078,6 +3078,22 @@ function search()
 		{
 			for(j = 0; j < BAN ; j++)
 			{
+				if($('#selectLang').val() == "JP")
+				{
+					if(j == TW_TEXT)
+					{
+						continue;
+					}
+				}
+
+				if($('#selectLang').val() == "TW")
+				{
+					if(j == JP_TEXT)
+					{
+						continue;
+					}
+				}
+
 				dataStr = cardData[i][j].toUpperCase();
 				searchStr = $('#textsearch').val().toUpperCase();
 				if(dataStr.indexOf(searchStr) != -1)
