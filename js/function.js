@@ -4797,8 +4797,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20251223 v2.00\n";
-	str += "1.新增行動裝置介面.\n";
+	str += "20260107 v2.01\n";
+	str += "1.新增SPDi01-133、SPDi01-134\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";

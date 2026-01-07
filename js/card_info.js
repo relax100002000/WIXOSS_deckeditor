@@ -734,6 +734,48 @@ var cardData = [
 		"" //BAN
 		],
 	[
+		"SPDi01-133", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-133.jpg", //SRC
+		"コードアンチ スイシャ", //NAME
+		"SP", //RARE
+		"シグニ", //TYPE
+		"奏械：古代兵器", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】：あなたのデッキの上からカードを3枚見る。その中からカード1枚をトラッシュに置き、カード1枚をデッキの一番上に戻し、残りを好きな順番でデッキの一番下に置く。<br><br>【ライフバースト】：あなたのデッキの上からカードを3枚見る。その中からシグニ1枚を公開し手札に加えるか場に出し、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		"「出」：從我方牌組上方查看3張卡牌。將其中1張卡牌放置到廢棄區，1張卡牌放置到牌組上方，剩下的按任意順序放置到牌組下方。<br><br>「生命爆發」：從我方牌組上方查看3張卡牌。將其中最多1張精靈公開並加入手牌或出場，剩下的按任意順序放置到牌組下方。",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"SPDi01-134", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi01/SPDi01-134.jpg", //SRC
+		"幻蟲 カメムシ", //NAME
+		"SP", //RARE
+		"シグニ", //TYPE
+		"奏生：凶蟲", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、あなたの場にあるシグニが持つ色が合計2種類以上ある場合、【エナチャージ1】をする。", //JP_TEXT
+		"「自」：此精靈攻擊時，我方場上的精靈顏色持有合計2種以上的話，【能量填充1】。",	//TW_TEXT
+		"" //BAN
+		],
+	[
 		"SPDi43-01", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-01.jpg", //SRC
 		"ゆかゆか☆さんさんきらきら(DIVAルリグパック きゅるきゅる~ん☆&D・X・M)", //NAME
