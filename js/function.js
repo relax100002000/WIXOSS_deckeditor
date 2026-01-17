@@ -341,7 +341,7 @@ function showInfotable(data)
 		str += "		カード名";
 		str += "	</td>";
 		str += "	<td>";
-		str += data;
+		str += "<a href=\"https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=" + data + "\" target=\"_blank\">" + data + "</a>";
 		str += "	</td>";
 		str += "</tr>";
 
@@ -403,7 +403,7 @@ function showInfotable(data)
 		str += "		カード名";
 		str += "	</td>";
 		str += "	<td>";
-		str += data[NAME];
+		str += "<a href=\"https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=" + data[ID] + "\" target=\"_blank\">" + data[NAME] + "</a>";
 		str += "	</td>";
 		str += "</tr>";
 
@@ -486,7 +486,7 @@ function showInfotable(data)
 		str += "		カード名";
 		str += "	</td>";
 		str += "	<td>";
-		str += data[NAME];
+		str += "<a href=\"https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=" + data[ID] + "\" target=\"_blank\">" + data[NAME] + "</a>";
 		str += "	</td>";
 		str += "</tr>";
 
@@ -557,7 +557,7 @@ function showInfotable(data)
 		str += "		カード名";
 		str += "	</td>";
 		str += "	<td>";
-		str += data[NAME];
+		str += "<a href=\"https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=" + data[ID] + "\" target=\"_blank\">" + data[NAME] + "</a>";
 		str += "	</td>";
 		str += "</tr>";
 
@@ -685,7 +685,7 @@ function showInfotable(data)
 		str += "		カード名";
 		str += "	</td>";
 		str += "	<td>";
-		str += data[NAME];
+		str += "<a href=\"https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=" + data[ID] + "\" target=\"_blank\">" + data[NAME] + "</a>";
 		str += "	</td>";
 		str += "</tr>";
 
@@ -808,7 +808,7 @@ function showInfotable(data)
 		str += "		カード名";
 		str += "	</td>";
 		str += "	<td>";
-		str += data[NAME];
+		str += "<a href=\"https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=" + data[ID] + "\" target=\"_blank\">" + data[NAME] + "</a>";
 		str += "	</td>";
 		str += "</tr>";
 
@@ -925,7 +925,7 @@ function showInfotable(data)
 		str += "		カード名";
 		str += "	</td>";
 		str += "	<td>";
-		str += data[NAME];
+		str += "<a href=\"https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=" + data[ID] + "\" target=\"_blank\">" + data[NAME] + "</a>";
 		str += "	</td>";
 		str += "</tr>";
 
