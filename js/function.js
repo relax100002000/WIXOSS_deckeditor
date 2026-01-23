@@ -3212,6 +3212,7 @@ function str_to_img(x)
 	x = x.replace(/【赤】/g, "<img class='icon_img' src='img/icon_txt_red.png'></img>");
 	x = x.replace(/《赤×0》/g, "<img class='icon_img' src='img/icon_txt_red_00.png'></img>");
 	x = x.replace(/《赤×1》/g, "<img class='icon_img' src='img/icon_txt_red_01.png'></img>");
+	x = x.replace(/《赤×2》/g, "<img class='icon_img' src='img/icon_txt_red_02.png'></img>");
 	x = x.replace(/《赤×3》/g, "<img class='icon_img' src='img/icon_txt_red_03.png'></img>");
 	x = x.replace(/\[赤\]/g, "<img class='icon_img' src='img/icon_txt_red.png'></img>");
 	x = x.replace(/\[赤\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_red_00.png'></img>");
@@ -3226,6 +3227,7 @@ function str_to_img(x)
 	x = x.replace(/【青】/g, "<img class='icon_img' src='img/icon_txt_blue.png'></img>");
 	x = x.replace(/《青×0》/g, "<img class='icon_img' src='img/icon_txt_blue_00.png'></img>");
 	x = x.replace(/《青×1》/g, "<img class='icon_img' src='img/icon_txt_blue_01.png'></img>");
+	x = x.replace(/《青×2》/g, "<img class='icon_img' src='img/icon_txt_blue_02.png'></img>");
 	x = x.replace(/\[青\]/g, "<img class='icon_img' src='img/icon_txt_blue.png'></img>");
 	x = x.replace(/\[青\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_blue_00.png'></img>");
 	x = x.replace(/\[青\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_blue_01.png'></img>");
@@ -3239,6 +3241,7 @@ function str_to_img(x)
 	x = x.replace(/【緑】/g, "<img class='icon_img' src='img/icon_txt_green.png'></img>");
 	x = x.replace(/《緑×0》/g, "<img class='icon_img' src='img/icon_txt_green_00.png'></img>");
 	x = x.replace(/《緑×1》/g, "<img class='icon_img' src='img/icon_txt_green_01.png'></img>");
+	x = x.replace(/《緑×2》/g, "<img class='icon_img' src='img/icon_txt_green_02.png'></img>");
 	x = x.replace(/\[緑\]/g, "<img class='icon_img' src='img/icon_txt_green.png'></img>");
 	x = x.replace(/\[緑\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_green_00.png'></img>");
 	x = x.replace(/\[緑\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_green_01.png'></img>");
@@ -3252,6 +3255,7 @@ function str_to_img(x)
 	x = x.replace(/【黒】/g, "<img class='icon_img' src='img/icon_txt_black.png'></img>");
 	x = x.replace(/《黒×0》/g, "<img class='icon_img' src='img/icon_txt_black_00.png'></img>");
 	x = x.replace(/《黒×1》/g, "<img class='icon_img' src='img/icon_txt_black_01.png'></img>");
+	x = x.replace(/《黒×2》/g, "<img class='icon_img' src='img/icon_txt_black_02.png'></img>");
 	x = x.replace(/\[黒\]/g, "<img class='icon_img' src='img/icon_txt_black.png'></img>");
 	x = x.replace(/\[黒\(0\)\]/g, "<img class='icon_img' src='img/icon_txt_black_00.png'></img>");
 	x = x.replace(/\[黒\(1\)\]/g, "<img class='icon_img' src='img/icon_txt_black_01.png'></img>");
@@ -4093,11 +4097,20 @@ function checkDeck()
 				}
 
 				//LB
-				if(cardData[i][LB] != "0" &&
-					cardData[i][LB] != "1")
+				// if(cardData[i][LB] == "0" &&
+				// 	cardData[i][LB] != "1")
+				// {
+				// 	error = 1;
+				// 	console.log("LB");
+				// }
+
+				if(cardData[i][JP_TEXT].indexOf("【ライフバースト】：") == -1)
 				{
-					error = 1;
-					console.log("LB");
+					if(cardData[i][LB] == "1")
+					{
+						error = 1;
+						console.log("LB");
+					}
 				}
 
 				if(cardData[i][LB] == "1")
@@ -4168,10 +4181,13 @@ function checkDeck()
 				}
 
 				//LB
-				if(cardData[i][LB] != "0" &&
-					cardData[i][LB] != "1")
+				if(cardData[i][JP_TEXT].indexOf("【ライフバースト】：") != -1)
 				{
-					error = 1;
+					if(cardData[i][LB] != "1")
+					{
+						error = 1;
+						console.log("LB");
+					}
 				}
 
 				if(cardData[i][LB] == "1")
@@ -4179,6 +4195,7 @@ function checkDeck()
 					if(cardData[i][JP_TEXT].indexOf("【ライフバースト】：") == -1)
 					{
 						error = 1;
+						console.log("JP_TEXT");
 					}
 				}
 
@@ -4797,8 +4814,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20260107 v2.01\n";
-	str += "1.新增SPDi01-133、SPDi01-134\n";
+	str += "20260123 v2.02\n";
+	str += "1.新增WX25-P3\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";
