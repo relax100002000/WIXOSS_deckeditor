@@ -4815,7 +4815,7 @@ function showVersion()
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
 	str += "20260123 v2.02\n";
-	str += "1.新增WX25-P3\n";
+	str += "1.新增WX25-P3、SPDi43-23~32\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";
