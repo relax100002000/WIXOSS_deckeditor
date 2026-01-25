@@ -63738,7 +63738,7 @@ var cardData = [
 	[
 		"WX25-P3-088", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX25/WX25-P3-088.jpg", //SRC
-		"羅菌 アオミドロR", //NAME
+		"羅菌 アオミドロ", //NAME
 		"R", //RARE
 		"シグニ", //TYPE
 		"奏羅：微菌", //CLASS
