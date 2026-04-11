@@ -23232,7 +23232,7 @@ var cardData = [
 	[
 		"WXDi-P09-012", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/WXDi/WXDi-P09-012.jpg", //SRC
-		"ーニバル ―PN―", //NAME
+		"カーニバル ―PN―", //NAME
 		"LC", //RARE
 		"ルリグ", //TYPE
 		"カーニバル", //CLASS
