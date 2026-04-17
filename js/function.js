@@ -180,7 +180,31 @@ function showrdeck()
 				rdeckArr[page * 10 + i][ID] == "WX25-CP1-034" ||
 				rdeckArr[page * 10 + i][ID] == "WX25-CP1-035" ||
 				rdeckArr[page * 10 + i][ID] == "WX25-CP1-036" ||
-				rdeckArr[page * 10 + i][ID] == "WX25-CP1-037"
+				rdeckArr[page * 10 + i][ID] == "WX25-CP1-037" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-001" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-002" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-003" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-004" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-005" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-006" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-007" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-008" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-009" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-010" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-011" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-012" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-013" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-014" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-015" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-016" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-017" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-018" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-019" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-020" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-021" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-022" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-023" ||
+				rdeckArr[page * 10 + i][ID] == "WX26-CP1-024"
 				)
 			{
 				$("#rdeck_" + i).attr("height", "90px");
@@ -300,7 +324,32 @@ function onmouseShow(x, source)
 			cardData[i][ID] == "WX25-CP1-034" ||
 			cardData[i][ID] == "WX25-CP1-035" ||
 			cardData[i][ID] == "WX25-CP1-036" ||
-			cardData[i][ID] == "WX25-CP1-037")
+			cardData[i][ID] == "WX25-CP1-037" ||
+			cardData[i][ID] == "WX26-CP1-001" ||
+			cardData[i][ID] == "WX26-CP1-002" ||
+			cardData[i][ID] == "WX26-CP1-003" ||
+			cardData[i][ID] == "WX26-CP1-004" ||
+			cardData[i][ID] == "WX26-CP1-005" ||
+			cardData[i][ID] == "WX26-CP1-006" ||
+			cardData[i][ID] == "WX26-CP1-007" ||
+			cardData[i][ID] == "WX26-CP1-008" ||
+			cardData[i][ID] == "WX26-CP1-009" ||
+			cardData[i][ID] == "WX26-CP1-010" ||
+			cardData[i][ID] == "WX26-CP1-011" ||
+			cardData[i][ID] == "WX26-CP1-012" ||
+			cardData[i][ID] == "WX26-CP1-013" ||
+			cardData[i][ID] == "WX26-CP1-014" ||
+			cardData[i][ID] == "WX26-CP1-015" ||
+			cardData[i][ID] == "WX26-CP1-016" ||
+			cardData[i][ID] == "WX26-CP1-017" ||
+			cardData[i][ID] == "WX26-CP1-018" ||
+			cardData[i][ID] == "WX26-CP1-019" ||
+			cardData[i][ID] == "WX26-CP1-020" ||
+			cardData[i][ID] == "WX26-CP1-021" ||
+			cardData[i][ID] == "WX26-CP1-022" ||
+			cardData[i][ID] == "WX26-CP1-023" ||
+			cardData[i][ID] == "WX26-CP1-024"
+			)
 		{
 			$("#big_pic").attr("height", "252px");
 			$("#big_pic").attr("width", "360px");
@@ -1117,7 +1166,31 @@ function showAdeck()
 				adeckArr[i][ID] == "WX25-CP1-034" ||
 				adeckArr[i][ID] == "WX25-CP1-035" ||
 				adeckArr[i][ID] == "WX25-CP1-036" ||
-				adeckArr[i][ID] == "WX25-CP1-037"
+				adeckArr[i][ID] == "WX25-CP1-037" ||
+				adeckArr[i][ID] == "WX26-CP1-001" ||
+				adeckArr[i][ID] == "WX26-CP1-002" ||
+				adeckArr[i][ID] == "WX26-CP1-003" ||
+				adeckArr[i][ID] == "WX26-CP1-004" ||
+				adeckArr[i][ID] == "WX26-CP1-005" ||
+				adeckArr[i][ID] == "WX26-CP1-006" ||
+				adeckArr[i][ID] == "WX26-CP1-007" ||
+				adeckArr[i][ID] == "WX26-CP1-008" ||
+				adeckArr[i][ID] == "WX26-CP1-009" ||
+				adeckArr[i][ID] == "WX26-CP1-010" ||
+				adeckArr[i][ID] == "WX26-CP1-011" ||
+				adeckArr[i][ID] == "WX26-CP1-012" ||
+				adeckArr[i][ID] == "WX26-CP1-013" ||
+				adeckArr[i][ID] == "WX26-CP1-014" ||
+				adeckArr[i][ID] == "WX26-CP1-015" ||
+				adeckArr[i][ID] == "WX26-CP1-016" ||
+				adeckArr[i][ID] == "WX26-CP1-017" ||
+				adeckArr[i][ID] == "WX26-CP1-018" ||
+				adeckArr[i][ID] == "WX26-CP1-019" ||
+				adeckArr[i][ID] == "WX26-CP1-020" ||
+				adeckArr[i][ID] == "WX26-CP1-021" ||
+				adeckArr[i][ID] == "WX26-CP1-022" ||
+				adeckArr[i][ID] == "WX26-CP1-023" ||
+				adeckArr[i][ID] == "WX26-CP1-024"
 			)
 			{
 				$("#adeck_" + i).attr("src", "img/" + adeckArr[i][ID] + "_rotate.jpg");
@@ -3183,8 +3256,10 @@ function str_to_img(x)
 	x = x.replace(/【出現条件】/g, "<img class='icon_img' src='img/icon_txt_AppearanceCond.webp'></img>");
 	x = x.replace(/【メインフェイズ】/g, "<img class='icon_img' src='img/icon_txt_phase_main.webp'></img>");
 	x = x.replace(/《メインフェイズアイコン》/g, "<img class='icon_img' src='img/icon_txt_phase_main.webp'></img>");
+	x = x.replace(/【歌のカケラ】/g, "<img class='icon_img' src='img/icon_txt_utanokakera.webp'></img>");
 
 	x = x.replace(/<img class=\'icon_img\' src=\'img\/icon_txt_burst\.png\'><\/img>：/g, "<\/td><\/tr><tr\  style=\'background:#E0E0E0\'><td\ colspan=\'2\'><img class=\'icon_img\' src=\'img\/icon_txt_burst\.png\'><\/img>：");
+	x = x.replace(/<img class=\'icon_img\' src=\'img\/icon_txt_utanokakera\.webp\'><\/img>：/g, "<\/td><\/tr><tr\  class=\'priokeBackground\'><td\ colspan=\'2\'><img class=\'icon_img\' src=\'img\/icon_txt_utanokakera\.webp\'><\/img>：");
 	x = x.replace(/「生命爆發」：/g, "<\/td><\/tr><tr\  style=\'background:#E0E0E0\'><td\ colspan=\'2\'>「生命爆發」：");
 	
 	x = x.replace(/\(ターン1\)/g, "<img class='icon_img' src='img/icon_txt_turn_01.png'></img>");
@@ -4814,9 +4889,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20260210 v2.03\n";
-	str += "1.更新WX25-P3、SPDi43-23~32中文\n";
-	str += "2.中文勘誤\n";
+	str += "20260417 v2.04\n";
+	str += "1.新增WX26-CP1、SPDi47\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";

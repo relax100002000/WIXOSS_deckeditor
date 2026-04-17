@@ -181,7 +181,7 @@ var cardData = [
 	[
 		"PR-Di007", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di007.jpg", //SRC
-		"ウィーアー WIXOSS!(コロコロアニキ2021年夏号 付録)", //NAME
+		"ウィーアー WIXOSS!", //NAME
 		"PR", //RARE
 		"ピース", //TYPE
 		"", //CLASS
@@ -302,7 +302,7 @@ var cardData = [
 	[
 		"PR-Di013", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di013.jpg", //SRC
-		"飛躍する蓄積(「WIXOSS DIVA(A)LIVE TRY!!!」 付録)", //NAME
+		"飛躍する蓄積", //NAME
 		"PR", //RARE
 		"スペル", //TYPE
 		"", //CLASS
@@ -782,7 +782,7 @@ var cardData = [
 	[
 		"SPDi43-01", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-01.jpg", //SRC
-		"ゆかゆか☆さんさんきらきら(DIVAルリグパック きゅるきゅる~ん☆&D・X・M)", //NAME
+		"ゆかゆか☆さんさんきらきら", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"ゆかゆか", //CLASS
@@ -803,7 +803,7 @@ var cardData = [
 	[
 		"SPDi43-02", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-02.jpg", //SRC
-		"まほまほ☆さんさんちくちく(DIVAルリグパック きゅるきゅる~ん☆&D・X・M)", //NAME
+		"まほまほ☆さんさんちくちく", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"まほまほ", //CLASS
@@ -824,7 +824,7 @@ var cardData = [
 	[
 		"SPDi43-03", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-03.jpg", //SRC
-		"エクス・スリーNEO(DIVAルリグパック きゅるきゅる~ん☆&D・X・M)", //NAME
+		"エクス・スリーNEO", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"エクス", //CLASS
@@ -845,7 +845,7 @@ var cardData = [
 	[
 		"SPDi43-04", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-04.jpg", //SRC
-		"デウス・スリーNEO(DIVAルリグパック きゅるきゅる~ん☆&D・X・M)", //NAME
+		"デウス・スリーNEO", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"デウス", //CLASS
@@ -866,7 +866,7 @@ var cardData = [
 	[
 		"SPDi43-05", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-05.jpg", //SRC
-		"マキナ・スリーNEO(DIVAルリグパック きゅるきゅる~ん☆&D・X・M)", //NAME
+		"マキナ・スリーNEO", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"マキナ", //CLASS
@@ -887,7 +887,7 @@ var cardData = [
 	[
 		"SPDi43-06", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-06.jpg", //SRC
-		"大罠 Yリコーダーガン(DIVAルリグパック きゅるきゅる~ん☆&D・X・M)", //NAME
+		"大罠 Yリコーダーガン", //NAME
 		"SP", //RARE
 		"シグニ", //TYPE
 		"奏武：トリック", //CLASS
@@ -908,7 +908,7 @@ var cardData = [
 	[
 		"SPDi43-07", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-07.jpg", //SRC
-		"羅原姫 Mランドセル(DIVAルリグパック きゅるきゅる~ん☆&D・X・M)", //NAME
+		"羅原姫 Mランドセル", //NAME
 		"SP", //RARE
 		"シグニ", //TYPE
 		"奏羅：原子", //CLASS
@@ -929,7 +929,7 @@ var cardData = [
 	[
 		"SPDi43-08", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-08.jpg", //SRC
-		"幻怪姫 Xヒューマン(DIVAルリグパック きゅるきゅる~ん☆&D・X・M)", //NAME
+		"幻怪姫 Xヒューマン", //NAME
 		"SP", //RARE
 		"シグニ", //TYPE
 		"奏生：怪異", //CLASS
@@ -950,7 +950,7 @@ var cardData = [
 	[
 		"SPDi43-09", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-09.jpg", //SRC
-		"大装 Dクラーケン(DIVAルリグパック きゅるきゅる~ん☆&D・X・M)", //NAME
+		"大装 Dクラーケン", //NAME
 		"SP", //RARE
 		"シグニ", //TYPE
 		"奏武：アーム", //CLASS
@@ -971,7 +971,7 @@ var cardData = [
 	[
 		"SPDi43-10", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-10.jpg", //SRC
-		"コードアクセル Mドラゴン(DIVAルリグパック きゅるきゅる~ん☆&D・X・M)", //NAME
+		"コードアクセル Mドラゴン", //NAME
 		"SP", //RARE
 		"シグニ", //TYPE
 		"奏械：乗機", //CLASS
@@ -992,7 +992,7 @@ var cardData = [
 	[
 		"SPDi43-11", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-11.jpg", //SRC
-		"MC.LION 3rdVerse-ULT(DIVAルリグパック Card Jockey&DIAGRAM)", //NAME
+		"MC.LION 3rdVerse-ULT", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"LION", //CLASS
@@ -1013,7 +1013,7 @@ var cardData = [
 	[
 		"SPDi43-12", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-12.jpg", //SRC
-		"DJ.LOVIT 3rdVerse-ULT(DIVAルリグパック Card Jockey&DIAGRAM)", //NAME
+		"DJ.LOVIT 3rdVerse-ULT", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"LOVIT", //CLASS
@@ -1034,7 +1034,7 @@ var cardData = [
 	[
 		"SPDi43-13", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-13.jpg", //SRC
-		"VJ.WOLF 3rdVerse-ULT(DIVAルリグパック Card Jockey&DIAGRAM)", //NAME
+		"VJ.WOLF 3rdVerse-ULT", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"WOLF", //CLASS
@@ -1055,7 +1055,7 @@ var cardData = [
 	[
 		"SPDi43-14", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-14.jpg", //SRC
-		"VOGUE3-EXTREME ムジカ(DIVAルリグパック Card Jockey&DIAGRAM)", //NAME
+		"VOGUE3-EXTREME ムジカ", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"ムジカ", //CLASS
@@ -1076,7 +1076,7 @@ var cardData = [
 	[
 		"SPDi43-15", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-15.jpg", //SRC
-		"VOGUE3-EXTREME マドカ(DIVAルリグパック Card Jockey&DIAGRAM)", //NAME
+		"VOGUE3-EXTREME マドカ", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"マドカ", //CLASS
@@ -1097,7 +1097,7 @@ var cardData = [
 	[
 		"SPDi43-16", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-16.jpg", //SRC
-		"VOGUE3-EXTREME サンガ(DIVAルリグパック Card Jockey&DIAGRAM)", //NAME
+		"VOGUE3-EXTREME サンガ", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"サンガ", //CLASS
@@ -1118,7 +1118,7 @@ var cardData = [
 	[
 		"SPDi43-17", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-17.jpg", //SRC
-		"コードハート Lオンプアンプ(DIVAルリグパック Card Jockey&DIAGRAM)", //NAME
+		"コードハート Lオンプアンプ", //NAME
 		"SP", //RARE
 		"シグニ", //TYPE
 		"奏械：電機", //CLASS
@@ -1139,7 +1139,7 @@ var cardData = [
 	[
 		"SPDi43-18", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-18.jpg", //SRC
-		"幻獣神 Lターンテーブル(DIVAルリグパック Card Jockey&DIAGRAM)", //NAME
+		"幻獣神 Lターンテーブル", //NAME
 		"SP", //RARE
 		"シグニ", //TYPE
 		"奏生：地獣", //CLASS
@@ -1160,7 +1160,7 @@ var cardData = [
 	[
 		"SPDi43-19", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-19.jpg", //SRC
-		"轟砲 Wプロジェクター(DIVAルリグパック Card Jockey&DIAGRAM)", //NAME
+		"轟砲 Wプロジェクター", //NAME
 		"SP", //RARE
 		"シグニ", //TYPE
 		"奏武：ウェポン", //CLASS
@@ -1181,7 +1181,7 @@ var cardData = [
 	[
 		"SPDi43-20", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-20.jpg", //SRC
-		"コードラビリンス Mミラーボ(DIVAルリグパック Card Jockey&DIAGRAM)", //NAME
+		"コードラビリンス Mミラーボ", //NAME
 		"SP", //RARE
 		"シグニ", //TYPE
 		"奏械：迷宮", //CLASS
@@ -1202,7 +1202,7 @@ var cardData = [
 	[
 		"SPDi43-21", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-21.jpg", //SRC
-		"コードアンシエンツ Mドリルアーム(DIVAルリグパック Card Jockey&DIAGRAM)", //NAME
+		"コードアンシエンツ Mドリルアーム", //NAME
 		"SP", //RARE
 		"シグニ", //TYPE
 		"奏械：古代兵器", //CLASS
@@ -1223,7 +1223,7 @@ var cardData = [
 	[
 		"SPDi43-22", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-22.jpg", //SRC
-		"ドライ=Sテッセン(DIVAルリグパック Card Jockey&DIAGRAM)", //NAME
+		"ドライ=Sテッセン", //NAME
 		"SP", //RARE
 		"シグニ", //TYPE
 		"奏武：毒牙", //CLASS
@@ -1244,7 +1244,7 @@ var cardData = [
 	[
 		"SPDi43-23", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-23.jpg", //SRC
-		"大志へ前進 アキノ(DIVAルリグパック No Limit&うちゅうのはじまり)", //NAME
+		"大志へ前進 アキノ", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"アキノ", //CLASS
@@ -1265,7 +1265,7 @@ var cardData = [
 	[
 		"SPDi43-24", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-24.jpg", //SRC
-		"黎明へ飛翔 レイ(DIVAルリグパック No Limit&うちゅうのはじまり)", //NAME
+		"黎明へ飛翔 レイ", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"レイ", //CLASS
@@ -1286,7 +1286,7 @@ var cardData = [
 	[
 		"SPDi43-25", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-25.jpg", //SRC
-		"アンストッパブル Dr.タマゴ(DIVAルリグパック No Limit&うちゅうのはじまり)", //NAME
+		"アンストッパブル Dr.タマゴ", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"タマゴ", //CLASS
@@ -1307,7 +1307,7 @@ var cardData = [
 	[
 		"SPDi43-26", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-26.jpg", //SRC
-		"粛命 ノヴァ(DIVAルリグパック No Limit&うちゅうのはじまり)", //NAME
+		"粛命 ノヴァ", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"ノヴァ", //CLASS
@@ -1328,7 +1328,7 @@ var cardData = [
 	[
 		"SPDi43-27", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-27.jpg", //SRC
-		"サイゴニタツ バン(DIVAルリグパック No Limit&うちゅうのはじまり)", //NAME
+		"サイゴニタツ バン", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"バン", //CLASS
@@ -1349,7 +1349,7 @@ var cardData = [
 	[
 		"SPDi43-28", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-28.jpg", //SRC
-		"幻水姫 Aナックル(DIVAルリグパック No Limit&うちゅうのはじまり)", //NAME
+		"幻水姫 Aナックル", //NAME
 		"SP", //RARE
 		"シグニ", //TYPE
 		"奏生：水獣", //CLASS
@@ -1370,7 +1370,7 @@ var cardData = [
 	[
 		"SPDi43-29", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-29.jpg", //SRC
-		"羅輝石 Rピア(DIVAルリグパック No Limit&うちゅうのはじまり)", //NAME
+		"羅輝石 Rピア", //NAME
 		"SP", //RARE
 		"シグニ", //TYPE
 		"奏羅：宝石", //CLASS
@@ -1391,7 +1391,7 @@ var cardData = [
 	[
 		"SPDi43-30", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-30.jpg", //SRC
-		"羅星姫 Tヒュドラム(DIVAルリグパック No Limit&うちゅうのはじまり)", //NAME
+		"羅星姫 Tヒュドラム", //NAME
 		"SP", //RARE
 		"シグニ", //TYPE
 		"奏羅：宇宙", //CLASS
@@ -1412,7 +1412,7 @@ var cardData = [
 	[
 		"SPDi43-31", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-31.jpg", //SRC
-		"羅星姫 Nフライングギター(DIVAルリグパック No Limit&うちゅうのはじまり)", //NAME
+		"羅星姫 Nフライングギター", //NAME
 		"SP", //RARE
 		"シグニ", //TYPE
 		"奏羅：宇宙", //CLASS
@@ -1433,7 +1433,7 @@ var cardData = [
 	[
 		"SPDi43-32", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi43/SPDi43-32.jpg", //SRC
-		"翠魔姫 Bグレートソード(DIVAルリグパック No Limit&うちゅうのはじまり)", //NAME
+		"翠魔姫 Bグレートソード", //NAME
 		"SP", //RARE
 		"シグニ", //TYPE
 		"奏像：悪魔", //CLASS
@@ -1452,9 +1452,114 @@ var cardData = [
 		"" //BAN
 		],
 	[
+		"SPDi47-01", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi47/SPDi47-01.jpg", //SRC
+		"プリンセス・ネージュ(サークルオブライフ)", //NAME
+		"SP", //RARE
+		"ルリグ", //TYPE
+		"ネージュ", //CLASS
+		"白", //COLOR
+		"4", //LEVEL
+		"《白》×1", //COST
+		"6", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ターン1回》エナゾーンから【歌のカケラ】を持つカード1枚をトラッシュに置く：このルリグはそのカードの【歌のカケラ】を使用する。<br><br>【起】《ゲーム1回》《白×0》：《リコレクトアイコン》［4枚以上］このターン、対戦相手の手札と場とエナゾーンとトラッシュにあるシグニは能力を失う。その後、対戦相手のシグニ1体を対象とし、それを手札に戻す。<br>(あなたのルリグトラッシュに4枚以上のアーツがあるかぎり《リコレクトアイコン》［4枚以上］に続く文章が有効になる)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"SPDi47-02", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi47/SPDi47-02.jpg", //SRC
+		"プリンセス・ジール(サークルオブライフ)", //NAME
+		"SP", //RARE
+		"ルリグ", //TYPE
+		"ジール", //CLASS
+		"赤", //COLOR
+		"4", //LEVEL
+		"《赤》×1", //COST
+		"6", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ターン1回》エナゾーンから【歌のカケラ】を持つカード1枚をトラッシュに置く：このルリグはそのカードの【歌のカケラ】を使用する。<br><br>【起】《ゲーム1回》《赤×0》：《リコレクトアイコン》［4枚以上］あなたのシグニ1体を対象とし、ターン終了時まで、それは【アサシン】を得る。対戦相手のエナゾーンからカードを3枚まで対象とし、それらをトラッシュに置く。<br>(あなたのルリグトラッシュに4枚以上のアーツがあるかぎり《リコレクトアイコン》［4枚以上］に続く文章が有効になる)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"SPDi47-03", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi47/SPDi47-03.jpg", //SRC
+		"プリンセス・リップル(サークルオブライフ)", //NAME
+		"SP", //RARE
+		"ルリグ", //TYPE
+		"リップル", //CLASS
+		"青", //COLOR
+		"4", //LEVEL
+		"《青》×1", //COST
+		"6", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ターン1回》エナゾーンから【歌のカケラ】を持つカード1枚をトラッシュに置く：このルリグはそのカードの【歌のカケラ】を使用する。<br><br>【起】《ゲーム1回》《青×0》：《リコレクトアイコン》［4枚以上］カードを3枚引き、手札を好きな枚数捨てる。その後、この方法で手札を1枚以上捨てた場合、対戦相手のシグニ1体を対象とし、それをデッキの一番下に置く。手札を8枚以上捨てた場合、追加で対戦相手のライフクロス1枚をデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"SPDi47-04", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi47/SPDi47-04.jpg", //SRC
+		"プリンセス・ミーティア(サークルオブライフ)", //NAME
+		"SP", //RARE
+		"ルリグ", //TYPE
+		"ミーティア", //CLASS
+		"緑", //COLOR
+		"4", //LEVEL
+		"《緑》×1", //COST
+		"6", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ターン1回》エナゾーンから【歌のカケラ】を持つカード1枚をトラッシュに置く：このルリグはそのカードの【歌のカケラ】を使用する。<br><br>【起】《ゲーム1回》《緑×0》：《リコレクトアイコン》［4枚以上］あなたのエナゾーンからシグニを3枚まで対象とし、それらを場に出す。次の対戦相手のターン終了時まで、あなたのすべてのシグニのパワーを+10000し、それらは【シャドウ(パワー10000以下のシグニ)】を得る。(それらは対戦相手のパワー10000以下のシグニによって対象にされない)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"SPDi47-05", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/SPDi47/SPDi47-05.jpg", //SRC
+		"プリンセス・ヴィオラ(サークルオブライフ)", //NAME
+		"SP", //RARE
+		"ルリグ", //TYPE
+		"ヴィオラ", //CLASS
+		"黒", //COLOR
+		"4", //LEVEL
+		"《黒》×1", //COST
+		"6", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ターン1回》エナゾーンから【歌のカケラ】を持つカード1枚をトラッシュに置く：このルリグはそのカードの【歌のカケラ】を使用する。<br><br>【起】《ゲーム1回》《黒×0》：《リコレクトアイコン》［4枚以上］このターン、対戦相手のシグニがバニッシュされる場合、エナゾーンに置かれる代わりにゲームから除外される。対戦相手のシグニを好きな数対象とし、ターン終了時まで、それらのパワーを合計で-20000する。この効果では1000単位でしか数字を割り振れない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
 		"PR-Di035", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di035.jpg", //SRC
-		"OPEN DREAM LAND!(プリパラ&WIXOSS10周年記念ばとる~交流会 景品)", //NAME
+		"OPEN DREAM LAND!", //NAME
 		"PR", //RARE
 		"アーツ", //TYPE
 		"", //CLASS
@@ -1475,7 +1580,7 @@ var cardData = [
 	[
 		"PR-Di038", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di038.jpg", //SRC
-		"コードアート コンボイ(トランスフォーマー&コトブキヤ「BISHOUJOシリーズ」コラボカード)", //NAME
+		"コードアート コンボイ", //NAME
 		"PR", //RARE
 		"シグニ", //TYPE
 		"奏械：電機", //CLASS
@@ -1496,7 +1601,7 @@ var cardData = [
 	[
 		"PR-Di039", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/PR/PR-Di039.jpg", //SRC
-		"コードアート メガトロン(トランスフォーマー&コトブキヤ「BISHOUJOシリーズ」コラボカード)", //NAME
+		"コードアート メガトロン", //NAME
 		"PR", //RARE
 		"シグニ", //TYPE
 		"奏械：電機", //CLASS
@@ -1518,7 +1623,7 @@ var cardData = [
 	[
 		"SP38-007", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SP38/SP38-007.jpg", //SRC
-		"ヴィクティム・メモリーズ(「ウィクロス 10th Anniversary Book」付録)", //NAME
+		"ヴィクティム・メモリーズ", //NAME
 		"SP", //RARE
 		"スペル", //TYPE
 		"", //CLASS
@@ -1539,7 +1644,7 @@ var cardData = [
 	[
 		"SP38-008", //ID
 		"https://www.takaratomy.co.jp/products/wixoss/img/card/SP38/SP38-008.jpg", //SRC
-		"轟炎 花代・爾転(「ウィクロス 10th Anniversary Book」付録)", //NAME
+		"轟炎 花代・爾転", //NAME
 		"SP", //RARE
 		"ルリグ", //TYPE
 		"花代", //CLASS
@@ -62224,7 +62329,7 @@ var cardData = [
 		"", //TEAM
 		"", //STORY
 		"【グロウ】あなたのルリグデッキから＜タマ/イオナ＞ではない、＜タマ＞か＜イオナ＞のルリグ1枚をあなたのセンタールリグの下に置く<br><br>【起】エクシード5：あなたのルリグトラッシュに＜タマ＞のルリグと＜イオナ＞のルリグがそれぞれ1枚以上ある場合、あなたのルリグトラッシュから無色ではないアーツを2枚まで対象とし、それらをルリグデッキに加える。<br><br>【起】《ゲーム1回》リスタート《白×0》：ターン終了時まで、対戦相手のシグニゾーン1つを消す。", //JP_TEXT
-		"『成長』從我方分身牌組將1張＜小玉＞或＜伊緒奈＞且不是＜小玉／伊緒奈＞的分身放置到我方中央分身下方 <br><br>「起」超越5：我方分身廢棄區＜小玉＞的分身和＜伊緒奈＞的分身各有1張以上的話，從我方分身廢棄區以最多2張不是無色的必殺作對象，將其加入分身牌組。 <br><br>「起」(遊戲1)白0：直到回合結束時為止，消去對方1個精靈區。 ",	//TW_TEXT
+		"『成長』從我方分身牌組將1張＜小玉＞或＜伊緒奈＞且不是＜小玉/伊緒奈＞的分身放置到我方中央分身下方 <br><br>「起」超越5：我方分身廢棄區＜小玉＞的分身和＜伊緒奈＞的分身各有1張以上的話，從我方分身廢棄區以最多2張不是無色的必殺作對象，將其加入分身牌組。 <br><br>「起」(遊戲1)白0：直到回合結束時為止，消去對方1個精靈區。 ",	//TW_TEXT
 		"" //BAN
 		],
 	[
@@ -63085,7 +63190,7 @@ var cardData = [
 		"", //TEAM
 		"", //STORY
 		"【自】：あなたのアタックフェイズ開始時、あなたの場に他の＜天使＞のシグニがある場合、以下の2つから1つを選ぶ。①このシグニをアップする。②ターン終了時まで、このシグニのパワーを+3000する。<br><br>【起】《ターン1回》エナゾーンから＜天使＞のシグニ1枚をトラッシュに置く：あなたの場に《天弓へ一歩 ヒラナ》がいる場合、ターン終了時まで、このシグニは「【自】：このシグニがアタックしたとき、このシグニのパワー以下の対戦相手のシグニ1体を対象とし、それをバニッシュする。」を得る。", //JP_TEXT
-		"「自」：我方攻擊階段開始時，我方場上有其他＜天使＞精靈的話，以下2項中選擇1項。①豎直此精靈。②直到回合結束時為止，此精靈力量+3000。 <br><br>「起」(回合1)從能量區將1張＜天使＞精靈放置到廢棄區：我方場上有《天弓へ一歩　ヒラナ》的話，直到回合結束時為止，此精靈獲得「自：此精靈攻擊時，此精靈力量以下的對方1隻精靈作對象，將其破壞。 ",	//TW_TEXT
+		"「自」：我方攻擊階段開始時，我方場上有其他＜天使＞精靈的話，以下2項中選擇1項。①豎直此精靈。②直到回合結束時為止，此精靈力量+3000。 <br><br>「起」(回合1)從能量區將1張＜天使＞精靈放置到廢棄區：我方場上有《天弓へ一歩 ヒラナ》的話，直到回合結束時為止，此精靈獲得「自：此精靈攻擊時，此精靈力量以下的對方1隻精靈作對象，將其破壞。 ",	//TW_TEXT
 		"" //BAN
 		],
 	[
@@ -63190,7 +63295,7 @@ var cardData = [
 		"", //TEAM
 		"", //STORY
 		"【自】：あなたの＜悪魔＞のシグニ1体が場を離れたとき、あなたの場に《虚幸の閻魔姫 ウリス》がいて、このターンにこの能力でシグニを場に出していない場合、あなたのトラッシュからレベル1の＜悪魔＞のシグニ1枚を対象とし、《黒》を支払ってもよい。そうした場合、それをダウン状態で場に出す。それの【出】能力は発動しない。<br><br>【起】《ターン1回》《黒》《無》他の＜悪魔＞のシグニ2体を場からトラッシュに置く：対戦相手のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
-		"「自」：我方1隻＜惡魔＞離場時，我方場上有《虚幸の閻魔姫　ウリス》時，本回合此能力未有將精靈出場的話，從我方廢棄區以1張等級1的＜惡魔＞精靈作對象，可以支付黑1。若如此做，將其以橫置狀態出場。其「出」能力不發動。 <br><br>「起」(回合1)黑1無1其他2隻＜惡魔＞精靈從場上放置到廢棄區：對方1隻精靈作對象，將其破壞。 ",	//TW_TEXT
+		"「自」：我方1隻＜惡魔＞離場時，我方場上有《虚幸の閻魔姫 ウリス》時，本回合此能力未有將精靈出場的話，從我方廢棄區以1張等級1的＜惡魔＞精靈作對象，可以支付黑1。若如此做，將其以橫置狀態出場。其「出」能力不發動。 <br><br>「起」(回合1)黑1無1其他2隻＜惡魔＞精靈從場上放置到廢棄區：對方1隻精靈作對象，將其破壞。 ",	//TW_TEXT
 		"" //BAN
 		],
 	[
@@ -63211,7 +63316,7 @@ var cardData = [
 		"", //TEAM
 		"", //STORY
 		"【自】《自分ターン》：あなたの他の＜毒牙＞のシグニの効果によって対戦相手のシグニ1体のパワーが減ったとき、ターン終了時まで、このシグニのパワーを減った値と同じだけ+(プラス)する。<br><br>【自】：このシグニがアタックしたとき、あなたの場に《虚幸の冥者 ハナレ》がいる場合、対戦相手のシグニ1体を対象とし、あなたのエナゾーンから＜毒牙＞のシグニ1枚をトラッシュに置いてもよい。そうした場合、ターン終了時まで、それとこのシグニのパワーを-20000する。", //JP_TEXT
-		"「自」『我方回合』：我方其他1隻＜毒牙＞精靈的效果使對方1隻精靈的力量減少時，直到回合結束時為止，此精靈的力量加上該減少的相同數值。 <br><br>「自」：此精靈攻擊時，我方場上有《虚幸の冥者　ハナレ》的話，對方1隻精靈作對象，可以從我方能量區將1張＜毒牙＞精靈放置到廢棄區。若如此做，直到回合結束時為止，將其與此精靈的力量-20000。 ",	//TW_TEXT
+		"「自」『我方回合』：我方其他1隻＜毒牙＞精靈的效果使對方1隻精靈的力量減少時，直到回合結束時為止，此精靈的力量加上該減少的相同數值。 <br><br>「自」：此精靈攻擊時，我方場上有《虚幸の冥者 ハナレ》的話，對方1隻精靈作對象，可以從我方能量區將1張＜毒牙＞精靈放置到廢棄區。若如此做，直到回合結束時為止，將其與此精靈的力量-20000。 ",	//TW_TEXT
 		"" //BAN
 		],
 	[
@@ -64430,6 +64535,2148 @@ var cardData = [
 		"", //STORY
 		"【ガード】(このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ)<br><br>【常】：【マルチエナ】(エナコストを支払う際、このカードは好きな色1つとして支払える)<br><br>【ライフバースト】：あなたのトラッシュからシグニ1枚を対象とし、それを手札に加える。", //JP_TEXT
 		"【防禦】(可以從手牌捨棄此卡牌，防禦分身的攻擊傷害一次) <br><br>「常」：【萬花色】(支付能量費用時，此卡牌可以支付1個任意顏色) <br><br>「生命爆發」：我方廢棄區的1張精靈作對象，將其加入手牌。 ",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-001", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-001.jpg", //SRC
+		"FUTURE SESSION", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"白", //COLOR
+		"", //LEVEL
+		"《白》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の3つから1つを選ぶ。《リコレクトアイコン》［4枚以上］代わりに2つまで選ぶ。(上から順番に行う)①【シグニバリア】1つを得る。②あなたのデッキの上からカードを5枚見る。その中からカードを2枚まで手札に加え、＜プリオケ＞のカードを1枚までエナゾーンに置き、残りを好きな順番でデッキの一番下に置く。③次のあなたのアタックフェイズ開始時、あなたの＜プリオケ＞のシグニ1体を対象とし、ターン終了時まで、それは「【自】：このシグニがアタックしたとき、対戦相手のシグニ1体を対象とし、それをトラッシュに置く。」を得る。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-002", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-002.jpg", //SRC
+		"雪花繚乱", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"白", //COLOR
+		"", //LEVEL
+		"《白》×1《無》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のシグニ1体を対象とし、ターン終了時まで、それは「【常】：アタックできない。」を得る。あなたのデッキの上からカードを5枚見る。その中からカードを1枚まで手札に加え、残りを好きな順番でデッキの一番下に置く。<br>《リコレクトアイコン》［4枚以上］その後、追加で対戦相手のシグニ1体を対象とし、手札から＜プリオケ＞のカードを1枚捨ててもよい。そうした場合、ターン終了時まで、それは「【常】：アタックできない。」を得る。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-003", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-003.jpg", //SRC
+		"TRIAD FORCE", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の3つから1つを選ぶ。《リコレクトアイコン》［4枚以上］代わりに2つまで選ぶ。(上から順番に行う)①あなたのセンタールリグのレベル1につきカードを1枚引くか、あなたのセンタールリグのレベル1につき【エナチャージ1】をする。②手札から＜プリオケ＞のカードを2枚捨ててもよい。そうした場合、対戦相手のライフクロス1枚をクラッシュする。③次のあなたのアタックフェイズ開始時、あなたの＜プリオケ＞のシグニ1体を対象とし、ターン終了時まで、それは【アサシン】か【ダブルクラッシュ】を得る。(【アサシン】は、アタックすると正面のシグニとバトルをせず対戦相手にダメージを与える。【ダブルクラッシュ】は、アタックによるダメージでライフクロスを2枚クラッシュする)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-004", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-004.jpg", //SRC
+		"OVER THE BLAZE", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のパワー12000以下のシグニ1体を対象とし、ターン終了時まで、それは「【常】：アタックできない。」を得る。あなたの手札が2枚より少ない場合、その差の分だけカードを引く。<br>《リコレクトアイコン》［4枚以上］追加で手札から＜プリオケ＞のカードを1枚捨ててもよい。そうした場合、このターン、あなたは対戦相手のルリグによってダメージを受けない。<br>(あなたのルリグトラッシュに4枚以上のアーツがあるかぎり《リコレクトアイコン》［4枚以上］に続く文章が有効になる)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-005", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-005.jpg", //SRC
+		"Super Higher Dreamer!!!", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"青", //COLOR
+		"", //LEVEL
+		"《青》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の3つから1つを選ぶ。《リコレクトアイコン》［4枚以上］代わりに2つまで選ぶ。(上から順番に行う)①カードを5枚引き、手札を2枚捨てる。②次のあなたのアタックフェイズ開始時、あなたの＜プリオケ＞のシグニ1体を対象とし、それのレベル1につき対戦相手は手札を1枚捨てる。③次のあなたのアタックフェイズ開始時、あなたの＜プリオケ＞のシグニ1体を対象とし、ターン終了時まで、それは「【自】：このシグニがアタックしたとき、対戦相手のシグニ1体を対象とし、それをデッキの一番下に置く。」を得る。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-006", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-006.jpg", //SRC
+		"イノセントコール", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"青", //COLOR
+		"", //LEVEL
+		"《青》×1《無》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のシグニ1体を対象とし、それをダウンする。カードを2枚引き、手札を1枚デッキの一番下に置く。<br>《リコレクトアイコン》［4枚以上］その後、追加で対戦相手のルリグ1体を対象とし、手札から＜プリオケ＞のカードを1枚捨ててもよい。そうした場合、それをダウンする。<br>(あなたのルリグトラッシュに4枚以上のアーツがあるかぎり《リコレクトアイコン》［4枚以上］に続く文章が有効になる)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-007", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-007.jpg", //SRC
+		"TRINITY DIVINE", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"緑", //COLOR
+		"", //LEVEL
+		"《緑》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の3つから1つを選ぶ。《リコレクトアイコン》［4枚以上］代わりに2つまで選ぶ。(上から順番に行う)①あなたのエナゾーンから＜プリオケ＞のシグニを1枚まで対象とし、それを場に出す。その後、あなたの＜プリオケ＞のシグニ1体を対象とし、ターン終了時まで、それは【Sランサー】を得る。(【Sランサー】を持つシグニがバトルでシグニをバニッシュしたとき、対戦相手のライフクロスがある場合はそれを1枚クラッシュする。無い場合は対戦相手にダメージを与える)②あなたのトラッシュから＜プリオケ＞のカードを3枚まで対象とし、それらをエナゾーンに置く。③次の対戦相手のターンの間、あなたは対戦相手のルリグによってダメージを受けない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-008", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-008.jpg", //SRC
+		"激光 It's ME!", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"緑", //COLOR
+		"", //LEVEL
+		"《緑》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたのエナゾーンからカードを2枚まで対象とし、それらを手札に加える。対戦相手のシグニ1体を対象とし、このターン、次にそれがアタックしたとき、そのアタックを無効にする。<br>《リコレクトアイコン》［4枚以上］追加で手札から＜プリオケ＞のカードを1枚捨ててもよい。そうした場合、このターン、次にあなたがダメージを受ける場合、代わりにダメージを受けない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-009", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-009.jpg", //SRC
+		"ONENESS HARMONY", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"黒", //COLOR
+		"", //LEVEL
+		"《黒》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の3つから1つを選ぶ。《リコレクトアイコン》［4枚以上］代わりに2つまで選ぶ。(上から順番に行う)①あなたのトラッシュから＜プリオケ＞のカードを2枚まで対象とし、それらを手札に加える。②対戦相手のシグニ1体を対象とし、ターン終了時まで、それは能力を失い、それのパワーを-30000する。③次のあなたのアタックフェイズ開始時、あなたの場にある＜プリオケ＞のシグニ1体につき対戦相手のデッキの上からカードを4枚トラッシュに置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-010", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-010.jpg", //SRC
+		"Monochrome Eden", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"黒", //COLOR
+		"", //LEVEL
+		"《黒》×1《無》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたのトラッシュから《ガードアイコン》を持たないカード1枚を対象とし、それを手札に加える。対戦相手のシグニ1体を対象とし、ターン終了時まで、それは「【自】：このシグニがアタックしたとき、ターン終了時まで、このシグニのパワーを-20000する。」を得る。<br>《リコレクトアイコン》［4枚以上］追加で手札から＜プリオケ＞のカードを1枚捨ててもよい。そうした場合、このターン、次にあなたがダメージを受ける場合、代わりにあなたのデッキの上からカードを3枚トラッシュに置く。(デッキが2枚以下の場合は置き換えられない)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-011", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-011.jpg", //SRC
+		"この輝きは永遠に!", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"白", //COLOR
+		"", //LEVEL
+		"《白》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから1つを選ぶ。①対戦相手のパワー5000以下のシグニ1体を対象とし、それをトラッシュに置く。②あなたの場に白の＜プリオケ＞のシグニがある場合、対戦相手のパワー10000以下のシグニ1体を対象とし、それをトラッシュに置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-012", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-012.jpg", //SRC
+		"ジール・ライジングヴォルケーノ", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のパワー10000以下のシグニ1体を対象とし、それをバニッシュする。あなたのデッキの上からカードを5枚見る。その中から＜プリオケ＞のカードを1枚までエナゾーンに置き、赤の＜プリオケ＞のカードを1枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-013", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-013.jpg", //SRC
+		"ジール・ファイアクリティカル", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから1つを選ぶ。①対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。②あなたの場に赤の＜プリオケ＞のシグニがある場合、対戦相手のパワー12000以下のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-014", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-014.jpg", //SRC
+		"リップル・シャイニーストリーム", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"青", //COLOR
+		"", //LEVEL
+		"《青》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-10000する。あなたのデッキの上からカードを5枚見る。その中から＜プリオケ＞のカードを1枚までエナゾーンに置き、青の＜プリオケ＞のカードを1枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-015", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-015.jpg", //SRC
+		"リップル・ハンマースプラッシュ", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"青", //COLOR
+		"", //LEVEL
+		"《青》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから1つを選ぶ。①対戦相手のパワー5000以下のシグニ1体を対象とし、それをデッキの一番下に置く。②あなたの場に青の＜プリオケ＞のシグニがある場合、対戦相手のパワー10000以下のシグニ1体を対象とし、それをデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-016", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-016.jpg", //SRC
+		"ミーティア・アステロイドシャワー", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"緑", //COLOR
+		"", //LEVEL
+		"《緑》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のパワー10000以下のシグニ1体を対象とし、それをエナゾーンに置く。あなたのデッキの上からカードを5枚見る。その中から＜プリオケ＞のカードを1枚までエナゾーンに置き、緑の＜プリオケ＞のカードを1枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-017", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-017.jpg", //SRC
+		"ミーティア・ロケットストライク", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"緑", //COLOR
+		"", //LEVEL
+		"《緑》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから1つを選ぶ。①対戦相手のパワー8000以下のシグニ1体を対象とし、それをエナゾーンに置く。②あなたの場に緑の＜プリオケ＞のシグニがある場合、対戦相手のパワー12000以下のシグニ1体を対象とし、それをエナゾーンに置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-018", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-018.jpg", //SRC
+		"気高く咲いた雪の花!", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"黒", //COLOR
+		"", //LEVEL
+		"《黒》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから1つを選ぶ。①対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-8000する。②あなたの場に黒の＜プリオケ＞のシグニがある場合、対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-12000する。(パワーが0以下のシグニはルールによってバニッシュされる)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-019", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-019.jpg", //SRC
+		"ヴィオラ クロス ネージュ クレイモアスマッシャー", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"白黒", //COLOR
+		"", //LEVEL
+		"《白/黒》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから1つを選ぶ。<br>①対戦相手のパワー10000以下のシグニ1体を対象とし、それを手札に戻す。あなたのデッキの上からカードを5枚見る。その中から＜プリオケ＞のカードを1枚までエナゾーンに置き、白の＜プリオケ＞のカードを1枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。<br>②対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-10000する。あなたのデッキの上からカードを5枚見る。その中から＜プリオケ＞のカードを1枚までエナゾーンに置き、黒の＜プリオケ＞のカードを1枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-020", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-020.jpg", //SRC
+		"ゼッタイ歌姫宣言ッ!", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたのデッキの上からカードを4枚見る。その中から＜プリオケ＞のカードを2枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。あなたのルリグゾーンに【リミットアッパー】1つを置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-021", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-021.jpg", //SRC
+		"君とつなぐオーケストラ", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたのデッキの上からカードを4枚見る。その中から＜プリオケ＞のカードを1枚まで公開し手札に加え、＜プリオケ＞のカードを1枚までエナゾーンに置き、残りを好きな順番でデッキの一番下に置く。あなたのルリグゾーンに【リミットアッパー】1つを置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-022", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-022.jpg", //SRC
+		"QUINTET PULSE", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたのトラッシュから＜プリオケ＞のカードを3枚まで対象とし、それらの中からカードを1枚まで手札に加え、残りをエナゾーンに置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-023", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-023.jpg", //SRC
+		"エスコート ダイヤモンド", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから1つを選ぶ。<br>①あなたの場にシグニがない場合、あなたの手札から＜プリオケ＞のシグニ1枚を場に出す。この方法で場に出たシグニの【出】能力は発動しない。<br>②あなたの場に＜プリオケ＞のシグニがある場合、このターン、あなたは対戦相手のルリグによってダメージを受けない。(このアーツを使用した時にだけ＜プリオケ＞のシグニがあれば条件を満たす)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-024", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-024.jpg", //SRC
+		"赤の女王&白の女王", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"このアーツを使用する際、あなたのエナゾーンから＜プリオケ＞のカード3枚をトラッシュに置いてもよい。<br><br>以下の2つから1つを選ぶ。このアーツを使用する際に＜プリオケ＞のカード3枚をトラッシュに置いていた場合、代わりに2つ選ぶ。<br>①あなたの＜プリオケ＞のシグニ1体を対象とし、ターン終了時まで、それのパワーを+10000し、それは「【常】《相手ターン》：【シャドウ】」を得る。(そのシグニは対戦相手によって対象にされない)<br>②対戦相手のパワー10000以上のシグニ1体を対象とし、それをダウンする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-025", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-025.jpg", //SRC
+		"プリンセス・ネージュ レベル0", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ネージュ", //CLASS
+		"白", //COLOR
+		"0", //LEVEL
+		"《白》×0", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-026", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-026.jpg", //SRC
+		"プリンセス・ネージュ レベル1", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ネージュ", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"《白》×0", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-027", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-027.jpg", //SRC
+		"プリンセス・ネージュ レベル2", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ネージュ", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"《白》×1", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-028", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-028.jpg", //SRC
+		"プリンセス・ネージュ レベル3", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ネージュ", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"《白》×2", //COST
+		"6", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ターン1回》エナゾーンから【歌のカケラ】を持つカード1枚をトラッシュに置く：このルリグはそのカードの【歌のカケラ】を使用する。<br><br>【起】《ゲーム1回》このルリグの下からカード3枚をルリグトラッシュに置く：対戦相手のルリグ1体を対象とし、次の対戦相手のターン終了時まで、それは能力を失う。その後、対戦相手のシグニ1体を対象とし、それをトラッシュに置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-029", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-029.jpg", //SRC
+		"プリンセス・ジール レベル0", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ジール", //CLASS
+		"赤", //COLOR
+		"0", //LEVEL
+		"《赤》×0", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-030", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-030.jpg", //SRC
+		"プリンセス・ジール レベル1", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ジール", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"《赤》×0", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-031", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-031.jpg", //SRC
+		"プリンセス・ジール レベル2", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ジール", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"《赤》×1", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-032", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-032.jpg", //SRC
+		"プリンセス・ジール レベル3", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ジール", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"《赤》×2", //COST
+		"6", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ターン1回》エナゾーンから【歌のカケラ】を持つカード1枚をトラッシュに置く：このルリグはそのカードの【歌のカケラ】を使用する。<br><br>【起】《ゲーム1回》このルリグの下からカード3枚をルリグトラッシュに置く：対戦相手のシグニ1体を対象とし、それをバニッシュする。その後、対戦相手のエナゾーンからカードを2枚まで対象とし、それらをトラッシュに置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-033", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-033.jpg", //SRC
+		"プリンセス・リップル レベル0", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"リップル", //CLASS
+		"青", //COLOR
+		"0", //LEVEL
+		"《青》×0", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-034", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-034.jpg", //SRC
+		"プリンセス・リップル レベル1", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"リップル", //CLASS
+		"青", //COLOR
+		"1", //LEVEL
+		"《青》×0", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-035", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-035.jpg", //SRC
+		"プリンセス・リップル レベル2", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"リップル", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"《青》×1", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-036", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-036.jpg", //SRC
+		"プリンセス・リップル レベル3", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"リップル", //CLASS
+		"青", //COLOR
+		"3", //LEVEL
+		"《青》×2", //COST
+		"6", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ターン1回》エナゾーンから【歌のカケラ】を持つカード1枚をトラッシュに置く：このルリグはそのカードの【歌のカケラ】を使用する。<br><br>【起】《ゲーム1回》このルリグの下からカード3枚をルリグトラッシュに置く：カードを4枚引く。その後、対戦相手のシグニを1体まで対象とし、それのレベル1につき手札を1枚捨ててもよい。そうした場合、それをデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-037", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-037.jpg", //SRC
+		"プリンセス・ミーティア レベル0", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ミーティア", //CLASS
+		"緑", //COLOR
+		"0", //LEVEL
+		"《緑》×0", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-038", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-038.jpg", //SRC
+		"プリンセス・ミーティア レベル1", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ミーティア", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"《緑》×0", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-039", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-039.jpg", //SRC
+		"プリンセス・ミーティア レベル2", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ミーティア", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"《緑》×1", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-040", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-040.jpg", //SRC
+		"プリンセス・ミーティア レベル3", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ミーティア", //CLASS
+		"緑", //COLOR
+		"3", //LEVEL
+		"《緑》×2", //COST
+		"6", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ターン1回》エナゾーンから【歌のカケラ】を持つカード1枚をトラッシュに置く：このルリグはそのカードの【歌のカケラ】を使用する。<br><br>【起】《ゲーム1回》このルリグの下からカード3枚をルリグトラッシュに置く：次の対戦相手のターン終了時まで、あなたのすべてのシグニのパワーを+3000する。このターン、次にあなたのシグニがバトルによって対戦相手のシグニ1体をバニッシュしたとき、対戦相手にダメージを与える。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-041", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-041.jpg", //SRC
+		"プリンセス・ヴィオラ レベル0", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ヴィオラ", //CLASS
+		"黒", //COLOR
+		"0", //LEVEL
+		"《黒》×0", //COST
+		"0", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-042", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-042.jpg", //SRC
+		"プリンセス・ヴィオラ レベル1", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ヴィオラ", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"《黒》×0", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-043", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-043.jpg", //SRC
+		"プリンセス・ヴィオラ レベル2", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ヴィオラ", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"《黒》×1", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-044", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-044.jpg", //SRC
+		"プリンセス・ヴィオラ レベル3", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ヴィオラ", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"《黒》×2", //COST
+		"6", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ターン1回》エナゾーンから【歌のカケラ】を持つカード1枚をトラッシュに置く：このルリグはそのカードの【歌のカケラ】を使用する。<br><br>【起】《ゲーム1回》このルリグの下からカード3枚をルリグトラッシュに置く：このターン、対戦相手のシグニがバニッシュされる場合、エナゾーンに置かれる代わりにトラッシュに置かれる。対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-15000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-045", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-045.jpg", //SRC
+		"花の騎士ピュリティ", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、対戦相手のシグニ1体を対象とし、それのレベル1につきあなたのエナゾーンから＜プリオケ＞のカード1枚をトラッシュに置いてもよい。そうした場合、それを手札に戻す。<br><br>【出】：このシグニが＜プリオケ＞のシグニの効果によって場に出ていた場合、ターン終了時まで、対戦相手のすべてのシグニは能力を失う。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-046", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-046.jpg", //SRC
+		"プリンセス・ジール&ネージュ", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】《ターン1回》：あなたのルリグ1体がアタックしたとき、手札から＜プリオケ＞のカードを2枚捨て《無》を支払ってもよい。そうした場合、そのルリグをアップし、ターン終了時まで、そのルリグは能力を失う。<br><br>【起】《ダウン》：あなたのデッキの一番上を公開する。そのカードが＜プリオケ＞の場合、カードを1枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-047", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-047.jpg", //SRC
+		"プリンセス・ヴィオラ&ネージュ", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】《相手ターン》：あなたの＜プリオケ＞のシグニ1体が対戦相手の効果によって場を離れる場合、《無》を支払ってもよい。そうした場合、代わりにターン終了時まで、このシグニはこの能力を失う。<br><br>【起】《ダウン》手札から＜プリオケ＞のカードを2枚捨てる：あなたのトラッシュから《ガードアイコン》を持つシグニ1枚を対象とし、それを手札に加える。<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のアップ状態のシグニ1体を対象とし、それを手札に戻す。?カードを1枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-048", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-048.jpg", //SRC
+		"プリンセス・ジール(テイクミーハイヤー)", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場にあるすべてのシグニが＜プリオケ＞の場合、対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。<br><br>【出】：このシグニが＜プリオケ＞のシグニの効果によって場に出ていた場合、対戦相手のエナゾーンからカード1枚を対象とし、それをトラッシュに置く。それが対戦相手のセンタールリグと共通する色を持つ場合、対戦相手は【エナチャージ1】をしてもよい。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-049", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-049.jpg", //SRC
+		"プリンセス・リップル&ジール", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】：あなたのデッキの一番上を公開する。そのカードが＜プリオケ＞の場合、【エナチャージ1】をする。<br><br>【起】エナゾーンから＜プリオケ＞のカード3枚をトラッシュに置く：ターン終了時まで、このシグニは【アサシン】を得る。<br>(【アサシン】を持つシグニがアタックすると正面のシグニとバトルをせず対戦相手にダメージを与える)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-050", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-050.jpg", //SRC
+		"プリンセス・ネージュ&ジール", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】《ターン1回》：あなたの＜プリオケ＞のシグニ1体が対戦相手の、能力か効果の対象になったとき、対戦相手は自分のエナゾーンからカード1枚を選びトラッシュに置く。<br><br>【起】《ターン2回》手札から＜プリオケ＞のカードを1枚捨てる：【エナチャージ1】<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。?カードを1枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-051", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-051.jpg", //SRC
+		"プリンセス・リップル(テイクミーハイヤー)", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"青", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、対戦相手のシグニ1体を対象とし、手札から＜プリオケ＞のカードを好きな枚数捨てる。ターン終了時まで、それのパワーをこの方法で捨てたカード1枚につき-5000する。<br><br>【出】：このシグニが＜プリオケ＞のシグニの効果によって場に出ていた場合、カードを1枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-052", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-052.jpg", //SRC
+		"プリンセス・ミーティア&リップル", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"青", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：あなたの手札が5枚以上あるかぎり、このシグニのパワーは+5000される。<br><br>【自】：あなたのアタックフェイズ開始時、あなたの場にあるすべてのシグニが＜プリオケ＞の場合、カードを2枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-053", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-053.jpg", //SRC
+		"プリンセス・ジール&リップル", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"青", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、手札から青の＜プリオケ＞のカードを2枚まで捨てる。この方法で捨てたカード1枚につき対戦相手は手札を1枚捨てる。<br><br>【自】：このシグニがアタックしたとき、あなたの場にあるすべてのシグニが＜プリオケ＞の場合、対戦相手の手札を1枚見ないで選び、捨てさせる。<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のシグニを2体まで対象とし、それらをダウンする。?カードを1枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-054", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-054.jpg", //SRC
+		"プリンセス・ミーティア(テイクミーハイヤー)", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"緑", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場にあるすべてのシグニが＜プリオケ＞の場合、パワーがこのシグニのパワーの半分以下の対戦相手のシグニ1体を対象とし、それをバニッシュする。<br><br>【出】：このシグニが＜プリオケ＞のシグニの効果によって場に出ていた場合、ターン終了時まで、このシグニのパワーを+10000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-055", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-055.jpg", //SRC
+		"プリンセス・ヴィオラ&ミーティア", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"緑", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの＜プリオケ＞のシグニ1体を対象とし、あなたのトラッシュからそれぞれレベルの異なる＜プリオケ＞のシグニ3枚を好きな順番でデッキの一番下に置いてもよい。そうした場合、ターン終了時まで、それのパワーを+5000する。<br><br>【起】エナゾーンから＜プリオケ＞のカード2枚をトラッシュに置く：ターン終了時まで、このシグニは【Sランサー】を得る。(【Sランサー】を持つシグニがバトルでシグニをバニッシュしたとき、対戦相手のライフクロスがある場合はそれを1枚クラッシュする。無い場合は対戦相手にダメージを与える)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-056", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-056.jpg", //SRC
+		"プリンセス・リップル&ミーティア", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"緑", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの他の＜プリオケ＞のシグニ1体を対象とし、次の対戦相手のターン終了時まで、それのパワーを+7000する。<br><br>【出】：あなたの場に他の＜プリオケ＞のシグニがある場合、【エナチャージ1】をする。<br><br>【ライフバースト】：どちらか1つを選ぶ。?対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。?【エナチャージ1】", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-057", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-057.jpg", //SRC
+		"花の騎士シンシア", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、対戦相手のシグニ1体を対象とし、《黒》を支払ってもよい。そうした場合、ターン終了時まで、それのパワーをあなたのトラッシュにある＜プリオケ＞のカード1枚につき-1000する。<br><br>【出】：このシグニが＜プリオケ＞のシグニの効果によって場に出ていた場合、あなたのデッキの上からカードを3枚トラッシュに置いてもよい。その後、この方法でトラッシュに置いたカードの中からカードを1枚まで対象とし、それをエナゾーンに置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-058", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-058.jpg", //SRC
+		"プリンセス・ネージュ&ヴィオラ", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場にあるすべてのシグニが＜プリオケ＞の場合、あなたか対戦相手のデッキの上からカードを5枚トラッシュに置く。その後、この方法であなたのデッキから＜プリオケ＞のカードが3枚以上トラッシュに置かれた場合、対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-5000する。<br><br>【出】手札から＜プリオケ＞のカードを1枚捨てる：対戦相手のシグニ1体を対象とし、ターン終了時まで、それは能力を失い、それのパワーを-3000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-059", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-059.jpg", //SRC
+		"プリンセス・ミーティア&ヴィオラ", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：あなたのトラッシュに＜プリオケ＞のカードが5枚以上あるかぎり、このシグニのパワーは+3000される。10枚以上あるかぎり、このシグニは【シャドウ(パワー10000以下のシグニ)】を得る。【出】《無》：あなたのトラッシュからレベル2以下の＜プリオケ＞のシグニ1枚を対象とし、それを場に出すかエナゾーンに置く。【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、ターン終了時まで、それのパワーを-15000する。②カードを1枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-060", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-060.jpg", //SRC
+		"古海える", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】手札から＜プリオケ＞のカードを1枚捨てる：あなたのデッキの上からカードを5枚見る。その中からカード1枚を手札に加え、残りを好きな順番でデッキの一番下に置く。<br>(【出】能力の：の左側はコストである。コストを支払わず発動しないことを選んでもよい)<br><br>【歌のカケラ】：このターン終了時、対戦相手は自分のシグニ2体を選びトラッシュに置く。(1体の場合、それを選ぶ)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-061", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-061.jpg", //SRC
+		"奏美えな&ろな", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのターン終了時、あなたの場に他の＜プリオケ＞のシグニがある場合、次の対戦相手のターン終了時まで、このシグニのパワーを+5000する。<br><br>【歌のカケラ】：あなたのデッキの上からカードを10枚見て、その中からシグニを2枚まで公開する。それらのシグニがそれぞれあなたの場にあるシグニと同じカード名の場合、それらのシグニを手札に加える。残りをデッキに加えてシャッフルする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-062", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-062.jpg", //SRC
+		"姫崎みらい", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【歌のカケラ】：対戦相手のシグニ1体を対象とし、ターン終了時まで、それは能力を失う。その後、対戦相手のパワー8000以下のシグニ1体を対象とし、それを手札に戻す。<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、あなたのエナゾーンから＜プリオケ＞のカード1枚をトラッシュに置いてもよい。そうした場合、それを手札に戻す。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-063", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-063.jpg", //SRC
+		"風花りり(ちびキャラ)", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのターン終了時、次の対戦相手のターン終了時まで、あなたのすべての＜プリオケ＞のシグニのパワーを+2000する。<br><br>【起】このシグニを場からトラッシュに置く：あなたの手札から《花の騎士ピュリティ》1枚を場に出す。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-064", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-064.jpg", //SRC
+		"プリンセス・ネージュ(雪の花)", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ダウン》手札から＜プリオケ＞のカードを1枚捨てる：対戦相手のパワー5000以下のシグニ1体を対象とし、それを手札に戻す。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-065", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-065.jpg", //SRC
+		"風花りり(私服)", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《無》このシグニを場からトラッシュに置く：あなたのトラッシュから《花の騎士ピュリティ》1枚を対象とし、それを場に出す。<br><br>【ライフバースト】：対戦相手のルリグ1体を対象とし、ターン終了時まで、それは「【常】：アタックできない。」を得る。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-066", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-066.jpg", //SRC
+		"トーマ", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのターン終了時、次の対戦相手のターン終了時まで、このシグニのパワーをあなたのエナゾーンにある＜プリオケ＞のカード1枚につき+1000する。その後、このシグニのパワーが15000以上の場合、このシグニを場からトラッシュに置き、あなたの場に他の＜プリオケ＞のシグニがある場合、【ルリグバリア】1つを得る。<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、ターン終了時まで、それは「【常】：アタックできない。」を得る。カードを1枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-067", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-067.jpg", //SRC
+		"プリンセス・ネージュ(蕾を開き、花は咲く)", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ダウン》手札から＜プリオケ＞のカードを1枚捨てる：対戦相手のパワー8000以下のシグニ1体を対象とし、それを手札に戻す。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-068", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-068.jpg", //SRC
+		"馳川はやて", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、あなたの場に他の＜プリオケ＞のシグニがある場合、以下の2つから2つまで選ぶ。<br>①手札を1枚捨てる。そうした場合、カードを1枚引く。<br>②手札を1枚捨てる。そうした場合、【エナチャージ1】をする。<br><br>【歌のカケラ】：《無》を支払ってもよい。そうした場合、このターン、次にあなたのルリグがアタックしたとき、そのアタックの間、対戦相手は【ガード】ができない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-069", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-069.jpg", //SRC
+		"日村みかん", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】手札から＜プリオケ＞のカードを1枚捨てる：対戦相手のパワー5000以下のシグニ1体を対象とし、それをバニッシュする。<br><br>【歌のカケラ】：対戦相手のパワー10000以下のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-070", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-070.jpg", //SRC
+		"迫水あさぎ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【歌のカケラ】：あなたのデッキの上からカードを4枚見る。その中からシグニを2枚まで場に出し、残りを好きな順番でデッキの一番下に置く。<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、あなたのエナゾーンから＜プリオケ＞のカード1枚をトラッシュに置いてもよい。そうした場合、それをバニッシュする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-071", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-071.jpg", //SRC
+		"識辺かがり(ちびキャラ)", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場に他の＜プリオケ＞のシグニがある場合、対戦相手のパワー2000以下のシグニ1体を対象とし、それをバニッシュする。あなたの手札が2枚以下の場合、代わりに対戦相手のパワー3000以下のシグニ1体を対象とし、それをバニッシュする。<br><br>【起】このシグニを場からトラッシュに置く：あなたの手札から《プリンセス・ジール(テイクミーハイヤー)》1枚を場に出す。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-072", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-072.jpg", //SRC
+		"プリンセス・ジール(熱情のリズム)", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】エナゾーンから＜プリオケ＞のカード1枚をトラッシュに置く：対戦相手のパワー5000以下のシグニ1体を対象とし、それをバニッシュする。あなたの手札が0枚の場合、代わりに対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。<br>(【出】能力の：の左側はコストである。コストを支払わず発動しないことを選んでもよい)", //JP_TEXT	
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-073", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-073.jpg", //SRC
+		"識辺かがり(私服)", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《無》このシグニを場からトラッシュに置く：あなたのトラッシュから《プリンセス・ジール(テイクミーハイヤー)》1枚を対象とし、それを場に出す。<br><br>【ライフバースト】：このターン、あなたは対戦相手のルリグによってダメージを受けない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-074", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-074.jpg", //SRC
+		"カメオさん", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場に他の＜プリオケ＞のシグニがある場合、対戦相手のエナゾーンから対戦相手のセンタールリグと共通する色を持たないカード1枚を対象とし、それをトラッシュに置く。<br><br>【ライフバースト】：対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-075", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-075.jpg", //SRC
+		"プリンセス・ジール(決意完了!)", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】エナゾーンから＜プリオケ＞のカード1枚をトラッシュに置く：対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。あなたの手札が0枚の場合、代わりに対戦相手のパワー10000以下のシグニ1体を対象とし、それをバニッシュする。<br>(【出】能力の：の左側はコストである。コストを支払わず発動しないことを選んでもよい)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-076", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-076.jpg", //SRC
+		"陽ノ下なつ", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"青", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのターン終了時、あなたの他の＜プリオケ＞のシグニ1体を対象とし、次の対戦相手のターン終了時まで、それのパワーをあなたの手札1枚につき+1000する。<br><br>【歌のカケラ】：あなたのシグニ1体を対象とし、ターン終了時まで、それは「【自】：このシグニがアタックしたとき、対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーをあなたの手札1枚につき-2000する。」を得る。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-077", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-077.jpg", //SRC
+		"佐藤かえで", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"青", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのターン終了時、あなたのデッキの一番上を公開する。そのカードがレベル2以下の＜プリオケ＞のシグニの場合、カードを1枚引く。<br><br>【歌のカケラ】：対戦相手が《無》《無》を支払わないかぎり、対戦相手は手札を2枚捨てる。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-078", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-078.jpg", //SRC
+		"曽本さき", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"青", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【歌のカケラ】：カードを2枚引く。<br><br>【ライフバースト】：対戦相手のパワー10000以下のシグニ1体を対象とし、あなたのエナゾーンから＜プリオケ＞のカード1枚をトラッシュに置いてもよい。そうした場合、それをデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-079", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-079.jpg", //SRC
+		"空野みなも(ちびキャラ)", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場に他の＜プリオケ＞のシグニがある場合、カードを1枚引く。<br><br>【起】このシグニを場からトラッシュに置く：あなたの手札から《プリンセス・リップル(テイクミーハイヤー)》1枚を場に出す。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-080", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-080.jpg", //SRC
+		"プリンセス・リップル(響け)", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ダウン》手札から＜プリオケ＞のカードを1枚捨てる：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-5000する。<br>(パワーが0以下のシグニはルールによってバニッシュされる)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-081", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-081.jpg", //SRC
+		"空野みなも(私服)", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《無》このシグニを場からトラッシュに置く：あなたのトラッシュから《プリンセス・リップル(テイクミーハイヤー)》1枚を対象とし、それを場に出す。<br><br>【ライフバースト】：対戦相手のルリグ1体を対象とし、それをダウンする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-082", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-082.jpg", //SRC
+		"ドドメさん", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの他の＜プリオケ＞のシグニ1体を対象とし、ターン終了時まで、それは「【自】：このシグニがアタックしたとき、対戦相手は手札を1枚捨てる。」を得る。<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、それをダウンし凍結する。カードを1枚引く。(凍結されたシグニは次の自分のアップフェイズにアップしない)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-083", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-083.jpg", //SRC
+		"プリンセス・リップル(女の子の一生懸命)", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"青", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ダウン》手札から＜プリオケ＞のカードを1枚捨てる：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-8000する。<br>(パワーが0以下のシグニはルールによってバニッシュされる)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-084", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-084.jpg", //SRC
+		"根津あいこ", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの他の＜プリオケ＞のシグニ1体を対象とし、あなたのエナゾーンから＜プリオケ＞のカード1枚をトラッシュに置いてもよい。そうした場合、ターン終了時まで、それは【ランサー(パワー5000以下のシグニ)】を得る。<br><br>【歌のカケラ】：あなたのシグニ1体を対象とし、ターン終了時まで、それは【ランサー(パワー10000以下のシグニ)】を得る。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-085", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-085.jpg", //SRC
+		"葉加瀬まなび", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのターン終了時、あなたのデッキの一番上を公開する。そのカードがレベル2以下の＜プリオケ＞のシグニの場合、【エナチャージ1】をする。<br><br>【歌のカケラ】：対戦相手のシグニ1体と、対戦相手のエナゾーンからシグニ1枚を対象とし、それらの場所を入れ替える。この方法で場に出たシグニの【出】能力は発動しない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-086", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-086.jpg", //SRC
+		"田中まい", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【歌のカケラ】：あなたのエナゾーンからシグニを1枚まで対象とし、それを場に出す。次の対戦相手のターン終了時まで、あなたのすべてのシグニのパワーを+3000する。<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、あなたのエナゾーンから＜プリオケ＞のカード1枚をトラッシュに置いてもよい。そうした場合、それをエナゾーンに置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-087", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-087.jpg", //SRC
+		"一条ながせ(ちびキャラ)", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場に他の＜プリオケ＞のシグニがある場合、【エナチャージ1】をする。<br><br>【起】このシグニを場からトラッシュに置く：あなたの手札から《プリンセス・ミーティア(テイクミーハイヤー)》1枚を場に出す。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-088", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-088.jpg", //SRC
+		"プリンセス・ミーティア(あたしのキラキラ)", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】エナゾーンから＜プリオケ＞のカード1枚をトラッシュに置く：ターン終了時まで、このシグニは【ランサー(パワー5000以下のシグニ)】を得る。<br>(【ランサー(パワー5000以下のシグニ)】を持つシグニがバトルでパワー5000以下のシグニをバニッシュしたとき、対戦相手のライフクロス1枚をクラッシュする)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-089", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-089.jpg", //SRC
+		"一条ながせ(私服)", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《無》このシグニを場からトラッシュに置く：あなたのトラッシュから《プリンセス・ミーティア(テイクミーハイヤー)》1枚を対象とし、それを場に出す。<br><br>【ライフバースト】：【エナチャージ1】をする。このターン、次にあなたがルリグによってダメージを受ける場合、代わりにダメージを受けない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-090", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-090.jpg", //SRC
+		"ダック軍曹&副官", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】：あなたのエナゾーンに＜プリオケ＞のカードが4枚以上ある場合、あなたのエナゾーンから＜プリオケ＞のカードを1枚まで対象とし、それを手札に加える。<br><br>【ライフバースト】：【エナチャージ1】をする。このターン、次にあなたがシグニによってダメージを受ける場合、代わりにダメージを受けない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-091", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-091.jpg", //SRC
+		"プリンセス・ミーティア(流星、闇を切り裂いて)", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"緑", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】エナゾーンから＜プリオケ＞のカード1枚をトラッシュに置く：ターン終了時まで、このシグニは【ランサー(パワー8000以下のシグニ)】を得る。<br>(【ランサー(パワー8000以下のシグニ)】を持つシグニがバトルでパワー8000以下のシグニをバニッシュしたとき、対戦相手のライフクロス1枚をクラッシュする)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-092", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-092.jpg", //SRC
+		"富良野まつり", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのターン終了時、あなたの他の＜プリオケ＞のシグニ1体を対象とし、あなたのデッキの上からカードを2枚トラッシュに置いてもよい。この方法で＜プリオケ＞のカードが1枚以上トラッシュに置かれた場合、次の対戦相手のターン終了時まで、それのパワーを+5000する。<br><br>【歌のカケラ】：あなたのトラッシュから《ガードアイコン》を持たないシグニ1枚を対象とし、それを手札に加える。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-093", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-093.jpg", //SRC
+		"諸星まいん", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】手札から＜プリオケ＞のカードを1枚捨てる：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-3000する。あなたのトラッシュに＜プリオケ＞のカードが5枚以上ある場合、代わりにターン終了時まで、それのパワーを-5000する。<br><br>【歌のカケラ】：対戦相手のシグニを2体まで対象とし、ターン終了時まで、それらのパワーをそれぞれ-5000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-094", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-094.jpg", //SRC
+		"如月ぼたん", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【歌のカケラ】：対戦相手のデッキの上からカードを7枚トラッシュに置く。<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、あなたのエナゾーンから＜プリオケ＞のカード1枚をトラッシュに置いてもよい。そうした場合、ターン終了時まで、それのパワーを-20000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-095", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-095.jpg", //SRC
+		"風花すみれ(ちびキャラ)", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場に他の＜プリオケ＞のシグニがある場合、対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-2000する。<br><br>【起】このシグニを場からトラッシュに置く：あなたの手札から《花の騎士シンシア》1枚を場に出す。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-096", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-096.jpg", //SRC
+		"プリンセス・ヴィオラ(雪の花)", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】エナゾーンから＜プリオケ＞のカード1枚をトラッシュに置く：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-5000する。<br>(パワーが0以下のシグニはルールによってバニッシュされる)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-097", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-097.jpg", //SRC
+		"風花すみれ(私服)", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《無》このシグニを場からトラッシュに置く：あなたのトラッシュから《花の騎士シンシア》1枚を対象とし、それを場に出す。<br><br>【ライフバースト】：このターン、次にあなたがダメージを受ける場合、代わりにあなたのデッキの上からカードを3枚トラッシュに置く。(デッキが2枚以下の場合は置き換えられない)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-098", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-098.jpg", //SRC
+		"グリムさん", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場に他の＜プリオケ＞のシグニがある場合、あなたか対戦相手のデッキの上からカードを2枚トラッシュに置く。<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-8000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-099", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-099.jpg", //SRC
+		"プリンセス・ヴィオラ(蕾を開き、花は咲く)", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：プリオケ", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】エナゾーンから＜プリオケ＞のカード1枚をトラッシュに置く：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-8000する。<br>(【出】能力の：の左側はコストである。コストを支払わず発動しないことを選んでもよい)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-100", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-100.jpg", //SRC
+		"ジュエルベル", //NAME
+		"C", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから1つを選ぶ。①あなたのデッキの上からカードを5枚見る。その中から＜プリオケ＞のシグニを1枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。②あなたのトラッシュからレベル1の＜プリオケ＞のシグニを2枚まで対象とし、それらをエナゾーンに置く。<br><br>【常】：このカードはすべての領域で＜プリオケ＞として扱う。<br><br>【ライフバースト】：あなたのデッキの上からカードを3枚見る。その中からシグニ1枚を公開し手札に加えるか場に出し、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-101", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-101.jpg", //SRC
+		"力を貸して!", //NAME
+		"C", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたのエナゾーンに＜プリオケ＞のカードが3枚以上ある場合、あなたのエナゾーンから【歌のカケラ】を持つカード1枚をトラッシュに置いてもよい。あなたのセンタールリグはそのカードの【歌のカケラ】を使用する。このターン、あなたは《力を貸して!》を使用できない。<br>(【歌のカケラ】を使用すると、シグニの【歌のカケラ】に書かれている効果をルリグが行う)<br><br>【常】：このカードはすべての領域で＜プリオケ＞として扱う。<br><br>【ライフバースト】：あなたのトラッシュからシグニ1枚を対象とし、それを手札に加える。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-CP1-102", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-CP1-102.jpg", //SRC
+		"サーバント #", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏元", //CLASS
+		"無", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"1000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【ガード】(このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ)<br><br>【常】：【マルチエナ】(エナコストを支払う際、このカードは好きな色1つとして支払える)<br><br>【ライフバースト】：あなたのトラッシュからシグニ1枚を対象とし、それを手札に加える。", //JP_TEXT
+		"",	//TW_TEXT
 		"" //BAN
 		]
 	]
