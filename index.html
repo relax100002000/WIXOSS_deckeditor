@@ -336,7 +336,7 @@
 				btn.textContent = document.body.classList.contains('dark-mode') ? '☀ Light' : '🌙 Dark';
 			}
 
-			// === Dark Mode: 自動切換圖片 (empty.jpg / cancel_icon.png) ===
+			// === Dark Mode: 自動切換圖片 (empty.jpg / cancel_icon.png / larrow.png / rarrow.png) ===
 			function swapImageForDarkMode(img, isDark) {
 				if (!img || !img.getAttribute) return;
 				var src = img.getAttribute('src');
@@ -346,12 +346,20 @@
 						img.setAttribute('src', src.replace(/empty\.jpg/, 'empty_black.jpg'));
 					} else if (/(^|\/)cancel_icon\.png(\?|$)/.test(src)) {
 						img.setAttribute('src', src.replace(/cancel_icon\.png/, 'cancel_icon_black.png'));
+					} else if (/(^|\/)larrow\.png(\?|$)/.test(src)) {
+						img.setAttribute('src', src.replace(/larrow\.png/, 'larrow_black.png'));
+					} else if (/(^|\/)rarrow\.png(\?|$)/.test(src)) {
+						img.setAttribute('src', src.replace(/rarrow\.png/, 'rarrow_black.png'));
 					}
 				} else {
 					if (/empty_black\.jpg/.test(src)) {
 						img.setAttribute('src', src.replace(/empty_black\.jpg/, 'empty.jpg'));
 					} else if (/cancel_icon_black\.png/.test(src)) {
 						img.setAttribute('src', src.replace(/cancel_icon_black\.png/, 'cancel_icon.png'));
+					} else if (/larrow_black\.png/.test(src)) {
+						img.setAttribute('src', src.replace(/larrow_black\.png/, 'larrow.png'));
+					} else if (/rarrow_black\.png/.test(src)) {
+						img.setAttribute('src', src.replace(/rarrow_black\.png/, 'rarrow.png'));
 					}
 				}
 			}
