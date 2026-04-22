@@ -258,17 +258,25 @@
 
         body.dark-mode #darkModeToggle { background-color: #2a2a2a; color: #e6e6e6; border-color: #444; }
 
-        /* 背景若為 #E0E0E0 (或同等淺色),即便在黑暗模式下也強制黑字 */
+        /* 背景若為 #E0E0E0 / #FFD9E6 (或同等淺色),即便在黑暗模式下也強制黑字 */
         body.dark-mode [style*="background:#E0E0E0" i],
         body.dark-mode [style*="background: #E0E0E0" i],
         body.dark-mode [style*="background-color:#E0E0E0" i],
-        body.dark-mode [style*="background-color: #E0E0E0" i] {
+        body.dark-mode [style*="background-color: #E0E0E0" i],
+        body.dark-mode [style*="background:#FFD9E6" i],
+        body.dark-mode [style*="background: #FFD9E6" i],
+        body.dark-mode [style*="background-color:#FFD9E6" i],
+        body.dark-mode [style*="background-color: #FFD9E6" i] {
             color: #000 !important;
         }
         body.dark-mode [style*="background:#E0E0E0" i] *,
         body.dark-mode [style*="background: #E0E0E0" i] *,
         body.dark-mode [style*="background-color:#E0E0E0" i] *,
-        body.dark-mode [style*="background-color: #E0E0E0" i] * {
+        body.dark-mode [style*="background-color: #E0E0E0" i] *,
+        body.dark-mode [style*="background:#FFD9E6" i] *,
+        body.dark-mode [style*="background: #FFD9E6" i] *,
+        body.dark-mode [style*="background-color:#FFD9E6" i] *,
+        body.dark-mode [style*="background-color: #FFD9E6" i] * {
             color: #000 !important;
         }
 
