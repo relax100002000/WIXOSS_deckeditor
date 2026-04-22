@@ -4893,8 +4893,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20260417 v2.04\n";
-	str += "1.新增WX26-CP1、SPDi47\n";
+	str += "20260422 v2.05\n";
+	str += "1.新增黑暗模式\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";

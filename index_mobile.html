@@ -187,9 +187,214 @@
             .top-controls, .charts-wrapper { grid-column: 1 / -1; }
             .filters-section { position: sticky; top: 70px; }
         }
+
+        /* === Dark Mode Toggle Button === */
+        #darkModeToggle {
+            height: 40px;
+            padding: 0 12px;
+            margin: 2px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background-color: white;
+            color: #333;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        /* === Dark Mode Theme === */
+        body.dark-mode { background-color: #121212; color: #e6e6e6; }
+
+        body.dark-mode .top-controls,
+        body.dark-mode .charts-wrapper,
+        body.dark-mode .deck-section,
+        body.dark-mode .filters-section { background: #1e1e1e; box-shadow: 0 2px 5px rgba(0,0,0,0.4); }
+
+        body.dark-mode details summary { background: #1e1e1e; color: #e6e6e6; }
+        body.dark-mode details summary:hover { background-color: #2a2a2a; }
+        body.dark-mode details[open] summary { border-bottom-color: #333; }
+        body.dark-mode details summary::after { color: #bbb; }
+
+        body.dark-mode .chart-card { background: #252525; border-color: #333; }
+        body.dark-mode .chart-title { color: #ccc; border-bottom-color: #333; }
+        body.dark-mode #counter { color: #aaa !important; }
+
+        body.dark-mode .filter-content { background: #1a1a1a; }
+        body.dark-mode .filter-group { border-bottom-color: #333; }
+
+        body.dark-mode .deck-header { background-color: #2a2a2a; color: #ddd; border-left-color: #888; }
+        body.dark-mode .deck-header.main,
+        body.dark-mode .deck-header.results { background-color: #1e2c3e; border-left-color: #4da3ff; }
+
+        body.dark-mode button,
+        body.dark-mode .custom-file-upload,
+        body.dark-mode select,
+        body.dark-mode input[type="text"],
+        body.dark-mode input[type="file"],
+        body.dark-mode textarea {
+            background-color: #2a2a2a;
+            color: #e6e6e6;
+            border: 1px solid #444;
+        }
+        body.dark-mode button:active { background-color: #3a3a3a; }
+        body.dark-mode button.primary { background-color: #1e6fd9; color: white; border: none; }
+        body.dark-mode button.danger { background-color: #b02a37; color: white; border: none; }
+
+        body.dark-mode label { color: #ddd; }
+        body.dark-mode a { color: #4da3ff; }
+        body.dark-mode b { color: #fff; }
+
+        body.dark-mode .pagination { background: rgba(20,20,20,0.95); box-shadow: 0 -4px 15px rgba(0,0,0,0.5); }
+        body.dark-mode .modal-container { background: rgba(0,0,0,0.75); }
+        body.dark-mode .modal-content { background: #1e1e1e; color: #e6e6e6; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+        body.dark-mode #cardinformation { background: #1e1e1e !important; color: #e6e6e6; box-shadow: 0 20px 50px rgba(0,0,0,0.7); }
+        body.dark-mode #cardinformation h3 { color: #fff; }
+        body.dark-mode #cardinformation table td { color: #e6e6e6; border-color: #444; }
+
+        body.dark-mode #window-pop { background: rgba(30,30,30,0.97) !important; color: #e6e6e6; }
+        body.dark-mode img { box-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+
+        body.dark-mode #darkModeToggle { background-color: #2a2a2a; color: #e6e6e6; border-color: #444; }
+
+        /* 背景若為 #E0E0E0 (或同等淺色),即便在黑暗模式下也強制黑字 */
+        body.dark-mode [style*="background:#E0E0E0" i],
+        body.dark-mode [style*="background: #E0E0E0" i],
+        body.dark-mode [style*="background-color:#E0E0E0" i],
+        body.dark-mode [style*="background-color: #E0E0E0" i] {
+            color: #000 !important;
+        }
+        body.dark-mode [style*="background:#E0E0E0" i] *,
+        body.dark-mode [style*="background: #E0E0E0" i] *,
+        body.dark-mode [style*="background-color:#E0E0E0" i] *,
+        body.dark-mode [style*="background-color: #E0E0E0" i] * {
+            color: #000 !important;
+        }
+
+        @media (hover: hover) {
+            body.dark-mode .deck-scroll-container img:hover,
+            body.dark-mode .main-deck-grid img:hover,
+            body.dark-mode #rdeck_table_wrapper img:hover {
+                outline: 3px solid #4da3ff;
+            }
+        }
     </style>
 </head>
 <body>
+    <script>
+        // === Dark Mode: 早期套用,避免畫面閃爍 ===
+        try {
+            if (localStorage.getItem('wixoss_dark_mode') === '1') {
+                document.body.classList.add('dark-mode');
+            }
+        } catch(e) {}
+
+        function getLegendColor() {
+            return document.body.classList.contains('dark-mode') ? '#e6e6e6' : '#333';
+        }
+        function getTickColor() {
+            return document.body.classList.contains('dark-mode') ? '#bbb' : '#666';
+        }
+        function getGridColor() {
+            return document.body.classList.contains('dark-mode') ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)';
+        }
+
+        function updateChartsTheme() {
+            var color = getLegendColor();
+            var tick = getTickColor();
+            var grid = getGridColor();
+            [typeof levelobj!=='undefined'?levelobj:null,
+             typeof colorobj!=='undefined'?colorobj:null,
+             typeof lbobj!==   'undefined'?lbobj:   null,
+             typeof storyobj!=='undefined'?storyobj:null].forEach(function(obj){
+                if (!obj || !obj.options) return;
+                var plugins = obj.options.plugins || {};
+                if (plugins.legend && plugins.legend.labels) {
+                    plugins.legend.labels.color = color;
+                }
+                var scales = obj.options.scales || {};
+                ['x','y'].forEach(function(axis){
+                    if (scales[axis]) {
+                        if (scales[axis].ticks) scales[axis].ticks.color = tick;
+                        if (scales[axis].grid)  scales[axis].grid.color  = grid;
+                        else scales[axis].grid = { color: grid };
+                        if (!scales[axis].ticks) scales[axis].ticks = { color: tick };
+                    }
+                });
+                try { obj.update(); } catch(e) {}
+            });
+        }
+
+        function updateDarkModeButton() {
+            var btn = document.getElementById('darkModeToggle');
+            if (!btn) return;
+            btn.textContent = document.body.classList.contains('dark-mode') ? '☀ Light' : '🌙 Dark';
+        }
+
+        // === Dark Mode: 自動切換圖片 (empty.jpg / cancel_icon.png) ===
+        function swapImageForDarkMode(img, isDark) {
+            if (!img || !img.getAttribute) return;
+            var src = img.getAttribute('src');
+            if (!src) return;
+            if (isDark) {
+                if (/(^|\/)empty\.jpg(\?|$)/.test(src)) {
+                    img.setAttribute('src', src.replace(/empty\.jpg/, 'empty_black.jpg'));
+                } else if (/(^|\/)cancel_icon\.png(\?|$)/.test(src)) {
+                    img.setAttribute('src', src.replace(/cancel_icon\.png/, 'cancel_icon_black.png'));
+                }
+            } else {
+                if (/empty_black\.jpg/.test(src)) {
+                    img.setAttribute('src', src.replace(/empty_black\.jpg/, 'empty.jpg'));
+                } else if (/cancel_icon_black\.png/.test(src)) {
+                    img.setAttribute('src', src.replace(/cancel_icon_black\.png/, 'cancel_icon.png'));
+                }
+            }
+        }
+        function applyDarkModeImages() {
+            var isDark = document.body.classList.contains('dark-mode');
+            var imgs = document.getElementsByTagName('img');
+            for (var i = 0; i < imgs.length; i++) swapImageForDarkMode(imgs[i], isDark);
+        }
+
+        // 監聽動態 src 變化與新增 img 節點
+        (function(){
+            if (!window.MutationObserver) return;
+            var obs = new MutationObserver(function(muts){
+                var isDark = document.body.classList.contains('dark-mode');
+                muts.forEach(function(m){
+                    if (m.type === 'attributes' && m.attributeName === 'src' && m.target && m.target.tagName === 'IMG') {
+                        swapImageForDarkMode(m.target, isDark);
+                    } else if (m.type === 'childList') {
+                        m.addedNodes.forEach(function(n){
+                            if (n.nodeType !== 1) return;
+                            if (n.tagName === 'IMG') swapImageForDarkMode(n, isDark);
+                            else if (n.querySelectorAll) {
+                                var sub = n.querySelectorAll('img');
+                                for (var i = 0; i < sub.length; i++) swapImageForDarkMode(sub[i], isDark);
+                            }
+                        });
+                    }
+                });
+            });
+            function startObserving() {
+                obs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['src'] });
+                applyDarkModeImages();
+            }
+            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', startObserving);
+            else startObserving();
+        })();
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            var isDark = document.body.classList.contains('dark-mode');
+            try { localStorage.setItem('wixoss_dark_mode', isDark ? '1' : '0'); } catch(e) {}
+            updateDarkModeButton();
+            updateChartsTheme();
+            applyDarkModeImages();
+        }
+    </script>
+
     <div id="hover-overlay"><img id="hover-overlay-img" src="" alt="Preview"></div>
 
     <script>
@@ -297,6 +502,10 @@
             $(document).on('mouseleave', '.deck-scroll-container img, .grid-layout img', function() {
                 $('#hover-overlay').hide();
             });
+
+            // Dark mode: 套用按鈕文字與圖表配色
+            updateDarkModeButton();
+            updateChartsTheme();
         });
     </script>
 
@@ -315,6 +524,7 @@
 
     <div class="top-controls">
         <select id="selectLang"><option value="JP">JP</option><option value="TW">TW</option></select>
+        <button id="darkModeToggle" type="button" onclick="toggleDarkMode()" title="切換黑暗模式">🌙 Dark</button>
         <select id="selectDeck" onchange="selectDeck();" style="flex: 1; min-width: 130px;"><option value="">-- Deck --</option></select>
         <button class="primary" onclick="customizeWindowEvent('code');">Menu</button>
         <button onclick="customizeWindowEvent('list');">List</button>

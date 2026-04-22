@@ -162,8 +162,212 @@
     	margin-left: 0px;
     	visibility: hidden;
 	}
+
+	/* === Dark Mode Toggle Button === */
+	#darkModeToggle {
+		cursor: pointer;
+		background: transparent;
+		border: 1px solid #888;
+		border-radius: 6px;
+		padding: 2px 10px;
+		height: 24px;
+		line-height: 18px;
+		font-size: 14px;
+		margin-left: 8px;
+		user-select: none;
+		vertical-align: middle;
+		transition: background 0.2s, color 0.2s, border-color 0.2s;
+	}
+	#darkModeToggle:hover { background: rgba(0,0,0,0.08); }
+
+	/* === Dark Mode Theme === */
+	body.dark-mode {
+		background-color: #1a1a1a;
+		color: #e6e6e6;
+	}
+	body.dark-mode,
+	body.dark-mode * { color: #e6e6e6; }
+	body.dark-mode a { color: #4da3ff; }
+	body.dark-mode a:visited { color: #b48bff; }
+
+	body.dark-mode button,
+	body.dark-mode .custom-file-upload {
+		background-color: #2f2f2f;
+		color: #e6e6e6;
+		border-color: #555;
+	}
+	body.dark-mode button:hover,
+	body.dark-mode .custom-file-upload:hover {
+		background-color: #3d3d3d;
+	}
+	body.dark-mode select,
+	body.dark-mode input[type="text"],
+	body.dark-mode textarea {
+		background-color: #2a2a2a;
+		color: #e6e6e6;
+		border: 1px solid #555;
+	}
+
+	body.dark-mode #window-container,
+	body.dark-mode #window-container-list,
+	body.dark-mode #window-container-code {
+		background-color: rgba(0,0,0,0.75);
+	}
+	body.dark-mode #window-pop,
+	body.dark-mode #window-pop-list,
+	body.dark-mode #window-pop-code {
+		background: #242424;
+		color: #e6e6e6;
+	}
+
+	body.dark-mode #cardinformation {
+		background-color: #242424 !important;
+		border-color: #555 !important;
+	}
+	body.dark-mode #cardinformation table,
+	body.dark-mode #cardinformation td {
+		border-color: #555 !important;
+	}
+
+	body.dark-mode img { border-color: #555; }
+	body.dark-mode #lbBackground { background: rgba(70,70,70,1.0); }
+
+	body.dark-mode #darkModeToggle {
+		border-color: #888;
+		color: #e6e6e6;
+	}
+	body.dark-mode #darkModeToggle:hover { background: rgba(255,255,255,0.1); }
+
+	/* 背景若為 #E0E0E0 (或同等淺色),即便在黑暗模式下也強制黑字 */
+	body.dark-mode [style*="background:#E0E0E0" i],
+	body.dark-mode [style*="background: #E0E0E0" i],
+	body.dark-mode [style*="background-color:#E0E0E0" i],
+	body.dark-mode [style*="background-color: #E0E0E0" i],
+	body.dark-mode [style*="background:#e0e0e0"],
+	body.dark-mode [style*="background: #e0e0e0"],
+	body.dark-mode [style*="background-color:#e0e0e0"],
+	body.dark-mode [style*="background-color: #e0e0e0"] {
+		color: #000 !important;
+	}
+	body.dark-mode [style*="background:#E0E0E0" i] *,
+	body.dark-mode [style*="background: #E0E0E0" i] *,
+	body.dark-mode [style*="background-color:#E0E0E0" i] *,
+	body.dark-mode [style*="background-color: #E0E0E0" i] *,
+	body.dark-mode [style*="background:#e0e0e0"] *,
+	body.dark-mode [style*="background: #e0e0e0"] *,
+	body.dark-mode [style*="background-color:#e0e0e0"] *,
+	body.dark-mode [style*="background-color: #e0e0e0"] * {
+		color: #000 !important;
+	}
+
+	body.dark-mode .priokeBackground {
+		/* 在深色底上可見但不刺眼的柔和漸層 */
+		background-image: radial-gradient( circle farthest-corner at 10% 20%,
+			rgba(150, 95,185,0.72) 0%,
+			rgba( 90,145,195,0.72) 21.9%,
+			rgba(105,185,130,0.72) 35.6%,
+			rgba(200,185, 95,0.72) 53.9%,
+			rgba(205,150, 90,0.72) 66.8%,
+			rgba(200, 95,105,0.72) 95%,
+			rgba(205,110,165,0.72) 99.9% );
+		box-shadow: 0 0 10px rgba(150, 95,185,0.25),
+		            inset 0 0 8px rgba(255,255,255,0.08);
+	}
 	</style>
 	<body>
+		<script>
+			// === Dark Mode: 早期套用,避免畫面閃爍 ===
+			try {
+				if (localStorage.getItem('wixoss_dark_mode') === '1') {
+					document.body.classList.add('dark-mode');
+				}
+			} catch(e) {}
+
+			function getLegendColor() {
+				return document.body.classList.contains('dark-mode') ? '#e6e6e6' : 'rgb(0, 0, 0)';
+			}
+
+			function updateChartsTheme() {
+				var color = getLegendColor();
+				[typeof levelobj!=='undefined'?levelobj:null,
+				 typeof colorobj!=='undefined'?colorobj:null,
+				 typeof lbobj!==   'undefined'?lbobj:   null,
+				 typeof storyobj!=='undefined'?storyobj:null].forEach(function(obj){
+					if (obj && obj.options && obj.options.plugins && obj.options.plugins.legend && obj.options.plugins.legend.labels) {
+						obj.options.plugins.legend.labels.color = color;
+						obj.update();
+					}
+				});
+			}
+
+			function updateDarkModeButton() {
+				var btn = document.getElementById('darkModeToggle');
+				if (!btn) return;
+				btn.textContent = document.body.classList.contains('dark-mode') ? '☀ Light' : '🌙 Dark';
+			}
+
+			// === Dark Mode: 自動切換圖片 (empty.jpg / cancel_icon.png) ===
+			function swapImageForDarkMode(img, isDark) {
+				if (!img || !img.getAttribute) return;
+				var src = img.getAttribute('src');
+				if (!src) return;
+				if (isDark) {
+					if (/(^|\/)empty\.jpg(\?|$)/.test(src)) {
+						img.setAttribute('src', src.replace(/empty\.jpg/, 'empty_black.jpg'));
+					} else if (/(^|\/)cancel_icon\.png(\?|$)/.test(src)) {
+						img.setAttribute('src', src.replace(/cancel_icon\.png/, 'cancel_icon_black.png'));
+					}
+				} else {
+					if (/empty_black\.jpg/.test(src)) {
+						img.setAttribute('src', src.replace(/empty_black\.jpg/, 'empty.jpg'));
+					} else if (/cancel_icon_black\.png/.test(src)) {
+						img.setAttribute('src', src.replace(/cancel_icon_black\.png/, 'cancel_icon.png'));
+					}
+				}
+			}
+			function applyDarkModeImages() {
+				var isDark = document.body.classList.contains('dark-mode');
+				var imgs = document.getElementsByTagName('img');
+				for (var i = 0; i < imgs.length; i++) swapImageForDarkMode(imgs[i], isDark);
+			}
+
+			// 監聽動態 src 變化與新增 img 節點
+			(function(){
+				if (!window.MutationObserver) return;
+				var obs = new MutationObserver(function(muts){
+					var isDark = document.body.classList.contains('dark-mode');
+					muts.forEach(function(m){
+						if (m.type === 'attributes' && m.attributeName === 'src' && m.target && m.target.tagName === 'IMG') {
+							swapImageForDarkMode(m.target, isDark);
+						} else if (m.type === 'childList') {
+							m.addedNodes.forEach(function(n){
+								if (n.nodeType !== 1) return;
+								if (n.tagName === 'IMG') swapImageForDarkMode(n, isDark);
+								else if (n.querySelectorAll) {
+									var sub = n.querySelectorAll('img');
+									for (var i = 0; i < sub.length; i++) swapImageForDarkMode(sub[i], isDark);
+								}
+							});
+						}
+					});
+				});
+				function startObserving() {
+					obs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['src'] });
+					applyDarkModeImages();
+				}
+				if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', startObserving);
+				else startObserving();
+			})();
+
+			function toggleDarkMode() {
+				document.body.classList.toggle('dark-mode');
+				var isDark = document.body.classList.contains('dark-mode');
+				try { localStorage.setItem('wixoss_dark_mode', isDark ? '1' : '0'); } catch(e) {}
+				updateDarkModeButton();
+				updateChartsTheme();
+				applyDarkModeImages();
+			}
+		</script>
 		<script>
 			var page = 0;
 			var deckNamelist = [];
@@ -204,6 +408,8 @@
 				onLoading();
 				showrdeck();
 				checkAndRedirectToMobile("https://relax100002000.github.io/WIXOSS_deckeditor/index_mobile.html");
+				updateDarkModeButton();
+				updateChartsTheme();
 			});
 
 			function customizeWindowEvent(x) {
@@ -307,7 +513,8 @@
 				<option value="JP">日本語</option>
 				<option value="TW">繁體中文</option>
 		    </select>
-		    ※Right-click in the deck can add existing card. 
+		    <button id="darkModeToggle" type="button" onclick="toggleDarkMode()" title="切換黑暗模式">🌙 Dark</button>
+		    ※Right-click in the deck can add existing card.
 		    <br>Deck List
 		    <select id="selectDeck" onchange="selectDeck();">
 		    	<option value="">--Select Deck--</option>
@@ -361,7 +568,7 @@
 									            legend: {
 									                display: true,
 									                labels: {
-									                    color: 'rgb(0, 0, 0)'
+									                    color: getLegendColor()
 									                }
 									            }
 									        }
@@ -405,7 +612,7 @@
 									            legend: {
 									                display: true,
 									                labels: {
-									                    color: 'rgb(0, 0, 0)'
+									                    color: getLegendColor()
 									                }
 									            }
 									        }
@@ -441,7 +648,7 @@
 									            legend: {
 									                display: true,
 									                labels: {
-									                    color: 'rgb(0, 0, 0)'
+									                    color: getLegendColor()
 									                }
 									            }
 									        }
@@ -482,7 +689,7 @@
 									            legend: {
 									                display: true,
 									                labels: {
-									                    color: 'rgb(0, 0, 0)',
+									                    color: getLegendColor(),
 									                    font: {
 									                        size: 10
 									                    }
