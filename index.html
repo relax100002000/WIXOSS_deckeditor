@@ -180,6 +180,19 @@
 	}
 	#darkModeToggle:hover { background: rgba(0,0,0,0.08); }
 
+	/* === Dark Mode 過場動畫 === */
+	body, button, .custom-file-upload, select, input[type="text"], textarea,
+	#window-pop, #window-pop-list, #window-pop-code, #cardinformation,
+	#lbBackground {
+		transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+	}
+	/* 使用者若偏好減少動畫,關掉過場 */
+	@media (prefers-reduced-motion: reduce) {
+		body, button, .custom-file-upload, select, input[type="text"], textarea,
+		#window-pop, #window-pop-list, #window-pop-code, #cardinformation,
+		#lbBackground { transition: none; }
+	}
+
 	/* === Dark Mode Theme === */
 	body.dark-mode {
 		background-color: #1a1a1a;
@@ -277,9 +290,26 @@
 	<body>
 		<script>
 			// === Dark Mode: 早期套用,避免畫面閃爍 ===
+			// 優先順序: localStorage 有存 > 跟隨系統 prefers-color-scheme > 亮色預設
 			try {
-				if (localStorage.getItem('wixoss_dark_mode') === '1') {
-					document.body.classList.add('dark-mode');
+				var saved = localStorage.getItem('wixoss_dark_mode');
+				var wantDark = false;
+				if (saved === '1') wantDark = true;
+				else if (saved === null && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) wantDark = true;
+				if (wantDark) document.body.classList.add('dark-mode');
+			} catch(e) {}
+
+			// 系統主題變化時,若使用者沒手動切過就自動跟隨
+			try {
+				var mql = window.matchMedia('(prefers-color-scheme: dark)');
+				if (mql && mql.addEventListener) {
+					mql.addEventListener('change', function(e){
+						if (localStorage.getItem('wixoss_dark_mode') !== null) return; // 使用者已有偏好,尊重之
+						document.body.classList.toggle('dark-mode', e.matches);
+						if (typeof updateDarkModeButton === 'function') updateDarkModeButton();
+						if (typeof updateChartsTheme === 'function') updateChartsTheme();
+						if (typeof applyDarkModeImages === 'function') applyDarkModeImages();
+					});
 				}
 			} catch(e) {}
 
@@ -331,6 +361,17 @@
 				for (var i = 0; i < imgs.length; i++) swapImageForDarkMode(imgs[i], isDark);
 			}
 
+			// === 圖片效能: 批次套用 loading=lazy 與 decoding=async ===
+			function enhanceImage(img) {
+				if (!img || !img.setAttribute) return;
+				if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
+				if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
+			}
+			function applyImageLazyLoading() {
+				var imgs = document.getElementsByTagName('img');
+				for (var i = 0; i < imgs.length; i++) enhanceImage(imgs[i]);
+			}
+
 			// 監聽動態 src 變化與新增 img 節點
 			(function(){
 				if (!window.MutationObserver) return;
@@ -339,13 +380,14 @@
 					muts.forEach(function(m){
 						if (m.type === 'attributes' && m.attributeName === 'src' && m.target && m.target.tagName === 'IMG') {
 							swapImageForDarkMode(m.target, isDark);
+							enhanceImage(m.target);
 						} else if (m.type === 'childList') {
 							m.addedNodes.forEach(function(n){
 								if (n.nodeType !== 1) return;
-								if (n.tagName === 'IMG') swapImageForDarkMode(n, isDark);
+								if (n.tagName === 'IMG') { swapImageForDarkMode(n, isDark); enhanceImage(n); }
 								else if (n.querySelectorAll) {
 									var sub = n.querySelectorAll('img');
-									for (var i = 0; i < sub.length; i++) swapImageForDarkMode(sub[i], isDark);
+									for (var i = 0; i < sub.length; i++) { swapImageForDarkMode(sub[i], isDark); enhanceImage(sub[i]); }
 								}
 							});
 						}
@@ -354,6 +396,7 @@
 				function startObserving() {
 					obs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['src'] });
 					applyDarkModeImages();
+					applyImageLazyLoading();
 				}
 				if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', startObserving);
 				else startObserving();
