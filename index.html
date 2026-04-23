@@ -2,8 +2,20 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<script src="js/function.js"></script>
-		<script src="js/card_info.js"></script>
+		<!-- ==== Force-reload local JS / CSS / HTML on every visit (no browser cache) ==== -->
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<script>
+			// Cache-buster: append a unique ?v=<timestamp> to every local script so the
+			// browser must re-fetch them. Using document.write() inside <head> keeps the
+			// original synchronous load order intact.
+			(function(){
+				var v = '?v=' + Date.now();
+				document.write('<script src="js/function.js' + v + '"><\/script>');
+				document.write('<script src="js/card_info.js' + v + '"><\/script>');
+			})();
+		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<title>WIXOSS Deck Builder</title>

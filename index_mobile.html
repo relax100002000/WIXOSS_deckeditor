@@ -3,11 +3,22 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    
+    <!-- ==== Force-reload local JS / CSS / HTML on every visit (no browser cache) ==== -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/function.js"></script>
-    <script src="js/card_info.js"></script>
+    <script>
+        // Cache-buster: append a unique ?v=<timestamp> to every local script so the
+        // browser must re-fetch them every page load.
+        (function(){
+            var v = '?v=' + Date.now();
+            document.write('<script src="js/function.js' + v + '"><\/script>');
+            document.write('<script src="js/card_info.js' + v + '"><\/script>');
+        })();
+    </script>
     
     <title>WIXOSS Deck Builder Moblie</title>
     
