@@ -180,6 +180,64 @@
 	}
 	#darkModeToggle:hover { background: rgba(0,0,0,0.08); }
 
+	/* === big_pic lock indicator (when ALT is held) === */
+	body.bigpic-locked #cardinformation {
+		outline: 3px solid #ffb300;
+		outline-offset: 2px;
+		box-shadow: 0 0 16px rgba(255, 179, 0, 0.65);
+	}
+	body.bigpic-locked #cardinformation::before {
+		content: "🔒 LOCKED — release ALT to unlock";
+		position: absolute;
+		top: -28px; left: 0;
+		background: #ffb300;
+		color: #000;
+		font-weight: 700;
+		font-size: 12px;
+		padding: 3px 8px;
+		border-radius: 4px;
+		z-index: 1000;
+		pointer-events: none;
+		white-space: nowrap;
+	}
+
+	/* Persistent usage hint shown on the preview popup */
+	#bigPicHint {
+		display: inline-block;
+		font-size: 11px;
+		color: #555;
+		background: #fff8e1;
+		border: 1px solid #ffd54f;
+		border-radius: 4px;
+		padding: 2px 6px;
+		margin: 4px 0 4px 8px;
+		vertical-align: middle;
+		user-select: none;
+	}
+	body.dark-mode #bigPicHint {
+		color: #ffd54f;
+		background: #3a2e00;
+		border-color: #c79100;
+	}
+
+	/* Inline ALT-lock tip near the language bar */
+	.alt-lock-tip {
+		display: inline-block;
+		font-size: 12px;
+		color: #b26a00;
+		background: #fff8e1;
+		border: 1px dashed #ffb300;
+		border-radius: 4px;
+		padding: 1px 6px;
+		margin: 0 6px;
+		vertical-align: middle;
+	}
+	body.dark-mode .alt-lock-tip {
+		color: #ffd54f;
+		background: #3a2e00;
+		border-color: #c79100;
+	}
+
 	/* === Dark Mode 過場動畫 === */
 	body, button, .custom-file-upload, select, input[type="text"], textarea,
 	#window-pop, #window-pop-list, #window-pop-code, #cardinformation,
@@ -546,7 +604,8 @@
 	        }
 		</script>
 		<div id='cardinformation' style='border: solid; border-width: 2px;position: absolute;z-index: 999; background-color:white; visibility: hidden;margin: 150px 0px 0px 40px;'>
-			<img id="cross" width="30px" height="30px" style='border-style: none;margin-left: 700px;' src="img/cancel_icon.png" onclick="$('#cardinformation').css('visibility', 'hidden');" onmouseover="$('#cardinformation').css('visibility', 'hidden');">
+			<span id="bigPicHint" title="Hold ALT to keep this preview open and frozen on the current card.">💡 Hold <b>ALT</b> to lock this preview · release to unlock</span>
+			<img id="cross" width="30px" height="30px" style='border-style: none;margin-left: 540px;' src="img/cancel_icon.png" onclick="if(!window.bigPicLocked) $('#cardinformation').css('visibility', 'hidden');" onmouseover="if(!window.bigPicLocked) $('#cardinformation').css('visibility', 'hidden');">
 			<table>
 				<tr>
 					<td>
@@ -565,6 +624,7 @@
 				<option value="TW">繁體中文</option>
 		    </select>
 		    <button id="darkModeToggle" type="button" onclick="toggleDarkMode()" title="切換黑暗模式">🌙 Dark</button>
+		    <span class="alt-lock-tip" title="Hold ALT to lock the card preview window — it won't close or change card while ALT is held.">🔒 Hold <b>ALT</b> = lock card preview</span>
 		    ※Right-click in the deck can add existing card.
 		    <br>Deck List
 		    <select id="selectDeck" onchange="selectDeck();">

@@ -2,6 +2,9 @@
    
 Author: ZZZ  
 
+20260423 v2.06  
+1.Add hold 'alt' to lock card review function. 
+
 20260422 v2.05  
 1.新增黑暗模式  
 
