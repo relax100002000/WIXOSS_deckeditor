@@ -191,24 +191,6 @@ function onmouseShow(x, source)
 {
 	var i = 0;
 
-	if($('#cardinformation').css('visibility') == 'visible')
-	{
-		if(source == 'search')
-		{
-			if($('#cardinformation').css('margin') == '150px 0px 0px 960px')
-			{
-				return;
-			}
-		}
-		else if(source == 'deck')
-		{
-			if($('#cardinformation').css('margin') == '150px 0px 0px 40px')
-			{
-				return;
-			}
-		}
-	}
-
 	if(source == 'search')
 	{
 		$('#cardinformation').css('margin', '150px 0px 0px 40px');

@@ -291,24 +291,6 @@ function onmouseShow(x, source)
 	// Locked (ALT held): keep current big_pic content and visibility frozen.
 	if(bigPicLocked) { return; }
 
-	if($('#cardinformation').css('visibility') == 'visible')
-	{
-		if(source == 'search')
-		{
-			if($('#cardinformation').css('margin') == '150px 0px 0px 960px')
-			{
-				return;
-			}
-		}
-		else if(source == 'deck')
-		{
-			if($('#cardinformation').css('margin') == '150px 0px 0px 40px')
-			{
-				return;
-			}
-		}
-	}
-
 	if(source == 'search')
 	{
 		$('#cardinformation').css('margin', '150px 0px 0px 40px');
