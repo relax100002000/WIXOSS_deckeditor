@@ -1,7 +1,10 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
-
+  
+20260424 v2.07  
+1.更新WX26-CP1、SPDi47中文
+  
 20260423 v2.06  
 1.Add hold 'alt' to lock card review function. 
 

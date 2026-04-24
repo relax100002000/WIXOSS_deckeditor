@@ -3283,6 +3283,7 @@ function str_to_img(x)
 
 	x = x.replace(/<img class=\'icon_img\' src=\'img\/icon_txt_burst\.png\'><\/img>：/g, "<\/td><\/tr><tr\  style=\'background:#E0E0E0\'><td\ colspan=\'2\'><img class=\'icon_img\' src=\'img\/icon_txt_burst\.png\'><\/img>：");
 	x = x.replace(/<img class=\'icon_img\' src=\'img\/icon_txt_utanokakera\.webp\'><\/img>：/g, "<\/td><\/tr><tr\  class=\'priokeBackground\'><td\ colspan=\'2\'><img class=\'icon_img\' src=\'img\/icon_txt_utanokakera\.webp\'><\/img>：");
+	x = x.replace(/「歌之碎片」：/g, "<\/td><\/tr><tr\  class=\'priokeBackground\'><td\ colspan=\'2\'>「歌之碎片」：");
 	x = x.replace(/「生命爆發」：/g, "<\/td><\/tr><tr\  style=\'background:#E0E0E0\'><td\ colspan=\'2\'>「生命爆發」：");
 	
 	x = x.replace(/\(ターン1\)/g, "<img class='icon_img' src='img/icon_txt_turn_01.png'></img>");
@@ -4920,8 +4921,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20260423 v2.06\n";
-	str += "1.Add hold 'alt' to lock card review function.\n";
+	str += "20260424 v2.07\n";
+	str += "1.更新WX26-CP1、SPDi47中文\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";
