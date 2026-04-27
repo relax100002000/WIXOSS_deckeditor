@@ -5094,6 +5094,60 @@ function deleteSingleComment()
 	$("#deleteCommentId").val("");
 }
 
+function resetAllCommentsFromManager()
+{
+	// Wipe every "<id>_WXcomment" entry in localStorage and refresh the
+	// textarea so the user immediately sees the cleared state. Mirrors
+	// resetComment(), but additionally keeps the popup UI in sync.
+	var ret = confirm("This will permanently delete ALL custom comments. Are you sure?");
+	if(!ret)
+	{
+		return;
+	}
+
+	var i = 0;
+	for(i = 0; i < cardData.length; i++)
+	{
+		localStorage.removeItem(cardData[i][ID] + "_WXcomment");
+	}
+
+	// Belt-and-suspenders: also sweep any stray "*_WXcomment" keys that
+	// no longer correspond to a card in cardData, so a "Reset All" really
+	// does leave zero comments behind.
+	try
+	{
+		var stray = [];
+		for(i = 0; i < localStorage.length; i++)
+		{
+			var k = localStorage.key(i);
+			if(k && k.indexOf("_WXcomment") === k.length - "_WXcomment".length)
+			{
+				stray.push(k);
+			}
+		}
+		for(i = 0; i < stray.length; i++)
+		{
+			localStorage.removeItem(stray[i]);
+		}
+	}
+	catch(err)
+	{
+		// localStorage iteration shouldn't fail in practice; ignore so the
+		// primary reset above still counts as a success.
+	}
+
+	// Refresh the textarea so the (now empty) JSON is visible.
+	var pairs = collectCurrentComments();
+	$("#textCommentCode").val(JSON.stringify(pairs, null, 2));
+
+	// Clear the inline edit fields too, so it's obvious nothing is staged.
+	$("#addCommentId").val("");
+	$("#addCommentText").val("");
+	$("#deleteCommentId").val("");
+
+	$("#commentStr").html("All comments have been reset.");
+}
+
 function readSingleCommentFile(evt)
 {
 	// Upload directly applies the file's contents to localStorage so the

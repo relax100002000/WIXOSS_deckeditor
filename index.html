@@ -97,11 +97,18 @@
 
 		#lbBackground {
 		    position: absolute;
-       		z-index: -999;
+       		z-index: -1;
        		width: 411px;
        		height: 462px;
-       		margin-top: 609px;
+       		left: 0;
+       		top: 22px;
        		background: rgba(120, 120, 120, 1.0);
+		}
+		#sdeck-wrap {
+			position: relative;
+			z-index: 0;
+			display: inline-block;
+			vertical-align: top;
 		}
 
 		.priokeBackground {
@@ -315,7 +322,7 @@
 	}
 
 	body.dark-mode img { border-color: #555; }
-	body.dark-mode #lbBackground { background: rgba(70,70,70,1.0); }
+	body.dark-mode #lbBackground { background: rgba(85,85,90,1.0); }
 
 	body.dark-mode #darkModeToggle {
 		border-color: #888;
@@ -658,15 +665,12 @@
 		    </select>
 		    <button style="height: 20px;" onclick="$('#cardinformation').css('visibility', 'hidden');downloadBlob('output', '')">Add</button>
 		    <button style="height: 20px;" onclick="$('#cardinformation').css('visibility', 'hidden');deletedecklist();">Delete</button>
-		    <button style="height: 20px;" onclick="$('#cardinformation').css('visibility', 'hidden');resetDefault();">Reset All Decks</button>
 		    Sort:
 		    <select id="selectSort" onchange="selectSort();">
 		    	<option value=0>Level Order</option>
 		    	<option value=1>LB Order</option>
 		    </select>
 		</span>
-		<div id="lbBackground" hidden>
-		</div>
 		<table width="1850px" height="1200px">
 			<tr>
 				<td style="vertical-align:bottom;width: 950px;">
@@ -1092,6 +1096,8 @@
 			</tr>
 			<tr>
 				<td style="vertical-align:text-top">
+					<div id="sdeck-wrap">
+					<div id="lbBackground" hidden></div>
 					<table oncontextmenu="return false;">
 						<tr>
 							<td>
@@ -1163,6 +1169,7 @@
 							</td>
 						</tr>
 					</table>
+					</div>
 				</td>
 				<td style="vertical-align:text-top">
 					<table>
@@ -1221,17 +1228,17 @@
 					<textarea style="height: 400px;" id="textCode" rows="4" cols="50"></textarea>
 					<div id="deckStr">&emsp;</div>
 					<br>
-					<button style="width: 200px; margin-right: -45px;" onclick="downloadBlob('', 'text/csv;charset=utf-8;')">Download Deck</button>
-					<label for="fileinput" class="custom-file-upload" style="padding: 15px 5px; height: 18px; width: 191px; margin-left: 105px">
-					    Upload Deck
-					</label>
-					<input style="display: none;" id="fileinput" type="file"/>
-					<div style="margin-top: 10px;">
-						<button style="width: 200px;" onclick="copyClipboard();">Copy to clipboard</button>
-						<button style="width: 200px; margin-left: 57px;" onclick="addDecklist();">Add to deck list</button>
+					<div style="display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 10px; max-width: 430px; margin: 0 auto;">
+						<button style="width: 200px; height: 50px; box-sizing: border-box; margin: 0;" onclick="downloadBlob('', 'text/csv;charset=utf-8;')">Download Deck</button>
+						<label for="fileinput" class="custom-file-upload" style="width: 200px; height: 50px; box-sizing: border-box; padding: 0; margin: 0; display: inline-flex; align-items: center; justify-content: center;">
+						    Upload Deck
+						</label>
+						<input style="display: none;" id="fileinput" type="file"/>
+						<button style="width: 200px; height: 50px; box-sizing: border-box; margin: 0;" onclick="copyClipboard();">Copy to clipboard</button>
+						<button style="width: 200px; height: 50px; box-sizing: border-box; margin: 0;" onclick="addDecklist();">Add to deck list</button>
+						<button style="width: 200px; height: 50px; box-sizing: border-box; margin: 0;" onclick="downloadBlobopenbatoru('')">Export for Open!batoru</button>
+						<button id="resetAllDecksBtn" style="width: 200px; height: 50px; box-sizing: border-box; margin: 0; background-color: #c0392b; color: #fff; border: 2px solid #962d22; border-radius: 6px; font-weight: bold; box-shadow: 0 2px 6px rgba(192,57,43,0.4); cursor: pointer;" onclick="resetDefault();" title="Delete every custom deck (cannot be undone)">⚠ Reset All Decks</button>
 					</div>
-					<br>
-					<button style="width: 200px; margin-right: 265px; margin-top: -2px;" onclick="downloadBlobopenbatoru('')">Export for Open!batoru</button>
 				</div>
 			</div>
 		</div>
@@ -1243,13 +1250,14 @@
 					<textarea style="height: 400px;" id="textCommentCode" rows="4" cols="50"></textarea>
 					<div id="commentStr">&emsp;</div>
 					<br>
-					<button style="width: 200px; margin-right: -45px;" onclick="downloadCommentBlob('text/plain;charset=utf-8;')">Download Comment</button>
-					<label for="commentFileinput" class="custom-file-upload" style="padding: 15px 5px; height: 18px; width: 191px; margin-left: 105px">
-					    Upload Comment
-					</label>
-					<input style="display: none;" id="commentFileinput" type="file"/>
-					<div style="margin-top: 10px;">
-						<button style="width: 200px;" onclick="copyCommentClipboard();">Copy to clipboard</button>
+					<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 430px; margin: 0 auto;">
+						<button style="width: 200px; height: 50px; box-sizing: border-box; margin: 0;" onclick="downloadCommentBlob('text/plain;charset=utf-8;')">Download Comment</button>
+						<label for="commentFileinput" class="custom-file-upload" style="width: 200px; height: 50px; box-sizing: border-box; padding: 0; margin: 0; display: inline-flex; align-items: center; justify-content: center;">
+						    Upload Comment
+						</label>
+						<input style="display: none;" id="commentFileinput" type="file"/>
+						<button style="width: 200px; height: 50px; box-sizing: border-box; margin: 0;" onclick="copyCommentClipboard();">Copy to clipboard</button>
+						<button id="resetAllCommentsBtn" style="width: 200px; height: 50px; box-sizing: border-box; margin: 0; background-color: #c0392b; color: #fff; border: none;" onclick="resetAllCommentsFromManager();" title="Delete every saved comment (cannot be undone)">Reset All Comments</button>
 					</div>
 					<div style="margin-top: 18px; padding-top: 12px; border-top: 1px dashed #aaa;">
 						<div style="margin-bottom: 6px;">Add / Update a single comment</div>
