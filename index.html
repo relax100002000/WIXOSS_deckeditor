@@ -115,7 +115,7 @@
 				rgba(254,170,212,0.5) 99.9% );
 		}
 
-		#window-container, #window-container-list, #window-container-code{
+		#window-container, #window-container-list, #window-container-code, #window-container-comment{
 	    display: none;
 	    position: fixed;
 	    left: 0;
@@ -124,7 +124,7 @@
 	    height: 100%;
 	    background-color: rgba(0,0,0,0.5);
 	}
-	       
+
 	#window-pop{
 	    background: white;
 	    z-index: 1;
@@ -143,7 +143,7 @@
 	    border-radius: 20px;
 	}
 
-	#window-pop-code{
+	#window-pop-code, #window-pop-comment{
 	    background: white;
 	    z-index: 1;
         margin: 50px 30%;
@@ -293,12 +293,14 @@
 
 	body.dark-mode #window-container,
 	body.dark-mode #window-container-list,
-	body.dark-mode #window-container-code {
+	body.dark-mode #window-container-code,
+	body.dark-mode #window-container-comment {
 		background-color: rgba(0,0,0,0.75);
 	}
 	body.dark-mode #window-pop,
 	body.dark-mode #window-pop-list,
-	body.dark-mode #window-pop-code {
+	body.dark-mode #window-pop-code,
+	body.dark-mode #window-pop-comment {
 		background: #242424;
 		color: #e6e6e6;
 	}
@@ -599,6 +601,18 @@
 		                }
 		            }
 	            }
+	            else if(x == "comment")
+				{
+	            	var popup_window_comment = document.getElementById("window-container-comment");
+
+	            	popup_window_comment.style.display = "block";
+
+		            window.onmousedown = function close(e) {
+		                if (e.target == popup_window_comment) {
+		                    popup_window_comment.style.display = "none";
+		                }
+		            }
+	            }
 	            else//list
 	            {
 	            	var popup_window_list = document.getElementById("window-container-list");
@@ -645,7 +659,6 @@
 		    <button style="height: 20px;" onclick="$('#cardinformation').css('visibility', 'hidden');downloadBlob('output', '')">Add</button>
 		    <button style="height: 20px;" onclick="$('#cardinformation').css('visibility', 'hidden');deletedecklist();">Delete</button>
 		    <button style="height: 20px;" onclick="$('#cardinformation').css('visibility', 'hidden');resetDefault();">Reset All Decks</button>
-		    <button style="height: 20px;" onclick="$('#cardinformation').css('visibility', 'hidden');resetComment();">Clear Comment</button>
 		    Sort:
 		    <select id="selectSort" onchange="selectSort();">
 		    	<option value=0>Level Order</option>
@@ -874,6 +887,7 @@
 					<button onclick="$('#cardinformation').css('visibility', 'hidden');cleardeck()">Clear Deck</button>
 					<button onclick="$('#cardinformation').css('visibility', 'hidden');customizeWindowEvent('view');">Deck View</button>
 					<button onclick="$('#cardinformation').css('visibility', 'hidden');customizeWindowEvent('list');">Card List</button>
+					<button onclick="$('#cardinformation').css('visibility', 'hidden');openCommentManager();">Comment</button>
 					<button style="margin-left: 400px;" onclick="showVersion();">About</button>
 					<!-- <button onclick="checkDeck();">Exam</button> -->
 					<br><br><br>
@@ -1218,6 +1232,36 @@
 					</div>
 					<br>
 					<button style="width: 200px; margin-right: 265px; margin-top: -2px;" onclick="downloadBlobopenbatoru('')">Export for Open!batoru</button>
+				</div>
+			</div>
+		</div>
+		<div id="window-container-comment">
+			<div id="window-pop-comment">
+				<div id="commentcode" style="height: 760px; text-align: center;" class="window-content">
+					Comment Profile (JSON)
+					<br><br>
+					<textarea style="height: 400px;" id="textCommentCode" rows="4" cols="50"></textarea>
+					<div id="commentStr">&emsp;</div>
+					<br>
+					<button style="width: 200px; margin-right: -45px;" onclick="downloadCommentBlob('text/plain;charset=utf-8;')">Download Comment</button>
+					<label for="commentFileinput" class="custom-file-upload" style="padding: 15px 5px; height: 18px; width: 191px; margin-left: 105px">
+					    Upload Comment
+					</label>
+					<input style="display: none;" id="commentFileinput" type="file"/>
+					<div style="margin-top: 10px;">
+						<button style="width: 200px;" onclick="copyCommentClipboard();">Copy to clipboard</button>
+					</div>
+					<div style="margin-top: 18px; padding-top: 12px; border-top: 1px dashed #aaa;">
+						<div style="margin-bottom: 6px;">Add / Update a single comment</div>
+						<input type="text" id="addCommentId" placeholder="Card ID (e.g. WX25-CD1-01)" style="width: 38%;" maxlength="64">
+						<input type="text" id="addCommentText" placeholder="Comment" style="width: 38%;" maxlength="500">
+						<button style="width: 130px; margin-left: 6px;" onclick="addSingleComment();">Add Comment</button>
+					</div>
+					<div style="margin-top: 10px;">
+						<div style="margin-bottom: 6px;">Delete a single comment</div>
+						<input type="text" id="deleteCommentId" placeholder="Card ID to delete" style="width: 78%;" maxlength="64">
+						<button style="width: 130px; margin-left: 6px;" onclick="deleteSingleComment();">Delete Comment</button>
+					</div>
 				</div>
 			</div>
 		</div>
