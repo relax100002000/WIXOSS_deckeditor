@@ -103,12 +103,11 @@
        		left: 0;
        		top: 22px;
        		background: rgba(120, 120, 120, 1.0);
+       		pointer-events: none;
 		}
-		#sdeck-wrap {
+		td.sdeck-cell {
 			position: relative;
-			z-index: 0;
-			display: inline-block;
-			vertical-align: top;
+			isolation: isolate;
 		}
 
 		.priokeBackground {
@@ -1095,8 +1094,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td style="vertical-align:text-top">
-					<div id="sdeck-wrap">
+				<td class="sdeck-cell" style="vertical-align:text-top">
 					<div id="lbBackground" hidden></div>
 					<table oncontextmenu="return false;">
 						<tr>
@@ -1169,7 +1167,6 @@
 							</td>
 						</tr>
 					</table>
-					</div>
 				</td>
 				<td style="vertical-align:text-top">
 					<table>
