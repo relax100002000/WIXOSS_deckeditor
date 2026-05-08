@@ -17,6 +17,7 @@
             var v = '?v=' + Date.now();
             document.write('<script src="js/function.js' + v + '"><\/script>');
             document.write('<script src="js/card_info.js' + v + '"><\/script>');
+            document.write('<script src="js/price_info.js' + v + '"><\/script>');
         })();
     </script>
     
@@ -311,6 +312,33 @@
             body.dark-mode #rdeck_table_wrapper img:hover {
                 outline: 3px solid #4da3ff;
             }
+        }
+
+        /* === yuyu-tei 価格 instant tooltip === */
+        .price-tip { position: relative; }
+        .price-tip::after {
+            content: attr(data-tip);
+            position: absolute;
+            left: 50%;
+            bottom: 100%;
+            transform: translate(-50%, -4px);
+            padding: 4px 8px;
+            background: rgba(40, 40, 40, 0.95);
+            color: #fff;
+            font-size: 12px;
+            font-weight: normal;
+            line-height: 1.2;
+            white-space: nowrap;
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 9999;
+        }
+        .price-tip:hover::after {
+            opacity: 1;
+            visibility: visible;
         }
     </style>
 </head>
