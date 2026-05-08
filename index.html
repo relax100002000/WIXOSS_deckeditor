@@ -14,6 +14,7 @@
 				var v = '?v=' + Date.now();
 				document.write('<script src="js/function.js' + v + '"><\/script>');
 				document.write('<script src="js/card_info.js' + v + '"><\/script>');
+				document.write('<script src="js/price_info.js' + v + '"><\/script>');
 			})();
 		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -363,6 +364,36 @@
 			rgba(205,110,165,0.72) 99.9% );
 		box-shadow: 0 0 10px rgba(150, 95,185,0.25),
 		            inset 0 0 8px rgba(255,255,255,0.08);
+	}
+
+	/* === yuyu-tei 価格 instant tooltip === */
+	.price-tip {
+		position: relative;
+	}
+	.price-tip::after {
+		content: attr(data-tip);
+		position: absolute;
+		left: 50%;
+		bottom: 100%;
+		transform: translate(-50%, -4px);
+		padding: 4px 8px;
+		background: rgba(40, 40, 40, 0.95);
+		color: #fff;
+		font-size: 12px;
+		font-weight: normal;
+		line-height: 1.2;
+		white-space: nowrap;
+		border-radius: 4px;
+		box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+		pointer-events: none;
+		opacity: 0;
+		visibility: hidden;
+		z-index: 9999;
+	}
+	.price-tip:hover::after {
+		opacity: 1;
+		visibility: visible;
+		/* no transition → instant */
 	}
 	</style>
 	<body>
@@ -1163,6 +1194,8 @@
 									<span>日文資料庫來源:</span><a target="_blank" href="http://wixoss.81.la/">WIXOSS TCG Wiki - トップページ</a>
 									<br>
 									<span>中文資料庫來源:</span><a target="_blank" href="https://wixossmacau.com/">WIXOSS MACAU – 你好。選擇者。</a>
+									<br>
+									<span>卡價來源(Updated every 24 hours):</span><a target="_blank" href="https://yuyu-tei.jp/top/wx">遊々亭 WIXOSS｜ウィクロスの買取・通販ならカードショップ</a>
 								</div>
 							</td>
 						</tr>

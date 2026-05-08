@@ -1,6 +1,10 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
+
+  
+20260508 v2.09  
+1.新增顯示卡價  
   
 20260427 v2.08  
 1.新增comment管理功能  

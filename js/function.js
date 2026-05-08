@@ -1,5 +1,31 @@
 var ARTS_MAX_SIZE = 8;
 
+// === yuyu-tei 価格表 helper ===
+// PRICE_INFO 由 js/price_info.js 提供，內容由 scraper.js 自動更新。
+// 結構：PRICE_INFO.prices[ID] = { price, url, sold_out }
+function getPriceRow(id){
+	var label = "価格 (yuyu-tei)";
+	var cellHtml;
+	try {
+		var info = (typeof PRICE_INFO !== 'undefined' && PRICE_INFO && PRICE_INFO.prices)
+			? PRICE_INFO.prices[id] : null;
+		if(info && info.price != null){
+			var priceText = info.price.toLocaleString('ja-JP') + " 円";
+			if(info.sold_out){ priceText += " (在庫なし)"; }
+			if(info.url){
+				cellHtml = "<a href=\"" + info.url + "\" target=\"_blank\" rel=\"noopener\" class=\"price-tip\" data-tip=\"Updated every 24 hours\">" + priceText + "</a>";
+			} else {
+				cellHtml = "<span class=\"price-tip\" data-tip=\"Updated every 24 hours\">" + priceText + "</span>";
+			}
+		} else {
+			cellHtml = "<span style=\"color:#888\">―</span>";
+		}
+	} catch(e){
+		cellHtml = "<span style=\"color:#888\">―</span>";
+	}
+	return "<tr><td>" + label + "</td><td>" + cellHtml + "</td></tr>";
+}
+
 // === big_pic lock (hold ALT to freeze the preview) ===
 // Robust against browsers that hijack ALT for the menu bar:
 //   1. preventDefault() on plain ALT keydown so the browser menu does not steal focus.
@@ -482,6 +508,7 @@ function showInfotable(data)
 		str += "<a href=\"https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=" + data[ID] + "\" target=\"_blank\">" + data[NAME] + "</a>";
 		str += "	</td>";
 		str += "</tr>";
+		str += getPriceRow(data[ID]);
 
 		str += "<tr>";
 		str += "	<td>";
@@ -565,6 +592,7 @@ function showInfotable(data)
 		str += "<a href=\"https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=" + data[ID] + "\" target=\"_blank\">" + data[NAME] + "</a>";
 		str += "	</td>";
 		str += "</tr>";
+		str += getPriceRow(data[ID]);
 
 		str += "<tr>";
 		str += "	<td>";
@@ -636,6 +664,7 @@ function showInfotable(data)
 		str += "<a href=\"https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=" + data[ID] + "\" target=\"_blank\">" + data[NAME] + "</a>";
 		str += "	</td>";
 		str += "</tr>";
+		str += getPriceRow(data[ID]);
 
 		str += "<tr>";
 		str += "	<td>";
@@ -764,6 +793,7 @@ function showInfotable(data)
 		str += "<a href=\"https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=" + data[ID] + "\" target=\"_blank\">" + data[NAME] + "</a>";
 		str += "	</td>";
 		str += "</tr>";
+		str += getPriceRow(data[ID]);
 
 		str += "<tr>";
 		str += "	<td>";
@@ -887,6 +917,7 @@ function showInfotable(data)
 		str += "<a href=\"https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=" + data[ID] + "\" target=\"_blank\">" + data[NAME] + "</a>";
 		str += "	</td>";
 		str += "</tr>";
+		str += getPriceRow(data[ID]);
 
 		str += "<tr>";
 		str += "	<td>";
@@ -1004,6 +1035,7 @@ function showInfotable(data)
 		str += "<a href=\"https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=" + data[ID] + "\" target=\"_blank\">" + data[NAME] + "</a>";
 		str += "	</td>";
 		str += "</tr>";
+		str += getPriceRow(data[ID]);
 
 		str += "<tr>";
 		str += "	<td>";
@@ -5199,8 +5231,8 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20260427 v2.08\n";
-	str += "1.新增comment管理功能\n";
+	str += "20260508 v2.09\n";
+	str += "1.新增顯示卡價\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";
