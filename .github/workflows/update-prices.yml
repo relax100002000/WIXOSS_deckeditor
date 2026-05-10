@@ -21,10 +21,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Run scraper
         run: node scraper.js
+        # 加 --trace-warnings 讓錯誤訊息更詳細，方便除錯
 
       - name: Commit & push if changed
         run: |
