@@ -19,19 +19,43 @@ const OUTPUT_JSON_PATH = path.join(__dirname, 'price_info.json');
 const OUTPUT_JS_PATH = path.join(__dirname, 'js', 'price_info.js');
 const REQUEST_DELAY_MS = 800;
 const REQUEST_TIMEOUT_MS = 30000;
-const UA = 'Mozilla/5.0 (compatible; WIXOSS-DeckEditor-Bot/1.0; +https://github.com/)';
+
+// Real Chrome UA + full browser-like headers to avoid being blocked as a bot
+const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
+const BROWSER_HEADERS = {
+	'User-Agent': UA,
+	'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+	'Accept-Language': 'ja,en-US;q=0.9,en;q=0.8',
+	'Accept-Encoding': 'gzip, deflate, br',
+	'Cache-Control': 'no-cache',
+	'Pragma': 'no-cache',
+	'Sec-Fetch-Dest': 'document',
+	'Sec-Fetch-Mode': 'navigate',
+	'Sec-Fetch-Site': 'none',
+	'Sec-Fetch-User': '?1',
+	'Upgrade-Insecure-Requests': '1',
+};
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-async function fetchText(url) {
+async function fetchText(url, retries) {
+	if (retries === undefined) retries = 2;
 	const ctrl = new AbortController();
 	const t = setTimeout(() => ctrl.abort(), REQUEST_TIMEOUT_MS);
 	try {
 		const res = await fetch(url, {
-			headers: { 'User-Agent': UA, 'Accept-Language': 'ja,en;q=0.5' },
+			headers: BROWSER_HEADERS,
 			signal: ctrl.signal,
+			redirect: 'follow',
 		});
-		if (!res.ok) throw new Error('HTTP ' + res.status);
+		if (!res.ok) {
+			if (retries > 0 && (res.status === 403 || res.status === 429 || res.status >= 500)) {
+				clearTimeout(t);
+				await sleep(2000);
+				return fetchText(url, retries - 1);
+			}
+			throw new Error('HTTP ' + res.status);
+		}
 		return await res.text();
 	} finally {
 		clearTimeout(t);
