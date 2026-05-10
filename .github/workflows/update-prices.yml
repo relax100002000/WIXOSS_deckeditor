@@ -1,10 +1,10 @@
 name: Update card prices
 
 on:
-  schedule:
-    # 每天 UTC 18:00 = 台灣 02:00 (避開 yuyu-tei 白天尖峰)
-    - cron: '0 18 * * *'
-  # 允許在 GitHub UI 上手動觸發
+  # NOTE: 排程已停用 — yuyu-tei 封鎖 GitHub Actions 的 IP 範圍，
+  # 改由本機 update_prices.bat + Windows Task Scheduler 處理。
+  # 此 workflow 保留只作手動測試用（從本機觸發 GitHub Actions 跑爬蟲也會失敗，
+  # 純粹保留 yml 給後續萬一 yuyu-tei 解封時可以快速恢復）。
   workflow_dispatch:
 
 # 讓本 workflow 能 push 回 repo
