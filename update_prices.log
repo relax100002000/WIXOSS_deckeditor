@@ -1,0 +1,34 @@
+==== 2026/05/11 ¶g¤@  4:21:02.57 ==== 
+[1/3] Running scraper...   
+[mode] auto-discover from https://yuyu-tei.jp/top/wx
+Found 244 sets
+  OK wx26cp1          -> 225 cards
+  OK wx25p3           -> 270 cards
+  OK wx25p2           -> 278 cards
+  OK wx25p1           -> 258 cards
+  OK wx25cp1          -> 279 cards
+  OK wx24p4           -> 295 cards
+  OK wx24p3           -> 253 cards
+  OK wx24p2           -> 256 cards
+  OK wx24p1           -> 299 cards
+  OK wxdi16           -> 198 cards
+  OK wxdi15           -> 214 cards
+  OK wxdicp02         -> 280 cards
+  OK wxdi14           -> 205 cards
+  OK wxdi13           -> 185 cards
+  OK wxdi12           -> 188 cards
+  OK wxdicp01         -> 166 cards
+  OK wxdi11           -> 189 cards
+  OK wxdi10           -> 166 cards
+  OK wxdi09           -> 188 cards
+  OK wxdi08           -> 171 cards
+  OK wxdi07           -> 209 cards
+  OK wxdi06           -> 214 cards
+  OK wxdi05           -> 176 cards
+  OK wxdi04           -> 174 cards
+  OK wxdi03           -> 174 cards
+  OK wxdi02           -> 174 cards
+  OK wxdi01           -> 194 cards
+  OK wxdi00           -> 182 cards
+  OK wxk11            -> 180 cards
+  OK wxk10            -> 227 cards
