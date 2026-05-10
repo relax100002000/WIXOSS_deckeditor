@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-10T09:05:25.730Z",
+  "updated": "2026-05-10T09:28:47.426Z",
   "source": "https://yuyu-tei.jp/",
   "count": 16565,
   "failed_sets": [],
@@ -71155,7 +71155,7 @@
       "sold_out": false
     },
     "SPDi44-04": {
-      "price": 80,
+      "price": 120,
       "url": "https://yuyu-tei.jp/sell/wx/card/spdi44/10004",
       "sold_out": false
     },
@@ -71167,7 +71167,7 @@
     "SPDi44-06": {
       "price": 120,
       "url": "https://yuyu-tei.jp/sell/wx/card/spdi44/10007",
-      "sold_out": false
+      "sold_out": true
     },
     "SPDi44-07": {
       "price": 120,
@@ -71195,14 +71195,14 @@
       "sold_out": false
     },
     "SPDi44-12": {
-      "price": 80,
+      "price": 120,
       "url": "https://yuyu-tei.jp/sell/wx/card/spdi44/10014",
       "sold_out": false
     },
     "SPDi44-13": {
       "price": 120,
       "url": "https://yuyu-tei.jp/sell/wx/card/spdi44/10016",
-      "sold_out": false
+      "sold_out": true
     },
     "SPDi44-14": {
       "price": 120,
@@ -71217,7 +71217,7 @@
     "SPDi44-16": {
       "price": 120,
       "url": "https://yuyu-tei.jp/sell/wx/card/spdi44/10019",
-      "sold_out": false
+      "sold_out": true
     },
     "SPDi44-17": {
       "price": 220,
