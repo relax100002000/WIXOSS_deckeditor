@@ -570,6 +570,7 @@
 				checkAndRedirectToMobile("https://relax100002000.github.io/WIXOSS_deckeditor/index_mobile.html");
 				updateDarkModeButton();
 				updateChartsTheme();
+				if (typeof showPriceUpdatedAt === 'function') showPriceUpdatedAt();
 			});
 
 			function customizeWindowEvent(x) {
@@ -1195,7 +1196,7 @@
 									<br>
 									<span>中文資料庫來源:</span><a target="_blank" href="https://wixossmacau.com/">WIXOSS MACAU – 你好。選擇者。</a>
 									<br>
-									<span>卡價來源(Updated every 24 hours):</span><a target="_blank" href="https://yuyu-tei.jp/top/wx">遊々亭 WIXOSS｜ウィクロスの買取・通販ならカードショップ</a>
+									<span>卡價來源(Updated every 24 hours):</span><a target="_blank" href="https://yuyu-tei.jp/top/wx" class="price-tip" data-tip="Last update: -">遊々亭 WIXOSS｜ウィクロスの買取・通販ならカードショップ</a><span id="priceUpdatedAt" style="margin-left: 6px; color: #888; font-size: 0.9em;"></span>
 								</div>
 							</td>
 						</tr>

@@ -3,19 +3,57 @@ var ARTS_MAX_SIZE = 8;
 // === yuyu-tei 価格表 helper ===
 // PRICE_INFO 由 js/price_info.js 提供，內容由 scraper.js 自動更新。
 // 結構：PRICE_INFO.prices[ID] = { price, url, sold_out }
+// PRICE_INFO.updated 為最後更新時間 (ISO 8601 UTC)。
+
+// 格式化最後更新時間，回傳例如 "2026-05-26 02:04" (本地時區)
+function formatPriceUpdatedAt(){
+	try {
+		if(typeof PRICE_INFO === 'undefined' || !PRICE_INFO || !PRICE_INFO.updated) return '';
+		var d = new Date(PRICE_INFO.updated);
+		if(isNaN(d.getTime())) return '';
+		var pad = function(n){ return n < 10 ? '0' + n : '' + n; };
+		return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate())
+			+ ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+	} catch(e){ return ''; }
+}
+
+// 將最後更新時間填入頁面底部 #priceUpdatedAt span 與其超連結 tooltip
+function showPriceUpdatedAt(){
+	try {
+		var updatedAt = formatPriceUpdatedAt();
+		var el = document.getElementById('priceUpdatedAt');
+		if(el){
+			el.textContent = updatedAt ? ('(Last update: ' + updatedAt + ')') : '';
+		}
+		// 同步更新位於該句子超連結上的 tooltip
+		if(updatedAt){
+			var links = document.querySelectorAll('a.price-tip[href*="yuyu-tei.jp/top/wx"]');
+			for(var i = 0; i < links.length; i++){
+				links[i].setAttribute('data-tip', 'Last update: ' + updatedAt);
+			}
+		}
+	} catch(e){ /* no-op */ }
+}
+
 function getPriceRow(id){
 	var label = "価格 (yuyu-tei)";
 	var cellHtml;
 	try {
 		var info = (typeof PRICE_INFO !== 'undefined' && PRICE_INFO && PRICE_INFO.prices)
 			? PRICE_INFO.prices[id] : null;
+		var updatedAt = formatPriceUpdatedAt();
+		var tipText = updatedAt
+			? ("Updated every 24 hours | Last update: " + updatedAt)
+			: "Updated every 24 hours";
+		// HTML-escape 用於 attribute 的雙引號
+		var tipAttr = tipText.replace(/"/g, '&quot;');
 		if(info && info.price != null){
 			var priceText = info.price.toLocaleString('ja-JP') + " 円";
 			if(info.sold_out){ priceText += " (在庫なし)"; }
 			if(info.url){
-				cellHtml = "<a href=\"" + info.url + "\" target=\"_blank\" rel=\"noopener\" class=\"price-tip\" data-tip=\"Updated every 24 hours\">" + priceText + "</a>";
+				cellHtml = "<a href=\"" + info.url + "\" target=\"_blank\" rel=\"noopener\" class=\"price-tip\" data-tip=\"" + tipAttr + "\">" + priceText + "</a>";
 			} else {
-				cellHtml = "<span class=\"price-tip\" data-tip=\"Updated every 24 hours\">" + priceText + "</span>";
+				cellHtml = "<span class=\"price-tip\" data-tip=\"" + tipAttr + "\">" + priceText + "</span>";
 			}
 		} else {
 			cellHtml = "<span style=\"color:#888\">―</span>";
