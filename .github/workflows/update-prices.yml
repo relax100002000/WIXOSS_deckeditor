@@ -23,9 +23,8 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Run scraper
+      - name: Run scraper (current card base only)
         run: node scraper.js
-        # 加 --trace-warnings 讓錯誤訊息更詳細，方便除錯
 
       - name: Commit & push if changed
         run: |
@@ -33,8 +32,13 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add price_info.json js/price_info.js
           if git diff --staged --quiet; then
-            echo "No price changes."
+            echo "No changes to commit."
           else
-            git commit -m "chore: update card prices ($(date -u +'%Y-%m-%d'))"
+            # Pull the ISO timestamp out of price_info.json so the commit
+            # message records the exact moment the data was scraped — keeps
+            # the website's "Last update" display in sync with git history.
+            updated=$(node -e "process.stdout.write(require('./price_info.json').updated||'')")
+            [ -z "$updated" ] && updated=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+            git commit -m "chore: update card prices ($updated)"
             git push
           fi
