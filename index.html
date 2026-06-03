@@ -587,35 +587,9 @@
 						return;
 					}
 
-					if(sort_method == 1)
-					{
-						for(i = 0; i < 40; i++)
-						{
-							$("#show_sdeck_" + i).attr("src", "img/empty.jpg");
-							$("#show_sdeck_" + i).attr("alt", "");
-						}
-
-						for(i = 0, j = 0; i < sdeckArr.length; i++)
-						{
-							if(sdeckArr[i][LB] == "1")
-							{
-								$("#show_sdeck_" + j).attr("src", sdeckArr[i][SRC]);
-								$("#show_sdeck_" + j).attr("alt", sdeckArr[i][ID]);
-								j++;
-							}
-						}
-
-						for(i = 0; i < sdeckArr.length; i++)
-						{
-							if(sdeckArr[i][LB] == "0")
-							{
-								$("#show_sdeck_" + j).attr("src", sdeckArr[i][SRC]);
-								$("#show_sdeck_" + j).attr("alt", sdeckArr[i][ID]);
-								j++;
-							}
-						}
-						
-					}
+					// DECK VIEW order (#show_sdeck_) is kept in sync by refreshShowSdeck()
+					// inside showSdeck() — re-run on open to be safe.
+					refreshShowSdeck();
 
 	            	var popup_window = document.getElementById("window-container");
 

@@ -1328,21 +1328,11 @@ function showSdeck()
 			{
 				$("#sdeck_" + i).attr("src", sdeckArr[i][SRC]);
 				$("#sdeck_" + i).attr("alt", sdeckArr[i][ID]);
-
-				$("#show_sdeck_" + i).attr("src", sdeckArr[i][SRC]);
-				$("#show_sdeck_" + i).attr("alt", sdeckArr[i][ID]);
-
-				$("#show_sdeck_" + i).show();
 			}
 			else
 			{
 				$("#sdeck_" + i).attr("src", "img/empty.jpg");
 				$("#sdeck_" + i).attr("alt", "");
-
-				$("#show_sdeck_" + i).attr("src", "img/empty.jpg");
-				$("#show_sdeck_" + i).attr("alt", "");
-
-				$("#show_sdeck_" + i).hide();
 			}
 		}
 	}
@@ -1357,11 +1347,6 @@ function showSdeck()
 		{
 			$("#sdeck_" + i).attr("src", "img/empty.jpg");
 			$("#sdeck_" + i).attr("alt", "");
-
-			$("#show_sdeck_" + i).attr("src", "img/empty.jpg");
-			$("#show_sdeck_" + i).attr("alt", "");
-
-			$("#show_sdeck_" + i).hide();
 		}
 
 		for(i = 0; i < 40; i++)
@@ -1372,11 +1357,6 @@ function showSdeck()
 				{
 					$("#sdeck_" + lbindex).attr("src", sdeckArr[i][SRC]);
 					$("#sdeck_" + lbindex).attr("alt", sdeckArr[i][ID]);
-
-					$("#show_sdeck_" + lbindex).attr("src", sdeckArr[i][SRC]);
-					$("#show_sdeck_" + lbindex).attr("alt", sdeckArr[i][ID]);
-
-					$("#show_sdeck_" + lbindex).show();
 
 					lbindex++;
 					lbcount--;
@@ -1399,11 +1379,6 @@ function showSdeck()
 				{
 					$("#sdeck_" + nolbindex).attr("src", sdeckArr[i][SRC]);
 					$("#sdeck_" + nolbindex).attr("alt", sdeckArr[i][ID]);
-
-					$("#show_sdeck_" + nolbindex).attr("src", sdeckArr[i][SRC]);
-					$("#show_sdeck_" + nolbindex).attr("alt", sdeckArr[i][ID]);
-
-					$("#show_sdeck_" + nolbindex).show();
 
 					nolbindex++;
 					nolbcount--;
@@ -1429,11 +1404,6 @@ function showSdeck()
 						$("#sdeck_" + nolbindex).attr("src", sdeckArr[i][SRC]);
 						$("#sdeck_" + nolbindex).attr("alt", sdeckArr[i][ID]);
 
-						$("#show_sdeck_" + nolbindex).attr("src", sdeckArr[i][SRC]);
-						$("#show_sdeck_" + nolbindex).attr("alt", sdeckArr[i][ID]);
-
-						$("#show_sdeck_" + nolbindex).show();
-
 						nolbindex++;
 
 						if(nolbindex % 10 == 0)
@@ -1457,11 +1427,6 @@ function showSdeck()
 						$("#sdeck_" + lbindex).attr("src", sdeckArr[i][SRC]);
 						$("#sdeck_" + lbindex).attr("alt", sdeckArr[i][ID]);
 
-						$("#show_sdeck_" + lbindex).attr("src", sdeckArr[i][SRC]);
-						$("#show_sdeck_" + lbindex).attr("alt", sdeckArr[i][ID]);
-
-						$("#show_sdeck_" + lbindex).show();
-
 						lbindex++;
 
 						if(lbindex % 5 == 0)
@@ -1474,7 +1439,40 @@ function showSdeck()
 		}
 	}
 
+	refreshShowSdeck();
+
 	updatechart();
+}
+
+/**
+ * Refresh the DECK VIEW popup (#show_sdeck_) so its arrangement mirrors the
+ * main deck (#sdeck_) exactly. The popup simply copies whatever the main grid
+ * currently shows — including the 5 LB + 5 non-LB interleaved layout used
+ * when sort_method == 1 (LB Order). Called from showSdeck() so the popup
+ * stays in sync whenever sorting or editing the deck.
+ */
+function refreshShowSdeck()
+{
+	var i = 0;
+	var src, alt;
+
+	for(i = 0; i < 40; i++)
+	{
+		src = $("#sdeck_" + i).attr("src");
+		alt = $("#sdeck_" + i).attr("alt") || "";
+
+		$("#show_sdeck_" + i).attr("src", src);
+		$("#show_sdeck_" + i).attr("alt", alt);
+
+		if(src && src !== "img/empty.jpg")
+		{
+			$("#show_sdeck_" + i).show();
+		}
+		else
+		{
+			$("#show_sdeck_" + i).hide();
+		}
+	}
 }
 
 function sortPdeck(x)
