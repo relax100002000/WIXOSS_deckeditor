@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-28T18:02:11.936Z",
+  "updated": "2026-06-29T18:02:21.488Z",
   "source": "https://yuyu-tei.jp/",
   "count": 3133,
   "failed_sets": [],
@@ -955,7 +955,7 @@
       "sold_out": false
     },
     "WX25-P3-076": {
-      "price": 120,
+      "price": 180,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx25p3/10175",
       "sold_out": true
     },
@@ -1137,7 +1137,7 @@
     "WX25-P2-005": {
       "price": 9980,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx25p2/10009",
-      "sold_out": true
+      "sold_out": false
     },
     "WX25-P2-006": {
       "price": 1480,
@@ -1150,7 +1150,7 @@
       "sold_out": false
     },
     "WX25-P2-008": {
-      "price": 780,
+      "price": 680,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx25p2/10015",
       "sold_out": false
     },
@@ -2905,7 +2905,7 @@
       "sold_out": false
     },
     "WX24-P4-050": {
-      "price": 180,
+      "price": 120,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx24p4/10129",
       "sold_out": false
     },
@@ -3885,7 +3885,7 @@
       "sold_out": false
     },
     "WX24-P2-051": {
-      "price": 420,
+      "price": 500,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx24p2/10111",
       "sold_out": false
     },
@@ -4137,7 +4137,7 @@
     "WX24-P2-071": {
       "price": 120,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx24p2/10151",
-      "sold_out": false
+      "sold_out": true
     },
     "WX24-P2-073": {
       "price": 80,
@@ -4145,7 +4145,7 @@
       "sold_out": false
     },
     "WX24-P2-074": {
-      "price": 80,
+      "price": 120,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx24p2/10157",
       "sold_out": true
     },
@@ -4645,7 +4645,7 @@
       "sold_out": false
     },
     "WX24-P1-060": {
-      "price": 80,
+      "price": 120,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx24p1/10129",
       "sold_out": false
     },
@@ -4947,7 +4947,7 @@
     "WXDi-P16-034": {
       "price": 120,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi16/10074",
-      "sold_out": true
+      "sold_out": false
     },
     "WXDi-P16-035": {
       "price": 80,
@@ -5785,7 +5785,7 @@
       "sold_out": false
     },
     "WXDi-CP02-059": {
-      "price": 120,
+      "price": 180,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdicp02/10121",
       "sold_out": false
     },
@@ -6770,7 +6770,7 @@
       "sold_out": true
     },
     "WXDi-P13-052": {
-      "price": 180,
+      "price": 220,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi13/10109",
       "sold_out": true
     },
@@ -6785,7 +6785,7 @@
       "sold_out": false
     },
     "WXDi-P13-055": {
-      "price": 320,
+      "price": 420,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi13/10115",
       "sold_out": true
     },
@@ -8292,7 +8292,7 @@
     "WXDi-P11-055": {
       "price": 180,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi11/10115",
-      "sold_out": true
+      "sold_out": false
     },
     "WXDi-P11-057": {
       "price": 30,
@@ -11540,7 +11540,7 @@
       "sold_out": false
     },
     "WXDi-P03-005": {
-      "price": 180,
+      "price": 220,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi03/10005",
       "sold_out": false
     },
@@ -13787,7 +13787,7 @@
     "WX24-D4-22": {
       "price": 680,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx24d4/10023",
-      "sold_out": false
+      "sold_out": true
     },
     "WX24-D4-23": {
       "price": 180,
@@ -14020,7 +14020,7 @@
       "sold_out": false
     },
     "WX24-D2-20": {
-      "price": 220,
+      "price": 320,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx24d2/10020",
       "sold_out": true
     },
@@ -14577,7 +14577,7 @@
     "WXDi-D08-004": {
       "price": 220,
       "url": "https://yuyu-tei.jp/sell/wx/card/wdi08/10004",
-      "sold_out": false
+      "sold_out": true
     },
     "WXDi-D08-023": {
       "price": 980,
@@ -14775,7 +14775,7 @@
       "sold_out": false
     },
     "WXDi-D06-017": {
-      "price": 80,
+      "price": 120,
       "url": "https://yuyu-tei.jp/sell/wx/card/wdi06/10020",
       "sold_out": false
     },
