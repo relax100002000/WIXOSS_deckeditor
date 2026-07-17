@@ -1,9 +1,10 @@
-==== 2026/06/03 ¶g¤T  2:00:01.73 ==== 
+==== 2026/07/17 ¶g¤­  2:00:01.50 ==== 
 [1/3] Running scraper...   
-[card-base] 3159 card IDs from card_info.js
+[card-base] 3250 card IDs from card_info.js
 [mode] auto-discover from https://yuyu-tei.jp/top/wx
-Discovered 244 sets
-[filter] kept 100 / 244 Diva slugs (ALLSTAR skipped)
+Discovered 245 sets
+[filter] kept 101 / 245 Diva slugs (ALLSTAR skipped)
+  OK wx26p1           -> +0 cards
   OK wx26cp1          -> +102 cards (123 off-base skipped)
   OK wx25p3           -> +120 cards (150 off-base skipped)
   OK wx25p2           -> +128 cards (150 off-base skipped)
@@ -53,14 +54,14 @@ Discovered 244 sets
   OK spdi45           -> +0 cards (39 off-base skipped)
   OK spdi44           -> +0 cards (22 off-base skipped)
   OK spdi43           -> +32 cards (35 off-base skipped)
-  OK spdi42           -> +0 cards (48 off-base skipped)
+  OK spdi42           -> +0 cards (56 off-base skipped)
   OK spdi41           -> +0 cards (5 off-base skipped)
   OK spdi40           -> +0 cards (21 off-base skipped)
   OK spdi39           -> +0 cards (4 off-base skipped)
   OK spdi38           -> +0 cards (58 off-base skipped)
   OK spdi37           -> +0 cards (18 off-base skipped)
   OK spdi36           -> +0 cards (5 off-base skipped)
-  OK spdi35           -> +0 cards (6 off-base skipped)
+  OK spdi35           -> +0 cards (12 off-base skipped)
   OK spdi34           -> +0 cards (27 off-base skipped)
   OK spdi33           -> +0 cards (6 off-base skipped)
   OK spdi32           -> +0 cards (8 off-base skipped)
@@ -85,7 +86,7 @@ Discovered 244 sets
   OK spdi13           -> +0 cards (3 off-base skipped)
   OK spdi12           -> +0 cards (6 off-base skipped)
   OK spdi11           -> +0 cards (7 off-base skipped)
-  OK spdi10           -> +0 cards (24 off-base skipped)
+  OK spdi10           -> +0 cards (26 off-base skipped)
   OK spdi09           -> +0 cards (3 off-base skipped)
   OK spdi08           -> +0 cards (13 off-base skipped)
   OK spdi07           -> +0 cards (12 off-base skipped)
@@ -93,11 +94,11 @@ Discovered 244 sets
   OK spdi05           -> +0 cards (5 off-base skipped)
   OK spdi04           -> +0 cards (3 off-base skipped)
   OK spdi03           -> +0 cards (19 off-base skipped)
-  OK spdi02           -> +0 cards (32 off-base skipped)
+  OK spdi02           -> +0 cards (33 off-base skipped)
   OK spdi01-2         -> +17 cards (53 off-base skipped)
   OK spdi01           -> +0 cards (256 off-base skipped)
   OK sp38             -> +2 cards (6 off-base skipped)
-  OK promo-di100      -> +5 cards (81 off-base skipped)
+  OK promo-di100      -> +5 cards (84 off-base skipped)
   OK promo-k100       -> +0 cards (82 off-base skipped)
   OK promo-500        -> +0 cards (78 off-base skipped)
   OK promo-400        -> +0 cards (100 off-base skipped)
@@ -110,9 +111,9 @@ Wrote browser bundle to D:\github\WIXOSS_deckeditor\js\price_info.js
 [2/3] Staging changes... 
 warning: in the working copy of 'js/price_info.js', LF will be replaced by CRLF the next time Git touches it
 warning: in the working copy of 'price_info.json', LF will be replaced by CRLF the next time Git touches it
-[3/3] Committing and pushing (updated=2026-06-02T18:02:00.323Z)... 
-[main 62cd30e] chore: update card prices (2026-06-02T18:02:00.323Z)
- 2 files changed, 83 insertions(+), 83 deletions(-)
+[3/3] Committing and pushing (updated=2026-07-16T18:02:18.683Z)... 
+[main 1cc3614] chore: update card prices (2026-07-16T18:02:18.683Z)
+ 2 files changed, 18 insertions(+), 18 deletions(-)
 To https://github.com/relax100002000/WIXOSS_deckeditor.git
-   675a88b..62cd30e  main -> main
-[OK] Prices updated and pushed for 2026-06-02T18:02:00.323Z. 
+   a2ba4e4..1cc3614  main -> main
+[OK] Prices updated and pushed for 2026-07-16T18:02:18.683Z. 

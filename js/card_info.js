@@ -66678,5 +66678,2735 @@ var cardData = [
 		"【ガード】(このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ)<br><br>【常】：【マルチエナ】(エナコストを支払う際、このカードは好きな色1つとして支払える)<br><br>【ライフバースト】：あなたのトラッシュからシグニ1枚を対象とし、それを手札に加える。", //JP_TEXT
 		"【防禦】（可以從手牌捨棄此卡牌，防禦分身的攻擊傷害一次）<br><br>「常」：【萬花色】（支付能量費用時，此卡牌可以支付1個任意顏色）<br>「生命爆發」：我方廢棄區的1張精靈作對象，將其加入手牌。",	//TW_TEXT
 		"" //BAN
-		]
+		],
+	[
+		"WX26-P1-001", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-001.jpg", //SRC
+		"ホーリー・アミュレット", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"白", //COLOR
+		"", //LEVEL
+		"《白》×1《無》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"ベット―《コインアイコン》《コインアイコン》《コインアイコン》（このアーツを使用する際、使用コストとして追加で《コインアイコン》《コインアイコン》《コインアイコン》を支払ってもよい）<br>あなたがベットしていた場合、このアーツの使用コストは《無×1》減る。<br><br>【シグニバリア】1つと【ルリグバリア】1つを得る。", //JP_TEXT
+		"下注-Coin*3(此技能使用時，使用費用可以追加支付Coin*3)<br>我方下注的話，此技能的使用費用減少無1。<br><br>獲得1個【精靈屏障】和1個【分身屏障】。",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-002", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-002.jpg", //SRC
+		"スカル・エンペラー", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"白", //COLOR
+		"", //LEVEL
+		"《白》×1《無》×2", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから1つを選ぶ。<br>①対戦相手のパワー12000以下のシグニ1体を対象とし、それを手札に戻す。<br>②対戦相手のターンの場合、対戦相手のルリグとシグニを合計2体まで対象とし、ターン終了時まで、それらは能力を失う。<br>《リコレクトアイコン》［4枚以上］追加でターン終了時まで、あなたは「【常】：あなたが【ガード】する際、《ガードアイコン》を持つカードを1枚捨てる代わりにこの能力を失ってもよい。」を得る。", //JP_TEXT
+		"以下2項中選擇1項。<br>①對方1隻力量12000以下的精靈作對象，將其返回手牌。<br>②對方回合的話，對方的分身和精靈合計最多2隻作對象，直到回合結束時為止，使其失去能力。<br>『回收』[4張以上]追加直到回合結束時為止，我方獲得「常：我方進行【防禦】時，可以捨棄1張持有【防禦標記】的卡牌代替失去此能力。」。",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-003", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-003.jpg", //SRC
+		"熱突猛進", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×1《無》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"ベット―《コインアイコン》《コインアイコン》《コインアイコン》<br>あなたがベットしていた場合、このアーツの使用コストは《無×1》減る。<br><br>以下の3つから2つまで選ぶ。<br>①あなたのシグニ1体を対象とし、ターン終了時まで、それは【ダブルクラッシュ】を得る。②このターン、次にあなたのルリグがアタックしたとき、そのアタックの間、対戦相手は【ガード】ができない。③対戦相手のセンタールリグがレベル3以上の場合、対戦相手は自分のエナゾーンからカード3枚を選びトラッシュに置く。（2枚以下の場合、それらをすべて選ぶ）", //JP_TEXT
+		"下注-Coin*3<br>我方下注的話，此技能的使用費用減少無1。<br><br>以下3項中最多選擇2項。<br>①我方1隻精靈作對象，直到回合結束時為止，使其獲得【雙重擊潰】。②本回合中，我方分身下次攻擊時，該次攻擊期間，對方不能【防禦】。③對方中央分身等級3以上的話，對方在自己的能量區選擇3張卡牌放置到廢棄區。（2張以下的話，全部選擇）",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-004", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-004.jpg", //SRC
+		"爆踏炎蹴", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから1つを選ぶ。<br>①対戦相手のシグニ1体を対象とし、ターン終了時まで、それは「【自】：このシグニがアタックしたとき、このシグニをバニッシュする。」を得る。<br>②対戦相手のシグニ1体を対象とし、あなたのライフクロス1枚をクラッシュする。そうした場合、それをバニッシュする。<br>《リコレクトアイコン》［4枚以上］追加でこのターン、あなたは対戦相手のルリグからのダメージによってゲームに敗北しない。", //JP_TEXT
+		"以下2項中選擇1項。<br>①對方1隻精靈作對象，直到回合結束時為止，使其獲得「自：此精靈攻擊時，將此精靈破壞。」。<br>②對方1隻精靈作對象，擊潰我方1張生命護甲。若如此做，將其破壞。<br>『回收』[4張以上]追加本回合中，我方不會因對方分身造成的傷害而輸掉遊戲。",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-005", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-005.jpg", //SRC
+		"ラブリー・ボンバー", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"青", //COLOR
+		"", //LEVEL
+		"《青》×1《無》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"ベット―《コインアイコン》《コインアイコン》《コインアイコン》（このアーツを使用する際、使用コストとして追加で《コインアイコン》《コインアイコン》《コインアイコン》を支払ってもよい）<br>あなたがベットしていた場合、このアーツの使用コストは《無×1》減る。<br><br>レベルの合計が6以下になるように対戦相手のシグニを好きな数対象とし、それらをデッキの一番下に置く。この方法でデッキの一番下に置いたカード1枚につき対戦相手はカードを1枚引く。（置く順番は対戦相手が決める）", //JP_TEXT
+		"下注-Coin*3(此技能使用時，使用費用可以追加支付Coin*3)<br>我方下注的話，此技能的使用費用減少無1。<br><br>對方場上等級合計6以下的精靈任意數量作對象，將其放置到牌組最下方。以此方法放置到牌組最下方的卡牌每1張，對方抽1張牌。（放置順序由對方決定）",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-006", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-006.jpg", //SRC
+		"スイート・テリトリー", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"青", //COLOR
+		"", //LEVEL
+		"《青》×1《無》×2", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから1つを選ぶ。<br>①このターン、対戦相手のシグニの【自】能力は発動しない。<br>②このターン、次とその次にあなたがダメージを受ける場合、代わりに手札を1枚捨てる。（手札が捨てられない場合は置き換えられない）<br>《リコレクトアイコン》［4枚以上］追加でカードを3枚引く。", //JP_TEXT
+		"以下2項中選擇1項。<br>①本回合中，對方精靈的「自」能力不會發動。<br>②本回合中，我方下次和下下次受到傷害時，改為捨棄1張手牌。（無法捨棄手牌的話不會被替換）<br>『回收』[4張以上]追加抽3張牌。",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-007", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-007.jpg", //SRC
+		"食器夜行", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"緑", //COLOR
+		"", //LEVEL
+		"《緑》×1《無》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"ベット―《コインアイコン》《コインアイコン》《コインアイコン》<br>あなたがベットしていた場合、このアーツの使用コストは《無×1》減る。<br><br>あなたのデッキをシャッフルし、以下を3回行う。<br>「あなたのデッキの一番上を公開し、以下の2つから1つを選ぶ。①パワーがこの方法で公開されたシグニのパワー以下の対戦相手のシグニ1体を対象とし、それをバニッシュする。公開したカードをデッキの一番下に置く。②カードを1枚引き【エナチャージ1】をする。」", //JP_TEXT
+		"下注-Coin*3<br>我方下注的話，此技能的使用費用減少無1。<br><br>洗切我方牌組，進行以下3次。<br>「公開我方牌組最上方1張卡牌，以下2項中選擇1項。①以此方法公開的精靈的力量以下的對方1隻精靈作對象，將其破壞。將公開的卡牌放置到牌組最下方。②抽1張牌並【能量填充1】。」",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-008", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-008.jpg", //SRC
+		"緑菜結界", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"緑", //COLOR
+		"", //LEVEL
+		"《緑》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから1つを選ぶ。<br>①対戦相手のルリグかシグニ1体を対象とし、このターン、次にそれがアタックしたとき、そのアタックを無効にする。<br>②あなたのトラッシュにあるすべてのカードをデッキに加えてシャッフルする。【エナチャージ2】をする。<br>《リコレクトアイコン》［4枚以上］追加でターン終了時まで、あなたは「【常】：あなたがシグニによってダメージを受ける場合、代わりに《無》を支払ってもよい。そうした場合、この能力を失う。」を得る。", //JP_TEXT
+		"以下2項中選擇1項。<br>①對方1隻分身或精靈作對象，本回合中，其下次攻擊時，使該次攻擊無效。<br>②我方廢棄區所有卡牌加入牌組並洗切。【能量填充2】。<br>『回收』[4張以上]追加直到回合結束時為止，我方獲得「常：我方因精靈而受到傷害時，可以支付無代替。若如此做，失去此能力。」。",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-009", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-009.jpg", //SRC
+		"ルナティック・ナイトメア", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"黒", //COLOR
+		"", //LEVEL
+		"《黒》×1《無》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"ベット―《コインアイコン》《コインアイコン》《コインアイコン》<br>あなたがベットしていた場合、このアーツの使用コストは《無×1》減る。<br><br>以下の3つから2つまで選ぶ。<br>①あなたのトラッシュからシグニ1枚を対象とし、それを手札に加える。②対戦相手のシグニ1体を対象とし、ターン終了時まで、それは能力を失い、それのパワーを－12000する。③このターンと次のターンの間、あなたのシグニは【シャドウ（パワー10000以下のシグニ）】を得る。", //JP_TEXT
+		"下注-Coin*3<br>我方下注的話，此技能的使用費用減少無1。<br><br>以下3項中最多選擇2項。<br>①我方廢棄區1張精靈作對象，將其加入手牌。②對方1隻精靈作對象，直到回合結束時為止，使其失去能力，並將其力量-12000。③本回合和下一回合期間，我方精靈獲得【暗影（力量10000以下的精靈）】。",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-010", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-010.jpg", //SRC
+		"ファントム・オブ・ネームレス", //NAME
+		"LR", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"黒", //COLOR
+		"", //LEVEL
+		"《黒》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから1つを選ぶ。<br>①このターン、次にあなたがダメージを受ける場合、代わりにあなたのデッキの上からカードを3枚トラッシュに置く。<br>②対戦相手のシグニ1体を対象とし、あなたのシグニ1体を場からトラッシュに置いてもよい。そうした場合、ターン終了時まで、それのパワーを－12000する。このターン、あなたは自分の効果によってシグニを場に出せない。<br>《リコレクトアイコン》［4枚以上］その後、追加であなたのトラッシュからカード1枚を対象とし、それを手札に加える。", //JP_TEXT
+		"以下2項中選擇1項。<br>①本回合中，我方下次受到傷害時，改為將我方牌組最上方3張卡牌放置到廢棄區。<br>②對方1隻精靈作對象，可以將我方1隻精靈從場上放置到廢棄區。若如此做，直到回合結束時為止，將其力量-12000。本回合中，我方不能因自己的效果而使精靈出場。<br>『回收』[4張以上]之後，追加我方廢棄區1張卡牌作對象，將其加入手牌。",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-011", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-011.jpg", //SRC
+		"ドーナ START", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ドーナ", //CLASS
+		"白", //COLOR
+		"0", //LEVEL
+		"《白》×0", //COST
+		"0", //LIMIT
+		"", //POWER
+		"3", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-012", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-012.jpg", //SRC
+		"ドーナ FIRST++", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ドーナ", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"《白》×0", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-013", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-013.jpg", //SRC
+		"ドーナ SECOND", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ドーナ", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"《白》×1", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-014", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-014.jpg", //SRC
+		"ドーナ SUNNY", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ドーナ", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"《白》×2", //COST
+		"6", //LIMIT
+		"", //POWER
+		"2", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの＜怪異＞のシグニ1体を対象とし、手札を1枚捨て《白》を支払ってもよい。そうした場合、ターン終了時まで、それは【アサシン】を得る。<br><br>【起】《ゲーム1回》エスケープ《白×0》：次の対戦相手のターンの間、あなたは対戦相手のルリグによってダメージを受けず、あなたの手札は対戦相手の効果によってトラッシュに移動しない。", //JP_TEXT
+		"「自」：我方攻擊階段開始時，我方1隻＜怪異＞的精靈作對象，可以捨棄1張手牌並支付白1。若如此做，直到回合結束時為止，使其獲得【暗殺】。<br><br>「起」(遊戲1)逃脫 白0：下一個對方回合期間，我方不會因對方分身而受到傷害，我方手牌不會因對方效果而移動到廢棄區。",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-015", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-015.jpg", //SRC
+		"純真の記憶 リル", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"リル", //CLASS
+		"赤", //COLOR
+		"0", //LEVEL
+		"《赤》×0", //COST
+		"0", //LIMIT
+		"", //POWER
+		"1", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-016", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-016.jpg", //SRC
+		"求新の記憶 リル", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"リル", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"《赤》×0", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-017", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-017.jpg", //SRC
+		"明滅の記憶 リル", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"リル", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"《赤》×1", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-018", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-018.jpg", //SRC
+		"純燃の記憶 リル", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"リル", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"《赤》×2", //COST
+		"6", //LIMIT
+		"", //POWER
+		"4", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】《自分ターン》《ターン1回》：あなたの＜武勇＞のシグニ1体が場に出たとき、以下の2つから1つを選ぶ。①あなたのトラッシュから《ライズアイコン》を持つシグニ1枚を対象とし、それを手札に加える。②対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。<br><br>【起】《ゲーム1回》オーネスト《赤×0》：対戦相手はルリグデッキからアーツとピースを合計3枚まで公開する。このターンと次のターンの間、対戦相手はこの方法で公開したカードとカード名の異なる、アーツとピースを使用できない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-019", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-019.jpg", //SRC
+		"レイラ＝ニュートラル", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"レイラ", //CLASS
+		"赤", //COLOR
+		"0", //LEVEL
+		"《赤》×0", //COST
+		"0", //LIMIT
+		"", //POWER
+		"3", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-020", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-020.jpg", //SRC
+		"レイラ＝ターボ", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"レイラ", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"《赤》×0", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-021", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-021.jpg", //SRC
+		"レイラ＝ドラッグ", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"レイラ", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"《赤》×1", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-022", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-022.jpg", //SRC
+		"レイラ＝デッドヒート", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"レイラ", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"《赤》×2", //COST
+		"6", //LIMIT
+		"", //POWER
+		"2", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたの＜乗機＞のシグニ1体がアタックしたとき、《赤》を支払ってもよい。そうした場合、このルリグをアップし、ターン終了時まで、このルリグはこの能力を失う。<br><br>【起】《ゲーム1回》ドーピング《赤×0》：このターン、次にこのルリグがアタックしたとき、そのアタックは対戦相手の効果によって無効にならず、そのアタックの間、対戦相手は【ガード】ができない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-023", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-023.jpg", //SRC
+		"あーや！０", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"あや", //CLASS
+		"青", //COLOR
+		"0", //LEVEL
+		"《青》×0", //COST
+		"0", //LIMIT
+		"", //POWER
+		"4", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-024", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-024.jpg", //SRC
+		"ぴこぴこあーや！Ⅰ", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"あや", //CLASS
+		"青", //COLOR
+		"1", //LEVEL
+		"《青》×0", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-025", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-025.jpg", //SRC
+		"ぐれーとあーや！Ⅱ", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"あや", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"《青》×1", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-026", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-026.jpg", //SRC
+		"ゆうしょうあーや！Ⅲ", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"あや", //CLASS
+		"青", //COLOR
+		"3", //LEVEL
+		"《青》×2", //COST
+		"6", //LIMIT
+		"", //POWER
+		"1", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：対戦相手のシグニ1体がアタックしたとき、そのシグニの正面の、中身が＜トリック＞のシグニである【マジックボックス】1つを表向きにしトラッシュに置いてもよい。そのカードとアタックしたシグニがどちらも【ライフバースト】を持っているか、どちらも【ライフバースト】を持っていない場合、そのアタックを無効にし、ターン終了時まで、このルリグはこの能力を失う。<br><br>【起】《ゲーム1回》ホログラフ《青×0》：あなたは【ホログラフ】1つを得る。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-027", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-027.jpg", //SRC
+		"メル＝レディ", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"メル", //CLASS
+		"緑", //COLOR
+		"0", //LEVEL
+		"《緑》×0", //COST
+		"0", //LIMIT
+		"", //POWER
+		"3", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-028", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-028.jpg", //SRC
+		"メル＝バラライカ", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"メル", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"《緑》×0", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-029", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-029.jpg", //SRC
+		"メル＝カンパリ", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"メル", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"《緑》×1", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-030", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-030.jpg", //SRC
+		"メル＝エンゼルキス", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"メル", //CLASS
+		"緑", //COLOR
+		"3", //LEVEL
+		"《緑》×2", //COST
+		"6", //LIMIT
+		"", //POWER
+		"2", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ターン2回》《緑×0》：あなたの＜調理＞のシグニ1体を対象とし、クラフトの《コードイート マヨネーズ》か《コードイート ステーキソース》か《コードイート チョコスプレー》1枚をそれの【アクセ】にする。<br><br>【起】《ゲーム1回》ベルセルク《緑×0》：次の対戦相手のアタックフェイズの間、対戦相手のシグニの【自】能力は発動せず、対戦相手のシグニは可能ならばアタックしなければならない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-031", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-031.jpg", //SRC
+		"ナナシ 其ノ無", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ナナシ", //CLASS
+		"黒", //COLOR
+		"0", //LEVEL
+		"《黒》×0", //COST
+		"0", //LIMIT
+		"", //POWER
+		"2", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-032", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-032.jpg", //SRC
+		"ナナシ 其ノ壱ノ別", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ナナシ", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"《黒》×0", //COST
+		"2", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-033", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-033.jpg", //SRC
+		"ナナシ 其ノ爾", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ナナシ", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"《黒》×1", //COST
+		"5", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-034", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-034.jpg", //SRC
+		"ナナシ 其ノ参ノ天", //NAME
+		"LC", //RARE
+		"ルリグ", //TYPE
+		"ナナシ", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"《黒》×2", //COST
+		"6", //LIMIT
+		"", //POWER
+		"3", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】《自分ターン》《ターン1回》：あなたの＜微菌＞のシグニ1体が場に出たとき、対戦相手のシグニゾーン1つに【ウィルス】1つを置く。このターン、あなたの効果によって対戦相手の感染状態のシグニのパワーが-（マイナス）される場合、代わりに2倍-（マイナス）される。<br><br>【起】《ゲーム1回》ブラインド《黒×0》：次の対戦相手のアタックフェイズの間、あなたのシグニは【シャドウ】を得る。（【シャドウ】を持つシグニは対戦相手によって対象にされない）", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-035", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-035.jpg", //SRC
+		"ハロー・ゴースト", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"白", //COLOR
+		"", //LEVEL
+		"《白》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたのデッキの上からカードを5枚見る。その中から＜怪異＞のシグニを1枚まで公開し手札に加え、＜怪異＞のシグニを1枚まで場に出し、残りを好きな順番でデッキの一番下に置く。その後、あなたの＜怪異＞のシグニ1体を対象とし、ターン終了時まで、それは「【自】：このシグニがアタックしたとき、対戦相手のパワー10000以下のシグニ1体を対象とし、それを手札に戻す。」を得る。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-036", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-036.jpg", //SRC
+		"メガホン・ガンナー", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"白", //COLOR
+		"", //LEVEL
+		"《白》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから2つまで選ぶ。<br>①対戦相手のパワー10000以下のシグニ1体を対象とし、ターン終了時まで、それは「【常】：アタックできない。」を得る。<br>②手札から白のカードを3枚まで捨てる。この方法で捨てたカード1枚につき【エナチャージ1】をする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-037", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-037.jpg", //SRC
+		"伝家炎刀", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のパワー10000以下のシグニ1体を対象とし、それをバニッシュする。あなたのデッキの上からカードを5枚見る。その中から＜武勇＞のシグニを2枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-038", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-038.jpg", //SRC
+		"双腕爆機", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のパワー10000以下のシグニ1体を対象とし、それをバニッシュする。あなたのデッキの上からカードを5枚見る。その中から＜乗機＞のシグニを2枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-039", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-039.jpg", //SRC
+		"剣光帽炎", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから2つまで選ぶ。<br>①対戦相手のパワー10000以下のシグニ1体を対象とし、ターン終了時まで、それは「【常】：アタックできない。」を得る。<br>②手札から赤のカードを3枚まで捨てる。この方法で捨てたカード1枚につき【エナチャージ1】をする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-040", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-040.jpg", //SRC
+		"マジカル・バブル", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"青", //COLOR
+		"", //LEVEL
+		"《青》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-8000する。あなたのデッキの上からカードを5枚見る。その中から＜トリック＞のシグニを2枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。あなたの手札からカードを1枚まで【マジックボックス】としてあなたのシグニゾーンに設置する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-041", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-041.jpg", //SRC
+		"ミステリー・ルーム", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"青", //COLOR
+		"", //LEVEL
+		"《青》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから2つまで選ぶ。<br>①対戦相手のパワー10000以下のシグニ1体を対象とし、それをダウンする。<br>②手札から青のカードを3枚まで捨てる。この方法で捨てたカード1枚につき【エナチャージ1】をする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-042", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-042.jpg", //SRC
+		"螺旋鞭打", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"緑", //COLOR
+		"", //LEVEL
+		"《緑》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたのデッキの上からカードを5枚見る。その中から＜調理＞のシグニを1枚まで公開し手札に加え、＜調理＞のシグニを1枚まで場に出し、残りを好きな順番でデッキの一番下に置く。ターン終了時まで、この方法で場に出たシグニは「【自】：このシグニがアタックしたとき、パワーがこのシグニのパワー以下の対戦相手のシグニ1体を対象とし、それをバニッシュする。」を得る。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-043", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-043.jpg", //SRC
+		"促成栽培", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"緑", //COLOR
+		"", //LEVEL
+		"《緑》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから2つまで選ぶ。<br>①対戦相手のパワー15000以下のシグニ1体を対象とし、このターン、次にそれがアタックしたとき、そのアタックを無効にする。<br>②手札から緑のカードを3枚まで捨てる。この方法で捨てたカード1枚につき【エナチャージ1】をする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-044", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-044.jpg", //SRC
+		"バイオ・ラボラトリー", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"黒", //COLOR
+		"", //LEVEL
+		"《黒》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-10000する。あなたのデッキの上からカードを5枚見る。その中から＜微菌＞のシグニを2枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-045", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-045.jpg", //SRC
+		"ブローイング・キッス", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"黒", //COLOR
+		"", //LEVEL
+		"《黒》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから2つまで選ぶ。<br>①対戦相手のシグニ1体を対象とし、ターン終了時まで、それは「【自】：このシグニがアタックしたとき、ターン終了時まで、このシグニのパワーを-12000する。」を得る。<br>②手札から黒のカードを3枚まで捨てる。この方法で捨てたカード1枚につき【エナチャージ1】をする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-046", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-046.jpg", //SRC
+		"フルコイン・エンハンス", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"このゲームの間にあなたが《コインアイコン》を得ていない場合、《コインアイコン》《コインアイコン》《コインアイコン》《コインアイコン》《コインアイコン》を得る。このゲームの間、あなたは《コインアイコン》を得られない。あなたのルリグゾーンに【リミットアッパー】1つを置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-047", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-047.jpg", //SRC
+		"モアコイン・エンハンス", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"《コインアイコン》を得る。あなたのデッキの上からカードを5枚見る。その中からカードを1枚まで手札に加え、残りを好きな順番でデッキの一番下に置く。あなたのルリグゾーンに【リミットアッパー】1つを置く。<br>(プレイヤーが保持できる《コインアイコン》の上限は5枚である)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-048", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-048.jpg", //SRC
+		"ボン・ダンス", //NAME
+		"LC", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから2つまで選ぶ。<br>①あなたのルリグデッキからアーツ1枚をルリグトラッシュに置いてもよい。そうした場合、あなたのデッキをシャッフルし一番上のカードをライフクロスに加える。<br>②このターンに対戦相手の効果によって他の領域に移動したあなたのライフクロス1枚につき以下を1回行う。「このターン、次にあなたがダメージを受ける場合、代わりにダメージを受けない。」", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-049", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-049.jpg", //SRC
+		"アンリミテッドグロウ！", //NAME
+		"LC", //RARE
+		"ピース", //TYPE
+		"", //CLASS
+		"無", //COLOR
+		"", //LEVEL
+		"《無》×0", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたのセンタールリグがレベル3以上の場合、あなたのレベル2のアシストルリグ1体はあなたのルリグデッキのレベル3のルリグ1枚にグロウする。そうした場合、このゲームの間、あなたのセンタールリグのリミットを+1する。このゲームの間、この効果でグロウしたルリグはアシストルリグになり、そのルリグの【起】能力のコストで自身をダウンできない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-050", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-050.jpg", //SRC
+		"サシェ・ダブルロマネ", //NAME
+		"LC", //RARE
+		"アシストルリグ", //TYPE
+		"サシェ", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"《無》×1", //COST
+		"1", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ,アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】：対戦相手のシグニ1体を対象とし、ターン終了時まで、それは「【常】：アタックできない。」を得る。<br><br>【出】《白》《無》：対戦相手のルリグ1体を対象とし、ターン終了時まで、それは「【常】：アタックできない。」を得る。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-051", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-051.jpg", //SRC
+		"アイヤイ ゲコゲコ", //NAME
+		"LC", //RARE
+		"アシストルリグ", //TYPE
+		"アイヤイ", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"《無》×4", //COST
+		"1", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ,アタックフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】：対戦相手のすべてのシグニをデッキに加えてシャッフルする。対戦相手はデッキの上からカードを5枚見て、その中からシグニを3枚まで場に出し、残りを好きな順番でデッキの一番下に置く。それらのシグニの【出】能力は発動しない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-052", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-052.jpg", //SRC
+		"ミュウ － ワーム", //NAME
+		"LC", //RARE
+		"アシストルリグ", //TYPE
+		"ミュウ", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"《無》×1", //COST
+		"1", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】：このターンと次のターンの間、対戦相手は中央のシグニゾーンに新たにシグニを配置できない。<br><br>【出】：対戦相手の中央のシグニゾーンにあるシグニ1体を対象とし、ターン終了時まで、それのパワーを-5000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-053", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-053.jpg", //SRC
+		"幻闘怪姫 スノークイーン", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏生：怪異", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：あなたの場に《ドーナ SUNNY》がいるかぎり、あなたの＜怪異＞のシグニのパワーを+2000し、それらは「【自】：このシグニが場を離れたとき、あなたの手札からこのシグニより低いレベルを持つ＜怪異＞のシグニ1枚をダウン状態で場に出してもよい。そのシグニの【出】能力は発動しない。」を得る。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》：対戦相手のパワー5000以下のシグニ1体を対象とし、それを手札に戻す。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-054", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-054.jpg", //SRC
+		"コードラビリンス デッカサイト", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏械：迷宮", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、以下の2つから1つを選ぶ。①ターン終了時まで、対戦相手のすべてのシグニは能力を失う。②対戦相手のパワー5000以下のシグニ1体を対象とし、《白》を支払ってもよい。そうした場合、それを手札に戻す。それが能力を持たない場合、代わりにそれをトラッシュに置く。<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、それを手札に戻す。②カードを1枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-055", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-055.jpg", //SRC
+		"紅将姫 サナユキ", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"13000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【ライズ】あなたの＜武勇＞のシグニ1体の上に置く<br><br>【自】：あなたのアタックフェイズ開始時、あなたの場に《純燃の記憶 リル》がいる場合、対戦相手のシグニ1体を対象とし、あなたのエナゾーンから＜武勇＞のシグニ1枚をトラッシュに置いてもよい。そうした場合、それをバニッシュする。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》：【エナチャージ1】", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-056", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-056.jpg", //SRC
+		"コードドリフト ファイトラ", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏械：乗機", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、あなたの場に他の＜乗機＞のシグニがある場合、以下の2つから1つを選ぶ。①対戦相手のパワー10000以下のシグニ1体を対象とし、《赤》を支払ってもよい。そうした場合、それをバニッシュする。②あなたのアップ状態の《レイラ＝デッドヒート》1体をダウンしてもよい。そうした場合、対戦相手にダメージを与える。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》：対戦相手のパワー5000以下のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-057", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-057.jpg", //SRC
+		"紅天姫 ニケ", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：天使", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】《ターン1回》：アタックフェイズの間、アップ状態のこのシグニが効果によってダウン状態になったとき、このシグニをアップする。<br><br>【自】：このシグニがアタックしたとき、対戦相手のパワー8000以下のシグニ1体を対象とし、《赤》を支払ってもよい。そうした場合、それをバニッシュする。<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。②カードを1枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-058", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-058.jpg", //SRC
+		"大罠 チュモーイ", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏武：トリック", //CLASS
+		"青", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、あなたの場に《ゆうしょうあーや！Ⅲ》がいる場合、対戦相手のパワー10000以下のシグニ1体を対象とし、あなたのエナゾーンから＜トリック＞のシグニ1枚をトラッシュに置いてもよい。そうした場合、それを手札に戻す。<br><br>【出】：あなたの【マジックボックス】を3つまで手札に戻す。あなたの手札からカードを1枚まで【マジックボックス】としてあなたのシグニゾーンに設置する。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》：対戦相手は手札を1枚捨てる。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-059", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-059.jpg", //SRC
+		"羅菌姫 ミジンコ", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏羅：微菌", //CLASS
+		"青", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】：あなたの手札が3枚以下の場合、カードを1枚引く。<br><br>【自】：対戦相手の効果によってこのカードが捨てられたとき、カードを1枚引く。<br><br>【ライフバースト】：対戦相手のアップ状態のシグニ1体を対象とし、それをデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-060", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-060.jpg", //SRC
+		"幻蟲姫 オタガメ", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏生：凶蟲", //CLASS
+		"青", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、カードを1枚引く。<br><br>【自】：あなたのメインフェイズの間、このカードが捨てられたとき、このカードをトラッシュから場に出してもよい。<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のシグニを2体まで対象とし、それらをダウンする。②カードを1枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-061", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-061.jpg", //SRC
+		"コードハッピー ウェディング", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏械：調理", //CLASS
+		"緑", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場に《メル＝エンゼルキス》がいる場合、【エナチャージ1】をする。<br><br>【自】：あなたのアタックフェイズ開始時、【アクセ】が付いているあなたのシグニを2体まで対象とし、次の対戦相手のターン終了時まで、それらのパワーを+5000する。<br><br>【起】《コインアイコン》《コインアイコン》：ターン終了時まで、このシグニは【ランサー（パワー5000以下のシグニ）】を得る。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-062", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-062.jpg", //SRC
+		"幻竜姫 シンリュウ", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏生：龍獣", //CLASS
+		"緑", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、以下の2つから1つを選ぶ。①あなたのトラッシュからあなたのセンタールリグと共通する色を持つシグニ1枚を対象とし、それをエナゾーンに置く。②あなたのエナゾーンにあるカードの枚数が対戦相手より多い場合、対戦相手のパワー5000以下のシグニ1体を対象とし、それをバニッシュする。<br><br>【ライフバースト】：対戦相手のパワー7000以上のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-063", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-063.jpg", //SRC
+		"翠英姫 ダーウィン", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：英知", //CLASS
+		"緑", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"30000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、次の対戦相手のターン終了時まで、このシグニのパワーをあなたの場にある他のシグニのパワーの合計と同じだけ-（マイナス）する。<br><br>【起】《緑》：ターン終了時まで、このシグニは【アサシン（このシグニと同じパワーのシグニ）】を得る。<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。②【エナチャージ1】", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-064", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-064.jpg", //SRC
+		"羅闘菌姫 インフル", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏羅：微菌", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場に《ナナシ 其ノ参ノ天》がいる場合、以下の2つから2つまで選ぶ。①ターン終了時まで、対戦相手の感染状態のすべてのシグニは能力を失う。②あなたのエナゾーンから＜微菌＞のシグニ2枚をトラッシュに置く。そうした場合、ターン終了時まで、対戦相手のすべてのシグニのパワーを-5000する。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-5000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-065", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-065.jpg", //SRC
+		"凶魔姫 アシュラ", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏像：悪魔", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーをあなたのトラッシュにあるカード5枚につき-1000する。<br><br>【出】《黒》：あなたのデッキの上からカードを3枚トラッシュに置く。その後、対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーをこの方法でトラッシュに置かれたシグニのレベルの合計1につき-1000する。<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、ターン終了時まで、それのパワーを-15000する。②カードを1枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-066", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-066.jpg", //SRC
+		"ドライ＝セルケト", //NAME
+		"SR", //RARE
+		"シグニ", //TYPE
+		"奏武：毒牙", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】《ターン2回》：対戦相手のシグニ1体のパワーが0以下になったとき、ターン終了時まで、このシグニは「【自】：このシグニがアタックしたとき、対戦相手は手札を1枚捨てる。」を得る。<br><br>【出】《黒》：あなたのトラッシュからレベル2以下の黒のシグニ1枚を対象とし、それを場に出す。<br><br>【ライフバースト】：どちらか1つを選ぶ。①対戦相手のアップ状態のシグニ1体を対象とし、ターン終了時まで、それのパワーを-15000する。②カードを1枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-067", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-067.jpg", //SRC
+		"幻怪 メンレイキ", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏生：怪異", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：あなたの＜怪異＞のシグニは「【自】：あなたのターン終了時、次の対戦相手のターン終了時まで、このシグニのパワーを+2000する。」を得る。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》《コインアイコン》：あなたのデッキの上からカードを5枚見る。その中からカードを1枚まで手札に加え、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-068", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-068.jpg", //SRC
+		"幻怪 バク", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏生：怪異", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】《相手ターン》：あなたの＜怪異＞のシグニは【シャドウ（レベル1のシグニ）】を得る。<br>（【シャドウ（レベル1のシグニ）】を持つシグニは対戦相手のレベル1のシグニによって対象にされない）<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、ターン終了時まで、それは「【常】：アタックできない。」を得る。カードを1枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-069", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-069.jpg", //SRC
+		"聖将 リボク", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"白", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】手札から＜武勇＞のシグニを1枚捨てる：あなたのデッキの上からカードを5枚見る。その中からカードを1枚まで手札に加え、残りを好きな順番でデッキの一番下に置く。<br>(【出】能力の：の左側はコストである。コストを支払わず発動しないことを選んでもよい)<br><br>【起】《ターン1回》《コインアイコン》：対戦相手のシグニ1体を対象とし、ターン終了時まで、それは能力を失う。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-070", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-070.jpg", //SRC
+		"幻怪 アマノジャク", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏生：怪異", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：あなたの＜怪異＞のシグニは「【自】：あなたのアタックフェイズ開始時、対戦相手のパワー3000以下のシグニ1体を対象とし、手札から白のカードを1枚捨ててもよい。そうした場合、それを手札に戻す。」を得る。<br><br>【起】《ターン1回》《コインアイコン》：対戦相手のシグニ1体を対象とし、ターン終了時まで、それは能力を失う。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-071", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-071.jpg", //SRC
+		"幻怪 ロクロクビ", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏生：怪異", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：あなたの＜怪異＞のシグニは「【自】：あなたのメインフェイズ以外でこのシグニが場を離れたとき、あなたのエナゾーンから＜怪異＞のシグニ1枚をトラッシュに置いてもよい。そうした場合、あなたのデッキの上からカードを3枚見る。その中からカードを1枚まで手札に加え、残りを好きな順番でデッキの一番下に置く。」を得る。<br><br>【ライフバースト】：あなたのデッキの上からカードを3枚見る。その中からシグニ1枚を公開し手札に加えるか場に出し、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-072", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-072.jpg", //SRC
+		"コードイート シュークリーム", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏械：調理", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】《相手ターン》：このシグニの下にカードがあるかぎり、このシグニのパワーは+4000される。<br><br>【出】エナゾーンから＜調理＞のシグニ1枚をこのシグニの下に置く：ターン終了時まで、この方法で下に置いたシグニと同じレベルの対戦相手のすべてのシグニは能力を失う。<br><br>【ライフバースト】：どちらか1つを選ぶ。①ターン終了時まで、対戦相手のすべてのシグニは能力を失う。②カードを2枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-073", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-073.jpg", //SRC
+		"幻怪 ヤタガラス", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏生：怪異", //CLASS
+		"白", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：あなたのシグニは「【常】：あなたが【ガード】する際、《ガードアイコン》を持つカードを1枚捨てる代わりにこのシグニを場からトラッシュに置いてもよい。」を得る。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》《コインアイコン》：対戦相手のパワー8000以下のシグニ1体を対象とし、それを手札に戻す。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-074", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-074.jpg", //SRC
+		"ゴースト・ボール", //NAME
+		"R", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"白", //COLOR
+		"", //LEVEL
+		"《白》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたの＜怪異＞のシグニ1体を対象とし、ターン終了時まで、それは「【自】：このシグニがアタックしたとき、対戦相手のパワー8000以下のシグニ1体を対象とし、それを手札に戻す。」を得る。<br><br>【ライフバースト】：対戦相手のアップ状態のシグニ1体を対象とし、それを手札に戻す。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-075", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-075.jpg", //SRC
+		"紅将 ビリーザキッド", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】手札から＜武勇＞のシグニを1枚捨てる：対戦相手のパワー5000以下のシグニ1体を対象とし、それをバニッシュする。<br><br>【起】《ターン1回》《コインアイコン》：手札を3枚まで捨てる。この方法で捨てたカードの枚数に等しい枚数のカードを引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-076", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-076.jpg", //SRC
+		"紅将 レオニダス", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：このシグニが中央のシグニゾーンにあるかぎり、このシグニのパワーは+4000される。<br><br>【ライフバースト】：手札を1枚捨て、カードを3枚引く。（手札を捨てられなくてもカードを引ける）", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-077", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-077.jpg", //SRC
+		"コードライド スケボー", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏械：乗機", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、以下の2つから1つを選ぶ。①対戦相手のパワー3000以下のシグニ1体を対象とし、手札から＜乗機＞のシグニを1枚捨ててもよい。そうした場合、それをバニッシュする。②対戦相手のパワー8000以下のシグニ1体を対象とし、あなたのアップ状態のセンタールリグ1体をダウンしてもよい。そうした場合、それをバニッシュする。<br><br>【起】《ターン1回》《コインアイコン》：手札を3枚まで捨てる。この方法で捨てたカードの枚数に等しい枚数のカードを引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-078", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-078.jpg", //SRC
+		"コードライド キックボード", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏械：乗機", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、あなたの場に他の＜乗機＞のシグニがある場合、対戦相手のエナゾーンから対戦相手のセンタールリグと共通する色を持たないカード1枚を対象とし、それをトラッシュに置く。<br><br>【ライフバースト】：対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-079", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-079.jpg", //SRC
+		"コードイート イチゴミルク", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏械：調理", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場に他の＜調理＞のシグニがある場合、対戦相手のパワー2000以下のシグニ1体を対象とし、それをバニッシュする。<br><br>【起】《ターン1回》《コインアイコン》：手札を3枚まで捨てる。この方法で捨てたカードの枚数に等しい枚数のカードを引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-080", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-080.jpg", //SRC
+		"紅将 アーラシュ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】エナゾーンから＜武勇＞のシグニ1枚をトラッシュに置く：対戦相手のパワー5000以下のシグニ1体を対象とし、それをバニッシュする。あなたの場に《ライズアイコン》を持つレベル3以上のシグニがある場合、代わりに対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》：対戦相手のエナゾーンから対戦相手のセンタールリグと共通する色を持たないカード1枚を対象とし、それをトラッシュに置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-081", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-081.jpg", //SRC
+		"紅将 トヨヒサ", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ダウン》エナゾーンから＜武勇＞のシグニ2枚をトラッシュに置く：あなたの他の＜武勇＞のシグニ1体を対象とし、ターン終了時まで、それは「【常】：あなたの場に《ライズアイコン》を持つシグニがあるかぎり、このシグニは【アサシン】を得る。」を得る。(【アサシン】を持つシグニがアタックすると正面のシグニとバトルをせず対戦相手にダメージを与える)<br><br>【ライフバースト】：対戦相手のパワー12000以下のシグニ1体を対象とし、《無》を支払ってもよい。そうした場合、それをバニッシュする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-082", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-082.jpg", //SRC
+		"コードライド サファリバス", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏械：乗機", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、あなたの場に他の＜乗機＞のシグニがある場合、以下の2つから1つを選ぶ。①対戦相手のパワー5000以下のシグニ1体を対象とし、《赤》を支払ってもよい。そうした場合、それをバニッシュする。②対戦相手のパワー10000以下のシグニ1体を対象とし、あなたのアップ状態のセンタールリグ1体をダウンしてもよい。そうした場合、それをバニッシュする。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》：【エナチャージ1】", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-083", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-083.jpg", //SRC
+		"コードライド トロッコ", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏械：乗機", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、あなたのアップ状態のセンタールリグ1体をダウンしてもよい。そうした場合、このターン、次にこのシグニのアタックによってライフクロスの一番上のカードがクラッシュされた場合、そのカードのライフバーストは発動しない。<br><br>【ライフバースト】：このターン、あなたは対戦相手のルリグによってダメージを受けない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-084", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-084.jpg", //SRC
+		"羅菌 ベニコウジカビ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏羅：微菌", //CLASS
+		"赤", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場に他の＜微菌＞のシグニがある場合、対戦相手のエナゾーンから対戦相手のセンタールリグと共通する色を持たないカード1枚を対象とし、それをトラッシュに置く。<br><br>【ライフバースト】：対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-085", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-085.jpg", //SRC
+		"紅将 ケンシン", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】《赤》：対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。あなたの場に《ライズアイコン》を持つシグニがある場合、代わりに対戦相手のパワー10000以下のシグニ1体を対象とし、それをバニッシュする。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》：対戦相手のパワー5000以下のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-086", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-086.jpg", //SRC
+		"コードライド フライングカー", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏械：乗機", //CLASS
+		"赤", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、対戦相手のパワー12000以下のシグニ1体を対象とし、あなたのアップ状態のセンタールリグ1体をダウンしてもよい。そうした場合、それをバニッシュする。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》《コインアイコン》：対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-087", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-087.jpg", //SRC
+		"光剣の抜刀", //NAME
+		"R", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×2", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の2つから1つを選ぶ。<br>①あなたのデッキの上からカードを5枚見る。その中から＜武勇＞のシグニを2枚まで公開し手札に加え、残りを好きな順番でデッキの一番下に置く。<br>②《ライズアイコン》を持つあなたのシグニ1体を対象とし、ターン終了時まで、それは【アサシン】を得る。<br><br>【ライフバースト】：対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-088", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-088.jpg", //SRC
+		"爆発の鷲掴", //NAME
+		"R", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたの＜乗機＞のシグニ1体を対象とし、ターン終了時まで、それは「【自】：このシグニがアタックしたとき、以下の2つから1つを選ぶ。①対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。②あなたのセンタールリグ1体を対象とし、それをアップする。」を得る。<br><br>【ライフバースト】：対戦相手のアップ状態のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-089", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-089.jpg", //SRC
+		"小罠 コンルス", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏武：トリック", //CLASS
+		"青", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのターン終了時、以下の2つから1つを選ぶ。①あなたの手札からカードを1枚まで【マジックボックス】としてあなたのシグニゾーンに設置する。②このシグニと同じシグニゾーンに【マジックボックス】がある場合、カードを1枚引く。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》：カードを1枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-090", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-090.jpg", //SRC
+		"小罠 バケトラ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏武：トリック", //CLASS
+		"青", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ターン1回》《青×0》：あなたの手札からカードを1枚まで【マジックボックス】としてあなたのシグニゾーンに設置する。<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、それをダウンし凍結する。対戦相手は手札を1枚捨てる。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-091", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-091.jpg", //SRC
+		"羅菌 サクサン", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏羅：微菌", //CLASS
+		"青", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、あなたの場に他の＜微菌＞のシグニがある場合、カードを1枚引く。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》：カードを1枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-092", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-092.jpg", //SRC
+		"中罠 スキミング", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏武：トリック", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、対戦相手のシグニ1体を対象とし、あなたのエナゾーンから＜トリック＞のシグニ1枚をトラッシュに置いてもよい。そうした場合、ターン終了時まで、それのパワーを-3000する。このシグニと同じシグニゾーンに【マジックボックス】がある場合、代わりにターン終了時まで、それのパワーを-5000する。<br><br>【起】《ターン1回》《コインアイコン》：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-2000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-093", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-093.jpg", //SRC
+		"中罠 スリープガス", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏武：トリック", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場に他の＜トリック＞のシグニがある場合、アップ状態のこのシグニをダウンしてもよい。そうした場合、カードを1枚引き、あなたの手札からカードを1枚まで【マジックボックス】としてあなたのシグニゾーンに設置する。<br><br>【ライフバースト】：対戦相手のルリグ1体を対象とし、それをダウンする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-094", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-094.jpg", //SRC
+		"幻怪 カッパ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏生：怪異", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：あなたの＜怪異＞のシグニは「【自】：このシグニが対戦相手のライフクロス1枚をクラッシュしたとき、あなたのデッキの一番上を公開する。そのカードが＜怪異＞のシグニの場合、カードを1枚引く。」を得る。<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、それをダウンし凍結する。カードを1枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-095", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-095.jpg", //SRC
+		"蒼美 ベラッジオ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：美巧", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】《相手ターン》：あなたの手札が4枚以上あるかぎり、このシグニのパワーは+4000される。<br><br>【自】：対戦相手の効果によってこのカードが捨てられたとき、《無》を支払ってもよい。そうした場合、カードを1枚引く。<br><br>【ライフバースト】：対戦相手のルリグ1体を対象とし、それをダウンする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-096", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-096.jpg", //SRC
+		"大罠 テンハリツキ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏武：トリック", //CLASS
+		"青", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ダウン》：カードを1枚引き、あなたの手札からカードを1枚まで【マジックボックス】としてあなたのシグニゾーンに設置する。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》《コインアイコン》：対戦相手の手札を1枚見ないで選び、捨てさせる。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-097", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-097.jpg", //SRC
+		"THINKING", //NAME
+		"R", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"青", //COLOR
+		"", //LEVEL
+		"《青》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"カードを2枚引き、あなたの手札からカードを1枚まで【マジックボックス】としてあなたのシグニゾーンに設置する。<br><br>【ライフバースト】：対戦相手のシグニを2体まで対象とし、それらをダウンする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-098", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-098.jpg", //SRC
+		"コードイート タコス", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏械：調理", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、このシグニの下にある＜調理＞のシグニを1枚まで対象とし、それをエナゾーンに置く。<br><br>【出】：あなたのデッキの一番上のカードをこのシグニの下に置く。<br><br>【起】《コインアイコン》：ターン終了時まで、このシグニは【ランサー（パワー2000以下のシグニ）】を得る。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-099", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-099.jpg", //SRC
+		"コードイート チョコバナナマフィン", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏械：調理", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】エナゾーンから＜調理＞のシグニ1枚をトラッシュに置く：ターン終了時まで、このシグニは【ランサー（パワー3000以下のシグニ）】を得る。<br>（【ランサー（パワー3000以下のシグニ）】を持つシグニがバトルでパワー3000以下のシグニをバニッシュしたとき、対戦相手のライフクロス1枚をクラッシュする）<br><br>【ライフバースト】：【エナチャージ1】をする。このターン、次にあなたがシグニによってダメージを受ける場合、代わりにダメージを受けない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-100", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-100.jpg", //SRC
+		"小罠 ビックリバコ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏武：トリック", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】《自分ターン》：このシグニと同じシグニゾーンに【マジックボックス】があるかぎり、このシグニのパワーは+3000される。<br><br>【出】エナゾーンから＜トリック＞のシグニ1枚をトラッシュに置く：ターン終了時まで、このシグニは【ランサー（パワー5000以下のシグニ）】を得る。<br>（【ランサー（パワー5000以下のシグニ）】を持つシグニがバトルでパワー5000以下のシグニをバニッシュしたとき、対戦相手のライフクロス1枚をクラッシュする）<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》：【エナチャージ1】", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-101", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-101.jpg", //SRC
+		"コードイート ピーチタルト", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏械：調理", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたのエナゾーンから＜調理＞のシグニ1枚をトラッシュに置いてもよい。そうした場合、ターン終了時まで、このシグニは【ランサー（パワー5000以下のシグニ）】を得る。このシグニに【アクセ】が付いている場合、代わりにターン終了時まで、このシグニは【ランサー（パワー8000以下のシグニ）】を得る。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》：【エナチャージ1】", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-102", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-102.jpg", //SRC
+		"コードイート モンブラン", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏械：調理", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】《相手ターン》：下にカードが1枚以上あるこのシグニが場を離れる場合、代わりにこのシグニの下からすべてのカードをトラッシュに置いてもよい。<br><br>【起】《ダウン》：このシグニの下からシグニ1枚を場に出す。<br><br>【出】：あなたのエナゾーンから＜調理＞のシグニを1枚まで対象とし、それをこのシグニの下に置く。<br><br>【ライフバースト】：【エナチャージ1】をする。このターン、次にあなたがルリグによってダメージを受ける場合、代わりにダメージを受けない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-103", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-103.jpg", //SRC
+		"翠将 ポール・バニヤン", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ダウン》：あなたのデッキの一番上を公開する。そのカードが＜武勇＞のシグニの場合、【エナチャージ1】をする。<br><br>【ライフバースト】：【エナチャージ1】をする。このターン、次にあなたがルリグによってダメージを受ける場合、代わりにダメージを受けない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-104", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-104.jpg", //SRC
+		"コードライド ゴンドラ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏械：乗機", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、あなたの場に他の＜乗機＞のシグニがある場合、以下の2つから1つを選ぶ。①次の対戦相手のターン終了時まで、このシグニのパワーを+4000する。②あなたのアップ状態のセンタールリグ1体をダウンしてもよい。そうした場合、ターン終了時まで、このシグニは【ランサー（パワー8000以下のシグニ）】を得る。<br><br>【ライフバースト】：対戦相手のパワー7000以上のシグニ1体を対象とし、《無》を支払ってもよい。そうした場合、それをバニッシュする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-105", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-105.jpg", //SRC
+		"コードイート ゴマアブラ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏械：調理", //CLASS
+		"緑", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"12000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】：あなたのトラッシュから緑のシグニを2枚まで対象とし、それらをこのシグニの下に置く。<br><br>【起】《緑》《無》：ターン終了時まで、このシグニは【ランサー（このシグニの下にあるシグニと同じパワーのシグニ）】を得る。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》：あなたのエナゾーンからシグニ1枚を対象とし、それを手札に加える。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-106", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-106.jpg", //SRC
+		"突貫", //NAME
+		"R", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"緑", //COLOR
+		"", //LEVEL
+		"《緑》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたの＜調理＞のシグニ1体を対象とし、ターン終了時まで、それは【ランサー（パワー8000以下のシグニ）】を得る。それに【アクセ】が付いている場合、代わりにターン終了時まで、それは【ランサー（パワー10000以下のシグニ）】を得る。<br><br>【ライフバースト】：【エナチャージ1】をする。その後、あなたのエナゾーンからシグニを1枚まで対象とし、それを手札に加えるか場に出す。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-107", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-107.jpg", //SRC
+		"羅菌 リステリア", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏羅：微菌", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《無》このシグニを場からトラッシュに置く：あなたのトラッシュからレベル2以上の＜微菌＞のシグニ1枚を対象とし、それを場に出す。<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-5000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-108", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-108.jpg", //SRC
+		"羅菌 ウェルシュ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏羅：微菌", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】手札から＜微菌＞のシグニを1枚捨てる：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-3000する。<br>(パワーが0以下のシグニはルールによってバニッシュされる)<br><br>【ライフバースト】：あなたのトラッシュからシグニ1枚を対象とし、それを手札に加える。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-109", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-109.jpg", //SRC
+		"幻怪 ヴァンパイア", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏生：怪異", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【常】：あなたの＜怪異＞のシグニは「【自】：このシグニがアタックしたとき、対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-1000する。」を得る。<br><br>【起】《ターン1回》《コインアイコン》：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-2000する。<br>(パワーが0以下のシグニはルールによってバニッシュされる)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-110", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-110.jpg", //SRC
+		"コードライド ユウレイセン", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏械：乗機", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《無》このシグニを場からトラッシュに置く：あなたのトラッシュからレベル2以上の＜乗機＞のシグニ1枚を対象とし、それを場に出す。<br><br>【起】《ターン1回》《コインアイコン》：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-2000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-111", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-111.jpg", //SRC
+		"羅菌 アスペルギルス", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏羅：微菌", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、あなたの場に他の＜微菌＞のシグニがある場合、対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-2000する。<br><br>【起】《ターン1回》《コインアイコン》：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-2000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-112", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-112.jpg", //SRC
+		"羅菌 クリソゲヌム", //NAME
+		"R", //RARE
+		"シグニ", //TYPE
+		"奏羅：微菌", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、あなたの場に他の＜微菌＞のシグニがある場合、対戦相手のデッキの上からカードを3枚トラッシュに置く。<br><br>【ライフバースト】：このターン、次にあなたがダメージを受ける場合、代わりにあなたのデッキの上からカードを3枚トラッシュに置く。(デッキが2枚以下の場合は置き換えられない)", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-113", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-113.jpg", //SRC
+		"中罠 ジメンシ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏武：トリック", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】《ダウン》エナゾーンから＜トリック＞のシグニ1枚をトラッシュに置く：あなたのトラッシュから＜トリック＞のシグニ1枚を対象とし、それを場に出す。<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、《無》を支払ってもよい。そうした場合、ターン終了時まで、それのパワーを-12000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-114", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-114.jpg", //SRC
+		"羅菌 カンピロバクター", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏羅：微菌", //CLASS
+		"黒", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】《黒》：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-8000する。それが感染状態の場合、代わりにターン終了時まで、それのパワーを-10000する。<br>(【出】能力の：の左側はコストである。コストを支払わず発動しないことを選んでもよい)<br><br>【起】《ターン1回》《コインアイコン》《コインアイコン》《コインアイコン》：あなたのトラッシュから黒のシグニ1枚を対象とし、それを場に出す。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-115", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-115.jpg", //SRC
+		"パープル・クレイ", //NAME
+		"R", //RARE
+		"スペル", //TYPE
+		"", //CLASS
+		"黒", //COLOR
+		"", //LEVEL
+		"《黒》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたのトラッシュから＜微菌＞のシグニ1枚を対象とし、それを場に出す。ターン終了時まで、それは「【自】：このシグニがアタックしたとき、対戦相手の感染状態のシグニ1体を対象とし、ターン終了時まで、それのパワーを-2000する。」を得る。<br><br>【ライフバースト】：あなたのトラッシュから《ガードアイコン》を持たないシグニ1枚を対象とし、それを手札に加えるか場に出す。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-116", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-116.jpg", //SRC
+		"幻水 アペニーパファー", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏生：水獣", //CLASS
+		"白", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】《無》：あなたのデッキの上からカードを3枚見る。その中からあなたの場にいるルリグと共通する色を持つカード1枚を公開し手札に加え、残りを好きな順番でデッキの一番下に置く。<br><br>【ライフバースト】：対戦相手のルリグ1体を対象とし、ターン終了時まで、それは「【常】：アタックできない。」を得る。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-117", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-117.jpg", //SRC
+		"小書 ナコ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏武：ウェポン", //CLASS
+		"黒", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【起】このシグニを場からトラッシュに置く：あなたのシグニ1体を対象とし、ターン終了時まで、それは「【自】：このシグニがアタックしたとき、対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーをこのシグニのレベル1につき-1000する。」を得る。<br><br>【ライフバースト】：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-8000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-118", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-118.jpg", //SRC
+		"コードアンチ スイシャ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏械：古代兵器", //CLASS
+		"青", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"8000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【出】：あなたのデッキの上からカードを3枚見る。その中からカード1枚をトラッシュに置き、カード1枚をデッキの一番上に戻し、残りを好きな順番でデッキの一番下に置く。<br><br>【ライフバースト】：あなたのデッキの上からカードを3枚見る。その中からシグニ1枚を公開し手札に加えるか場に出し、残りを好きな順番でデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-119", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-119.jpg", //SRC
+		"幻蟲 カメムシ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏生：凶蟲", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"2000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：このシグニがアタックしたとき、あなたの場にあるシグニが持つ色が合計2種類以上ある場合、【エナチャージ1】をする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-120", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-120.jpg", //SRC
+		"紅将 リル//フェゾーネ", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏像：武勇", //CLASS
+		"赤", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"3000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのターン終了時、このターンに対戦相手のライフクロスが2枚以上クラッシュされていた場合、【エナチャージ1】をする。<br><br>【起】《ターン1回》《コインアイコン》：対戦相手のパワー2000以下のシグニ1体を対象とし、それをバニッシュする。<br><br>【ライフバースト】：対戦相手のパワー8000以下のシグニ1体を対象とし、それをバニッシュする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-121", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-121.jpg", //SRC
+		"羅菌 みこみこ//THE DOOR", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"闘争派/奏羅：微菌", //CLASS
+		"黒", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"【自】：あなたのアタックフェイズ開始時、このターンにあなたが《コインアイコン》を合計1枚以上支払っていた場合、対戦相手のシグニ1体を対象とし、《黒》を支払ってもよい。そうした場合、ターン終了時まで、それのパワーを-5000する。このターンにあなたが《コインアイコン》を合計5枚以上支払っていた場合、代わりにターン終了時まで、それのパワーを-8000する。<br><br>【起】《ターン1回》《コインアイコン》：対戦相手のシグニ1体を対象とし、ターン終了時まで、それのパワーを-2000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-122", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-122.jpg", //SRC
+		"サーバント #", //NAME
+		"C", //RARE
+		"シグニ", //TYPE
+		"奏元", //CLASS
+		"無", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"1000", //POWER
+		"", //COIN
+		"", //TIMING
+		"1", //LB
+		"", //TEAM
+		"", //STORY
+		"【ガード】(このカードを手札から捨てることで、ルリグのアタックによるダメージを一度防ぐ)<br><br>【常】：【マルチエナ】(エナコストを支払う際、このカードは好きな色1つとして支払える)<br><br>【ライフバースト】：あなたのトラッシュからシグニ1枚を対象とし、それを手札に加える。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-LRe01", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-LRe01.jpg", //SRC
+		"セイクリッド・フォース", //NAME
+		"LRe", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"白", //COLOR
+		"", //LEVEL
+		"《白》×1《無》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の3つから2つまで選ぶ。<br>①【ルリグバリア】1つを得る。<br>（あなたが次にルリグからダメージを受ける場合、代わりに【ルリグバリア】1つを消費し、そのダメージを受けない）<br>②対戦相手のシグニ1体を対象とし、それを手札に戻す。<br>③あなたのデッキの上からカードを7枚見る。その中からカードを2枚まで手札に加え、残りをシャッフルしてデッキの一番下に置く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-LRe02", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-LRe02.jpg", //SRC
+		"鏡花炎月", //NAME
+		"LRe", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"赤", //COLOR
+		"", //LEVEL
+		"《赤》×1《無》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の3つから2つまで選ぶ。<br>①あなたのシグニ1体を対象とし、ターン終了時まで、それは【アサシン】を得る。<br>②手札をすべて捨て、カードを4枚引く。<br>③手札を3枚捨ててもよい。そうした場合、対戦相手のライフクロス1枚をクラッシュする。そのカードの【ライフバースト】は発動しない。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-LRe03", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-LRe03.jpg", //SRC
+		"クリアー・マインド", //NAME
+		"LRe", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"青", //COLOR
+		"", //LEVEL
+		"《青》×1《無》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"以下の3つから2つまで選ぶ。<br>①対戦相手のルリグ1体を対象とし、それを凍結する。<br>②対戦相手のパワー10000以下のシグニ1体を対象とし、それをデッキの一番下に置く。<br>③カードを3枚引く。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-LRe04", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-LRe04.jpg", //SRC
+		"デッドリー・ポータル", //NAME
+		"LRe", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"黒", //COLOR
+		"", //LEVEL
+		"《黒》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたのデッキの上からカードを3枚トラッシュに置いてもよい。その後、対戦相手のシグニを好きな数対象とし、ターン終了時まで、それらのパワーを合計であなたのトラッシュにあるカード1枚につき-1000する。この効果では1000単位でしか数字を割り振れない。<br>《リコレクトアイコン》［4枚以上］追加であなたのトラッシュからあなたのセンタールリグと共通する色を持つシグニを2枚まで対象とし、それらを手札に加える。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-LRe05", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-LRe05.jpg", //SRC
+		"竜花相搏", //NAME
+		"LRe", //RARE
+		"アーツ", //TYPE
+		"", //CLASS
+		"赤緑", //COLOR
+		"", //LEVEL
+		"《赤》×1《緑》×1", //COST
+		"", //LIMIT
+		"", //POWER
+		"", //COIN
+		"メインフェイズ", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"あなたのデッキをシャッフルし一番上のカードをライフクロスに加える。あなたのライフクロス1枚をクラッシュしてもよい。そうした場合、対戦相手のライフクロス1枚をクラッシュする。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-TK01A", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-TK01A.jpg", //SRC
+		"コードイート マヨネーズ", //NAME
+		"TK", //RARE
+		"シグニ クラフト", //TYPE
+		"奏械：調理", //CLASS
+		"緑", //COLOR
+		"1", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"5000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"(【アクセ】はシグニ1体に1枚までしか付けられない。このクラフトが付いているシグニが場を離れるとこのクラフトはゲームから除外される)<br><br>【常】：これにアクセされているシグニのパワーを+3000する。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-TK02A", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-TK02A.jpg", //SRC
+		"コードイート ステーキソース", //NAME
+		"TK", //RARE
+		"シグニ クラフト", //TYPE
+		"奏械：調理", //CLASS
+		"緑", //COLOR
+		"2", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"10000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"(【アクセ】はシグニ1体に1枚までしか付けられない。このクラフトが付いているシグニが場を離れるとこのクラフトはゲームから除外される)<br><br>【常】：これにアクセされているシグニは「【自】：このシグニがバトルによって対戦相手のシグニ1体をバニッシュしたとき、【エナチャージ1】をする。」を得る。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
+	[
+		"WX26-P1-TK03A", //ID
+		"https://www.takaratomy.co.jp/products/wixoss/img/card/WX26/WX26-P1-TK03A.jpg", //SRC
+		"コードイート チョコスプレー", //NAME
+		"TK", //RARE
+		"シグニ クラフト", //TYPE
+		"奏械：調理", //CLASS
+		"緑", //COLOR
+		"3", //LEVEL
+		"", //COST
+		"", //LIMIT
+		"13000", //POWER
+		"", //COIN
+		"", //TIMING
+		"", //LB
+		"", //TEAM
+		"", //STORY
+		"(【アクセ】はシグニ1体に1枚までしか付けられない。このクラフトが付いているシグニが場を離れるとこのクラフトはゲームから除外される)<br><br>【常】：これにアクセされているシグニは「【自】：このシグニがアタックしたとき、パワーがこのシグニのパワー以下の対戦相手のシグニ1体を対象とし、《緑》《緑》《無》を支払ってもよい。そうした場合、それをバニッシュする。」を得る。", //JP_TEXT
+		"",	//TW_TEXT
+		"" //BAN
+		],
 	]

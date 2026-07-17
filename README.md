@@ -1,7 +1,9 @@
 # WIXOSS_deckeditor  
    
 Author: ZZZ  
-
+  
+20260717 v2.10  
+1.更新WX26-P1  
   
 20260508 v2.09  
 1.新增顯示卡價  
