@@ -64,6 +64,58 @@ function getPriceRow(id){
 	return "<tr><td>" + label + "</td><td>" + cellHtml + "</td></tr>";
 }
 
+// 已選取卡片（LRIG / Piece / Arts / Signi）卡價總和。
+// 顯示於 #deckPriceTotal，於 showLdeck/showPdeck/showAdeck/showSdeck 之後呼叫，
+// 確保新增、刪除、排序、清空、讀取牌組等任何會改變牌組內容的操作都會即時更新。
+function updateDeckPriceTotal(){
+	var el = document.getElementById("deckPriceTotal");
+	if(!el) return;
+
+	if(typeof PRICE_INFO === 'undefined' || !PRICE_INFO || !PRICE_INFO.prices){
+		el.innerHTML = "";
+		return;
+	}
+
+	var prices = PRICE_INFO.prices;
+	var allArr = [].concat(ldeckArr, pdeckArr, adeckArr, sdeckArr);
+	var total = 0;
+	var counted = 0;
+	var missing = 0;
+	var i = 0;
+	var id, info;
+
+	for(i = 0; i < allArr.length; i++)
+	{
+		id = allArr[i] ? allArr[i][ID] : "";
+		if(!id) continue;
+
+		info = prices[id];
+		if(info && typeof info.price === "number")
+		{
+			total += info.price;
+			counted++;
+		}
+		else
+		{
+			missing++;
+		}
+	}
+
+	if(counted == 0 && missing == 0)
+	{
+		el.innerHTML = "";
+		return;
+	}
+
+	var str = "Price Total (yuyu-tei): ¥" + total.toLocaleString('ja-JP');
+	if(missing > 0)
+	{
+		str += "&emsp;<span style=\"color:#999;cursor: default;margin-top: -6px;\">(" + missing + " card(s) with no price)</span>";
+	}
+
+	el.innerHTML = str;
+}
+
 // === big_pic lock (hold ALT to freeze the preview) ===
 // Robust against browsers that hijack ALT for the menu bar:
 //   1. preventDefault() on plain ALT keydown so the browser menu does not steal focus.
@@ -1201,6 +1253,8 @@ function showLdeck()
 			$("#ldeck_" + i).attr("alt", "");
 		}
 	}
+
+	updateDeckPriceTotal();
 }
 
 function showPdeck()
@@ -1228,6 +1282,8 @@ function showPdeck()
 			$("#show_pdeck_" + i).hide();
 		}
 	}
+
+	updateDeckPriceTotal();
 }
 
 function showAdeck()
@@ -1314,6 +1370,8 @@ function showAdeck()
 			// $("#show_pdeck_" + i).hide();
 		}
 	}
+
+	updateDeckPriceTotal();
 }
 
 function showSdeck()
@@ -1442,6 +1500,8 @@ function showSdeck()
 	refreshShowSdeck();
 
 	updatechart();
+
+	updateDeckPriceTotal();
 }
 
 /**
