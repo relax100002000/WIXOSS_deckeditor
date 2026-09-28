@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script>
+			// Same cache-buster as index.html; shares function.js / card_info.js
+			(function(){
+				var v = '?v=' + Date.now();
+				document.write('<script src="js/function.js' + v + '"><\/script>');
+				document.write('<script src="js/card_info.js' + v + '"><\/script>');
+			})();
+		</script>
+		<title>WIXOSS シグニ Name Quiz</title>
+		<style>
+			:root {
+				--bg: #ffffff;
+				--fg: #111111;
+				--muted: #666666;
+				--panel: #f4f4f4;
+				--border: #cccccc;
+				--accent: #c2185b;
+			}
+			body.dark-mode {
+				--bg: #1a1a1a;
+				--fg: #e6e6e6;
+				--muted: #a0a0a0;
+				--panel: #262626;
+				--border: #444444;
+				--accent: #f06292;
+			}
+			* { box-sizing: border-box; }
+			body {
+				margin: 0;
+				padding: 16px;
+				background: var(--bg);
+				color: var(--fg);
+				font-family: "Meiryo", "Microsoft JhengHei", sans-serif;
+				transition: background-color .25s ease, color .25s ease;
+			}
+			header {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				gap: 12px;
+				margin-bottom: 12px;
+			}
+			header h1 { font-size: 20px; margin: 0; }
+			header .spacer { flex: 1; }
+			a { color: var(--accent); }
+			button, select, input[type="text"] {
+				font: inherit;
+				color: var(--fg);
+				background: var(--bg);
+				border: 1px solid var(--border);
+				border-radius: 4px;
+				padding: 4px 8px;
+			}
+			button { cursor: pointer; }
+			button:hover { border-color: var(--accent); }
+			button.primary {
+				background: var(--accent);
+				border-color: var(--accent);
+				color: #fff;
+				padding: 8px 20px;
+				font-size: 16px;
+			}
+			button:disabled { opacity: .5; cursor: default; }
+
+			.layout {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 24px;
+				align-items: flex-start;
+			}
+			.filters {
+				flex: 1 1 420px;
+				max-width: 620px;
+				background: var(--panel);
+				border: 1px solid var(--border);
+				border-radius: 8px;
+				padding: 12px 16px;
+				line-height: 2.2;
+			}
+			.filters .row { margin-bottom: 4px; }
+			.filters .label {
+				display: inline-block;
+				min-width: 110px;
+				color: var(--muted);
+			}
+			.filters label { margin-right: 14px; white-space: nowrap; cursor: pointer; user-select: none; }
+			.filters input[type="text"] { width: 100%; max-width: 360px; }
+			.filters .actions { margin-top: 8px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+			.pool { color: var(--muted); }
+			.filters .note { font-size: 12px; line-height: 1.5; color: var(--muted); margin-top: 2px; }
+
+			.quiz {
+				flex: 0 1 380px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 12px;
+				width: 100%;
+			}
+			/* Card frame: shows only the bottom 85% by default (card name at the top is cropped) */
+			.card-frame {
+				position: relative;
+				width: 100%;
+				max-width: 360px;
+				aspect-ratio: 360 / 428; /* Estimated ratio before load; corrected to the real size after load */
+				overflow: hidden;
+				border-radius: 0 0 16px 16px;
+				background: var(--panel);
+				border: 1px solid var(--border);
+			}
+			/* Animate only on "Show Answer"; snap back to 85% instantly on the next card */
+			.card-frame.revealed { border-radius: 16px; transition: aspect-ratio .35s ease; }
+			.card-frame img {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				width: 100%;
+				height: auto;
+				display: block;
+			}
+			.card-frame .placeholder {
+				position: absolute;
+				inset: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: var(--muted);
+				text-align: center;
+				padding: 16px;
+			}
+			.comment-row {
+				width: 100%;
+				max-width: 360px;
+				display: flex;
+				gap: 6px;
+				align-items: flex-start;
+			}
+			#comment {
+				flex: 1;
+				min-height: 30px;
+				height: 30px;
+				overflow: hidden;
+				resize: none;
+				font: inherit;
+				font-size: 14px;
+				color: var(--fg);
+				background: var(--bg);
+				border: 1px solid var(--border);
+				border-radius: 4px;
+				padding: 4px 6px;
+			}
+			#btnComment { height: 30px; white-space: nowrap; }
+			#commentSaved { font-size: 12px; color: var(--muted); align-self: center; min-width: 3em; }
+			.answer {
+				min-height: 3em;
+				text-align: center;
+				font-size: 18px;
+				font-weight: bold;
+				visibility: hidden;
+			}
+			.answer small { display: block; font-size: 13px; font-weight: normal; color: var(--muted); }
+			.answer.show { visibility: visible; }
+			.quiz .buttons { display: flex; gap: 12px; }
+			.hint { color: var(--muted); font-size: 13px; }
+
+			/* Hidden fields required by the shared search() */
+			#hiddenFields { display: none; }
+		</style>
+	</head>
+	<body>
+		<script>
+			// Dark mode setting shared with index.html
+			try {
+				var saved = localStorage.getItem('wixoss_dark_mode');
+				if (saved === '1' || (saved === null && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches))
+					document.body.classList.add('dark-mode');
+			} catch(e) {}
+			function toggleDarkMode() {
+				document.body.classList.toggle('dark-mode');
+				var isDark = document.body.classList.contains('dark-mode');
+				try { localStorage.setItem('wixoss_dark_mode', isDark ? '1' : '0'); } catch(e) {}
+				$('#darkModeToggle').text(isDark ? '☀ Light' : '🌙 Dark');
+			}
+		</script>
+
+		<header>
+			<h1>シグニ Name Quiz</h1>
+			<span class="spacer"></span>
+			<a href="index.html">← Deck Builder</a>
+			<button id="darkModeToggle" type="button" onclick="toggleDarkMode()">🌙 Dark</button>
+		</header>
+
+		<div class="layout">
+			<!-- ===== Filter (reuses index.html field ids and calls search() in function.js directly) ===== -->
+			<div class="filters">
+				<div class="row">
+					<span class="label">Card Type</span>
+					<label><input type="checkbox" id="quizSigni" checked>シグニ</label>
+					<label><input type="checkbox" id="quizResona">レゾナ</label>
+				</div>
+				<div class="row">
+					<span class="label">Level</span>
+					<label><input type="checkbox" id="level1" checked>Level 1</label>
+					<label><input type="checkbox" id="level2" checked>Level 2</label>
+					<label><input type="checkbox" id="level3" checked>Level 3</label>
+				</div>
+				<div class="row">
+					<span class="label">Color</span>
+					<label><input type="checkbox" id="white" checked>白</label>
+					<label><input type="checkbox" id="red" checked>赤</label>
+					<label><input type="checkbox" id="blue" checked>青</label>
+					<label><input type="checkbox" id="green" checked>緑</label>
+					<label><input type="checkbox" id="black" checked>黒</label>
+					<label><input type="checkbox" id="nocolor" checked>無</label>
+					<label><input type="checkbox" id="multicolor">多色のみ</label>
+				</div>
+				<div class="row">
+					<span class="label">LB</span>
+					<label><input type="checkbox" id="islb" checked>LB有り</label>
+					<label><input type="checkbox" id="notlb" checked>LB無し</label>
+				</div>
+				<div class="row">
+					<span class="label">Type</span>
+					<select id="selectType">
+						<option value="0">--All Type--</option>
+						<option value="奏像：天使">奏像：天使</option>
+						<option value="奏像：悪魔">奏像：悪魔</option>
+						<option value="奏像：美巧">奏像：美巧</option>
+						<option value="奏像：英知">奏像：英知</option>
+						<option value="奏像：武勇">奏像：武勇</option>
+						<option value="奏像：プリパラ">奏像：プリパラ</option>
+						<option value="奏像：プリオケ">奏像：プリオケ</option>
+						<option value="奏武：アーム">奏武：アーム</option>
+						<option value="奏武：ウェポン">奏武：ウェポン</option>
+						<option value="奏武：遊具">奏武：遊具</option>
+						<option value="奏武：毒牙">奏武：毒牙</option>
+						<option value="奏武：トリック">奏武：トリック</option>
+						<option value="奏武：ブルアカ">奏武：ブルアカ</option>
+						<option value="奏羅：宝石">奏羅：宝石</option>
+						<option value="奏羅：植物">奏羅：植物</option>
+						<option value="奏羅：原子">奏羅：原子</option>
+						<option value="奏羅：宇宙">奏羅：宇宙</option>
+						<option value="奏羅：微菌">奏羅：微菌</option>
+						<option value="奏械：電機">奏械：電機</option>
+						<option value="奏械：古代兵器">奏械：古代兵器</option>
+						<option value="奏械：迷宮">奏械：迷宮</option>
+						<option value="奏械：調理">奏械：調理</option>
+						<option value="奏械：乗機">奏械：乗機</option>
+						<option value="奏械：バーチャル">奏械：バーチャル</option>
+						<option value="奏械：電音部">奏械：電音部</option>
+						<option value="世怜音女学院">世怜音女学院</option>
+						<option value="奏生：水獣">奏生：水獣</option>
+						<option value="奏生：空獣">奏生：空獣</option>
+						<option value="奏生：地獣">奏生：地獣</option>
+						<option value="奏生：龍獣">奏生：龍獣</option>
+						<option value="奏生：凶蟲">奏生：凶蟲</option>
+						<option value="奏生：怪異">奏生：怪異</option>
+						<option value="奏元">奏元</option>
+					</select>
+				</div>
+				<div class="row">
+					<span class="label">キーワード検索</span>
+					<select id="selectLang">
+						<option value="JP">日本語</option>
+						<option value="TW">繁體中文</option>
+					</select>
+					<br>
+					<input type="text" id="textsearch">
+					<div class="note">Note: Keyword search also looks in card comments, so you can add your own keywords to a card's comment to make it easier to find.</div>
+				</div>
+				<div class="actions">
+					<button onclick="applyFilter();">Search</button>
+					<button onclick="resetFilter();">Reset</button>
+					<span class="pool" id="poolInfo"></span>
+				</div>
+			</div>
+
+			<!-- ===== Quiz ===== -->
+			<div class="quiz">
+				<div class="card-frame" id="cardFrame">
+					<div class="placeholder" id="placeholder">Press "Search" to build the card pool and start</div>
+					<img id="quizImg" alt="" style="display:none;">
+				</div>
+				<div class="comment-row">
+					<textarea id="comment" placeholder="Comment" disabled></textarea>
+					<button id="btnComment" onclick="saveComment();" disabled>Update</button>
+					<span id="commentSaved"></span>
+				</div>
+				<div class="answer" id="answer"></div>
+				<div class="buttons">
+					<button class="primary" id="btnReveal" onclick="revealCard();" disabled>Show Answer</button>
+					<button class="primary" id="btnNext" onclick="nextCard();" disabled>Next Card</button>
+				</div>
+				<div class="hint">Shortcut: Space = Show Answer / Next Card</div>
+			</div>
+		</div>
+
+		<!-- Other fields read by search(): fixed to "SIGNI only" -->
+		<div id="hiddenFields">
+			<input type="checkbox" id="lrig">
+			<input type="checkbox" id="assistlrig">
+			<input type="checkbox" id="piece">
+			<input type="checkbox" id="arts">
+			<input type="checkbox" id="signi" checked>
+			<input type="checkbox" id="spell">
+			<input type="checkbox" id="level0">
+			<input type="checkbox" id="dreamteam" checked>
+			<input type="checkbox" id="no_dreamteam" checked>
+			<input type="checkbox" id="mainphase" checked>
+			<input type="checkbox" id="attackphase" checked>
+			<input type="checkbox" id="spellcutin" checked>
+			<input type="checkbox" id="no_story" checked>
+			<input type="checkbox" id="dissona" checked>
+			<select id="selectFaction"><option value="0" selected></option></select>
+			<select id="selectLRIG"><option value="0" selected></option></select>
+			<select id="selectProduct"><option value="0" selected></option></select>
+		</div>
+
+		<script>
+			// Globals used by search() / showrdeck() in function.js
+			var page = 0;
+			var rdeckArr = [];
+
+			var pool = [];      // SIGNI matching the filter
+			var bag = [];       // Cards not yet asked (reshuffled only when empty)
+			var current = null;
+			var revealed = true;
+			var CROP = 0.85;    // Show the bottom 85%
+
+			function isSigniCard(card) {
+				if ($('#quizSigni').is(':checked') && card[TYPE] == "シグニ") return true;
+				if ($('#quizResona').is(':checked') && card[TYPE].indexOf("シグニ") == 0 && card[TYPE].indexOf("レゾナ") != -1) return true;
+				return false;
+			}
+
+			function applyFilter() {
+				search(); // function.js: results go into rdeckArr
+				pool = rdeckArr.filter(function(c){ return isSigniCard(c) && c[SRC]; });
+				bag = [];
+				updatePoolInfo();
+				if (pool.length == 0) {
+					current = null;
+					$('#quizImg').hide();
+					$('#placeholder').text('No cards match the filter').show();
+					$('#answer').removeClass('show').html('');
+					$('#btnReveal, #btnNext, #btnComment, #comment').prop('disabled', true);
+					$('#comment').val('');
+					return;
+				}
+				nextCard();
+			}
+
+			function resetFilter() {
+				$('.filters input[type=checkbox]').prop('checked', true);
+				$('#multicolor, #quizResona').prop('checked', false);
+				$('#selectType').val(0);
+				$('#textsearch').val('');
+			}
+
+			function updatePoolInfo() {
+				if (pool.length == 0) { $('#poolInfo').text('Pool: 0 cards'); return; }
+				var done = pool.length - bag.length;
+				$('#poolInfo').text('Pool: ' + pool.length + ' cards (Q ' + done + ' / ' + pool.length + ')');
+			}
+
+			function shuffle(arr) {
+				for (var i = arr.length - 1; i > 0; i--) {
+					var j = Math.floor(Math.random() * (i + 1));
+					var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+				}
+				return arr;
+			}
+
+			function nextCard() {
+				if (pool.length == 0) return;
+				if (bag.length == 0) {
+					bag = shuffle(pool.slice());
+					// Avoid repeating the previous card right after a reshuffle
+					if (current && bag.length > 1 && bag[bag.length - 1] === current) {
+						bag.unshift(bag.pop());
+					}
+				}
+				current = bag.pop();
+				revealed = false;
+
+				var frame = document.getElementById('cardFrame');
+				frame.classList.remove('revealed');
+				setFrameRatio(); // Shrink to 85% immediately using the previous size, so the full image never flashes
+				$('#answer').removeClass('show').html('');
+				$('#placeholder').text('Loading...').show();
+				$('#quizImg').hide().attr('alt', '').attr('src', current[SRC]);
+				$('#btnReveal').prop('disabled', false);
+				$('#btnNext').prop('disabled', false);
+				loadComment();
+				updatePoolInfo();
+			}
+
+			// Shares the localStorage "<ID>_WXcomment" entries with index.html
+			function loadComment() {
+				var txt = null;
+				try { txt = localStorage.getItem(current[ID] + "_WXcomment"); } catch(e) {}
+				$('#comment').val(txt == null ? '' : txt).prop('disabled', false);
+				$('#btnComment').prop('disabled', false);
+				$('#commentSaved').text('');
+				autoResize.call(document.getElementById('comment')); // function.js
+			}
+
+			function saveComment() {
+				if (!current) return;
+				setComment(current[ID]); // function.js
+				$('#commentSaved').text('Saved');
+				setTimeout(function(){ $('#commentSaved').text(''); }, 1500);
+			}
+
+			function setFrameRatio() {
+				var img = document.getElementById('quizImg');
+				if (!img.naturalWidth) return;
+				var h = img.naturalHeight * (revealed ? 1 : CROP);
+				document.getElementById('cardFrame').style.aspectRatio = img.naturalWidth + ' / ' + h;
+			}
+
+			function revealCard() {
+				if (!current || revealed) return;
+				revealed = true;
+				document.getElementById('cardFrame').classList.add('revealed');
+				setFrameRatio();
+				$('#answer').html(
+					$('<div>').text(current[NAME]).html() +
+					'<small>' + $('<div>').text(current[ID] + '　' + current[CLASS] + '　Lv' + current[LEVEL] + '　' + current[COLOR]).html() + '</small>'
+				).addClass('show');
+				$('#btnReveal').prop('disabled', true);
+			}
+
+			$(function(){
+				if (typeof search !== 'function' || typeof autoResize !== 'function' || typeof cardData === 'undefined') {
+					$('#placeholder').html('Cannot find js/function.js or js/card_info.js.<br>Please open this page from the WIXOSS_deckeditor folder (same level as index.html).');
+					return;
+				}
+				$('#darkModeToggle').text(document.body.classList.contains('dark-mode') ? '☀ Light' : '🌙 Dark');
+
+				$('#quizImg').on('load', function(){
+					setFrameRatio();
+					$('#placeholder').hide();
+					$(this).show();
+				}).on('error', function(){
+					$('#placeholder').text('Image failed to load. Please press "Next Card".').show();
+					$(this).hide();
+				});
+
+				document.getElementById('comment').addEventListener('input', autoResize); // function.js
+
+				$('#textsearch').on('keydown', function(e){
+					if (e.keyCode == 13) applyFilter();
+				});
+
+				$(document).on('keydown', function(e){
+					if (e.target.tagName == 'INPUT' || e.target.tagName == 'SELECT' || e.target.tagName == 'TEXTAREA') return;
+					if (e.key == ' ' || e.code == 'Space') {
+						e.preventDefault();
+						if (!current) return;
+						if (!revealed) revealCard(); else nextCard();
+					}
+				});
+
+				applyFilter();
+			});
+		</script>
+	</body>
+</html>
