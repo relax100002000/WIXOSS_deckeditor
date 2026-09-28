@@ -106,18 +106,18 @@
 				gap: 12px;
 				width: 100%;
 			}
-			/* Card frame: shows only the bottom 85% by default (card name at the top is cropped) */
+			/* Card frame: shows only the bottom 80% by default (card name at the top is cropped) */
 			.card-frame {
 				position: relative;
 				width: 100%;
 				max-width: 360px;
-				aspect-ratio: 360 / 428; /* Estimated ratio before load; corrected to the real size after load */
+				aspect-ratio: 360 / 403; /* Estimated ratio before load; corrected to the real size after load */
 				overflow: hidden;
 				border-radius: 0 0 16px 16px;
 				background: var(--panel);
 				border: 1px solid var(--border);
 			}
-			/* Animate only on "Show Answer"; snap back to 85% instantly on the next card */
+			/* Animate only on "Show Answer"; snap back to 80% instantly on the next card */
 			.card-frame.revealed { border-radius: 16px; transition: aspect-ratio .35s ease; }
 			.card-frame img {
 				position: absolute;
@@ -203,11 +203,6 @@
 			<!-- ===== Filter (reuses index.html field ids and calls search() in function.js directly) ===== -->
 			<div class="filters">
 				<div class="row">
-					<span class="label">Card Type</span>
-					<label><input type="checkbox" id="quizSigni" checked>シグニ</label>
-					<label><input type="checkbox" id="quizResona">レゾナ</label>
-				</div>
-				<div class="row">
 					<span class="label">Level</span>
 					<label><input type="checkbox" id="level1" checked>Level 1</label>
 					<label><input type="checkbox" id="level2" checked>Level 2</label>
@@ -280,6 +275,7 @@
 				<div class="actions">
 					<button onclick="applyFilter();">Search</button>
 					<button onclick="resetFilter();">Reset</button>
+					<button onclick="clearFilter();">Clear All</button>
 					<span class="pool" id="poolInfo"></span>
 				</div>
 			</div>
@@ -334,11 +330,12 @@
 			var bag = [];       // Cards not yet asked (reshuffled only when empty)
 			var current = null;
 			var revealed = true;
-			var CROP = 0.85;    // Show the bottom 85%
+			var CROP = 0.88;    // Show the bottom 88%
 
 			function isSigniCard(card) {
-				if ($('#quizSigni').is(':checked') && card[TYPE] == "シグニ") return true;
-				if ($('#quizResona').is(':checked') && card[TYPE].indexOf("シグニ") == 0 && card[TYPE].indexOf("レゾナ") != -1) return true;
+				// SIGNI and RESONA are always included
+				if (card[TYPE] == "シグニ") return true;
+				if (card[TYPE].indexOf("シグニ") == 0 && card[TYPE].indexOf("レゾナ") != -1) return true;
 				return false;
 			}
 
@@ -361,7 +358,15 @@
 
 			function resetFilter() {
 				$('.filters input[type=checkbox]').prop('checked', true);
-				$('#multicolor, #quizResona').prop('checked', false);
+				$('#multicolor').prop('checked', false);
+				$('#selectType').val(0);
+				$('#textsearch').val('');
+			}
+
+			// Uncheck every visible filter (like "Clear All" in index.html).
+			// Hidden fields used by search() are left untouched.
+			function clearFilter() {
+				$('.filters input[type=checkbox]').prop('checked', false);
 				$('#selectType').val(0);
 				$('#textsearch').val('');
 			}
@@ -394,7 +399,7 @@
 
 				var frame = document.getElementById('cardFrame');
 				frame.classList.remove('revealed');
-				setFrameRatio(); // Shrink to 85% immediately using the previous size, so the full image never flashes
+				setFrameRatio(); // Shrink to 80% immediately using the previous size, so the full image never flashes
 				$('#answer').removeClass('show').html('');
 				$('#placeholder').text('Loading...').show();
 				$('#quizImg').hide().attr('alt', '').attr('src', current[SRC]);
