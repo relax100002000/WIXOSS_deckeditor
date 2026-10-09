@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>鳴潮：對決卡牌庫</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a resonance-terminal index — sticky filter console on top, one section per resonator, dense two-column card ledger. */
+:root{
+  --bg:#f3f4f2; --panel:#ffffff; --ink:#1c2226; --muted:#5f6b70; --line:#d6dcdc;
+  --accent:#b08a2e; --accent-soft:#f3ead3;
+  --red:#c7413a; --red-bg:#fbe9e7; --blue:#2f6fb5; --blue-bg:#e6f0fa; --green:#3c8b55; --green-bg:#e5f3e9;
+  --review-bg:#f5f2ea;
+  --f-display:"Noto Serif TC","Songti TC","Noto Serif CJK TC",serif;
+  --f-body:system-ui,-apple-system,"PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12171a; --panel:#1a2125; --ink:#e4e8e8; --muted:#94a0a4; --line:#2c363b;
+  --accent:#d8b45a; --accent-soft:#2e2919;
+  --red:#ef7c74; --red-bg:#3a1f1d; --blue:#7fb2ec; --blue-bg:#1a2a3d; --green:#7cc893; --green-bg:#1a3123;
+  --review-bg:#1f2420; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#12171a; --panel:#1a2125; --ink:#e4e8e8; --muted:#94a0a4; --line:#2c363b;
+  --accent:#d8b45a; --accent-soft:#2e2919;
+  --red:#ef7c74; --red-bg:#3a1f1d; --blue:#7fb2ec; --blue-bg:#1a2a3d; --green:#7cc893; --green-bg:#1a3123;
+  --review-bg:#1f2420; color-scheme:dark;}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:28px 64px}
+header.top h1{font-family:var(--f-display);font-weight:900;font-size:clamp(28px,5vw,42px);margin:0;letter-spacing:.04em;text-wrap:balance}
+header.top p{margin:6px 0 0;color:var(--muted);max-width:70ch}
+header.top .src{font-size:13px}
+header.top a{color:var(--accent)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:13px;color:var(--muted)}
+.legend b{color:var(--ink);font-weight:600}
+.console{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:12px;margin-top:18px;border-bottom:1px solid var(--line);display:grid;gap:10px}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:thin}
+.chip{flex:none;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:5px 12px;font:inherit;font-size:13.5px;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip:focus-visible,.seg button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel)}
+.seg button{border:0;background:none;color:var(--muted);font:inherit;font-size:13px;padding:5px 11px;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--accent-soft);color:var(--ink);font-weight:600}
+#q{flex:1 1 200px;min-width:0;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:6px 10px;font:inherit;font-size:14px}
+.count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+section.char{margin-top:40px}
+.char-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;border-bottom:2px solid var(--accent);padding-bottom:6px}
+.char-head h2{font-family:var(--f-display);font-weight:900;font-size:26px;margin:0;letter-spacing:.03em}
+.char-head .meta{font-size:13px;color:var(--muted)}
+.char-plan{margin:10px 0 0;max-width:80ch;color:var(--ink);font-size:14.5px}
+.char-plan b{color:var(--accent);font-weight:600}
+.sub{font-size:12px;letter-spacing:.12em;color:var(--muted);margin:22px 0 10px;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 14px;display:grid;gap:8px;min-width:0;border-left:4px solid var(--line)}
+.card.c-红{border-left-color:var(--red)} .card.c-蓝{border-left-color:var(--blue)} .card.c-绿{border-left-color:var(--green)}
+.card.chr{border-left-color:var(--accent)}
+.c-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.c-name{font-family:var(--f-display);font-weight:600;font-size:17.5px;line-height:1.3}
+.c-code{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);white-space:nowrap;text-align:right}
+.stats{display:flex;flex-wrap:wrap;gap:6px;font-size:12.5px}
+.pill{border-radius:4px;padding:1px 7px;background:var(--bg);border:1px solid var(--line);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill.col-红{background:var(--red-bg);color:var(--red);border-color:transparent;font-weight:600}
+.pill.col-蓝{background:var(--blue-bg);color:var(--blue);border-color:transparent;font-weight:600}
+.pill.col-绿{background:var(--green-bg);color:var(--green);border-color:transparent;font-weight:600}
+.pill.lv{background:var(--accent-soft);border-color:transparent;font-weight:600}
+.pill.role{border-style:dashed}
+.tags{font-size:12px;color:var(--muted)}
+.fx{font-size:14px;white-space:pre-line;margin:0}
+.fx .kw{color:var(--accent);font-weight:600}
+.fx.none{color:var(--muted);font-style:italic}
+.rv{background:var(--review-bg);border-radius:4px;padding:8px 10px;font-size:13.5px;margin:0}
+.rv::before{content:"簡評　";color:var(--accent);font-weight:700;letter-spacing:.05em}
+.empty{padding:40px 0;color:var(--muted);text-align:center}
+.card{grid-template-columns:auto minmax(0,1fr);column-gap:14px;align-items:start}
+.card>.body{display:grid;gap:8px;min-width:0}
+.art{display:grid;gap:6px;width:112px;justify-items:center}
+.art button.big{border:0;padding:0;background:none;cursor:zoom-in;border-radius:5px;display:block}
+.art img{width:112px;aspect-ratio:63/88;object-fit:cover;border-radius:5px;background:var(--line);display:block}
+.vars{display:flex;flex-wrap:wrap;gap:3px;justify-content:center}
+.vars button{font:inherit;font-size:10.5px;line-height:1.4;padding:0 5px;border:1px solid var(--line);border-radius:3px;background:var(--panel);color:var(--muted);cursor:pointer}
+.vars button[aria-pressed="true"]{border-color:var(--accent);color:var(--ink);background:var(--accent-soft)}
+body.noimg .art{display:none} body.noimg .card{grid-template-columns:minmax(0,1fr)}
+.imgnote{display:none;margin-top:10px;font-size:13px;color:var(--muted);border:1px dashed var(--line);border-radius:6px;padding:8px 10px;max-width:80ch}
+body.noimg .imgnote{display:block}
+#lb{border:0;padding:0;background:transparent;max-width:min(92vw,520px);max-height:92vh}
+#lb::backdrop{background:rgba(0,0,0,.75)}
+#lb img{width:100%;height:auto;max-height:86vh;object-fit:contain;border-radius:10px;display:block}
+#lb p{color:#fff;text-align:center;margin:8px 0 0;font-size:13px}
+@media (max-width:480px){.art,.art img{width:88px}}
+footer{margin-top:48px;font-size:12.5px;color:var(--muted);max-width:80ch}
+@media (prefers-reduced-motion:no-preference){.card{transition:border-color .15s}}
+</style></head><body>
+
+<div class="wrap">
+<header class="top">
+  <h1>鳴潮：對決 卡牌庫</h1>
+  <p>收錄官方卡牌查詢頁全部 123 種卡（含異畫共 194 個版本），依專屬角色分類。效果文字照錄官方簡體原文，簡評為個人解讀，依 2026/9/12 版規則書與 FAQ 判斷。</p>
+  <p class="src">資料來源：<a href="https://wwcg.ucp-jp.com/cn/card" target="_blank" rel="noopener">wwcg.ucp-jp.com/cn/card</a>（2026/10/9 擷取）</p>
+  <div class="imgnote">這個頁面無法載入官方卡圖（線上預覽環境會封鎖外部圖片）。請開啟資料夾裡的「鳴潮對決卡牌庫.html」，用瀏覽器就能看到卡圖。</div>
+  <div class="legend"><span><b>費</b> 費用</span><span><b>速</b> 速度值（同色紅／綠比速度）</span><span><b>傷</b> 傷害值</span><span><b>Lv</b> 角色等級</span><span>紅 &gt; 綠 &gt; 藍 &gt; 紅</span></div>
+</header>
+
+<div class="console" role="search">
+  <div class="chips" id="chars"></div>
+  <div class="row">
+    <div class="seg" id="kind"><button data-v="all" aria-pressed="true">全部</button><button data-v="C">角色卡</button><button data-v="A">行動卡</button></div>
+    <div class="seg" id="color"><button data-v="all" aria-pressed="true">全色</button><button data-v="红">紅</button><button data-v="蓝">藍</button><button data-v="绿">綠</button></div>
+    <input id="q" type="search" placeholder="搜尋卡名、編號、效果、簡評…" aria-label="搜尋">
+    <span class="count" id="count"></span>
+  </div>
+</div>
+
+<main id="out"></main>
+
+<dialog id="lb"><img alt="" referrerpolicy="no-referrer"><p></p></dialog>
+<footer>簡評僅代表對卡牌功能的理解，不是官方說明；遇到疑義請以官方規則書、FAQ 與裁判判定為準。卡圖與卡名權利屬 ©KURO GAMES。</footer>
+</div>
+
+<script>
+const IMG_BASE="https://mc-file01-1309577691.cos.ap-hongkong.myqcloud.com/kapai/kpupimg/compressed/";
+const IMG={
+"SD01-001":"kapai_82e2ddbb62fa6954aed728ba590a3b15_01602b192187_3e6a188f4a.webp",
+"SD01-002":"kapai_49ad671e3a4b45b78946f5a8d7a7fa48_dc7e1315afd7_3e6a188f4a.webp",
+"BP01-018":"kapai_54e583ea8445ff93ca207fbe83081a7f_2289a3b20230_3e6a188f4a.webp|kapai_7af5a85050c5fc8646be29932fd31085_5ca0fcb17139_3e6a188f4a.webp|kapai_c43c14a65ce9ba72bd9d5642d62fb159_891e1a2b949a_748ef9f347_preview_f45815b675ecda12.webp",
+"SD01-003":"kapai_eb75ee531868d2e6b1d84f7fd3f09720_5826ef36c5f6_3e6a188f4a.webp|kapai_f8dd93c8a452626a0e2103a50971b628_c6f4773ebc27_3e6a188f4a.webp",
+"SD01-004":"kapai_98a58948462c433516ed60127bbbbd83_9768ef359706_3e6a188f4a.webp",
+"BP01-024":"kapai_00b968226de7fb036860ac6be20b49a3_7730e9e77c4a_3e6a188f4a.webp|kapai_9bf6e68398318dcd125f806156b99a3d_1e1d0a697f82_3e6a188f4a.webp|kapai_1fdc788b8bc40a0c9ad2260c168088b5_56109759fcb2_748ef9f347_preview_5c50f74de3cc3fd7.webp",
+"SD01-005":"kapai_64381c6908abaab2928ed8b10c1174ff_7258e8e85412_3e6a188f4a.webp|kapai_e78eb01745bf66791daead9caa89b502_3e215fefe49d_3e6a188f4a.webp",
+"SD01-006":"kapai_7571a7128b8e391aa61cfa0d1c9d1c62_51bbe269dcdd_3e6a188f4a.webp",
+"BP01-027":"kapai_28d20254a66fc6be9f339360e80de77b_1a86e411a1cc_3e6a188f4a.webp|kapai_80d4c0e49a3881a2b0ad3f1eda1058fe_d696404a7ebc_3e6a188f4a.webp|kapai_1b047308a9a6bdee5d10eda29ed3445a_377f47f6dd9e_748ef9f347_preview_324a1e092fd85018.webp",
+"SD01-007":"kapai_505ea1970eecbf81aadae391ab2babfe_dbb757d7593c_3e6a188f4a.webp",
+"SD01-008":"kapai_8d189f8487b23fe5b78b800ce2d51b44_793e76c78cee_3e6a188f4a.webp",
+"SD01-009":"kapai_956ef79151fbd73a6dd9c56f5e08ca9d_38fa7232e975_3e6a188f4a.webp",
+"SD01-010":"kapai_a8747c96a4884a6d8128074eefdbb464_851993b19670_3e6a188f4a.webp",
+"SD01-011":"kapai_e1a17e6df2b4bb61b724fcf248f225f3_48ce331321e8_3e6a188f4a.webp|kapai_c53f48b8dca19cc0091842374f02d610_84de5d4cf12e_3e6a188f4a.webp",
+"SD01-012":"kapai_cc665e3b1d86b25e5bcc4a17992e81a1_7bf95a1be291_3e6a188f4a_preview_0201977d22418409.webp",
+"SD01-013":"kapai_3051c981cc02e2fc417a8d0c8038fd8e_cce08f1a0072_3e6a188f4a_preview_732f704aae2b288f.webp",
+"SD01-014":"kapai_0e9bcaa284ff3b9e26ed57a0d2b1f4a9_aebcc13de3b8_3e6a188f4a.webp",
+"SD01-015":"kapai_b8351c4de657e4595a057ec8e995536b_a62c37594a07_3e6a188f4a.webp",
+"SD01-016":"kapai_336a124bca2fc7643899e6593828ba21_42b2be541c8e_3e6a188f4a.webp|kapai_cd1206b2ac9fdd8143255dfcb112580b_84aae793770f_3e6a188f4a.webp",
+"SD01-017":"kapai_54be82cbab15aa5994b8d11ee543675d_78bc4cfe003e_3e6a188f4a.webp",
+"SD01-018":"kapai_17d47ee697093f0dc74af3c42cf18afe_99c1096679f1_3e6a188f4a.webp",
+"SD01-019":"kapai_2d7f0183a905bae2113641325de7d2fa_92cafc284cc3_3e6a188f4a.webp",
+"SD01-020":"kapai_184db2b665783c2f57b34224e7208db3_fa6cb119e256_3e6a188f4a.webp",
+"SD01-021":"kapai_1dafe4e0892a1afc2b3f4da651f812f0_f97805303f08_3e6a188f4a.webp",
+"SD01-022":"kapai_21f68c5b0a07fbf98260f3f5f6b2e06e_14d4adc3ce43_3e6a188f4a.webp",
+"SD01-023":"kapai_2d1a691e916d76776d53bf551206337b_0366d6f47bef_3e6a188f4a.webp|kapai_519bdc547676aeaeed05dcbe00f16729_55940db42aae_3e6a188f4a.webp",
+"SD02-001":"kapai_b24b4648cb7240b7fbd5d6b7bfa5e74d_3887d56cec3e_3e6a188f4a.webp",
+"SD02-002":"kapai_48f0944eadf167d5c30bf0fe7069020d_329ce373ac85_3e6a188f4a.webp",
+"BP01-021":"kapai_4fb3974d807dbade90b9d34536d598ba_bf7b2391682c_3e6a188f4a.webp|kapai_b30cf0e0917139ee93845e11218900b6_05d75827a007_3e6a188f4a.webp|kapai_b1b28dee392e27f77db07d9fe2dac588_c2eebd266bc1_748ef9f347_preview_198238302c54ea1d.webp",
+"SD02-003":"kapai_50b95bf2237c2aef9195d5f2ed354a64_484c1e03b6ca_3e6a188f4a.webp|kapai_f2d77d5f7d785e25632a56d46c4425a2_45f6affb838b_3e6a188f4a.webp",
+"SD02-004":"kapai_eac67add4787d6a8eec9de09f0e1bfb0_59c97e74891f_3e6a188f4a.webp",
+"BP01-033":"kapai_99d03617667fdff1067ae5cec98de02d_9e7d2cf6b4c3_3e6a188f4a.webp|kapai_9aca3323c7419779e9126725cc8a04bc_82fee85da01f_3e6a188f4a.webp|kapai_570968618cd90a3595fbe0c103f2a225_3571cc9b332d_748ef9f347_preview_b33227327bd84f7e.webp",
+"SD02-005":"kapai_6aa505d4637a4f22a020c452de3969d3_9f017ee3150b_3e6a188f4a.webp|kapai_fecc5c72d2e85415463752c74efd6b5e_add5a197b1c8_3e6a188f4a.webp",
+"SD02-006":"kapai_7df95b626dbc97f3e48b2aad1d8c4ae0_b6486030df06_3e6a188f4a.webp",
+"BP01-030":"kapai_54a2b4c7fa08954837971a4811f4688b_2f28324d163b_3e6a188f4a.webp|kapai_5fe8a55430e1b07fb3eec3089e45dd82_56cfe23a7ec9_3e6a188f4a.webp|kapai_5860f27bd4bc7e2c0a36a9d325d189b9_9750d05400f7_748ef9f347_preview_b4255945da76c06b.webp",
+"SD02-007":"kapai_4169fb7055c88025851eccee75a612d2_dc1eefbcf1df_3e6a188f4a.webp",
+"SD02-008":"kapai_ef27c539d29ef91fab5502bc024e7db7_a4e1963384b3_3e6a188f4a.webp",
+"SD02-009":"kapai_71bf6503ad99b213832958f083d63a5e_5129f31c0c63_3e6a188f4a.webp",
+"SD02-010":"kapai_f9d7aac5b59e25b4a55fe9044f0f8d66_c5ade5aa1cb2_3e6a188f4a.webp",
+"SD02-011":"kapai_1ba932307ce54d0e3db01feb511d3954_31e85762ab7b_3e6a188f4a.webp|kapai_740cfe339b615b078a9f871963131822_12a19a2ed1ac_3e6a188f4a.webp",
+"SD02-012":"kapai_130f2788c5d0d16201e36a8a6e215f72_b8e8683ffc89_3e6a188f4a.webp",
+"SD02-013":"kapai_19a7df43b674d2e45f637006f994e86a_a1be38fdbf9a_3e6a188f4a.webp",
+"SD02-014":"kapai_4960a75ca1377e8262dc94256571a3ab_c718aa0d0b67_3e6a188f4a.webp",
+"SD02-015":"kapai_9c083a4c9c240e2cea5841bafd027522_655d5eefe915_3e6a188f4a.webp",
+"SD02-016":"kapai_93c8773ddd9b3859f9ef79dd14233a03_f7445f3a8849_3e6a188f4a.webp|kapai_434aa8567bc83d77261ffd2ecc48c97e_bf3ac3588ce1_3e6a188f4a.webp",
+"SD02-017":"kapai_d537706ae261bdba883cf4bb08c64c0f_b0c6e7cfc3bf_3e6a188f4a.webp",
+"SD02-018":"kapai_0318ab794c54f6fea2b2669a3c831b0c_3cca141da727_3e6a188f4a.webp",
+"SD02-019":"kapai_b45f1fc678dc87cdea84ed942c5aae2d_1727384daafe_3e6a188f4a.webp",
+"SD02-020":"kapai_6a5d32104fa25f020817cc7a7d1d6d01_40da698cfddc_3e6a188f4a.webp",
+"SD02-021":"kapai_3e50198b21cf66539f18dab7e3518a38_50264db5f91d_3e6a188f4a.webp",
+"SD02-022":"kapai_7453a336b76055e3d44682856ceb6c59_b281284aad04_3e6a188f4a.webp",
+"SD02-023":"kapai_ab41782d9362a866caccc705b301eba3_d02261b4c450_3e6a188f4a.webp|kapai_abb8d5bc4281806c135fabb9d1862334_d6b6df56ff1d_3e6a188f4a.webp",
+"BP01-001":"kapai_7273b4aea3bb6e56d8b6eaf1f518b70c_e8c77ca13ef8_3e6a188f4a.webp|kapai_06d72b45b7669de8dc531d0f3e849f9b_a72d5612ac47_3e6a188f4a.webp|kapai_c38afcdccf37554d3648ec905dd64957_60acf01a5e1a_3e6a188f4a.webp",
+"BP01-002":"kapai_f9504cfaf52a3a55d0adc78bf6d4f3c1_e7af8fd76e19_3e6a188f4a.webp|kapai_089c1f1fdda3ed6b135b184f3ef4a20a_1184db16d533_3e6a188f4a.webp",
+"BP01-003":"kapai_e029daf03fd2ca2556b21e3b3d2ec48b_55a1e3d51cd0_3e6a188f4a.webp|kapai_ee0bd7f0dc247a7356f1985bfb247514_bf16d6457f1a_3e6a188f4a.webp",
+"BP01-004":"kapai_54c1437c78f0a3a9c2cbde353bfd3ea9_2acd1a884039_3e6a188f4a.webp|kapai_ba5ebdd9a6a933730b5e2938172be9de_51af2427bf5c_3e6a188f4a.webp",
+"BP01-005":"kapai_383d0e82efe310b29149e12b812fcdac_fa34ee3bbd32_3e6a188f4a.webp|kapai_eb3d6e28ff86843954caecfae3da08ca_85235d6e8283_3e6a188f4a.webp|kapai_021d0748d47f6dabfc676957defef247_6a3be32f230e_748ef9f347_preview_f3285356d0a5ac3c.webp",
+"BP01-006":"kapai_79b989e7bad4e4ef244dda718b08b288_03eb0bed9e7f_3e6a188f4a.webp|kapai_850192fa3ebab922a95a5baaf1d45f24_f0078d1c5fb5_3e6a188f4a.webp",
+"BP01-007":"kapai_4cf47dc346bd8345091ab824b65ddf4f_4be4faebe272_3e6a188f4a.webp|kapai_e55ddbf153d1d256e8dc83a23344d612_0f84a267ab5e_3e6a188f4a.webp|kapai_e6b441fb93dba1d0660296db0026ea82_237a226d6e40_3e6a188f4a.webp",
+"BP01-008":"kapai_62874eb483543d5794f9ffb65eb9df59_82d4e877efe4_3e6a188f4a.webp|kapai_d5314699204fcc6a286555e9a7dc0fb8_3dc456788fab_3e6a188f4a.webp",
+"BP01-009":"kapai_9d55843d450a4e81d791e08f1e612493_bd44b1b0a1c3_3e6a188f4a.webp|kapai_f4c7ec2cbae5edd13b0c9176e1a7c9a7_a4109977832d_3e6a188f4a.webp",
+"BP01-010":"kapai_1a3c001cd375e12e5e5e2d2b256d3b59_31cb51724231_3e6a188f4a.webp|kapai_b0a375d9cf0fa3a192163bfecdf689cd_fe1d16a25a6c_3e6a188f4a.webp|kapai_6c1cebd971ebf309f2e8780898839740_e5c1c838ae62_748ef9f347_preview_74dcb4ba8c58aa34.webp",
+"BP01-011":"kapai_c7818725dd15bc5ab2f381e74918cac4_0529fa67a32f_3e6a188f4a.webp|kapai_7940b4d49a43d3c2bf47c4909ea4f871_4c5c03f23120_3e6a188f4a.webp",
+"BP01-012":"kapai_a3abb23c816ace1d0bbd8171a38b8e43_35d1c887c66a_3e6a188f4a.webp|kapai_0bb74e57475b063dc44bd98c8e169252_73535a998e98_3e6a188f4a.webp|kapai_ecbec93cf90b7d100d3791f5331975ad_935cf63b5d72_3e6a188f4a.webp",
+"BP01-013":"kapai_92f922c4ab27a69a5aa630ae4a955e9c_ca6a42ff7fc3_3e6a188f4a.webp|kapai_65a3a43766e884f617bca1264753c0c7_e1a576c49fe1_3e6a188f4a.webp",
+"BP01-014":"kapai_36af248aa78f6a586c00138417052d4c_f0ad7502c140_3e6a188f4a.webp|kapai_f010110baef3bad3cd2df86306a8ca50_ec283348980a_3e6a188f4a.webp",
+"BP01-015":"kapai_74d4ae0d3e65a4979617b639c0c10a8c_dbc56094d8e3_3e6a188f4a.webp|kapai_ab6a3d0ef9e6b9048eb120b8999913c0_fd19729bcb80_3e6a188f4a.webp",
+"BP01-016":"kapai_d303d037363ca002d34b747e53de080c_1aa73af6f25b_3e6a188f4a.webp|kapai_4be22d9921a33b56d8143e23273a48f5_88830a6e34f9_3e6a188f4a.webp|kapai_c2bbb1a36639c6ea161841e840a4a8e1_6d8e6d3d9fca_3e6a188f4a.webp",
+"BP01-019":"kapai_8cafa2d6fab28a03af3a4cf749de5b5d_69ad4c129a78_3e6a188f4a.webp|kapai_67a3ce65df82dab595fc56bab60cfdf1_1dca242bd47f_3e6a188f4a.webp|kapai_17192cd68029938fcb62a8827e4f472c_f19e61fe3bb8_3e6a188f4a.webp",
+"BP01-022":"kapai_d93f5567625f6b22e1dac70edd8a48d6_f389be4322f6_3e6a188f4a.webp|kapai_16e5f8c4f5fe7f948a7398f02671c193_9f4217e1742b_3e6a188f4a.webp|kapai_549fa263f62c4f2df305bf267db01aa1_52e8da56d506_3e6a188f4a.webp",
+"BP01-023":"kapai_9df32b3e66583e29eceb81b39fb057f8_8a4467b60cf3_3e6a188f4a.webp|kapai_d33e83a35c92f7199c0243814c7d59df_357da11cf24b_3e6a188f4a.webp",
+"BP01-026":"kapai_ff1a467ab23bf125f8a20a15faf35d19_2d17cdb4c8d7_3e6a188f4a.webp|kapai_70ad0d24b3af80bd56b87155a1b33a00_1089f0bc5b3f_3e6a188f4a.webp",
+"BP01-028":"kapai_60023e38da8645d54cbf5017f6615a3f_c2c4db257f85_3e6a188f4a.webp|kapai_e8636dd66c0ea4877dc0320bfbbb10b5_16488bc41276_3e6a188f4a.webp|kapai_4480ded663a1d6097339a99bb6c7ff2c_a720bc38dbe6_3e6a188f4a.webp",
+"BP01-029":"kapai_001b4cb4b7fad076570c4f4b800c0c71_1328ea2a16f1_3e6a188f4a.webp|kapai_8e8f5b9124867e3b56600af5484c3352_9b1a9e61da9d_3e6a188f4a.webp",
+"BP01-031":"kapai_5593aa167521bf692f196a88e558528a_a76babdf33e0_3e6a188f4a.webp|kapai_ee6f503c9c5f4a28c13cc429535b68a1_cc2a4ab4ac2e_3e6a188f4a.webp|kapai_a0af5f3aaaf460e153a379e67a778616_7fac4219da4a_3e6a188f4a.webp",
+"BP01-032":"kapai_87f6feda18d8fc61539f8a786c1a4e64_665d8b6fd71b_3e6a188f4a.webp|kapai_591c5a418c0fe403da69bbdbc1723b68_81ed3150757d_3e6a188f4a.webp",
+"BP01-048":"kapai_00302fbab755971c47cb2cbb0759d362_76c8e1a59ac0_3e6a188f4a.webp|kapai_6c175a118238e100c2519bacfa6011a1_c7d1f9c68bcf_3e6a188f4a.webp",
+"BP01-050":"kapai_ee2065fb9e2a09aba5353645970985b1_9d86fe0ab090_3e6a188f4a.webp|kapai_48c6bb25796bde548c89519fd332cd88_ec20c60a0d53_3e6a188f4a.webp",
+"BP01-053":"kapai_59f977c14b9735ba2b12ff006946acdf_984b43def0ae_3e6a188f4a.webp|kapai_dc07a57c3d61d063bc30b0f692ba8bb9_1209d42ddac4_3e6a188f4a.webp",
+"BP01-058":"kapai_1a7be9317077101d7dbb91c6752b3f61_3dd81eebd71c_3e6a188f4a.webp|kapai_66d7ea4465912d324ca333c1453629bc_50d742d8cdfe_3e6a188f4a.webp",
+"BP01-059":"kapai_d89bde56988704618aa08c98502b35fa_26df8573d062_3e6a188f4a.webp|kapai_13f475f0b12053ccc08137396a44dfe1_d94233843d1b_3e6a188f4a.webp",
+"BP01-061":"kapai_cf5b91d00a3aaed80aa157c6826c257d_d1bb4004d43d_3e6a188f4a.webp|kapai_3640e4d7b44889d4ec226e0581335d00_7286247dd94c_3e6a188f4a.webp",
+"BP01-070":"kapai_c4a30d8695e548bd8dc2d1e50d770860_447abffb363b_3e6a188f4a.webp|kapai_cec1282d3f7ae80baa6d42e2b55e2d5a_cd09f0e3a5ef_3e6a188f4a.webp",
+"BP01-071":"kapai_ff8b8bf26f9228764e22bf033c53e06c_208de2e17e71_3e6a188f4a.webp|kapai_5e5c6199065e60c21b12f4a5c0483cf4_17372b0a2787_3e6a188f4a.webp",
+"BP01-072":"kapai_6345326cc1c523e5e7254b5b1204c032_581734a08dd9_3e6a188f4a.webp|kapai_1dd8a3d1f911a7c37bcecea3205fddbf_0623682bf0ff_3e6a188f4a.webp",
+"BP01-073":"kapai_8e994e7fa0b16f46192b01682122db76_bdec79cc0785_3e6a188f4a.webp|kapai_d769cdc07fba7e17765b2a35f690d1b6_62bf998066f7_3e6a188f4a.webp",
+"BP01-074":"kapai_1d2431fb7eb8df862c2447c2065391a2_296323ccff03_3e6a188f4a.webp|kapai_b89068316aa7bf02e250dad2959ead16_c433466ea0d1_3e6a188f4a.webp",
+"BP01-075":"kapai_07d2c3997511a63dfd2a7d134bd5e50a_767a52c1643e_3e6a188f4a.webp|kapai_129aba972364657376d3352cb2e0b693_7b0a09d51cd7_3e6a188f4a.webp",
+"BP01-076":"kapai_35725587a4e32005ebb37fa1bfb06815_818b4c3c789c_3e6a188f4a.webp|kapai_6816adc18cf1c96cc911fc52bda3f936_a91a7c32ec8d_3e6a188f4a.webp",
+"BP01-077":"kapai_cbc65ad172564fa77acf8903c6e264c7_3ad2f20e3783_3e6a188f4a.webp|kapai_5eb994e96b8a2ba08a17f674d4efa803_7b0cad816326_3e6a188f4a.webp",
+"BP01-017":"kapai_f6a33c6cd6b72347d2fd73241e162593_c99c547cb79d_3e6a188f4a.webp",
+"BP01-020":"kapai_bdb8f71f84c1b7e34e002c25ac682c85_a4c3d16a8c53_3e6a188f4a.webp",
+"BP01-034":"kapai_9e2125fb0d4354986c95eb17185f0802_fe20673f9a62_3e6a188f4a.webp",
+"BP01-035":"kapai_1cba1f28efb9adf3acd1ddf61738d9fa_287e9c45bc43_3e6a188f4a.webp",
+"BP01-036":"kapai_1c99b13bf2c487d670f8814a7de72363_9f28e40651fc_3e6a188f4a.webp",
+"BP01-037":"kapai_03c96e01b5594d324d789755ddfbaddf_8b99350089e0_3e6a188f4a.webp",
+"BP01-038":"kapai_e3268a75e4a032e0c05cb5e4ee70f615_f91d935ce074_3e6a188f4a.webp",
+"BP01-039":"kapai_84ad29f5ba9afeece4bab43e8f7e737f_0db7b84e93a4_3e6a188f4a.webp",
+"BP01-040":"kapai_ef2fa20c1ac132fa6abf25b1455eaefc_af71dbc398f2_3e6a188f4a.webp",
+"BP01-041":"kapai_f894c1e1ab87ec1fec52d0d55b9f4bea_4cc3b64c03c3_3e6a188f4a.webp",
+"BP01-042":"kapai_d2a15b3e374386dabd464ea2857acc38_1d4159f4b0d0_3e6a188f4a.webp",
+"BP01-043":"kapai_a8d0d94d497b57f67e2c2367aa5dd650_96db1d5234ff_3e6a188f4a.webp",
+"BP01-044":"kapai_660fb1dbec781684ebb22a4ecb6d2390_dcecc0eb7d6f_3e6a188f4a.webp",
+"BP01-045":"kapai_f2d846a7000c59fe2ba6e3d9d7fa7b32_c2d7c272fdad_3e6a188f4a.webp",
+"BP01-046":"kapai_c9446d36fdb1f7f61c1bd3806b57b56a_a7ca578edaf5_3e6a188f4a.webp",
+"BP01-047":"kapai_e51562a1d505ef7f342d2ecc631f71a4_a1b860023ecc_3e6a188f4a.webp",
+"BP01-051":"kapai_467a83f5badd8716993035771ce42cc0_848b38cb708a_3e6a188f4a.webp",
+"BP01-052":"kapai_bb6ff9e84aafc8132b6a2c5948522e75_f2e6519b01a0_3e6a188f4a.webp",
+"BP01-054":"kapai_777cb20aacb4f86530402e5a655301f9_bc4cf189b379_3e6a188f4a.webp",
+"BP01-055":"kapai_4d33aea63af1223acf54d6482a4849d2_b64d4c1c2022_3e6a188f4a.webp",
+"BP01-056":"kapai_8243f1b1b588b0eb82dffc3dcef1c50c_71daa9b82324_3e6a188f4a.webp",
+"BP01-060":"kapai_c5ebdd91b1862ab74126fa5990b3c7fd_9cf110150c25_3e6a188f4a.webp",
+"BP01-063":"kapai_fb3674dcb4ff7e4cb0aeab415462e9ab_c2b9fe0b5c1e_3e6a188f4a.webp",
+"BP01-064":"kapai_996f0a3fc43a2af7cae34f7157a10d43_729f73e053f7_3e6a188f4a.webp",
+"BP01-065":"kapai_7a29235d9c562677feb5fab8b4c66113_1d791b8ee544_3e6a188f4a.webp",
+"BP01-066":"kapai_e773ab8be1b67cfb25fb442321d5ccfd_4f8a4aa1706b_3e6a188f4a.webp",
+"BP01-067":"kapai_53a5a4d5020d4475eed4f72d04a9443b_415686c00ced_3e6a188f4a.webp",
+"BP01-068":"kapai_f358c94086a14e04dc9aec0a5ceb5e9b_be31c469645a_5750cf266d.webp",
+"BP01-069":"kapai_9781828aacd79852fa8616eb2043fe33_a993bd80a5b0_3e6a188f4a.webp",
+"BP01-025":"kapai_65b6fff038018acc20e818331c4a2a4c_bb52e1331e78_3e6a188f4a.webp|kapai_e84a4108d950e456f03a1a23de69eb86_9339d949b824_3e6a188f4a.webp",
+"BP01-049":"kapai_2778e28bbf1257627d9c46e347db8b27_17449c2d66b3_748ef9f347_preview_f8ba862cb989a884.webp",
+"BP01-057":"kapai_a17dfc1c0b178b516bebeaf2bcf91c33_efcefa91ecef_748ef9f347_preview_52b85a2e4d639dc4.webp",
+"BP01-062":"kapai_07964b3098577e7ae56223bbac0f772a_523510a52f2f_748ef9f347_preview_18998bdd74f28df8.webp"
+};
+const CHARS={
+ "漂泊者（女）":{meta:"衍射・迅刀",plan:"<b>綠色過牌引擎。</b>0 級領隊每次出綠卡都能補 2 張，2 級 BP01-016 在綠剋藍時直接補滿 8 張。手牌多之後用重擊棄牌加傷、或用浮声千斩（速度 16）穩拿紅色對拼。"},
+ "漂泊者（男）":{meta:"衍射・迅刀",plan:"<b>綠轉紅的連擊型。</b>2 級 BP01-019 讓綠色勝利獲得【追擊3】，配鉤索可一回合 5 次連擊；SD02-001 則在雙方回合結束都抽牌。"},
+ "守岸人":{meta:"衍射・音感仪・黑海岸",plan:"<b>回復與續航。</b>2 級守岸人把每次回血變成抽牌，或在己方對抗前補手牌到 5 張。王牌終末回环以綠色勝利換【追擊8】，解限可在對方回合封鎖連擊。"},
+ "椿":{meta:"湮灭・迅刀・黑海岸",plan:"<b>反覆升級的攻擊手。</b>2 級椿被疊上時會回到角色卡組，可用八千春秋、红椿盛绽免費升級來回切換攻守形態；普攻回收讓 0 費攻擊源源不絕。"},
+ "安可":{meta:"热熔・音感仪・黑海岸",plan:"<b>暴走直升 2 級。</b>黑咩大暴走在對抗時把 2 級安可直接疊上並切成領隊，安可的紅卡全部 +1 傷害；BP01-014 讓同色對拼輸了也能照打傷害。"},
+ "散华":{meta:"冷凝・迅刀・瑝珑",plan:"<b>藍色加速資源。</b>多數卡把卡組頂或棄牌區的卡放進協奏區，快速累積費用；2 級 BP01-031 以藍色勝利換切換＋【追擊3】，焦瞑冻土可封鎖對手下回合連擊。"},
+ "今汐":{meta:"衍射・长刃・瑝珑",plan:"<b>一波爆發。</b>乘岁凌霄綠色勝利抽 3 張＋【追擊8】，再接移岁诛邪（行動區 3 張以上 +3）或惊龙破空收尾；2 級 SD02-005 讓每次連擊再 +1。"},
+ "炽霞":{meta:"热熔・佩枪・瑝珑",plan:"<b>紅色直傷。</b>2 級 SD01-005 讓所有【領隊技】炽霞卡傷害 +3，且站後台也有效；炽烈焰火可達 10 傷。0 級在紅色對抗時還能先打 1 點。"},
+ "秧秧":{meta:"气动・迅刀・瑝珑",plan:"<b>控場與費用。</b>2 級 SD01-003 讓對手出紅卡就得付費或吃 3 傷，朔风旋涌提高對手紅卡費用；藍色與滯空卡負責累積協奏區。"},
+ "通用":{meta:"声骸",plan:"<b>声骸（任何角色可用）。</b>行動區同時只能有 1 張声骸。0 費版放進協奏區湊滿同系列 2 種，該屬性每回合首張卡傷害 +1；1 費版在【優勢】時造成傷害會干擾對手手牌、協奏區或卡組。"}
+};
+const ORDER=["漂泊者（女）","漂泊者（男）","守岸人","椿","安可","散华","今汐","炽霞","秧秧","通用"];
+const TW={"散华":"散華","炽霞":"熾霞","漂泊者（女）":"漂泊者（女）","漂泊者（男）":"漂泊者（男）"};
+// [code, name, char, kind C/A, color, fee, speed, dmg, level, tags, rarities, text, role, review]
+const D=[
+// 漂泊者（女）
+["BP01-018","漂泊者（女）","漂泊者（女）","C","","","","","0","","★ / ★★ / PR★★","【领队】【对抗】己方以绿色卡对抗时，可以公开己方卡组顶最多2张卡并加入手牌。","起始領隊","只要出綠卡就補牌，不論輸贏，是全卡池最強的 0 級過牌領隊之一。可以只公開 1 張（FAQ 31），牌庫快見底時能控制消耗。"],
+["SD01-002","漂泊者（女）","漂泊者（女）","C","","","","","1","","★","【领队】【判定】若己方以绿色卡对抗红色卡失败，可以公开己方卡组顶1张卡并加入手牌。","升級墊腳","綠被紅剋時的安慰獎，觸發條件窄。主要價值是當 1 級跳板，構築時通常優先放 BP01-017。"],
+["BP01-017","漂泊者（女）","漂泊者（女）","C","","","","","1","","★★","【登场】/【升级】可以公开己方卡组顶1张卡并加入手牌。","升級墊腳","升級時立即補 1 張，正好抵掉規則升級要丟的 1 張手牌，等於免費升到 1 級；之後再被疊上還能觸發一次【升級】。"],
+["SD01-001","漂泊者（女）","漂泊者（女）","C","","","","","2","","★★★","【己方回合开始时】抽1张卡。","過牌","不需要站領隊，放在後台也每回合多抽 1 張，穩定且難以被干擾。"],
+["BP01-016","漂泊者（女）","漂泊者（女）","C","","","","","2","","★★★ / ★★★★ / ★★★★★","【领队】【判定】若己方以绿色卡对抗蓝色卡胜利且己方手牌未满8张，抽卡直到手牌变为8张。","爆發過牌","綠剋藍時一次補滿 8 張，面對藍卡多的對手（散华、秧秧）收益驚人；對手不出藍就完全沒效果，條件偏窄。"],
+["SD01-017","化声为形·普攻","漂泊者（女）","A","红","0","8","1","","常态攻击・普攻・衍射","★","","連擊填充","0 費紅色基本攻擊，速度 8 在 0 費卡中偏快，同色對拼有一定勝率。"],
+["SD01-018","化声为形·闪避","漂泊者（女）","A","蓝","0","","0","","闪避","★","【判定】若己方胜利，抽1张卡，己方丢弃1张手牌。","防守・濾牌","剋紅的 0 費藍卡，贏了能換牌但不造成傷害。藍色勝利沒有無限連擊，適合防守回合使用。"],
+["SD01-019","震声","漂泊者（女）","A","红","0","0","0","","变奏技","★","【连击】切换己方领队。若「漂泊者（女）」是被切换的角色之一，抽1张卡。","變奏・過牌","0 費多一次連擊並調整領隊位置；切到或切走漂泊者都算「被切換」，順便抽 1。速度 0 不適合拿來對抗。"],
+["SD01-020","感知","漂泊者（女）","A","绿","0","5","0","","探索模块","★","【判定】若己方胜利，抽1张卡，查看对方手牌。","情報・過牌","0 費剋紅並偷看手牌，搭配 0 級領隊再補 2 張。速度 5 在綠綠對拼容易輸。對方沒手牌時只抽 1（FAQ 55）。"],
+["SD01-021","钩索","漂泊者（女）","A","绿","1","8","0","","探索模块・滞空","★","【判定】若己方胜利，抽1张卡，【追击2】（本回合可连击次数增加2）。","連擊起點","綠色勝利本身沒有連擊，鉤索補上【追擊2】，讓綠色過牌與紅色傷害接上。"],
+["SD01-022","浮声千斩","漂泊者（女）","A","红","1","16","1","","共鸣技・衍射","★","【领队技】（己方领队为此卡专属角色时方可使用）","速度王","速度 16 是全卡池最高，紅紅對拼幾乎穩贏，贏了就開無限連擊。本身只有 1 傷，價值在於確保勝利。"],
+["SD01-023","回响奏鸣","漂泊者（女）","A","红","3","14","5","","共鸣解放・衍射","★ / ★★★","【领队技】（己方领队为此卡专属角色时方可使用）\n【判定】若己方胜利，恢复己方5点生命。","終結","3 費 5 傷再回 5 血，一來一回 10 點生命差。速度 14 夠快，但費用重，要先累積協奏區。"],
+["BP01-065","化声为形·重击","漂泊者（女）","A","红","0","6","1","","常态攻击・重击","★★","【连击】己方可以丢弃1张手牌。若丢弃了手牌，此卡伤害+1。","連擊加傷","把多餘手牌轉成傷害，跟女主的大量過牌很合。注意只有連擊使用時才觸發。"],
+["BP01-066","化声为形·空中攻击","漂泊者（女）","A","红","0","6","1","","常态攻击・空中攻击","★★","【判定】若己方胜利，抽1张卡。","對抗用","0 費紅色，用來對抗時贏了多抽 1 張；連擊時則只是 1 傷。"],
+// 漂泊者（男）
+["BP01-021","漂泊者（男）","漂泊者（男）","C","","","","","0","","★ / ★★ / PR★★","【领队】【对抗】己方以绿色卡对抗时，可以公开己方卡组顶最多2张卡并加入手牌。","起始領隊","與女主 0 級效果相同，綠卡對抗必補牌，強力起手領隊。"],
+["SD02-002","漂泊者（男）","漂泊者（男）","C","","","","","1","","★","【领队】【判定】若己方以绿色卡对抗红色卡失败，可以公开己方卡组顶1张卡并加入手牌。","升級墊腳","條件窄的 1 級，通常被 BP01-020 取代。"],
+["BP01-020","漂泊者（男）","漂泊者（男）","C","","","","","1","","★★","【登场】/【升级】可以公开己方卡组顶1张卡并加入手牌。","升級墊腳","升級補 1 張，抵銷升級成本，首選 1 級。"],
+["SD02-001","漂泊者（男）","漂泊者（男）","C","","","","","2","","★★★","【领队】【各回合结束时】抽1张卡。","過牌","雙方回合結束都觸發，每輪多 2 張，但必須待在領隊位。"],
+["BP01-019","漂泊者（男）","漂泊者（男）","C","","","","","2","","★★★ / ★★★★ / ★★★★★","【领队】【判定】若己方以绿色卡胜利，【追击3】。","連擊引擎","綠色勝利直接給 3 次連擊，配鉤索疊到 5 次（FAQ 32）。讓綠卡不只是過牌，而是爆發起點。"],
+["SD02-017","化声为形·普攻","漂泊者（男）","A","红","0","8","1","","常态攻击・普攻・衍射","★","","連擊填充","0 費基本攻擊，速度 8。"],
+["SD02-018","化声为形·闪避","漂泊者（男）","A","蓝","0","","0","","闪避","★","【判定】若己方胜利，抽1张卡，己方丢弃1张手牌。","防守・濾牌","剋紅並濾牌的 0 費藍卡。"],
+["SD02-019","震声","漂泊者（男）","A","红","0","0","0","","变奏技","★","【连击】切换己方领队。若「漂泊者（男）」是被切换的角色之一，抽1张卡。","變奏・過牌","0 費連擊延伸＋抽 1，同時調整領隊。"],
+["SD02-020","感知","漂泊者（男）","A","绿","0","5","0","","探索模块","★","【判定】若己方胜利，抽1张卡，查看对方手牌。","情報・過牌","0 費綠卡，剋紅偷看手牌。綠勝時也能觸發 2 級的【追擊3】。"],
+["SD02-021","钩索","漂泊者（男）","A","绿","1","8","0","","探索模块・滞空","★","【判定】若己方胜利，抽1张卡，【追击2】（本回合可连击次数增加2）。","連擊起點","男主核心：配 2 級 BP01-019 一回合 5 次連擊。"],
+["SD02-022","浮声千斩","漂泊者（男）","A","红","1","13","3","","共鸣技・衍射","★","【领队技】（己方领队为此卡专属角色时方可使用）","主力攻擊","比女主版慢（13）但 3 傷，1 費性價比高。"],
+["SD02-023","回响奏鸣","漂泊者（男）","A","红","2","13","5","","共鸣解放・衍射","★ / ★★★","【领队技】（己方领队为此卡专属角色时方可使用）","終結","比女主版少了回血，但便宜 1 費，2 費 5 傷效率很好。"],
+["BP01-067","化声为形·重击","漂泊者（男）","A","红","0","6","1","","常态攻击・重击","★★","【连击】己方可以丢弃1张手牌。若丢弃了手牌，此卡伤害+1。","連擊加傷","用手牌換傷害，追擊次數多時很實用。"],
+["BP01-068","化声为形·空中攻击","漂泊者（男）","A","红","0","6","1","","常态攻击・空中攻击","★★","【判定】若己方胜利，抽1张卡。","對抗用","0 費紅色對抗卡，贏了抽 1。"],
+// 守岸人
+["BP01-010","守岸人","守岸人","C","","","","","0","","★ / ★★ / PR★★","【领队】【对抗】己方以绿色卡对抗时，可以公开己方卡组顶1张卡并加入手牌。\n【领队】【判定】若己方以绿色卡胜利，恢复己方1点生命。","起始領隊","出綠卡補 1 張、綠勝再回 1 血。補牌量不如漂泊者，但回血能觸發 2 級 BP01-006 抽牌。"],
+["BP01-008","守岸人","守岸人","C","","","","","1","","★ / ★★","【切换】可以抽1张卡。若抽了卡，己方丢弃1张手牌。","濾牌","每次被切換（行動階段切換、變奏技）都能濾 1 張，搭配多張變奏技效果好。"],
+["BP01-009","守岸人","守岸人","C","","","","","1","","★ / ★★","【登场】/【升级】可以将弃牌区1张<变奏技>加入手牌。","回收","回收變奏技，給終末回环的『連擊抽 1』準備材料。"],
+["BP01-006","守岸人","守岸人","C","","","","","2","","★★★ / ★★★★","1回合2次，己方生命恢复时，可以抽1张卡。","過牌","不需領隊。守岸人卡池回血手段很多（閃避、启迪、終末回环、0 級），每回合最多多抽 2 張。"],
+["BP01-007","守岸人","守岸人","C","","","","","2","","★★★ / ★★★★ / ★★★★★","【领队】【己方对抗阶段开始时】若己方手牌未满5张，抽卡直到手牌变为5张。","過牌引擎","每個己方對抗前保底 5 張手牌，前一回合可以放心打空手牌連擊，資源穩定性極高。"],
+["BP01-052","真源构演·普攻","守岸人","A","红","0","5","1","","常态攻击・普攻・衍射","★★","","連擊填充","無效果、速度 5 偏慢的 0 費攻擊，只適合連擊時使用。"],
+["BP01-053","真源构演·闪避","守岸人","A","蓝","0","","0","","闪避","★ / ★★","【判定】若己方胜利，恢复己方1点生命。","防守・回復","剋紅並回 1 血，回血可觸發 BP01-006 抽牌。"],
+["BP01-054","启迪","守岸人","A","红","0","0","0","","变奏技","★★","【连击】切换己方领队。若「守岸人」是被切换的角色之一，恢复己方1点生命。","變奏・回復","0 費連擊＋回 1 血；也會觸發 1 級 BP01-008 的【切換】濾牌。"],
+["BP01-055","真源构演·重击","守岸人","A","红","0","3","1","","常态攻击・重击・衍射","★★","若己方生命值高于对方生命值，此卡伤害+1。","連擊加傷","領先時 2 傷，符合守岸人邊回血邊打的節奏。速度 3 不適合對抗。"],
+["BP01-056","混沌理论","守岸人","A","红","1","11","1","","共鸣技・衍射","★★","【领队技】\n【判定】若己方胜利，升级己方「守岸人」。","升級","用效果升級不必丟手牌，省下資源讓守岸人更快到 2 級。"],
+["BP01-057","终末回环","守岸人","A","绿","1","11","0","","共鸣解放","★★★","【领队技】\n【对抗】本回合己方接下来使用的2张<变奏技>获得技能『【连击】抽1张卡。』\n【判定】若己方胜利，恢复己方1点生命，【追击8】。","王牌","速度 11 的綠卡，勝利即回 1 血＋【追擊8】，接 2 張變奏技再各抽 1。只有之後打出的變奏技才會獲得技能，棄牌區的不算（FAQ 41）。"],
+["BP01-058","解限","守岸人","A","绿","0","5","0","","-","★ / ★★","【判定】若己方胜利，抽2张卡。\n【优势】（若上个回合己方对抗胜利或对方跳过对抗阶段，获得此技能）【判定】若己方失败且己方领队为「守岸人」，本回合对方不能连击。","防守・過牌","贏了抽 2；在【優勢】下就算輸了也能封鎖對手本回合連擊，是在對方回合防爆發的好卡。"],
+// 椿
+["BP01-005","椿","椿","C","","","","","0","","★ / ★★ / PR★★","【领队】【判定】若己方胜利，可以将弃牌区1张<普攻>加入手牌。","起始領隊","每次勝利回收普攻，讓 0 費攻擊用不完。"],
+["BP01-003","椿","椿","C","","","","","1","","★ / ★★","【登场】/【升级】可以将弃牌区1张<普攻>加入手牌。","回收","升級時回收普攻，維持連擊資源。"],
+["BP01-004","椿","椿","C","","","","","1","","★ / ★★","【领队】【判定】若己方以红色卡对抗蓝色卡失败，可以公开己方卡组顶1张卡并加入手牌。","升級墊腳","紅被藍剋的補償，必須把公開的卡加入手牌（FAQ 25）。效果平庸，一般選 BP01-003。"],
+["BP01-001","椿","椿","C","","","","","2","","★★★ / ★★★★ / ★★★★★","【升级】将此卡放回角色卡组。\n【领队】己方受到的伤害+1。己方【椿】的红色卡伤害+1。","攻擊形態","椿的紅卡全部 +1 傷，代價是自己受傷 +1。被疊上時會回到角色卡組，可以在攻擊／防守形態間來回切換。"],
+["BP01-002","椿","椿","C","","","","","2","","★★★ / ★★★★","【升级】将此卡放回角色卡组。\n【领队】己方每回合受到的第一次伤害-1。","防守形態","每回合首次受傷 -1，和 BP01-001 互補。同樣被疊上就回卡組，可再利用。"],
+["BP01-044","育种·普攻","椿","A","红","0","8","1","","常态攻击・普攻・湮灭","★★","","連擊填充","速度 8 的 0 費普攻，可被 0／1 級椿回收。"],
+["BP01-045","育种·闪避反击","椿","A","蓝","0","","3","","闪避・湮灭","★★","","防守反擊","0 費藍卡 3 傷，剋紅時直接打 3 點，是很多角色共有的強力防守卡。"],
+["BP01-046","八千春秋","椿","A","红","0","0","0","","变奏技","★★","【连击】切换己方领队。若「椿」被切换为领队，升级己方「椿」。","變奏・升級","0 費連擊＋免丟牌升級椿。注意只有椿被切為領隊才算，切離領隊不會觸發。"],
+["BP01-047","育种·重击","椿","A","红","0","6","1","","常态攻击・重击・湮灭","★★","【判定】若己方胜利，抽1张卡。","對抗用","對抗贏了抽 1 的 0 費紅卡。"],
+["BP01-048","红椿盛绽","椿","A","红","1","14","1","","共鸣技・湮灭","★ / ★★","【领队技】\n【对抗】升级己方「椿」。","升級","翻開時就升級，不必贏；速度 14 又很容易贏下紅紅對拼。"],
+["BP01-049","芳华绽烬","椿","A","红","2","13","6","","共鸣解放・湮灭","★★★","","終結","2 費 6 傷，搭配 2 級 BP01-001 為 7 傷，是椿的主要輸出。"],
+["BP01-050","蔓舞","椿","A","红","0","6","1","","普攻・湮灭","★ / ★★","【连击】若己方行动区有2张或以上<普攻>，此卡伤害+1。","連擊加傷","普攻連打後的第三張起 2 傷，需要堆疊普攻。"],
+["BP01-051","旋舞","椿","A","红","0","6","1","","普攻・湮灭","★★","【判定】若己方胜利，抽1张卡。","對抗用","帶<普攻>標籤，可以被椿回收，對抗贏了還抽 1。"],
+// 安可
+["BP01-015","安可","安可","C","","","","","0","","★ / ★★","【领队】每回合己方首次使用的【安可】的<常态攻击>伤害+2。","起始領隊","第一張常態攻擊 +2 傷，0 費卡就打 3。必須是本回合第一張用的常態攻擊（FAQ 30）。"],
+["BP01-013","安可","安可","C","","","","","1","","★ / ★★","【登场】/【升级】可以将弃牌区1张【安可】的红色卡加入手牌。","回收","升級回收安可紅卡，例如黑咩大暴走或黑白羊咩。"],
+["BP01-014","安可","安可","C","","","","","1","","★ / ★★","【领队】己方【安可】的<重击>与<共鸣回路>获得技能『【判定】若己方以此卡对抗红色卡失败，本回合对抗阶段结束时，造成此卡的伤害。』","保底傷害","紅紅對拼輸了也能打出傷害，讓速度 0 的黑白羊咩、速度 3 的重擊放心對抗。"],
+["BP01-011","安可","安可","C","","","","","2","","★★★ / ★★★★","此卡只能通过卡牌效果登场。\n己方【安可】的红色卡伤害+1。\n【己方回合结束时】若此卡在本回合以外的回合登场，将此卡放回角色卡组。","暴走形態","只能靠黑咩大暴走這類效果登場（FAQ 26）。安可紅卡 +1，下一個己方回合結束時回到角色卡組，可以再次暴走。"],
+["BP01-012","安可","安可","C","","","","","2","","★★★ / ★★★★ / ★★★★★","【领队】【各回合结束时】本回合中若对方受到过伤害，可以将弃牌区1张【安可】卡加入手牌。","回收引擎","雙方回合都能觸發，只要對手受過傷就回收 1 張，持續性很強。"],
+["BP01-059","羊咩出击·普攻","安可","A","红","0","5","1","","常态攻击・普攻・热熔","★ / ★★","【优势】（若上个回合己方对抗胜利或对方跳过对抗阶段，获得此技能）【对抗】若己方领队为「安可」，此卡速度变为10。","對抗用","優勢時速度 5 變 10，配 0 級領隊 +2，0 費打 3 傷又不容易輸。"],
+["BP01-060","羊咩出击·重击","安可","A","红","0","3","1","","常态攻击・重击・热熔","★★","造成伤害时，若己方领队为「安可」，抽1张卡。","連擊過牌","打到傷害就抽 1，包含 BP01-014 的保底傷害（FAQ 42），但同名卡不會互相觸發（FAQ 43）。"],
+["BP01-061","黑白羊咩","安可","A","红","0","0","3","","共鸣回路・共鸣解放・热熔","★ / ★★","【领队技】\n【对抗】/【连击】本回合己方不能连击。","收尾","0 費 3 傷，但用了就不能再連擊，適合放在連擊最後一張。配 BP01-014 拿來對抗，輸了也照打 3。"],
+["BP01-062","黑咩大暴走","安可","A","红","2","11","3","","共鸣解放・热熔","★★★","【优势】此卡费用-1。\n【对抗】将角色卡组1张等级2的「安可」置于己方的「安可」最上方（此处理也视作角色升级）。将己方领队切换为「安可」。","王牌","安可的核心：0 級也能直接疊上 2 級（FAQ 44），並把安可切成領隊，同時讓 BP01-011 登場。優勢時只要 1 費。"],
+["BP01-063","咩咩帮手","安可","A","红","0","0","0","","变奏技","★★","【连击】切换己方领队。若「安可」是被切换的角色之一，将弃牌区1张除<变奏技>以外的【安可】的红色卡加入手牌。","變奏・回收","0 費連擊並回收安可紅卡，可以撿回黑咩大暴走。"],
+["BP01-064","羊咩出击·闪避反击","安可","A","蓝","0","","3","","闪避反击・热熔","★★","","防守反擊","0 費藍卡 3 傷，標準的防紅反擊。"],
+// 散华
+["BP01-033","散华","散华","C","","","","","0","","★ / ★★ / PR★★","【领队】【对抗】己方以蓝色卡对抗时，可以将己方卡组顶1张卡置于协奏区。","起始領隊","出藍卡就加 1 費，散华的費用加速從這裡開始。【領隊】在對抗翻開時必須已在領隊位（FAQ 47）。"],
+["SD02-004","散华","散华","C","","","","","1","","★","【领队】【判定】若己方以蓝色卡对抗绿色卡失败，可以公开己方卡组顶1张卡并加入手牌。","升級墊腳","條件窄，一般選 BP01-032。"],
+["BP01-032","散华","散华","C","","","","","1","","★ / ★★","【登场】/【升级】可以将弃牌区1张卡置于协奏区。","資源","升級時從棄牌區加 1 費，不消耗卡組，可以抵掉升級丟牌的損失。"],
+["SD02-003","散华","散华","C","","","","","2","","★★★ / ★★★★","【领队】【各回合结束时】将己方卡组顶1张卡置于协奏区。","資源引擎","每輪加 2 費，很快就能用 3 費大招；要注意卡組消耗。"],
+["BP01-031","散华","散华","C","","","","","2","","★★★ / ★★★★ / ★★★★★","【领队】【判定】若己方以蓝色卡胜利，可以切换己方领队，【追击3】。","連擊引擎","把藍色勝利（原本是平局或沒有連擊）變成 3 次連擊，還能順便換上主力領隊。不切換也能拿到追擊（FAQ 34）。"],
+["SD02-012","寒光·普攻","散华","A","红","0","8","1","","常态攻击・普攻・冷凝","★","","連擊填充","0 費速度 8 的基本攻擊。"],
+["SD02-013","寒光·闪避","散华","A","蓝","0","","0","","闪避","★","【判定】若己方胜利，【追击2】（本回合可连击次数增加2）。","連擊起點","藍勝給 2 次連擊，配 2 級 BP01-031 合計 5 次（FAQ 35）。"],
+["SD02-014","凛絜","散华","A","红","0","0","0","","变奏技","★","【连击】切换己方领队。若「散华」是被切换的角色之一，将己方卡组顶的1张卡置于协奏区。","變奏・資源","0 費連擊＋加 1 費。"],
+["SD02-015","朔雪永冻","散华","A","红","1","9","3","","共鸣技・冷凝","★","【领队技】（己方领队为此卡专属角色时方可使用）\n【判定】若己方胜利，可以将己方卡组顶最多2张卡置于协奏区。","主力・資源","1 費 3 傷，贏了回 2 費，等於賺費。速度 9 中等。"],
+["SD02-016","焦瞑冻土","散华","A","红","2","13","4","","共鸣解放・冷凝","★ / ★★★","【领队技】（己方领队为此卡专属角色时方可使用）\n【判定】若己方胜利，下个回合对方不能连击。","控場","4 傷之外還封鎖對手下回合連擊，對連擊型對手（今汐、男主）非常有效。"],
+["BP01-076","凛刺","散华","A","蓝","1","","0","","闪避","★ / ★★","【对抗】可以将己方领队切换为「散华」。\n【判定】若己方胜利且己方领队为「散华」，升级己方「散华」。","升級・切換","把後台散华切上來再升級，免丟牌。切上來的散华不會觸發本次對抗的【領隊】技能（FAQ 47），升上來的 2 級也錯過本次判定（FAQ 48）。"],
+["BP01-077","冰绽","散华","A","红","1","11","2","","共鸣回路・共鸣技・冷凝","★ / ★★","【领队技】\n【判定】若己方胜利且己方协奏区有【散华】卡，可以切换己方领队。","切換","贏了可換領隊，條件是協奏區有散华卡。主要用來在連擊前換上主力。"],
+// 今汐
+["BP01-030","今汐","今汐","C","","","","","0","","★ / ★★ / PR★★","【领队】【对抗】己方以红色卡对抗时，造成1点伤害。","起始領隊","出紅卡就先打 1 點，不論勝負。"],
+["SD02-006","今汐","今汐","C","","","","","1","","★","【领队】【判定】若己方以红色卡对抗蓝色卡失败，可以公开己方卡组顶1张卡并加入手牌。","升級墊腳","紅被藍剋的補償。"],
+["BP01-029","今汐","今汐","C","","","","","1","","★ / ★★","【领队】【判定】若己方以红色卡胜利，造成2点伤害。","傷害","紅勝額外 2 傷，比 0 級更強的直傷，適合中期停留。"],
+["SD02-005","今汐","今汐","C","","","","","2","","★★★ / ★★★★","【领队】己方的红色卡获得技能『【连击】此卡伤害+1。』","連擊加傷","每次連擊 +1。配乘岁凌霄的【追擊8】可以多打 8 點以上。"],
+["BP01-028","今汐","今汐","C","","","","","2","","★★★ / ★★★★ / ★★★★★","【领队】【判定】若己方在己方回合中胜利，可以公开己方卡组顶5张卡并将其中全部的【今汐】卡加入手牌，剩余的卡置于弃牌区。","爆發過牌","專屬卡多的構築一次可拿 2–3 張，但會加速消耗卡組；卡組不足 5 張時只公開剩下的（FAQ 33）。"],
+["SD02-007","浮光霁寒·普攻","今汐","A","红","0","7","1","","常态攻击・普攻・衍射","★","","連擊填充","0 費基本攻擊，速度 7。"],
+["SD02-008","浮光霁寒·闪避反击","今汐","A","蓝","0","","3","","闪避反击・衍射","★","","防守反擊","0 費藍卡 3 傷。"],
+["SD02-009","蟠龙清辉","今汐","A","红","0","0","0","","变奏技・衍射","★","【连击】切换己方领队。若「今汐」是被切换的角色之一，此卡伤害+2。","變奏・傷害","0 費 2 傷的變奏技，算進行動區張數，幫移岁诛邪、惊龙破空加傷。"],
+["SD02-010","乘岁凌霄","今汐","A","绿","1","13","0","","共鸣回路","★","【领队技】（己方领队为此卡专属角色时方可使用）\n【对抗】本回合中己方不能切换领队。\n【判定】若己方胜利，抽3张卡，【追击8】（本回合可连击次数增加8）。","王牌","今汐核心：綠勝抽 3＋8 次連擊。速度 13 的綠卡很難被綠色對拼打贏。不能切換只限效果處理之後（FAQ 57），變奏技仍可使用（FAQ 58）。"],
+["SD02-011","移岁诛邪","今汐","A","红","3","13","5","","共鸣解放・衍射","★ / ★★★","【领队技】（己方领队为此卡专属角色时方可使用）\n【连击】若己方行动区有3张或以上的卡，此卡伤害+3。","終結","連擊中後段打出為 8 傷（再加 2 級 +1），是追擊爆發的終點。"],
+["BP01-073","神霓飞芒","今汐","A","红","1","13","1","","共鸣技・衍射","★ / ★★","【领队技】\n【判定】若己方胜利，从己方卡组将1张「乘岁凌霄」加入手牌。之后洗切卡组。","檢索","贏了就檢索王牌乘岁凌霄，讓下回合穩定爆發。找不到時宣言後洗牌（FAQ 46）。"],
+["BP01-074","惊龙破空","今汐","A","红","1","11","0","","共鸣回路・共鸣技・衍射","★ / ★★","【领队技】\n【连击】己方行动区每有1张卡，此卡伤害+1。\n【对抗】/【连击】本回合己方不能连击。","收尾","放在長連擊最後一張，行動區張數越多越痛。用了之後不能再連擊。"],
+["BP01-075","浮光霁寒·重击","今汐","A","红","0","5","1","","常态攻击・重击・衍射","★ / ★★","【判定】若己方胜利，抽1张卡。","對抗用","0 費紅卡，對抗贏了抽 1。"],
+// 炽霞
+["BP01-027","炽霞","炽霞","C","","","","","0","","★ / ★★ / PR★★","【领队】【对抗】己方以红色卡对抗时，造成1点伤害。","起始領隊","出紅卡先打 1 點，紅色進攻的穩定起手。"],
+["SD01-006","炽霞","炽霞","C","","","","","1","","★","【领队】【判定】若己方以红色卡对抗蓝色卡失败，可以公开己方卡组顶1张卡并加入手牌。","升級墊腳","紅被藍剋的補償。"],
+["BP01-026","炽霞","炽霞","C","","","","","1","","★ / ★★","【登场】/【升级】可以将弃牌区1张<常态攻击>加入手牌。","回收","升級回收常態攻擊，給 2 級 BP01-025 湊條件。"],
+["SD01-005","炽霞","炽霞","C","","","","","2","","★★★ / ★★★★","己方拥有【领队技】的【炽霞】卡伤害+3。","傷害引擎","不需領隊就生效，炽霞的領隊技卡全部 +3。每張都會加（FAQ 51），炽烈焰火可達 10 傷。"],
+["BP01-025","炽霞","炽霞","C","","","","","2","","★★★★ / ★★★★★","【领队】【各对抗阶段结束时】若己方行动区有2张或以上<常态攻击>，造成3点伤害。","額外傷害","雙方對抗階段結束都檢查，己方連擊打了 2 張常態攻擊就多 3 傷。"],
+["SD01-007","砰砰·普攻","炽霞","A","红","0","6","1","","常态攻击・普攻・热熔","★","","連擊填充","0 費基本攻擊。"],
+["SD01-008","砰砰·闪避反击","炽霞","A","蓝","0","","3","","闪避反击・热熔","★","","防守反擊","0 費藍卡 3 傷。"],
+["SD01-009","跃焰","炽霞","A","红","0","0","0","","变奏技・热熔","★","【连击】切换己方领队。若「炽霞」是被切换的角色之一，此卡伤害+2。","變奏・傷害","炽霞被切上或切下都算（FAQ 52），0 費 2 傷。"],
+["SD01-010","咻咻斗意","炽霞","A","红","1","8","2","","共鸣技・热熔","★","【领队技】（己方领队为此卡专属角色时方可使用）\n【判定】若己方以此卡对抗蓝色卡失败，己方可以将此卡加入手牌。","主力","配 2 級為 5 傷；被藍剋時還能收回手牌，不怕白白浪費。只有在行動區的這張能回收（FAQ 53）。"],
+["SD01-011","炽烈焰火","炽霞","A","红","3","12","7","","共鸣解放・热熔","★ / ★★★","【领队技】（己方领队为此卡专属角色时方可使用）","終結","3 費 7 傷，配 2 級 SD01-005 為 10 傷，全卡池單卡最高。"],
+["BP01-072","咔咔压制","炽霞","A","红","1","12","2","","共鸣回路・热熔","★ / ★★","【领队技】\n【优势】（若上个回合己方对抗胜利或对方跳过对抗阶段，获得此技能）【对抗】将弃牌区1张<常态攻击>或<共鸣解放>加入手牌。","主力・回收","配 2 級為 5 傷，優勢時還能回收炽烈焰火，持續施壓。"],
+// 秧秧
+["BP01-024","秧秧","秧秧","C","","","","","0","","★ / ★★ / PR★★","【领队】【对抗】己方以蓝色卡对抗时，可以将己方卡组顶1张卡置于协奏区。","起始領隊","出藍卡加 1 費，與散华 0 級相同。"],
+["SD01-004","秧秧","秧秧","C","","","","","1","","★","【领队】【判定】若己方以蓝色卡对抗绿色卡失败，可以公开己方卡组顶1张卡并加入手牌。","升級墊腳","藍被綠剋的補償。"],
+["BP01-023","秧秧","秧秧","C","","","","","1","","★ / ★★","【登场】/【升级】将己方卡组顶1张卡置于协奏区。","資源","升級即加 1 費（強制）。"],
+["SD01-003","秧秧","秧秧","C","","","","","2","","★★★ / ★★★★","【领队】【对抗】对方以红色卡对抗时，对方可以支付1点费用，若未支付，对方受到3点伤害。","控場","對手出紅卡就得多付 1 費或吃 3 傷，雙方回合都有效，大幅壓制紅色進攻。若這 3 傷打到 0 會直接獲勝（FAQ 50）。"],
+["BP01-022","秧秧","秧秧","C","","","","","2","","★★★ / ★★★★ / ★★★★★","【己方回合结束时】己方可以丢弃1张手牌。若丢弃了手牌，将己方领队切换为「秧秧」。","切換","不需領隊，回合結束時把秧秧切回領隊，保證 2 級 SD01-003 在對方回合生效。"],
+["SD01-012","风羽为刃·普攻","秧秧","A","红","0","8","1","","常态攻击・普攻・气动","★","","連擊填充","0 費速度 8 的基本攻擊。"],
+["SD01-013","风羽为刃·闪避","秧秧","A","蓝","0","","0","","闪避","★","【判定】若己方胜利，【追击2】（本回合可连击次数增加2）。","連擊起點","藍勝給 2 次連擊。"],
+["SD01-014","衍息","秧秧","A","红","0","0","0","","变奏技","★","【连击】切换己方领队。若「秧秧」是被切换的角色之一，将己方卡组顶的1张卡置于协奏区。","變奏・資源","0 費連擊＋加 1 費。"],
+["SD01-015","跳跃","秧秧","A","绿","0","7","0","","移动・滞空","★","【判定】若己方胜利，抽1张卡，【追击1】（本回合可连击次数增加1）。","過牌","0 費剋紅、抽 1 並給 1 次連擊；帶<滯空>，可接覆声裁羽。"],
+["SD01-016","朔风旋涌","秧秧","A","红","2","13","4","","共鸣解放・气动","★ / ★★★","【领队技】（己方领队为此卡专属角色时方可使用）\n【判定】若己方胜利，下个回合中，对方的红色卡费用+1。","控場","4 傷再讓對手下回合紅卡全部 +1 費，包含手牌、棄牌區等所有區域（FAQ 54）。"],
+["BP01-069","释羽·闪避","秧秧","A","蓝","0","","0","","闪避・滞空","★★","【判定】若己方胜利，【追击1】。\n【对抗阶段结束时】若己方领队为「秧秧」，可以支付1点费用将此卡加入手牌。","可回收防守","付 1 費就能收回手牌重複使用，但只在它還在行動區時有效，進了棄牌區就不行（FAQ 45）。"],
+["BP01-070","流风载域","秧秧","A","红","1","14","2","","共鸣技・气动","★ / ★★","【领队技】\n【判定】若己方胜利，将弃牌区1张蓝色卡加入手牌。","主力・回收","速度 14 容易贏，贏了回收藍卡，補足防守手段。"],
+["BP01-071","覆声裁羽","秧秧","A","红","0","6","1","","空中攻击・气动","★ / ★★","【连击】若本回合中己方上一张使用的是<滞空>卡，将己方卡组顶1张卡置于协奏区。","連擊・資源","接在跳跃、释羽·闪避之後打出就加 1 費。"],
+// 通用
+["BP01-034","通行灯偶","通用","A","红","0","5","1","","声骸・熔山裂谷・热熔","★★","己方行动区只能同时存在1张<声骸>。\n若己方协奏区有包含此卡在内的2种类或以上<熔山裂谷>，每回合己方首次使用的<热熔>伤害+1。","声骸・被動","熱熔隊（炽霞、安可）用。和燎照之骑一起放進協奏區，熱熔第一張 +1。付費時被用掉就會失效，需要預留。"],
+["BP01-035","燎照之骑","通用","A","红","1","5","2","","声骸・熔山裂谷・热熔","★★","己方行动区只能同时存在1张<声骸>。\n【优势】（若上个回合己方对抗胜利或对方跳过对抗阶段，获得此技能）造成伤害时，对方手牌每有4张，随机将对方1张手牌丢弃。","声骸・干擾","優勢時打到傷害就讓對手隨機棄牌，對手手牌越多越痛。只看此卡自己造成的傷害（FAQ 36）。"],
+["BP01-036","咕咕河豚","通用","A","红","0","5","1","","声骸・凝夜白霜・冷凝","★★","己方行动区只能同时存在1张<声骸>。\n若己方协奏区有包含此卡在内的2种类或以上<凝夜白霜>，每回合己方首次使用的<冷凝>伤害+1。","声骸・被動","冷凝隊（散华）用，散华本來就擅長填協奏區，容易湊齊。"],
+["BP01-037","辉萤军势","通用","A","红","1","5","2","","声骸・凝夜白霜・冷凝","★★","己方行动区只能同时存在1张<声骸>。\n【优势】（若上个回合己方对抗胜利或对方跳过对抗阶段，获得此技能）造成伤害时，选择对方协奏区1张卡置于弃牌区。","声骸・干擾","打掉對手 1 費，拖慢對手的大招節奏。只看此卡自己造成的傷害（FAQ 37）。"],
+["BP01-038","啾啾河豚","通用","A","红","0","5","1","","声骸・啸谷长风・气动","★★","己方行动区只能同时存在1张<声骸>。\n若己方协奏区有包含此卡在内的2种类或以上<啸谷长风>，每回合己方首次使用的<气动>伤害+1。","声骸・被動","氣動隊（秧秧）用。"],
+["BP01-039","飞廉之猩","通用","A","红","1","5","2","","声骸・啸谷长风・气动","★★","己方行动区只能同时存在1张<声骸>。\n【优势】（若上个回合己方对抗胜利或对方跳过对抗阶段，获得此技能）造成伤害时，随机将对方1张手牌置于卡组底。","声骸・干擾","把對手手牌送回卡底，不會進棄牌區，對方回收不了。"],
+["BP01-040","刺玫菇","通用","A","红","0","5","1","","声骸・沉日劫明・湮灭","★★","己方行动区只能同时存在1张<声骸>。\n若己方协奏区有包含此卡在内的2种类或以上<沉日劫明>，每回合己方首次使用的<湮灭>伤害+1。","声骸・被動","湮滅隊（椿）用。"],
+["BP01-041","无冠者","通用","A","红","1","5","2","","声骸・沉日劫明・湮灭","★★","己方行动区只能同时存在1张<声骸>。\n【优势】（若上个回合己方对抗胜利或对方跳过对抗阶段，获得此技能）造成伤害时，将对方卡组顶3张卡置于弃牌区。","声骸・干擾","磨對手卡組 3 張。卡組會從棄牌區重構，所以主要是破壞對手的牌序，很難靠這個贏。"],
+["BP01-042","游弋蝶","通用","A","红","0","5","1","","声骸・浮星祛暗・衍射","★★","己方行动区只能同时存在1张<声骸>。\n若己方协奏区有包含此卡在内的2种类或以上<浮星祛暗>，每回合己方首次使用的<衍射>伤害+1。","声骸・被動","衍射隊（漂泊者、守岸人、今汐）用，適用角色最多。"],
+["BP01-043","哀声鸷","通用","A","红","1","5","2","","声骸・浮星祛暗・衍射","★★","己方行动区只能同时存在1张<声骸>。\n【优势】（若上个回合己方对抗胜利或对方跳过对抗阶段，获得此技能）造成伤害时，将对方弃牌区中最多2张卡置于对方卡组底。","声骸・干擾","把對手棄牌區的關鍵卡送回卡底，剋制回收型角色（椿、安可、秧秧）。"]
+];
+// fix a typo-safe display: replace any traditional chars accidentally in official text is not needed
+const $=s=>document.querySelector(s);
+const state={ch:"all",kind:"all",color:"all",q:""};
+try{const s=JSON.parse(localStorage.getItem("wwcg-filter")||"null"); if(s) Object.assign(state,s,{q:""});}catch(e){}
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const hl=t=>esc(t).replace(/(【[^】]+】)/g,'<span class="kw">$1</span>');
+const COLTW={"红":"紅","蓝":"藍","绿":"綠"};
+function chipRow(){
+  const el=$("#chars"); const opts=[["all","全部角色"],...ORDER.map(c=>[c,TW[c]||c])];
+  el.innerHTML=opts.map(([v,l])=>`<button class="chip" data-v="${v}" aria-pressed="${state.ch===v}">${l}</button>`).join("");
+  el.onclick=e=>{const b=e.target.closest("button"); if(!b) return; state.ch=b.dataset.v; save(); render();};
+}
+function seg(id,key){const el=$(id); el.onclick=e=>{const b=e.target.closest("button"); if(!b) return; state[key]=b.dataset.v; save(); render();};}
+function save(){try{localStorage.setItem("wwcg-filter",JSON.stringify({ch:state.ch,kind:state.kind,color:state.color}));}catch(e){}}
+function cardHTML(r){
+  const [code,name,ch,kind,col,fee,spd,dmg,lv,tags,rar,text,role,rv]=r;
+  let stats="";
+  if(kind==="C"){ const m=CHARS[ch].meta; stats=`<span class="pill lv">Lv ${lv}</span><span class="pill">角色卡</span><span class="pill">${m}</span>`; }
+  else { stats=`<span class="pill col-${col}">${COLTW[col]}</span><span class="pill">費 ${fee}</span>${col==="蓝"?"":`<span class="pill">速 ${spd}</span>`}<span class="pill">傷 ${dmg}</span>`; }
+  stats+=`<span class="pill role">${role}</span>`;
+  const fx=text?`<p class="fx">${hl(text)}</p>`:`<p class="fx none">無技能文字</p>`;
+  const imgs=(IMG[code]||"").split("|").filter(Boolean); const rs=rar.split(" / ");
+  const art=imgs.length?`<div class="art"><button class="big" data-full="${IMG_BASE+imgs[0]}" data-cap="${code} ${esc(name)}" aria-label="放大卡圖 ${code}"><img loading="lazy" referrerpolicy="no-referrer" src="${IMG_BASE+imgs[0]}" alt="${esc(name)} ${code}" onerror="document.body.classList.add('noimg')"></button>${imgs.length>1?`<div class="vars">${imgs.map((f,i)=>`<button data-src="${IMG_BASE+f}" aria-pressed="${i===0}">${rs[i]||i+1}</button>`).join("")}</div>`:""}</div>`:"";
+  return `<article class="card ${kind==="C"?"chr":"c-"+col}">${art}<div class="body"><div class="c-top"><div class="c-name">${esc(name)}</div><div class="c-code">${code}<br>${rar}</div></div><div class="stats">${stats}</div>${tags&&tags!=="-"?`<div class="tags">${tags}</div>`:""}${fx}<p class="rv">${esc(rv)}</p></div></article>`;
+}
+function render(){
+  document.querySelectorAll("#chars .chip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===state.ch));
+  document.querySelectorAll("#kind button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===state.kind));
+  document.querySelectorAll("#color button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===state.color));
+  const q=state.q.trim().toLowerCase();
+  const rows=D.filter(r=>(state.ch==="all"||r[2]===state.ch)&&(state.kind==="all"||r[3]===state.kind)&&(state.color==="all"||r[4]===state.color)&&(!q||r.join(" ").toLowerCase().includes(q)));
+  let html="";
+  for(const ch of ORDER){
+    const list=rows.filter(r=>r[2]===ch); if(!list.length) continue;
+    const C=list.filter(r=>r[3]==="C").sort((a,b)=>a[8]-b[8]||a[0].localeCompare(b[0]));
+    const A=list.filter(r=>r[3]==="A");
+    html+=`<section class="char" id="${ch}"><div class="char-head"><h2>${TW[ch]||ch}</h2><span class="meta">${CHARS[ch].meta}　·　${list.length} 種</span></div><p class="char-plan">${CHARS[ch].plan}</p>`;
+    if(C.length) html+=`<div class="sub">角色卡</div><div class="grid">${C.map(cardHTML).join("")}</div>`;
+    if(A.length) html+=`<div class="sub">${ch==="通用"?"通用行動卡":"專屬行動卡"}</div><div class="grid">${A.map(cardHTML).join("")}</div>`;
+    html+=`</section>`;
+  }
+  $("#out").innerHTML=html||`<div class="empty">沒有符合條件的卡。試著清除搜尋字或切回「全部」。</div>`;
+  $("#count").textContent=`${rows.length} / ${D.length} 種`;
+}
+chipRow(); seg("#kind","kind"); seg("#color","color");
+$("#q").addEventListener("input",e=>{state.q=e.target.value; render();});
+render();
+$("#out").addEventListener("click",e=>{
+  const v=e.target.closest(".vars button");
+  if(v){const art=v.closest(".art"); const big=art.querySelector(".big"); big.dataset.full=v.dataset.src; big.querySelector("img").src=v.dataset.src; art.querySelectorAll(".vars button").forEach(b=>b.setAttribute("aria-pressed",b===v)); return;}
+  const b=e.target.closest("button.big"); if(!b) return;
+  const lb=$("#lb"); lb.querySelector("img").src=b.dataset.full; lb.querySelector("p").textContent=b.dataset.cap+"（點一下關閉）";
+  if(lb.showModal) lb.showModal();
+});
+$("#lb").addEventListener("click",()=>$("#lb").close());
+</script>
+
+</body></html>
