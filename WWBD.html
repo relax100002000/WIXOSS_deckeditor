@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>女秧椿 對戰策略</title>
+<style>
+/* Layout: field manual — deck snapshot, engine diagram in prose blocks, turn loop, then a matchup ledger per opposing leader. */
+:root{
+  --bg:#f4f3ef; --panel:#fffefb; --ink:#1f2326; --muted:#62696d; --line:#dcd8cd;
+  --accent:#8a6a1f; --accent-soft:#f1e7cc;
+  --red:#c2413a; --red-bg:#fbe8e6; --blue:#2c69ad; --blue-bg:#e5eff9; --green:#367f4d; --green-bg:#e3f2e7;
+  --good:#2f7d4a; --even:#9a7417; --bad:#b4423a;
+  --f-display:"Noto Serif TC","Songti TC",serif;
+  --f-body:system-ui,-apple-system,"PingFang TC","Microsoft JhengHei","Noto Sans TC",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141719; --panel:#1b1f22; --ink:#e6e8e7; --muted:#9aa2a5; --line:#30363a;
+  --accent:#dcb862; --accent-soft:#2f2a1b;
+  --red:#ef7d75; --red-bg:#3a1f1d; --blue:#80b3ec; --blue-bg:#1b2b3d; --green:#7fc995; --green-bg:#1b3224;
+  --good:#7fc995; --even:#dcb862; --bad:#ef7d75; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#141719; --panel:#1b1f22; --ink:#e6e8e7; --muted:#9aa2a5; --line:#30363a;
+  --accent:#dcb862; --accent-soft:#2f2a1b;
+  --red:#ef7d75; --red-bg:#3a1f1d; --blue:#80b3ec; --blue-bg:#1b2b3d; --green:#7fc995; --green-bg:#1b3224;
+  --good:#7fc995; --even:#dcb862; --bad:#ef7d75; color-scheme:dark;}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.7}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:28px 64px}
+h1{font-family:var(--f-display);font-weight:900;font-size:clamp(30px,6vw,46px);margin:0;letter-spacing:.04em}
+h2{font-family:var(--f-display);font-weight:900;font-size:24px;margin:44px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent);text-wrap:balance}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px;max-width:72ch}
+.eyebrow{font-size:13px;color:var(--muted);letter-spacing:.08em}
+.lede{color:var(--muted);margin-top:8px}
+.code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9em;color:var(--accent)}
+.k{font-weight:600}
+.r{color:var(--red);font-weight:600}.b{color:var(--blue);font-weight:600}.g{color:var(--green);font-weight:600}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 14px;font-variant-numeric:tabular-nums}
+.stat b{font-size:22px;display:block;line-height:1.2}
+.stat span{font-size:12.5px;color:var(--muted)}
+.bar{display:flex;height:12px;border-radius:6px;overflow:hidden;margin-top:14px;max-width:560px}
+.bar i{display:block}
+.cols3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px 16px;min-width:0}
+.box ul,.mu ul{margin:6px 0 0;padding-left:1.2em}
+.box li,.mu li{margin:2px 0}
+.lead-tag{display:inline-block;font-size:12px;border-radius:4px;padding:0 7px;background:var(--accent-soft);margin-left:6px;font-weight:600}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+.tw{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:6px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12.5px;color:var(--muted);font-weight:600;letter-spacing:.04em;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+ol.steps{margin:0;padding-left:1.4em;max-width:76ch}
+ol.steps li{margin:6px 0}
+.deck{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.dc{display:flex;gap:8px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:6px;min-width:0;border-left:4px solid var(--line)}
+.dc.R{border-left-color:var(--red)}.dc.B{border-left-color:var(--blue)}.dc.G{border-left-color:var(--green)}.dc.C{border-left-color:var(--accent)}
+.dc img{width:40px;aspect-ratio:63/88;object-fit:cover;border-radius:3px;background:var(--line);flex:none}
+.dc div{min-width:0;font-size:12.5px;line-height:1.35}
+.dc b{display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dc small{color:var(--muted)}
+.mus{display:grid;gap:12px}
+.mu{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 18px}
+.mu .who h3{font-family:var(--f-display);font-size:20px;margin:0}
+.mu .who .rate{display:inline-block;margin-top:6px;font-size:12.5px;font-weight:700;border-radius:4px;padding:1px 8px;border:1px solid currentColor}
+.rate.good{color:var(--good)}.rate.even{color:var(--even)}.rate.bad{color:var(--bad)}
+.mu .who p{font-size:12.5px;color:var(--muted);margin-top:6px}
+.mu dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px}
+.mu dt{font-size:12.5px;color:var(--muted);white-space:nowrap;padding-top:2px}
+.mu dd{margin:0}
+.note{font-size:13px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px;max-width:76ch}
+footer{margin-top:44px;font-size:12.5px;color:var(--muted);max-width:76ch}
+@media (max-width:640px){.mu{grid-template-columns:1fr}.mu dl{grid-template-columns:1fr}.mu dt{padding-top:6px}}
+</style></head><body>
+
+<div class="wrap">
+<div class="eyebrow">鳴潮：對決 · 牌組策略 · 牌組碼 SLD-VKZA3JV4</div>
+<h1>女秧椿</h1>
+<p class="lede">漂泊者（女）負責過牌，秧秧負責費用與防守，椿負責輸出。下面先說明這副牌怎麼運轉，再逐一列出對上 9 位領隊的基本打法。依 2026/9/12 版規則書與 FAQ 判斷，屬於個人分析。</p>
+
+<div class="stats">
+  <div class="stat"><b>15</b><span>角色卡（3 角色各 5 張）</span></div>
+  <div class="stat"><b class="r">28</b><span>紅色行動卡</span></div>
+  <div class="stat"><b class="b">6</b><span>藍色行動卡</span></div>
+  <div class="stat"><b class="g">6</b><span>綠色行動卡</span></div>
+  <div class="stat"><b>25</b><span>0 費卡</span></div>
+</div>
+<div class="bar" aria-label="顏色比例 紅28 藍6 綠6"><i style="flex:28;background:var(--red)"></i><i style="flex:6;background:var(--blue)"></i><i style="flex:6;background:var(--green)"></i></div>
+
+<h2>牌組清單</h2>
+<div class="deck" id="deck"></div>
+
+<h2>三位角色的分工</h2>
+<div class="cols3">
+  <div class="box"><h3>椿<span class="lead-tag">輸出</span></h3>
+    <p>主要攻擊手。2 級 <span class="code">BP01-001</span> 當領隊時，椿的紅卡全部 +1 傷害，芳華綻燼打 7。</p>
+    <ul><li>紅椿盛綻（速 14）翻開就升級椿，不必贏。</li><li>八千春秋在連擊中把椿切上領隊並升級。</li><li>2 級椿被疊上時會回到角色卡組，可以在 <span class="code">001</span>（攻）與 <span class="code">002</span>（守）之間切換。</li><li>缺點：<span class="code">001</span> 當領隊時己方受傷 +1。</li></ul></div>
+  <div class="box"><h3>漂泊者（女）<span class="lead-tag">過牌</span></h3>
+    <p>0 級領隊每次出<span class="g">綠卡</span>都能從卡組頂補最多 2 張，是前期的資源來源。</p>
+    <ul><li>2 級 <span class="code">BP01-016</span>：綠卡勝藍卡時補到 8 張，專剋藍色多的對手。</li><li><span class="code">SD01-001</span> 不必當領隊，每回合開始多抽 1。</li><li>浮聲千斬速度 16，紅紅對拼幾乎必勝。</li></ul></div>
+  <div class="box"><h3>秧秧<span class="lead-tag">費用・防守</span></h3>
+    <p>藍卡對抗時加費，1 級升級時也加費。</p>
+    <ul><li>2 級 <span class="code">SD01-003</span> 當領隊時，對手出紅卡要多付 1 費，否則受 3 傷。</li><li>2 級 <span class="code">BP01-022</span> 不必當領隊：己方回合結束時棄 1 張，就能把秧秧切回領隊。</li></ul></div>
+</div>
+
+<h2>核心循環：椿攻、秧秧守</h2>
+<p>這副牌最重要的運作方式是在自己回合讓椿站領隊，在對手回合讓秧秧站領隊：</p>
+<ol class="steps">
+  <li><span class="k">己方行動階段</span>：用規則切換把椿換上領隊。也可以在連擊時打八千春秋切上椿，順便升級。</li>
+  <li><span class="k">己方對抗、連擊</span>：享受 2 級椿 <span class="code">BP01-001</span> 的 +1 傷害。</li>
+  <li><span class="k">己方回合結束</span>：發動 <span class="code">BP01-022</span>，棄 1 張手牌把秧秧切回領隊。</li>
+  <li><span class="k">對手回合</span>：秧秧 2 級 <span class="code">SD01-003</span> 讓對手的紅卡多付 1 費或吃 3 傷。椿不在領隊位，<span class="code">BP01-001</span>「受傷 +1」的缺點也不會生效。</li>
+</ol>
+<p class="note">疊放規則（504.4.1）規定，疊在下方的角色卡技能仍然有效。所以秧秧可以先升 <span class="code">BP01-022</span>，再用同級升級疊上 <span class="code">SD01-003</span>，兩個 2 級效果同時生效。漂泊者（女）也可以把 <span class="code">SD01-001</span> 墊在 <span class="code">BP01-016</span> 下面。每個角色最多疊 5 張，這副牌每個角色剛好 5 張。</p>
+
+<h2>對局流程</h2>
+<div class="cols3">
+  <div class="box"><h3>起手與調度</h3>
+    <ul><li>手牌最好有 1 張<span class="g">綠</span>和 1 張<span class="b">藍</span>，加上 2–3 張 0 費紅卡。</li><li>芳華綻燼、流風載域最多留 1 張，其餘放回調度。</li><li>聲骸（刺玫菇、無冠者）可以留著當充能材料。</li></ul></div>
+  <div class="box"><h3>前期（約 1–3 回合）</h3>
+    <ul><li>預設讓<span class="k">漂泊者（女）</span>當領隊，用綠卡對抗補牌。</li><li>每回合充能 1 張，優先放刺玫菇＋無冠者，湊滿 2 種沉日劫明後，湮滅卡每回合首張 +1 傷害。</li><li>升級優先順序：女 1 級 <span class="code">BP01-017</span>（補 1 張抵消棄牌）→ 秧秧 1 級 <span class="code">BP01-023</span>（加 1 費）。</li></ul></div>
+  <div class="box"><h3>中後期</h3>
+    <ul><li>秧秧升到 2 級後開始運作「椿攻、秧秧守」。</li><li>椿用紅椿盛綻、八千春秋免棄牌升到 2 級。</li><li>用紅色贏下對抗後就無限連擊：0 費普攻 → 蔓舞（第 3 張普攻起 +1）→ 八千春秋 → 芳華綻燼收尾。</li></ul></div>
+</div>
+
+<h2>出牌顏色判斷</h2>
+<div class="tw"><table>
+<thead><tr><th>情況</th><th>建議顏色</th><th>理由</th></tr></thead>
+<tbody>
+<tr><td>己方回合，預期對手會用藍卡防守</td><td><span class="g">綠</span>：鉤索、跳躍</td><td>綠勝藍。女領隊時補牌；女 2 級時直接補到 8；鉤索、跳躍帶追擊，可以接紅色連擊。</td></tr>
+<tr><td>己方回合，預期對手出紅或不防守</td><td><span class="r">高速紅</span>：浮聲千斬 16、紅椿盛綻 14、流風載域 14</td><td>紅紅比速度，這三張壓過絕大多數紅卡。贏了就無限連擊。</td></tr>
+<tr><td>對手回合，對手常出<span class="g">綠</span>（今汐、守岸人、漂泊者）</td><td><span class="r">任一張紅卡</span></td><td>紅剋綠，與速度無關。在對手回合贏下對抗，一樣可以打傷害並連擊。</td></tr>
+<tr><td>對手回合，對手常出<span class="r">紅</span>（椿、安可、熾霞）</td><td><span class="b">藍</span>：育種·閃避反擊、釋羽·閃避</td><td>閃避反擊 0 費 3 傷；釋羽在秧秧領隊時可付 1 費收回手牌。</td></tr>
+<tr><td>對手回合，不想消耗手牌</td><td>不出牌</td><td>非回合方可以選擇不防守。對手會直接獲勝並造成傷害，只有在傷害低的時候才划算。</td></tr>
+</tbody></table></div>
+<p class="note" style="margin-top:10px">這副牌最大的弱點是藍色：40 張裡有 28 張紅卡，被藍卡剋的機會很高。己方回合用綠卡破藍，以及秧秧在對手回合的紅卡懲罰，是兩個主要對策。</p>
+
+<h2>對各領隊的基本策略</h2>
+<p class="note">「有利、均勢、不利」是根據顏色相剋與雙方卡池推估的，沒有實戰數據，請在對戰中驗證。</p>
+<div class="mus" id="mus"></div>
+
+<footer>卡圖讀取自官方圖庫，需連網才會顯示。牌組內容依你提供的截圖（SLD-VKZA3JV4）。卡圖與卡名權利屬 ©KURO GAMES。</footer>
+</div>
+
+<script>
+const IMG_BASE="https://mc-file01-1309577691.cos.ap-hongkong.myqcloud.com/kapai/kpupimg/compressed/";
+const IMG={
+"BP01-001":"kapai_7273b4aea3bb6e56d8b6eaf1f518b70c_e8c77ca13ef8_3e6a188f4a.webp",
+"BP01-002":"kapai_f9504cfaf52a3a55d0adc78bf6d4f3c1_e7af8fd76e19_3e6a188f4a.webp",
+"BP01-003":"kapai_e029daf03fd2ca2556b21e3b3d2ec48b_55a1e3d51cd0_3e6a188f4a.webp",
+"BP01-004":"kapai_54c1437c78f0a3a9c2cbde353bfd3ea9_2acd1a884039_3e6a188f4a.webp",
+"BP01-005":"kapai_383d0e82efe310b29149e12b812fcdac_fa34ee3bbd32_3e6a188f4a.webp",
+"BP01-016":"kapai_d303d037363ca002d34b747e53de080c_1aa73af6f25b_3e6a188f4a.webp",
+"BP01-017":"kapai_f6a33c6cd6b72347d2fd73241e162593_c99c547cb79d_3e6a188f4a.webp",
+"BP01-018":"kapai_54e583ea8445ff93ca207fbe83081a7f_2289a3b20230_3e6a188f4a.webp",
+"SD01-001":"kapai_82e2ddbb62fa6954aed728ba590a3b15_01602b192187_3e6a188f4a.webp",
+"SD01-002":"kapai_49ad671e3a4b45b78946f5a8d7a7fa48_dc7e1315afd7_3e6a188f4a.webp",
+"BP01-022":"kapai_d93f5567625f6b22e1dac70edd8a48d6_f389be4322f6_3e6a188f4a.webp",
+"BP01-023":"kapai_9df32b3e66583e29eceb81b39fb057f8_8a4467b60cf3_3e6a188f4a.webp",
+"BP01-024":"kapai_00b968226de7fb036860ac6be20b49a3_7730e9e77c4a_3e6a188f4a.webp",
+"SD01-003":"kapai_eb75ee531868d2e6b1d84f7fd3f09720_5826ef36c5f6_3e6a188f4a.webp",
+"SD01-004":"kapai_98a58948462c433516ed60127bbbbd83_9768ef359706_3e6a188f4a.webp",
+"BP01-044":"kapai_660fb1dbec781684ebb22a4ecb6d2390_dcecc0eb7d6f_3e6a188f4a.webp",
+"BP01-045":"kapai_f2d846a7000c59fe2ba6e3d9d7fa7b32_c2d7c272fdad_3e6a188f4a.webp",
+"BP01-046":"kapai_c9446d36fdb1f7f61c1bd3806b57b56a_a7ca578edaf5_3e6a188f4a.webp",
+"BP01-048":"kapai_00302fbab755971c47cb2cbb0759d362_76c8e1a59ac0_3e6a188f4a.webp",
+"BP01-049":"kapai_2778e28bbf1257627d9c46e347db8b27_17449c2d66b3_748ef9f347_preview_f8ba862cb989a884.webp",
+"BP01-050":"kapai_ee2065fb9e2a09aba5353645970985b1_9d86fe0ab090_3e6a188f4a.webp",
+"BP01-051":"kapai_467a83f5badd8716993035771ce42cc0_848b38cb708a_3e6a188f4a.webp",
+"SD01-019":"kapai_2d7f0183a905bae2113641325de7d2fa_92cafc284cc3_3e6a188f4a.webp",
+"SD01-021":"kapai_1dafe4e0892a1afc2b3f4da651f812f0_f97805303f08_3e6a188f4a.webp",
+"SD01-022":"kapai_21f68c5b0a07fbf98260f3f5f6b2e06e_14d4adc3ce43_3e6a188f4a.webp",
+"BP01-069":"kapai_9781828aacd79852fa8616eb2043fe33_a993bd80a5b0_3e6a188f4a.webp",
+"BP01-070":"kapai_c4a30d8695e548bd8dc2d1e50d770860_447abffb363b_3e6a188f4a.webp",
+"SD01-014":"kapai_0e9bcaa284ff3b9e26ed57a0d2b1f4a9_aebcc13de3b8_3e6a188f4a.webp",
+"SD01-015":"kapai_b8351c4de657e4595a057ec8e995536b_a62c37594a07_3e6a188f4a.webp",
+"BP01-040":"kapai_ef2fa20c1ac132fa6abf25b1455eaefc_af71dbc398f2_3e6a188f4a.webp",
+"BP01-041":"kapai_f894c1e1ab87ec1fec52d0d55b9f4bea_4cc3b64c03c3_3e6a188f4a.webp"
+};
+// [code, name, type C/R/B/G, count, info]
+const DECK=[
+["BP01-005","椿","C",1,"Lv0 勝利回收普攻"],["BP01-003","椿","C",1,"Lv1 升級回收普攻"],["BP01-004","椿","C",1,"Lv1 紅輸藍補牌"],["BP01-001","椿","C",1,"Lv2 攻擊形態"],["BP01-002","椿","C",1,"Lv2 防守形態"],
+["BP01-018","漂泊者（女）","C",1,"Lv0 綠卡補 2"],["BP01-017","漂泊者（女）","C",1,"Lv1 升級補 1"],["SD01-002","漂泊者（女）","C",1,"Lv1 綠輸紅補牌"],["SD01-001","漂泊者（女）","C",1,"Lv2 回合開始抽 1"],["BP01-016","漂泊者（女）","C",1,"Lv2 綠勝藍補到 8"],
+["BP01-024","秧秧","C",1,"Lv0 藍卡加費"],["BP01-023","秧秧","C",1,"Lv1 升級加費"],["SD01-004","秧秧","C",1,"Lv1 藍輸綠補牌"],["BP01-022","秧秧","C",1,"Lv2 回合末切回秧秧"],["SD01-003","秧秧","C",1,"Lv2 懲罰對手紅卡"],
+["BP01-044","育種·普攻","R",1,"0費 速8 傷1"],["BP01-050","蔓舞","R",3,"0費 速6 傷1"],["BP01-051","旋舞","R",3,"0費 速6 傷1"],["BP01-046","八千春秋","R",3,"0費 變奏"],["BP01-048","紅椿盛綻","R",2,"1費 速14 傷1"],["BP01-049","芳華綻燼","R",3,"2費 速13 傷6"],
+["SD01-019","震聲","R",1,"0費 變奏"],["SD01-022","浮聲千斬","R",2,"1費 速16 傷1"],["BP01-070","流風載域","R",3,"1費 速14 傷2"],["SD01-014","衍息","R",2,"0費 變奏"],
+["BP01-040","刺玫菇","R",3,"聲骸 0費 速5 傷1"],["BP01-041","無冠者","R",2,"聲骸 1費 速5 傷2"],
+["BP01-045","育種·閃避反擊","B",3,"0費 傷3"],["BP01-069","釋羽·閃避","B",3,"0費 追擊1"],
+["SD01-021","鉤索","G",3,"1費 速8 追擊2"],["SD01-015","跳躍","G",3,"0費 速7 追擊1"]
+];
+document.getElementById("deck").innerHTML=DECK.map(([c,n,t,k,i])=>`<div class="dc ${t}"><img loading="lazy" referrerpolicy="no-referrer" src="${IMG_BASE+IMG[c]}" alt="" onerror="this.style.visibility='hidden'"><div><b>${n} ×${k}</b><small>${c}</small><br>${i}</div></div>`).join("");
+
+// [leader, rate class, rate label, their plan, our turn, their turn, our leader, watch]
+const MU=[
+["漂泊者（男）","good","有利","綠卡過牌，2 級綠勝給追擊 3，配鉤索最多 5 次連擊；也會用藍色閃避濾牌。",
+ "對手會用藍閃避剋我方紅卡，所以己方回合可以多出綠卡。對手出紅防守時，用浮聲千斬或紅椿盛綻比速度。",
+ "對手綠卡多，手上隨時留 1 張 0 費紅卡防守。紅剋綠，贏了換我方打傷害並連擊，也就破了對方的追擊爆發。",
+ "前期女，中期起椿攻、秧秧守",
+ "對手 2 級 SD02-001 在雙方回合結束都抽牌，拖久了資源會輸，要盡早用連擊壓血線。"],
+["漂泊者（女）","good","有利","與我方的過牌引擎相同，以綠卡為主，速度 16 的浮聲千斬是威脅。",
+ "對手若用綠卡防守，紅卡必勝；若用紅卡防守，出浮聲千斬（16）可以至少打平速度，平速時回合方勝。",
+ "防守一律出紅卡打綠卡。對手出浮聲千斬攻擊時，用藍卡防守（育種·閃避反擊打 3）。",
+ "椿攻、秧秧守",
+ "對手 2 級 BP01-016 只在綠勝藍時補牌，避免在對手回合用藍卡防守綠卡。"],
+["秧秧","bad","不利","藍卡加費、2 級 SD01-003 懲罰紅卡，朔風旋湧讓紅卡費用 +1，正好針對我方 28 張紅卡。",
+ "主攻改用綠卡：綠勝藍，鉤索、跳躍贏了再接紅色連擊。紅色對抗前先確認協奏區有 1 費可付 SD01-003 的稅。",
+ "對手的紅卡（流風載域 14、朔風旋湧 13）用藍卡防守；對手的藍卡用綠卡防守。我方秧秧 2 級一樣能對他們的紅卡收稅。",
+ "前期女（綠卡補牌、2 級綠勝藍補到 8），秧秧守",
+ "多存協奏區，否則每次紅卡對抗都可能被扣 3 血。被朔風旋湧打中的下回合，改用綠卡或 0 費卡。"],
+["椿","even","均勢","紅色普攻連擊，2 級 BP01-001 加傷但自己受傷 +1，藍色閃避反擊 3 傷防守。",
+ "紅紅對拼看速度，用浮聲千斬 16、紅椿盛綻／流風載域 14 壓過對手的芳華綻燼 13。對手很可能用閃避反擊防守，可用綠卡騙招。",
+ "對手攻擊多是紅卡：藍卡防守（閃避反擊打 3），或秧秧 2 級收稅。對手 2 級 001 當領隊時受傷 +1，是反打時機。",
+ "椿攻、秧秧守",
+ "雙方都有棄牌區回收普攻的能力，拖到後期差不多，關鍵在誰先站上 2 級椿。"],
+["安可","even","均勢","紅色為主，黑咩大暴走直接疊上 2 級安可；1 級 BP01-014 讓重擊、共鳴迴路輸了也能打傷害。",
+ "對手的藍色閃避反擊會剋我方紅卡。用綠卡或高速紅卡出擊，並在對手得到【優勢】前先搶下對抗。",
+ "秧秧 2 級是主力防守：對手黑咩大暴走、黑白羊咩都是紅卡，不付費就吃 3。用藍卡剋紅，但注意 BP01-014 的保底傷害依然會打進來。",
+ "秧秧守為主，椿攻",
+ "黑白羊咩速度 0，紅卡防守一定贏，但對方仍可能打出保底傷害；判斷時以閃避反擊的 3 傷交換更划算。"],
+["熾霞","even","均勢","紅色直傷，2 級 SD01-005 讓領隊技卡 +3，熾烈焰火可達 10 傷。",
+ "對手防守常用閃避反擊。紅卡出擊時優先用速度 14–16 的卡，避開速度比拼的風險；預期對手出藍時改出綠卡。",
+ "熾烈焰火（速 12）、咔咔壓制（速 12）都比我方紅椿盛綻、流風載域（14）慢，可用高速紅卡防守反打；穩一點就用藍卡防守。秧秧 2 級收稅很有效。",
+ "秧秧守，椿攻",
+ "熾霞 0 級領隊出紅卡就先打 1 點，2 級後每張領隊技卡傷害都很高，不要讓對方輕易贏下對抗。"],
+["今汐","good","有利","乘歲凌霄（綠、速 13）勝利抽 3 並追擊 8，再接移歲誅邪大量傷害。",
+ "對手防守時若出綠卡，任何紅卡都能贏；若出紅卡，比速度用浮聲千斬或紅椿盛綻。",
+ "最重要的一點：對手回合手上一定要留紅卡。乘歲凌霄是綠卡，紅卡防守必勝，直接打斷追擊 8 的爆發並換我方連擊。",
+ "椿攻、秧秧守",
+ "對手 0 級今汐出紅卡就先打 1 點；神霓飛芒會檢索乘歲凌霄，所以對手每回合都可能出綠卡，留好紅卡防守。"],
+["散華","good","有利","藍卡加費、2 級 BP01-031 藍勝給追擊 3；焦瞑凍土勝利後封鎖我方下回合連擊。",
+ "最適合發揮漂泊者（女）：綠卡打藍卡，2 級 BP01-016 直接補到 8 張；鉤索、跳躍勝利後接紅色連擊。",
+ "對手的藍卡用綠卡防守；對手的紅卡（焦瞑凍土 13、朔雪永凍 9）用高速紅卡或藍卡防守。",
+ "漂泊者（女）為主，椿收尾",
+ "被焦瞑凍土打中的下個己方回合不能連擊，那回合改用綠卡過牌、充能，或用芳華綻燼單發 6 傷。"],
+["守岸人","even","均勢","回血加抽牌，終末迴環（綠、速 11）勝利回血並追擊 8；解限在【優勢】時可封鎖我方連擊。",
+ "對手防守時綠卡多，紅卡出擊勝率高；遇到藍色閃避則改用綠卡。用芳華綻燼、2 級椿的加傷一口氣壓血線，蓋過回血。",
+ "終末迴環是綠卡，紅卡防守即可打斷追擊 8。對手有【優勢】時，我方回合的連擊可能被解限封鎖，要預留單發高傷的卡。",
+ "椿攻為主",
+ "對手 2 級 BP01-007 每回合補手到 5 張，長期戰對方資源更穩，傾向速攻。"]
+];
+document.getElementById("mus").innerHTML=MU.map(([n,c,l,a,b,d,e,f])=>`<article class="mu"><div class="who"><h3>${n}</h3><span class="rate ${c}">${l}</span><p>推薦：${e}</p></div><dl><dt>對手打法</dt><dd>${a}</dd><dt>己方回合</dt><dd>${b}</dd><dt>對手回合</dt><dd>${d}</dd><dt>注意</dt><dd>${f}</dd></dl></article>`).join("");
+</script>
+
+</body></html>
