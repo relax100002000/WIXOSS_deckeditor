@@ -5327,8 +5327,9 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20260717 v2.10\n";
-	str += "1.更新WX26-CP1\n";
+	str += "20261016 v2.11\n";
+	str += "1.更新WX26-P2\n";
+	str += "2.新增已選取卡片卡價總和顯示\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";
