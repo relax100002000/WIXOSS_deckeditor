@@ -5327,9 +5327,9 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
-	str += "20261016 v2.11\n";
-	str += "1.更新WX26-P2\n";
-	str += "2.新增已選取卡片卡價總和顯示\n";
+	str += "20261019 v2.12\n";
+	str += "1.新增ALLSTAR版(index_allstar.html)：收錄無印、KEY、DIVA全卡，套用オールスター繭の部屋\n";
+	str += "2.新增DIVA版/ALLSTAR版切換連結\n";
 	str += "\n";
 	str += "預計更新:\n";
 	str += "-補充關於說明\n";
