@@ -15,7 +15,7 @@ var asStore = (function () {
 		get length() { return keys().length; }
 	};
 })();
-var ARTS_MAX_SIZE = 8;
+var ARTS_MAX_SIZE = 9;
 
 // === big_pic lock (hold ALT to freeze the preview) ===
 // Robust against browsers that hijack ALT for the menu bar:
@@ -2022,7 +2022,7 @@ function addDeck(x)
 					{
 						break;
 					}
-					if(c[TYPE] == "アーツ" || c[TYPE] == "アーツ クラフト")
+					if(c[TYPE] == "アーツ" || c[TYPE] == "アーツ クラフト" || c[TYPE] == "キー")   // キー goes to the Arts / Key area
 					{
 						if(adeckArr.length < ARTS_MAX_SIZE)
 						{
@@ -5341,6 +5341,17 @@ showLdeck = function()
 	{
 		var isKey = k < ldeckArr.length && ldeckArr[k][TYPE] == "キー";
 		$("#ldeck_" + k).attr("width", isKey ? "105px" : "75px").attr("height", isKey ? "75px" : "105px");
+	}
+};
+
+var asOrigShowAdeck = showAdeck;
+showAdeck = function()
+{
+	asOrigShowAdeck();
+	for(var k = 0; k < ARTS_MAX_SIZE; k++)
+	{
+		var isKey = k < adeckArr.length && adeckArr[k][TYPE] == "キー";
+		$("#adeck_" + k).attr("width", isKey ? "105px" : "75px").attr("height", isKey ? "75px" : "105px");
 	}
 };
 

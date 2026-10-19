@@ -88,6 +88,9 @@ must_replace("""		if(cardData[i][TYPE] == "ピース" ||
 			cardData[i][TYPE] == "キー" ||
 			cardData[i][TYPE] == "ピース リレー" ||""")
 
+# 2e) Arts / Key area has 9 slots (4 + 5) in the ALLSTAR editor
+must_replace("var ARTS_MAX_SIZE = 8;", "var ARTS_MAX_SIZE = 9;")
+
 # 3) addDeck: ALLSTAR deck rules
 a = s.index('function addDeck(x)')
 b = s.index('function downloadBlobopenbatoru')
@@ -129,7 +132,7 @@ function addDeck(x)
 					{
 						break;
 					}
-					if(c[TYPE] == "アーツ" || c[TYPE] == "アーツ クラフト")
+					if(c[TYPE] == "アーツ" || c[TYPE] == "アーツ クラフト" || c[TYPE] == "キー")   // キー goes to the Arts / Key area
 					{
 						if(adeckArr.length < ARTS_MAX_SIZE)
 						{
@@ -339,6 +342,17 @@ showLdeck = function()
 	{
 		var isKey = k < ldeckArr.length && ldeckArr[k][TYPE] == "キー";
 		$("#ldeck_" + k).attr("width", isKey ? "105px" : "75px").attr("height", isKey ? "75px" : "105px");
+	}
+};
+
+var asOrigShowAdeck = showAdeck;
+showAdeck = function()
+{
+	asOrigShowAdeck();
+	for(var k = 0; k < ARTS_MAX_SIZE; k++)
+	{
+		var isKey = k < adeckArr.length && adeckArr[k][TYPE] == "キー";
+		$("#adeck_" + k).attr("width", isKey ? "105px" : "75px").attr("height", isKey ? "75px" : "105px");
 	}
 };
 

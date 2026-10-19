@@ -202,5 +202,40 @@ for w in ('price', 'yuyu'):
 # the format switch link (left of About) points back to the Diva page
 rep("""<a id="formatSwitchLink" href="index_allstar.html" style="margin-left: 310px; margin-right: 10px;">ALLSTAR</a>""",
     """<a id="formatSwitchLink" href="index.html" style="margin-left: 310px; margin-right: 10px;">DIVA</a>""")
+# DIVA link + About flush with the right edge of the panel
+rep("""<a id="formatSwitchLink" href="index.html" style="margin-left: 310px; margin-right: 10px;">DIVA</a><button onclick="showVersion();">About</button>""",
+    """<span style="float: right; position: relative; top: 10px;"><a id="formatSwitchLink" href="index.html" style="margin-right: 10px;">DIVA</a><button onclick="showVersion();">About</button></span>""")
+# Arts area also holds KEY cards
+rep("""<span style="user-select:text; cursor: text;margin-left: 122px;">Arts</span>""",
+    """<span style="user-select:text; cursor: text;margin-left: 122px;">Arts / Key</span>""")
+# Piece column on the left, Arts / Key area as two rows (4 on top, 5 below = 9 slots)
+import re as _re
+_a = s.index('<img id="pdeck_0"')
+_a = s.rfind('<tr>', 0, _a)
+_b = s.index('<img id="pdeck_1"')
+_b = s.index('</tr>', _b) + len('</tr>')
+def _img(kind, i, w, h, style=''):
+    arr = 'pdeckArr' if kind == 'pdeck' else 'adeckArr'
+    return ('<img id="%s_%d" width="%s" height="%s" style="vertical-align: middle;%s" src="img/empty.jpg" '
+            'onmouseover="onmouseShow(this, \'deck\');" onclick="delDeck(this,%d , %s)">' % (kind, i, w, h, style, i, arr))
+_T = '\t' * 6
+_rows = [_T + '<tr>', _T + '\t<td>',
+         _T + '\t\t<table style="border-collapse: collapse;"><tr>',
+         _T + '\t\t\t<td style="vertical-align: top; padding: 0;">',
+         _T + '\t\t\t\t' + _img('pdeck', 0, '105px', '75px') + '<br>',
+         _T + '\t\t\t\t' + _img('pdeck', 1, '105px', '75px', ' margin-top: 4px;'),
+         _T + '\t\t\t</td>',
+         _T + '\t\t\t<td style="vertical-align: top; padding: 0 0 0 52px;">',
+         _T + '\t\t\t\t<div style="height: 110px; white-space: nowrap;">']
+for _i in range(0, 4):
+    _rows.append(_T + '\t\t\t\t\t' + _img('adeck', _i, '75px', '105px'))
+_rows += [_T + '\t\t\t\t</div>', _T + '\t\t\t\t<div style="height: 110px; white-space: nowrap;">']
+for _i in range(4, 9):
+    _rows.append(_T + '\t\t\t\t\t' + _img('adeck', _i, '75px', '105px'))
+_rows += [_T + '\t\t\t\t</div>', _T + '\t\t\t</td>', _T + '\t\t</tr></table>', _T + '\t</td>', _T + '</tr>']
+s = s[:_a] + '\n'.join(_rows).lstrip('\t') + s[_b:]
+# Deck View button hidden in the ALLSTAR editor
+rep("""<button onclick="$('#cardinformation').css('visibility', 'hidden');customizeWindowEvent('view');">Deck View</button>""",
+    """<button style="display: none;" onclick="$('#cardinformation').css('visibility', 'hidden');customizeWindowEvent('view');">Deck View</button>""")
 io.open(os.path.join(root, 'index_allstar.html'), 'w', encoding='utf-8', newline='\r\n').write(s)
 print('ok')
