@@ -2906,7 +2906,7 @@ function search()
 			}
 		}
 
-		if(!$('#level0').is(":checked") && !$('#level1').is(":checked") && !$('#level2').is(":checked") && !$('#level3').is(":checked") && !$('#level4').is(":checked"))
+		if(!$('#level0').is(":checked") && !$('#level1').is(":checked") && !$('#level2').is(":checked") && !$('#level3').is(":checked") && !$('#level4').is(":checked") && !$('#level5').is(":checked"))
 		{
 
 		}
@@ -2947,6 +2947,14 @@ function search()
 			if(!$('#level4').is(":checked"))
 			{
 				if(cardData[i][LEVEL] == "4")
+				{
+					continue;
+				}
+			}
+
+			if($('#level5').length && !$('#level5').is(":checked"))
+			{
+				if(cardData[i][LEVEL] == "5")
 				{
 					continue;
 				}

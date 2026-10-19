@@ -237,5 +237,8 @@ s = s[:_a] + '\n'.join(_rows).lstrip('\t') + s[_b:]
 # Deck View button hidden in the ALLSTAR editor
 rep("""<button onclick="$('#cardinformation').css('visibility', 'hidden');customizeWindowEvent('view');">Deck View</button>""",
     """<button style="display: none;" onclick="$('#cardinformation').css('visibility', 'hidden');customizeWindowEvent('view');">Deck View</button>""")
+# Level 5 checkbox
+rep("""<input type="checkbox" id="level4" checked><span onclick="clickSpan(this)">Level 4 </span>""",
+    """<input type="checkbox" id="level4" checked><span onclick="clickSpan(this)">Level 4 </span>&emsp;&emsp;<input type="checkbox" id="level5" checked><span onclick="clickSpan(this)">Level 5 </span>""")
 io.open(os.path.join(root, 'index_allstar.html'), 'w', encoding='utf-8', newline='\r\n').write(s)
 print('ok')

@@ -91,6 +91,31 @@ must_replace("""		if(cardData[i][TYPE] == "ピース" ||
 # 2e) Arts / Key area has 9 slots (4 + 5) in the ALLSTAR editor
 must_replace("var ARTS_MAX_SIZE = 8;", "var ARTS_MAX_SIZE = 9;")
 
+# 2f) Level 5 filter (ALLSTAR has Lv5 ルリグ)
+must_replace("""		if(!$('#level0').is(":checked") && !$('#level1').is(":checked") && !$('#level2').is(":checked") && !$('#level3').is(":checked") && !$('#level4').is(":checked"))""",
+             """		if(!$('#level0').is(":checked") && !$('#level1').is(":checked") && !$('#level2').is(":checked") && !$('#level3').is(":checked") && !$('#level4').is(":checked") && !$('#level5').is(":checked"))""")
+must_replace("""			if(!$('#level4').is(":checked"))
+			{
+				if(cardData[i][LEVEL] == "4")
+				{
+					continue;
+				}
+			}""", """			if(!$('#level4').is(":checked"))
+			{
+				if(cardData[i][LEVEL] == "4")
+				{
+					continue;
+				}
+			}
+
+			if($('#level5').length && !$('#level5').is(":checked"))
+			{
+				if(cardData[i][LEVEL] == "5")
+				{
+					continue;
+				}
+			}""")
+
 # 3) addDeck: ALLSTAR deck rules
 a = s.index('function addDeck(x)')
 b = s.index('function downloadBlobopenbatoru')
