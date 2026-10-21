@@ -694,6 +694,25 @@
 						if (this.text.charAt(0) !== '[') this.text = '[' + this.value.replace('AS:', '') + '] ' + this.text;
 					});
 				}
+				// TYPE: add the ALLSTAR-era 精 classes (the original list only has Diva 奏 classes)
+				(function () {
+					var $t = $('#selectType'), have = {}, found = {};
+					$t.find('option').each(function () { have[this.value] = 1; });
+					var ORDER = ['精像', '精武', '精羅', '精械', '精生', '精元'];
+					cardData.forEach(function (c) {
+						if (!/シグニ|レゾナ/.test(c[TYPE])) return;
+						asClassParts(c[CLASS]).forEach(function (p) { if (/^精/.test(p) && !have[p]) found[p] = 1; });
+					});
+					var list = Object.keys(found).sort(function (a, b) {
+						var ra = ORDER.indexOf(a.split('：')[0]), rb = ORDER.indexOf(b.split('：')[0]);
+						return (ra - rb) || (a < b ? -1 : a > b ? 1 : 0);
+					});
+					if (!list.length) return;
+					var $orig = $t.find('option').not('[value="0"]');
+					var html = '<optgroup label="精（無印／キー）">' + list.map(function (p) { return '<option value="' + p + '">' + p + '</option>'; }).join('') + '</optgroup>';
+					$t.find('option[value="0"]').after(html + '<optgroup label="奏（DIVA）" id="asTypeDivaGroup"></optgroup>');
+					$orig.appendTo('#asTypeDivaGroup');
+				})();
 				var $l = $('#selectLRIG');
 				var have = {};
 				$l.find('option').each(function () { have[this.value] = 1; });

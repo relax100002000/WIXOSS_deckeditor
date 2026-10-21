@@ -44,7 +44,7 @@
 			fields[key] = dash(v);
 		}
 		var kind = (fields['カード種類'] || '').replace(/\s*\n\s*/g, ' ');
-		var cls = fields['カードタイプ'] || '';
+		var cls = (fields['カードタイプ'] || '').replace(/\s*\n\s*：/g, '：').replace(/\s*\n\s*/g, '/');
 		var isLrig = kind === 'ルリグ';
 		var cost = isLrig ? (fields['グロウコスト'] || '') : (fields['コスト'] || '');
 		cost = cost.replace(/\n/g, '');

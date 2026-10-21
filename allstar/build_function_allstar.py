@@ -116,6 +116,18 @@ must_replace("""			if(!$('#level4').is(":checked"))
 				}
 			}""")
 
+# 2g) TYPE filter understands combined classes ("精武：アーム/ウェポン", "精像：悪魔/精武：遊具");
+#     LRIG filter matches combined LRIG types ("花代/ユヅキ") and ALLSTAR "X限定" cards
+must_replace("""			if(cardData[i][CLASS].indexOf($('#selectType').val()) == -1)""",
+             """			if(!asClassMatch(cardData[i][CLASS], $('#selectType').val()))""")
+must_replace("""		if($('#selectLRIG').val() != 0)
+		{""", """		if($('#selectLRIG').val() != 0 && !asLrigMatch(cardData[i], $('#selectLRIG').val()))
+		{
+			continue;
+		}
+		if(false)   // original LRIG filter replaced by asLrigMatch()
+		{""")
+
 # 3) addDeck: ALLSTAR deck rules
 a = s.index('function addDeck(x)')
 b = s.index('function downloadBlobopenbatoru')
@@ -393,6 +405,43 @@ rearrange_ldeck = function()
 	}
 	return ret;
 };
+
+// ---- TYPE / LRIG filters ----
+// "精武：アーム/ウェポン" -> ["精武：アーム", "精武：ウェポン"]; "精像：悪魔/精武：遊具" -> both; 獸 typo -> 獣
+function asClassParts(cls)
+{
+	var parts = String(cls || "").replace(/獸/g, "獣").split(/[\/\n]/), out = [], prefix = "";
+	for(var k = 0; k < parts.length; k++)
+	{
+		var t = parts[k].replace(/\s+/g, "");
+		if(!t) continue;
+		var m = t.match(/^(.+?)：(.+)$/);
+		if(m) { prefix = m[1]; out.push(t); }
+		else if(prefix && !/^(精|奏)/.test(t)) out.push(prefix + "：" + t);
+		else out.push(t);
+	}
+	return out;
+}
+function asClassMatch(cls, value)
+{
+	var parts = asClassParts(cls);
+	value = String(value).replace(/獸/g, "獣");
+	for(var k = 0; k < parts.length; k++)
+	{
+		if(parts[k] == value) return true;
+	}
+	return String(cls).indexOf(value) != -1;   // e.g. faction names inside the class field
+}
+function asLrigMatch(card, value)
+{
+	var types = String(card[CLASS] || "").split("/");
+	if(card[TYPE] == "ルリグ" || card[TYPE] == "アシストルリグ")
+	{
+		return types.indexOf(value) != -1;
+	}
+	var lim = String(card[TEAM] || "").match(/^(.+)限定$/);   // ALLSTAR: "タマ限定", "花代/ユヅキ限定"
+	return !!(lim && lim[1].split("/").indexOf(value) != -1);
+}
 
 // icons that only appear on ALLSTAR-era text
 var asOrigStrToImg = str_to_img;

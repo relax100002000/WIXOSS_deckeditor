@@ -196,6 +196,7 @@ function writeOutput(cache, products, outPath) {
 	out += order.map((id) => {
 		const r = cache.cards[id].row.slice();
 		r[4] = String(r[4]).replace(/\s*\n\s*/g, ' ');
+		r[5] = String(r[5]).replace(/\s*\n\s*：/g, '：').replace(/\s*\n\s*/g, '/');   // card type with two classes: "精像：悪魔\n精武：遊具" -> "精像：悪魔/精武：遊具"
 		r[2] = cleanPromoName(id, r[2]);
 		return '\t[\n' + r.map((v, i) => '\t\t' + jsStr(v) + (i < r.length - 1 ? ', ' : ' ') + '//' + NAMES[i]).join('\n') + '\n\t]';
 	}).join(',\n');
