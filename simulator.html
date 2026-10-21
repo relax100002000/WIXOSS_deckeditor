@@ -50,7 +50,7 @@ select,textarea,input{background:#0b2240;color:var(--txt);border:1px solid #3b7c
 .sbadge{position:absolute;font-size:11px;background:#d9534f;color:#fff;border-radius:8px;padding:0 5px;z-index:900;pointer-events:none}
 #ghost{position:fixed;z-index:5000;pointer-events:none;transform-origin:0 0;opacity:.9}
 #ghost .card{position:relative;left:0!important;top:0!important}
-#side{flex:1;min-width:280px;max-width:380px;margin:6px 6px 6px 0;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+#side{flex:none;width:300px;margin:6px 6px 6px 0;display:flex;flex-direction:column;gap:6px;overflow:hidden}
 #panel{background:#0a1a2e;border:1px solid #1d3d63;border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:5px}
 #panel h3{margin:0;font-size:13px;color:#ffd75e}
 .phases{display:flex;flex-wrap:wrap;gap:2px}
@@ -59,13 +59,14 @@ select,textarea,input{background:#0b2240;color:var(--txt);border:1px solid #3b7c
 .prow{display:flex;gap:3px;flex-wrap:wrap;align-items:center;padding:4px;border-radius:6px;background:#0d2440}
 .prow.p1{background:#2a1424}
 .prow .cnt{font-size:11px;color:var(--muted);width:100%}
+#pvCol{flex:1;min-width:260px;max-width:400px;margin:6px 6px 6px 0;display:flex;flex-direction:column}
 #preview{background:#0a1a2e;border:1px solid #1d3d63;border-radius:8px;padding:8px;flex:1;overflow:auto;user-select:text;min-height:120px}
 #preview img{width:100%;max-width:260px;border-radius:10px;display:block;margin:0 auto 6px}
 #pvName{font-weight:bold;font-size:14px;color:#fff}
 #pvMeta{color:var(--muted);font-size:11px;margin:3px 0 6px}
 #pvText{font-size:12px;line-height:1.55}
 #pvText img{width:auto;height:16px;display:inline;border-radius:0;margin:0}
-#log{background:#0a1a2e;border:1px solid #1d3d63;border-radius:8px;padding:6px;height:140px;flex:none;overflow:auto;font-size:11px;color:var(--muted);user-select:text}
+#log{background:#0a1a2e;border:1px solid #1d3d63;border-radius:8px;padding:6px;flex:1;min-height:120px;overflow:auto;font-size:11px;color:var(--muted);user-select:text}
 #log .l1{color:#e7a7a7}#log .l0{color:#a7c8e7}
 #ctx{position:fixed;z-index:6000;background:#0d2440;border:1px solid #3b7cc0;border-radius:6px;padding:4px 0;min-width:170px;display:none;box-shadow:0 4px 14px rgba(0,0,0,.6)}
 #ctx div.i{padding:4px 14px;cursor:pointer;white-space:nowrap}
@@ -133,8 +134,10 @@ kbd{background:#1d3d63;border-radius:3px;padding:0 5px;font-size:11px}
 	<div id="boardWrap"><div id="board"></div></div>
 	<div id="side">
 		<div id="panel"></div>
-		<div id="preview"><div style="color:var(--muted)">滑鼠移到卡片上顯示詳細資料</div></div>
 		<div id="log"></div>
+	</div>
+	<div id="pvCol">
+		<div id="preview"><div style="color:var(--muted)">滑鼠移到卡片上顯示詳細資料</div></div>
 	</div>
 </div>
 <div id="ctx"></div>
@@ -777,7 +780,7 @@ document.addEventListener("contextmenu", function(e){
 /* ============ misc ============ */
 function showHelp(on){ document.getElementById("help").style.display = on ? "flex" : "none"; }
 function fit(){
-	var wrap = document.getElementById("boardWrap"), side = 290;
+	var wrap = document.getElementById("boardWrap"), side = 300 + 6 + 266;
 	var aw = innerWidth - side - 24, ah = innerHeight - 40 - 14;
 	SCALE = Math.max(0.35, Math.min(aw / BW, ah / BH, 1.4));
 	board.style.transform = "scale(" + SCALE + ")";
