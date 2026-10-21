@@ -10,6 +10,11 @@
 <style>
 :root{ --bg:#07111f; --zoneb:#2f6ea8; --accent:#5fc3ff; --txt:#dbe9f7; --muted:#7f9bb8; --p2:#ff8a8a; --p2b:#a84a4a; }
 *{box-sizing:border-box}
+img{image-orientation:from-image}
+/* img/*_rotate.jpg carry EXIF orientation 8, so browsers show them portrait with the art lying on its side
+   (image-orientation:none is ignored for file:// images). Turn them back 90deg inside a landscape box. */
+img.exifrot{position:absolute;width:71.4286%!important;height:140%!important;left:14.2857%;top:-20%;transform:rotate(90deg);object-fit:cover}
+.pvrot{position:relative;width:100%;max-width:340px;aspect-ratio:112/80;margin:0 auto 6px;overflow:hidden;border-radius:10px}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--txt);font-family:"Segoe UI","Meiryo","Microsoft JhengHei",sans-serif;font-size:13px;overflow:hidden;user-select:none}
 button{background:#163a63;color:var(--txt);border:1px solid #3b7cc0;border-radius:4px;padding:2px 7px;cursor:pointer;font-size:12px}
 button:hover{background:#1f4f86}
@@ -31,13 +36,15 @@ select,textarea,input{background:#0b2240;color:var(--txt);border:1px solid #3b7c
 .zone{position:absolute;border:1px solid var(--zoneb);border-radius:8px;background:rgba(16,41,74,.75)}
 .zone.p1{border-color:var(--p2b);background:rgba(70,24,40,.7)}
 .zone.hl{box-shadow:0 0 0 3px var(--accent) inset;background:rgba(40,90,150,.8)}
-.zlabel{position:absolute;left:6px;top:3px;font-size:11px;font-weight:bold;color:var(--accent);letter-spacing:1px;pointer-events:none}
+.zlabel{position:absolute;left:6px;top:3px;font-size:11px;font-weight:bold;color:var(--accent);letter-spacing:1px;pointer-events:none;white-space:normal;word-break:keep-all;overflow-wrap:anywhere;line-height:13px;max-width:calc(100% - 40px)}
 .zone.p1 .zlabel{color:var(--p2)}
+.zone.narrow .zlabel{max-width:calc(100% - 10px);letter-spacing:0}
+.zone.narrow .zcount{top:auto;bottom:3px}
 .zcount{position:absolute;right:6px;top:3px;font-size:11px;color:#fff;background:#1d4f86;border-radius:8px;padding:0 6px;pointer-events:none}
 .zone.p1 .zcount{background:#7a2e3e}
 .zone.free{background-image:linear-gradient(rgba(95,195,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(95,195,255,.07) 1px,transparent 1px);background-size:20px 20px}
-.card{position:absolute;width:70px;height:98px;border-radius:5px;cursor:grab;transition:transform .12s;background:#222 center/cover;box-shadow:0 1px 3px rgba(0,0,0,.6)}
-.card.land{width:98px;height:70px}
+.card{position:absolute;width:80px;height:112px;border-radius:5px;cursor:grab;transition:transform .12s;background:#222 center/cover;box-shadow:0 1px 3px rgba(0,0,0,.6)}
+.card.land{width:112px;height:80px}
 .card img{width:100%;height:100%;border-radius:5px;display:block;pointer-events:none;object-fit:cover}
 .card.down{transform:rotate(90deg)}
 .card.frozen::before{content:"凍結";position:absolute;inset:0;border-radius:5px;background:rgba(120,200,255,.45);color:#003;font-weight:bold;display:flex;align-items:center;justify-content:center;font-size:14px;z-index:2;pointer-events:none}
@@ -80,6 +87,8 @@ select,textarea,input{background:#0b2240;color:var(--txt);border:1px solid #3b7c
 #ctx div.sub::after{content:"▶";position:absolute;right:6px;font-size:9px;top:6px}
 #ctx div.sub > .menu{display:none;position:absolute;left:100%;top:-4px;background:#0d2440;border:1px solid #3b7cc0;border-radius:6px;padding:4px 0;min-width:150px}
 #ctx div.sub:hover > .menu{display:block}
+#hoverZoom{position:fixed;z-index:5500;pointer-events:none;display:none;border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,.8);border:2px solid #5fc3ff;background:#111}
+#hoverZoom img{display:block;width:100%;height:100%;border-radius:10px;object-fit:cover}
 #tkPicker{position:fixed;inset:0;z-index:6500;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center}
 #tkPicker .box{background:#0a1a2e;border:1px solid #5fc3ff;border-radius:10px;width:min(900px,92vw);max-height:86vh;display:flex;flex-direction:column}
 #tkPicker .hd{padding:8px 12px;background:#123a66;border-radius:10px 10px 0 0;display:flex;gap:8px;align-items:center;font-weight:bold}
@@ -124,6 +133,7 @@ kbd{background:#1d3d63;border-radius:3px;padding:0 5px;font-size:11px}
 	<span style="flex:1"></span>
 	<span id="netBadge" style="font-size:12px;color:var(--muted)"></span>
 	<button onclick="toggleNet()">🌐 連線對戰</button>
+	<label style="font-size:12px" title="滑鼠移到卡片上時在旁邊顯示放大圖"><input type="checkbox" id="zoomToggle" checked> Hover放大</label>
 	<button onclick="showHelp(true)">操作說明</button>
 	<a href="index.html">DIVA</a><a href="index_allstar.html">ALLSTAR</a>
 </div>
@@ -157,6 +167,7 @@ kbd{background:#1d3d63;border-radius:3px;padding:0 5px;font-size:11px}
 	</div>
 </div>
 <div id="ctx"></div>
+<div id="hoverZoom"><img alt=""></div>
 <div id="tkPicker" onclick="if(event.target===this)closeTokenPicker()"><div class="box">
 	<div class="hd"><span id="tkTitle"></span><input id="tkSearch" placeholder="搜尋卡名／卡號" oninput="renderTokenPicker()"><span style="flex:1"></span><button onclick="closeTokenPicker()">✕</button></div>
 	<div class="tabs"><span data-tab="gen" onclick="setTokenTab('gen')">トークン／クラフト</span><span data-tab="ba" onclick="setTokenTab('ba')">ブルアカ角色トークン</span></div>
@@ -172,7 +183,7 @@ kbd{background:#1d3d63;border-radius:3px;padding:0 5px;font-size:11px}
 	<b>右鍵：</b>ダウン／アップ、翻面、凍結、移動（送回<b>卡片持有者</b>的各區域）、スタック操作；右鍵牌堆＝ドロー、シャッフル、查看、上からN枚…<br>
 	<b>トークン：</b>在任一區域或卡片上按右鍵 →「トークンを置く…」（一般トークン／クラフト）或「ブルアカ角色トークンを置く…」，可搜尋；放在已有卡的シグニ／ルリグ上會問上／下。トークン右上角有「TK」標記，不要時右鍵「このトークンを取り除く」。<br>
 	<b>雙擊：</b>場上卡片＝ダウン／アップ；メインデッキ＝ドロー；其他牌堆＝查看。<br>
-	<b>快捷鍵（指著卡片）：</b><kbd>D</kbd> ダウン　<kbd>F</kbd> 翻面　<kbd>R</kbd> 凍結　<kbd>Ctrl+Z</kbd> 元に戻す<br>
+	<b>空白鍵：</b>跳到下一個フェイズ（エンドの次はターン終了・交代）。　<b>快捷鍵（指著卡片）：</b><kbd>D</kbd> ダウン　<kbd>F</kbd> 翻面　<kbd>R</kbd> 凍結　<kbd>Ctrl+Z</kbd> 元に戻す<br>
 	<b>手札を伏せる：</b>面板中各玩家可勾選，把該玩家手牌顯示為背面（一人分飾兩角時可不勾）。<br>
 	橘色外框＝放在對方區域的卡（控制權移轉等）。不含自動效果，所有處理請手動操作。<br>
 	<div style="text-align:right;margin-top:8px"><button onclick="showHelp(false)">關閉</button></div>
@@ -208,23 +219,24 @@ function isLand(c){ var t = ctype(c); return ROT_IDS.has(c.id) || t === "キー"
 function imgOf(c){ return ROT_IDS.has(c.id) ? "img/" + c.id + "_rotate.jpg" : (row(c)[SRC] || BACK); }
 
 /* ============ zones (two players) ============ */
-var CW = 70, CH = 98, BW = 1240, HALF = 605, BH = 1220;
+var CW = 80, CH = 112, BW = 1240, HALF = 605, BH = 1220;
 var PN = ["P1", "P2"];
 // layout for the player sitting at the bottom; P2 is the 180° mirror on the top half
+// symmetric around the board centre, so the mirrored opponent's SIGNI zones line up with ours
 var BASE = {
-	ener:   {name:"エナゾーン",       kind:"col",   face:true,  x:10,   y:5,   w:140, h:355},
-	check:  {name:"チェックゾーン",   kind:"row",   face:true,  x:10,   y:365, w:140, h:120},
-	signi1: {name:"シグニゾーン",     kind:"stack", face:true,  x:160,  y:5,   w:226, h:150, field:true},
-	signi2: {name:"シグニゾーン",     kind:"stack", face:true,  x:397,  y:5,   w:226, h:150, field:true},
-	signi3: {name:"シグニゾーン",     kind:"stack", face:true,  x:634,  y:5,   w:226, h:150, field:true},
-	lrig:   {name:"ルリグゾーン",     kind:"free",  face:true,  x:160,  y:160, w:700, h:200, field:true},
-	life:   {name:"ライフクロス",     kind:"row",   face:false, x:160,  y:365, w:700, h:120},
-	ldeck:  {name:"ルリグデッキ",     kind:"row",   face:true,  x:870,  y:365, w:360, h:120},
-	deck:   {name:"メインデッキ",     kind:"pile",  face:false, x:870,  y:5,   w:130, h:175},
-	trash:  {name:"トラッシュ",       kind:"pile",  face:true,  x:1010, y:5,   w:220, h:175},
-	ltrash: {name:"ルリグトラッシュ", kind:"pile",  face:true,  x:870,  y:185, w:130, h:175},
-	free:   {name:"除外／その他",     kind:"pile",  face:true,  x:1010, y:185, w:220, h:175},
-	hand:   {name:"手札",             kind:"row",   face:true,  x:10,   y:490, w:1220,h:110}
+	ener:   {name:"エナゾーン",       kind:"col",   face:true,  sideways:true, x:10, y:5, w:140, h:470},
+	free:   {name:"除外／その他",     kind:"pile",  face:true,  x:158,  y:5,   w:106, h:170},
+	check:  {name:"チェックゾーン",   kind:"row",   face:true,  x:158,  y:180, w:106, h:170},
+	signi1: {name:"シグニゾーン",     kind:"stack", face:true,  x:270,  y:5,   w:226, h:165, field:true},
+	signi2: {name:"シグニゾーン",     kind:"stack", face:true,  x:507,  y:5,   w:226, h:165, field:true},
+	signi3: {name:"シグニゾーン",     kind:"stack", face:true,  x:744,  y:5,   w:226, h:165, field:true},
+	lrig:   {name:"ルリグゾーン",     kind:"free",  face:true,  x:270,  y:175, w:700, h:175, field:true},
+	deck:   {name:"メインデッキ",     kind:"pile",  face:false, x:976,  y:5,   w:106, h:170},
+	trash:  {name:"トラッシュ",       kind:"pile",  face:true,  x:976,  y:180, w:106, h:170},
+	ldeck:  {name:"ルリグデッキ",     kind:"col",   face:true,  x:1090, y:5,   w:140, h:470},
+	ltrash: {name:"ルリグトラッシュ", kind:"pile",  face:true,  x:1090, y:480, w:140, h:120},
+	life:   {name:"ライフクロス",     kind:"row",   face:false, sideways:true, x:158, y:355, w:924, h:120},
+	hand:   {name:"手札",             kind:"row",   face:true,  x:10,   y:480, w:1074,h:120}
 };
 var Z = {};
 [0, 1].forEach(function(p){
@@ -292,7 +304,7 @@ function moveCard(uid, t, opt){
 	var c = st.cards[uid], wasUp = c.up, L = removeCard(uid); if (!L) return null;
 	var sid = placeCard(uid, t);
 	if (L.zone !== t.zone) {
-		c.down = false; c.frozen = false;
+		c.down = !!Z[t.zone].sideways; c.frozen = false;   // エナ・ライフクロスは横向きで置く
 		c.up = opt.face != null ? opt.face : Z[t.zone].face;
 	}
 	if (opt.forceFace != null) c.up = opt.forceFace;
@@ -428,7 +440,7 @@ function prepareGame(){
 			var lv0 = st.zones[ld].filter(function(u){ var r = row(st.cards[u]); return r[LEVEL] === "0" && (r[TYPE] === "ルリグ" || r[TYPE] === "アシストルリグ"); });
 			var center = lv0.filter(function(u){ return row(st.cards[u])[TYPE] === "ルリグ"; })[0];
 			var assists = lv0.filter(function(u){ return u !== center; });
-			var cx = BASE.lrig.w / 2 - CW / 2, cy = 50;
+			var cx = BASE.lrig.w / 2 - CW / 2, cy = 26;
 			if (center != null) moveCard(center, {zone:lz, x:cx, y:cy}, {face:false, silent:true});
 			var pos = [cx - 200, cx + 200, cx - 320, cx + 320];
 			assists.forEach(function(u, i){ moveCard(u, {zone:lz, x:pos[i] != null ? pos[i] : 20 + i * 90, y:cy}, {face:false, silent:true}); });
@@ -457,7 +469,7 @@ var board = document.getElementById("board"), zoneEls = {}, halfEls = [], pool =
 	[1, 0].forEach(function(p){ var h = document.createElement("div"); h.className = "half p" + p; board.appendChild(h); halfEls[p] = h; });
 	for (var k in Z) {
 		var z = Z[k], el = document.createElement("div");
-		el.className = "zone p" + z.p + (z.kind === "free" ? " free" : ""); el.dataset.zone = k;
+		el.className = "zone p" + z.p + (z.kind === "free" ? " free" : "") + (z.w < 150 && z.base !== "ener" ? " narrow" : ""); el.dataset.zone = k;
 		el.style.cssText = "width:" + z.w + "px;height:" + z.h + "px";
 		el.innerHTML = '<span class="zlabel">' + z.name + '</span><span class="zcount"></span>';
 		board.appendChild(el); zoneEls[k] = el;
@@ -487,6 +499,7 @@ function cardEl(uid){
 }
 function decorate(el, c, showFace){
 	var src = showFace ? imgOf(c) : BACK, img = el.firstChild;
+	img.classList.toggle("exifrot", showFace && ROT_IDS.has(c.id));
 	if (img.dataset.src !== src) { img.dataset.src = src; el.classList.remove("noimg"); img.src = src; }
 	el.dataset.name = cname(c);
 	el.classList.toggle("land", isLand(c));
@@ -531,7 +544,7 @@ function render(){
 		var z = Z[k], arr = st.zones[k], cnt = 0;
 		if (z.kind === "pile") {
 			cnt = arr.length;
-			if (arr.length) { var u = arr[arr.length - 1], d = dims(st.cards[u]); put(u, k, (z.w - d[0]) / 2, 20 + (z.h - 20 - d[1]) / 2, 10); }
+			if (arr.length) { var u = arr[arr.length - 1], d = dims(st.cards[u]); put(u, k, (z.w - d[0]) / 2, Math.max(4, Math.min(20 + (z.h - 20 - d[1]) / 2, z.h - d[1] - 4)), 10); }
 		} else if (z.kind === "stack") {
 			cnt = arr.length;
 			var area = z.h - 26, n = arr.length, off = n > 1 ? Math.max(4, Math.min(14, (area - CH) / (n - 1))) : 0;
@@ -540,13 +553,19 @@ function render(){
 			arr.forEach(function(s){ cnt += s.c.length; drawStack(k, s.c, s.x, s.y, Math.max(CH, z.h - s.y - 4)); });
 		} else {
 			cnt = arr.length;
+			// position by the card's visual box (a ダウン card is rotated 90°)
 			var horiz = z.kind === "row", n2 = arr.length, sp;
-			if (horiz) { var len = z.w - 12, lastW = n2 ? dims(st.cards[arr[n2 - 1]])[0] : CW; sp = n2 > 1 ? Math.min(CW + 4, (len - lastW) / (n2 - 1)) : 0; }
-			else { var lenv = z.h - 26; sp = n2 > 1 ? Math.min(34, (lenv - CH) / (n2 - 1)) : 0; }
+			var vis = function(u){ var d = dims(st.cards[u]); return st.cards[u].down ? [d[1], d[0]] : d; };
+			var maxW = 0, maxH = 0; arr.forEach(function(u){ var v = vis(u); maxW = Math.max(maxW, v[0]); maxH = Math.max(maxH, v[1]); });
+			if (horiz) { var len = z.w - 12, lastW = n2 ? vis(arr[n2 - 1])[0] : CW; sp = n2 > 1 ? Math.min(maxW + 4, (len - lastW) / (n2 - 1)) : 0; }
+			else { var lenv = z.h - 26, lastH = n2 ? vis(arr[n2 - 1])[1] : CH; sp = n2 > 1 ? Math.min(Math.max(34, maxH * 0.42), (lenv - lastH) / (n2 - 1)) : 0; }
+			var rowOff = 0;   // 手札は中央寄せ
+			if (horiz && z.base === "hand" && n2) { var used2 = (n2 - 1) * sp + vis(arr[n2 - 1])[0]; rowOff = Math.max(0, (len - used2) / 2); }
 			arr.forEach(function(u, i){
-				var d = dims(st.cards[u]);
-				if (horiz) put(u, k, 6 + i * sp + (CW - d[0]) / 2, Math.max(4, (z.h - d[1]) / 2) + (z.h >= d[1] + 22 ? 9 : 0), 10 + i);
-				else put(u, k, (z.w - d[0]) / 2, 20 + i * sp + (CH - d[1]) / 2, 10 + i);
+				var d = dims(st.cards[u]), v = vis(u), vx, vy;
+				if (horiz) { vx = 6 + rowOff + i * sp; vy = Math.max(4, (z.h - v[1]) / 2) + (z.h >= v[1] + 22 ? 9 : 0); }
+				else { vx = (z.w - v[0]) / 2; vy = 20 + i * sp; }
+				put(u, k, vx + (v[0] - d[0]) / 2, vy + (v[1] - d[1]) / 2, 10 + i);
 			});
 		}
 		zoneEls[k].querySelector(".zcount").textContent = cnt;
@@ -582,7 +601,9 @@ function showPreview(uid, fromViewer){
 	var r = row(c), meta = [];
 	[[TYPE,""],[CLASS,""],[COLOR,"色:"],[LEVEL,"Lv"],[LIMIT,"リミット"],[POWER,"パワー"],[COST,"コスト"],[TIMING,""],[COIN,"コイン"]].forEach(function(m){ if (r[m[0]]) meta.push(m[1] + r[m[0]]); });
 	if (r[LB] === "1") meta.push("LB");
-	pv.innerHTML = '<img src="' + imgOf(c) + '" onerror="this.style.display=\'none\'"><div id="pvName">' + (r[NAME] || c.id) + '</div><div id="pvMeta"><span class="ptag p' + c.owner + '">' + PN[c.owner] + '</span> ' + c.id + '　' + meta.join(' / ') + (c.up ? '' : '　（裏向き）') + '</div><div id="pvText">' + (r[JP_TEXT] || '') + (r[TW_TEXT] ? '<hr style="border-color:#24496f">' + r[TW_TEXT] : '') + '</div>';
+	var pvImg = '<img src="' + imgOf(c) + '"' + (ROT_IDS.has(c.id) ? ' class="exifrot"' : '') + ' onerror="this.style.display=\'none\'">';
+	if (ROT_IDS.has(c.id)) pvImg = '<div class="pvrot">' + pvImg + '</div>';
+	pv.innerHTML = pvImg + '<div id="pvName">' + (r[NAME] || c.id) + '</div><div id="pvMeta"><span class="ptag p' + c.owner + '">' + PN[c.owner] + '</span> ' + c.id + '　' + meta.join(' / ') + (c.up ? '' : '　（裏向き）') + '</div><div id="pvText">' + (r[JP_TEXT] || '') + (r[TW_TEXT] ? '<hr style="border-color:#24496f">' + r[TW_TEXT] : '') + '</div>';
 }
 function addLog(msg, p){ if (!NET.applying) pendingLogs.push({m:msg, p:p}); var l = document.getElementById("log"), d = document.createElement("div"); d.textContent = msg; if (p === 0 || p === 1) d.className = "l" + p; l.appendChild(d); l.scrollTop = l.scrollHeight; }
 
@@ -725,12 +746,36 @@ document.addEventListener("dblclick", function(e){
 });
 document.addEventListener("mouseover", function(e){
 	var el = e.target.closest && e.target.closest(".card");
-	if (el && !drag) { hoverUid = +el.dataset.uid; showPreview(hoverUid, !!el.dataset.viewer); }
-	else if (!el) hoverUid = null;
+	if (el && !drag) { hoverUid = +el.dataset.uid; showPreview(hoverUid, !!el.dataset.viewer); showZoom(el); }
+	else if (!el) { hoverUid = null; hideZoom(); }
 });
+/* ---- hover zoom: a large image beside the hovered card (never covers it) ---- */
+var zoomBox = document.getElementById("hoverZoom");
+zoomBox.firstChild.onerror = function(){ hideZoom(); };
+(function(){ try { var v = localStorage.getItem("WX_SIM_ZOOM"); if (v === "0") document.getElementById("zoomToggle").checked = false; } catch(e) {} })();
+document.getElementById("zoomToggle").addEventListener("change", function(){ try { localStorage.setItem("WX_SIM_ZOOM", this.checked ? "1" : "0"); } catch(e) {} if (!this.checked) hideZoom(); });
+function hideZoom(){ zoomBox.style.display = "none"; }
+function showZoom(el){
+	if (!document.getElementById("zoomToggle").checked) return;
+	var uid = +el.dataset.uid, c = st.cards[uid]; if (!c) return hideZoom();
+	var L = findCard(uid);
+	if (!el.dataset.viewer && L && !canSee(c, L.zone)) return hideZoom();
+	var land = isLand(c), W = land ? 340 : 250, H = land ? 243 : 349;
+	var img = zoomBox.firstChild, src = imgOf(c);
+	img.classList.toggle("exifrot", ROT_IDS.has(c.id));
+	if (img.getAttribute("src") !== src) img.src = src;
+	zoomBox.style.width = W + "px"; zoomBox.style.height = H + "px";
+	var r = el.getBoundingClientRect(), gap = 12;
+	var x = r.right + gap; if (x + W > innerWidth - 4) x = r.left - gap - W; if (x < 4) x = 4;
+	var y = r.top + r.height / 2 - H / 2; y = Math.max(44, Math.min(innerHeight - H - 4, y));
+	zoomBox.style.left = x + "px"; zoomBox.style.top = y + "px"; zoomBox.style.display = "block";
+}
+window.addEventListener("pointerdown", hideZoom, true);
+window.addEventListener("scroll", hideZoom, true);
 document.addEventListener("keydown", function(e){
 	if (e.target.tagName === "TEXTAREA" || e.target.tagName === "INPUT") return;
 	if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") { e.preventDefault(); undo(); return; }
+	if (e.code === "Space" || e.key === " ") { e.preventDefault(); if (document.activeElement && document.activeElement.tagName === "BUTTON") document.activeElement.blur(); if (!e.repeat && document.getElementById("tkPicker").style.display !== "flex") nextPhase(); return; }
 	if (e.key === "Escape") { hideCtx(); showHelp(false); closeTokenPicker(); return; }
 	if (hoverUid == null || !st.cards[hoverUid]) return;
 	var k = e.key.toLowerCase();
