@@ -5,6 +5,7 @@
 <title>WIXOSS 練牌模擬器</title>
 <script src="js/card_info.js"></script>
 <script src="js/card_info_allstar.js"></script>
+<script src="js/token_info.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
 <style>
 :root{ --bg:#07111f; --zoneb:#2f6ea8; --accent:#5fc3ff; --txt:#dbe9f7; --muted:#7f9bb8; --p2:#ff8a8a; --p2b:#a84a4a; }
@@ -47,6 +48,8 @@ select,textarea,input{background:#0b2240;color:var(--txt);border:1px solid #3b7c
 .card.dragsrc{opacity:.3}
 .card:hover{box-shadow:0 0 0 2px var(--accent)}
 .card.foreign{outline:2px solid #ffb347}
+.card.msel{outline:3px solid #ffd75e;box-shadow:0 0 10px #ffd75e;margin-top:-10px}
+.mullbar{width:100%;background:#4a3d10;border:1px solid #ffd75e;border-radius:4px;padding:3px 5px;font-size:11px;color:#ffe9a8;display:flex;gap:4px;align-items:center;flex-wrap:wrap}
 .sbadge{position:absolute;font-size:11px;background:#d9534f;color:#fff;border-radius:8px;padding:0 5px;z-index:900;pointer-events:none}
 #ghost{position:fixed;z-index:5000;pointer-events:none;transform-origin:0 0;opacity:.9}
 #ghost .card{position:relative;left:0!important;top:0!important}
@@ -77,6 +80,19 @@ select,textarea,input{background:#0b2240;color:var(--txt);border:1px solid #3b7c
 #ctx div.sub::after{content:"▶";position:absolute;right:6px;font-size:9px;top:6px}
 #ctx div.sub > .menu{display:none;position:absolute;left:100%;top:-4px;background:#0d2440;border:1px solid #3b7cc0;border-radius:6px;padding:4px 0;min-width:150px}
 #ctx div.sub:hover > .menu{display:block}
+#tkPicker{position:fixed;inset:0;z-index:6500;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center}
+#tkPicker .box{background:#0a1a2e;border:1px solid #5fc3ff;border-radius:10px;width:min(900px,92vw);max-height:86vh;display:flex;flex-direction:column}
+#tkPicker .hd{padding:8px 12px;background:#123a66;border-radius:10px 10px 0 0;display:flex;gap:8px;align-items:center;font-weight:bold}
+#tkPicker .hd input{flex:1;max-width:260px;padding:3px 6px;user-select:text}
+#tkPicker .tabs{display:flex;gap:4px;padding:6px 12px 0}
+#tkPicker .tabs span{padding:3px 10px;border-radius:6px 6px 0 0;cursor:pointer;color:var(--muted);border:1px solid #24496f;border-bottom:none}
+#tkPicker .tabs span.on{background:#1f4f86;color:#fff}
+#tkPicker .grid{padding:10px 12px;overflow:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
+#tkPicker .it{cursor:pointer;border-radius:6px;padding:4px;text-align:center;font-size:11px;line-height:1.3;border:1px solid transparent}
+#tkPicker .it:hover{border-color:#ffd75e;background:#13304f}
+#tkPicker .it img{width:84px;height:117px;object-fit:cover;border-radius:5px;display:block;margin:0 auto 3px;background:#222}
+#tkPicker .grp{grid-column:1/-1;color:var(--accent);font-weight:bold;border-bottom:1px solid #24496f;padding-top:4px}
+.card.token::after{content:"TK";position:absolute;right:2px;top:2px;font-size:9px;font-weight:bold;background:#ffd75e;color:#300;border-radius:3px;padding:0 3px;z-index:3;pointer-events:none}
 .viewer{position:fixed;z-index:4000;background:#0a1a2e;border:1px solid #5fc3ff;border-radius:8px;box-shadow:0 6px 24px rgba(0,0,0,.7);width:620px;max-height:70vh;display:flex;flex-direction:column}
 .viewer .vh{padding:6px 10px;background:#123a66;border-radius:8px 8px 0 0;cursor:move;display:flex;justify-content:space-between;align-items:center;font-weight:bold}
 .viewer.p1 .vh{background:#5e2234}
@@ -141,14 +157,20 @@ kbd{background:#1d3d63;border-radius:3px;padding:0 5px;font-size:11px}
 	</div>
 </div>
 <div id="ctx"></div>
+<div id="tkPicker" onclick="if(event.target===this)closeTokenPicker()"><div class="box">
+	<div class="hd"><span id="tkTitle"></span><input id="tkSearch" placeholder="搜尋卡名／卡號" oninput="renderTokenPicker()"><span style="flex:1"></span><button onclick="closeTokenPicker()">✕</button></div>
+	<div class="tabs"><span data-tab="gen" onclick="setTokenTab('gen')">トークン／クラフト</span><span data-tab="ba" onclick="setTokenTab('ba')">ブルアカ角色トークン</span></div>
+	<div class="grid" id="tkGrid"></div>
+</div></div>
 <div id="help" onclick="if(event.target===this)showHelp(false)"><div>
 	<h2>操作說明（雙人）</h2>
 	<b>盤面：</b>P1＝藍、P2＝紅，兩邊面對面（位置上下左右對調）。黃框＝目前回合玩家。本機時 P1 在下；連線時自己永遠在下。<br>
 	<b>連線對戰：</b>按「🌐 連線對戰」→ 一方建立房間，把 6 碼代碼給對方，對方輸入後加入。之後所有操作即時同步（Ctrl+Z 會復原最後一個動作，不論是誰做的）。<br>
 	<b>讀牌組：</b>上方兩個選單分別給 P1／P2 選牌組編輯器（DIVA／ALLSTAR）存的牌組；也可「貼上コード」後選要讀入哪一方。<br>
-	<b>開局：</b>①準備（雙方 Lv0 裏向き＋洗牌＋5張）→ 各自マリガン → ②ゲーム開始。先攻在右側面板「先攻／ターンプレイヤー」切換。<br>
-	<b>拖曳：</b>左鍵拖曳卡片到任何區域（包含對方的區域，例如奪取）；拖到シグニ／ルリグの既有卡上＝疊上去；<kbd>Shift</kbd>＋拖曳＝整疊移動。<br>
+	<b>開局：</b>①準備（雙方 Lv0 裏向き＋洗牌＋5張）→ 面板「調度」：點選要換的手牌→確定（放到デッキ下、抽同樣張數、洗牌）→ ②ゲーム開始。先攻在右側面板「先攻／ターンプレイヤー」切換。<br>
+	<b>拖曳：</b>左鍵拖曳卡片到任何區域（包含對方的區域，例如奪取）；拖到已有卡的シグニゾーン或ルリグ上，會跳出選單：表向きで上に重ねる／表向きで下に置く／裏向きで下に置く；<kbd>Shift</kbd>＋拖曳＝整疊移動。<br>
 	<b>右鍵：</b>ダウン／アップ、翻面、凍結、移動（送回<b>卡片持有者</b>的各區域）、スタック操作；右鍵牌堆＝ドロー、シャッフル、查看、上からN枚…<br>
+	<b>トークン：</b>在任一區域或卡片上按右鍵 →「トークンを置く…」（一般トークン／クラフト）或「ブルアカ角色トークンを置く…」，可搜尋；放在已有卡的シグニ／ルリグ上會問上／下。トークン右上角有「TK」標記，不要時右鍵「このトークンを取り除く」。<br>
 	<b>雙擊：</b>場上卡片＝ダウン／アップ；メインデッキ＝ドロー；其他牌堆＝查看。<br>
 	<b>快捷鍵（指著卡片）：</b><kbd>D</kbd> ダウン　<kbd>F</kbd> 翻面　<kbd>R</kbd> 凍結　<kbd>Ctrl+Z</kbd> 元に戻す<br>
 	<b>手札を伏せる：</b>面板中各玩家可勾選，把該玩家手牌顯示為背面（一人分飾兩角時可不勾）。<br>
@@ -168,6 +190,7 @@ if (typeof cardData === "undefined") {
 	var all = cardData;
 	if (typeof cardDataAllstar !== 'undefined') all = cardData.concat(cardDataAllstar);
 	for (var i = 0; i < all.length; i++) { var r = all[i]; if (r && r[0] && !DB[r[0]]) DB[r[0]] = r; }
+	if (typeof tokenData !== "undefined") tokenData.forEach(function(r){ if (r && r[0] && !DB[r[0]]) DB[r[0]] = r; });
 })();
 var ROT_IDS = new Set(["PR-Di035"]);
 (function(){
@@ -272,16 +295,17 @@ function moveCard(uid, t, opt){
 		c.down = false; c.frozen = false;
 		c.up = opt.face != null ? opt.face : Z[t.zone].face;
 	}
+	if (opt.forceFace != null) c.up = opt.forceFace;
 	if (!opt.silent) {
 		var shown = (wasUp && publicBase(Z[L.zone].base)) || (c.up && publicBase(Z[t.zone].base)) ? cname(c) : "カード";
 		addLog(Z[L.zone].name + " → " + Z[t.zone].name + (t.bottom ? "（下）" : "") + "：" + shown, c.owner);
 	}
 	return sid;
 }
-function moveMany(uids, t, label){
+function moveMany(uids, t, label, opt){
 	var tt = Object.assign({}, t);
 	for (var i = 0; i < uids.length; i++) {
-		var sid = moveCard(uids[i], tt, {silent:true});
+		var sid = moveCard(uids[i], tt, Object.assign({silent:true}, opt || {}));
 		if (Z[t.zone].kind === "free" && sid != null) tt.stackId = sid;
 		if (tt.index != null) tt.index++;
 	}
@@ -300,6 +324,32 @@ function topTo(p, base, n){ act(function(){ var k = 0; for (var i = 0; i < n; i+
 function doShuffle(zone){ act(function(){ shuffle(zone); addLog(Z[zone].name + "をシャッフル", Z[zone].p); }); }
 function upAll(p){ act(function(){ for (var k in Z) { if (Z[k].p !== p || !Z[k].field) continue; eachIn(k, function(u){ st.cards[u].down = false; }); } addLog(PN[p] + "：場のカードを全てアップ", p); }); }
 function eachIn(k, fn){ if (Z[k].kind === "free") st.zones[k].forEach(function(s){ s.c.forEach(fn); }); else st.zones[k].forEach(fn); }
+/* ---- 調度 (mulligan): pick hand cards -> deck bottom, draw same number, shuffle ---- */
+var MULL = null; // {p, sel:[uids]}  (local UI only)
+function mullStart(p){
+	if (NET.seat != null && p !== NET.seat) { alert("連線中只能幫自己調度"); return; }
+	if (!st.zones[zk(p, "hand")].length) { alert(PN[p] + " の手札がありません"); return; }
+	MULL = {p:p, sel:[]}; render();
+}
+function mullCancel(){ MULL = null; render(); }
+function mullToggle(uid){
+	var i = MULL.sel.indexOf(uid);
+	if (i >= 0) MULL.sel.splice(i, 1); else MULL.sel.push(uid);
+	render();
+}
+function mullConfirm(){
+	if (!MULL) return;
+	var p = MULL.p, hand = st.zones[zk(p, "hand")];
+	var pick = hand.filter(function(u){ return MULL.sel.indexOf(u) >= 0; });
+	MULL = null;
+	act(function(){
+		pick.forEach(function(u){ moveCard(u, {zone:zk(p, "deck"), bottom:true}, {silent:true}); });
+		for (var i = 0; i < pick.length; i++) { var t = topOf(zk(p, "deck")); if (t != null) moveCard(t, {zone:zk(p, "hand")}, {silent:true}); }
+		shuffle(zk(p, "deck"));
+		st.players[p].mulled = true;
+		addLog(PN[p] + "：調度 " + pick.length + "枚（デッキの下に置き、同じ枚数ドローしてシャッフル）", p);
+	});
+}
 function crash(p){ act(function(){ var u = topOf(zk(p, "life")); if (u == null) { addLog(PN[p] + "：ライフクロスがありません", p); return; } moveCard(u, {zone:zk(p, "check")}); }); }
 function setPhase(i){ act(function(){ st.phase = i; addLog("▶ " + PN[st.tp] + " " + PHASES[i] + "フェイズ", st.tp); }); }
 function nextPhase(){ if (st.phase < PHASES.length - 1) setPhase(st.phase + 1); else endTurn(); }
@@ -364,7 +414,7 @@ function resetPlayer(p){
 		} else st.zones[k] = st.zones[k].filter(function(u){ return st.cards[u].owner !== p; });
 	}
 	for (var u in st.cards) if (st.cards[u].owner === p) delete st.cards[u];
-	var P = st.players[p]; P.coin = 0;
+	var P = st.players[p]; P.coin = 0; P.mulled = false; if (MULL && MULL.p === p) MULL = null;
 	P.lrigCards.forEach(function(id){ st.zones[zk(p, "ldeck")].push(mkCard(id, p)); });
 	P.mainCards.forEach(function(id){ var u = mkCard(id, p); st.cards[u].up = false; st.zones[zk(p, "deck")].push(u); });
 }
@@ -387,7 +437,7 @@ function prepareGame(){
 			addLog(PN[p] + " 準備完了：Lv0ルリグ裏向き配置、シャッフル、5枚ドロー", p);
 		});
 		st.turn = 1; st.phase = 0;
-		addLog("各自マリガン後に②を押してください。");
+		addLog("各自「調度」（必要なら）後に②を押してください。");
 	});
 }
 function startGame(){
@@ -442,6 +492,7 @@ function decorate(el, c, showFace){
 	el.classList.toggle("land", isLand(c));
 	el.classList.toggle("down", !!c.down);
 	el.classList.toggle("frozen", !!c.frozen);
+	el.classList.toggle("token", !!c.token);
 	el.classList.toggle("back", !showFace);
 }
 function dims(c){ return isLand(c) ? [CH, CW] : [CW, CH]; }
@@ -464,6 +515,7 @@ function render(){
 		var el = cardEl(uid), c = st.cards[uid]; used.add(uid);
 		decorate(el, c, c.up && !isSecretFor(zone));
 		el.classList.toggle("foreign", c.owner !== Z[zone].p);
+		el.classList.toggle("msel", !!(MULL && Z[zone].base === "hand" && Z[zone].p === MULL.p && MULL.sel.indexOf(uid) >= 0));
 		el.style.left = x + "px"; el.style.top = y + "px"; el.style.zIndex = zi;
 		if (el.parentNode !== zoneEls[zone]) zoneEls[zone].appendChild(el);
 	}
@@ -512,6 +564,8 @@ function renderPanel(){
 		var P = st.players[p], c = function(b){ return st.zones[zk(p, b)].length; };
 		h += '<div class="prow p' + p + '"><span class="ptag p' + p + '">' + PN[p] + (NET.seat != null ? (p === NET.seat ? ' 自分' : ' 相手') : (p === VIEW ? ' 下' : ' 上')) + '</span><span style="max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px">' + esc(P.deckName || "（未選擇）") + '</span>'
 			+ '<span style="flex:1"></span>コイン<b style="color:#ffd75e;min-width:14px;text-align:center">' + P.coin + '</b><button onclick="coin(' + p + ',-1)">－</button><button onclick="coin(' + p + ',1)">＋</button>'
+			+ (MULL && MULL.p === p ? '<div class="mullbar">調度中：點選要換掉的手牌（' + MULL.sel.length + '枚）<button onclick="mullConfirm()">確定</button><button onclick="mullCancel()">取消</button></div>' : '')
+			+ '<button onclick="mullStart(' + p + ')"' + (NET.seat != null && p !== NET.seat ? ' disabled' : '') + '>調度' + (P.mulled ? '（済）' : '') + '</button>'
 			+ '<button onclick="draw(' + p + ',1)">ドロー</button><button onclick="topTo(' + p + ',\'ener\',1)">エナチャージ</button><button onclick="upAll(' + p + ')">全アップ</button><button onclick="doShuffle(\'' + zk(p, "deck") + '\')">シャッフル</button><button onclick="crash(' + p + ')">クラッシュ</button>'
 			+ (NET.seat != null ? '' : '<label style="font-size:11px"><input type="checkbox" ' + (P.hide ? "checked" : "") + ' onchange="toggleHide(' + p + ')">手札を伏せる</label>')
 			+ '<span class="cnt">デッキ ' + c("deck") + '　手札 ' + c("hand") + '　ライフ ' + c("life") + '　エナ ' + c("ener") + '　トラッシュ ' + c("trash") + '　ルリグデッキ ' + c("ldeck") + '</span></div>';
@@ -618,7 +672,10 @@ window.addEventListener("pointerup", function(e){
 	if (!drag) return;
 	var d = drag; drag = null;
 	document.querySelectorAll(".zone.hl").forEach(function(z){ z.classList.remove("hl"); });
-	if (!d.started) return;
+	if (!d.started) {
+		if (MULL && !d.fromViewer) { var Lm = findCard(d.uid); if (Lm && Z[Lm.zone].base === "hand" && Z[Lm.zone].p === MULL.p) mullToggle(d.uid); }
+		return;
+	}
 	d.ghost.remove(); d.el.classList.remove("dragsrc");
 	var zEl = zoneAt(e.clientX, e.clientY); if (!zEl) return;
 	var zone = zEl.dataset.zone, z = Z[zone], t = {zone:zone};
@@ -651,6 +708,8 @@ window.addEventListener("pointerup", function(e){
 			}
 		}
 	} else if (src.zone === zone) return;
+	// dropping onto an occupied SIGNI zone / an existing LRIG-zone stack -> ask how to place it
+	if ((z.kind === "stack" && st.zones[zone].length) || (z.kind === "free" && t.stackId != null)) { showDropMenu(e.clientX, e.clientY, moving, t); return; }
 	act(function(){ if (moving.length > 1) moveMany(moving, t, "スタックごと移動"); else moveCard(d.uid, t); });
 });
 
@@ -672,11 +731,35 @@ document.addEventListener("mouseover", function(e){
 document.addEventListener("keydown", function(e){
 	if (e.target.tagName === "TEXTAREA" || e.target.tagName === "INPUT") return;
 	if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") { e.preventDefault(); undo(); return; }
-	if (e.key === "Escape") { hideCtx(); showHelp(false); return; }
+	if (e.key === "Escape") { hideCtx(); showHelp(false); closeTokenPicker(); return; }
 	if (hoverUid == null || !st.cards[hoverUid]) return;
 	var k = e.key.toLowerCase();
 	if (k === "d") toggleProp(hoverUid, "down"); else if (k === "f") toggleProp(hoverUid, "up"); else if (k === "r") toggleProp(hoverUid, "frozen");
 });
+
+/* ============ drop-on-stack menu ============ */
+function doStackDrop(moving, t, bottom, face){
+	act(function(){
+		var tt = Object.assign({}, t, {bottom:bottom});
+		var list = bottom ? moving.slice().reverse() : moving.slice(); // keep the moved pile's order when tucking under
+		if (list.length > 1) moveMany(list, tt, "スタックごと移動" + (bottom ? "（下に" + (face ? "表向き" : "裏向き") + "）" : "（上に重ねる）"), {forceFace:face});
+		else moveCard(list[0], tt, {forceFace:face});
+	});
+}
+function showDropMenu(x, y, moving, t){
+	ctxOpenedAt = Date.now();
+	var arr = Z[t.zone].kind === "free" ? (stackById(t.stackId) || {c:[]}).c : st.zones[t.zone];
+	var topU = arr[arr.length - 1], topC = topU != null ? st.cards[topU] : null;
+	var head = Z[t.zone].name + (topC ? "：" + (topC.up ? cname(topC) : "（裏向き）") : "") + (moving.length > 1 ? "（" + moving.length + "枚）" : "");
+	showCtx(x, y, [
+		{head: head},
+		{label:"⬆ 表向きで上に重ねる", fn:function(){ doStackDrop(moving, t, false, true); }},
+		{label:"⬇ 表向きで下に置く", fn:function(){ doStackDrop(moving, t, true, true); }},
+		{label:"⬇ 裏向きで下に置く", fn:function(){ doStackDrop(moving, t, true, false); }},
+		"-",
+		{label:"キャンセル", fn:function(){}}
+	]);
+}
 
 /* ============ context menu ============ */
 function hideCtx(){ ctx.style.display = "none"; }
@@ -696,7 +779,8 @@ function showCtx(x, y, items){
 	ctx.style.left = Math.max(0, Math.min(x, innerWidth - w - 170)) + "px"; ctx.style.top = Math.max(0, Math.min(y, innerHeight - h - 4)) + "px";
 }
 ctx.addEventListener("click", function(e){ var i = e.target.closest("[data-f]"); if (!i) return; hideCtx(); ctxFns[+i.dataset.f](); });
-document.addEventListener("click", function(e){ if (!ctx.contains(e.target)) hideCtx(); });
+var ctxOpenedAt = 0;
+document.addEventListener("click", function(e){ if (Date.now() - ctxOpenedAt < 350) return; if (!ctx.contains(e.target)) hideCtx(); });
 
 function moveTargets(uid, p){
 	function mv(base, bottom, pp){ return function(){ act(function(){ moveCard(uid, {zone:zk(pp == null ? p : pp, base), bottom:bottom}); }); }; }
@@ -720,6 +804,76 @@ function moveTargets(uid, p){
 		]}
 	];
 }
+/* ============ tokens (js/token_info.js) ============ */
+var TK_ALL = (typeof tokenData !== "undefined") ? tokenData : [];
+function isBA(r){ return /-TKR\d+$/.test(r[0]); }
+var tkState = {target:null, tab:"gen", owner:0};
+function openTokenPicker(target, owner, tab){
+	if (!TK_ALL.length) { alert("讀不到 js/token_info.js"); return; }
+	if (NET.seat != null && owner !== NET.seat && Z[target.zone].p !== NET.seat) { /* allowed: e.g. virus on opponent signi */ }
+	tkState = {target:target, tab:tab || "gen", owner:owner};
+	document.getElementById("tkSearch").value = "";
+	document.getElementById("tkPicker").style.display = "flex";
+	setTokenTab(tkState.tab);
+	setTimeout(function(){ document.getElementById("tkSearch").focus(); }, 0);
+}
+function closeTokenPicker(){ document.getElementById("tkPicker").style.display = "none"; }
+function setTokenTab(tab){
+	tkState.tab = tab;
+	document.querySelectorAll("#tkPicker .tabs span").forEach(function(e){ e.classList.toggle("on", e.dataset.tab === tab); });
+	renderTokenPicker();
+}
+function tkGroup(r){ var t = r[4] || ""; if (t.indexOf("クラフト") >= 0) return "クラフト"; if (t === "トークン" || t === "") return "トークン"; return "その他"; }
+function renderTokenPicker(){
+	var q = document.getElementById("tkSearch").value.trim().toLowerCase();
+	document.getElementById("tkTitle").textContent = "トークンを置く → " + Z[tkState.target.zone].name + "（持ち主：" + PN[tkState.owner] + "）";
+	var list = TK_ALL.filter(function(r){ return (tkState.tab === "ba") === isBA(r); })
+		.filter(function(r){ return !q || (r[2] + " " + r[0]).toLowerCase().indexOf(q) >= 0; });
+	var h = "", order = tkState.tab === "ba" ? [""] : ["トークン","クラフト","その他"];
+	order.forEach(function(g){
+		var part = tkState.tab === "ba" ? list : list.filter(function(r){ return tkGroup(r) === g; });
+		if (!part.length) return;
+		if (g) h += '<div class="grp">' + g + '（' + part.length + '）</div>';
+		part.forEach(function(r){
+			h += '<div class="it" data-id="' + esc(r[0]) + '" title="' + esc(r[0]) + '"><img loading="lazy" src="' + esc(r[1]) + '" onerror="this.style.visibility=\'hidden\'">' + esc(r[2] === "-" ? r[0] : r[2]) + '</div>';
+		});
+	});
+	document.getElementById("tkGrid").innerHTML = h || '<div style="color:var(--muted)">（沒有符合的卡）</div>';
+}
+document.getElementById("tkGrid").addEventListener("click", function(e){
+	var it = e.target.closest(".it"); if (!it) return;
+	var id = it.dataset.id, t = tkState.target, owner = tkState.owner, z = Z[t.zone];
+	closeTokenPicker();
+	var occupied = (z.kind === "stack" && st.zones[t.zone].length) || (z.kind === "free" && t.stackId != null && stackById(t.stackId));
+	if (occupied) {
+		ctxOpenedAt = Date.now();
+		showCtx(e.clientX, e.clientY, [
+			{head: "トークン：" + (DB[id][NAME] || id)},
+			{label:"⬆ 表向きで上に重ねる", fn:function(){ placeToken(id, owner, t, false, true); }},
+			{label:"⬇ 表向きで下に置く", fn:function(){ placeToken(id, owner, t, true, true); }},
+			{label:"⬇ 裏向きで下に置く", fn:function(){ placeToken(id, owner, t, true, false); }},
+			"-", {label:"キャンセル", fn:function(){}}
+		]);
+	} else placeToken(id, owner, t, false, true);
+});
+function placeToken(id, owner, t, bottom, face){
+	act(function(){
+		var u = mkCard(id, owner); st.cards[u].token = true; st.cards[u].up = face;
+		st.zones[zk(owner, "free")].push(u);  // temporary home, then move
+		moveCard(u, Object.assign({}, t, {bottom:bottom}), {silent:true, forceFace:face});
+		addLog(PN[owner] + "：トークン「" + cname(st.cards[u]) + "」→ " + Z[t.zone].name + (bottom ? "（下）" : ""), owner);
+	});
+}
+function removeToken(uid){
+	act(function(){ var c = st.cards[uid]; removeCard(uid); delete st.cards[uid]; addLog(PN[c.owner] + "：トークン「" + cname(c) + "」を取り除いた", c.owner); });
+}
+function tokenMenuItems(target, owner){
+	return [
+		{label:"🎴 トークンを置く…", fn:function(){ openTokenPicker(target, owner, "gen"); }},
+		{label:"🎓 ブルアカ角色トークンを置く…", fn:function(){ openTokenPicker(target, owner, "ba"); }}
+	];
+}
+
 function pileMenu(zone){
 	var z = Z[zone], p = z.p, b = z.base, it = [{head: z.name + "（" + st.zones[zone].length + "枚）"}];
 	if (b === "deck") {
@@ -760,6 +914,11 @@ document.addEventListener("contextmenu", function(e){
 		it.push({label: c.frozen ? "凍結を解除" : "凍結する", fn:function(){ toggleProp(uid, "frozen"); }});
 		it.push("-");
 		it.push({label:"移動（" + PN[c.owner] + " の領域）", sub: moveTargets(uid, c.owner)});
+		if (c.token) it.push({label:"✖ このトークンを取り除く", fn:function(){ removeToken(uid); }});
+		if (!el.dataset.viewer) {
+			var tgt = {zone:L.zone}; if (L.stack) tgt.stackId = L.stack.id;
+			it.push("-"); it = it.concat(tokenMenuItems(tgt, NET.seat != null ? NET.seat : Z[L.zone].p));
+		}
 		var stackArr = L.stack ? L.stack.c : (Z[L.zone].kind === "stack" ? L.arr : null);
 		if (stackArr && stackArr.length > 1) {
 			it.push("-");
@@ -772,8 +931,12 @@ document.addEventListener("contextmenu", function(e){
 		showCtx(e.clientX, e.clientY, it); return;
 	}
 	if (zEl) {
-		var zone = zEl.dataset.zone, b = Z[zone].base;
-		if (Z[zone].kind === "pile" || ["life","ener","check","ldeck","hand"].indexOf(b) >= 0) showCtx(e.clientX, e.clientY, pileMenu(zone));
+		var zone = zEl.dataset.zone, b = Z[zone].base, items = [];
+		if (Z[zone].kind === "pile" || ["life","ener","check","ldeck","hand"].indexOf(b) >= 0) items = pileMenu(zone); else items = [{head: Z[zone].name}];
+		var tgt = {zone:zone};
+		if (Z[zone].kind === "free") { var zr = zEl.getBoundingClientRect(); tgt.x = Math.round((e.clientX - zr.left) / SCALE - CW / 2); tgt.y = Math.round((e.clientY - zr.top) / SCALE - CH / 2); }
+		items.push("-"); items = items.concat(tokenMenuItems(tgt, NET.seat != null ? NET.seat : Z[zone].p));
+		showCtx(e.clientX, e.clientY, items);
 	}
 });
 
