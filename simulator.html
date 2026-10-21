@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>WIXOSS 練牌模擬器</title>
+<script src="js/card_info.js"></script>
+<script src="js/card_info_allstar.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<style>
+:root{ --bg:#07111f; --zoneb:#2f6ea8; --accent:#5fc3ff; --txt:#dbe9f7; --muted:#7f9bb8; --p2:#ff8a8a; --p2b:#a84a4a; }
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--txt);font-family:"Segoe UI","Meiryo","Microsoft JhengHei",sans-serif;font-size:13px;overflow:hidden;user-select:none}
+button{background:#163a63;color:var(--txt);border:1px solid #3b7cc0;border-radius:4px;padding:2px 7px;cursor:pointer;font-size:12px}
+button:hover{background:#1f4f86}
+select,textarea,input{background:#0b2240;color:var(--txt);border:1px solid #3b7cc0;border-radius:4px;font-size:12px}
+#topbar{height:40px;display:flex;align-items:center;gap:6px;padding:0 10px;background:#0a1a2e;border-bottom:1px solid #1d3d63;white-space:nowrap}
+#topbar .title{font-weight:bold;color:var(--accent);margin-right:4px;letter-spacing:1px}
+#topbar a{color:var(--accent)}
+.ptag{font-weight:bold;padding:0 5px;border-radius:4px;font-size:11px}
+.ptag.p0{background:#1d5c99;color:#fff}.ptag.p1{background:#8c3434;color:#fff}
+#codeBox{position:fixed;top:44px;left:10px;z-index:3000;background:#0a1a2e;border:1px solid #3b7cc0;border-radius:6px;padding:8px;display:none}
+#codeBox textarea{width:520px;height:140px;display:block;margin-bottom:6px;user-select:text}
+#main{display:flex;height:calc(100% - 40px)}
+#boardWrap{position:relative;flex:none;margin:6px}
+#board{position:absolute;left:0;top:0;width:1240px;height:1220px;transform-origin:0 0;border-radius:10px}
+.half{position:absolute;left:0;width:1240px;height:605px;border:1px solid #1d3d63;border-radius:10px}
+.half.p0{background:linear-gradient(160deg,#0d2340 0%,#0a1a30 55%,#0d2340 100%)}
+.half.p1{background:linear-gradient(160deg,#2a1322 0%,#1a0f1c 55%,#2a1322 100%)}
+.half.turn{box-shadow:0 0 0 2px #ffd75e}
+.zone{position:absolute;border:1px solid var(--zoneb);border-radius:8px;background:rgba(16,41,74,.75)}
+.zone.p1{border-color:var(--p2b);background:rgba(70,24,40,.7)}
+.zone.hl{box-shadow:0 0 0 3px var(--accent) inset;background:rgba(40,90,150,.8)}
+.zlabel{position:absolute;left:6px;top:3px;font-size:11px;font-weight:bold;color:var(--accent);letter-spacing:1px;pointer-events:none}
+.zone.p1 .zlabel{color:var(--p2)}
+.zcount{position:absolute;right:6px;top:3px;font-size:11px;color:#fff;background:#1d4f86;border-radius:8px;padding:0 6px;pointer-events:none}
+.zone.p1 .zcount{background:#7a2e3e}
+.zone.free{background-image:linear-gradient(rgba(95,195,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(95,195,255,.07) 1px,transparent 1px);background-size:20px 20px}
+.card{position:absolute;width:70px;height:98px;border-radius:5px;cursor:grab;transition:transform .12s;background:#222 center/cover;box-shadow:0 1px 3px rgba(0,0,0,.6)}
+.card.land{width:98px;height:70px}
+.card img{width:100%;height:100%;border-radius:5px;display:block;pointer-events:none;object-fit:cover}
+.card.down{transform:rotate(90deg)}
+.card.frozen::before{content:"凍結";position:absolute;inset:0;border-radius:5px;background:rgba(120,200,255,.45);color:#003;font-weight:bold;display:flex;align-items:center;justify-content:center;font-size:14px;z-index:2;pointer-events:none}
+.card.noimg{background:#2a3d57;border:1px solid #6d8fb5}
+.card.noimg::after{content:attr(data-name);position:absolute;inset:4px;font-size:10px;color:#fff;overflow:hidden}
+.card.noimg img{visibility:hidden}
+.card.back.noimg::after{content:""}
+.card.dragsrc{opacity:.3}
+.card:hover{box-shadow:0 0 0 2px var(--accent)}
+.card.foreign{outline:2px solid #ffb347}
+.sbadge{position:absolute;font-size:11px;background:#d9534f;color:#fff;border-radius:8px;padding:0 5px;z-index:900;pointer-events:none}
+#ghost{position:fixed;z-index:5000;pointer-events:none;transform-origin:0 0;opacity:.9}
+#ghost .card{position:relative;left:0!important;top:0!important}
+#side{flex:1;min-width:280px;max-width:380px;margin:6px 6px 6px 0;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+#panel{background:#0a1a2e;border:1px solid #1d3d63;border-radius:8px;padding:8px;display:flex;flex-direction:column;gap:5px}
+#panel h3{margin:0;font-size:13px;color:#ffd75e}
+.phases{display:flex;flex-wrap:wrap;gap:2px}
+.phase{padding:1px 5px;border-radius:4px;cursor:pointer;color:var(--muted);font-size:11px;border:1px solid #1d3d63}
+.phase.on{background:#2a86d1;color:#fff;font-weight:bold}
+.prow{display:flex;gap:3px;flex-wrap:wrap;align-items:center;padding:4px;border-radius:6px;background:#0d2440}
+.prow.p1{background:#2a1424}
+.prow .cnt{font-size:11px;color:var(--muted);width:100%}
+#preview{background:#0a1a2e;border:1px solid #1d3d63;border-radius:8px;padding:8px;flex:1;overflow:auto;user-select:text;min-height:120px}
+#preview img{width:100%;max-width:260px;border-radius:10px;display:block;margin:0 auto 6px}
+#pvName{font-weight:bold;font-size:14px;color:#fff}
+#pvMeta{color:var(--muted);font-size:11px;margin:3px 0 6px}
+#pvText{font-size:12px;line-height:1.55}
+#pvText img{width:auto;height:16px;display:inline;border-radius:0;margin:0}
+#log{background:#0a1a2e;border:1px solid #1d3d63;border-radius:8px;padding:6px;height:140px;flex:none;overflow:auto;font-size:11px;color:var(--muted);user-select:text}
+#log .l1{color:#e7a7a7}#log .l0{color:#a7c8e7}
+#ctx{position:fixed;z-index:6000;background:#0d2440;border:1px solid #3b7cc0;border-radius:6px;padding:4px 0;min-width:170px;display:none;box-shadow:0 4px 14px rgba(0,0,0,.6)}
+#ctx div.i{padding:4px 14px;cursor:pointer;white-space:nowrap}
+#ctx div.i:hover{background:#2a86d1}
+#ctx div.h{padding:3px 12px;color:var(--accent);font-weight:bold;font-size:12px;border-bottom:1px solid #24496f;margin-bottom:2px;max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#ctx div.s{border-top:1px solid #24496f;margin:3px 0}
+#ctx div.sub{position:relative}
+#ctx div.sub::after{content:"▶";position:absolute;right:6px;font-size:9px;top:6px}
+#ctx div.sub > .menu{display:none;position:absolute;left:100%;top:-4px;background:#0d2440;border:1px solid #3b7cc0;border-radius:6px;padding:4px 0;min-width:150px}
+#ctx div.sub:hover > .menu{display:block}
+.viewer{position:fixed;z-index:4000;background:#0a1a2e;border:1px solid #5fc3ff;border-radius:8px;box-shadow:0 6px 24px rgba(0,0,0,.7);width:620px;max-height:70vh;display:flex;flex-direction:column}
+.viewer .vh{padding:6px 10px;background:#123a66;border-radius:8px 8px 0 0;cursor:move;display:flex;justify-content:space-between;align-items:center;font-weight:bold}
+.viewer.p1 .vh{background:#5e2234}
+.viewer .vb{padding:8px;overflow:auto;display:flex;flex-wrap:wrap;gap:6px;min-height:110px}
+.viewer .card{position:relative}
+.viewer .card.back{outline:2px dashed #e0a030}
+.viewer .vnote{font-size:11px;color:var(--muted);padding:0 10px 6px}
+#help{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:7000;display:none;align-items:center;justify-content:center}
+#help > div{background:#0a1a2e;border:1px solid #5fc3ff;border-radius:10px;padding:16px 22px;max-width:680px;line-height:1.7;user-select:text}
+#help h2{margin:0 0 8px;color:var(--accent);font-size:16px}
+#netBox{position:fixed;top:44px;right:10px;z-index:3000;background:#0a1a2e;border:1px solid #3b7cc0;border-radius:6px;padding:10px;display:none;width:330px;line-height:1.7}
+#netBox input{width:110px;text-transform:uppercase;font-size:14px;letter-spacing:2px;padding:2px 6px}
+#netCode{font-size:22px;font-weight:bold;letter-spacing:4px;color:#ffd75e;user-select:text}
+#netStat{font-size:12px}
+#netStat.ok{color:#7be07b}#netStat.ng{color:#ff8a8a}
+kbd{background:#1d3d63;border-radius:3px;padding:0 5px;font-size:11px}
+</style>
+</head>
+<body>
+<div id="topbar">
+	<span class="title">WIXOSS 練牌模擬器</span>
+	<span class="ptag p0">P1</span><select id="deckSelect0" style="max-width:190px"></select>
+	<span class="ptag p1">P2</span><select id="deckSelect1" style="max-width:190px"></select>
+	<button onclick="toggleCode()">貼上コード</button>
+	<button onclick="prepareGame()" title="雙方：Lv0ルリグを裏向きで配置、シャッフルして5枚ドロー">① 準備</button>
+	<button onclick="startGame()" title="雙方：ライフクロス7枚、ルリグを表向きに">② ゲーム開始</button>
+	<button onclick="undo()" title="Ctrl+Z">↶ 元に戻す</button>
+	<button id="restoreBtn" onclick="restoreSaved()" style="display:none">前回を復元</button>
+	<span style="flex:1"></span>
+	<span id="netBadge" style="font-size:12px;color:var(--muted)"></span>
+	<button onclick="toggleNet()">🌐 連線對戰</button>
+	<button onclick="showHelp(true)">操作說明</button>
+	<a href="index.html">DIVA</a><a href="index_allstar.html">ALLSTAR</a>
+</div>
+<div id="netBox">
+	<b style="color:var(--accent)">連線對戰（WebRTC 點對點）</b><br>
+	<div id="netIdle">
+		<button onclick="hostRoom()">建立房間（我是 P1）</button><br>
+		或輸入對方的房間代碼：<input id="joinCode" maxlength="6"> <button onclick="joinRoom()">加入（我是 P2）</button>
+	</div>
+	<div id="netActive" style="display:none">
+		<div id="netCodeRow">房間代碼：<span id="netCode"></span> <button onclick="copyCode()">複製</button></div>
+		<button onclick="leaveRoom()">中斷連線</button>
+	</div>
+	<div id="netStat"></div>
+	<div style="font-size:11px;color:var(--muted);margin-top:6px">雙方各自選自己的牌組；盤面、回合、紀錄會即時同步。對手的手札・ルリグデッキ・デッキ・ライフ會顯示為背面。<br>連線靠 PeerJS 免費配對服務，少數公司／學校網路可能連不上。</div>
+	<div style="text-align:right"><button onclick="toggleNet()">關閉</button></div>
+</div>
+<div id="codeBox">
+	<div style="margin-bottom:4px;color:var(--muted)">デッキエディタのコード（ldeck / pdeck / adeck / sdeck 各一行）</div>
+	<textarea id="codeText" placeholder="ldeck,WX24-D1-01,...&#10;pdeck&#10;adeck,...&#10;sdeck,..."></textarea>
+	<button onclick="loadFromText(0)">讀入 P1（下）</button> <button onclick="loadFromText(1)">讀入 P2（上）</button> <button onclick="toggleCode()">關閉</button>
+</div>
+<div id="main">
+	<div id="boardWrap"><div id="board"></div></div>
+	<div id="side">
+		<div id="panel"></div>
+		<div id="preview"><div style="color:var(--muted)">滑鼠移到卡片上顯示詳細資料</div></div>
+		<div id="log"></div>
+	</div>
+</div>
+<div id="ctx"></div>
+<div id="help" onclick="if(event.target===this)showHelp(false)"><div>
+	<h2>操作說明（雙人）</h2>
+	<b>盤面：</b>P1＝藍、P2＝紅，兩邊面對面（位置上下左右對調）。黃框＝目前回合玩家。本機時 P1 在下；連線時自己永遠在下。<br>
+	<b>連線對戰：</b>按「🌐 連線對戰」→ 一方建立房間，把 6 碼代碼給對方，對方輸入後加入。之後所有操作即時同步（Ctrl+Z 會復原最後一個動作，不論是誰做的）。<br>
+	<b>讀牌組：</b>上方兩個選單分別給 P1／P2 選牌組編輯器（DIVA／ALLSTAR）存的牌組；也可「貼上コード」後選要讀入哪一方。<br>
+	<b>開局：</b>①準備（雙方 Lv0 裏向き＋洗牌＋5張）→ 各自マリガン → ②ゲーム開始。先攻在右側面板「先攻／ターンプレイヤー」切換。<br>
+	<b>拖曳：</b>左鍵拖曳卡片到任何區域（包含對方的區域，例如奪取）；拖到シグニ／ルリグの既有卡上＝疊上去；<kbd>Shift</kbd>＋拖曳＝整疊移動。<br>
+	<b>右鍵：</b>ダウン／アップ、翻面、凍結、移動（送回<b>卡片持有者</b>的各區域）、スタック操作；右鍵牌堆＝ドロー、シャッフル、查看、上からN枚…<br>
+	<b>雙擊：</b>場上卡片＝ダウン／アップ；メインデッキ＝ドロー；其他牌堆＝查看。<br>
+	<b>快捷鍵（指著卡片）：</b><kbd>D</kbd> ダウン　<kbd>F</kbd> 翻面　<kbd>R</kbd> 凍結　<kbd>Ctrl+Z</kbd> 元に戻す<br>
+	<b>手札を伏せる：</b>面板中各玩家可勾選，把該玩家手牌顯示為背面（一人分飾兩角時可不勾）。<br>
+	橘色外框＝放在對方區域的卡（控制權移轉等）。不含自動效果，所有處理請手動操作。<br>
+	<div style="text-align:right;margin-top:8px"><button onclick="showHelp(false)">關閉</button></div>
+</div></div>
+
+<script>
+"use strict";
+/* ============ card database ============ */
+var DB = {};
+if (typeof cardData === "undefined") {
+	document.body.innerHTML = '<div style="padding:40px;font-size:16px;line-height:1.8;color:#dbe9f7">讀不到卡片資料（js/card_info.js）。<br>請從 <b>WIXOSS_deckeditor 資料夾</b> 直接開啟 simulator.html（需和 js/ 資料夾放在同一層），不要從聊天室的檔案預覽開啟。</div>';
+	throw new Error("card_info.js not loaded: open simulator.html from the WIXOSS_deckeditor folder");
+}
+(function(){
+	var all = cardData;
+	if (typeof cardDataAllstar !== 'undefined') all = cardData.concat(cardDataAllstar);
+	for (var i = 0; i < all.length; i++) { var r = all[i]; if (r && r[0] && !DB[r[0]]) DB[r[0]] = r; }
+})();
+var ROT_IDS = new Set(["PR-Di035"]);
+(function(){
+	function pad(n, l){ n = String(n); while (n.length < l) n = "0" + n; return n; }
+	for (var i = 5; i <= 10; i++) ROT_IDS.add("WX25-CD1-" + pad(i, 2));
+	for (var i = 1; i <= 8; i++) ROT_IDS.add("WX25-CP1-" + pad(i, 3));
+	for (var i = 25; i <= 37; i++) ROT_IDS.add("WX25-CP1-" + pad(i, 3));
+	for (var i = 1; i <= 24; i++) ROT_IDS.add("WX26-CP1-" + pad(i, 3));
+})();
+var BACK = "img/card_back.jpg";
+function row(c){ return DB[c.id] || []; }
+function cname(c){ return row(c)[NAME] || c.id; }
+function ctype(c){ return row(c)[TYPE] || ""; }
+function isLand(c){ var t = ctype(c); return ROT_IDS.has(c.id) || t === "キー" || t.indexOf("ピース") === 0; }
+function imgOf(c){ return ROT_IDS.has(c.id) ? "img/" + c.id + "_rotate.jpg" : (row(c)[SRC] || BACK); }
+
+/* ============ zones (two players) ============ */
+var CW = 70, CH = 98, BW = 1240, HALF = 605, BH = 1220;
+var PN = ["P1", "P2"];
+// layout for the player sitting at the bottom; P2 is the 180° mirror on the top half
+var BASE = {
+	ener:   {name:"エナゾーン",       kind:"col",   face:true,  x:10,   y:5,   w:140, h:355},
+	check:  {name:"チェックゾーン",   kind:"row",   face:true,  x:10,   y:365, w:140, h:120},
+	signi1: {name:"シグニゾーン",     kind:"stack", face:true,  x:160,  y:5,   w:226, h:150, field:true},
+	signi2: {name:"シグニゾーン",     kind:"stack", face:true,  x:397,  y:5,   w:226, h:150, field:true},
+	signi3: {name:"シグニゾーン",     kind:"stack", face:true,  x:634,  y:5,   w:226, h:150, field:true},
+	lrig:   {name:"ルリグゾーン",     kind:"free",  face:true,  x:160,  y:160, w:700, h:200, field:true},
+	life:   {name:"ライフクロス",     kind:"row",   face:false, x:160,  y:365, w:700, h:120},
+	ldeck:  {name:"ルリグデッキ",     kind:"row",   face:true,  x:870,  y:365, w:360, h:120},
+	deck:   {name:"メインデッキ",     kind:"pile",  face:false, x:870,  y:5,   w:130, h:175},
+	trash:  {name:"トラッシュ",       kind:"pile",  face:true,  x:1010, y:5,   w:220, h:175},
+	ltrash: {name:"ルリグトラッシュ", kind:"pile",  face:true,  x:870,  y:185, w:130, h:175},
+	free:   {name:"除外／その他",     kind:"pile",  face:true,  x:1010, y:185, w:220, h:175},
+	hand:   {name:"手札",             kind:"row",   face:true,  x:10,   y:490, w:1220,h:110}
+};
+var Z = {};
+[0, 1].forEach(function(p){
+	for (var b in BASE) {
+		var d = BASE[b], z = Object.assign({}, d);
+		z.p = p; z.base = b; z.name = PN[p] + " " + d.name;
+		Z[p + ":" + b] = z;
+	}
+});
+function zk(p, b){ return p + ":" + b; }
+var PHASES = ["アップ","ドロー","エナ","グロウ","メイン","アタック：アーツ","アタック：シグニ","アタック：ルリグ","エンド"];
+
+/* ============ state ============ */
+var st = null, undoStack = [], SCALE = 1, hoverUid = null, viewers = [], viewerSeq = 1;
+function newState(){
+	var s = {v:2, cards:{}, zones:{}, seq:1, turn:1, phase:0, tp:0, players:[{deckName:"", lrigCards:[], mainCards:[], coin:0, hide:false},{deckName:"", lrigCards:[], mainCards:[], coin:0, hide:false}]};
+	for (var k in Z) s.zones[k] = [];
+	return s;
+}
+st = newState();
+function snapshot(){ undoStack.push(JSON.stringify(st)); if (undoStack.length > 300) undoStack.shift(); }
+function undo(){ if (!undoStack.length) return; st = JSON.parse(undoStack.pop()); addLog("（元に戻す）" + (NET.seat != null ? " by " + PN[NET.seat] : "")); render(); broadcast(); }
+
+function findCard(uid){
+	for (var k in Z) {
+		var arr = st.zones[k];
+		if (Z[k].kind === "free") {
+			for (var s = 0; s < arr.length; s++) { var i = arr[s].c.indexOf(uid); if (i >= 0) return {zone:k, stack:arr[s], arr:arr[s].c, idx:i}; }
+		} else { var j = arr.indexOf(uid); if (j >= 0) return {zone:k, stack:null, arr:arr, idx:j}; }
+	}
+	return null;
+}
+function stackById(id){
+	for (var p = 0; p < 2; p++) { var a = st.zones[zk(p, "lrig")]; for (var i = 0; i < a.length; i++) if (a[i].id === id) return a[i]; }
+	return null;
+}
+function removeCard(uid){
+	var L = findCard(uid); if (!L) return null;
+	L.arr.splice(L.idx, 1);
+	if (L.stack && !L.stack.c.length) { var a = st.zones[L.zone]; a.splice(a.indexOf(L.stack), 1); }
+	return L;
+}
+function placeCard(uid, t){
+	var z = Z[t.zone], arr = st.zones[t.zone];
+	if (z.kind === "free") {
+		var s = t.stackId != null ? stackById(t.stackId) : null;
+		if (s && arr.indexOf(s) < 0) s = null;
+		if (!s) {
+			var x = t.x != null ? t.x : 20 + (arr.length % 6) * 110, y = t.y != null ? t.y : 50;
+			x = Math.max(0, Math.min(z.w - CW, x)); y = Math.max(0, Math.min(z.h - CH, y));
+			s = {id: st.seq++, x:x, y:y, c:[]}; arr.push(s);
+		}
+		if (t.bottom) s.c.unshift(uid); else s.c.push(uid);
+		return s.id;
+	}
+	if (z.kind === "row" || z.kind === "col") {
+		if (t.index == null || t.index > arr.length) arr.push(uid); else arr.splice(t.index, 0, uid);
+	} else {
+		if (t.bottom) arr.unshift(uid); else arr.push(uid);
+	}
+	return null;
+}
+function moveCard(uid, t, opt){
+	opt = opt || {};
+	var c = st.cards[uid], wasUp = c.up, L = removeCard(uid); if (!L) return null;
+	var sid = placeCard(uid, t);
+	if (L.zone !== t.zone) {
+		c.down = false; c.frozen = false;
+		c.up = opt.face != null ? opt.face : Z[t.zone].face;
+	}
+	if (!opt.silent) {
+		var shown = (wasUp && publicBase(Z[L.zone].base)) || (c.up && publicBase(Z[t.zone].base)) ? cname(c) : "カード";
+		addLog(Z[L.zone].name + " → " + Z[t.zone].name + (t.bottom ? "（下）" : "") + "：" + shown, c.owner);
+	}
+	return sid;
+}
+function moveMany(uids, t, label){
+	var tt = Object.assign({}, t);
+	for (var i = 0; i < uids.length; i++) {
+		var sid = moveCard(uids[i], tt, {silent:true});
+		if (Z[t.zone].kind === "free" && sid != null) tt.stackId = sid;
+		if (tt.index != null) tt.index++;
+	}
+	addLog((label || "まとめて移動") + " → " + Z[t.zone].name + "（" + uids.length + "枚）", Z[t.zone].p);
+}
+function topOf(zone){ var a = st.zones[zone]; return a.length ? a[a.length - 1] : null; }
+function shuffle(zone){
+	var a = st.zones[zone];
+	for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
+}
+
+/* ============ actions ============ */
+function act(fn){ snapshot(); fn(); render(); broadcast(); }
+function draw(p, n){ act(function(){ for (var i = 0; i < n; i++) { var u = topOf(zk(p, "deck")); if (u == null) { addLog(PN[p] + "：デッキが0枚です", p); break; } moveCard(u, {zone:zk(p, "hand")}, {silent:true}); } addLog(PN[p] + "：ドロー " + n + "枚", p); }); }
+function topTo(p, base, n){ act(function(){ var k = 0; for (var i = 0; i < n; i++) { var u = topOf(zk(p, "deck")); if (u == null) break; moveCard(u, {zone:zk(p, base)}, {silent:true}); k++; } addLog(PN[p] + "：デッキの上 " + k + "枚 → " + BASE[base].name, p); }); }
+function doShuffle(zone){ act(function(){ shuffle(zone); addLog(Z[zone].name + "をシャッフル", Z[zone].p); }); }
+function upAll(p){ act(function(){ for (var k in Z) { if (Z[k].p !== p || !Z[k].field) continue; eachIn(k, function(u){ st.cards[u].down = false; }); } addLog(PN[p] + "：場のカードを全てアップ", p); }); }
+function eachIn(k, fn){ if (Z[k].kind === "free") st.zones[k].forEach(function(s){ s.c.forEach(fn); }); else st.zones[k].forEach(fn); }
+function crash(p){ act(function(){ var u = topOf(zk(p, "life")); if (u == null) { addLog(PN[p] + "：ライフクロスがありません", p); return; } moveCard(u, {zone:zk(p, "check")}); }); }
+function setPhase(i){ act(function(){ st.phase = i; addLog("▶ " + PN[st.tp] + " " + PHASES[i] + "フェイズ", st.tp); }); }
+function nextPhase(){ if (st.phase < PHASES.length - 1) setPhase(st.phase + 1); else endTurn(); }
+function endTurn(){ act(function(){ st.turn++; st.phase = 0; st.tp = 1 - st.tp; addLog("──── ターン " + st.turn + "（" + PN[st.tp] + "）────", st.tp); }); }
+function setTP(p){ act(function(){ st.tp = p; addLog("ターンプレイヤー：" + PN[p], p); }); }
+function coin(p, d){ act(function(){ st.players[p].coin = Math.max(0, st.players[p].coin + d); }); }
+function toggleHide(p){ act(function(){ st.players[p].hide = !st.players[p].hide; }); }
+function toggleProp(uid, prop){ act(function(){ var c = st.cards[uid]; c[prop] = !c[prop]; addLog(cname(c) + "：" + ({down: c.down ? "ダウン" : "アップ", up: c.up ? "表向き" : "裏向き", frozen: c.frozen ? "凍結" : "凍結解除"})[prop], c.owner); }); }
+function wholeStackOf(uid){ var L = findCard(uid); if (!L) return [uid]; if (L.stack || Z[L.zone].kind === "stack") return L.arr.slice(); return [uid]; }
+
+/* ============ deck loading ============ */
+function readStore(prefix){
+	var list = [], raw = null;
+	try { raw = localStorage.getItem(prefix + "DeckNameList"); } catch(e) {}
+	if (raw) { try { list = JSON.parse(raw); } catch(e) { list = String(raw).split(","); } }
+	if (!Array.isArray(list)) list = [];
+	return list.filter(function(n){ try { return n && localStorage.getItem(prefix + n) != null; } catch(e) { return false; } });
+}
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;"); }
+function fillDeckSelects(){
+	var h = '<option value="">── 選擇牌組 ──</option>', d = readStore(""), a = readStore("AS_");
+	if (d.length) { h += '<optgroup label="DIVA">'; d.forEach(function(n){ h += '<option value="' + esc("D|" + n) + '">' + esc(n) + '</option>'; }); h += '</optgroup>'; }
+	if (a.length) { h += '<optgroup label="ALLSTAR">'; a.forEach(function(n){ h += '<option value="' + esc("A|" + n) + '">' + esc(n) + '</option>'; }); h += '</optgroup>'; }
+	[0, 1].forEach(function(p){
+		var sel = document.getElementById("deckSelect" + p);
+		sel.innerHTML = h;
+		sel.addEventListener("change", function(){
+			var v = this.value; if (!v) return;
+			var name = v.slice(2), code = null;
+			try { code = localStorage.getItem((v[0] === "A" ? "AS_" : "") + name); } catch(e) {}
+			if (code) loadCode(p, code, name);
+		});
+	});
+}
+function toggleCode(){ var b = document.getElementById("codeBox"); b.style.display = b.style.display === "block" ? "none" : "block"; }
+function loadFromText(p){ if (NET.seat != null && p !== NET.seat) { alert("連線中只能讀入自己的牌組（" + PN[NET.seat] + "）"); return; } var t = document.getElementById("codeText").value.trim(); if (t) { loadCode(p, t, "貼上的牌組"); toggleCode(); } }
+function loadCode(p, code, name){
+	var lr = [], mn = [], missing = [];
+	String(code).split(/\r?\n/).forEach(function(line){
+		var q = line.split(","), key = (q[0] || "").trim().toLowerCase();
+		var ids = q.slice(1).map(function(x){ return x.trim(); }).filter(Boolean);
+		if (key === "sdeck") mn = mn.concat(ids);
+		else if (key === "ldeck" || key === "pdeck" || key === "adeck") lr = lr.concat(ids);
+	});
+	lr = lr.filter(function(id){ if (DB[id]) return true; missing.push(id); return false; });
+	mn = mn.filter(function(id){ if (DB[id]) return true; missing.push(id); return false; });
+	if (!lr.length && !mn.length) { alert("讀不到任何卡片，請確認デッキコード格式。"); return; }
+	act(function(){
+		var P = st.players[p]; P.deckName = name; P.lrigCards = lr; P.mainCards = mn;
+		resetPlayer(p);
+		addLog(PN[p] + " 讀取牌組「" + name + "」：ルリグデッキ " + lr.length + "枚／メインデッキ " + mn.length + "枚", p);
+		if (missing.length) addLog("⚠ 找不到的卡號：" + missing.join(", "), p);
+	});
+}
+function mkCard(id, owner){ var u = st.seq++; st.cards[u] = {uid:u, id:id, owner:owner, up:true, down:false, frozen:false}; return u; }
+function resetPlayer(p){
+	// remove every card owned by p from everywhere
+	for (var k in Z) {
+		if (Z[k].kind === "free") {
+			st.zones[k].forEach(function(s){ s.c = s.c.filter(function(u){ return st.cards[u].owner !== p; }); });
+			st.zones[k] = st.zones[k].filter(function(s){ return s.c.length; });
+		} else st.zones[k] = st.zones[k].filter(function(u){ return st.cards[u].owner !== p; });
+	}
+	for (var u in st.cards) if (st.cards[u].owner === p) delete st.cards[u];
+	var P = st.players[p]; P.coin = 0;
+	P.lrigCards.forEach(function(id){ st.zones[zk(p, "ldeck")].push(mkCard(id, p)); });
+	P.mainCards.forEach(function(id){ var u = mkCard(id, p); st.cards[u].up = false; st.zones[zk(p, "deck")].push(u); });
+}
+function prepareGame(){
+	if (!st.players[0].mainCards.length && !st.players[1].mainCards.length) { alert("請先選擇牌組"); return; }
+	act(function(){
+		[0, 1].forEach(function(p){
+			if (!st.players[p].mainCards.length && !st.players[p].lrigCards.length) return;
+			resetPlayer(p);
+			var ld = zk(p, "ldeck"), lz = zk(p, "lrig");
+			var lv0 = st.zones[ld].filter(function(u){ var r = row(st.cards[u]); return r[LEVEL] === "0" && (r[TYPE] === "ルリグ" || r[TYPE] === "アシストルリグ"); });
+			var center = lv0.filter(function(u){ return row(st.cards[u])[TYPE] === "ルリグ"; })[0];
+			var assists = lv0.filter(function(u){ return u !== center; });
+			var cx = BASE.lrig.w / 2 - CW / 2, cy = 50;
+			if (center != null) moveCard(center, {zone:lz, x:cx, y:cy}, {face:false, silent:true});
+			var pos = [cx - 200, cx + 200, cx - 320, cx + 320];
+			assists.forEach(function(u, i){ moveCard(u, {zone:lz, x:pos[i] != null ? pos[i] : 20 + i * 90, y:cy}, {face:false, silent:true}); });
+			shuffle(zk(p, "deck"));
+			for (var i = 0; i < 5; i++) { var t = topOf(zk(p, "deck")); if (t != null) moveCard(t, {zone:zk(p, "hand")}, {silent:true}); }
+			addLog(PN[p] + " 準備完了：Lv0ルリグ裏向き配置、シャッフル、5枚ドロー", p);
+		});
+		st.turn = 1; st.phase = 0;
+		addLog("各自マリガン後に②を押してください。");
+	});
+}
+function startGame(){
+	act(function(){
+		[0, 1].forEach(function(p){
+			for (var i = 0; i < 7; i++) { var t = topOf(zk(p, "deck")); if (t != null) moveCard(t, {zone:zk(p, "life")}, {silent:true}); }
+			st.zones[zk(p, "lrig")].forEach(function(s){ s.c.forEach(function(u){ st.cards[u].up = true; }); });
+		});
+		st.turn = 1; st.phase = 0;
+		addLog("ライフクロス7枚設置、ルリグ公開。ゲーム開始！先攻：" + PN[st.tp], st.tp);
+	});
+}
+
+/* ============ rendering ============ */
+var board = document.getElementById("board"), zoneEls = {}, halfEls = [], pool = new Map();
+(function buildBoard(){
+	[1, 0].forEach(function(p){ var h = document.createElement("div"); h.className = "half p" + p; board.appendChild(h); halfEls[p] = h; });
+	for (var k in Z) {
+		var z = Z[k], el = document.createElement("div");
+		el.className = "zone p" + z.p + (z.kind === "free" ? " free" : ""); el.dataset.zone = k;
+		el.style.cssText = "width:" + z.w + "px;height:" + z.h + "px";
+		el.innerHTML = '<span class="zlabel">' + z.name + '</span><span class="zcount"></span>';
+		board.appendChild(el); zoneEls[k] = el;
+	}
+})();
+var VIEW = 0; // seat shown at the bottom
+function applyLayout(){
+	for (var k in Z) {
+		var z = Z[k], d = BASE[z.base];
+		if (z.p === VIEW) { z.ax = d.x; z.ay = 615 + d.y; } else { z.ax = BW - d.x - d.w; z.ay = HALF - d.y - d.h; }
+		zoneEls[k].style.left = z.ax + "px"; zoneEls[k].style.top = z.ay + "px";
+	}
+	halfEls.forEach(function(h, p){ h.style.top = (p === VIEW ? 615 : 0) + "px"; });
+}
+applyLayout();
+
+function cardEl(uid){
+	var el = pool.get(uid);
+	if (!el) {
+		el = document.createElement("div"); el.className = "card"; el.dataset.uid = uid;
+		var img = document.createElement("img"); img.draggable = false;
+		img.onerror = function(){ el.classList.add("noimg"); };
+		img.onload = function(){ el.classList.remove("noimg"); };
+		el.appendChild(img); pool.set(uid, el);
+	}
+	return el;
+}
+function decorate(el, c, showFace){
+	var src = showFace ? imgOf(c) : BACK, img = el.firstChild;
+	if (img.dataset.src !== src) { img.dataset.src = src; el.classList.remove("noimg"); img.src = src; }
+	el.dataset.name = cname(c);
+	el.classList.toggle("land", isLand(c));
+	el.classList.toggle("down", !!c.down);
+	el.classList.toggle("frozen", !!c.frozen);
+	el.classList.toggle("back", !showFace);
+}
+function dims(c){ return isLand(c) ? [CH, CW] : [CW, CH]; }
+function isSecretFor(zone){
+	var z = Z[zone];
+	if (NET.seat == null) return z.base === "hand" && st.players[z.p].hide;
+	return z.p !== NET.seat && (z.base === "hand" || z.base === "ldeck");
+}
+function canSee(c, zone){
+	if (isSecretFor(zone)) return false;
+	if (c.up) return true;
+	var b = Z[zone].base; if (b === "deck" || b === "life") return false;
+	return NET.seat == null || c.owner === NET.seat;
+}
+function publicBase(b){ return ["hand","ldeck","deck","life"].indexOf(b) < 0; }
+
+function render(){
+	var used = new Set();
+	function put(uid, zone, x, y, zi){
+		var el = cardEl(uid), c = st.cards[uid]; used.add(uid);
+		decorate(el, c, c.up && !isSecretFor(zone));
+		el.classList.toggle("foreign", c.owner !== Z[zone].p);
+		el.style.left = x + "px"; el.style.top = y + "px"; el.style.zIndex = zi;
+		if (el.parentNode !== zoneEls[zone]) zoneEls[zone].appendChild(el);
+	}
+	document.querySelectorAll("#board .sbadge").forEach(function(b){ b.remove(); });
+	function badge(zone, x, y, n){ var b = document.createElement("span"); b.className = "sbadge"; b.textContent = n; b.style.left = x + "px"; b.style.top = y + "px"; zoneEls[zone].appendChild(b); }
+	function drawStack(zone, cards, bx, by, area){
+		var n = cards.length; if (!n) return;
+		var off = n > 1 ? Math.max(4, Math.min(14, (area - CH) / (n - 1))) : 0;
+		cards.forEach(function(u, i){ var d = dims(st.cards[u]); put(u, zone, bx + (CW - d[0]) / 2, by + i * off + (CH - d[1]) / 2, 10 + i); });
+		if (n > 1) badge(zone, bx + CW - 6, by + (n - 1) * off - 6, n);
+	}
+	for (var k in Z) {
+		var z = Z[k], arr = st.zones[k], cnt = 0;
+		if (z.kind === "pile") {
+			cnt = arr.length;
+			if (arr.length) { var u = arr[arr.length - 1], d = dims(st.cards[u]); put(u, k, (z.w - d[0]) / 2, 20 + (z.h - 20 - d[1]) / 2, 10); }
+		} else if (z.kind === "stack") {
+			cnt = arr.length;
+			var area = z.h - 26, n = arr.length, off = n > 1 ? Math.max(4, Math.min(14, (area - CH) / (n - 1))) : 0;
+			drawStack(k, arr, (z.w - CW) / 2, 20 + Math.max(0, (area - CH - (n - 1) * off) / 2), area);
+		} else if (z.kind === "free") {
+			arr.forEach(function(s){ cnt += s.c.length; drawStack(k, s.c, s.x, s.y, Math.max(CH, z.h - s.y - 4)); });
+		} else {
+			cnt = arr.length;
+			var horiz = z.kind === "row", n2 = arr.length, sp;
+			if (horiz) { var len = z.w - 12, lastW = n2 ? dims(st.cards[arr[n2 - 1]])[0] : CW; sp = n2 > 1 ? Math.min(CW + 4, (len - lastW) / (n2 - 1)) : 0; }
+			else { var lenv = z.h - 26; sp = n2 > 1 ? Math.min(34, (lenv - CH) / (n2 - 1)) : 0; }
+			arr.forEach(function(u, i){
+				var d = dims(st.cards[u]);
+				if (horiz) put(u, k, 6 + i * sp + (CW - d[0]) / 2, Math.max(4, (z.h - d[1]) / 2) + (z.h >= d[1] + 22 ? 9 : 0), 10 + i);
+				else put(u, k, (z.w - d[0]) / 2, 20 + i * sp + (CH - d[1]) / 2, 10 + i);
+			});
+		}
+		zoneEls[k].querySelector(".zcount").textContent = cnt;
+	}
+	pool.forEach(function(el, uid){ if (!used.has(uid)) el.remove(); });
+	halfEls.forEach(function(h, p){ h.classList.toggle("turn", st.tp === p); });
+	renderPanel(); renderViewers(); save();
+}
+
+function renderPanel(){
+	var h = '<h3>ターン ' + st.turn + '　<span class="ptag p' + st.tp + '">' + PN[st.tp] + ' のターン</span></h3><div class="phases">';
+	PHASES.forEach(function(ph, i){ h += '<span class="phase' + (i === st.phase ? ' on' : '') + '" onclick="setPhase(' + i + ')">' + ph + '</span>'; });
+	h += '</div><div class="row" style="display:flex;gap:4px;flex-wrap:wrap"><button onclick="nextPhase()">次へ ▶</button><button onclick="endTurn()">ターン終了（交代）</button><button onclick="setTP(1-st.tp)" title="先攻・ターンプレイヤーを切り替え">先攻／ターンプレイヤー切替</button></div>';
+	[1 - VIEW, VIEW].forEach(function(p){
+		var P = st.players[p], c = function(b){ return st.zones[zk(p, b)].length; };
+		h += '<div class="prow p' + p + '"><span class="ptag p' + p + '">' + PN[p] + (NET.seat != null ? (p === NET.seat ? ' 自分' : ' 相手') : (p === VIEW ? ' 下' : ' 上')) + '</span><span style="max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px">' + esc(P.deckName || "（未選擇）") + '</span>'
+			+ '<span style="flex:1"></span>コイン<b style="color:#ffd75e;min-width:14px;text-align:center">' + P.coin + '</b><button onclick="coin(' + p + ',-1)">－</button><button onclick="coin(' + p + ',1)">＋</button>'
+			+ '<button onclick="draw(' + p + ',1)">ドロー</button><button onclick="topTo(' + p + ',\'ener\',1)">エナチャージ</button><button onclick="upAll(' + p + ')">全アップ</button><button onclick="doShuffle(\'' + zk(p, "deck") + '\')">シャッフル</button><button onclick="crash(' + p + ')">クラッシュ</button>'
+			+ (NET.seat != null ? '' : '<label style="font-size:11px"><input type="checkbox" ' + (P.hide ? "checked" : "") + ' onchange="toggleHide(' + p + ')">手札を伏せる</label>')
+			+ '<span class="cnt">デッキ ' + c("deck") + '　手札 ' + c("hand") + '　ライフ ' + c("life") + '　エナ ' + c("ener") + '　トラッシュ ' + c("trash") + '　ルリグデッキ ' + c("ldeck") + '</span></div>';
+	});
+	document.getElementById("panel").innerHTML = h;
+}
+
+/* ============ preview & log ============ */
+function showPreview(uid, fromViewer){
+	var c = st.cards[uid]; if (!c) return;
+	var L = findCard(uid), pv = document.getElementById("preview");
+	var hidden = L && !fromViewer && !canSee(c, L.zone);
+	if (hidden) { pv.innerHTML = '<img src="' + BACK + '"><div id="pvName">（裏向きのカード）</div>'; return; }
+	var r = row(c), meta = [];
+	[[TYPE,""],[CLASS,""],[COLOR,"色:"],[LEVEL,"Lv"],[LIMIT,"リミット"],[POWER,"パワー"],[COST,"コスト"],[TIMING,""],[COIN,"コイン"]].forEach(function(m){ if (r[m[0]]) meta.push(m[1] + r[m[0]]); });
+	if (r[LB] === "1") meta.push("LB");
+	pv.innerHTML = '<img src="' + imgOf(c) + '" onerror="this.style.display=\'none\'"><div id="pvName">' + (r[NAME] || c.id) + '</div><div id="pvMeta"><span class="ptag p' + c.owner + '">' + PN[c.owner] + '</span> ' + c.id + '　' + meta.join(' / ') + (c.up ? '' : '　（裏向き）') + '</div><div id="pvText">' + (r[JP_TEXT] || '') + (r[TW_TEXT] ? '<hr style="border-color:#24496f">' + r[TW_TEXT] : '') + '</div>';
+}
+function addLog(msg, p){ if (!NET.applying) pendingLogs.push({m:msg, p:p}); var l = document.getElementById("log"), d = document.createElement("div"); d.textContent = msg; if (p === 0 || p === 1) d.className = "l" + p; l.appendChild(d); l.scrollTop = l.scrollHeight; }
+
+/* ============ viewers ============ */
+function openViewer(zone, stackId, limit){
+	if (NET.seat != null && Z[zone].p !== NET.seat && ["hand","ldeck","deck","life"].indexOf(Z[zone].base) >= 0) { addLog("相手の非公開領域は見られません"); pendingLogs.pop(); return; }
+	var v = {id: viewerSeq++, zone:zone, stackId:stackId, limit:limit};
+	var el = document.createElement("div"); el.className = "viewer p" + Z[zone].p; v.el = el;
+	el.style.left = (120 + (viewers.length % 5) * 30) + "px"; el.style.top = (90 + (viewers.length % 5) * 30) + "px";
+	el.innerHTML = '<div class="vh"><span class="vt"></span><span><button class="vs">シャッフル</button> <button class="vc">✕</button></span></div><div class="vnote"></div><div class="vb"></div>';
+	el.querySelector(".vc").onclick = function(){ closeViewer(v); };
+	var sb = el.querySelector(".vs"), base = Z[zone].base;
+	if (Z[zone].kind === "pile" || base === "life") sb.onclick = function(){ doShuffle(zone); }; else sb.style.display = "none";
+	el.querySelector(".vh").addEventListener("pointerdown", function(e){
+		if (e.target.tagName === "BUTTON") return;
+		var sx = e.clientX - el.offsetLeft, sy = e.clientY - el.offsetTop;
+		function mv(ev){ el.style.left = (ev.clientX - sx) + "px"; el.style.top = (ev.clientY - sy) + "px"; }
+		function up(){ window.removeEventListener("pointermove", mv); window.removeEventListener("pointerup", up); }
+		window.addEventListener("pointermove", mv); window.addEventListener("pointerup", up);
+	});
+	document.body.appendChild(el); viewers.push(v); renderViewers();
+}
+function closeViewer(v){ v.el.remove(); viewers = viewers.filter(function(x){ return x !== v; }); }
+function closeAllViewers(){ viewers.slice().forEach(closeViewer); }
+function viewerCards(v){
+	var z = Z[v.zone], list;
+	if (v.stackId != null) { var s = stackById(v.stackId); list = s ? s.c.slice().reverse() : []; }
+	else if (z.kind === "pile" || z.kind === "stack" || z.base === "life") list = st.zones[v.zone].slice().reverse();
+	else list = st.zones[v.zone].slice();
+	if (v.limit) list = list.slice(0, v.limit);
+	return list;
+}
+function renderViewers(){
+	viewers.forEach(function(v){
+		var list = viewerCards(v), z = Z[v.zone];
+		v.el.querySelector(".vt").textContent = z.name + (v.stackId != null ? "（このスタック）" : "") + (v.limit ? "：上から" + v.limit + "枚" : "") + "　" + list.length + "枚";
+		var note = (z.kind === "pile" || z.kind === "stack" || v.stackId != null || z.base === "life") ? "左が一番上。卡片可直接拖到盤面。" : "可直接拖到盤面。";
+		if (z.base === "deck" || z.base === "life") note += "（裏向きも表示中・橘色虛線＝裏向き）";
+		v.el.querySelector(".vnote").textContent = note;
+		var b = v.el.querySelector(".vb"); b.innerHTML = "";
+		if (!list.length) b.innerHTML = '<span style="color:var(--muted)">（空）</span>';
+		list.forEach(function(u){
+			var el = document.createElement("div"); el.className = "card"; el.dataset.uid = u; el.dataset.viewer = "1";
+			var img = document.createElement("img"); img.draggable = false; el.appendChild(img);
+			img.onerror = function(){ el.classList.add("noimg"); };
+			decorate(el, st.cards[u], true); el.classList.toggle("back", !st.cards[u].up); el.classList.remove("down");
+			b.appendChild(el);
+		});
+	});
+}
+
+/* ============ drag & drop ============ */
+var drag = null, ctx = document.getElementById("ctx"), ctxFns = [];
+document.addEventListener("pointerdown", function(e){
+	if (e.button !== 0) return;
+	if (ctx.contains(e.target)) return;
+	hideCtx();
+	var el = e.target.closest(".card"); if (!el) return;
+	var r = el.getBoundingClientRect();
+	drag = {uid:+el.dataset.uid, el:el, sx:e.clientX, sy:e.clientY, offX:e.clientX - r.left, offY:e.clientY - r.top, whole:e.shiftKey, started:false, fromViewer:!!el.dataset.viewer};
+	e.preventDefault();
+});
+function zoneAt(x, y){
+	var t = document.elementFromPoint(x, y); if (!t || t.closest(".viewer")) return null;
+	return t.closest(".zone");
+}
+window.addEventListener("pointermove", function(e){
+	if (!drag) return;
+	if (!drag.started) {
+		if (Math.abs(e.clientX - drag.sx) + Math.abs(e.clientY - drag.sy) < 6) return;
+		drag.started = true;
+		var g = document.createElement("div"); g.id = "ghost";
+		var clone = drag.el.cloneNode(true); clone.classList.remove("down"); clone.style.zIndex = "";
+		g.appendChild(clone);
+		if (drag.whole) { var n = wholeStackOf(drag.uid).length; if (n > 1) { var b = document.createElement("span"); b.className = "sbadge"; b.style.cssText = "right:-6px;top:-6px"; b.textContent = n; g.appendChild(b); } }
+		var sc = drag.fromViewer ? 1 : SCALE;
+		g.style.transform = "scale(" + sc + ")";
+		document.body.appendChild(g); drag.ghost = g;
+		drag.el.classList.add("dragsrc");
+		drag.offX = Math.min(drag.offX, 60 * sc); drag.offY = Math.min(drag.offY, 60 * sc);
+	}
+	drag.ghost.style.left = (e.clientX - drag.offX) + "px"; drag.ghost.style.top = (e.clientY - drag.offY) + "px";
+	document.querySelectorAll(".zone.hl").forEach(function(z){ z.classList.remove("hl"); });
+	var zEl = zoneAt(e.clientX, e.clientY); if (zEl) zEl.classList.add("hl");
+});
+window.addEventListener("pointerup", function(e){
+	if (!drag) return;
+	var d = drag; drag = null;
+	document.querySelectorAll(".zone.hl").forEach(function(z){ z.classList.remove("hl"); });
+	if (!d.started) return;
+	d.ghost.remove(); d.el.classList.remove("dragsrc");
+	var zEl = zoneAt(e.clientX, e.clientY); if (!zEl) return;
+	var zone = zEl.dataset.zone, z = Z[zone], t = {zone:zone};
+	var zr = zEl.getBoundingClientRect(), lx = (e.clientX - zr.left) / SCALE, ly = (e.clientY - zr.top) / SCALE;
+	var moving = d.whole ? wholeStackOf(d.uid) : [d.uid];
+	var src = findCard(d.uid); if (!src) return;
+	if (z.kind === "row" || z.kind === "col") {
+		var idx = 0;
+		st.zones[zone].forEach(function(u){
+			if (moving.indexOf(u) >= 0) return;
+			var el = pool.get(u); if (!el) return;
+			var r = el.getBoundingClientRect();
+			if (z.kind === "row" ? (r.left + r.width / 2 < e.clientX) : (r.top + r.height / 2 < e.clientY)) idx++;
+		});
+		t.index = idx;
+	} else if (z.kind === "free") {
+		var hit = null;
+		document.elementsFromPoint(e.clientX, e.clientY).some(function(h){
+			var c = h.closest && h.closest(".card");
+			if (c && !c.dataset.viewer && zEl.contains(c) && moving.indexOf(+c.dataset.uid) < 0) { hit = +c.dataset.uid; return true; }
+			return false;
+		});
+		if (hit != null) t.stackId = findCard(hit).stack.id;
+		else {
+			t.x = Math.round(lx - d.offX / SCALE); t.y = Math.round(ly - d.offY / SCALE);
+			if (src.stack && src.zone === zone && (d.whole || src.stack.c.length === 1)) {
+				var s = src.stack;
+				act(function(){ s.x = Math.max(0, Math.min(z.w - CW, t.x)); s.y = Math.max(0, Math.min(z.h - CH, t.y)); });
+				return;
+			}
+		}
+	} else if (src.zone === zone) return;
+	act(function(){ if (moving.length > 1) moveMany(moving, t, "スタックごと移動"); else moveCard(d.uid, t); });
+});
+
+document.addEventListener("dblclick", function(e){
+	var el = e.target.closest(".card"), zEl = e.target.closest(".zone");
+	if (el && !el.dataset.viewer) {
+		var uid = +el.dataset.uid, L = findCard(uid); if (!L) return;
+		if (Z[L.zone].base === "deck") { draw(Z[L.zone].p, 1); return; }
+		if (Z[L.zone].kind === "pile") { openViewer(L.zone); return; }
+		toggleProp(uid, "down"); return;
+	}
+	if (zEl && Z[zEl.dataset.zone].kind === "pile") openViewer(zEl.dataset.zone);
+});
+document.addEventListener("mouseover", function(e){
+	var el = e.target.closest && e.target.closest(".card");
+	if (el && !drag) { hoverUid = +el.dataset.uid; showPreview(hoverUid, !!el.dataset.viewer); }
+	else if (!el) hoverUid = null;
+});
+document.addEventListener("keydown", function(e){
+	if (e.target.tagName === "TEXTAREA" || e.target.tagName === "INPUT") return;
+	if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z") { e.preventDefault(); undo(); return; }
+	if (e.key === "Escape") { hideCtx(); showHelp(false); return; }
+	if (hoverUid == null || !st.cards[hoverUid]) return;
+	var k = e.key.toLowerCase();
+	if (k === "d") toggleProp(hoverUid, "down"); else if (k === "f") toggleProp(hoverUid, "up"); else if (k === "r") toggleProp(hoverUid, "frozen");
+});
+
+/* ============ context menu ============ */
+function hideCtx(){ ctx.style.display = "none"; }
+function menuHTML(items){
+	var h = "";
+	items.forEach(function(it){
+		if (it === "-") { h += '<div class="s"></div>'; return; }
+		if (it.head) { h += '<div class="h">' + it.head + '</div>'; return; }
+		if (it.sub) { h += '<div class="i sub">' + it.label + '<div class="menu">' + menuHTML(it.sub) + '</div></div>'; return; }
+		ctxFns.push(it.fn); h += '<div class="i" data-f="' + (ctxFns.length - 1) + '">' + it.label + '</div>';
+	});
+	return h;
+}
+function showCtx(x, y, items){
+	ctxFns = []; ctx.innerHTML = menuHTML(items); ctx.style.display = "block";
+	var w = ctx.offsetWidth, h = ctx.offsetHeight;
+	ctx.style.left = Math.max(0, Math.min(x, innerWidth - w - 170)) + "px"; ctx.style.top = Math.max(0, Math.min(y, innerHeight - h - 4)) + "px";
+}
+ctx.addEventListener("click", function(e){ var i = e.target.closest("[data-f]"); if (!i) return; hideCtx(); ctxFns[+i.dataset.f](); });
+document.addEventListener("click", function(e){ if (!ctx.contains(e.target)) hideCtx(); });
+
+function moveTargets(uid, p){
+	function mv(base, bottom, pp){ return function(){ act(function(){ moveCard(uid, {zone:zk(pp == null ? p : pp, base), bottom:bottom}); }); }; }
+	var q = 1 - p;
+	return [
+		{label:"手札へ", fn:mv("hand")},
+		{label:"エナゾーンへ", fn:mv("ener")},
+		{label:"トラッシュへ", fn:mv("trash")},
+		{label:"デッキの一番上へ", fn:mv("deck")},
+		{label:"デッキの一番下へ", fn:mv("deck", true)},
+		{label:"ライフクロスへ", fn:mv("life")},
+		{label:"チェックゾーンへ", fn:mv("check")},
+		{label:"シグニゾーンへ", sub:[{label:"左", fn:mv("signi1")},{label:"中央", fn:mv("signi2")},{label:"右", fn:mv("signi3")}]},
+		{label:"ルリグゾーンへ", fn:mv("lrig")},
+		{label:"ルリグデッキへ", fn:mv("ldeck")},
+		{label:"ルリグトラッシュへ", fn:mv("ltrash")},
+		{label:"除外／その他へ", fn:mv("free")},
+		{label:"相手（" + PN[q] + "）の…", sub:[
+			{label:"シグニゾーン 左", fn:mv("signi1", false, q)},{label:"シグニゾーン 中央", fn:mv("signi2", false, q)},{label:"シグニゾーン 右", fn:mv("signi3", false, q)},
+			{label:"エナゾーン", fn:mv("ener", false, q)},{label:"手札", fn:mv("hand", false, q)},{label:"トラッシュ", fn:mv("trash", false, q)},{label:"ライフクロス", fn:mv("life", false, q)}
+		]}
+	];
+}
+function pileMenu(zone){
+	var z = Z[zone], p = z.p, b = z.base, it = [{head: z.name + "（" + st.zones[zone].length + "枚）"}];
+	if (b === "deck") {
+		it.push({label:"ドロー 1枚", fn:function(){ draw(p, 1); }});
+		it.push({label:"ドロー N枚…", fn:function(){ var n = parseInt(prompt("ドロー枚数", "2"), 10); if (n > 0) draw(p, n); }});
+		it.push({label:"エナチャージ（上1枚→エナ）", fn:function(){ topTo(p, "ener", 1); }});
+		it.push({label:"上1枚をトラッシュへ", fn:function(){ topTo(p, "trash", 1); }});
+		it.push({label:"上N枚をトラッシュへ…", fn:function(){ var n = parseInt(prompt("枚数", "1"), 10); if (n > 0) topTo(p, "trash", n); }});
+		it.push({label:"上1枚をライフクロスへ", fn:function(){ topTo(p, "life", 1); }});
+		it.push({label:"上1枚をチェックゾーンへ（公開）", fn:function(){ topTo(p, "check", 1); }});
+		it.push({label:"上からN枚を見る…", fn:function(){ var n = parseInt(prompt("見る枚数", "3"), 10); if (n > 0) openViewer(zone, null, n); }});
+		it.push({label:"デッキの中身を見る", fn:function(){ openViewer(zone); }});
+		it.push({label:"シャッフル", fn:function(){ doShuffle(zone); }});
+	} else if (b === "life") {
+		it.push({label:"クラッシュ（上1枚→チェックゾーン）", fn:function(){ crash(p); }});
+		it.push({label:"ライフクロスを見る", fn:function(){ openViewer(zone); }});
+		it.push({label:"シャッフル", fn:function(){ doShuffle(zone); }});
+	} else {
+		it.push({label:"中身を見る", fn:function(){ openViewer(zone); }});
+		if (b === "trash") it.push({label:"リフレッシュ（トラッシュを全てデッキに戻してシャッフル）", fn:function(){ act(function(){ st.zones[zone].slice().forEach(function(u){ moveCard(u, {zone:zk(st.cards[u].owner, "deck")}, {silent:true}); }); shuffle(zk(p, "deck")); addLog(PN[p] + "：リフレッシュ", p); }); }});
+		if (b === "ener") it.push({label:"エナを全てトラッシュへ", fn:function(){ act(function(){ moveMany(st.zones[zone].slice(), {zone:zk(p, "trash")}, PN[p] + " エナ全て"); }); }});
+		if (b === "check") it.push({label:"チェックゾーンを全てエナへ", fn:function(){ act(function(){ moveMany(st.zones[zone].slice(), {zone:zk(p, "ener")}, PN[p] + " チェックゾーン"); }); }});
+		if (b === "hand") it.push({label:"手札をシャッフル", fn:function(){ doShuffle(zone); }});
+	}
+	return it;
+}
+document.addEventListener("contextmenu", function(e){
+	if (e.target.closest("#codeBox") || e.target.tagName === "TEXTAREA") return;
+	e.preventDefault();
+	var el = e.target.closest(".card"), zEl = e.target.closest(".zone");
+	if (el) {
+		var uid = +el.dataset.uid, c = st.cards[uid], L = findCard(uid); if (!L) return;
+		var zb = Z[L.zone].base;
+		if (!el.dataset.viewer && (zb === "deck" || zb === "life")) { showCtx(e.clientX, e.clientY, pileMenu(L.zone)); return; }
+		var it = [{head: '<span class="ptag p' + c.owner + '">' + PN[c.owner] + '</span> ' + (canSee(c, L.zone) ? cname(c) : "（非公開）")}];
+		it.push({label: c.down ? "アップ（縦に戻す）" : "ダウン（横にする）", fn:function(){ toggleProp(uid, "down"); }});
+		it.push({label: c.up ? "裏向きにする" : "表向きにする", fn:function(){ toggleProp(uid, "up"); }});
+		it.push({label: c.frozen ? "凍結を解除" : "凍結する", fn:function(){ toggleProp(uid, "frozen"); }});
+		it.push("-");
+		it.push({label:"移動（" + PN[c.owner] + " の領域）", sub: moveTargets(uid, c.owner)});
+		var stackArr = L.stack ? L.stack.c : (Z[L.zone].kind === "stack" ? L.arr : null);
+		if (stackArr && stackArr.length > 1) {
+			it.push("-");
+			it.push({label:"このスタックの一番下へ", fn:function(){ act(function(){ var a = findCard(uid).arr; a.splice(a.indexOf(uid), 1); a.unshift(uid); addLog(cname(c) + "：スタックの一番下へ", c.owner); }); }});
+			it.push({label:"重なっているカードを見る（" + stackArr.length + "枚）", fn:function(){ if (L.stack) openViewer(L.zone, L.stack.id); else openViewer(L.zone); }});
+			function whole(base){ return function(){ act(function(){ var us = wholeStackOf(uid); us.forEach(function(u){ moveCard(u, {zone:zk(st.cards[u].owner, base)}, {silent:true}); }); addLog("スタックごと → " + BASE[base].name + "（" + us.length + "枚・各持ち主へ）", c.owner); }); }; }
+			it.push({label:"スタックごと（各持ち主へ）", sub:[{label:"トラッシュへ", fn:whole("trash")},{label:"エナゾーンへ", fn:whole("ener")},{label:"手札へ", fn:whole("hand")},{label:"ルリグトラッシュへ", fn:whole("ltrash")}]});
+		}
+		if (Z[L.zone].kind === "pile" || zb === "ener" || zb === "check") { it.push("-"); it = it.concat(pileMenu(L.zone).slice(1)); }
+		showCtx(e.clientX, e.clientY, it); return;
+	}
+	if (zEl) {
+		var zone = zEl.dataset.zone, b = Z[zone].base;
+		if (Z[zone].kind === "pile" || ["life","ener","check","ldeck","hand"].indexOf(b) >= 0) showCtx(e.clientX, e.clientY, pileMenu(zone));
+	}
+});
+
+/* ============ misc ============ */
+function showHelp(on){ document.getElementById("help").style.display = on ? "flex" : "none"; }
+function fit(){
+	var wrap = document.getElementById("boardWrap"), side = 290;
+	var aw = innerWidth - side - 24, ah = innerHeight - 40 - 14;
+	SCALE = Math.max(0.35, Math.min(aw / BW, ah / BH, 1.4));
+	board.style.transform = "scale(" + SCALE + ")";
+	wrap.style.width = (BW * SCALE) + "px"; wrap.style.height = (BH * SCALE) + "px";
+}
+window.addEventListener("resize", fit);
+/* ============ online (PeerJS / WebRTC) ============ */
+var NET = {peer:null, conn:null, seat:null, applying:false, code:""}, pendingLogs = [];
+function online(){ return !!(NET.conn && NET.conn.open); }
+function broadcast(){ if (online()) { try { NET.conn.send({t:"state", s:st, logs:pendingLogs}); } catch(e) {} } pendingLogs = []; }
+function toggleNet(){ var b = document.getElementById("netBox"); b.style.display = b.style.display === "block" ? "none" : "block"; }
+function netStatus(msg, cls){ var e = document.getElementById("netStat"); e.textContent = msg; e.className = cls || ""; document.getElementById("netBadge").textContent = NET.seat != null ? "🌐 " + PN[NET.seat] + "：" + msg : ""; }
+function peerOpts(){
+	var q = new URLSearchParams(location.search), o = {debug:1};
+	if (q.get("peerhost")) { o.host = q.get("peerhost"); o.port = +(q.get("peerport") || 9000); o.path = q.get("peerpath") || "/"; o.secure = q.get("peersecure") === "1"; }
+	return o;
+}
+function peerReady(){ if (typeof Peer === "undefined") { alert("連線元件（PeerJS）載入失敗，請確認網路連線後重新整理。"); return false; } return true; }
+function setSeat(seat){
+	NET.seat = seat; VIEW = seat; applyLayout();
+	[0, 1].forEach(function(p){ document.getElementById("deckSelect" + p).disabled = p !== seat; });
+	document.getElementById("netIdle").style.display = "none"; document.getElementById("netActive").style.display = "";
+}
+function hostRoom(){
+	if (!peerReady() || NET.peer) return;
+	var A = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789", code = ""; for (var i = 0; i < 6; i++) code += A[Math.floor(Math.random() * A.length)];
+	NET.code = code; netStatus("建立房間中…");
+	var peer = NET.peer = new Peer("wxsim-" + code, peerOpts());
+	peer.on("open", function(){
+		setSeat(0); document.getElementById("netCode").textContent = code; document.getElementById("netCodeRow").style.display = "";
+		netStatus("等待對手加入…（把代碼給對方）", ""); render();
+	});
+	peer.on("connection", function(c){
+		if (online()) { c.on("open", function(){ c.send({t:"full"}); setTimeout(function(){ c.close(); }, 500); }); return; }
+		setupConn(c, true);
+	});
+	peer.on("error", function(e){ netStatus("錯誤：" + (e.type || e), "ng"); if (e.type === "unavailable-id") { leaveRoom(); hostRoom(); } });
+	peer.on("disconnected", function(){ if (NET.peer === peer && !peer.destroyed) { try { peer.reconnect(); } catch(x) {} } });
+}
+function joinRoom(){
+	if (!peerReady() || NET.peer) return;
+	var code = document.getElementById("joinCode").value.trim().toUpperCase();
+	if (code.length !== 6) { alert("請輸入 6 碼房間代碼"); return; }
+	NET.code = code; netStatus("連線中…");
+	var peer = NET.peer = new Peer(peerOpts());
+	peer.on("open", function(){ setupConn(peer.connect("wxsim-" + code, {reliable:true}), false); });
+	peer.on("error", function(e){ netStatus(e.type === "peer-unavailable" ? "找不到房間 " + code + "（代碼錯誤或對方已關閉）" : "錯誤：" + (e.type || e), "ng"); if (e.type === "peer-unavailable") { leaveRoom(true); } });
+}
+function setupConn(c, isHost){
+	NET.conn = c;
+	c.on("open", function(){
+		if (isHost) { netStatus("已連線（對手：P2）", "ok"); c.send({t:"hello", seat:1, s:st}); addLog("🌐 P2 が入室しました"); pendingLogs = []; renderPanel(); }
+		else netStatus("已連線，等待房主資料…", "ok");
+	});
+	c.on("data", onData);
+	c.on("close", function(){ if (NET.conn === c) { NET.conn = null; netStatus("連線已中斷", "ng"); addLog("🌐 連線已中斷"); pendingLogs = []; } });
+	c.on("error", function(e){ netStatus("連線錯誤：" + (e.type || e), "ng"); });
+}
+function onData(m){
+	if (!m || !m.t) return;
+	if (m.t === "full") { netStatus("房間已滿", "ng"); leaveRoom(true); return; }
+	if (m.t === "hello") {
+		setSeat(m.seat); document.getElementById("netCode").textContent = NET.code;
+		snapshot(); st = m.s; closeAllViewers(); netStatus("已連線（我是 " + PN[m.seat] + "）", "ok");
+		addLog("🌐 已加入房間 " + NET.code + "。請在上方選擇自己的牌組。"); pendingLogs = []; render(); return;
+	}
+	if (m.t === "state") {
+		snapshot(); st = m.s;
+		NET.applying = true; (m.logs || []).forEach(function(l){ addLog(l.m, l.p); }); NET.applying = false;
+		render();
+	}
+}
+function leaveRoom(keepStatus){
+	try { if (NET.conn) NET.conn.close(); } catch(e) {}
+	try { if (NET.peer) NET.peer.destroy(); } catch(e) {}
+	NET.conn = null; NET.peer = null; NET.seat = null; VIEW = 0; applyLayout();
+	[0, 1].forEach(function(p){ document.getElementById("deckSelect" + p).disabled = false; });
+	document.getElementById("netIdle").style.display = ""; document.getElementById("netActive").style.display = "none";
+	if (!keepStatus) netStatus(""); document.getElementById("netBadge").textContent = "";
+	render();
+}
+function copyCode(){ try { navigator.clipboard.writeText(NET.code); } catch(e) {} }
+window.addEventListener("beforeunload", function(){ try { if (NET.peer) NET.peer.destroy(); } catch(e) {} });
+
+var SAVE_KEY = "WX_PRACTICE_STATE2";
+function save(){ if (!Object.keys(st.cards).length) return; try { localStorage.setItem(SAVE_KEY, JSON.stringify(st)); } catch(e) {} }
+function restoreSaved(){
+	try { var s = JSON.parse(localStorage.getItem(SAVE_KEY)); if (s && s.v === 2) { snapshot(); st = s; closeAllViewers(); addLog("前回の盤面を復元しました"); render(); broadcast(); } } catch(e) {}
+	document.getElementById("restoreBtn").style.display = "none";
+}
+var hadSave = false; try { hadSave = !!localStorage.getItem(SAVE_KEY); } catch(e) {}
+fit(); fillDeckSelects();
+if (hadSave) document.getElementById("restoreBtn").style.display = "";
+render();
+addLog("上方分別為 P1（下）／P2（上）選擇牌組，然後按①準備。");
+</script>
+</body>
+</html>
