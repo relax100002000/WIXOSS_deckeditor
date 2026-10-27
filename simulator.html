@@ -109,6 +109,10 @@ select,textarea,input{background:#0b2240;color:var(--txt);border:1px solid #3b7c
 .viewer .card{position:relative}
 .viewer .card.back{outline:2px dashed #e0a030}
 .viewer .vnote{font-size:11px;color:var(--muted);padding:0 10px 6px}
+#firstBox{position:fixed;left:0;right:0;top:44px;z-index:6400;display:none;justify-content:center;pointer-events:none}
+#firstBox .fbx{pointer-events:auto;background:#0a1a2e;border:2px solid #ffd75e;border-radius:10px;padding:14px 20px;text-align:center;box-shadow:0 6px 24px rgba(0,0,0,.7)}
+#firstBox h2{margin:0 0 6px;font-size:16px;color:#ffd75e}
+#firstBox button{font-size:14px;padding:6px 14px;margin:0 4px}
 #help{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:7000;display:none;align-items:center;justify-content:center}
 #help > div{background:#0a1a2e;border:1px solid #5fc3ff;border-radius:10px;padding:16px 22px;max-width:680px;line-height:1.7;user-select:text}
 #help h2{margin:0 0 8px;color:var(--accent);font-size:16px}
@@ -167,6 +171,7 @@ kbd{background:#1d3d63;border-radius:3px;padding:0 5px;font-size:11px}
 	</div>
 </div>
 <div id="ctx"></div>
+<div id="firstBox"></div>
 <div id="hoverZoom"><img alt=""></div>
 <div id="tkPicker" onclick="if(event.target===this)closeTokenPicker()"><div class="box">
 	<div class="hd"><span id="tkTitle"></span><input id="tkSearch" placeholder="搜尋卡名／卡號" oninput="renderTokenPicker()"><span style="flex:1"></span><button onclick="closeTokenPicker()">✕</button></div>
@@ -176,6 +181,7 @@ kbd{background:#1d3d63;border-radius:3px;padding:0 5px;font-size:11px}
 <div id="help" onclick="if(event.target===this)showHelp(false)"><div>
 	<h2>操作說明（雙人）</h2>
 	<b>盤面：</b>P1＝藍、P2＝紅，兩邊面對面（位置上下左右對調）。黃框＝目前回合玩家。本機時 P1 在下；連線時自己永遠在下。<br>
+	<b>連線時的先攻／後攻：</b>按①準備後，畫面上方出現準備面板：P1 選「先攻／後攻／ランダム」；雙方會自動進入調度（點選要換的手牌→確定，或「調度しない」）。雙方調度完成且決定先後攻後，自動擺好ライフクロス並公開ルリグ，不用再按②。<br>
 	<b>連線對戰：</b>按「🌐 連線對戰」→ 一方建立房間，把 6 碼代碼給對方，對方輸入後加入。之後所有操作即時同步（Ctrl+Z 會復原最後一個動作，不論是誰做的）。<br>
 	<b>讀牌組：</b>上方兩個選單分別給 P1／P2 選牌組編輯器（DIVA／ALLSTAR）存的牌組；也可「貼上コード」後選要讀入哪一方。<br>
 	<b>開局：</b>①準備（雙方 Lv0 裏向き＋洗牌＋5張）→ 面板「調度」：點選要換的手牌→確定（放到デッキ下、抽同樣張數、洗牌）→ ②ゲーム開始。先攻在右側面板「先攻／ターンプレイヤー」切換。<br>
@@ -344,6 +350,10 @@ function mullStart(p){
 	MULL = {p:p, sel:[]}; render();
 }
 function mullCancel(){ MULL = null; render(); }
+function mullKeep(){   // 準備階段（連線）：不調度，直接完成
+	if (!MULL) return; var p = MULL.p; MULL = null;
+	act(function(){ st.players[p].mullDone = true; addLog(PN[p] + "：調度しない（そのまま）", p); });
+}
 function mullToggle(uid){
 	var i = MULL.sel.indexOf(uid);
 	if (i >= 0) MULL.sel.splice(i, 1); else MULL.sel.push(uid);
@@ -358,7 +368,7 @@ function mullConfirm(){
 		pick.forEach(function(u){ moveCard(u, {zone:zk(p, "deck"), bottom:true}, {silent:true}); });
 		for (var i = 0; i < pick.length; i++) { var t = topOf(zk(p, "deck")); if (t != null) moveCard(t, {zone:zk(p, "hand")}, {silent:true}); }
 		shuffle(zk(p, "deck"));
-		st.players[p].mulled = true;
+		st.players[p].mulled = true; st.players[p].mullDone = true;
 		addLog(PN[p] + "：調度 " + pick.length + "枚（デッキの下に置き、同じ枚数ドローしてシャッフル）", p);
 	});
 }
@@ -449,16 +459,56 @@ function prepareGame(){
 			addLog(PN[p] + " 準備完了：Lv0ルリグ裏向き配置、シャッフル、5枚ドロー", p);
 		});
 		st.turn = 1; st.phase = 0;
-		addLog("各自「調度」（必要なら）後に②を押してください。");
+		if (NET.seat != null && online()) { st.firstChoice = "pending"; st.prepOnline = true; st.players[0].mullDone = false; st.players[1].mullDone = false; addLog("P1 が先攻／後攻を決めます…／各自調度してください（雙方完成後自動開始）"); } else st.prepOnline = false;
+		if (!st.prepOnline) addLog("各自「調度」（必要なら）後に②を押してください。");
 	});
 }
+/* ---- online: after ① 準備, P1 chooses 先攻 / 後攻 / ランダム ---- */
+function chooseFirst(mode){
+	if (st.firstChoice !== "pending" || NET.seat !== 0) return;
+	act(function(){
+		var tp = mode === "first" ? 0 : mode === "second" ? 1 : (Math.random() < 0.5 ? 0 : 1);
+		st.tp = tp; st.turn = 1; st.phase = 0; st.firstChoice = null;
+		addLog("先攻／後攻：P1 が「" + ({first:"先攻", second:"後攻", random:"ランダム"})[mode] + "」を選択 → 先攻は " + PN[tp], tp);
+	});
+}
+function prepActive(){ return !!(st.prepOnline && NET.seat != null && online()); }
+function renderFirstChoice(){
+	var box = document.getElementById("firstBox");
+	if (st.prepOnline && !(NET.seat != null && online())) { /* offline / disconnected: leave prep mode quietly */ }
+	if (!prepActive()) { box.style.display = "none"; if (MULL && st.prepOnline === false) {} return; }
+	var me = NET.seat, opp = 1 - me, P = st.players;
+	// automatically enter 調度 mode for my own hand until I finish
+	if (!P[me].mullDone && !MULL && st.zones[zk(me, "hand")].length) MULL = {p:me, sel:[]};
+	var h = '<div class="fbx">';
+	if (st.firstChoice === "pending") {
+		h += me === 0
+			? '<h2>先攻／後攻を決めてください</h2><div style="margin-bottom:8px"><button onclick="chooseFirst(\'first\')">先攻（P1 が先）</button><button onclick="chooseFirst(\'second\')">後攻（P2 が先）</button><button onclick="chooseFirst(\'random\')">ランダム</button></div>'
+			: '<h2>P1 が先攻／後攻を決めています…</h2>';
+	} else h += '<div style="margin-bottom:6px">先攻：<b style="color:#ffd75e">' + PN[st.tp] + '</b></div>';
+	if (!P[me].mullDone) {
+		var n = MULL ? MULL.sel.length : 0;
+		h += '<div style="border-top:1px solid #24496f;padding-top:8px">調度：點選要換掉的手牌（已選 <b>' + n + '</b> 枚）　<button onclick="mullConfirm()">確定</button><button onclick="mullKeep()">調度しない</button></div>';
+	} else h += '<div style="border-top:1px solid #24496f;padding-top:8px;color:#7be07b">✔ 調度完成</div>';
+	h += '<div style="color:var(--muted);font-size:12px;margin-top:6px">' + PN[opp] + '：' + (P[opp].mullDone ? '調度完成' : '調度中…') + '　｜　雙方完成且決定先後攻後自動開始（ライフクロス7枚・ルリグ公開）</div></div>';
+	box.innerHTML = h; box.style.display = "flex";
+	// P1's client starts the game once everything is ready
+	if (me === 0 && st.firstChoice !== "pending" && P[0].mullDone && P[1].mullDone && !renderFirstChoice.starting) {
+		renderFirstChoice.starting = true;
+		setTimeout(function(){ renderFirstChoice.starting = false; if (prepActive() && st.firstChoice !== "pending" && st.players[0].mullDone && st.players[1].mullDone) startGame(); }, 400);
+	}
+}
 function startGame(){
+	if (st.firstChoice === "pending" && !(NET.seat != null && online())) st.firstChoice = null;
+	if (st.prepOnline && !(NET.seat != null && online())) st.prepOnline = false;
+	if (prepActive() && !(st.players[0].mullDone && st.players[1].mullDone)) { alert("雙方調度完成後會自動開始。"); return; }
+	if (st.firstChoice === "pending") { alert(NET.seat === 0 ? "請先決定先攻／後攻。" : "請等待 P1 決定先攻／後攻。"); renderFirstChoice(); return; }
 	act(function(){
 		[0, 1].forEach(function(p){
 			for (var i = 0; i < 7; i++) { var t = topOf(zk(p, "deck")); if (t != null) moveCard(t, {zone:zk(p, "life")}, {silent:true}); }
 			st.zones[zk(p, "lrig")].forEach(function(s){ s.c.forEach(function(u){ st.cards[u].up = true; }); });
 		});
-		st.turn = 1; st.phase = 0;
+		st.turn = 1; st.phase = 0; st.prepOnline = false;
 		addLog("ライフクロス7枚設置、ルリグ公開。ゲーム開始！先攻：" + PN[st.tp], st.tp);
 	});
 }
@@ -523,6 +573,7 @@ function canSee(c, zone){
 function publicBase(b){ return ["hand","ldeck","deck","life"].indexOf(b) < 0; }
 
 function render(){
+	if (prepActive() && !st.players[NET.seat].mullDone && !MULL && st.zones[zk(NET.seat, "hand")].length) MULL = {p:NET.seat, sel:[]};  // 連線準備：自動進入調度
 	var used = new Set();
 	function put(uid, zone, x, y, zi){
 		var el = cardEl(uid), c = st.cards[uid]; used.add(uid);
@@ -572,7 +623,7 @@ function render(){
 	}
 	pool.forEach(function(el, uid){ if (!used.has(uid)) el.remove(); });
 	halfEls.forEach(function(h, p){ h.classList.toggle("turn", st.tp === p); });
-	renderPanel(); renderViewers(); save();
+	renderPanel(); renderViewers(); renderFirstChoice(); save();
 }
 
 function renderPanel(){
@@ -583,7 +634,7 @@ function renderPanel(){
 		var P = st.players[p], c = function(b){ return st.zones[zk(p, b)].length; };
 		h += '<div class="prow p' + p + '"><span class="ptag p' + p + '">' + PN[p] + (NET.seat != null ? (p === NET.seat ? ' 自分' : ' 相手') : (p === VIEW ? ' 下' : ' 上')) + '</span><span style="max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px">' + esc(P.deckName || "（未選擇）") + '</span>'
 			+ '<span style="flex:1"></span>コイン<b style="color:#ffd75e;min-width:14px;text-align:center">' + P.coin + '</b><button onclick="coin(' + p + ',-1)">－</button><button onclick="coin(' + p + ',1)">＋</button>'
-			+ (MULL && MULL.p === p ? '<div class="mullbar">調度中：點選要換掉的手牌（' + MULL.sel.length + '枚）<button onclick="mullConfirm()">確定</button><button onclick="mullCancel()">取消</button></div>' : '')
+			+ (MULL && MULL.p === p ? '<div class="mullbar">調度中：點選要換掉的手牌（' + MULL.sel.length + '枚）<button onclick="mullConfirm()">確定</button>' + (st.prepOnline ? '<button onclick="mullKeep()">調度しない</button>' : '<button onclick="mullCancel()">取消</button>') + '</div>' : '')
 			+ '<button onclick="mullStart(' + p + ')"' + (NET.seat != null && p !== NET.seat ? ' disabled' : '') + '>調度' + (P.mulled ? '（済）' : '') + '</button>'
 			+ '<button onclick="draw(' + p + ',1)">ドロー</button><button onclick="topTo(' + p + ',\'ener\',1)">エナチャージ</button><button onclick="upAll(' + p + ')">全アップ</button><button onclick="doShuffle(\'' + zk(p, "deck") + '\')">シャッフル</button><button onclick="crash(' + p + ')">クラッシュ</button>'
 			+ (NET.seat != null ? '' : '<label style="font-size:11px"><input type="checkbox" ' + (P.hide ? "checked" : "") + ' onchange="toggleHide(' + p + ')">手札を伏せる</label>')
