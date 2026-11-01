@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-31T18:02:27.419Z",
+  "updated": "2026-11-01T18:02:21.395Z",
   "source": "https://yuyu-tei.jp/",
   "count": 3381,
   "failed_sets": [],
@@ -7,7 +7,7 @@
     "WX26-P2-001": {
       "price": 1980,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx26p2/10001",
-      "sold_out": false
+      "sold_out": true
     },
     "WX26-P2-002": {
       "price": 1480,
@@ -37,7 +37,7 @@
     "WX26-P2-007": {
       "price": 1780,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx26p2/10013",
-      "sold_out": false
+      "sold_out": true
     },
     "WX26-P2-008": {
       "price": 980,
@@ -47,7 +47,7 @@
     "WX26-P2-009": {
       "price": 3480,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx26p2/10017",
-      "sold_out": false
+      "sold_out": true
     },
     "WX26-P2-010": {
       "price": 1780,
@@ -655,7 +655,7 @@
       "sold_out": false
     },
     "WX26-P1-010": {
-      "price": 1480,
+      "price": 1780,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx26p1/10019",
       "sold_out": false
     },
@@ -720,7 +720,7 @@
       "sold_out": false
     },
     "WX26-P1-060": {
-      "price": 320,
+      "price": 420,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx26p1/10135",
       "sold_out": false
     },
@@ -2382,7 +2382,7 @@
     "WX25-P2-006": {
       "price": 2480,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx25p2/10011",
-      "sold_out": false
+      "sold_out": true
     },
     "WX25-P2-007": {
       "price": 8980,
@@ -2742,7 +2742,7 @@
     "WX25-P2-098": {
       "price": 120,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx25p2/10213",
-      "sold_out": false
+      "sold_out": true
     },
     "WX25-P2-100": {
       "price": 80,
@@ -2832,7 +2832,7 @@
     "WX25-P2-083": {
       "price": 50,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx25p2/10183",
-      "sold_out": false
+      "sold_out": true
     },
     "WX25-P2-084": {
       "price": 30,
@@ -4672,7 +4672,7 @@
     "WX24-P3-054": {
       "price": 780,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx24p3/10117",
-      "sold_out": false
+      "sold_out": true
     },
     "WX24-P3-055": {
       "price": 120,
@@ -5595,7 +5595,7 @@
       "sold_out": false
     },
     "WX24-P1-041": {
-      "price": 220,
+      "price": 320,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx24p1/10091",
       "sold_out": false
     },
@@ -5605,7 +5605,7 @@
       "sold_out": false
     },
     "WX24-P1-043": {
-      "price": 120,
+      "price": 180,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx24p1/10095",
       "sold_out": false
     },
@@ -6272,7 +6272,7 @@
     "WXDi-P16-082": {
       "price": 220,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi16/10170",
-      "sold_out": false
+      "sold_out": true
     },
     "WXDi-P16-086": {
       "price": 80,
@@ -6405,7 +6405,7 @@
       "sold_out": false
     },
     "WXDi-P16-081": {
-      "price": 180,
+      "price": 220,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi16/10168",
       "sold_out": false
     },
@@ -6425,7 +6425,7 @@
       "sold_out": false
     },
     "WXDi-P16-094": {
-      "price": 120,
+      "price": 80,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi16/10194",
       "sold_out": false
     },
@@ -7030,7 +7030,7 @@
       "sold_out": false
     },
     "WXDi-CP02-060": {
-      "price": 180,
+      "price": 120,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdicp02/10123",
       "sold_out": false
     },
@@ -7112,12 +7112,12 @@
     "WXDi-CP02-024": {
       "price": 80,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdicp02/10051",
-      "sold_out": false
+      "sold_out": true
     },
     "WXDi-CP02-025": {
       "price": 80,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdicp02/10053",
-      "sold_out": false
+      "sold_out": true
     },
     "WXDi-CP02-026": {
       "price": 80,
@@ -7522,7 +7522,7 @@
     "WXDi-P14-042": {
       "price": 320,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi14/10087",
-      "sold_out": false
+      "sold_out": true
     },
     "WXDi-P14-043": {
       "price": 220,
@@ -9497,7 +9497,7 @@
     "WXDi-P11-076": {
       "price": 120,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi11/10157",
-      "sold_out": false
+      "sold_out": true
     },
     "WXDi-P11-077": {
       "price": 80,
@@ -9565,7 +9565,7 @@
       "sold_out": false
     },
     "WXDi-P11-068": {
-      "price": 120,
+      "price": 180,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi11/10141",
       "sold_out": false
     },
@@ -10132,7 +10132,7 @@
     "WXDi-P09-045": {
       "price": 1480,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi09/10101",
-      "sold_out": false
+      "sold_out": true
     },
     "WXDi-P09-046": {
       "price": 680,
@@ -10950,7 +10950,7 @@
       "sold_out": false
     },
     "WXDi-P07-045": {
-      "price": 680,
+      "price": 780,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi07/10093",
       "sold_out": false
     },
@@ -11192,7 +11192,7 @@
     "WXDi-P07-085": {
       "price": 120,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi07/10173",
-      "sold_out": false
+      "sold_out": true
     },
     "WXDi-P07-086": {
       "price": 80,
@@ -11450,7 +11450,7 @@
       "sold_out": false
     },
     "WXDi-P06-034": {
-      "price": 1280,
+      "price": 980,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi06/10074",
       "sold_out": false
     },
@@ -12137,7 +12137,7 @@
     "WXDi-P05-044": {
       "price": 80,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi05/10077",
-      "sold_out": false
+      "sold_out": true
     },
     "WXDi-P05-046": {
       "price": 30,
@@ -12807,7 +12807,7 @@
     "WXDi-P03-038": {
       "price": 1480,
       "url": "https://yuyu-tei.jp/sell/wx/card/wxdi03/10066",
-      "sold_out": false
+      "sold_out": true
     },
     "WXDi-P03-039": {
       "price": 180,
@@ -15260,7 +15260,7 @@
       "sold_out": false
     },
     "WX24-D2-20": {
-      "price": 420,
+      "price": 320,
       "url": "https://yuyu-tei.jp/sell/wx/card/wx24d2/10020",
       "sold_out": false
     },
@@ -15685,7 +15685,7 @@
       "sold_out": false
     },
     "WXDi-D09-P14": {
-      "price": 320,
+      "price": 500,
       "url": "https://yuyu-tei.jp/sell/wx/card/wdi09/10043",
       "sold_out": false
     },
@@ -15820,7 +15820,7 @@
       "sold_out": false
     },
     "WXDi-D08-023": {
-      "price": 680,
+      "price": 780,
       "url": "https://yuyu-tei.jp/sell/wx/card/wdi08/10023",
       "sold_out": false
     },
