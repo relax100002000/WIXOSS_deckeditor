@@ -410,6 +410,8 @@ function onmouseShow(x, source)
 
 	// Locked (ALT held): keep current big_pic content and visibility frozen.
 	if(bigPicLocked) { return; }
+	// 空白欄位：不影響目前預覽
+	if(!x.alt) return;
 
 	if(source == 'search')
 	{

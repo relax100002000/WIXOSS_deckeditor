@@ -1,9 +1,10 @@
-==== 2026/10/16 ¶g¤­  2:00:01.67 ==== 
+==== 2026/11/02 ¶g¤@  2:00:02.15 ==== 
 [1/3] Running scraper...   
-[card-base] 3389 card IDs from card_info.js
+[card-base] 3410 card IDs from card_info.js
 [mode] auto-discover from https://yuyu-tei.jp/top/wx
-Discovered 245 sets
-[filter] kept 101 / 245 Diva slugs (ALLSTAR skipped)
+Discovered 246 sets
+[filter] kept 102 / 246 Diva slugs (ALLSTAR skipped)
+  OK wx26p2           -> +121 cards (135 off-base skipped)
   OK wx26p1           -> +127 cards (148 off-base skipped)
   OK wx26cp1          -> +102 cards (123 off-base skipped)
   OK wx25p3           -> +120 cards (150 off-base skipped)
@@ -106,14 +107,14 @@ Discovered 245 sets
   OK promo-200        -> +0 cards (99 off-base skipped)
   OK promo-100        -> +0 cards (87 off-base skipped)
 
-Wrote 3260 prices to D:\github\WIXOSS_deckeditor\price_info.json
+Wrote 3381 prices to D:\github\WIXOSS_deckeditor\price_info.json
 Wrote browser bundle to D:\github\WIXOSS_deckeditor\js\price_info.js
 [2/3] Staging changes... 
 warning: in the working copy of 'js/price_info.js', LF will be replaced by CRLF the next time Git touches it
 warning: in the working copy of 'price_info.json', LF will be replaced by CRLF the next time Git touches it
-[3/3] Committing and pushing (updated=2026-10-15T18:02:30.357Z)... 
-[main 751875d] chore: update card prices (2026-10-15T18:02:30.357Z)
- 2 files changed, 32 insertions(+), 32 deletions(-)
+[3/3] Committing and pushing (updated=2026-11-01T18:02:21.395Z)... 
+[main 049063e] chore: update card prices (2026-11-01T18:02:21.395Z)
+ 2 files changed, 31 insertions(+), 31 deletions(-)
 To https://github.com/relax100002000/WIXOSS_deckeditor.git
-   13fc28e..751875d  main -> main
-[OK] Prices updated and pushed for 2026-10-15T18:02:30.357Z. 
+   03db450..049063e  main -> main
+[OK] Prices updated and pushed for 2026-11-01T18:02:21.395Z. 
