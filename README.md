@@ -2,6 +2,9 @@
    
 Author: ZZZ  
   
+20261103 v2.13  
+1.更新WX26-P2中文  
+  
 20261019 v2.12  
 1.新增ALLSTAR版(index_allstar.html)：收錄無印、KEY、DIVA全卡，套用オールスター繭の部屋  
 2.新增DIVA版/ALLSTAR版切換連結  
