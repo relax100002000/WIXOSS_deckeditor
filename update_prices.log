@@ -1,4 +1,4 @@
-==== 2026/11/03 ¶g¤G  2:00:02.24 ==== 
+==== 2026/11/10 ¶g¤G  2:00:02.11 ==== 
 [1/3] Running scraper...   
 [card-base] 3410 card IDs from card_info.js
 [mode] auto-discover from https://yuyu-tei.jp/top/wx
@@ -87,7 +87,7 @@ Discovered 246 sets
   OK spdi13           -> +0 cards (3 off-base skipped)
   OK spdi12           -> +0 cards (6 off-base skipped)
   OK spdi11           -> +0 cards (7 off-base skipped)
-  OK spdi10           -> +0 cards (26 off-base skipped)
+  OK spdi10           -> +0 cards (28 off-base skipped)
   OK spdi09           -> +0 cards (3 off-base skipped)
   OK spdi08           -> +0 cards (13 off-base skipped)
   OK spdi07           -> +0 cards (12 off-base skipped)
@@ -95,11 +95,11 @@ Discovered 246 sets
   OK spdi05           -> +0 cards (5 off-base skipped)
   OK spdi04           -> +0 cards (3 off-base skipped)
   OK spdi03           -> +0 cards (19 off-base skipped)
-  OK spdi02           -> +0 cards (34 off-base skipped)
+  OK spdi02           -> +0 cards (35 off-base skipped)
   OK spdi01-2         -> +17 cards (53 off-base skipped)
   OK spdi01           -> +0 cards (256 off-base skipped)
   OK sp38             -> +2 cards (6 off-base skipped)
-  OK promo-di100      -> +5 cards (92 off-base skipped)
+  OK promo-di100      -> +5 cards (94 off-base skipped)
   OK promo-k100       -> +0 cards (83 off-base skipped)
   OK promo-500        -> +0 cards (79 off-base skipped)
   OK promo-400        -> +0 cards (100 off-base skipped)
@@ -112,9 +112,9 @@ Wrote browser bundle to D:\github\WIXOSS_deckeditor\js\price_info.js
 [2/3] Staging changes... 
 warning: in the working copy of 'js/price_info.js', LF will be replaced by CRLF the next time Git touches it
 warning: in the working copy of 'price_info.json', LF will be replaced by CRLF the next time Git touches it
-[3/3] Committing and pushing (updated=2026-11-02T18:02:21.600Z)... 
-[main a0ed498] chore: update card prices (2026-11-02T18:02:21.600Z)
- 2 files changed, 36 insertions(+), 36 deletions(-)
+[3/3] Committing and pushing (updated=2026-11-09T18:02:45.867Z)... 
+[main b35038e] chore: update card prices (2026-11-09T18:02:45.867Z)
+ 2 files changed, 50 insertions(+), 50 deletions(-)
 To https://github.com/relax100002000/WIXOSS_deckeditor.git
-   defc932..a0ed498  main -> main
-[OK] Prices updated and pushed for 2026-11-02T18:02:21.600Z. 
+   7641147..b35038e  main -> main
+[OK] Prices updated and pushed for 2026-11-09T18:02:45.867Z. 

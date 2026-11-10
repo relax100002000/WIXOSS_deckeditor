@@ -13,6 +13,7 @@
 				var v = '?v=' + Date.now();
 				document.write('<script src="js/function.js' + v + '"><\/script>');
 				document.write('<script src="js/card_info.js' + v + '"><\/script>');
+				document.write('<script src="js/signi_origin.js' + v + '"><\/script>');
 			})();
 		</script>
 		<title>WIXOSS シグニ Name Quiz</title>
@@ -167,6 +168,8 @@
 				font-weight: bold;
 				visibility: hidden;
 			}
+			.answer .origin { display: block; font-size: 15px; font-weight: normal; margin-top: 2px; }
+			.answer .etymology { display: block; font-size: 14px; font-weight: normal; color: var(--muted); margin-top: 2px; }
 			.answer small { display: block; font-size: 13px; font-weight: normal; color: var(--muted); }
 			.answer.show { visibility: visible; }
 			.quiz .buttons { display: flex; gap: 12px; }
@@ -266,6 +269,7 @@
 					<span class="label">Product</span>
 					<select id="selectProduct" style="max-width: 100%;">
 						<option value="0">--All Product--</option>
+						<option value="WX26-P2">[WX26-P2] 拡張パック「CONFLICT SELECTOR」</option>
 						<option value="WX26-P1">[WX26-P1] 拡張パック「Lostorage SELECTOR」</option>
 						<option value="WX26-CP1">[WX26-CP1] 拡張パック「プリンセッション・オーケストラ SELECTOR」</option>
 						<option value="WX25-P3">[WX25-P3] 拡張パック「LUMINOUS SELECTOR」</option>
@@ -486,6 +490,14 @@
 				document.getElementById('cardFrame').style.aspectRatio = img.naturalWidth + ' / ' + h;
 			}
 
+			// Original name + etymology from js/signi_origin.js (generated from SIGNI_語源圖鑑.html)
+			function getOriginEntry(card) {
+				if (typeof SIGNI_ORIGIN === 'undefined') return null;
+				return SIGNI_ORIGIN.byId[card[ID]] || SIGNI_ORIGIN.byName[card[NAME]] || null;
+			}
+			function getOrigin(card) { var e = getOriginEntry(card); return e ? e[0] : ''; }
+			function getEtymology(card) { var e = getOriginEntry(card); return e ? e[1] : ''; }
+
 			function revealCard() {
 				if (!current || revealed) return;
 				revealed = true;
@@ -493,6 +505,8 @@
 				setFrameRatio();
 				$('#answer').html(
 					$('<div>').text(current[NAME]).html() +
+					(getOrigin(current) ? '<span class="origin">' + $('<div>').text('Origin: ' + getOrigin(current)).html() + '</span>' : '') +
+					(getEtymology(current) ? '<span class="etymology">' + $('<div>').text('Etymology: ' + getEtymology(current)).html() + '</span>' : '') +
 					'<small>' + $('<div>').text(current[ID] + '　' + current[CLASS] + '　Lv' + current[LEVEL] + '　' + current[COLOR]).html() + '</small>'
 				).addClass('show');
 				$('#btnReveal').prop('disabled', true);
