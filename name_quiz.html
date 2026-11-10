@@ -107,27 +107,35 @@
 				gap: 12px;
 				width: 100%;
 			}
-			/* Card frame: shows only the bottom 80% by default (card name at the top is cropped) */
+			/* Card frame: with "Hide name", shows only the bottom part (card name at the top is cropped; see CROP) */
 			.card-frame {
 				position: relative;
 				width: 100%;
 				max-width: 360px;
 				aspect-ratio: 360 / 403; /* Estimated ratio before load; corrected to the real size after load */
 				overflow: hidden;
-				border-radius: 0 0 16px 16px;
+				border-radius: 16px;
 				background: var(--panel);
 				border: 1px solid var(--border);
 			}
-			/* Animate only on "Show Answer"; snap back to 80% instantly on the next card */
-			.card-frame.revealed { border-radius: 16px; transition: aspect-ratio .35s ease; }
-			.card-frame img {
+			.card-frame.hide-name:not(.revealed) { border-top-left-radius: 0; border-top-right-radius: 0; }
+			.card-frame.hide-effect:not(.revealed) { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+			/* Animate only on "Show Answer"; snap back instantly on the next card */
+			.card-frame.revealed { transition: aspect-ratio .35s ease; }
+			/* Full-size card; its top offset is set by setFrameRatio() so the cropped parts fall outside the frame */
+			.card-inner {
 				position: absolute;
 				left: 0;
-				bottom: 0;
+				top: 0;
+				width: 100%;
+			}
+			.card-inner img {
 				width: 100%;
 				height: auto;
 				display: block;
 			}
+			.hide-options { display: flex; gap: 16px; }
+			.hide-options label { cursor: pointer; user-select: none; }
 			.card-frame .placeholder {
 				position: absolute;
 				inset: 0;
@@ -338,9 +346,15 @@
 
 			<!-- ===== Quiz ===== -->
 			<div class="quiz">
+				<div class="hide-options">
+					<label><input type="checkbox" id="hideName" checked>Hide name</label>
+					<label><input type="checkbox" id="hideEffect">Hide effect</label>
+				</div>
 				<div class="card-frame" id="cardFrame">
 					<div class="placeholder" id="placeholder">Press "Search" to build the card pool and start</div>
-					<img id="quizImg" alt="" style="display:none;">
+					<div class="card-inner" id="cardInner" style="display:none;">
+						<img id="quizImg" alt="">
+					</div>
 				</div>
 				<div class="comment-row">
 					<textarea id="comment" placeholder="Comment" disabled></textarea>
@@ -385,7 +399,8 @@
 			var bag = [];       // Cards not yet asked (reshuffled only when empty)
 			var current = null;
 			var revealed = true;
-			var CROP = 0.88;    // Show the bottom 88%
+			var CROP = 0.88;    // "Hide name": show the bottom 88%
+			var EFFECT_TOP = 0.69;     // "Hide effect": cut off everything below 69% (effect text, flavor text, power)
 
 			function isSigniCard(card) {
 				// SIGNI and RESONA are always included
@@ -401,7 +416,7 @@
 				updatePoolInfo();
 				if (pool.length == 0) {
 					current = null;
-					$('#quizImg').hide();
+					$('#cardInner').hide();
 					$('#placeholder').text('No cards match the filter').show();
 					$('#answer').removeClass('show').html('');
 					$('#btnReveal, #btnNext, #btnComment, #comment').prop('disabled', true);
@@ -456,10 +471,11 @@
 
 				var frame = document.getElementById('cardFrame');
 				frame.classList.remove('revealed');
-				setFrameRatio(); // Shrink to 80% immediately using the previous size, so the full image never flashes
+				setFrameRatio(); // Crop immediately using the previous size, so the full image never flashes
 				$('#answer').removeClass('show').html('');
 				$('#placeholder').text('Loading...').show();
-				$('#quizImg').hide().attr('alt', '').attr('src', current[SRC]);
+				$('#cardInner').hide();
+				$('#quizImg').attr('alt', '').attr('src', current[SRC]);
 				$('#btnReveal').prop('disabled', false);
 				$('#btnNext').prop('disabled', false);
 				loadComment();
@@ -486,8 +502,23 @@
 			function setFrameRatio() {
 				var img = document.getElementById('quizImg');
 				if (!img.naturalWidth) return;
-				var h = img.naturalHeight * (revealed ? 1 : CROP);
-				document.getElementById('cardFrame').style.aspectRatio = img.naturalWidth + ' / ' + h;
+				var cutTop = (!revealed && $('#hideName').is(':checked')) ? (1 - CROP) : 0;        // fraction cut from the top
+				var cutBottom = (!revealed && $('#hideEffect').is(':checked')) ? (1 - EFFECT_TOP) : 0; // fraction cut from the bottom
+				var visible = 1 - cutTop - cutBottom;
+				document.getElementById('cardFrame').style.aspectRatio = img.naturalWidth + ' / ' + (img.naturalHeight * visible);
+				// Shift the full card up so only the visible band is inside the frame
+				document.getElementById('cardInner').style.top = (-cutTop / visible * 100) + '%';
+			}
+
+			// Apply the "Hide name" / "Hide effect" checkboxes to the frame
+			function applyHideOptions() {
+				var frame = document.getElementById('cardFrame');
+				frame.classList.toggle('hide-name', $('#hideName').is(':checked'));
+				frame.classList.toggle('hide-effect', $('#hideEffect').is(':checked'));
+				setFrameRatio();
+				try {
+					localStorage.setItem('wixoss_quiz_hide', JSON.stringify({ name: $('#hideName').is(':checked'), effect: $('#hideEffect').is(':checked') }));
+				} catch(e) {}
 			}
 
 			// Original name + etymology from js/signi_origin.js (generated from SIGNI_語源圖鑑.html)
@@ -519,13 +550,22 @@
 				}
 				$('#darkModeToggle').text(document.body.classList.contains('dark-mode') ? '☀ Light' : '🌙 Dark');
 
+
+				// Restore the last "Hide name" / "Hide effect" choice
+				try {
+					var hs = JSON.parse(localStorage.getItem('wixoss_quiz_hide') || 'null');
+					if (hs) { $('#hideName').prop('checked', !!hs.name); $('#hideEffect').prop('checked', !!hs.effect); }
+				} catch(e) {}
+				$('#hideName, #hideEffect').on('change', applyHideOptions);
+				applyHideOptions();
+
 				$('#quizImg').on('load', function(){
 					setFrameRatio();
 					$('#placeholder').hide();
-					$(this).show();
+					$('#cardInner').show();
 				}).on('error', function(){
 					$('#placeholder').text('Image failed to load. Please press "Next Card".').show();
-					$(this).hide();
+					$('#cardInner').hide();
 				});
 
 				document.getElementById('comment').addEventListener('input', autoResize); // function.js
