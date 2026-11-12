@@ -96,3 +96,8 @@ table.info tr.ban th,table.info tr.ban td{background:#e53c3c;color:#fff}
 .comment h3{margin:0 0 6px;font-size:13px;color:var(--muted)}
 .comment textarea{width:100%;min-height:64px;border:1px solid var(--border);border-radius:8px;background:var(--surface2);padding:8px;resize:vertical}
 .comment .btn{margin-top:6px;width:100%}
+.coloropts{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px}
+.seg.small button{padding:6px 14px}
+.seg .seglabel{padding:6px 10px;font-size:12px;color:var(--muted);border-right:1px solid var(--border)}
+#colorHint{min-height:1.2em}
+#colorHint b{color:var(--text)}

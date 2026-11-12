@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#7b3fe4">
+<title>WIXOSS カード検索（試作 v2）</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+<style>
+.proto-tag{font-size:10px;background:#f0a020;color:#fff;border-radius:4px;padding:1px 5px;margin-left:6px;vertical-align:2px}
+.active{display:flex;gap:6px;overflow-x:auto;padding:8px 0 2px;scrollbar-width:none}
+.active:empty{display:none}
+.active::-webkit-scrollbar{display:none}
+.achip{flex:0 0 auto;display:inline-flex;align-items:center;gap:4px;border:1px solid var(--accent);background:var(--accent-weak);color:var(--text);border-radius:999px;padding:4px 6px 4px 10px;font-size:12px;cursor:pointer;white-space:nowrap}
+.achip i{font-style:normal;color:var(--muted);font-size:11px}
+.achip b{font-weight:600}
+.achip .x{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px}
+.achip.clearall{border-color:var(--border);background:transparent;color:var(--muted);padding-right:10px}
+.meta select,.meta button.dir{border:1px solid var(--border);background:var(--surface2);border-radius:8px;padding:2px 6px;font-size:12px}
+.meta .sortbox{display:flex;gap:4px;align-items:center}
+.fgroup .hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.fgroup .hd h3{margin:0}
+.fgroup .hd .sub{font-size:11px;color:var(--muted)}
+.fgroup .hd button{border:0;background:transparent;color:var(--accent);font-size:12px;cursor:pointer;padding:0}
+.chips.scroll{max-height:168px;overflow:auto;padding:2px}
+.chip span span.n{display:inline;padding:0;border:0;background:none;border-radius:0;margin-left:2px;font-size:11px;color:var(--muted);font-weight:400}
+.chip input:checked + span span.n{color:inherit;opacity:.8}
+.chip span small{font-size:11px;color:var(--muted)}
+.chip.zero span{opacity:.38}
+.chip.zero input:checked + span{opacity:1}
+.range{display:flex;align-items:center;gap:8px}
+.range input{width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:var(--surface2)}
+.helpbox{background:var(--surface);border-radius:var(--radius);padding:10px 12px;margin-bottom:10px;font-size:12px;color:var(--muted);line-height:1.7}
+.helpbox code{background:var(--surface2);border-radius:4px;padding:0 4px;color:var(--text)}
+.card .price{color:var(--accent);font-size:10px}
+.fgroup.ctx{border-left:3px solid var(--accent)}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="row1">
+    <div class="title">WIXOSS 卡片搜尋<span class="proto-tag">試作 v2</span></div>
+    <div class="seg" id="langSeg"><button data-lang="JP">JP</button><button data-lang="TW">TW</button></div>
+    <button class="iconbtn" id="themeBtn" title="Theme">◐</button>
+  </div>
+  <div class="row2">
+    <div class="searchbox" id="searchbox">
+      <span>🔍</span>
+      <input type="search" id="q" placeholder="例：ドロー -ダウン 名:アキノ" autocomplete="off" enterkeyhint="search">
+      <button class="clear" id="clearText" aria-label="clear">✕</button>
+    </div>
+    <button class="iconbtn" id="filterBtn" title="Filter">⚙<span class="badge" id="filterBadge" hidden></span></button>
+  </div>
+  <div class="active" id="activeChips"></div>
+  <div class="meta">
+    <span id="count">讀取中…</span>
+    <span class="sortbox">
+      <select id="sort"><option value="id">編號順</option><option value="level">レベル</option><option value="power">パワー</option><option value="price">價格</option><option value="name">名稱</option></select>
+      <button class="dir" id="dir">↑</button>
+      <button id="shareBtn" class="dir" title="複製這組條件的網址">🔗</button>
+    </span>
+  </div>
+</div>
+
+<main id="grid"></main>
+<div id="sentinel"></div>
+
+<section class="sheet" id="filterSheet">
+  <header><button class="iconbtn" data-close>✕</button><h2>搜尋條件</h2></header>
+  <div class="body" id="facets"></div>
+  <footer>
+    <button class="btn" id="clearAll">全部清除</button>
+    <button class="btn primary" data-close>顯示 <span id="count2"></span> 張</button>
+  </footer>
+</section>
+
+<section class="sheet" id="detailSheet">
+  <header><button class="iconbtn" data-close>✕</button><h2 id="detailTitle"></h2></header>
+  <div class="body" id="detailBody"></div>
+</section>
+
+<script src="../js/card_info.js"></script>
+<script src="../js/price_info.js"></script>
+<script src="proto.js"></script>
+</body>
+</html>

@@ -4,6 +4,8 @@
 var LANG_KEY = 'wxsearch_lang', THEME_KEY = 'wxsearch_theme';
 var PAGE_SIZE = 60;
 var results = [], shown = 0, currentIdx = -1;
+var colorModeState = 'any';
+function getColorMode(){ return colorModeState; }
 
 function el(id){ return document.getElementById(id); }
 function on(id){ return el(id).checked; }
@@ -21,6 +23,7 @@ function search(){
 	var anyLevel = on('level0') || on('level1') || on('level2') || on('level3') || on('level4');
 	var colorKeys = [['red','赤'],['blue','青'],['green','緑'],['black','黒'],['white','白'],['nocolor','無']];
 	var anyColor = colorKeys.some(function(k){ return on(k[0]); });
+	var colorMode = getColorMode();
 	var anyTiming = on('mainphase') || on('attackphase') || on('spellcutin');
 	var teamFilter = !on('dreamteam') || !on('no_dreamteam');
 	var comments = null;
@@ -66,15 +69,16 @@ function search(){
 			for(var lv = 0; lv <= 4; lv++){ if(!on('level' + lv) && c[LEVEL] == String(lv)) skip = true; }
 			if(skip) continue;
 		}
-		if(!on('multicolor')){
-			if(anyColor){
-				var hit = colorKeys.some(function(k){ return on(k[0]) && c[COLOR].indexOf(k[1]) != -1; });
-				if(!hit) continue;
+		if(on('monocolor') || on('multicolor')){
+			if(!on('monocolor') && c[COLOR].length == 1) continue;
+			if(!on('multicolor') && c[COLOR].length > 1) continue;
+		}
+		if(anyColor){
+			if(colorMode == 'all'){
+				if(colorKeys.some(function(k){ return on(k[0]) && c[COLOR].indexOf(k[1]) == -1; })) continue;
+			} else {
+				if(!colorKeys.some(function(k){ return on(k[0]) && c[COLOR].indexOf(k[1]) != -1; })) continue;
 			}
-		} else {
-			if(c[COLOR].length == 1) continue;
-			var miss = colorKeys.some(function(k){ return on(k[0]) && c[COLOR].indexOf(k[1]) == -1; });
-			if(miss) continue;
 		}
 		if(anyTiming && (T == "アシストルリグ" || T.indexOf("ピース") != -1 || T.indexOf("アーツ") != -1)){
 			var th = (on('mainphase') && c[TIMING].indexOf("メインフェイズ") != -1) ||
@@ -373,13 +377,13 @@ function runLater(){ clearTimeout(timer); timer = setTimeout(run, 200); }
 
 /* ===== filter defaults (checkall / uncheckall semantics of the original) ===== */
 var CHECK_IDS = ['lrig','assistlrig','piece','arts','signi','spell','level0','level1','level2','level3','level4',
-	'white','red','blue','green','black','nocolor','multicolor','mainphase','attackphase','spellcutin',
+	'white','red','blue','green','black','nocolor','monocolor','multicolor','mainphase','attackphase','spellcutin',
 	'no_story','dissona','islb','notlb','dreamteam','no_dreamteam'];
 var SELECT_IDS = ['selectProduct','selectLRIG','selectType','selectFaction'];
-function resetAll(){ CHECK_IDS.forEach(function(id){ el(id).checked = id != 'multicolor'; }); SELECT_IDS.forEach(function(id){ el(id).value = '0'; }); }
-function uncheckAll(){ CHECK_IDS.forEach(function(id){ el(id).checked = false; }); SELECT_IDS.forEach(function(id){ el(id).value = '0'; }); }
+function resetAll(){ CHECK_IDS.forEach(function(id){ el(id).checked = true; }); setColorMode('any', true); SELECT_IDS.forEach(function(id){ el(id).value = '0'; }); }
+function uncheckAll(){ CHECK_IDS.forEach(function(id){ el(id).checked = false; }); setColorMode('any', true); SELECT_IDS.forEach(function(id){ el(id).value = '0'; }); }
 function updateBadge(){
-	var n = CHECK_IDS.filter(function(id){ return el(id).checked != (id != 'multicolor'); }).length +
+	var n = CHECK_IDS.filter(function(id){ return !el(id).checked; }).length + (colorModeState != 'any' ? 1 : 0) +
 	        SELECT_IDS.filter(function(id){ return el(id).value != '0'; }).length;
 	var b = el('filterBadge'); b.hidden = !n; b.textContent = n;
 }
@@ -413,6 +417,38 @@ el('themeBtn').addEventListener('click', function(){
 	localStorage.setItem(THEME_KEY, dark ? 'light' : 'dark'); applyTheme();
 });
 
+
+/* ===== color mode (任一 / 全部) + 只看多色 ===== */
+var COLOR_IDS = [['white','白'],['red','赤'],['blue','青'],['green','緑'],['black','黒'],['nocolor','無']];
+function checkedColors(){ return COLOR_IDS.filter(function(k){ return on(k[0]); }).map(function(k){ return k[1]; }); }
+function clearColorsIfAllChecked(){
+	if(checkedColors().length == COLOR_IDS.length){ COLOR_IDS.forEach(function(k){ el(k[0]).checked = false; }); return true; }
+	return false;
+}
+var autoClearedMsg = '';
+function setColorMode(m, silent){
+	colorModeState = m;
+	document.querySelectorAll('#colorModeSeg button').forEach(function(b){ b.classList.toggle('on', b.dataset.mode == m); });
+	if(!silent && m == 'all' && clearColorsIfAllChecked()) autoClearedMsg = '（已自動取消全部顏色，請勾選要組合的顏色）';
+	updateColorHint();
+}
+function updateColorHint(){
+	var cs = checkedColors(), mono = on('monocolor'), multi = on('multicolor'), s;
+	var kind = (mono && !multi) ? '單色卡' : (multi && !mono) ? '多色卡' : '卡';
+	if(!cs.length) s = kind == '卡' ? '顯示：<b>不限顏色</b>' : '顯示：<b>所有' + kind + '</b>';
+	else if(cs.length == 1) s = '顯示：含 <b>' + cs[0] + '</b> 的' + kind;
+	else if(colorModeState == 'all') s = '顯示：<b>同時</b>含 <b>' + cs.join('、') + '</b> 的' + kind;
+	else s = '顯示：含 <b>' + cs.join('</b> 或 <b>') + '</b> 的' + kind;
+	if(colorModeState == 'all' && cs.length == COLOR_IDS.length) s += '（沒有卡同時具有六色）';
+	el('colorHint').innerHTML = s + (autoClearedMsg ? ' ' + autoClearedMsg : '');
+	autoClearedMsg = '';
+}
+document.querySelectorAll('#colorModeSeg button').forEach(function(b){
+	b.addEventListener('click', function(){ setColorMode(b.dataset.mode); runLater(); });
+});
+['monocolor','multicolor'].forEach(function(id){ el(id).addEventListener('change', updateColorHint); });
+COLOR_IDS.forEach(function(k){ el(k[0]).addEventListener('change', updateColorHint); });
+
 /* ===== wiring ===== */
 el('textsearch').addEventListener('input', function(){ el('searchbox').classList.toggle('has', !!this.value); runLater(); });
 el('textsearch').addEventListener('keydown', function(e){ if(e.key == 'Enter'){ this.blur(); run(); } });
@@ -433,5 +469,6 @@ el('installBtn').addEventListener('click', function(){ if(deferredPrompt){ defer
 if('serviceWorker' in navigator) window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js'); });
 
 window.__wxSearch = search;
+setColorMode('any', true);
 applyTheme(); applyLang(); run();
 })();

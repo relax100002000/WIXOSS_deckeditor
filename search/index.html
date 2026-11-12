@@ -60,9 +60,13 @@
       <label class="chip c-green"><input type="checkbox" id="green" checked><span>緑</span></label>
       <label class="chip c-black"><input type="checkbox" id="black" checked><span>黒</span></label>
       <label class="chip c-none"><input type="checkbox" id="nocolor" checked><span>無</span></label>
-      <label class="chip"><input type="checkbox" id="multicolor"><span>多色</span></label>
     </div>
-    <div class="note">勾選「多色」時，只顯示同時具有所有勾選顏色的多色卡。</div></div>
+    <div class="coloropts">
+      <div class="seg small" id="colorModeSeg"><span class="seglabel">顏色比對</span><button data-mode="any">任一</button><button data-mode="all">全部</button></div>
+      <label class="chip"><input type="checkbox" id="monocolor" checked><span>単色</span></label>
+      <label class="chip"><input type="checkbox" id="multicolor" checked><span>多色</span></label>
+    </div>
+    <div class="note" id="colorHint"></div></div>
     <div class="fgroup"><h3>使用タイミング（アシスト／ピース／アーツ）</h3><div class="chips">
       <label class="chip"><input type="checkbox" id="mainphase" checked><span>メインフェイズ</span></label>
       <label class="chip"><input type="checkbox" id="attackphase" checked><span>アタックフェイズ</span></label>
