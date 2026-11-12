@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#7b3fe4">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="WX Search">
+<title>WIXOSS カード検索</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar">
+  <div class="row1">
+    <div class="title">WIXOSS 卡片搜尋<small id="ver"></small></div>
+    <div class="seg" id="langSeg"><button data-lang="JP">JP</button><button data-lang="TW">TW</button></div>
+    <button class="iconbtn" id="themeBtn" title="Theme">◐</button>
+  </div>
+  <div class="row2">
+    <div class="searchbox" id="searchbox">
+      <span>🔍</span>
+      <input type="search" id="textsearch" placeholder="カード名・テキスト・ID…" autocomplete="off" enterkeyhint="search">
+      <button class="clear" id="clearText" aria-label="clear">✕</button>
+    </div>
+    <button class="iconbtn" id="filterBtn" title="Filter">⚙<span class="badge" id="filterBadge" hidden></span></button>
+  </div>
+  <div class="meta"><span id="count">讀取中…</span><button id="installBtn">安裝 App</button></div>
+</div>
+
+<main id="grid"></main>
+<div id="sentinel"></div>
+
+<!-- filter sheet -->
+<section class="sheet" id="filterSheet">
+  <header><button class="iconbtn" data-close>✕</button><h2>搜尋條件</h2></header>
+  <div class="body">
+    <div class="fgroup"><h3>カード種類</h3><div class="chips">
+      <label class="chip"><input type="checkbox" id="lrig" checked><span>ルリグ</span></label>
+      <label class="chip"><input type="checkbox" id="assistlrig" checked><span>アシストルリグ</span></label>
+      <label class="chip"><input type="checkbox" id="piece" checked><span>ピース</span></label>
+      <label class="chip"><input type="checkbox" id="arts" checked><span>アーツ</span></label>
+      <label class="chip"><input type="checkbox" id="signi" checked><span>シグニ</span></label>
+      <label class="chip"><input type="checkbox" id="spell" checked><span>スペル</span></label>
+    </div></div>
+    <div class="fgroup"><h3>レベル</h3><div class="chips">
+      <label class="chip"><input type="checkbox" id="level0" checked><span>0</span></label>
+      <label class="chip"><input type="checkbox" id="level1" checked><span>1</span></label>
+      <label class="chip"><input type="checkbox" id="level2" checked><span>2</span></label>
+      <label class="chip"><input type="checkbox" id="level3" checked><span>3</span></label>
+      <label class="chip"><input type="checkbox" id="level4" checked><span>4</span></label>
+    </div></div>
+    <div class="fgroup"><h3>色</h3><div class="chips">
+      <label class="chip c-white"><input type="checkbox" id="white" checked><span>白</span></label>
+      <label class="chip c-red"><input type="checkbox" id="red" checked><span>赤</span></label>
+      <label class="chip c-blue"><input type="checkbox" id="blue" checked><span>青</span></label>
+      <label class="chip c-green"><input type="checkbox" id="green" checked><span>緑</span></label>
+      <label class="chip c-black"><input type="checkbox" id="black" checked><span>黒</span></label>
+      <label class="chip c-none"><input type="checkbox" id="nocolor" checked><span>無</span></label>
+      <label class="chip"><input type="checkbox" id="multicolor"><span>多色</span></label>
+    </div>
+    <div class="note">勾選「多色」時，只顯示同時具有所有勾選顏色的多色卡。</div></div>
+    <div class="fgroup"><h3>使用タイミング（アシスト／ピース／アーツ）</h3><div class="chips">
+      <label class="chip"><input type="checkbox" id="mainphase" checked><span>メインフェイズ</span></label>
+      <label class="chip"><input type="checkbox" id="attackphase" checked><span>アタックフェイズ</span></label>
+      <label class="chip"><input type="checkbox" id="spellcutin" checked><span>スペルカットイン</span></label>
+    </div></div>
+    <div class="fgroup"><h3>ストーリー・ライフバースト・チーム</h3><div class="chips">
+      <label class="chip"><input type="checkbox" id="no_story" checked><span>無印</span></label>
+      <label class="chip"><input type="checkbox" id="dissona" checked><span>ディソナ</span></label>
+      <label class="chip"><input type="checkbox" id="islb" checked><span>LB有り</span></label>
+      <label class="chip"><input type="checkbox" id="notlb" checked><span>LB無し</span></label>
+      <label class="chip"><input type="checkbox" id="dreamteam" checked><span><img src="../img/icon_txt_team.png" alt="チーム"></span></label>
+      <label class="chip"><input type="checkbox" id="no_dreamteam" checked><span><img src="../img/no_icon_txt_team.png" alt="非チーム"></span></label>
+    </div></div>
+    <div class="fgroup"><h3>商品・ルリグ・タイプ・派閥</h3><div class="selects">
+      <select id="selectProduct"><option value="0">--All Product--</option><option value="WX26-P2">[WX26-P2] 拡張パック「CONFLICT SELECTOR」</option><option value="WX26-P1">[WX26-P1] 拡張パック「Lostorage SELECTOR」</option><option value="WX26-CP1">[WX26-CP1] 拡張パック「プリンセッション・オーケストラ SELECTOR」</option><option value="WX25-P3">[WX25-P3] 拡張パック「LUMINOUS SELECTOR」</option><option value="WX25-P2">[WX25-P2] 拡張パック「RESONANCE SELECTOR」</option><option value="WX25-P1">[WX25-P1] 拡張パック「PRIMAL SELECTOR」</option><option value="WX25-CP1">[WX25-CP1] 拡張パック「ブルーアーカイブ SELECTOR」</option><option value="WX25-CD1">[WX25-CD1] 構築済みデッキ ブルーアーカイブ</option><option value="WX24-P4">[WX24-P4] 拡張パック「FORTH SELECTOR」</option><option value="WX24-P3">[WX24-P3] 拡張パック「REVERSAL SELECTOR」</option><option value="WX24-P2">[WX24-P2] 拡張パック「loth SELECTOR」</option><option value="WX24-P1">[WX24-P1] 拡張パック「RECOLLECT SELECTOR」</option><option value="WX24-D5">[WX24-D5] 構築済みデッキ「BLACK ALT DESIRE」</option><option value="WX24-D4">[WX24-D4] 構築済みデッキ「GREEN ALT WANNA」</option><option value="WX24-D3">[WX24-D3] 構築済みデッキ「BLUE ALT APPLI」</option><option value="WX24-D2">[WX24-D2] 構築済みデッキ「RED ALT AMBITION」</option><option value="WX24-D1">[WX24-D1] 構築済みデッキ「WHITE ALT HOPE」</option><option value="WXDi-P16">[WXDi-P16] 拡張パック「LEGENDARY DIVA」</option><option value="WXDi-P15">[WXDi-P15] 拡張パック「DIVISIONS DIVA」</option><option value="WXDi-CP02">[WXDi-CP02] 拡張パック「ブルーアーカイブ DIVA」</option><option value="WXDi-P14">[WXDi-P14] 拡張パック「フェゾーネ DIVA with 電音部」</option><option value="WXDi-P13">[WXDi-P13] 拡張パック「CONCORD DIVA」</option><option value="WXDi-P12">[WXDi-P12] 拡張パック「DISSONANCE DIVA」</option><option value="WXDi-CP01">[WXDi-CP01] 拡張パック「にじさんじ DIVA」</option><option value="WXDi-D09">[WXDi-D09] 構築済みデッキ「SUPER DIVA DECK DOUBLE HEROINES -ピルルク＆ヒラナ-」</option><option value="WXDi-P11">[WXDi-P11] 拡張パック「REUNION DIVA」</option><option value="WXDi-P10">[WXDi-P10] 拡張パック「PRISMATIC DIVA」</option><option value="WXDi-P09">[WXDi-P09] 拡張パック「CONFLATED DIVA」</option><option value="WXDi-P08">[WXDi-P08] 拡張パック「SPREAD DIVA」</option><option value="WXDi-P07">[WXDi-P07] 拡張パック「WELCOME BACK DIVA ～Lostorage～」</option><option value="WXDi-P06">[WXDi-P06] 拡張パック「WELCOME BACK DIVA ～selector～」</option><option value="WXDi-D08">[WXDi-D08] 構築済みデッキ「DIVA DEBUT DECK WHITE HOPE」</option><option value="WXDi-P05">[WXDi-P05] 拡張パック「CURIOSITY DIVA」</option><option value="WXDi-P04">[WXDi-P04] 拡張パック「VERTEX DIVA」</option><option value="WXDi-D07">[WXDi-D07] 構築済みデッキ「TOP DIVA DECK D・X・M」</option><option value="WXDi-P03">[WXDi-P03] 拡張パック「STANDUP DIVA」</option><option value="WXDi-P02">[WXDi-P02] 拡張パック「CHANGING DIVA」</option><option value="WXDi-P01">[WXDi-P01] 拡張パック「GLOWING DIVA」</option><option value="WXDi-D06">[WXDi-D06] 構築済みデッキ「DIVA DEBUT DECK DIAGRAM」</option><option value="WXDi-D05">[WXDi-D05] 構築済みデッキ「DIVA DEBUT DECK うちゅうのはじまり」</option><option value="WXDi-D04">[WXDi-D04] 構築済みデッキ「DIVA DEBUT DECK Card Jockey」</option><option value="WXDi-D03">[WXDi-D03] 構築済みデッキ「DIVA DEBUT DECK No Limit」</option><option value="WXDi-P00">[WXDi-P00] 拡張パック「INTERLUDE DIVA」</option><option value="WXDi-D02">[WXDi-D02] 構築済みデッキ「DIVA DEBUT DECK にじさんじ ver.さんばか」</option><option value="WXDi-D01">[WXDi-D01] 構築済みデッキ「ANCIENT SURPRISE」</option><option value="PR-Di">PRカード</option><option value="SPDi">SPカード</option></select>
+      <select id="selectLRIG"><option value="0">-- LRIG --</option><option value="アト">アト</option><option value="タウィル">タウィル</option><option value="ウムル">ウムル</option><option value="リゼ">リゼ</option><option value="美兎">美兎</option><option value="アンジュ">アンジュ</option><option value="とこ">とこ</option><option value="ヒラナ">ヒラナ</option><option value="アキノ">アキノ</option><option value="レイ">レイ</option><option value="LION">LION</option><option value="LOVIT">LOVIT</option><option value="WOLF">WOLF</option><option value="タマゴ">タマゴ</option><option value="ノヴァ">ノヴァ</option><option value="バン">バン</option><option value="ムジカ">ムジカ</option><option value="マドカ">マドカ</option><option value="サンガ">サンガ</option><option value="エクス">エクス</option><option value="デウス">デウス</option><option value="マキナ">マキナ</option><option value="みこみこ">みこみこ</option><option value="まほまほ">まほまほ</option><option value="ゆかゆか">ゆかゆか</option><option value="タマ">タマ</option><option value="花代">花代</option><option value="緑子">緑子</option><option value="ユヅキ">ユヅキ</option><option value="ピルルク">ピルルク</option><option value="ウリス">ウリス</option><option value="リル">リル</option><option value="ドーナ">ドーナ</option><option value="あや">あや</option><option value="エルドラ">エルドラ</option><option value="アン">アン</option><option value="イオナ">イオナ</option><option value="カーニバル">カーニバル</option><option value="レイラ">レイラ</option><option value="ママ">ママ</option><option value="メル">メル</option><option value="ナナシ">ナナシ</option><option value="グズ子">グズ子</option><option value="リメンバ">リメンバ</option><option value="ミルルン">ミルルン</option><option value="ハナレ">ハナレ</option><option value="サシェ">サシェ</option><option value="アイヤイ">アイヤイ</option><option value="アルフォウ">アルフォウ</option><option value="ミュウ">ミュウ</option><option value="夢限">夢限</option><option value="アズサ">アズサ</option><option value="ネル">ネル</option><option value="シロコ">シロコ</option><option value="ヒナ">ヒナ</option><option value="ホシノ">ホシノ</option><option value="サオリ">サオリ</option><option value="ミヤコ">ミヤコ</option><option value="ユカリ">ユカリ</option><option value="シュン">シュン</option><option value="補習授業部">補習授業部</option><option value="C&C">C&C</option><option value="対策委員会">対策委員会</option><option value="風紀委員会">風紀委員会</option><option value="アザエラ">アザエラ</option><option value="ガブリエラ">ガブリエラ</option><option value="ミカエラ">ミカエラ</option><option value="るう子">るう子</option><option value="あきら">あきら</option><option value="ひとえ">ひとえ</option><option value="ちより">ちより</option><option value="ヤミノ">ヤミノ</option><option value="ララ・ルー">ララ・ルー</option><option value="ソウイ">ソウイ</option><option value="?">?</option><option value="ネージュ">ネージュ</option><option value="ジール">ジール</option><option value="リップル">リップル</option><option value="ミーティア">ミーティア</option><option value="ヴィオラ">ヴィオラ</option><option value="ゆきめ">ゆきめ</option></select>
+      <select id="selectType"><option value="0">-- Type --</option><option value="奏像：天使">奏像：天使</option><option value="奏像：悪魔">奏像：悪魔</option><option value="奏像：美巧">奏像：美巧</option><option value="奏像：英知">奏像：英知</option><option value="奏像：武勇">奏像：武勇</option><option value="奏像：プリパラ">奏像：プリパラ</option><option value="奏武：アーム">奏武：アーム</option><option value="奏武：ウェポン">奏武：ウェポン</option><option value="奏武：遊具">奏武：遊具</option><option value="奏武：毒牙">奏武：毒牙</option><option value="奏武：トリック">奏武：トリック</option><option value="奏武：ブルアカ">奏武：ブルアカ</option><option value="奏羅：宝石">奏羅：宝石</option><option value="奏羅：植物">奏羅：植物</option><option value="奏羅：原子">奏羅：原子</option><option value="奏羅：宇宙">奏羅：宇宙</option><option value="奏羅：微菌">奏羅：微菌</option><option value="奏械：電機">奏械：電機</option><option value="奏械：古代兵器">奏械：古代兵器</option><option value="奏械：迷宮">奏械：迷宮</option><option value="奏械：調理">奏械：調理</option><option value="奏械：乗機">奏械：乗機</option><option value="奏械：バーチャル">奏械：バーチャル</option><option value="世怜音女学院">世怜音女学院</option><option value="奏械：電音部">奏械：電音部</option><option value="奏生：水獣">奏生：水獣</option><option value="奏生：空獣">奏生：空獣</option><option value="奏生：地獣">奏生：地獣</option><option value="奏生：龍獣">奏生：龍獣</option><option value="奏生：凶蟲">奏生：凶蟲</option><option value="奏生：怪異">奏生：怪異</option><option value="奏元">奏元</option><option value="奏像：プリオケ">奏像：プリオケ</option></select>
+      <select id="selectFaction"><option value="0">-- Faction --</option><option value="解放派">解放派</option><option value="闘争派">闘争派</option><option value="防衛派">防衛派</option></select>
+    </div></div>
+    <div class="note" id="priceUpdated"></div>
+  </div>
+  <footer>
+    <button class="btn" id="uncheckAll">全部取消</button>
+    <button class="btn" id="resetAll">重設</button>
+    <button class="btn primary" data-close>顯示 <span id="count2"></span> 張</button>
+  </footer>
+</section>
+
+<!-- detail sheet -->
+<section class="sheet" id="detailSheet">
+  <header><button class="iconbtn" data-close>✕</button><h2 id="detailTitle"></h2></header>
+  <div class="body" id="detailBody"></div>
+</section>
+
+<script src="../js/card_info.js"></script>
+<script src="../js/price_info.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
