@@ -101,3 +101,8 @@ table.info tr.ban th,table.info tr.ban td{background:#e53c3c;color:#fff}
 .seg .seglabel{padding:6px 10px;font-size:12px;color:var(--muted);border-right:1px solid var(--border)}
 #colorHint{min-height:1.2em}
 #colorHint b{color:var(--text)}
+
+/* 分頁（搜尋／猜名） */
+.tabs{flex:1;display:flex;gap:4px;min-width:0}
+.tabs a{text-decoration:none;color:var(--muted);font-weight:700;font-size:15px;padding:6px 10px;border-radius:999px;white-space:nowrap}
+.tabs a.on{color:var(--text);background:var(--accent-weak)}

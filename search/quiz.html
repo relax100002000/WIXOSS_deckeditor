@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#7b3fe4">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="WX Search">
+<title>WIXOSS シグニ猜名測驗</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+<style>
+.active{display:flex;gap:6px;overflow-x:auto;padding:8px 0 2px;scrollbar-width:none}
+.active:empty{display:none}
+.active::-webkit-scrollbar{display:none}
+.achip{flex:0 0 auto;display:inline-flex;align-items:center;gap:4px;border:1px solid var(--accent);background:var(--accent-weak);color:var(--text);border-radius:999px;padding:4px 6px 4px 10px;font-size:12px;cursor:pointer;white-space:nowrap}
+.achip i{font-style:normal;color:var(--muted);font-size:11px}
+.achip b{font-weight:600}
+.achip .x{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px}
+.achip.clearall{border-color:var(--border);background:transparent;color:var(--muted);padding-right:10px}
+.meta select,.meta button.dir{border:1px solid var(--border);background:var(--surface2);border-radius:8px;padding:2px 6px;font-size:12px}
+.meta .sortbox{display:flex;gap:4px;align-items:center}
+.fgroup .hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.fgroup .hd h3{margin:0}
+.fgroup .hd .sub{font-size:11px;color:var(--muted)}
+.fgroup .hd button{border:0;background:transparent;color:var(--accent);font-size:12px;cursor:pointer;padding:0}
+.chips.scroll{max-height:168px;overflow:auto;padding:2px}
+.chip span span.n{display:inline;padding:0;border:0;background:none;border-radius:0;margin-left:2px;font-size:11px;color:var(--muted);font-weight:400}
+.chip input:checked + span span.n{color:inherit;opacity:.8}
+.chip span small{font-size:11px;color:var(--muted)}
+.chip.zero span{opacity:.38}
+.chip.zero input:checked + span{opacity:1}
+.range{display:flex;align-items:center;gap:8px}
+.range input{width:100%;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:var(--surface2)}
+.helpbox{background:var(--surface);border-radius:var(--radius);padding:10px 12px;margin-bottom:10px;font-size:12px;color:var(--muted);line-height:1.7}
+.helpbox code{background:var(--surface2);border-radius:4px;padding:0 4px;color:var(--text)}
+.card .price{color:var(--accent);font-size:10px}
+table.info tr.origin td .og{color:#5a5366;font-size:13px}
+.fgroup.ctx{border-left:3px solid var(--accent)}
+.quiz{max-width:480px;margin:0 auto;padding:12px 12px calc(env(safe-area-inset-bottom) + 24px)}
+.qopts{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:10px}
+.qopts .note{margin:0;flex-basis:100%}
+.card-frame{position:relative;width:100%;max-width:360px;margin:0 auto;aspect-ratio:360/403;overflow:hidden;border-radius:12px;background:var(--surface2);box-shadow:var(--shadow);cursor:pointer}
+.card-frame.hide-name:not(.revealed){border-top-left-radius:0;border-top-right-radius:0}
+.card-frame.hide-effect:not(.revealed){border-bottom-left-radius:0;border-bottom-right-radius:0}
+.card-frame.revealed{transition:aspect-ratio .35s ease}
+.card-frame.revealed .card-inner{transition:top .35s ease}
+.card-inner{position:absolute;left:0;top:0;width:100%}
+.card-inner img{width:100%;height:auto;display:block}
+.card-frame .placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);padding:20px}
+.answer{min-height:4.5em;text-align:center;margin:12px 0 4px;visibility:hidden}
+.answer.show{visibility:visible}
+.answer .nm{font-size:20px;font-weight:700}
+.answer .origin{display:block;font-size:15px;margin-top:4px}
+.answer .etymology{display:block;font-size:14px;color:var(--muted);margin-top:2px}
+.answer small{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+.qbtns{display:flex;gap:8px}
+.qhint{text-align:center}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="row1">
+    <nav class="tabs"><a data-nav="./" href="./">卡片搜尋</a><a data-nav="quiz.html" href="quiz.html" class="on">猜名測驗</a></nav>
+    <div class="seg" id="langSeg"><button data-lang="JP">JP</button><button data-lang="TW">TW</button></div>
+    <button class="iconbtn" id="themeBtn" title="Theme">◐</button>
+  </div>
+  <div class="row2">
+    <div class="searchbox" id="searchbox">
+      <span>🔍</span>
+      <input type="search" id="q" placeholder="例：c=r t:シグニ pow>=10000 引く" autocomplete="off" enterkeyhint="search">
+      <button class="clear" id="clearText" aria-label="clear">✕</button>
+    </div>
+    <button class="iconbtn" id="filterBtn" title="Filter">⚙<span class="badge" id="filterBadge" hidden></span></button>
+  </div>
+  <div class="active" id="activeChips"></div>
+  <div class="meta">
+    <span id="count" hidden></span>
+    <span id="poolInfo">讀取中…</span>
+    <button id="installBtn">安裝 App</button>
+  </div>
+</div>
+
+<main class="quiz">
+  <div class="qopts">
+    <label class="chip"><input type="checkbox" id="hideName" checked><span>遮住卡名</span></label>
+    <label class="chip"><input type="checkbox" id="hideEffect"><span>遮住效果</span></label>
+    <span class="note">只從シグニ出題，可用上方搜尋／篩選縮小題庫</span>
+  </div>
+  <div class="card-frame" id="cardFrame">
+    <div class="placeholder" id="placeholder">讀取中…</div>
+    <div class="card-inner" id="cardInner" style="display:none"><img id="quizImg" alt=""></div>
+  </div>
+  <div class="answer" id="answer"></div>
+  <div class="qbtns">
+    <button class="btn primary" id="btnReveal" disabled>看答案</button>
+    <button class="btn primary" id="btnNext" disabled>下一張</button>
+  </div>
+  <div class="note qhint">點卡片也可以：看答案 → 下一張（鍵盤：空白鍵）</div>
+  <div class="comment"><h3>註解（與 deckeditor 共用，可被關鍵字搜尋）</h3><textarea id="comment" disabled></textarea><button class="btn" id="btnComment" disabled>更新</button></div>
+</main>
+
+<section class="sheet" id="filterSheet">
+  <header><button class="iconbtn" data-close>✕</button><h2>搜尋條件</h2></header>
+  <div class="body" id="facets"></div>
+  <footer>
+    <button class="btn" id="clearAll">全部清除</button>
+    <button class="btn primary" data-close>顯示 <span id="count2"></span> 張</button>
+  </footer>
+</section>
+
+
+<script src="../js/card_info.js"></script>
+<script src="../js/price_info.js"></script>
+<script src="../js/signi_origin.js"></script>
+<script src="quiz.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

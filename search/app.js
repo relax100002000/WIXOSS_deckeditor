@@ -332,21 +332,24 @@ function renderMore(){
 	if(shown >= results.length) return;
 	var end = Math.min(shown + PAGE_SIZE, results.length), html = '';
 	for(var i = shown; i < end; i++) html += cardTile(RES[i], i);
-	el('grid').insertAdjacentHTML('beforeend', html);
+	if(el('grid')) el('grid').insertAdjacentHTML('beforeend', html);
 	shown = end;
 }
 function run(keepScroll){
 	RES = compute();
 	results = RES.map(function(x){ return x.c; });
 	shown = 0;
-	el('grid').innerHTML = results.length ? '' : '<div class="empty">沒有符合條件的卡片</div>';
+	if(el('grid')) el('grid').innerHTML = results.length ? '' : '<div class="empty">沒有符合條件的卡片</div>';
 	renderMore();
 	el('count').textContent = results.length + ' / ' + cardData.length + ' 張';
 	el('count2').textContent = results.length;
-	el('sort').value = state.sort; el('dir').textContent = state.dir > 0 ? '↑' : '↓';
+	if(el('sort')){ el('sort').value = state.sort; el('dir').textContent = state.dir > 0 ? '↑' : '↓'; }
 	renderActive();
 	if(el('filterSheet').classList.contains('open')) renderFacets();
 	toURL();
+	// 分頁連結（搜尋／猜名）帶著目前的條件
+	document.querySelectorAll('a[data-nav]').forEach(function(a){ a.href = a.dataset.nav + location.search; });
+	if(window.onSearchResults) window.onSearchResults(RES);
 	if(!keepScroll) window.scrollTo(0, 0);
 }
 var timer = null;
@@ -383,15 +386,15 @@ el('clearAll').addEventListener('click', function(){ clearAll(); run(true); });
 el('q').addEventListener('input', function(){ state.q = this.value; el('searchbox').classList.toggle('has', !!this.value); runLater(); });
 el('q').addEventListener('keydown', function(e){ if(e.key == 'Enter'){ this.blur(); run(); } });
 el('clearText').addEventListener('click', function(){ el('q').value = state.q = ''; el('searchbox').classList.remove('has'); run(); });
-el('sort').addEventListener('change', function(){ state.sort = this.value; state.dir = (this.value == 'price' || this.value == 'power') ? -1 : 1; run(); });
-el('dir').addEventListener('click', function(){ state.dir = -state.dir; run(); });
-el('shareBtn').addEventListener('click', function(){
+if(el('sort')) el('sort').addEventListener('change', function(){ state.sort = this.value; state.dir = (this.value == 'price' || this.value == 'power') ? -1 : 1; run(); });
+if(el('dir')) el('dir').addEventListener('click', function(){ state.dir = -state.dir; run(); });
+if(el('shareBtn')) el('shareBtn').addEventListener('click', function(){
 	var b = this;
 	(navigator.clipboard ? navigator.clipboard.writeText(location.href) : Promise.reject()).then(function(){ b.textContent = '✓'; }, function(){ prompt('網址', location.href); }).then(function(){ setTimeout(function(){ b.textContent = '🔗'; }, 1200); });
 });
 el('filterBtn').addEventListener('click', function(){ renderFacets(); openSheet('filterSheet'); });
-el('grid').addEventListener('click', function(e){ var t = e.target.closest('.card'); if(t) showDetail(+t.dataset.idx); });
-new IntersectionObserver(function(en){ if(en[0].isIntersecting) renderMore(); }, {rootMargin: '800px'}).observe(el('sentinel'));
+if(el('grid')) el('grid').addEventListener('click', function(e){ var t = e.target.closest('.card'); if(t) showDetail(+t.dataset.idx); });
+if(el('sentinel')) new IntersectionObserver(function(en){ if(en[0].isIntersecting) renderMore(); }, {rootMargin: '800px'}).observe(el('sentinel'));
 
 var openStack = [];
 function openSheet(id){ var s = el(id); if(!s.classList.contains('open')){ s.classList.add('open'); openStack.push(id); history.pushState({sheet: id}, '', location.href); document.body.style.overflow = 'hidden'; } }
