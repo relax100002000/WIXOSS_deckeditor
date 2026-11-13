@@ -1,4 +1,4 @@
-==== 2026/11/12 ¶g¥|  2:00:02.27 ==== 
+==== 2026/11/13 ¶g¤­  2:00:03.63 ==== 
 [1/3] Running scraper...   
 [card-base] 3410 card IDs from card_info.js
 [mode] auto-discover from https://yuyu-tei.jp/top/wx
@@ -112,9 +112,9 @@ Wrote browser bundle to D:\github\WIXOSS_deckeditor\js\price_info.js
 [2/3] Staging changes... 
 warning: in the working copy of 'js/price_info.js', LF will be replaced by CRLF the next time Git touches it
 warning: in the working copy of 'price_info.json', LF will be replaced by CRLF the next time Git touches it
-[3/3] Committing and pushing (updated=2026-11-11T18:02:34.903Z)... 
-[main 0d63a49] chore: update card prices (2026-11-11T18:02:34.903Z)
- 2 files changed, 26 insertions(+), 26 deletions(-)
+[3/3] Committing and pushing (updated=2026-11-12T18:02:26.244Z)... 
+[main 47385b1] chore: update card prices (2026-11-12T18:02:26.244Z)
+ 2 files changed, 24 insertions(+), 24 deletions(-)
 To https://github.com/relax100002000/WIXOSS_deckeditor.git
-   eef2f76..0d63a49  main -> main
-[OK] Prices updated and pushed for 2026-11-11T18:02:34.903Z. 
+   a86eebc..47385b1  main -> main
+[OK] Prices updated and pushed for 2026-11-12T18:02:26.244Z. 

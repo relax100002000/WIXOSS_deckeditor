@@ -113,7 +113,9 @@ function fromURL(){
  * t:シグニ / t:天使（種類＋タイプ）  s:WX26-P2（商品）  l:タマ（ルリグ）
  * is:/has: mono multi lb team dissona
  */
-var FIELD_ALIAS = {'名':'name','NAME':'name','N':'name','文':'text','TEXT':'text','O':'text','ID':'id','註':'memo','MEMO':'memo'};
+/* 語源：js/signi_origin.js（SIGNI_ORIGIN.byId[ID] || byName[NAME]）→ [原文, 說明] */
+function originOf(c){ if(typeof SIGNI_ORIGIN === 'undefined') return null; return SIGNI_ORIGIN.byId[c[ID]] || SIGNI_ORIGIN.byName[c[NAME]] || null; }
+var FIELD_ALIAS = {'語源':'origin','ORIGIN':'origin','ETY':'origin','名':'name','NAME':'name','N':'name','文':'text','TEXT':'text','O':'text','ID':'id','註':'memo','MEMO':'memo'};
 var COLOR_LETTER = {'W':'白','R':'赤','U':'青','G':'緑','B':'黒','C':'無','白':'白','赤':'赤','青':'青','緑':'緑','黒':'黒','無':'無'};
 var TIMING_WORD = {'MAIN':'メインフェイズ','M':'メインフェイズ','メイン':'メインフェイズ','メインフェイズ':'メインフェイズ',
 	'ATK':'アタックフェイズ','ATTACK':'アタックフェイズ','A':'アタックフェイズ','アタック':'アタックフェイズ','アタックフェイズ':'アタックフェイズ',
@@ -174,7 +176,7 @@ function buildSyntax(key, op, val){
 	if(k == 'is'){
 		var IS = {'MONO': function(x){ return x.v.colorCount[0] == '単色'; }, 'MULTI': function(x){ return x.v.colorCount[0] == '多色'; },
 			'LB': function(x){ return x.v.lb[0] == 'LBあり'; }, 'TEAM': function(x){ return x.v.team[0] == 'チーム'; },
-			'DISSONA': function(x){ return x.v.story[0] == 'ディソナ'; }};
+			'DISSONA': function(x){ return x.v.story[0] == 'ディソナ'; }, 'ORIGIN': function(x){ return !!originOf(x.c); }};
 		IS['単色'] = IS.MONO; IS['多色'] = IS.MULTI; IS['チーム'] = IS.TEAM; IS['ディソナ'] = IS.DISSONA;
 		return IS[w] || null;
 	}
@@ -204,9 +206,10 @@ function hay(x, field, lg, comments){
 	if(field == 'name') return norm(c[NAME]);
 	if(field == 'id') return norm(c[ID]);
 	if(field == 'memo') return norm(comments[c[ID]] || '');
+	if(field == 'origin'){ var og = originOf(c); return og ? norm(og.join('\u0001')) : ''; }
 	if(field == 'text') return x.hay['t' + lg] || (x.hay['t' + lg] = norm(lg == 'TW' && c[TW_TEXT] ? c[TW_TEXT] : c[JP_TEXT]));
 	var k = 'a' + lg;
-	if(!x.hay[k]) x.hay[k] = norm([c[ID], c[NAME], c[TYPE], c[CLASS], c[COLOR], c[TEAM], c[STORY], c[TIMING], lg == 'TW' ? c[TW_TEXT] : c[JP_TEXT]].join('\u0001'));
+	if(!x.hay[k]) x.hay[k] = norm([c[ID], c[NAME], c[TYPE], c[CLASS], c[COLOR], c[TEAM], c[STORY], c[TIMING], lg == 'TW' ? c[TW_TEXT] : c[JP_TEXT], (originOf(c) || []).join('\u0001')].join('\u0001'));
 	return x.hay[k] + '\u0001' + norm(comments[c[ID]] || '');
 }
 function textPass(x, terms, lg, comments){
@@ -287,7 +290,7 @@ function renderFacets(){
 		'<b>時機</b> <code>tm</code>：main／atk／cut，運算子同顏色，例 <code>tm=main</code> 只能主要階段<br>' +
 		'<b>數值</b> <code>lv</code> <code>pow</code> <code>lim</code> <code>price</code>：<code>= > >= < <=</code>，例 <code>pow>=12000</code> <code>price<=300</code><br>' +
 		'<code>t:シグニ</code> <code>t:天使</code> 種類／タイプ　<code>s:WX26-P2</code> 商品　<code>l:タマ</code> ルリグ<br>' +
-		'<code>is:multi</code> <code>is:mono</code> <code>has:lb</code> <code>is:team</code> <code>is:dissona</code>（前面加 <code>-</code> 為否定）</details></div>';
+		'<code>is:multi</code> <code>is:mono</code> <code>has:lb</code> <code>is:team</code> <code>is:dissona</code> <code>has:origin</code>（前面加 <code>-</code> 為否定）<br><b>語源</b> <code>語源:克蘇魯</code>（一般關鍵字也會搜語源）</details></div>';
 	FACETS.forEach(function(f){
 		if(!visible(f)) return;
 		var sub = f.ctx ? '<span class="sub">（' + f.ctx + '）</span>' : '';
@@ -591,6 +594,8 @@ function infoTable(d){
 	var T = d[TYPE];
 	r("略号", d[ID]);
 	r("カード名", '<a href="https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=' + d[ID] + '" target="_blank" rel="noopener">' + d[NAME] + '</a>');
+	var og = originOf(d);
+	if(og) rows.push('<tr class="origin"><th>語源</th><td><b>' + esc(og[0]) + '</b>' + (og[1] ? '<br><span class="og">' + esc(og[1]) + '</span>' : '') + '</td></tr>');
 	r("価格 (yuyu-tei)", priceCell(d[ID]));
 	r("カード種類", T);
 	if(isPiece(T)){

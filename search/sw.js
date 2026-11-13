@@ -1,11 +1,11 @@
 /* WIXOSS カード検索 service worker
  * 同網域檔案（頁面、card_info.js、price_info.js、圖示）採「網路優先、離線時用快取」，
  * 所以每次有網路開啟都會拿到最新卡表與卡價；卡圖（takaratomy 外連）交給瀏覽器快取，不經過這裡。 */
-var CACHE = 'wxsearch-v2';
+var CACHE = 'wxsearch-v3';
 var PRECACHE = [
   './', './index.html', './app.js', './style.css', './manifest.webmanifest',
   './icons/icon-192.png', './icons/icon-512.png',
-  '../js/card_info.js', '../js/price_info.js'
+  '../js/card_info.js', '../js/price_info.js', '../js/signi_origin.js'
 ];
 self.addEventListener('install', function(e){
   e.waitUntil(caches.open(CACHE).then(function(c){ return c.addAll(PRECACHE); }).then(function(){ return self.skipWaiting(); }));
