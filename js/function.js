@@ -2881,6 +2881,52 @@ function loadcounter()
 	}
 }
 
+// 回傳有勾選的項目值；list = [[selector, value], ...]
+function checkedValues(list)
+{
+	var ret = [];
+
+	for(var k = 0; k < list.length; k++)
+	{
+		if($(list[k][0]).is(":checked"))
+		{
+			ret.push(list[k][1]);
+		}
+	}
+
+	return ret;
+}
+
+// 比對模式：any＝含任一勾選項目、all＝含全部勾選項目（可多出其他）、exact＝剛好等於勾選項目
+function matchMode(mode, have, want)
+{
+	var hasAll = true, hasAny = false;
+
+	for(var k = 0; k < want.length; k++)
+	{
+		if(have.indexOf(want[k]) != -1)
+		{
+			hasAny = true;
+		}
+		else
+		{
+			hasAll = false;
+		}
+	}
+
+	if(mode == "all")
+	{
+		return hasAll;
+	}
+
+	if(mode == "exact")
+	{
+		return hasAll && have.length == want.length;
+	}
+
+	return hasAny;
+}
+
 function search()
 {
 	var i = 0, j = 0;
@@ -3096,162 +3142,37 @@ function search()
 
 		flag = 0;
 
-		if(!$('#multicolor').is(":checked"))
+		// 色：「多色のみ」＝只看多色卡；比對方式由 #colorMode 決定（any＝いずれかを含む／all＝すべて含む／exact＝完全一致）
+		// 頁面沒有 #colorMode 時（例如 name_quiz.html）維持舊行為：勾「多色のみ」＝すべて含む
+		var colorMode = $('#colorMode').length ? $('#colorMode').val() : ($('#multicolor').is(":checked") ? "all" : "any");
+
+		if($('#multicolor').is(":checked") && cardData[i][COLOR].length == 1)
 		{
-			if(!$('#red').is(":checked") && !$('#blue').is(":checked") && !$('#green').is(":checked") && !$('#black').is(":checked") && !$('#white').is(":checked") && !$('#nocolor').is(":checked"))
-			{
-
-			}
-			else
-			{
-
-				if($('#red').is(":checked"))
-				{
-					if(cardData[i][COLOR].indexOf("赤") != -1)
-					{
-						flag = 1;
-					}
-				}
-
-				if($('#blue').is(":checked"))
-				{
-					if(cardData[i][COLOR].indexOf("青") != -1)
-					{
-						flag = 1;
-					}
-				}
-
-				if($('#green').is(":checked"))
-				{
-					if(cardData[i][COLOR].indexOf("緑") != -1)
-					{
-						flag = 1;
-					}
-				}
-
-				if($('#black').is(":checked"))
-				{
-					if(cardData[i][COLOR].indexOf("黒") != -1)
-					{
-						flag = 1;
-					}
-				}
-
-				if($('#white').is(":checked"))
-				{
-					if(cardData[i][COLOR].indexOf("白") != -1)
-					{
-						flag = 1;
-					}
-				}
-
-				if($('#nocolor').is(":checked"))
-				{
-					if(cardData[i][COLOR].indexOf("無") != -1)
-					{
-						flag = 1;
-					}
-				}
-
-				if(flag == 0)
-				{
-					continue;
-				}
-			}
+			continue;
 		}
-		else
+
+		var colorChecked = checkedValues([['#white', "白"], ['#red', "赤"], ['#blue', "青"], ['#green', "緑"], ['#black', "黒"], ['#nocolor', "無"]]);
+
+		if(colorChecked.length > 0)
 		{
-			if(cardData[i][COLOR].length == 1)
+			if(!matchMode(colorMode, cardData[i][COLOR].split(""), colorChecked))
 			{
 				continue;
-			}
-			else
-			{
-				if($('#red').is(":checked"))
-				{
-					if(cardData[i][COLOR].indexOf("赤") == -1)
-					{
-						continue;
-					}
-				}
-
-				if($('#blue').is(":checked"))
-				{
-					if(cardData[i][COLOR].indexOf("青") == -1)
-					{
-						continue;
-					}
-				}
-
-				if($('#green').is(":checked"))
-				{
-					if(cardData[i][COLOR].indexOf("緑") == -1)
-					{
-						continue;
-					}
-				}
-
-				if($('#black').is(":checked"))
-				{
-					if(cardData[i][COLOR].indexOf("黒") == -1)
-					{
-						continue;
-					}
-				}
-
-				if($('#white').is(":checked"))
-				{
-					if(cardData[i][COLOR].indexOf("白") == -1)
-					{
-						continue;
-					}
-				}
-
-				if($('#nocolor').is(":checked"))
-				{
-					if(cardData[i][COLOR].indexOf("無") == -1)
-					{
-						continue;
-					}
-				}
 			}
 		}
 
 		flag = 0;
 
-		if(!$('#mainphase').is(":checked") && !$('#attackphase').is(":checked") && !$('#spellcutin').is(":checked"))
-		{
+		// 使用タイミング：只篩アシストルリグ／ピース／アーツ；比對方式由 #timingMode 決定（同顏色）
+		var timingChecked = checkedValues([['#mainphase', "メインフェイズ"], ['#attackphase', "アタックフェイズ"], ['#spellcutin', "スペルカットイン"]]);
 
-		}
-		else
+		if(timingChecked.length > 0)
 		{
 			if(cardData[i][TYPE] == "アシストルリグ" || cardData[i][TYPE].indexOf("ピース") != -1 || cardData[i][TYPE].indexOf("アーツ") != -1)
 			{
-				if($('#mainphase').is(":checked"))
-				{
-					if(cardData[i][TIMING].indexOf("メインフェイズ") != -1)
-					{
-						flag = 1;
-					}
-				}
+				var timingMode = $('#timingMode').length ? $('#timingMode').val() : "any";
 
-				if($('#attackphase').is(":checked"))
-				{
-					if(cardData[i][TIMING].indexOf("アタックフェイズ") != -1)
-					{
-						flag = 1;
-					}
-				}
-
-				if($('#spellcutin').is(":checked"))
-				{
-					if(cardData[i][TIMING].indexOf("スペルカットイン") != -1)
-					{
-						flag = 1;
-					}
-				}
-
-				if(flag == 0)
+				if(!matchMode(timingMode, cardData[i][TIMING] == "" ? [] : cardData[i][TIMING].split(","), timingChecked))
 				{
 					continue;
 				}
@@ -3369,12 +3290,16 @@ function checkall()
 {
 	$('input:checkbox').prop('checked', true);
 	$('#multicolor').prop('checked', false);
+	$('#colorMode').val("any");
+	$('#timingMode').val("any");
 }
 
 function uncheckall()
 {
 	$('#textsearch').val("");
 	$('input:checkbox').prop('checked', false);
+	$('#colorMode').val("any");
+	$('#timingMode').val("any");
 	$('#selectType').val(0);
 	$('#selectFaction').val(0);
 	$('#selectLRIG').val(0);
@@ -5337,3 +5262,24 @@ function showVersion()
 
 	alert(str);
 }
+
+// 比對模式切到「すべて含む／完全一致」時，若該組全勾（必定 0 張）則自動取消該組勾選
+document.addEventListener('change', function(e){
+	var groups = {
+		colorMode: ['white', 'red', 'blue', 'green', 'black', 'nocolor'],
+		timingMode: ['mainphase', 'attackphase', 'spellcutin']
+	};
+	var ids = e.target ? groups[e.target.id] : null;
+
+	if(!ids || e.target.value == "any")
+	{
+		return;
+	}
+
+	var all = ids.every(function(id){ var el = document.getElementById(id); return el && el.checked; });
+
+	if(all)
+	{
+		ids.forEach(function(id){ document.getElementById(id).checked = false; });
+	}
+});

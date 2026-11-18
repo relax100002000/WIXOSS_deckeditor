@@ -219,7 +219,8 @@ if n != 1: sys.exit('price source line count %d' % n)
 for w in ('price', 'yuyu'):
     if w in s.lower(): sys.exit('price leftover in index: ' + w)
 # the format switch link (left of About) points back to the Diva page
-rep("""<a id="formatSwitchLink" href="index_allstar.html" style="margin-left: 310px; margin-right: 10px;">ALLSTAR</a>""",
+# (Card Search APP is Diva-only, so the ALLSTAR page drops that link)
+rep("""<a href="search/index.html" title="卡片搜尋／猜名測驗（手機 App）" style="margin-left: 175px; margin-right: 10px;">Card Search APP</a><a id="formatSwitchLink" href="index_allstar.html" style="margin-right: 10px;">ALLSTAR</a>""",
     """<a id="formatSwitchLink" href="index.html" style="margin-left: 310px; margin-right: 10px;">DIVA</a>""")
 # DIVA link + About flush with the right edge of the panel
 rep("""<a id="formatSwitchLink" href="index.html" style="margin-left: 310px; margin-right: 10px;">DIVA</a><button onclick="showVersion();">About</button>""",
