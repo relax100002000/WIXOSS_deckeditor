@@ -413,6 +413,10 @@ function onmouseShow(x, source)
 	// 空白欄位：不影響目前預覽
 	if(!x.alt) return;
 
+	// 記住預覽來源：從牌組來的預覽，點大圖＝替換那一張的卡圖（不是再加一張）
+	bigPicSource = source;
+	bigPicTile = (source == 'deck') ? x : null;
+
 	if(source == 'search')
 	{
 		$('#cardinformation').css('margin', '150px 0px 0px 40px');
@@ -5240,6 +5244,11 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
+	str += "20261122 v2.16\n";
+	str += "1.滑鼠移到牌組的卡再點預覽大圖，改為替換該張卡圖(不再加入新的一張)\n";
+	str += "2.異圖視窗新增「加入一張／替換牌組裡的一張」切換，可選要替換哪一張；牌組已滿時自動切換為替換(手機版也可用)\n";
+	str += "3.手機版異圖視窗：取消放大預覽、加深背景、縮小縮圖\n";
+	str += "\n";
 	str += "20261122 v2.15\n";
 	str += "1.牌組中使用同名卡圖時，卡片資料的略号、カード名連結與價格改為顯示該卡圖的卡號(註解仍共用原卡號)\n";
 	str += "2.卡價更新也抓取同名卡圖(平行版等)的卡號價格\n";
@@ -5287,6 +5296,7 @@ document.addEventListener('change', function(e){
  * 存檔／CSV 寫卡圖卡號；open!batoru 匯出照舊依卡名換成原卡號。讀檔時找不到的卡號用同名表還原。 */
 var ART = 19;
 var pendingArtId = null;
+var bigPicSource = '', bigPicTile = null;
 var sameNameMap = null, sameNameById = null;
 
 function sameNameKey(n)
@@ -5378,25 +5388,62 @@ function onBigPicClick(x)
 		if(cardData[k][ID] == x.alt) { card = cardData[k]; break; }
 	}
 	if(!card) return;
+	if(bigPicSource == 'deck' && bigPicTile && bigPicTile.alt == card[ID] && openReplaceFromTile(bigPicTile)) return;
 	var arts = sameNameArts(card);
 	if(arts.length <= 1) { addDeck(x); return; }
 	openArtPicker(card, arts);
 }
 
+// 預覽來自牌組的哪一張：依卡號＋圖片在各牌組區找出那一列，開替換視窗
+// 牌組裡所有這張卡（同卡號）的位置
+function deckCopies(card)
+{
+	var out = [], arrs = [ldeckArr, pdeckArr, adeckArr, sdeckArr];
+	for(var a = 0; a < arrs.length; a++)
+	{
+		for(var k = 0; k < arrs[a].length; k++)
+		{
+			if(arrs[a][k][ID] == card[ID]) out.push({array: arrs[a], index: k});
+		}
+	}
+	return out;
+}
+
+function openReplaceFromTile(tile)
+{
+	var arrs = [ldeckArr, pdeckArr, adeckArr, sdeckArr];
+	var src = tile.getAttribute ? tile.getAttribute('src') : '';
+	var a, k, fallback = null;
+	for(a = 0; a < arrs.length; a++)
+	{
+		for(k = 0; k < arrs[a].length; k++)
+		{
+			if(arrs[a][k][ID] != tile.alt) continue;
+			if(arrs[a][k][SRC] == src) return openReplacePicker(tile, k, arrs[a]);
+			if(!fallback) fallback = arrs[a];
+		}
+	}
+	return fallback ? openReplacePicker(tile, -1, fallback) : false;
+}
+
 function openArtPicker(card, arts, replace)
 {
 	var current = replace ? deckCardId(replace.array[replace.index]) : card[ID];
+	// 加入模式下，牌組裡已經有這張卡時可切換成「替換牌組裡的一張」（手機版沒有 ALT／滑鼠移入，靠這個替換）
+	var copies = replace ? [] : deckCopies(card);
+	var pmode = 'add', target = 0;
 	closeArtPicker();
 	var ov = document.createElement('div');
 	ov.id = 'artPicker';
-	ov.setAttribute('style', 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.72);display:flex;flex-direction:column;align-items:center;padding:16px;box-sizing:border-box;');
+	ov.setAttribute('style', 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.9);display:flex;flex-direction:column;align-items:center;padding:16px;box-sizing:border-box;');
 	var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
 	var html = '<div style="width:100%;max-width:1100px;display:flex;align-items:center;gap:12px;color:#fff;margin-bottom:10px;">' +
 		'<b style="font-size:18px;flex:1;">' + esc(card[NAME]) + '　同名卡圖 ' + arts.length + ' 張' + (replace ? '　<span style="color:#f0c040;">［替換卡圖］</span>' : '') + '</b>' +
 		'<span id="artPickerMsg" style="color:#9f9;font-size:14px;"></span>' +
 		'<button type="button" id="artPickerClose" style="font-size:16px;padding:4px 14px;cursor:pointer;">✕</button></div>' +
-		'<div style="color:#ddd;font-size:13px;width:100%;max-width:1100px;margin-bottom:8px;">' + (replace ? '點選卡圖即替換牌組裡的這一張（只換這一張，記錄該卡圖的卡號）。' : '點選卡圖即以該卡圖加入牌組（記錄該卡圖的卡號）。牌組裡的卡可按住 ALT 點擊來替換卡圖。') + '點背景或按 Esc 關閉。</div>' +
-		'<div id="artPickerGrid" style="width:100%;max-width:1100px;flex:1;overflow:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;align-content:start;">';
+		'<div style="color:#ddd;font-size:13px;width:100%;max-width:1100px;margin-bottom:8px;">' + (replace ? '點選卡圖即替換牌組裡的這一張（只換這一張，記錄該卡圖的卡號）。' : '點選卡圖即以該卡圖加入牌組（記錄該卡圖的卡號）。' + (artPickerTouch() ? '牌組已有這張卡時，可切換成「替換」。' : '牌組裡的卡可按住 ALT 點擊來替換卡圖。')) + '點背景或按 Esc 關閉。</div>' +
+		(copies.length ? '<div id="artPickerMode" style="width:100%;max-width:1100px;color:#fff;font-size:14px;margin-bottom:8px;display:flex;flex-wrap:wrap;align-items:center;gap:8px;"></div>' : '') +
+		'<div id="artPickerGrid" style="width:100%;max-width:1100px;flex:1;overflow:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(' + (artPickerTouch() ? 96 : 130) + 'px,1fr));gap:10px;align-content:start;">';
 	for(var k = 0; k < arts.length; k++)
 	{
 		var a = arts[k];
@@ -5408,6 +5455,24 @@ function openArtPicker(card, arts, replace)
 	html += '<img id="artPickerZoom" alt="" style="position:fixed;display:none;pointer-events:none;z-index:10000;width:360px;max-width:45vw;max-height:90vh;object-fit:contain;border-radius:14px;box-shadow:0 6px 30px rgba(0,0,0,.8);background:#111;">';
 	ov.innerHTML = html;
 	document.body.appendChild(ov);
+	var modeBar = document.getElementById('artPickerMode');
+	var renderMode = function(){
+		if(!modeBar) return;
+		var btn = function(m, label){ return '<button type="button" data-pmode="' + m + '" style="padding:5px 12px;border-radius:999px;cursor:pointer;border:1px solid #f0c040;' + (pmode == m ? 'background:#f0c040;color:#000;font-weight:bold;' : 'background:transparent;color:#f0c040;') + '">' + label + '</button>'; };
+		var h = btn('add', '加入一張') + btn('rep', '替換牌組裡的一張（' + copies.length + ' 張）');
+		if(pmode == 'rep')
+		{
+			h += '<span style="margin-left:6px;color:#ddd;">要換哪一張：</span>';
+			for(var c = 0; c < copies.length; c++)
+			{
+				var row = copies[c].array[copies[c].index];
+				h += '<span data-copy="' + c + '" style="cursor:pointer;display:inline-flex;flex-direction:column;align-items:center;font-size:11px;color:#fff;padding:2px;border-radius:6px;' + (c == target ? 'outline:3px solid #f0c040;' : 'outline:1px solid #555;') + '">' +
+					'<img src="' + esc(row[SRC]) + '" alt="" style="height:64px;border-radius:4px;">' + esc(deckCardId(row)) + '</span>';
+			}
+		}
+		modeBar.innerHTML = h;
+	};
+	renderMode();
 	// 滑鼠移到卡圖上：在游標旁放大預覽（盡量不蓋住目前這張）
 	var zoom = document.getElementById('artPickerZoom');
 	var placeZoom = function(e){
@@ -5419,6 +5484,7 @@ function openArtPicker(card, arts, replace)
 		zoom.style.left = x + 'px'; zoom.style.top = y + 'px';
 	};
 	ov.addEventListener('mouseover', function(e){
+		if(artPickerTouch()) return;   // 觸控裝置不顯示游標旁的放大圖（點一下就會選取）
 		var item = e.target.closest ? e.target.closest('.artPickerItem') : null;
 		if(!item) { zoom.style.display = 'none'; return; }
 		var img = item.querySelector('img');
@@ -5430,6 +5496,10 @@ function openArtPicker(card, arts, replace)
 	ov.addEventListener('mouseleave', function(){ zoom.style.display = 'none'; });
 	ov.addEventListener('click', function(e){
 		if(e.target === ov || e.target.id == 'artPickerClose') { closeArtPicker(); return; }
+		var pm = e.target.closest ? e.target.closest('[data-pmode]') : null;
+		if(pm) { pmode = pm.getAttribute('data-pmode'); renderMode(); return; }
+		var cp = e.target.closest ? e.target.closest('[data-copy]') : null;
+		if(cp) { target = +cp.getAttribute('data-copy'); renderMode(); return; }
 		var item = e.target.closest ? e.target.closest('.artPickerItem') : null;
 		if(!item) return;
 		var artId = item.getAttribute('data-art');
@@ -5440,11 +5510,33 @@ function openArtPicker(card, arts, replace)
 			closeArtPicker();
 			return;
 		}
+		var msg = document.getElementById('artPickerMsg');
+		if(pmode == 'rep' && copies[target])
+		{
+			copies[target].array[copies[target].index] = withArt(card, artId);
+			showAlldeck();
+			copies = deckCopies(card);
+			if(target >= copies.length) target = 0;
+			renderMode();
+			if(msg) msg.textContent = '已替換成：' + artId;
+			return;
+		}
 		var before = ldeckArr.length + pdeckArr.length + adeckArr.length + sdeckArr.length;
 		addDeckWithArt(card[ID], artId);
 		var after = ldeckArr.length + pdeckArr.length + adeckArr.length + sdeckArr.length;
-		var msg = document.getElementById('artPickerMsg');
-		if(msg) msg.textContent = after > before ? ('已加入：' + artId) : '無法加入（牌組已滿或不符規則）';
+		if(after > before)
+		{
+			copies = deckCopies(card);
+			if(msg) msg.textContent = '已加入：' + artId;
+			if(!modeBar && copies.length) { closeArtPicker(); openArtPicker(card, arts); var m2 = document.getElementById('artPickerMsg'); if(m2) m2.textContent = '已加入：' + artId; }
+			else renderMode();
+		}
+		else if(copies.length)
+		{
+			pmode = 'rep'; renderMode();
+			if(msg) msg.textContent = '無法再加入（牌組已滿或不符規則），已切換成「替換」：選要換的那張，再點卡圖';
+		}
+		else if(msg) msg.textContent = '無法加入（牌組已滿或不符規則）';
 	});
 	document.addEventListener('keydown', artPickerKey);
 }
@@ -5487,6 +5579,12 @@ function deckRowForTile(x, card)
 		}
 	}
 	return card;
+}
+
+// 觸控為主的裝置（手機／平板）：沒有滑鼠移入
+function artPickerTouch()
+{
+	return !!(window.matchMedia && window.matchMedia('(hover: none)').matches);
 }
 
 function artPickerKey(e)
