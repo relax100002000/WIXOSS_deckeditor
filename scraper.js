@@ -54,6 +54,21 @@ function loadCardBaseIdSet() {
 		for (const c of sandbox.cardData || []) {
 			if (c && c[0]) set.add(c[0]);
 		}
+		// Same-name card arts (js/same_name.js): the editor can show a parallel / reprint
+		// art (e.g. SPDi01-118P), so keep the prices of those card numbers too.
+		try {
+			const sn = fs.readFileSync(path.join(__dirname, 'js', 'same_name.js'), 'utf8');
+			const box = {};
+			new Function('box', sn + '\nbox.raw = SAME_NAME_RAW;')(box);
+			let n = 0;
+			for (const line of String(box.raw || '').split('\n')) {
+				const ids = (line.split('\t')[1] || '').split(',');
+				for (const id of ids) if (id && !set.has(id)) { set.add(id); n++; }
+			}
+			console.error('Card base: ' + set.size + ' ids (+' + n + ' same-name art ids)');
+		} catch (e) {
+			console.error('[warn] js/same_name.js not loaded: ' + e.message);
+		}
 		return set;
 	} catch (e) {
 		console.error('[warn] failed to load card_info.js: ' + e.message

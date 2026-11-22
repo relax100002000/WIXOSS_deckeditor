@@ -510,7 +510,7 @@ function onmouseShow(x, source)
 			$("#big_pic").attr("width", "360px");
 		}
 
-		showInfotable(cardData[i]);
+		showInfotable(source == 'deck' ? deckRowForTile(x, cardData[i]) : cardData[i]);
 	}
 	else
 	{
@@ -523,6 +523,13 @@ function onmouseShow(x, source)
 
 function showInfotable(data)
 {
+	// 同名卡圖：牌組裡選了其他卡圖時，略号／カード名連結／価格顯示該卡圖的卡號；註解仍以原卡號存取
+	var infoBaseId = (typeof data === "string") ? data : data[ID];
+	if(typeof data !== "string" && data[ART])
+	{
+		data = data.slice();
+		data[ID] = data[ART];
+	}
 	var str = "";
 	if(data == "init")
 	{
@@ -1064,7 +1071,7 @@ function showInfotable(data)
 		str += "	</td>";
 		str += "</tr>";
 
-		if(data[ID] == "WXDi-P07-050")
+		if(infoBaseId == "WXDi-P07-050")
 		{
 			str += "<tr>";
 			str += "	<td>";
@@ -1189,7 +1196,7 @@ function showInfotable(data)
 		str += "</tr>";
 	}
 
-	var commetStr = localStorage.getItem(data[ID] + "_WXcomment");
+	var commetStr = localStorage.getItem(infoBaseId + "_WXcomment");
 
 	if(commetStr == null)
 	{
@@ -1199,7 +1206,7 @@ function showInfotable(data)
 	str += "<tr>";
 	str += "	<td colspan=\"2\">";
 	str += "		<textarea id=\"comment\" style=\"vertical-align: middle; overflow:hidden; resize:none; width:285px\">" + commetStr + "</textarea>";
-	str += "		<button style=\"vertical-align: middle;border-radius: 0px;height: 30px\" onclick=\"setComment('" + data[ID] + "');\">更新</button>";
+	str += "		<button style=\"vertical-align: middle;border-radius: 0px;height: 30px\" onclick=\"setComment('" + infoBaseId + "');\">更新</button>";
 	str += "	</td>";
 	str += "</tr>";
 
@@ -5233,6 +5240,11 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
+	str += "20261122 v2.15\n";
+	str += "1.牌組中使用同名卡圖時，卡片資料的略号、カード名連結與價格改為顯示該卡圖的卡號(註解仍共用原卡號)\n";
+	str += "2.卡價更新也抓取同名卡圖(平行版等)的卡號價格\n";
+	str += "3.Card Search APP：點選異圖時，略号、カード名連結與價格一併切換\n";
+	str += "\n";
 	str += "20261122 v2.14\n";
 	str += "1.新增Card Search APP連結(search/)：手機用卡片搜尋／猜名測驗App\n";
 	str += "2.顏色、使用タイミング新增比對方式選單(いずれかを含む／すべて含む／完全一致)，「多色のみ」改為只排除單色卡\n";
@@ -5460,6 +5472,21 @@ function openReplacePicker(x, idx, array)
 	if(pos < 0) return false;
 	openArtPicker(card, sameNameArts(card), {array: array, index: pos});
 	return true;
+}
+
+// 牌組圖（依卡號＋圖片）找出對應的牌組列；找不到就用卡表的那張
+function deckRowForTile(x, card)
+{
+	var src = x && x.getAttribute ? x.getAttribute('src') : '';
+	var arrs = [ldeckArr, pdeckArr, adeckArr, sdeckArr];
+	for(var a = 0; a < arrs.length; a++)
+	{
+		for(var k = 0; k < arrs[a].length; k++)
+		{
+			if(arrs[a][k][ID] == card[ID] && arrs[a][k][SRC] == src) return arrs[a][k];
+		}
+	}
+	return card;
 }
 
 function artPickerKey(e)

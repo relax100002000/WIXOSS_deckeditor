@@ -688,6 +688,17 @@ function wireAltArt(d){
 		var it = e.target.closest('.altart-item'); if(!it) return;
 		grid.querySelectorAll('.altart-item').forEach(function(x){ x.classList.toggle('on', x === it); });
 		el('detailImg').src = it.dataset.src;
+		// 略号／カード名連結／価格也跟著換成所選卡圖的卡號
+		var artId = it.dataset.id;
+		el('detailTitle').textContent = artId;
+		el('detailBody').querySelectorAll('table.info tr').forEach(function(tr){
+			var th = tr.querySelector('th'), td = tr.querySelector('td');
+			if(!th || !td) return;
+			var label = th.textContent;
+			if(label == '略号') td.textContent = artId;
+			else if(label == 'カード名'){ var link = td.querySelector('a'); if(link) link.href = 'https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=' + encodeURIComponent(artId); }
+			else if(label.indexOf('価格') == 0) td.innerHTML = priceCell(artId);
+		});
 		var official = 'https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=' + encodeURIComponent(it.dataset.id);
 		now.hidden = it.dataset.id == d[ID];
 		now.innerHTML = '上方顯示：' + esc(it.dataset.id) + '　<a href="' + official + '" target="_blank" rel="noopener">官網卡片頁</a>';
