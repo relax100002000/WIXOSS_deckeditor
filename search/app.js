@@ -627,16 +627,21 @@ function infoTable(d){
 }
 
 /* ===== 同名卡圖（../js/same_name.js，官方卡片庫所有同名卡的卡號） ===== */
-var sameNameMap = null;
+var sameNameMap = null, sameNameExtraImg = {};
 function sameNameKey(n){ return String(n).normalize('NFKC').replace(/\s+/g, ' ').trim().replace(/\s*\([^()]*\)$/, '').trim(); }
 function sameNameArts(c){
 	if(!sameNameMap){
 		sameNameMap = {};
 		if(typeof SAME_NAME_RAW !== 'undefined') SAME_NAME_RAW.split('\n').forEach(function(l){ var p = l.split('\t'); if(p.length > 1) sameNameMap[p[0]] = p[1].split(','); });
+		if(typeof SAME_NAME_EXTRA !== 'undefined') SAME_NAME_EXTRA.forEach(function(x){   // 手動補充（../js/same_name_extra.js）
+			var list = sameNameMap[x[0]] || (sameNameMap[x[0]] = []);
+			if(list.indexOf(x[1]) == -1){ var at = x[3] ? list.indexOf(x[3]) : -1; if(at >= 0) list.splice(at + 1, 0, x[1]); else list.push(x[1]); }
+			sameNameExtraImg[x[1]] = /^https?:/.test(x[2]) ? x[2] : '../' + x[2];
+		});
 	}
 	var list = [{id: c[ID], src: c[SRC]}];
 	(sameNameMap[sameNameKey(c[NAME])] || []).forEach(function(id){
-		if(id != c[ID]) list.push({id: id, src: SAME_NAME_IMG_BASE + id.split('-')[0] + '/' + id + '.jpg'});
+		if(id != c[ID]) list.push({id: id, src: sameNameExtraImg[id] || (SAME_NAME_IMG_BASE + id.split('-')[0] + '/' + id + '.jpg')});
 	});
 	return list;
 }

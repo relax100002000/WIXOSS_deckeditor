@@ -443,7 +443,7 @@ function onmouseShow(x, source)
 		$("#big_pic").attr("src", cardData[i][SRC]);
 		$("#big_pic").attr("alt", cardData[i][ID]);
 		// 牌組裡的同名卡圖：預覽顯示該卡圖
-		if(source == 'deck' && x.getAttribute && (x.getAttribute('src') || '').indexOf('takaratomy') != -1)
+		if(source == 'deck' && x.getAttribute && /takaratomy|img\/[A-Za-z0-9-]+\.jpg$/.test(x.getAttribute('src') || '') && !/_rotate|empty/.test(x.getAttribute('src') || ''))
 		{
 			$("#big_pic").attr("src", x.getAttribute('src'));
 		}
@@ -5244,6 +5244,9 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
+	str += "20261122 v2.17\n";
+	str += "1.同名卡圖新增手動補充資料(js/same_name_extra.js)，補上官網缺漏的SPDi33-06 サーバント #卡圖\n";
+	str += "\n";
 	str += "20261122 v2.16\n";
 	str += "1.滑鼠移到牌組的卡再點預覽大圖，改為替換該張卡圖(不再加入新的一張)\n";
 	str += "2.異圖視窗新增「加入一張／替換牌組裡的一張」切換，可選要替換哪一張；牌組已滿時自動切換為替換(手機版也可用)\n";
@@ -5298,6 +5301,7 @@ var ART = 19;
 var pendingArtId = null;
 var bigPicSource = '', bigPicTile = null;
 var sameNameMap = null, sameNameById = null;
+var sameNameExtraImg = {};
 
 function sameNameKey(n)
 {
@@ -5316,10 +5320,26 @@ function initSameName()
 		sameNameMap[p[0]] = ids;
 		ids.forEach(function(id){ sameNameById[id] = p[0]; });
 	});
+	// 手動補充的卡圖（js/same_name_extra.js）
+	if(typeof SAME_NAME_EXTRA !== 'undefined')
+	{
+		SAME_NAME_EXTRA.forEach(function(x){
+			var key = x[0], id = x[1], list = sameNameMap[key] || (sameNameMap[key] = []);
+			if(list.indexOf(id) == -1)
+			{
+				var at = x[3] ? list.indexOf(x[3]) : -1;
+				if(at >= 0) list.splice(at + 1, 0, id); else list.push(id);
+			}
+			sameNameById[id] = key;
+			sameNameExtraImg[id] = x[2];
+		});
+	}
 }
 
 function artSrc(id)
 {
+	initSameName();
+	if(sameNameExtraImg[id]) return sameNameExtraImg[id];
 	return SAME_NAME_IMG_BASE + id.split('-')[0] + '/' + id + '.jpg';
 }
 
