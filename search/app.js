@@ -626,6 +626,21 @@ function infoTable(d){
 	return '<table class="info">' + rows.join('') + '</table>';
 }
 
+/* ===== 同名卡圖（../js/same_name.js，官方卡片庫所有同名卡的卡號） ===== */
+var sameNameMap = null;
+function sameNameKey(n){ return String(n).normalize('NFKC').replace(/\s+/g, ' ').trim().replace(/\s*\([^()]*\)$/, '').trim(); }
+function sameNameArts(c){
+	if(!sameNameMap){
+		sameNameMap = {};
+		if(typeof SAME_NAME_RAW !== 'undefined') SAME_NAME_RAW.split('\n').forEach(function(l){ var p = l.split('\t'); if(p.length > 1) sameNameMap[p[0]] = p[1].split(','); });
+	}
+	var list = [{id: c[ID], src: c[SRC]}];
+	(sameNameMap[sameNameKey(c[NAME])] || []).forEach(function(id){
+		if(id != c[ID]) list.push({id: id, src: SAME_NAME_IMG_BASE + id.split('-')[0] + '/' + id + '.jpg'});
+	});
+	return list;
+}
+
 function showDetail(idx){
 	currentIdx = idx;
 	var d = results[idx];
@@ -635,11 +650,13 @@ function showDetail(idx){
 		'<div class="navrow"><button class="btn" id="prevCard"' + (idx <= 0 ? ' disabled' : '') + '>‹ 上一張</button>' +
 		'<span class="note">' + (idx + 1) + ' / ' + results.length + '</span>' +
 		'<button class="btn" id="nextCard"' + (idx >= results.length - 1 ? ' disabled' : '') + '>下一張 ›</button></div>' +
-		'<img class="detail-img" src="' + esc(d[SRC]) + '" alt="' + esc(d[ID]) + '">' +
+		'<img class="detail-img" id="detailImg" src="' + esc(d[SRC]) + '" alt="' + esc(d[ID]) + '">' +
+		altArtBlock(d) +
 		infoTable(d) +
 		'<div class="comment"><h3>註解（與 deckeditor 共用，可被關鍵字搜尋）</h3><textarea id="comment">' + esc(cm) + '</textarea>' +
 		'<button class="btn" id="saveComment">更新</button></div>';
 	el('detailBody').scrollTop = 0;
+	wireAltArt(d);
 	el('prevCard').onclick = function(){ if(idx > 0) showDetail(idx - 1); };
 	el('nextCard').onclick = function(){ if(idx < results.length - 1) showDetail(idx + 1); };
 	el('saveComment').onclick = function(){
@@ -648,6 +665,34 @@ function showDetail(idx){
 		this.textContent = '已儲存 ✓'; var b = this; setTimeout(function(){ b.textContent = '更新'; }, 1200);
 	};
 	openSheet('detailSheet');
+}
+
+function altArtBlock(d){
+	var arts = sameNameArts(d);
+	if(arts.length <= 1) return '';
+	return '<div class="altart"><button class="btn" id="altArtBtn">🖼 看所有異圖（' + arts.length + ' 張）</button>' +
+		'<div class="note" id="altArtNow" hidden></div>' +
+		'<div class="altart-grid" id="altArtGrid" hidden>' + arts.map(function(a, k){
+			return '<button class="altart-item' + (k == 0 ? ' on' : '') + '" data-src="' + esc(a.src) + '" data-id="' + esc(a.id) + '">' +
+				'<img loading="lazy" src="' + esc(a.src) + '" alt="" onerror="this.style.opacity=.3"><span>' + esc(a.id) + '</span></button>';
+		}).join('') + '</div></div>';
+}
+function wireAltArt(d){
+	var btn = el('altArtBtn'); if(!btn) return;
+	var grid = el('altArtGrid'), now = el('altArtNow'), n = grid.children.length;
+	btn.onclick = function(){
+		grid.hidden = !grid.hidden;
+		btn.textContent = grid.hidden ? '🖼 看所有異圖（' + n + ' 張）' : '收起異圖';
+	};
+	grid.onclick = function(e){
+		var it = e.target.closest('.altart-item'); if(!it) return;
+		grid.querySelectorAll('.altart-item').forEach(function(x){ x.classList.toggle('on', x === it); });
+		el('detailImg').src = it.dataset.src;
+		var official = 'https://www.takaratomy.co.jp/products/wixoss/card_list.php?card=card_detail&card_no=' + encodeURIComponent(it.dataset.id);
+		now.hidden = it.dataset.id == d[ID];
+		now.innerHTML = '上方顯示：' + esc(it.dataset.id) + '　<a href="' + official + '" target="_blank" rel="noopener">官網卡片頁</a>';
+		el('detailBody').scrollTo({top: 0, behavior: 'smooth'});
+	};
 }
 
 window.__proto = {state: state, compute: compute, run: run, parseQuery: parseQuery};

@@ -17,6 +17,7 @@
 				document.write('<script src="js/card_info_allstar.js' + v + '"><\/script>');
 				document.write('<script src="js/allstar_restriction.js' + v + '"><\/script>');
 				document.write('<script src="js/release_dates.js' + v + '"><\/script>');
+				document.write('<script src="js/same_name.js' + v + '"><\/script>');
 			})();
 		</script>
 		<script>
@@ -793,12 +794,12 @@
 	        }
 		</script>
 		<div id='cardinformation' style='border: solid; border-width: 2px;position: absolute;z-index: 999; background-color:white; visibility: hidden;margin: 150px 0px 0px 40px;'>
-			<span id="bigPicHint" title="Hold ALT to keep this preview open and frozen on the current card.">💡 Hold <b>ALT</b> to lock this preview · release to unlock</span>
+			<span id="bigPicHint" title="Hold ALT to keep this preview open and frozen on the current card. While it is locked, click the card to list every card with the same name (alternate arts) and add it to the deck with the art you pick.">💡 Hold <b>ALT</b> to lock this preview · release to unlock<br>🖼 Click the card = choose an alternate art (same-name cards)<br>🖼 ALT+click a card in the deck = change the art of that card</span>
 			<img id="cross" width="30px" height="30px" style='border-style: none;margin-left: 413px;' src="img/cancel_icon.png" onclick="if(!window.bigPicLocked) $('#cardinformation').css('visibility', 'hidden');" onmouseover="if(!window.bigPicLocked) $('#cardinformation').css('visibility', 'hidden');">
 			<table>
 				<tr>
 					<td>
-						<img width="360px" height="504px" id="big_pic" style="border-radius: 20px;" alt="" src="img/card_back.jpg" onclick="addDeck(this)">
+						<img width="360px" height="504px" id="big_pic" style="border-radius: 20px;" alt="" src="img/card_back.jpg" onclick="onBigPicClick(this)" title="點擊：同名卡圖一覧／加入牌組">
 					</td>
 					<td style="vertical-align:text-top;">
 						<table id="infoTable" width="360px" border="1" style="border: solid; border-width: 1px">
@@ -813,7 +814,7 @@
 				<option value="TW">繁體中文</option>
 		    </select>
 		    <button id="darkModeToggle" type="button" onclick="toggleDarkMode()" title="切換黑暗模式">🌙 Dark</button>
-		    <span class="alt-lock-tip" title="Hold ALT to lock the card preview window — it won't close or change card while ALT is held.">🔒 Hold <b>ALT</b> = lock card preview</span>
+		    <span class="alt-lock-tip" title="Hold ALT to lock the card preview window — it won't close or change card while ALT is held. Then click the preview to list every card with the same name and add it to the deck with the art you pick (the deck records that art's card number). ALT+click a card in the deck to change the art of that one card.">🔒 Hold <b>ALT</b> = lock card preview</span>
 		    ※Right-click in the deck can add existing card.
 		    <br>Deck List
 		    <select id="selectDeck" onchange="selectDeck();">

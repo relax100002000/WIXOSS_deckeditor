@@ -18,6 +18,7 @@
             document.write('<script src="js/function.js' + v + '"><\/script>');
             document.write('<script src="js/card_info.js' + v + '"><\/script>');
             document.write('<script src="js/price_info.js' + v + '"><\/script>');
+            document.write('<script src="js/same_name.js' + v + '"><\/script>');
         })();
     </script>
     
@@ -614,10 +615,11 @@
             <button onclick="$('#cardinformation').css('visibility', 'hidden');" onmouseover="$('#cardinformation').css('visibility', 'hidden');" style="padding: 5px 12px;">✕</button>
         </div>
         <div style="flex: 1; overflow-y: auto;">
-            <img id="big_pic" src="img/card_back.jpg" onclick="addDeck(this)" style="display:block; margin:0 auto 10px auto; max-height:280px;">
+            <img id="big_pic" src="img/card_back.jpg" onclick="onBigPicClick(this)" title="點擊：同名卡圖一覧／加入牌組" style="display:block; margin:0 auto 10px auto; max-height:280px;">
             <table id="infoTable"></table>
         </div>
         <button class="primary" style="margin-top:10px; width:100%;" onclick="addDeck(document.getElementById('big_pic'));">Add to Deck</button>
+        <div style="margin-top:6px; font-size:12px; color:#888; text-align:center;">點卡圖：同名卡圖一覧（選一張加入）／長按牌組的卡：替換卡圖</div>
         <img id="cross" src="img/cancel_icon.png" style="display:none;">
     </div>
 
@@ -1018,5 +1020,53 @@
             else if(x==='view') { if(typeof rearrange_ldeck==='function' && rearrange_ldeck()!==false) { $('#hidden-view-layer').show(); $('#window-container').show(); } }
         }
     </script>
+    <script>
+    // 長按牌組的卡（觸控）＝開同名卡圖視窗，只替換那一張（function.js 的 openReplacePicker）。
+    // 滑鼠右鍵照舊是加入同卡；觸控長按不再觸發加入，也不會在放開時刪除。
+    (function(){
+        var DECK = { ldeck: 'ldeckArr', pdeck: 'pdeckArr', adeck: 'adeckArr', sdeck: 'sdeckArr' };
+        var timer = null, fired = false, touching = false, sx = 0, sy = 0;
+        function deckOf(el){
+            var img = el && el.closest ? el.closest('img[id]') : null;
+            if(!img || !img.alt) return null;
+            var m = img.id.match(/^(ldeck|pdeck|adeck|sdeck)_(\d+)$/);
+            return m ? { img: img, array: window[DECK[m[1]]], idx: +m[2] } : null;
+        }
+        function cancel(){ if(timer){ clearTimeout(timer); timer = null; } }
+        document.addEventListener('touchstart', function(e){
+            var d = deckOf(e.target);
+            fired = false; cancel();
+            if(!d || e.touches.length != 1) return;
+            touching = true;
+            sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+            timer = setTimeout(function(){
+                timer = null; fired = true;
+                if(navigator.vibrate) navigator.vibrate(30);
+                if(typeof openReplacePicker === 'function') openReplacePicker(d.img, d.idx, d.array);
+            }, 500);
+        }, { passive: true });
+        document.addEventListener('touchmove', function(e){
+            if(!timer) return;
+            var t = e.touches[0];
+            if(Math.abs(t.clientX - sx) > 10 || Math.abs(t.clientY - sy) > 10) cancel();
+        }, { passive: true });
+        document.addEventListener('touchend', function(e){
+            cancel();
+            if(fired && e.cancelable) e.preventDefault();      // 長按後放開：不觸發 click（刪除）
+            setTimeout(function(){ touching = false; }, 400);
+        });
+        document.addEventListener('touchcancel', function(){ cancel(); setTimeout(function(){ touching = false; }, 400); });
+        // 觸控長按會觸發 contextmenu（原本是加入同卡）：攔下來
+        document.addEventListener('contextmenu', function(e){
+            if(touching && deckOf(e.target)){ e.preventDefault(); e.stopPropagation(); }
+        }, true);
+        document.addEventListener('click', function(e){
+            if(fired && deckOf(e.target)){ e.preventDefault(); e.stopPropagation(); fired = false; }
+        }, true);
+    })();
+    </script>
+    <style>
+        img[id^="ldeck_"], img[id^="pdeck_"], img[id^="adeck_"], img[id^="sdeck_"] { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+    </style>
 </body>
 </html>

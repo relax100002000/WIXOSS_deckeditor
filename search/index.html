@@ -39,6 +39,15 @@
 .helpbox code{background:var(--surface2);border-radius:4px;padding:0 4px;color:var(--text)}
 .card .price{color:var(--accent);font-size:10px}
 table.info tr.origin td .og{color:#5a5366;font-size:13px}
+.altart{margin:-4px 0 12px;text-align:center}
+.altart [hidden]{display:none !important}
+.altart .btn{width:100%}
+.altart-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:6px;margin-top:8px}
+.altart-item{border:2px solid transparent;background:var(--surface);border-radius:8px;padding:3px;cursor:pointer;color:var(--muted);font-size:10px}
+.altart-item.on{border-color:var(--accent);color:var(--text)}
+.altart-item img{width:100%;aspect-ratio:63/88;object-fit:contain;display:block;border-radius:5px}
+.altart-item span{display:block;margin-top:2px;word-break:break-all}
+#altArtNow{margin-top:6px}
 .fgroup.ctx{border-left:3px solid var(--accent)}
 </style>
 </head>
@@ -89,6 +98,7 @@ table.info tr.origin td .og{color:#5a5366;font-size:13px}
 <script src="../js/card_info.js"></script>
 <script src="../js/price_info.js"></script>
 <script src="../js/signi_origin.js"></script>
+<script src="../js/same_name.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

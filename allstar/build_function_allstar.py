@@ -196,6 +196,11 @@ function addDeck(x)
 
 ''' + s[b:]
 
+# 3b) 同名卡圖: the ALLSTAR addDeck() also honours the art picked in the same-name picker (pendingArtId)
+must_replace("""				var c = cardData[i];
+				if(!asAllowAdd(c))""", """				var c = withArt(cardData[i], pendingArtId);
+				if(!asAllowAdd(c))""")
+
 # 4) search(): ALLSTAR product filter ("AS:<product_no>") + レゾナ / キー checkboxes
 must_replace('''		if($('#selectProduct').val() != 0)
 		{

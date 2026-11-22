@@ -275,6 +275,11 @@ function onmouseShow(x, source)
 
 		$("#big_pic").attr("src", cardData[i][SRC]);
 		$("#big_pic").attr("alt", cardData[i][ID]);
+		// 牌組裡的同名卡圖：預覽顯示該卡圖
+		if(source == 'deck' && x.getAttribute && (x.getAttribute('src') || '').indexOf('takaratomy') != -1)
+		{
+			$("#big_pic").attr("src", x.getAttribute('src'));
+		}
 
 		if(cardData[i][TYPE] == "ピース" ||
 			cardData[i][TYPE] == "キー" ||
@@ -1736,10 +1741,34 @@ function updatechart()
 
 function delDeck(x, idx, array)
 {
+	// ALT＋點牌組裡的卡：開同名卡圖視窗，只替換這一張的卡圖（不刪除）
+	if(window.event && window.event.altKey && openReplacePicker(x, idx, array))
+	{
+		return;
+	}
+
 	for(i = 0; i < cardData.length; i++)
 	{
 		if(x.alt == cardData[i][ID] && (cardData[i][TYPE] == "シグニ" || cardData[i][TYPE] == "スペル"))
 		{
+			// 同名卡圖：優先刪掉被點的那張卡圖（依圖片比對），否則刪第一張同卡號
+			var pick = -1;
+			for(j = 0; j < sdeckArr.length; j++)
+			{
+				if(sdeckArr[j][ID] == cardData[i][ID])
+				{
+					if(pick < 0) pick = j;
+					if(x.getAttribute && sdeckArr[j][SRC] == x.getAttribute('src')) { pick = j; break; }
+				}
+			}
+			if(pick >= 0)
+			{
+				array.splice(pick, 1);
+				delcounter(cardData[i]);
+				showAlldeck();
+				return;
+			}
+
 			for(j = 0; j < sdeckArr.length; j++)
 			{
 				if(cardData[i][ID] == sdeckArr[j][ID])
@@ -2001,7 +2030,7 @@ function addDeck(x)
 		{
 			if(x.alt == cardData[i][ID])
 			{
-				var c = cardData[i];
+				var c = withArt(cardData[i], pendingArtId);
 				if(!asAllowAdd(c))
 				{
 					break;
@@ -2341,22 +2370,22 @@ function downloadBlob(filename, contentType) {
 
     for(i = 0; i < ldeckArr.length; i++)
     {
-    	larray.push(ldeckArr[i][ID]);
+    	larray.push(deckCardId(ldeckArr[i]));
     }
 
     for(i = 0; i < pdeckArr.length; i++)
     {
-    	parray.push(pdeckArr[i][ID]);
+    	parray.push(deckCardId(pdeckArr[i]));
     }
 
     for(i = 0; i < adeckArr.length; i++)
     {
-    	aarray.push(adeckArr[i][ID]);
+    	aarray.push(deckCardId(adeckArr[i]));
     }
 
     for(i = 0; i < sdeckArr.length; i++)
     {
-    	sarray.push(sdeckArr[i][ID]);
+    	sarray.push(deckCardId(sdeckArr[i]));
     }
     larray.unshift("ldeck");
     parray.unshift("pdeck");
@@ -2514,13 +2543,8 @@ function readSingleCode()
 	larray = array[0].split(",");
 	for(i = 1; i < larray.length; i++)
 	{
-		for(j = 0; j < cardData.length; j++)
-	  	{
-	  		if(larray[i] == cardData[j][ID])
-	  		{
-	  			ldeckArr.push(cardData[j]);
-	  		}
-	  	}
+		var __dc = findDeckCard(larray[i]);
+			if(__dc) { ldeckArr.push(__dc); }
 	}
 
     
@@ -2532,13 +2556,8 @@ function readSingleCode()
    		parray = array[1].split(",");
 	    for(i = 1; i < parray.length; i++)
 	    {
-	      	for(j = 0; j < cardData.length; j++)
-	      	{
-	      		if(parray[i] == cardData[j][ID])
-	      		{
-	      			pdeckArr.push(cardData[j]);
-	      		}
-	      	}
+	      	var __dc = findDeckCard(parray[i]);
+			if(__dc) { pdeckArr.push(__dc); }
 	    }
 
 	    adeckArr = [];
@@ -2548,13 +2567,8 @@ function readSingleCode()
 	    sarray = array[2].split(",");
 	    for(i = 1; i < sarray.length; i++)
 	    {
-	      	for(j = 0; j < cardData.length; j++)
-	      	{
-	      		if(sarray[i] == cardData[j][ID])
-	      		{
-	      			sdeckArr.push(cardData[j]);
-	      		}
-	      	}
+	      	var __dc = findDeckCard(sarray[i]);
+			if(__dc) { sdeckArr.push(__dc); }
 	    }
    	}
    	else //Arts
@@ -2564,13 +2578,8 @@ function readSingleCode()
 	    parray = array[1].split(",");
 	    for(i = 1; i < parray.length; i++)
 	    {
-	      	for(j = 0; j < cardData.length; j++)
-	      	{
-	      		if(parray[i] == cardData[j][ID])
-	      		{
-	      			pdeckArr.push(cardData[j]);
-	      		}
-	      	}
+	      	var __dc = findDeckCard(parray[i]);
+			if(__dc) { pdeckArr.push(__dc); }
 	    }
 
 	    adeckArr = [];
@@ -2578,13 +2587,8 @@ function readSingleCode()
 	    aarray = array[2].split(",");
 	    for(i = 1; i < aarray.length; i++)
 	    {
-	      	for(j = 0; j < cardData.length; j++)
-	      	{
-	      		if(aarray[i] == cardData[j][ID])
-	      		{
-	      			adeckArr.push(cardData[j]);
-	      		}
-	      	}
+	      	var __dc = findDeckCard(aarray[i]);
+			if(__dc) { adeckArr.push(__dc); }
 	    }
 
 	    sdeckArr = [];
@@ -2592,13 +2596,8 @@ function readSingleCode()
 	    sarray = array[3].split(",");
 	    for(i = 1; i < sarray.length; i++)
 	    {
-	      	for(j = 0; j < cardData.length; j++)
-	      	{
-	      		if(sarray[i] == cardData[j][ID])
-	      		{
-	      			sdeckArr.push(cardData[j]);
-	      		}
-	      	}
+	      	var __dc = findDeckCard(sarray[i]);
+			if(__dc) { sdeckArr.push(__dc); }
 	    }
 	}
 
@@ -2631,13 +2630,8 @@ function readSingleFile(evt)
           larray = array[0].split(",");
           for(i = 1; i < larray.length; i++)
           {
-          	for(j = 0; j < cardData.length; j++)
-          	{
-          		if(larray[i] == cardData[j][ID])
-          		{
-          			ldeckArr.push(cardData[j]);
-          		}
-          	}
+          	var __dc = findDeckCard(larray[i]);
+			if(__dc) { ldeckArr.push(__dc); }
           }
 
           pdeckArr = [];
@@ -2645,13 +2639,8 @@ function readSingleFile(evt)
           parray = array[1].split(",");
           for(i = 1; i < parray.length; i++)
           {
-          	for(j = 0; j < cardData.length; j++)
-          	{
-          		if(parray[i] == cardData[j][ID])
-          		{
-          			pdeckArr.push(cardData[j]);
-          		}
-          	}
+          	var __dc = findDeckCard(parray[i]);
+			if(__dc) { pdeckArr.push(__dc); }
           }
 
           adeckArr = [];
@@ -2659,13 +2648,8 @@ function readSingleFile(evt)
           aarray = array[2].split(",");
           for(i = 1; i < aarray.length; i++)
           {
-          	for(j = 0; j < cardData.length; j++)
-          	{
-          		if(aarray[i] == cardData[j][ID])
-          		{
-          			adeckArr.push(cardData[j]);
-          		}
-          	}
+          	var __dc = findDeckCard(aarray[i]);
+			if(__dc) { adeckArr.push(__dc); }
           }
 
           sdeckArr = [];
@@ -2673,13 +2657,8 @@ function readSingleFile(evt)
           sarray = array[3].split(",");
           for(i = 1; i < sarray.length; i++)
           {
-          	for(j = 0; j < cardData.length; j++)
-          	{
-          		if(sarray[i] == cardData[j][ID])
-          		{
-          			sdeckArr.push(cardData[j]);
-          		}
-          	}
+          	var __dc = findDeckCard(sarray[i]);
+			if(__dc) { sdeckArr.push(__dc); }
           }
 
           loadcounter();
@@ -5128,6 +5107,12 @@ function showVersion()
 	str += "Author: ZZZ\n";
 	str += "E-mail: relax100002000@hotmail.com\n";
 	str += "\n";
+	str += "20261122 v2.14\n";
+	str += "1.新增Card Search APP連結(search/)：手機用卡片搜尋／猜名測驗App\n";
+	str += "2.顏色、使用タイミング新增比對方式選單(いずれかを含む／すべて含む／完全一致)，「多色のみ」改為只排除單色卡\n";
+	str += "3.新增同名卡圖(異圖)：點預覽大圖列出官方卡片庫所有同名卡圖，選一張即以該卡圖加入牌組，存檔記錄該卡圖卡號(open!batoru匯出仍用原卡號)\n";
+	str += "4.牌組中ALT＋點卡(手機版長按)可替換該張卡圖\n";
+	str += "\n";
 	str += "20261103 v2.13\n";
 	str += "1.更新WX26-P2中文\n";
 	str += "\n";
@@ -5157,6 +5142,211 @@ document.addEventListener('change', function(e){
 		ids.forEach(function(id){ document.getElementById(id).checked = false; });
 	}
 });
+
+/* ===================== 同名卡圖（js/same_name.js） =====================
+ * 點預覽大圖：若該卡在官方卡片庫有其他同名卡圖，列出全部；點選其中一張即以該卡圖加入牌組。
+ * 牌組列（cardData 的複本）額外記錄 ART（第 20 欄）＝所選卡圖的卡號、SRC 換成該卡圖。
+ * 存檔／CSV 寫卡圖卡號；open!batoru 匯出照舊依卡名換成原卡號。讀檔時找不到的卡號用同名表還原。 */
+var ART = 19;
+var pendingArtId = null;
+var sameNameMap = null, sameNameById = null;
+
+function sameNameKey(n)
+{
+	return String(n).normalize('NFKC').replace(/\s+/g, ' ').trim().replace(/\s*\([^()]*\)$/, '').trim();
+}
+
+function initSameName()
+{
+	if(sameNameMap) return;
+	sameNameMap = {}; sameNameById = {};
+	if(typeof SAME_NAME_RAW === 'undefined') return;
+	SAME_NAME_RAW.split('\n').forEach(function(line){
+		var p = line.split('\t');
+		if(p.length < 2) return;
+		var ids = p[1].split(',');
+		sameNameMap[p[0]] = ids;
+		ids.forEach(function(id){ sameNameById[id] = p[0]; });
+	});
+}
+
+function artSrc(id)
+{
+	return SAME_NAME_IMG_BASE + id.split('-')[0] + '/' + id + '.jpg';
+}
+
+// 回傳 [{id, src}]：本卡在最前，其餘依官方卡片庫順序
+function sameNameArts(card)
+{
+	initSameName();
+	var list = [{id: card[ID], src: card[SRC]}];
+	var ids = sameNameMap[sameNameKey(card[NAME])] || [];
+	for(var k = 0; k < ids.length; k++)
+	{
+		if(ids[k] != card[ID]) list.push({id: ids[k], src: artSrc(ids[k])});
+	}
+	return list;
+}
+
+function withArt(card, artId)
+{
+	if(!card || !artId || artId == card[ID]) return card;
+	var c = card.slice();
+	c[SRC] = artSrc(artId);
+	c[ART] = artId;
+	return c;
+}
+
+function deckCardId(row)
+{
+	return row[ART] || row[ID];
+}
+
+// 讀牌組用：卡號→牌組列（卡表沒有的卡號＝同名卡圖，還原成同名的卡並套上該卡圖）
+function findDeckCard(id)
+{
+	var k;
+	for(k = 0; k < cardData.length; k++)
+	{
+		if(cardData[k][ID] == id) return cardData[k];
+	}
+	initSameName();
+	var key = sameNameById[id];
+	if(!key) return null;
+	// 同名的卡可能跨世代（ALLSTAR 版），優先選和卡圖同世代的那張
+	var diva = /^(WXDi|WX2\d|WDi|SPDi|PR-Di)/, first = null;
+	for(k = 0; k < cardData.length; k++)
+	{
+		if(sameNameKey(cardData[k][NAME]) != key) continue;
+		if(diva.test(cardData[k][ID]) == diva.test(id)) return withArt(cardData[k], id);
+		if(!first) first = cardData[k];
+	}
+	return first ? withArt(first, id) : null;
+}
+
+function addDeckWithArt(baseId, artId)
+{
+	pendingArtId = artId;
+	try { addDeck({alt: baseId}); } finally { pendingArtId = null; }
+}
+
+// 預覽大圖的點擊：有同名卡圖就開選擇視窗，沒有就照舊直接加入
+function onBigPicClick(x)
+{
+	if(!x || !x.alt) return;
+	var card = null;
+	for(var k = 0; k < cardData.length; k++)
+	{
+		if(cardData[k][ID] == x.alt) { card = cardData[k]; break; }
+	}
+	if(!card) return;
+	var arts = sameNameArts(card);
+	if(arts.length <= 1) { addDeck(x); return; }
+	openArtPicker(card, arts);
+}
+
+function openArtPicker(card, arts, replace)
+{
+	var current = replace ? deckCardId(replace.array[replace.index]) : card[ID];
+	closeArtPicker();
+	var ov = document.createElement('div');
+	ov.id = 'artPicker';
+	ov.setAttribute('style', 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.72);display:flex;flex-direction:column;align-items:center;padding:16px;box-sizing:border-box;');
+	var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+	var html = '<div style="width:100%;max-width:1100px;display:flex;align-items:center;gap:12px;color:#fff;margin-bottom:10px;">' +
+		'<b style="font-size:18px;flex:1;">' + esc(card[NAME]) + '　同名卡圖 ' + arts.length + ' 張' + (replace ? '　<span style="color:#f0c040;">［替換卡圖］</span>' : '') + '</b>' +
+		'<span id="artPickerMsg" style="color:#9f9;font-size:14px;"></span>' +
+		'<button type="button" id="artPickerClose" style="font-size:16px;padding:4px 14px;cursor:pointer;">✕</button></div>' +
+		'<div style="color:#ddd;font-size:13px;width:100%;max-width:1100px;margin-bottom:8px;">' + (replace ? '點選卡圖即替換牌組裡的這一張（只換這一張，記錄該卡圖的卡號）。' : '點選卡圖即以該卡圖加入牌組（記錄該卡圖的卡號）。牌組裡的卡可按住 ALT 點擊來替換卡圖。') + '點背景或按 Esc 關閉。</div>' +
+		'<div id="artPickerGrid" style="width:100%;max-width:1100px;flex:1;overflow:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;align-content:start;">';
+	for(var k = 0; k < arts.length; k++)
+	{
+		var a = arts[k];
+		html += '<div class="artPickerItem" data-art="' + esc(a.id) + '" style="cursor:pointer;background:#222;border-radius:8px;padding:6px;text-align:center;' + (a.id == current ? 'outline:3px solid #f0c040;' : '') + '">' +
+			'<img loading="lazy" src="' + esc(a.src) + '" alt="' + esc(a.id) + '" style="width:100%;border-radius:6px;display:block;" onerror="this.style.opacity=.3">' +
+			'<div style="color:#fff;font-size:12px;margin-top:4px;word-break:break-all;">' + esc(a.id) + (a.id == current ? '（目前）' : '') + '</div></div>';
+	}
+	html += '</div>';
+	html += '<img id="artPickerZoom" alt="" style="position:fixed;display:none;pointer-events:none;z-index:10000;width:360px;max-width:45vw;max-height:90vh;object-fit:contain;border-radius:14px;box-shadow:0 6px 30px rgba(0,0,0,.8);background:#111;">';
+	ov.innerHTML = html;
+	document.body.appendChild(ov);
+	// 滑鼠移到卡圖上：在游標旁放大預覽（盡量不蓋住目前這張）
+	var zoom = document.getElementById('artPickerZoom');
+	var placeZoom = function(e){
+		var w = zoom.offsetWidth || 360, h = zoom.offsetHeight || 504, gap = 24;
+		var x = e.clientX + gap, y = e.clientY - h / 2;
+		if(x + w > window.innerWidth - 8) x = e.clientX - gap - w;
+		if(x < 8) x = 8;
+		y = Math.max(8, Math.min(y, window.innerHeight - h - 8));
+		zoom.style.left = x + 'px'; zoom.style.top = y + 'px';
+	};
+	ov.addEventListener('mouseover', function(e){
+		var item = e.target.closest ? e.target.closest('.artPickerItem') : null;
+		if(!item) { zoom.style.display = 'none'; return; }
+		var img = item.querySelector('img');
+		if(zoom.getAttribute('src') != img.getAttribute('src')) zoom.setAttribute('src', img.getAttribute('src'));
+		zoom.style.display = 'block';
+		placeZoom(e);
+	});
+	ov.addEventListener('mousemove', function(e){ if(zoom.style.display == 'block') placeZoom(e); });
+	ov.addEventListener('mouseleave', function(){ zoom.style.display = 'none'; });
+	ov.addEventListener('click', function(e){
+		if(e.target === ov || e.target.id == 'artPickerClose') { closeArtPicker(); return; }
+		var item = e.target.closest ? e.target.closest('.artPickerItem') : null;
+		if(!item) return;
+		var artId = item.getAttribute('data-art');
+		if(replace)
+		{
+			replace.array[replace.index] = withArt(card, artId);
+			showAlldeck();
+			closeArtPicker();
+			return;
+		}
+		var before = ldeckArr.length + pdeckArr.length + adeckArr.length + sdeckArr.length;
+		addDeckWithArt(card[ID], artId);
+		var after = ldeckArr.length + pdeckArr.length + adeckArr.length + sdeckArr.length;
+		var msg = document.getElementById('artPickerMsg');
+		if(msg) msg.textContent = after > before ? ('已加入：' + artId) : '無法加入（牌組已滿或不符規則）';
+	});
+	document.addEventListener('keydown', artPickerKey);
+}
+
+// ALT＋點牌組的卡：找出被點的那一列（シグニ／スペル依卡號＋圖片比對，其他區依位置）
+function openReplacePicker(x, idx, array)
+{
+	if(!x || !x.alt || !array) return false;
+	var card = null, k;
+	for(k = 0; k < cardData.length; k++)
+	{
+		if(cardData[k][ID] == x.alt) { card = cardData[k]; break; }
+	}
+	if(!card) return false;
+	var pos = -1;
+	if(array[idx] && array[idx][ID] == card[ID] && (!x.getAttribute || array[idx][SRC] == x.getAttribute('src'))) pos = idx;
+	for(k = 0; pos < 0 && k < array.length; k++)
+	{
+		if(array[k][ID] == card[ID] && x.getAttribute && array[k][SRC] == x.getAttribute('src')) pos = k;
+	}
+	for(k = 0; pos < 0 && k < array.length; k++)
+	{
+		if(array[k][ID] == card[ID]) pos = k;
+	}
+	if(pos < 0) return false;
+	openArtPicker(card, sameNameArts(card), {array: array, index: pos});
+	return true;
+}
+
+function artPickerKey(e)
+{
+	if(e.key == 'Escape') closeArtPicker();
+}
+
+function closeArtPicker()
+{
+	var ov = document.getElementById('artPicker');
+	if(ov) ov.parentNode.removeChild(ov);
+	document.removeEventListener('keydown', artPickerKey);
+}
 
 
 /* ===================== ALLSTAR additions ===================== */
