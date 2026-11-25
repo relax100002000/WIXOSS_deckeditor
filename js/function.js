@@ -1451,7 +1451,7 @@ function showSdeck()
 		{
 			if(nolbcount > 0 && nolbindex < 40 && i < sdeckArr.length)
 			{
-				if(sdeckArr[i][LB] == "0")
+				if(sdeckArr[i][LB] != "1")
 				{
 					$("#sdeck_" + nolbindex).attr("src", sdeckArr[i][SRC]);
 					$("#sdeck_" + nolbindex).attr("alt", sdeckArr[i][ID]);
@@ -1494,7 +1494,7 @@ function showSdeck()
 		{
 			for(i = 0; i < sdeckArr.length; i++)
 			{
-				if(sdeckArr[i][LB] == "0")
+				if(sdeckArr[i][LB] != "1")
 				{
 					over++;
 
@@ -1753,13 +1753,14 @@ function type2num(type)
 
 function LB2num(LB)
 {
-	if(LB == "0")
-	{
-		return 1;
-	}
-	else //LB == "1"
+	// LB 有 = 0 (排前面)，其餘 (含空白) 一律當作 LB 無
+	if(LB == "1")
 	{
 		return 0;
+	}
+	else
+	{
+		return 1;
 	}
 }
 
@@ -4252,6 +4253,13 @@ function checkDeck()
 				// 	console.log("LB");
 				// }
 
+				//LB 欄位必須是 "0" 或 "1" (空白會讓 LB Order / 統計判斷錯誤)
+				if(cardData[i][LB] != "0" && cardData[i][LB] != "1")
+				{
+					error = 1;
+					console.log("LB empty");
+				}
+
 				if(cardData[i][JP_TEXT].indexOf("【ライフバースト】：") == -1)
 				{
 					if(cardData[i][LB] == "1")
@@ -4326,6 +4334,13 @@ function checkDeck()
 				if(cardData[i][TIMING] != "")
 				{
 					error = 1;
+				}
+
+				//LB 欄位必須是 "0" 或 "1" (空白會讓 LB Order / 統計判斷錯誤)
+				if(cardData[i][LB] != "0" && cardData[i][LB] != "1")
+				{
+					error = 1;
+					console.log("LB empty");
 				}
 
 				//LB
