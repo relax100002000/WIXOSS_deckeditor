@@ -1,46 +1,47 @@
-==== 2026/11/18 ¶g¤T  2:00:02.46 ==== 
+==== 2026/11/26 ¶g¥|  2:00:02.15 ==== 
 [1/3] Running scraper...   
-[card-base] 3410 card IDs from card_info.js
+Card base: 7629 ids (+4219 same-name art ids)
+[card-base] 7629 card IDs from card_info.js
 [mode] auto-discover from https://yuyu-tei.jp/top/wx
 Discovered 246 sets
 [filter] kept 102 / 246 Diva slugs (ALLSTAR skipped)
-  OK wx26p2           -> +121 cards (141 off-base skipped)
-  OK wx26p1           -> +127 cards (148 off-base skipped)
-  OK wx26cp1          -> +102 cards (123 off-base skipped)
-  OK wx25p3           -> +120 cards (150 off-base skipped)
-  OK wx25p2           -> +128 cards (150 off-base skipped)
-  OK wx25p1           -> +118 cards (140 off-base skipped)
-  OK wx25cp1          -> +95 cards (184 off-base skipped)
-  OK wx24p4           -> +105 cards (190 off-base skipped)
-  OK wx24p3           -> +94 cards (159 off-base skipped)
-  OK wx24p2           -> +96 cards (160 off-base skipped)
-  OK wx24p1           -> +86 cards (218 off-base skipped)
-  OK wxdi16           -> +95 cards (103 off-base skipped)
-  OK wxdi15           -> +99 cards (115 off-base skipped)
-  OK wxdicp02         -> +104 cards (181 off-base skipped)
-  OK wxdi14           -> +95 cards (110 off-base skipped)
-  OK wxdi13           -> +89 cards (96 off-base skipped)
-  OK wxdi12           -> +90 cards (98 off-base skipped)
-  OK wxdicp01         -> +76 cards (90 off-base skipped)
-  OK wxdi11           -> +89 cards (100 off-base skipped)
-  OK wxdi10           -> +78 cards (88 off-base skipped)
-  OK wxdi09           -> +84 cards (104 off-base skipped)
-  OK wxdi08           -> +82 cards (89 off-base skipped)
-  OK wxdi07           -> +100 cards (109 off-base skipped)
-  OK wxdi06           -> +92 cards (130 off-base skipped)
+  OK wx26p2           -> +145 cards (117 off-base skipped)
+  OK wx26p1           -> +150 cards (125 off-base skipped)
+  OK wx26cp1          -> +123 cards (102 off-base skipped)
+  OK wx25p3           -> +146 cards (124 off-base skipped)
+  OK wx25p2           -> +150 cards (128 off-base skipped)
+  OK wx25p1           -> +140 cards (118 off-base skipped)
+  OK wx25cp1          -> +176 cards (103 off-base skipped)
+  OK wx24p4           -> +156 cards (139 off-base skipped)
+  OK wx24p3           -> +132 cards (121 off-base skipped)
+  OK wx24p2           -> +141 cards (115 off-base skipped)
+  OK wx24p1           -> +133 cards (171 off-base skipped)
+  OK wxdi16           -> +107 cards (91 off-base skipped)
+  OK wxdi15           -> +113 cards (101 off-base skipped)
+  OK wxdicp02         -> +168 cards (117 off-base skipped)
+  OK wxdi14           -> +117 cards (88 off-base skipped)
+  OK wxdi13           -> +102 cards (83 off-base skipped)
+  OK wxdi12           -> +103 cards (85 off-base skipped)
+  OK wxdicp01         -> +134 cards (32 off-base skipped)
+  OK wxdi11           -> +108 cards (81 off-base skipped)
+  OK wxdi10           -> +97 cards (69 off-base skipped)
+  OK wxdi09           -> +107 cards (81 off-base skipped)
+  OK wxdi08           -> +101 cards (70 off-base skipped)
+  OK wxdi07           -> +117 cards (92 off-base skipped)
+  OK wxdi06           -> +114 cards (100 off-base skipped)
   OK wxdi05           -> +93 cards (83 off-base skipped)
   OK wxdi04           -> +93 cards (81 off-base skipped)
   OK wxdi03           -> +96 cards (78 off-base skipped)
   OK wxdi02           -> +96 cards (78 off-base skipped)
   OK wxdi01           -> +99 cards (95 off-base skipped)
   OK wxdi00           -> +91 cards (91 off-base skipped)
-  OK wx25cd1          -> +22 cards (13 off-base skipped)
-  OK wx24d5           -> +26 cards (2 off-base skipped)
-  OK wx24d4           -> +26 cards (2 off-base skipped)
-  OK wx24d3           -> +26 cards (2 off-base skipped)
-  OK wx24d2           -> +26 cards (2 off-base skipped)
-  OK wx24d1           -> +26 cards (2 off-base skipped)
-  OK wdi09            -> +56 cards (1 off-base skipped)
+  OK wx25cd1          -> +34 cards (1 off-base skipped)
+  OK wx24d5           -> +27 cards (1 off-base skipped)
+  OK wx24d4           -> +27 cards (1 off-base skipped)
+  OK wx24d3           -> +27 cards (1 off-base skipped)
+  OK wx24d2           -> +27 cards (1 off-base skipped)
+  OK wx24d1           -> +27 cards (1 off-base skipped)
+  OK wdi09            -> +57 cards
   OK wdi08            -> +23 cards
   OK wdi07            -> +22 cards (5 off-base skipped)
   OK wdi06            -> +21 cards (3 off-base skipped)
@@ -52,69 +53,69 @@ Discovered 246 sets
   OK promo            -> +0 cards
   OK spdi47           -> +5 cards (5 off-base skipped)
   OK spdi46           -> +0 cards (5 off-base skipped)
-  OK spdi45           -> +0 cards (65 off-base skipped)
-  OK spdi44           -> +0 cards (22 off-base skipped)
-  OK spdi43           -> +32 cards (35 off-base skipped)
-  OK spdi42           -> +0 cards (72 off-base skipped)
+  OK spdi45           -> +60 cards (5 off-base skipped)
+  OK spdi44           -> +1 cards (21 off-base skipped)
+  OK spdi43           -> +48 cards (19 off-base skipped)
+  OK spdi42           -> +72 cards
   OK spdi41           -> +0 cards (5 off-base skipped)
   OK spdi40           -> +0 cards (21 off-base skipped)
-  OK spdi39           -> +0 cards (4 off-base skipped)
-  OK spdi38           -> +0 cards (58 off-base skipped)
-  OK spdi37           -> +0 cards (18 off-base skipped)
-  OK spdi36           -> +0 cards (5 off-base skipped)
-  OK spdi35           -> +0 cards (16 off-base skipped)
-  OK spdi34           -> +0 cards (27 off-base skipped)
-  OK spdi33           -> +0 cards (6 off-base skipped)
-  OK spdi32           -> +0 cards (8 off-base skipped)
-  OK spdi31           -> +0 cards (4 off-base skipped)
-  OK spdi30           -> +0 cards (2 off-base skipped)
-  OK spdi29           -> +0 cards (4 off-base skipped)
-  OK spdi28           -> +0 cards (5 off-base skipped)
-  OK spdi27           -> +0 cards (5 off-base skipped)
-  OK spdi26           -> +0 cards (11 off-base skipped)
-  OK spdi25           -> +0 cards (5 off-base skipped)
-  OK spdi24           -> +0 cards (8 off-base skipped)
-  OK spdi23           -> +0 cards (17 off-base skipped)
+  OK spdi39           -> +4 cards
+  OK spdi38           -> +58 cards
+  OK spdi37           -> +18 cards
+  OK spdi36           -> +5 cards
+  OK spdi35           -> +3 cards (13 off-base skipped)
+  OK spdi34           -> +21 cards (6 off-base skipped)
+  OK spdi33           -> +5 cards (1 off-base skipped)
+  OK spdi32           -> +4 cards (4 off-base skipped)
+  OK spdi31           -> +4 cards
+  OK spdi30           -> +1 cards (1 off-base skipped)
+  OK spdi29           -> +3 cards (1 off-base skipped)
+  OK spdi28           -> +5 cards
+  OK spdi27           -> +5 cards
+  OK spdi26           -> +10 cards (1 off-base skipped)
+  OK spdi25           -> +5 cards
+  OK spdi24           -> +4 cards (4 off-base skipped)
+  OK spdi23           -> +17 cards
   OK spdi22           -> +0 cards (48 off-base skipped)
-  OK spdi21           -> +0 cards (8 off-base skipped)
-  OK spdi20           -> +0 cards (6 off-base skipped)
-  OK spdi19           -> +0 cards (14 off-base skipped)
+  OK spdi21           -> +8 cards
+  OK spdi20           -> +6 cards
+  OK spdi19           -> +14 cards
   OK spdi18           -> +0 cards (8 off-base skipped)
   OK spdi17           -> +0 cards
   OK spdi16           -> +0 cards (3 off-base skipped)
-  OK spdi15           -> +0 cards (4 off-base skipped)
-  OK spdi14           -> +0 cards (7 off-base skipped)
-  OK spdi13           -> +0 cards (3 off-base skipped)
-  OK spdi12           -> +0 cards (6 off-base skipped)
-  OK spdi11           -> +0 cards (7 off-base skipped)
-  OK spdi10           -> +0 cards (28 off-base skipped)
-  OK spdi09           -> +0 cards (3 off-base skipped)
-  OK spdi08           -> +0 cards (13 off-base skipped)
-  OK spdi07           -> +0 cards (12 off-base skipped)
-  OK spdi06           -> +0 cards (3 off-base skipped)
-  OK spdi05           -> +0 cards (5 off-base skipped)
-  OK spdi04           -> +0 cards (3 off-base skipped)
-  OK spdi03           -> +0 cards (19 off-base skipped)
-  OK spdi02           -> +0 cards (35 off-base skipped)
-  OK spdi01-2         -> +17 cards (53 off-base skipped)
-  OK spdi01           -> +0 cards (256 off-base skipped)
-  OK sp38             -> +2 cards (6 off-base skipped)
-  OK promo-di100      -> +5 cards (94 off-base skipped)
-  OK promo-k100       -> +0 cards (83 off-base skipped)
-  OK promo-500        -> +0 cards (79 off-base skipped)
-  OK promo-400        -> +0 cards (100 off-base skipped)
-  OK promo-300        -> +0 cards (100 off-base skipped)
-  OK promo-200        -> +0 cards (99 off-base skipped)
-  OK promo-100        -> +0 cards (87 off-base skipped)
+  OK spdi15           -> +4 cards
+  OK spdi14           -> +7 cards
+  OK spdi13           -> +3 cards
+  OK spdi12           -> +6 cards
+  OK spdi11           -> +6 cards (1 off-base skipped)
+  OK spdi10           -> +28 cards
+  OK spdi09           -> +3 cards
+  OK spdi08           -> +12 cards (1 off-base skipped)
+  OK spdi07           -> +12 cards
+  OK spdi06           -> +3 cards
+  OK spdi05           -> +5 cards
+  OK spdi04           -> +3 cards
+  OK spdi03           -> +11 cards (8 off-base skipped)
+  OK spdi02           -> +34 cards (1 off-base skipped)
+  OK spdi01-2         -> +70 cards
+  OK spdi01           -> +198 cards (58 off-base skipped)
+  OK sp38             -> +3 cards (5 off-base skipped)
+  OK promo-di100      -> +35 cards (64 off-base skipped)
+  OK promo-k100       -> +49 cards (34 off-base skipped)
+  OK promo-500        -> +52 cards (27 off-base skipped)
+  OK promo-400        -> +80 cards (20 off-base skipped)
+  OK promo-300        -> +74 cards (18 off-base skipped)
+  OK promo-200        -> +89 cards (8 off-base skipped)
+  OK promo-100        -> +77 cards (1 off-base skipped)
 
-Wrote 3381 prices to D:\github\WIXOSS_deckeditor\price_info.json
+Wrote 5303 prices to D:\github\WIXOSS_deckeditor\price_info.json
 Wrote browser bundle to D:\github\WIXOSS_deckeditor\js\price_info.js
 [2/3] Staging changes... 
 warning: in the working copy of 'js/price_info.js', LF will be replaced by CRLF the next time Git touches it
 warning: in the working copy of 'price_info.json', LF will be replaced by CRLF the next time Git touches it
-[3/3] Committing and pushing (updated=2026-11-17T18:02:16.747Z)... 
-[main a84350d] chore: update card prices (2026-11-17T18:02:16.747Z)
- 2 files changed, 37 insertions(+), 37 deletions(-)
+[3/3] Committing and pushing (updated=2026-11-25T18:02:11.621Z)... 
+[main 41abb0e] chore: update card prices (2026-11-25T18:02:11.621Z)
+ 2 files changed, 62 insertions(+), 62 deletions(-)
 To https://github.com/relax100002000/WIXOSS_deckeditor.git
-   a7f1039..a84350d  main -> main
-[OK] Prices updated and pushed for 2026-11-17T18:02:16.747Z. 
+   81bf98b..41abb0e  main -> main
+[OK] Prices updated and pushed for 2026-11-25T18:02:11.621Z. 

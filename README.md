@@ -481,3 +481,6 @@ SPカード
   
 預計更新:  
 -補充關於說明  
+
+## index_simple.html
+精簡版組牌器(版面比照 DM PLAY'S 精簡版),與 index.html 共用 js/card_info.js。牌組存檔獨立(localStorage `wsimple_*`),匯出/匯入文字格式與主版相同(`ldeck,ID,...` / `pdeck` / `adeck` / `sdeck`)。
