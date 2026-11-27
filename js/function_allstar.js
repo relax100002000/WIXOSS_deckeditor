@@ -5197,6 +5197,19 @@ function sameNameKey(n)
 	return String(n).normalize('NFKC').replace(/\s+/g, ' ').trim().replace(/\s*\([^()]*\)$/, '').trim();
 }
 
+// 這些系列的卡名括號是正式卡名的一部分（例：プリンセス・ネージュ(雪の花) 與 (蕾を開き、花は咲く) 是不同的卡），同名比對要保留括號
+var SAME_NAME_PAREN_IDS = /^(WX26-CP1|SPDi47)-/;
+
+function sameNameFullKey(n)
+{
+	return String(n).normalize('NFKC').replace(/\s+/g, ' ').trim();
+}
+
+function cardSameNameKey(card)
+{
+	return SAME_NAME_PAREN_IDS.test(card[ID]) ? sameNameFullKey(card[NAME]) : sameNameKey(card[NAME]);
+}
+
 function initSameName()
 {
 	if(sameNameMap) return;
@@ -5208,6 +5221,25 @@ function initSameName()
 		var ids = p[1].split(',');
 		sameNameMap[p[0]] = ids;
 		ids.forEach(function(id){ sameNameById[id] = p[0]; });
+	});
+	// 括號屬於卡名的系列：依卡表的完整卡名重新分組（048U 這類卡號對應到 048）
+	var fullById = {};
+	for(var c = 0; c < cardData.length; c++)
+	{
+		if(SAME_NAME_PAREN_IDS.test(cardData[c][ID])) fullById[cardData[c][ID]] = sameNameFullKey(cardData[c][NAME]);
+	}
+	Object.keys(sameNameMap).forEach(function(key){
+		var keep = [];
+		sameNameMap[key].forEach(function(id){
+			var full = fullById[id] || fullById[id.replace(/[A-Z]+$/, '')];
+			if(full && full != key)
+			{
+				(sameNameMap[full] || (sameNameMap[full] = [])).push(id);
+				sameNameById[id] = full;
+			}
+			else keep.push(id);
+		});
+		if(keep.length) sameNameMap[key] = keep; else delete sameNameMap[key];
 	});
 	// 手動補充的卡圖（js/same_name_extra.js）
 	if(typeof SAME_NAME_EXTRA !== 'undefined')
@@ -5237,7 +5269,7 @@ function sameNameArts(card)
 {
 	initSameName();
 	var list = [{id: card[ID], src: card[SRC]}];
-	var ids = sameNameMap[sameNameKey(card[NAME])] || [];
+	var ids = sameNameMap[cardSameNameKey(card)] || [];
 	for(var k = 0; k < ids.length; k++)
 	{
 		if(ids[k] != card[ID]) list.push({id: ids[k], src: artSrc(ids[k])});
@@ -5274,7 +5306,7 @@ function findDeckCard(id)
 	var diva = /^(WXDi|WX2\d|WDi|SPDi|PR-Di)/, first = null;
 	for(k = 0; k < cardData.length; k++)
 	{
-		if(sameNameKey(cardData[k][NAME]) != key) continue;
+		if(cardSameNameKey(cardData[k]) != key) continue;
 		if(diva.test(cardData[k][ID]) == diva.test(id)) return withArt(cardData[k], id);
 		if(!first) first = cardData[k];
 	}
